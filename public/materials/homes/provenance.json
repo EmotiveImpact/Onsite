@@ -1,0 +1,8 @@
+{
+  "source": "assets/textures/source-30/01-london-stock-brick-color.png",
+  "sourceSHA256": "58f60923f6a6e9414df678d08e05fa7f6b6ea42fb7f6e0defd80cb8f6faeac5a",
+  "runtime": "public/materials/homes/stock-color.webp",
+  "sha256": "3588dcd2560276eecc0836a4ec7db851530debdf2118a17be289bf72a833be68",
+  "processing": "Original retained generated colour image, WebP encoding only. No normal/height/roughness scan claim. Runtime uses constant roughness and geometric occlusion.",
+  "coverageMetres": 1.05
+}

@@ -40,6 +40,16 @@ for(const sign of [1,-1]){
 }
 for(const [x,z,w,d]of [[-5,-4,3,1.5],[5,-5,3,1.5],[-6,4,3,1.5],[6,4,3,1.5]])add('low-cover',x,.5,z,w,1,d);
 add('central-screen',0,1.05,0,3,2.1,3,'steel');add('east-screen',10,1.05,0,.6,2.1,2.5,'steel');
+// Flat 01 occupies the former north-west plant room. Keep the existing courtyard
+// and lobby doors connected by a clear southern hall. Blender owns appearance;
+// these simple solids alone own furniture/partition collision and navigation.
+doorway('home-bedroom-divider',-12,-13,3.7,'z',0,'plaster',.8);
+add('home-bed',-16.2,.36,-13.2,1.6,.72,2.1,'fabric');
+add('home-wardrobe',-17.35,1.05,-10.5,.65,2.1,1.6,'wood');
+add('home-sofa',-10.7,.45,-13.3,.9,.9,2.2,'fabric');
+add('home-kitchen',-8.4,.48,-14.45,3.2,.96,.7,'paint');
+add('home-fridge',-6.75,.95,-13.65,.7,1.9,.7,'trim');
+add('home-table',-8.0,.38,-12.1,1.1,.76,.65,'wood');
 // Bounds measured by Blender from the placed donor model, separate from render triangles.
 for(const p of dressing){if(!p.collision)continue;const [w,h,d]=p.size,c=Math.abs(Math.cos(p.ry)),s=Math.abs(Math.sin(p.ry));add('dress-'+p.asset,p.x,p.y+h/2,p.z,w*c+d*s,h,d*c+w*s,'steel')}
 export const spawn={x:-9,y:.04,z:12};

@@ -80,3 +80,7 @@ its render export excludes collision/navigation guides and uses the existing PBR
 ## Additional courtyard dressing
 
 The dirt pass adds five CC0 Poly Haven props and ambientCG Ground110/Leaking003 maps through the same pinned IRONLINE clone. Original publisher metadata/licence and payload hashes are retained in the donor/material manifests. Original generated asphalt source and encoding records are preserved in `assets/textures/onsite-dirt-pass`. Blender grass, folded litter, cans, fallen leaves and placement are original ONSITE work; read [DIRT-PASS.md](DIRT-PASS.md).
+
+## South London residential pass
+
+Original Blender homes/furniture and visual surroundings: `scripts/build_homes.py`, `assets/blender/onsite-heron-court.blend`. Four Dawson's Heights/Brandon Estate photographs were visually studied; URLs/hashes in `research/SOUTH-LONDON-REFERENCES.json`. No photograph pixels or new donor assets were imported. Stock brick uses the existing original generated source, encoded by `scripts/prepare-home-material.py`; provenance at `public/materials/homes/provenance.json`.

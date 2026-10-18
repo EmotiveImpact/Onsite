@@ -24,11 +24,13 @@ the original 2,145-object/14-mesh figures describe the base architecture before 
 - `04_DRESSING / credited donor props`: imported models with editable transforms. Their runtime
   placements are recorded in `src/onsite/dressing.json` and the models load separately.
 - `05_PREVIEW / lighting and cameras, not exported`: Blender review setup only.
+- `07_HOMES / South London residential`: original maisonettes, home interior and visual surroundings.
+  See [South London homes](SOUTH-LONDON-HOMES.md); Flat 01 collision is in `level.ts`.
 
-The export merges architecture and detail by material (21 runtime meshes) and bakes local five-direction
+The export merges architecture and detail by material (25 runtime meshes including the residential expansion) and bakes local five-direction
 vertex occlusion. It contains no images; Three.js assigns the existing PBR maps by material
 name. Blender light objects do not become the game's lighting. `View.ts` constructs lights and
-uses the credited Poly Haven HDRI for sky/reflections. Puddles use environment reflections;
+uses the credited Poly Haven HDRI for lighting/reflections; the residential pass has an original overcast sky dome. Puddles use environment reflections;
 there is no screen-space reflection pass.
 
 The `.blend` is the editable visual source. `level.ts` remains the physical layout authority:
@@ -68,3 +70,5 @@ ignored and outside production bundles. Credits ship at `/credits.html` and unde
 
 Current opponents still use the original stylised hooded Blender model. A detailed black hoodie,
 trainer and jogger character with a proper animation rig remains outstanding.
+
+Current home materials and visual-study photograph URLs are inventoried separately. The photographs are not shipped textures. The export snapshots vertex tints before allocating a new Blender colour layer, avoiding invalidated RNA references.

@@ -1,0 +1,58 @@
+{
+  "context": "Continuous WWB capsule traversal, bots disabled, no teleport after spawn; not ordinary mouse/keyboard gameplay",
+  "errors": [],
+  "failed": [],
+  "stage": "return",
+  "done": true,
+  "ticks": 1915,
+  "position": {
+    "x": -9.187552644075367,
+    "y": 0.018789997347630538,
+    "z": -7.133280951529741
+  },
+  "evidence": [
+    {
+      "name": "entry",
+      "position": {
+        "x": -9.187455460480123,
+        "y": 0.02008935150079194,
+        "z": -6.775815881788731
+      },
+      "tick": 565
+    },
+    {
+      "name": "living",
+      "position": {
+        "x": -8.502120655030012,
+        "y": 0.02009094700188141,
+        "z": -10.87363600730896
+      },
+      "tick": 881
+    },
+    {
+      "name": "bedroom",
+      "position": {
+        "x": -14.008662724867463,
+        "y": 0.020574944699183084,
+        "z": -12.779640574008226
+      },
+      "tick": 1276
+    },
+    {
+      "name": "return",
+      "position": {
+        "x": -9.187552644075367,
+        "y": 0.018789997347630538,
+        "z": -7.133280951529741
+      },
+      "tick": 1735
+    }
+  ],
+  "metrics": {
+    "softwareRenderer": true,
+    "frames": 180,
+    "meanFrameMs": 611.4572222222223,
+    "calls": 33,
+    "triangles": 215051
+  }
+}

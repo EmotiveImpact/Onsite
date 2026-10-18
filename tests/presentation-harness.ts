@@ -14,7 +14,7 @@ async function run(){
  const params=new URLSearchParams(location.search);let phase=Number(params.get('phase')??-1);
  if(params.get('quality')==='high'){view.renderer.setPixelRatio(1);view.renderer.shadowMap.enabled=true;view.resize()}
  for(let i=0;i<60;i++)g.arsenal.step(1/60,{fire:false,firePressed:false,ads:false,reload:false},view.camera.position,false);
- const locations:Record<string,[number,number,number,number,number]>={court:[-7,.04,2,-.55,-.08],stair:[-16,.4,-4.6,0,-.28],rubbish:[-8,.04,5.5,.72,-.24],gallery:[0,3.04,-7.5,Math.PI,-.18]};
+ const locations:Record<string,[number,number,number,number,number]>={court:[-7,.04,2,-.55,-.08],stair:[-16,.4,-4.6,0,-.28],rubbish:[-8,.04,5.5,.72,-.24],gallery:[0,3.04,-7.5,Math.PI,-.18],homes:[-3,.04,3,.15,.35],living:[-7,.04,-10.4,.55,-.13],bedroom:[-13.5,.04,-11.5,.78,-.15],neighbourhood:[25,20,28,.75,-.35]};
  const setLocation=(name:string)=>{const [x,y,z,yaw,pitch]=locations[name]??locations.court;g.player.spawn(new THREE.Vector3(x,y,z),yaw);g.player.pitch=pitch;g.physics.step(1/60)};
  setLocation(params.get('location')??'court');
  g.arsenal.reloadTotal=1.85;g.arsenal.reloading=phase<0?0:1.85*(1-phase);

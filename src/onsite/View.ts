@@ -22,6 +22,12 @@ export class View {
   this.renderer.shadowMap.enabled=!this.software;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
   this.scene.background=new THREE.Color('#60778c');this.scene.fog=new THREE.FogExp2('#516b81',.013);
+  // Keep the credited HDRI for lighting; its rural field is not London's skyline.
+  const skyGeo=new THREE.SphereGeometry(120,24,12),skyColors:number[]=[];
+  const skyTop=new THREE.Color('#344d68'),skyHorizon=new THREE.Color('#939b9e');
+  for(let i=0;i<skyGeo.attributes.position.count;i++){const y=skyGeo.attributes.position.getY(i)/120,c=skyHorizon.clone().lerp(skyTop,Math.max(0,y));skyColors.push(c.r,c.g,c.b)}
+  skyGeo.setAttribute('color',new THREE.Float32BufferAttribute(skyColors,3));
+  this.scene.add(new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false})));
   this.camera.rotation.order='YXZ';this.scene.add(this.camera);
   this.scene.add(new THREE.HemisphereLight('#b4d0ee','#323e43',1.35));
   const sun=new THREE.DirectionalLight('#b7cce2',1.35);sun.position.set(-18,25,-14);sun.castShadow=true;
@@ -34,13 +40,16 @@ export class View {
   const loader=new THREE.TextureLoader(),pending:Promise<unknown>[]=[];
   for(const name of ['brick','stock','concrete','asphalt','paving','steel']){
    const mat=new THREE.MeshStandardMaterial({roughness:1,vertexColors:true});this.mats[name]=mat;
+   if(name==='stock'){
+    pending.push(loader.loadAsync('/materials/homes/stock-color.webp').then(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=this.software?2:4;t.colorSpace=THREE.SRGBColorSpace;mat.map=t;mat.roughness=.93;mat.needsUpdate=true}));continue;
+   }
    for(const kind of ['color','normal','arm'])pending.push(loader.loadAsync(name==='asphalt'&&kind==='color'?'/materials/detail/generated-asphalt-color.webp':`/materials/pbr/${name==='stock'?'brick':name}-${kind}.webp`).then(t=>{
     t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=this.software?2:4;
     if(kind==='color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(kind==='normal'){mat.normalMap=t;mat.normalScale.set(.45,.45)}else{mat.roughnessMap=t;mat.aoMap=t;if(name==='steel'){mat.metalnessMap=t;mat.metalness=.75}}
     if(name==='stock')mat.color.set('#b9ad8e');if(name==='asphalt')mat.roughness=.55;mat.needsUpdate=true;
    }));
   }
-  const colors:Record<string,string>={dark:'#26323b',glass:'#364f64',lit:'#ffe3ad',trim:'#89928c',soil:'#30271b',leaves:'#3e502b',wood:'#554335',paint:'#284952',wet:'#314454',amber:'#a47125',grass:'#657044',litter:'#b6a88b',rubbish_metal:'#808785',mud:'#ffffff',leak:'#ffffff',paint_worn:'#c6ac72',contact:'#20221b'};
+  const colors:Record<string,string>={dark:'#26323b',glass:'#364f64',lit:'#ffe3ad',trim:'#c0c2b7',soil:'#30271b',leaves:'#3e502b',wood:'#554335',paint:'#284952',wet:'#314454',amber:'#a47125',grass:'#657044',litter:'#b6a88b',rubbish_metal:'#808785',mud:'#ffffff',leak:'#ffffff',paint_worn:'#c6ac72',contact:'#20221b',plaster:'#c4bb9d',fabric:'#aaaa9f',roof:'#3b444b'};
   for(const [name,color]of Object.entries(colors))this.mats[name]=new THREE.MeshStandardMaterial({color,vertexColors:true,roughness:name==='wet'?.12:name==='glass'?.18:.8,metalness:name==='glass'||name==='wet'?.45:0});
   this.mats.lit.emissive.set('#ffb35b');this.mats.lit.emissiveIntensity=1.2;
   this.mats.grass.side=THREE.DoubleSide;this.mats.litter.side=THREE.DoubleSide;
@@ -68,7 +77,7 @@ export class View {
  private async environment(){
   const hdr=await new RGBELoader().loadAsync('/models/donors/bambanani_sunset_2k.hdr');hdr.mapping=THREE.EquirectangularReflectionMapping;
   const pm=new THREE.PMREMGenerator(this.renderer),env=pm.fromEquirectangular(hdr).texture;
-  this.scene.environment=env;this.scene.environmentIntensity=.42;this.scene.background=hdr;this.scene.backgroundIntensity=.38;this.scene.backgroundBlurriness=.08;
+  this.scene.environment=env;this.scene.environmentIntensity=.42;
   this.scene.backgroundRotation.y=1.1;this.scene.environmentRotation.y=1.1;
   this.vmScene.environment=env;this.vmScene.environmentIntensity=.6;pm.dispose();
  }
@@ -94,13 +103,15 @@ export class View {
   const m=new THREE.Mesh(new THREE.PlaneGeometry(w,w/8),new THREE.MeshStandardMaterial({map:t,roughness:.8}));m.position.set(x,y,z);m.rotation.y=ry;this.scene.add(m);
  }
  private signage(){
-  this.sign('HERON ESTATE',0,5.2,-8.84,5);this.sign('THE CORNER / OFF LICENCE',6,2.5,8.84,4.4,Math.PI);
+  this.sign('HERON COURT / SE15',0,5.2,-8.84,5);this.sign('THE CORNER / OFF LICENCE',6,2.5,8.84,4.4,Math.PI);
+  this.sign('01 / HERON COURT',-9,2.45,-8.84,1.6);
   this.sign('STAIR A / 01—12',-11.83,2.5,-4.1,1.4,Math.PI/2);this.sign('STAIR B / 13—24',11.83,2.5,4.1,1.4,-Math.PI/2);
   this.sign('HERON / MAINTENANCE',0,1.9,1.58,2.5);
   // Four local pools give readable warm/cool separation without 24 per-pixel lights.
   for(const [x,y,z]of [[-8,3.4,-4.9],[8,3.4,4.9],[-6,2.3,-8.5],[6,2.3,8.5]]){
    const l=new THREE.PointLight('#ffad52',22,9,2);l.position.set(x,y,z);this.scene.add(l);
   }
+  for(const x of [-8.7,-16]){const lamp=new THREE.PointLight('#ffdcaa',14,5.5,2);lamp.position.set(x,2.35,-12.5);this.scene.add(lamp)}
  }
  render(g:Encounter,alpha:number,dt:number,look:{x:number;y:number},overview=false){
   g.player.eye(alpha,this.camera.position);g.audio.setListener(this.camera.position,g.player.forward(new THREE.Vector3()));

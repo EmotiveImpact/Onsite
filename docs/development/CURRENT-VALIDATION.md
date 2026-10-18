@@ -1,92 +1,99 @@
-# Blender dirt/grass/rubbish pass — validation
+# South London residential pass — validation
 
-18 October 2026. Node 24.19.0, Chromium 154.0.8037.57, Blender 4.3.2, Three.js 0.186.1, Rapier 0.21.0.
-This pass follows local checkpoint `e768260`. Its measurements and images are retained in
-[the previous validation record](VALIDATION-e768260.md); those numbers are not measurements of this pass.
+18 October 2026. Blender 4.3.2, Node 24.19.0, Chromium 154, Three.js 0.186.1, Rapier 0.21.0.
+Baseline: `0ce5a14`; [previous results](VALIDATION-0ce5a14.md) retain that pass's screenshots and
+461.57 ms timing. They are not measurements of this expanded scene.
 
-## What is running
+## Implemented
 
-`index.html` uses actual WWB Player, Physics, Input, GameLoop, Arsenal, Bot, effects and round-rule
-modules through ONSITE's encounter wrapper. One Rapier world and the existing layered navigation
-remain in charge. This pass changes presentation, not collision, combat damage or navigation.
+The existing WWB runtime and single Rapier/layered-navigation architecture remain active. The
+Blender residential pass replaces upper window boxes with stock-brick homes, deeper openings,
+white frames, curtains/blinds, ribbed concrete, 20 balconies and closed rear elevations. Six
+terraced houses and two point blocks expand the visual surroundings. An original overcast sky
+dome replaces the rural background while the credited HDRI remains the lighting source.
 
-The Blender estate now has **3,010 editable render objects**, including **869 detail objects**:
-600 separate chipped paving slabs, 3,404 grass blades in 209 clumps, folded litter, crushed cans,
-fallen leaves, ground/wall grime and maintenance markings. Export batches these to **21 material
-meshes**, **13,520,528 bytes**. The new asphalt colour image is generated; ambientCG supplies
-separately credited dirt/damp colour, normal and roughness maps. The asphalt combines with existing
-CC0 normal/ARM maps and is an approximate hybrid, not a matched scan.
+**One accessible home** occupies the former north-west plant room: kitchen/living area, bedroom,
+plaster finishes, radiators and original furniture. Its furniture and partition use authoritative
+collision solids; existing court/lobby doors remain connected. The playable bounds remain
+**36×30 m**, with both stairs and the continuous 3 m gallery. Higher private balconies and the
+surrounding houses are visual-only; do not claim they are traversable neighbourhood routes.
 
-Twelve individually verified Poly Haven prop models from IRONLINE are now used in 20 placements,
-alongside the existing two WWB/Poly Haven props and original bench. The credited IRONLINE M4/hands
-were finished in Blender: continued sleeve ends, preserved PBR maps and skin weights. The active
-weapon derivative is **3,546,756 bytes**, with an editable `.blend`; ONSITE's original reload reach
-still follows WWB's reload clock. No donor motion clips or Claudefare code/assets were added.
+Final estate: **6,773 editable render objects → 25 material meshes**, **17,791,304-byte GLB**.
+Original art and previous dressing remain. Generated stock-brick colour is reused from the
+project's original texture pack, with recorded source/runtime hashes. Four South London
+photographs were visually studied; no photograph pixels or unlicensed donor assets were imported.
+See [reference and Blender workflow](SOUTH-LONDON-HOMES.md).
 
-See [donor map](DONOR-MAP.md), [Blender dressing/reproduction](DIRT-PASS.md),
-[asset notices](../../public/licenses/DONOR-ASSETS.md) and [current handoff](HANDOFF.md).
+## Verification
 
-## Checks
+- `npm run typecheck`: passed. `npm test`: **22 passed**, no skips (10 retained legacy,
+  9 current WWB navigation/physics tests, 3 asset/collision tests). Actual bot/player capsules
+  traverse both stairs and the furnished flat; bed collision stops the player.
+- `npm run build`: passed. Main JS **5,119.15 kB / 1,881.14 kB gzip**. The >500 kB chunk
+  warning remains.
+- Visual review caught UV/colour-layer corruption and missing rear enclosure. Both were fixed.
+  Export now snapshots corner colours safely and supplies white tint for untinted geometry
+  before joining. An asset regression checks stock facade colour neutrality and opacity.
+- Early inspection attempts caught aborted Vite dependency requests. The longstanding dev server
+  was restarted to clear stale optimized dependency URLs. The final five-view inspection passed
+  with no page or failed/HTTP-error requests.
+- The first full-round run reached victory at 28.58 simulation seconds, 76 health, before the
+  automation's exact capture waypoint. The old route helper wrongly threw on that round end.
+  It now accepts `won` while preserving the mandatory victory assertion and reset check.
+  [Original automation failure/state](evidence/homes/capture-before-waypoint.json) shows the game
+  had already won; it is kept separate from the final passing run.
+- Blender commands use `--python-exit-code 1`; exceptions now fail the build command.
+- The full builder was not rerun destructively from an empty scene. The incremental homes
+  builder and final export were executed on the preserved estate. Manual changes should be
+  preserved before rebuilding either authored collection.
 
-- `npm run typecheck`: passed.
-- `npm test`: **20 tests passed**. Ten retained legacy regressions, seven current WWB physics/nav
-  tests, and three asset/collision tests. Physical tests exercise the actual bot brain and player
-  capsules on both stairs. New assertions catch inverted paving faces, lost vertex alpha, missing
-  weapon colour/normal maps, altered provenance hashes and accidental motion-clip imports.
-- `npm run build`: passed. Main JS **5,116.97 kB / 1,880.38 kB gzip**. The >500 kB chunk warning
-  remains. Full `dist` is approximately **46 MB**, including retained legacy and unused original
-  donor payloads. It is not an optimized download budget.
-- `node scripts/capture-detail.mjs`: passed four fixed-camera views and three frozen reload phases.
-  No page/HTTP errors. Extraction-phase left-hand/magazine reach is within 1.5 cm; transforms finite.
-  Visual inspection caught and fixed inverted slab tops and texture loss during Blender packing.
-- The continuous browser stair route was not repeated in this presentation-only pass. Its earlier
-  evidence remains labelled separately. The layout SHA is unchanged and the physical bot/player
-  stair regressions passed again.
+## Evidence contexts
 
-- Production-preview browser check: **10 checks passed**, **no page errors or failed/HTTP-error requests**.
-  Actual pointer lock/mouse look, centred ADS, automatic fire/recoil/timed reload, pause/resume,
-  jump/landing, lobby doorway movement, live combat, capture/victory and round reset.
-  **Three bots eliminated, 76 health remaining, 26 shots / 12 hits**. The automation uses ordinary
-  mouse/keyboard input and read-only snapshots/route queries; no teleport, damage or health hooks.
+The `homes/` evidence directory contains the final five fixed-camera inspection stills: homes,
+living room, bedroom, gallery and neighbourhood. These use the actual renderer, bots disabled,
+1280×800, pixel ratio 1 with sun shadows. The neighbourhood image is an elevated inspection
+camera, not an accessible player position. These stills are not performance measurements.
 
-## Current performance measurement
+[Courtyard homes](evidence/homes/homes.png) · [Living/kitchen](evidence/homes/living.png) ·
+[Bedroom](evidence/homes/bedroom.png) · [Gallery](evidence/homes/gallery.png) ·
+[Neighbourhood inspection](evidence/homes/neighbourhood.png) · [Inspection report](evidence/homes/report.json).
 
-The input-driven production-preview run used **SwiftShader software rendering**, a **1100×700**
-viewport at **0.5 pixel ratio**, no MSAA or shadows, and four local world lights. Mean wall-clock
-frame duration was **461.57 ms across 141 active samples (~2.17 FPS)**. Final counters were
-**76 draw calls / 233,111 triangles**, summed across world and weapon passes. No other browser or
-Blender render ran alongside it. Automation and screenshot overhead are included, so this is not
-a controlled benchmark.
+A separate physical route fixture continuously walks the shipped WWB player from its normal
+spawn, through Flat 01 and back out. It has bots disabled and does not teleport after spawn.
+The route passed all four checkpoints in **1,915 ticks**, with no page/request errors.
+Its final 180-sample software mean was **611.46 ms (~1.64 FPS)** at 1280×800 / 0.5 pixel ratio,
+no MSAA/sun shadows, six local world lights; 33 final calls / 215,051 triangles. This is slow,
+includes capture overhead, and is not a hardware benchmark.
 
-This is slower than the previous visual pass's 402.84 ms sample and is not smooth or suitable as
-a performance target. Detail, lighting and weapon export all changed; this measurement does not
-isolate their costs. Real-GPU profiling and payload/geometry optimization remain required.
+[Continuous flat walk video](evidence/homes/flat-walk.webm) · [Physical route report](evidence/homes/route-report.json).
+The final normal mouse/keyboard production-preview run passed **10 checks**: loading, pointer
+lock/look, ADS alignment, automatic fire/recoil/reload, pause/resume, jump/landing, doorway
+movement, three-bot combat, capture/victory and reset. **88 health**, **41 shots / 14 hits**;
+victory at **29.20 simulation seconds**. Reset report confirms player health 100 and all
+three bots alive at 100 health. No page errors or failed/HTTP-error requests.
 
-## Actual runtime images
+Current combat software measurement: **589.91 ms/frame (~1.70 FPS)** over **149 active samples**,
+1100×700 viewport at 0.5 pixel ratio, no MSAA/sun shadows, six local world lights. Final counters:
+**81 calls / 240,710 triangles** across world and weapon passes. Other browser/Blender jobs had
+finished before this measurement. Automation/capture overhead is included. This is slower than
+the prior pass's 461.57 ms sample; it is not smooth, controlled benchmarking or real-GPU evidence.
 
-- [Courtyard and rifle](evidence/dirt-pass/court.png), [rubbish/grass/paving](evidence/dirt-pass/rubbish.png),
-  [upper gallery](evidence/dirt-pass/gallery.png), [stair A](evidence/dirt-pass/stair.png).
-- [Reload 35%](evidence/dirt-pass/reload-35.png), [55%](evidence/dirt-pass/reload-55.png),
-  [85%](evidence/dirt-pass/reload-85.png), [inspection report](evidence/dirt-pass/report.json).
-- [Input-driven gameplay video](evidence/dirt-pass/combat-input.webm),
-  [ADS](evidence/dirt-pass/aiming.png), [combat](evidence/dirt-pass/combat.png),
-  [victory](evidence/dirt-pass/victory.png), [combat report](evidence/dirt-pass/combat-report.json).
-- [Prior courtyard image](evidence/dirt-before.png), copied unchanged from checkpoint `e768260`.
-- [As-built plan](evidence/as-built.svg) and [exact collision/spawn data](evidence/layout.json).
+[Input-driven combat video](evidence/homes/combat-input.webm) · [Combat report](evidence/homes/combat-report.json) ·
+[ADS](evidence/homes/aiming.png) · [Victory](evidence/homes/victory.png).
 
-The new inspection stills use the actual Three.js renderer at **1280×800, pixel ratio 1, sun
-shadows and four warm local lights**, with bots disabled and a labelled fixed camera. They are
-neither concept art nor an input-driven gameplay/performance sample. Software mode has no MSAA.
+[As-built arena plan](evidence/as-built.svg) · [Flat 01 plan](evidence/home-plan.svg) ·
+[Exact collision/spawn data](evidence/layout.json).
 
-## Limits and next work
+## Limits
 
-No real GPU is available in this cloud session. Hardware mode enables MSAA and sun shadows at
-up to 1.5 pixel ratio; real-GPU appearance, frame time and sustained play feel remain unverified.
-The original stylised hooded bot still needs a detailed black hoodie/joggers/trainers rig and
-animation. Facades/rooms remain repetitive; hand/reload polish and payload optimization also need
-work. This pass adds visible authored detail but does not establish concept-art fidelity or a
-production-ready game.
+The cloud uses SwiftShader software rendering, not a real GPU. Hardware mode enables MSAA and
+sun shadows and has not been profiled. The 51 MB production directory still includes
+unused retained legacy assets and original donor copies; download/memory optimization remains.
 
-Original concepts, textures, Blender sources and tests are preserved. All three pinned donor
-clones were verified clean and ignored, with no nested trees in Git's index. Their SHAs and licence
-boundaries are in `research/SOURCES.json`. No push, merge, deploy or cloud configuration publication.
+The home is a first furnished interior: bathroom, working doors/appliances, domestic fabric/wood
+textures and interactions remain unfinished. The original hooded bot visual still needs a
+proper character rig. Surrounding house exteriors and point blocks are context geometry; a
+larger accessible neighbourhood would require a separate collision/nav/gameplay expansion.
+No production-quality or smooth-performance claim is made.
+
+No push, merge or deployment. Previous checkpoints and all original reference material remain.

@@ -68,10 +68,16 @@ The active game combines WWB gameplay with individually credited IRONLINE weapon
 
 Latest runtime inspection (bots disabled, fixed camera):
 
-![ONSITE Blender estate with imported rifle, grass, rubbish and textured paving](docs/development/evidence/dirt-pass/rubbish.png)
+![ONSITE South London courtyard with stock-brick homes and projecting balconies](docs/development/evidence/homes/homes.png)
 
-[Courtyard and rifle](docs/development/evidence/dirt-pass/court.png) ·
-[Upper gallery](docs/development/evidence/dirt-pass/gallery.png) ·
-[Blender/texture workflow](docs/development/DIRT-PASS.md) ·
-[Game input video](docs/development/evidence/dirt-pass/combat-input.webm),
-[validation and measured limitations](docs/development/CURRENT-VALIDATION.md).
+[Inside Flat 01](docs/development/evidence/homes/living.png) ·
+[Bedroom](docs/development/evidence/homes/bedroom.png) ·
+[Upper gallery](docs/development/evidence/homes/gallery.png) ·
+[Surrounding buildings](docs/development/evidence/homes/neighbourhood.png) ·
+[Flat floor plan](docs/development/evidence/home-plan.svg) ·
+[South London references and Blender workflow](docs/development/SOUTH-LONDON-HOMES.md) ·
+[Validation and limitations](docs/development/CURRENT-VALIDATION.md).
+
+One furnished ground-floor home is accessible. Six terraced houses, two point blocks and the
+higher private balconies expand the visual surroundings; they are not yet additional playable
+routes. The working courtyard, both stairs, gallery, WWB combat and prior dressing remain.

@@ -1,0 +1,97 @@
+{
+  "context": "Fixed inspection cameras and frozen reload phases; actual runtime renderer; bots disabled; high-resolution stills are not a performance measurement",
+  "errors": [],
+  "failed": [],
+  "evidence": [
+    {
+      "location": "homes",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.33952756829784936,
+          -0.35152345921802625,
+          0.8349835812517664
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.10775117686241514,
+        "finite": true
+      }
+    },
+    {
+      "location": "living",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3395275682978496,
+          -0.35152345921803213,
+          0.8349835812517665
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.107751176862414,
+        "finite": true
+      }
+    },
+    {
+      "location": "bedroom",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.33952756829784136,
+          -0.3515234592180228,
+          0.8349835812517665
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.10775117686241317,
+        "finite": true
+      }
+    },
+    {
+      "location": "gallery",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.33952756829784997,
+          -0.3515234592180311,
+          0.834983581251767
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624154,
+        "finite": true
+      }
+    },
+    {
+      "location": "neighbourhood",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.33952756829784986,
+          -0.35152345921803335,
+          0.8349835812517643
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624158,
+        "finite": true
+      }
+    }
+  ]
+}

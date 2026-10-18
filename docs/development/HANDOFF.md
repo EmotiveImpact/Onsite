@@ -20,7 +20,7 @@ Bot navigation is original layered geometry-derived nodes at 0.375 m horizontal 
 
 The active architecture is now an actual Blender-authored level: `assets/blender/onsite-heron-court.blend`
 → `public/models/onsite-heron-court.glb`. Read [BLENDER-LEVEL.md](BLENDER-LEVEL.md) before editing.
-The estate now has 3,010 editable render objects, including 869 detail objects (600 paving slabs, grass, rubbish and weathering), exporting to 21 material meshes with metric UVs and vertex occlusion. See DIRT-PASS.md.
+The estate now has 6,773 editable render objects, exporting to 25 material meshes. The retained 869 detail objects include paving, grass and litter. New South London homes add stock brick, recessed windows, 20 balconies, six surrounding terraces and two background point blocks; see SOUTH-LONDON-HOMES.md. The north-west ground-floor room is now a furnished accessible flat with authoritative furniture/partition colliders. Upper homes and surrounding buildings remain visual-only.
 Editable render, collision guides, navigation guides, donor dressing and review-lighting collections
 are separate. Runtime lighting is rebuilt in Three.js; Blender lamps do not automatically transfer.
 
@@ -43,12 +43,12 @@ integrated. No Claudefare implementation, Fab clips, donor Tripo/Manus models or
 
 Node 24, Chromium, Blender 4.3.2 available in this session. `npm ci`; `npm run dev` (port 5173). `npm run typecheck`; `npm test`; `npm run build`. For input-driven browser validation, start `npm run preview -- --port 4173`, then `ONSITE_URL=http://127.0.0.1:4173 npm run test:browser`. Video requires `npx playwright install ffmpeg`. `npm run evidence:layout` regenerates the plan. `npm run evidence:route` requires dev server and drives a test-only physical route fixture with bots disabled. It does not ship in the production bundle.
 
-Latest validation: typecheck/build and 20 tests passed; production browser completed all three bots, capture/victory and reset (76 health, 26 shots / 12 hits). SwiftShader mean **461.57 ms / ~2.17 FPS**, 141 samples; not smooth. Current screenshots/video are under `evidence/dirt-pass/`; see [CURRENT-VALIDATION.md](CURRENT-VALIDATION.md) for exact contexts.
+Latest residential pass: typecheck/build and **22 tests passed**; continuous flat traversal passed (1,915 ticks). The final input-driven encounter eliminated all three bots, captured and reset, with 88 health. Software mean **589.91 ms / ~1.70 FPS**, 149 frames; real GPU unverified. Results and evidence are in [CURRENT-VALIDATION.md](CURRENT-VALIDATION.md). The preceding dirt-pass captures/timing are retained under `evidence/dirt-pass/` and VALIDATION-0ce5a14.md. Do not present those as measurements of the expanded homes.
 
 ## Highest-value next work
 
-1. Controlled real-GPU profiling and player feedback. Cloud SwiftShader is slow; no smooth-play claim. Current adaptive software mode disables MSAA and shadows and uses half pixel ratio. Four local world lights are shared with hardware mode. Hardware enables MSAA and sun shadows. Distinguish both visually and quantitatively.
-2. Art pass against the original concept: facade/room variation, a convincing black-clothed character rig, and further first-person hand/reload refinement. The dirty floor, grass, litter and sleeve continuation are implemented; see DIRT-PASS.md. Planted cover and detailed facade/rail components are implemented; current result is improved but not concept-art fidelity.
+1. Controlled real-GPU profiling and player feedback. Cloud SwiftShader is slow; no smooth-play claim. Current adaptive software mode disables MSAA and shadows and uses half pixel ratio. Four courtyard and two interior local lights are shared with hardware mode. Hardware enables MSAA and sun shadows. Distinguish both visually and quantitatively.
+2. Art pass against the original concept: complete the flat bathroom and domestic materials, more facade/room variation, a convincing black-clothed character rig, and further first-person hand/reload refinement. The dirty floor, grass, litter and sleeve continuation are implemented; see DIRT-PASS.md. Planted cover and detailed facade/rail components are implemented; current result is improved but not concept-art fidelity.
 3. Human combat tuning: three-bot pressure, readable reaction windows, recoil recovery, movement speed and clear hit/death feedback. Browser automation proves mechanics, not satisfaction.
 4. Expand physical navigation regression scenarios for multi-bot separation at doorways, cover, stairs and damage while transitioning floors. Existing tests cover isolated ascent/descent; not every crowd case.
 5. Reduce the large Rapier/Three.js JS payload and unused preserved legacy runtime asset delivery. Networking stays deferred. Modern Claudefare is an unlicensed reference only; architecture notes in DONOR-MAP.

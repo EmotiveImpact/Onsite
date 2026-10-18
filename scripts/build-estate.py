@@ -239,6 +239,8 @@ dress_foliage()
 from dress_estate import dress_estate
 dress_estate(ROOT,True)
 from prepare_estate_materials import prepare_materials
+from build_homes import build_homes
+build_homes(ROOT,True)
 prepare_materials(ROOT)
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'assets/blender/onsite-heron-court.blend'))
 

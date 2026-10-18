@@ -12,7 +12,9 @@ async function advanceToward(x,y,z){
  const w=path.find(q=>Math.hypot(q.x-p.x,q.z-p.z)>.6)||path.at(-1);
  await page.mouse.up({button:'right'});await aim(Math.atan2(-(w.x-p.x),-(w.z-p.z)));await page.keyboard.down('KeyW');await ticks(4);await page.keyboard.up('KeyW');
 }
-async function routeTo(x,y,z){for(let i=0;i<240;i++){const s=await snap(),p=s.player.position;if(Math.hypot(x-p.x,z-p.z)<.7&&Math.abs(y-p.y)<.4)return;if(s.status!=='active')throw Error('Round ended during route');await advanceToward(x,y,z)}throw Error('Route movement limit exceeded')}
+// Capture can finish anywhere inside its 4 m zone, before the chosen waypoint.
+// The game freezes movement on victory; the final won assertion still applies.
+async function routeTo(x,y,z){for(let i=0;i<240;i++){const s=await snap(),p=s.player.position;if(s.status==='won')return;if(Math.hypot(x-p.x,z-p.z)<.7&&Math.abs(y-p.y)<.4)return;if(s.status!=='active')throw Error('Round ended during route');await advanceToward(x,y,z)}throw Error('Route movement limit exceeded')}
 try{
  await page.goto(process.env.ONSITE_URL||'http://127.0.0.1:5173');await page.waitForFunction(()=>window.__onsite?.ready,null,{timeout:90000});check('All materials/models loaded');await page.click('#start');await page.waitForFunction(()=>document.pointerLockElement);await page.mouse.move(mouse.x,mouse.y);await aim(0);check('Pointer lock and mouse look');
  await ticks(15);await page.screenshot({path:out+'/first-person.png'});

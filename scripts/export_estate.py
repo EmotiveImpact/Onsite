@@ -17,19 +17,31 @@ def export_estate(ROOT, render):
     for o in list(render.all_objects):
         if o.type!='MESH':continue
         mesh=bpy.data.meshes.new_from_object(o.evaluated_get(deps));mesh.transform(o.matrix_world)
+        # Joining tinted domestic meshes with untinted original walls must not
+        # fill the original faces with Blender's default black/transparent colour.
+        if not mesh.color_attributes.get('DetailTint'):
+            tint=mesh.color_attributes.new(name='DetailTint',type='FLOAT_COLOR',domain='CORNER')
+            for c in tint.data:c.color=(1,1,1,1)
         copy=bpy.data.objects.new('export-'+o.name,mesh);scene.collection.objects.link(copy)
         groups.setdefault(o.data.materials[0].name,[]).append(copy)
     export=[]
     for name,objects in groups.items():
         bpy.ops.object.select_all(action='DESELECT')
         for o in objects:o.select_set(True)
-        bpy.context.view_layer.objects.active=objects[0];bpy.ops.object.join();o=bpy.context.object;o.name='Estate / '+name;export.append(o)
+        bpy.context.view_layer.objects.active=objects[0]
+        if len(objects)>1:bpy.ops.object.join()
+        o=bpy.context.object;o.name='Estate / '+name;export.append(o)
     vertices=[];faces=[]
     for o in export:
         offset=len(vertices);vertices.extend(v.co.copy()for v in o.data.vertices);faces.extend([offset+i for i in p.vertices]for p in o.data.polygons)
     bvh=BVHTree.FromPolygons(vertices,faces)
     for o in export:
-        mesh=o.data;original=mesh.color_attributes.get('DetailTint');colors=mesh.color_attributes.new(name='EstateOcclusion',type='FLOAT_COLOR',domain='CORNER')
+        mesh=o.data;original=mesh.color_attributes.get('DetailTint')
+        # Adding a custom-data layer can invalidate Blender RNA references to an
+        # existing layer. Snapshot tints before allocating the occlusion layer.
+        tints=[tuple(c.color)for c in original.data]if original else None
+        if tints is not None:assert len(tints)==len(mesh.loops),'Invalid corner colours: '+o.name
+        colors=mesh.color_attributes.new(name='EstateOcclusion',type='FLOAT_COLOR',domain='CORNER')
         mesh.color_attributes.active_color=colors
         for poly in mesh.polygons:
             n=poly.normal;side=n.cross(Vector((0,0,1)))
@@ -42,7 +54,7 @@ def export_estate(ROOT, render):
                     a=k*math.tau/5;direction=(n*.72+(side*math.cos(a)+up*math.sin(a))*.69).normalized()
                     hit=bvh.ray_cast(origin,direction,2.5)[0];visible+=hit is None
                 ao=.55+.45*visible/5
-                tint=original.data[li].color if original else (1,1,1,1)
+                tint=tints[li]if tints is not None else (1,1,1,1)
                 colors.data[li].color=(ao*tint[0],ao*tint[1],ao*tint[2],tint[3])
         print('AO',o.name,len(mesh.vertices),flush=True)
     bpy.ops.object.select_all(action='DESELECT')
@@ -51,6 +63,7 @@ def export_estate(ROOT, render):
     manifest=dict(source='assets/blender/onsite-heron-court.blend',builder='scripts/build-estate.py',metres=True,
         renderObjects=len(render.all_objects),runtimeMeshes=len(export),vertices=len(vertices),
         dressing=json.loads(scene.get('onsite_dressing_counts','{}')),
+        homes=json.loads(scene.get('onsite_homes_counts','{}')),
         collisionSource='src/onsite/level.ts',navigationSource='src/onsite/navigation.ts',
         layoutSha256=hashlib.sha256((ROOT/'docs/development/evidence/layout.json').read_bytes()).hexdigest(),
         glbBytes=(OUT/'onsite-heron-court.glb').stat().st_size,
@@ -68,6 +81,8 @@ if __name__=='__main__':
     from dress_estate import dress_estate
     dress_estate(ROOT)
     from prepare_estate_materials import prepare_materials
+    from build_homes import build_homes
+    build_homes(ROOT)
     prepare_materials(ROOT)
     bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'assets/blender/onsite-heron-court.blend'))
     export_estate(ROOT,bpy.data.collections['01_RENDER / Heron Estate'])

@@ -14,7 +14,7 @@
     "test:browser:legacy": "node scripts/browser-check.mjs",
     "evidence:layout": "tsx scripts/layout-evidence.ts",
     "evidence:route": "node scripts/capture-route.mjs",
-    "assets:estate": "npm run evidence:layout && blender -b --python scripts/build-estate.py && npm run evidence:layout && blender -b --python scripts/export_estate.py"
+    "assets:estate": "npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/build-estate.py && npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/export_estate.py"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",
