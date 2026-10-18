@@ -25,3 +25,7 @@ This is concept art for the proposed game, not a screenshot of a playable build.
 ## 50 individual asset references
 
 [Browse the 50-image asset gallery](docs/concepts/ASSET-PACK-50.md): black clothing and trainer variants, first-person arms, equipment, court props, street furniture, modular buildings, vehicles, foliage and ground surfaces. Includes a [modelling manifest](docs/concepts/asset-pack-50/manifest.json).
+
+## 30 texture candidates
+
+[Browse the texture gallery](docs/concepts/TEXTURE-PACK-30.md): brick, concrete, roads, paving, metals, black clothing fabrics, trainer materials, timber and ground cover. These are colour images awaiting seamless-repeat checks and PBR material authoring.

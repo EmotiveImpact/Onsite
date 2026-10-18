@@ -1,0 +1,546 @@
+{
+  "project": "ONSITE",
+  "count": 30,
+  "textures": [
+    {
+      "number": 1,
+      "id": "london-stock-brick",
+      "description": "weathered yellow brown London stock brick in running bond, pale grey mortar",
+      "intended_coverage": "2 x 2 metres",
+      "image": "01-london-stock-brick-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "58f60923f6a6e9414df678d08e05fa7f6b6ea42fb7f6e0defd80cb8f6faeac5a",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 2,
+      "id": "red-estate-brick",
+      "description": "muted dark red brown estate brick in running bond, grey mortar",
+      "intended_coverage": "2 x 2 metres",
+      "image": "02-red-estate-brick-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "592b916cedc5910728fe0bea49b32932d93a1f2a3d7d911c815ed22347813813",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 3,
+      "id": "painted-brick",
+      "description": "aged off-white painted brick, subtle chipped paint",
+      "intended_coverage": "2 x 2 metres",
+      "image": "03-painted-brick-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f92da72cffa3cd3fa8a8072ca0122df75c72e7523a425e1ea0683332382f214c",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 4,
+      "id": "cast-concrete",
+      "description": "grey cast concrete with tiny pores, faint mottling",
+      "intended_coverage": "2 x 2 metres",
+      "image": "04-cast-concrete-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5e558c951909bc1d36fd6b0e8a766711da786e6979e7d6cdeac151a381cb259b",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 5,
+      "id": "board-concrete",
+      "description": "grey concrete with subtle horizontal timber formwork grain",
+      "intended_coverage": "2 x 2 metres",
+      "image": "05-board-concrete-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "bfc7d4fe8f78edf977e019249b003d3ed7ff0673a43d22a92376871ee4384717",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 6,
+      "id": "rough-concrete",
+      "description": "rough aggregate concrete, sparse small exposed stones",
+      "intended_coverage": "2 x 2 metres",
+      "image": "06-rough-concrete-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "677efbd9430414b22666e1ac11d0eee88acb926b448f6ce3b3ef5975d64fb6fa",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 7,
+      "id": "render-wall",
+      "description": "weathered light grey rendered wall, fine plaster grain",
+      "intended_coverage": "2 x 2 metres",
+      "image": "07-render-wall-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "09b7792bc96b90290fbbf766365ea2ba32ca923f33365c90f30dadaadd8e6d7b",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 8,
+      "id": "asphalt",
+      "description": "dark charcoal London road asphalt, fine aggregate, no markings",
+      "intended_coverage": "2 x 2 metres",
+      "image": "08-asphalt-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "38b8f6b6229c976863710bc37c0e8acf1fade776e0eba0aeb297d4afc2428eab",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 9,
+      "id": "court-asphalt",
+      "description": "worn charcoal sports court asphalt, faint fine cracks, no paint markings",
+      "intended_coverage": "2 x 2 metres",
+      "image": "09-court-asphalt-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "9b0cab61b348b8c4e8d86dcdcca328c254839195c9b7eefabd2adc7bb90b1c20",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 10,
+      "id": "paving-slabs",
+      "description": "square grey concrete pavement slabs in aligned grid, dark narrow joints",
+      "intended_coverage": "2 x 2 metres",
+      "image": "10-paving-slabs-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3ad4a869482136f387027f1658d9e1fe0910c201c85f0584c5376512df85ccbe",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 11,
+      "id": "red-pavers",
+      "description": "muted red brown rectangular pedestrian pavers in herringbone layout",
+      "intended_coverage": "2 x 2 metres",
+      "image": "11-red-pavers-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "b91804671578373ff6fb697ba350c2c8a45d8f1e1ebf0bacab8ee2a226f157f2",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 12,
+      "id": "roof-felt",
+      "description": "charcoal bitumen roof felt with fine mineral grit",
+      "intended_coverage": "2 x 2 metres",
+      "image": "12-roof-felt-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "aadb77119f75c3284a29478f3d226917cd789156c0b2d9d104fdd479036eca5e",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 13,
+      "id": "black-painted-steel",
+      "description": "matte black painted steel, sparse fine scratches",
+      "intended_coverage": "1 x 1 metre",
+      "image": "13-black-painted-steel-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "bd94c52f1ec67b0fddce582689cd3bc6598093d9f0015111b2178e78fa4c5614",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 14,
+      "id": "galvanised-steel",
+      "description": "dull grey galvanised zinc steel, subtle spangle pattern",
+      "intended_coverage": "1 x 1 metre",
+      "image": "14-galvanised-steel-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5fbec66c4e1146974256f102233b4b39ab1354f33953889b64371e0ac1547509",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 15,
+      "id": "aged-steel",
+      "description": "dark grey aged steel with scattered restrained rust spots",
+      "intended_coverage": "1 x 1 metre",
+      "image": "15-aged-steel-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "f096342c3db8146877fba929f0e54efafb898fcca05f63a8afe2c4c6c98574cf",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 16,
+      "id": "roller-shutter",
+      "description": "horizontal dark charcoal roller shutter slats, perfectly flat front view",
+      "intended_coverage": "2 x 2 metres",
+      "image": "16-roller-shutter-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "546fad77130b9610233dffd834058549855020a5ead513222e84aa5857d8c05a",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 17,
+      "id": "rubber-floor",
+      "description": "black fine-grained anti-slip rubber flooring",
+      "intended_coverage": "1 x 1 metre",
+      "image": "17-rubber-floor-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "a20c9bc6f7b642f023c4252179c2d576e7d0c9a4df875a0398ed4313a757a50d",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 18,
+      "id": "black-hoodie-fleece",
+      "description": "black cotton sweatshirt fleece outer face, fine knit visible, no folds",
+      "intended_coverage": "0.3 x 0.3 metres",
+      "image": "18-black-hoodie-fleece-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "a14cf9329ded56d3455e51e8e3b23ac2fe2b6ce488ba286e5d126676096fd656",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 19,
+      "id": "black-jogger-knit",
+      "description": "black athletic jogger interlock knit, fine even textile pattern, no folds",
+      "intended_coverage": "0.3 x 0.3 metres",
+      "image": "19-black-jogger-knit-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "67ff2d953030f0c1d549c97758b4af044db141c4d084cb14bba377edddafbd14",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 20,
+      "id": "black-puffer-nylon",
+      "description": "black tightly woven puffer nylon, unquilted flat cloth, no folds",
+      "intended_coverage": "0.3 x 0.3 metres",
+      "image": "20-black-puffer-nylon-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3a315c96b863bd9f33b303c48226e7b79c3e37a4c645ce55baf7355b5c61f3c5",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 21,
+      "id": "black-balaclava-knit",
+      "description": "black fine ribbed stretch knit fabric for a balaclava, no folds",
+      "intended_coverage": "0.3 x 0.3 metres",
+      "image": "21-black-balaclava-knit-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "db63f5228f514df623ce01651e313b427313f0f8348875f5d66568adaac66a42",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 22,
+      "id": "black-glove-fabric",
+      "description": "black durable fine woven glove fabric, no folds",
+      "intended_coverage": "0.3 x 0.3 metres",
+      "image": "22-black-glove-fabric-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "aa65bfc09c83c79a4e6d9506b1f8fcb20c6644b602e1d938093b228bdfeeff1b",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 23,
+      "id": "black-trainer-mesh",
+      "description": "black athletic trainer mesh with small regular breathing holes",
+      "intended_coverage": "0.15 x 0.15 metres",
+      "image": "23-black-trainer-mesh-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "da2cf044d1d45def1d04390bd38f03695dd059bc4ca421eb155976d7ff47a2fd",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 24,
+      "id": "black-trainer-leather",
+      "description": "black fine-grain trainer leather, no seams",
+      "intended_coverage": "0.15 x 0.15 metres",
+      "image": "24-black-trainer-leather-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "be7f2eda7cda57a7989e7315959dec7652f72caa0e5a545158468eb56c3467a3",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 25,
+      "id": "black-sole-rubber",
+      "description": "black trainer sole rubber with fine pebbled texture, no tread grooves",
+      "intended_coverage": "0.15 x 0.15 metres",
+      "image": "25-black-sole-rubber-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "b7d139c58af3a83956be6ec9ea81bae706d439368d684031972a6352989b66dd",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 26,
+      "id": "bench-timber",
+      "description": "weathered muted grey brown timber planks with straight grain and subtle joins",
+      "intended_coverage": "2 x 2 metres",
+      "image": "26-bench-timber-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "d64db9fa72e1d2ddd1005e242f81f829f9fd76eaacb40562a9e7ec7cf312abb1",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 27,
+      "id": "dark-soil",
+      "description": "dark brown garden soil, tiny grit, no large plants or leaves",
+      "intended_coverage": "1 x 1 metre",
+      "image": "27-dark-soil-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "feb36b2b46f8d8bb4080eacbecaf9a951d39c0fef0dc6d9a40a36da9e801380b",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 28,
+      "id": "short-grass",
+      "description": "dense short muted green estate lawn seen straight overhead, no bare patches",
+      "intended_coverage": "1 x 1 metre",
+      "image": "28-short-grass-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "9da92a35fdec06d3c969dbaa2189a6c3d48a03009417b504c83a40db53583830",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 29,
+      "id": "gravel",
+      "description": "small varied grey crushed gravel stones, even distribution",
+      "intended_coverage": "1 x 1 metre",
+      "image": "29-gravel-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "7d948adbfd07650a1b30106aff3e2356a4afc0658fccf522a35afde00fcf1ca4",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    },
+    {
+      "number": 30,
+      "id": "offwhite-interior-plaster",
+      "description": "off-white matte painted fine plaster for estate stairwell walls, subtle wear",
+      "intended_coverage": "2 x 2 metres",
+      "image": "30-offwhite-interior-plaster-color.png",
+      "pixel_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5ef0efa758232b7413610bef364e3146a0ed79295982be76d22101ce88bf22a6",
+      "status": "base_color_candidate",
+      "seamless_verified": false,
+      "color_space": "srgb",
+      "available_maps": [
+        "color"
+      ]
+    }
+  ]
+}
