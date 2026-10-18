@@ -8,7 +8,7 @@ A Three.js first-person shooter concept set on a fictional London estate.
 
 Visual direction: wet concrete, brick tower blocks, blue-hour skies, and warm street lighting. The ONSITE name, minimap, score, health, ammo, and amber objective markers stay consistent across all three views.
 
-This is concept art for the proposed game, not a screenshot of a playable build.
+This is concept art for the proposed game. A first playable prototype of the estate lives in [`game/`](game/README.md).
 
 ## More gameplay concepts
 
