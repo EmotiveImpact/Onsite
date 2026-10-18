@@ -21,3 +21,7 @@ This is concept art for the proposed game, not a screenshot of a playable build.
 ## Black characters and modelling references
 
 [View Jay, Alex and the individual asset sheets](docs/concepts/CHARACTER-ASSET-GALLERY.md) — three consistent UI screens and eight modelling references covering two characters, trainers, hoodie, joggers, balaclava, facade and court fence. [Modelling handoff](docs/concepts/MODELLING-NOTES.md).
+
+## 50 individual asset references
+
+[Browse the 50-image asset gallery](docs/concepts/ASSET-PACK-50.md): black clothing and trainer variants, first-person arms, equipment, court props, street furniture, modular buildings, vehicles, foliage and ground surfaces. Includes a [modelling manifest](docs/concepts/asset-pack-50/manifest.json).

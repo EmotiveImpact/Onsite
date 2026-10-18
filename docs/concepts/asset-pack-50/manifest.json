@@ -1,0 +1,707 @@
+{
+  "project": "ONSITE",
+  "asset_count": 50,
+  "type": "modelling_reference_images",
+  "assets": [
+    {
+      "number": 1,
+      "id": "court-trainer",
+      "title": "Court trainer",
+      "category": "kit",
+      "image": "01-court-trainer.png",
+      "description": "Black low-top court trainer, smooth leather upper, black flat rubber cupsole, black laces. Clearly civilian sports shoe, not boot. Same LEFT shoe OUTER SIDE, TOP, SOLE, THREE-QUARTER. Simple original panel seams, no logo.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2cec439c45bde06129b40b3f4bd7ef0d889f09282ab389e8e5817f0841ea4c71"
+    },
+    {
+      "number": 2,
+      "id": "high-top-trainer",
+      "title": "High top trainer",
+      "category": "kit",
+      "image": "02-high-top-trainer.png",
+      "description": "Black high-top basketball-style trainer with padded collar, black flat rubber sole, black laces; civilian sneaker, no combat boot features. Same LEFT shoe OUTER SIDE, TOP, BACK, THREE-QUARTER.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b605cd69c7524344cf2670f9518f44f270a976b3a2b0d04f3e974cc3dc2ac65b"
+    },
+    {
+      "number": 3,
+      "id": "zip-hoodie",
+      "title": "Zip hoodie",
+      "category": "kit",
+      "image": "03-zip-hoodie.png",
+      "description": "Black cotton zip hoodie, hood down, black central zipper, two front pockets, ribbed cuffs and hem. Invisible mannequin, sleeves angled slightly outward. FRONT SIDE BACK and small zipper detail. No person.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a9679d4cc5ac8a4ec16a5cdbac3eabb90929be7eb87b01170e1e6bf3243e0943"
+    },
+    {
+      "number": 4,
+      "id": "puffer-jacket",
+      "title": "Puffer jacket",
+      "category": "kit",
+      "image": "04-puffer-jacket.png",
+      "description": "Black short quilted puffer jacket with modest horizontal baffles, black zip, hood down, elastic cuffs, no logos. Invisible mannequin, FRONT SIDE BACK, compact hood detail. Casual London streetwear.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "29f0161b2c892b3a9448856fb17812320df262d5f04f56b304f9cf1df053913b"
+    },
+    {
+      "number": 5,
+      "id": "gloves",
+      "title": "Gloves",
+      "category": "kit",
+      "image": "05-gloves.png",
+      "description": "Pair of black close-fitting fabric gloves with subtle black palm grip, no armoured knuckles. Show one RIGHT glove BACK OF HAND, PALM, SIDE and relaxed three-quarter, all five fingers clear, plain wrist cuff.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "078b47a49653f722fcee4c77af1575abf13f1d25afd3b616841d49328c7874f9"
+    },
+    {
+      "number": 6,
+      "id": "beanie",
+      "title": "Beanie",
+      "category": "kit",
+      "image": "06-beanie.png",
+      "description": "Black rib-knit cuffed beanie, plain unbranded. FRONT SIDE BACK and fabric closeup, on invisible head form. Distinct folded cuff and rounded crown seam.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6f7eea6f56abd929b2382c2dfd4f8acdc8186147a824b954d6955be382051582"
+    },
+    {
+      "number": 7,
+      "id": "backpack",
+      "title": "Backpack",
+      "category": "kit",
+      "image": "07-backpack.png",
+      "description": "Small black civilian daypack, soft fabric, two shoulder straps, one main zip and one small front pocket, no tactical webbing. FRONT SIDE BACK plus strap detail.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "df04679e2c6802892519b32550a18d2e4754c649b26e21db6f7fd7c6801f06c4"
+    },
+    {
+      "number": 8,
+      "id": "hood-up",
+      "title": "Hood up",
+      "category": "kit",
+      "image": "08-hood-up.png",
+      "description": "Black pullover hoodie with hood UP, consistent with existing ONSITE hoodie: kangaroo pocket, black drawstrings, ribbed cuffs. Invisible mannequin, FRONT SIDE BACK. No body or face, show hood aperture clearly.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a783e20f5c7bf9526986337bd28c605a4e8fe6d90f5f8059cac2c9c0846c7e86"
+    },
+    {
+      "number": 9,
+      "id": "first-person-arms",
+      "title": "First person arms",
+      "category": "kit",
+      "image": "09-first-person-arms.png",
+      "description": "Paired first-person avatar forearms and hands wearing black hoodie sleeves and black fitted fabric gloves. Neutral relaxed open hands, PALM VIEW, BACK VIEW and SIDE, separated at sleeve ends. Anatomically plausible fingers, no weapon; intended for later rigging.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2e3d8a91babe13e888c3b00d9ec0ed1c9482e34b495fb626974d23dc7f0d1749"
+    },
+    {
+      "number": 10,
+      "id": "handheld-radio",
+      "title": "Handheld radio",
+      "category": "prop",
+      "image": "10-handheld-radio.png",
+      "description": "Small black fictional handheld team radio, short aerial, simple speaker grille, two large buttons and small blank dark screen, belt clip. FRONT SIDE BACK and three-quarter. Exterior only, no circuit diagrams, unbranded multiplayer communication prop.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "dce4b1746af90fa5b304749c5bd825feb880ab0306c3b87804a984b70d58c974"
+    },
+    {
+      "number": 11,
+      "id": "supply-crate",
+      "title": "Supply crate",
+      "category": "prop",
+      "image": "11-supply-crate.png",
+      "description": "Small black game supply crate with ribbed corners and a simple amber square icon, hinged closed lid. FRONT SIDE TOP and three-quarter. No real ammunition or internal contents. Readable simple game pickup silhouette.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "405c64edd590772865f7ff2fb38a5e13ce5c5b45c3758f2109f68277bc6e4f30"
+    },
+    {
+      "number": 12,
+      "id": "medical-pouch",
+      "title": "Medical pouch",
+      "category": "prop",
+      "image": "12-medical-pouch.png",
+      "description": "Black zip medical pouch with simple white plus icon and small amber pull tab, soft rectangular fabric. FRONT SIDE BACK and three-quarter. Closed pouch, no medicines or contents.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "e8873eb54915ff3224ec0ede5a533826071c25036f902f6046df584cf05c7021"
+    },
+    {
+      "number": 13,
+      "id": "spawn-beacon",
+      "title": "Spawn beacon",
+      "category": "prop",
+      "image": "13-spawn-beacon.png",
+      "description": "Original fictional game respawn beacon: knee-high black compact plinth, soft amber illuminated ring on top, broad stable base. FRONT SIDE TOP and three-quarter. Clearly game-world prop, simple reusable shape.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7e4fd6d37a623a885a6ff289bb366d3802d3c0d59ef79cfba32bc72cbf2237ce"
+    },
+    {
+      "number": 14,
+      "id": "objective-plinth",
+      "title": "Objective plinth",
+      "category": "prop",
+      "image": "14-objective-plinth.png",
+      "description": "Original fictional capture-point prop for HOLD THE COURT: low black square steel plinth with simple amber outlined diamond glowing on front and top, worn edges. FRONT SIDE TOP and three-quarter. No letters, readable at gameplay distance.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6c2dac1879e67cabad86d4ecc32c15bdee0326113dfbb105f70ceff89338e149"
+    },
+    {
+      "number": 15,
+      "id": "football",
+      "title": "Football",
+      "category": "prop",
+      "image": "15-football.png",
+      "description": "Single slightly worn white-and-black football, realistic stitched polygon panels and scuffed surface. FRONT SIDE and three-quarter, identical panel layout. No logos. Neutral studio sheet.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "41545698d55ef52907c942229f20fd08bbd33eb6261e7e32e0041e2f5c15f7bb"
+    },
+    {
+      "number": 16,
+      "id": "five-a-side-goal",
+      "title": "Five a side goal",
+      "category": "fence",
+      "image": "16-five-a-side-goal.png",
+      "description": "Small five-a-side football goal, weathered white tubular steel frame with grey net, approximate 3.6m wide and 1.8m high. FRONT SIDE BACK and three-quarter. Show complete net and rear supports, no ball or court.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "25f77a94bab6e98ac4c8357178875fed4997ac41d5015dad92199ca322b8dacd"
+    },
+    {
+      "number": 17,
+      "id": "court-gate",
+      "title": "Court gate",
+      "category": "fence",
+      "image": "17-court-gate.png",
+      "description": "Black welded-wire court fence gate matching attached fence style, single door within sturdy frame, latch and hinges visible, closed. Approx 1.2m wide by 2.1m high. FRONT SIDE and three-quarter; small open-position inset.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "28f8cde450dc5c0a04879b39228878690b16fa99d08fd4553216162751731988"
+    },
+    {
+      "number": 18,
+      "id": "estate-bench",
+      "title": "Estate bench",
+      "category": "prop",
+      "image": "18-estate-bench.png",
+      "description": "London estate bench, dark weathered timber slats on simple black steel frame, backrest and two armrests, approx 1.8m wide. FRONT SIDE BACK and three-quarter. No people.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "40e817a7cbc9cc0f44edd581c834d9a256edec88fd8b1dc3121181d7a5205ed8"
+    },
+    {
+      "number": 19,
+      "id": "litter-bin",
+      "title": "Litter bin",
+      "category": "prop",
+      "image": "19-litter-bin.png",
+      "description": "Black cylindrical public litter bin with simple rectangular opening near top, removable inner bucket not shown, weathered finish. FRONT SIDE TOP and three-quarter. No municipal logo or text.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "912c7a3b39c404e75b4745532fdf1aa22c67cc939333198f0d179ca77fc95590"
+    },
+    {
+      "number": 20,
+      "id": "bollard",
+      "title": "Bollard",
+      "category": "prop",
+      "image": "20-bollard.png",
+      "description": "Short black steel street bollard with rounded cap and narrow amber reflective band, subtle wear at base. FRONT SIDE and three-quarter, isolated single object. Approx 0.9m tall.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "267e95a2e0137fb92857a6db466fb400ff00fd55dae25cebfea6a5893617c04a"
+    },
+    {
+      "number": 21,
+      "id": "street-lamp",
+      "title": "Street lamp",
+      "category": "prop",
+      "image": "21-street-lamp.png",
+      "description": "London estate streetlamp: slender dark steel pole, single simple warm amber lantern head, small base plate. Full FRONT SIDE and three-quarter at matched scale, plus lamp-head closeup. No scenic background, complete pole visible.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "540473fc3b9ea7cf5c301005f1929e17913648bd430ac076fac299f3203ff342"
+    },
+    {
+      "number": 22,
+      "id": "wall-lamp",
+      "title": "Wall lamp",
+      "category": "prop",
+      "image": "22-wall-lamp.png",
+      "description": "Rectangular estate wall lamp with dark metal frame, frosted glass glowing softly amber and protective horizontal bar. FRONT SIDE BACK and three-quarter, small mounting bracket visible.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8331cbb0b68938e2977efc18ec6a836690efcb3582ecfe5fffcfc2259eeba162"
+    },
+    {
+      "number": 23,
+      "id": "cctv-camera",
+      "title": "Cctv camera",
+      "category": "prop",
+      "image": "23-cctv-camera.png",
+      "description": "Generic exterior CCTV camera prop: weathered off-white rectangular housing, dark lens window, simple wall bracket. FRONT SIDE BACK and three-quarter. No real brand, no wiring diagrams.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "85e15a234ba7b7f32ea9c39238ece62db6909de6938b0d77502da53d7b692986"
+    },
+    {
+      "number": 24,
+      "id": "entry-intercom",
+      "title": "Entry intercom",
+      "category": "prop",
+      "image": "24-entry-intercom.png",
+      "description": "Estate entry intercom wall panel: brushed dark metal face, small speaker grille, simple numeric keypad, call button. FRONT SIDE and three-quarter. Minimal generic labels only, no addresses or codes.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "629350e6784e36ccb4c87815f118e796920a2cd68d70d0a1efa6e37f4a32d939"
+    },
+    {
+      "number": 25,
+      "id": "estate-entrance-door",
+      "title": "Estate entrance door",
+      "category": "architecture",
+      "image": "25-estate-entrance-door.png",
+      "description": "Double estate entrance door module, dark metal frames, wire-reinforced glass, lower solid kick panels, push bars. FRONT BACK SIDE and three-quarter, no surrounding building. Approx 2.2m wide by 2.4m high.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "5c9766ee044853585d3c598219e4c80f5ed3b6299525345016d247c10ff952d1"
+    },
+    {
+      "number": 26,
+      "id": "fire-door",
+      "title": "Fire door",
+      "category": "architecture",
+      "image": "26-fire-door.png",
+      "description": "Single dark grey steel fire exit door with push bar, closer, plain frame and tiny generic EXIT sign. FRONT BACK SIDE and three-quarter, no wall scenery. Approx 0.95m wide by 2.1m tall.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b4c2901889dec448ce229f425632ae456d12c934184434b4402c34fabe42673d"
+    },
+    {
+      "number": 27,
+      "id": "shop-shutter",
+      "title": "Shop shutter",
+      "category": "architecture",
+      "image": "27-shop-shutter.png",
+      "description": "Closed corrugated dark grey metal roller shutter module with side tracks and top box, subtly weathered. FRONT SIDE and three-quarter, no graffiti or logos. Approx 3m square.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "f8f3863c660877bb55f9d2473918e552854c7ca802a206e292ac46cb583507f0"
+    },
+    {
+      "number": 28,
+      "id": "corner-shop-front",
+      "title": "Corner shop front",
+      "category": "architecture",
+      "image": "28-corner-shop-front.png",
+      "description": "Modular fictional corner-shop glazed front, black metal window frames, single recessed glass door, opaque lower panels, empty interior. Sign header reads THE CORNER in simple white uppercase. FRONT SIDE and three-quarter. Width 4m height 3m. Isolated facade only.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2b9a689ae416d05eeb56a5129daee8204e7bf058012663974f9c464285a79b22"
+    },
+    {
+      "number": 29,
+      "id": "corner-shop-sign",
+      "title": "Corner shop sign",
+      "category": "architecture",
+      "image": "29-corner-shop-sign.png",
+      "description": "Separate rectangular projecting shop sign, black enamel panel with exact white text THE CORNER, slim dark metal bracket. FRONT BACK SIDE and three-quarter. No wall or shop. Same fictional ONSITE corner shop identity.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "cdfff59e78e3bc86dafa3c5f47c5d90abfc2c466fff3fc58b97cdd454f09dffc"
+    },
+    {
+      "number": 30,
+      "id": "concrete-stairs",
+      "title": "Concrete stairs",
+      "category": "architecture",
+      "image": "30-concrete-stairs.png",
+      "description": "Modular straight concrete stair flight, 10 uniform steps, weathered grey concrete, simple black railing on one side. FRONT SIDE TOP and three-quarter. Rise/run internally plausible and consistent. No people or surrounding building.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "8cb0fefc9ffb0aaea1d7d790ca644f8cf5b5cad14b6fbb0b7424ced509b96cb7"
+    },
+    {
+      "number": 31,
+      "id": "stair-landing",
+      "title": "Stair landing",
+      "category": "architecture",
+      "image": "31-stair-landing.png",
+      "description": "Square modular concrete stair landing with black metal guardrails on two adjoining edges, two open edges to connect stairs. TOP FRONT SIDE and three-quarter. Approx 2m square. Isolated piece, no full building.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "a447dd412ff66842ae5b841df036f02d47449031cacb6208006238d6be6d9044"
+    },
+    {
+      "number": 32,
+      "id": "walkway-module",
+      "title": "Walkway module",
+      "category": "architecture",
+      "image": "32-walkway-module.png",
+      "description": "Modular elevated estate walkway segment, grey concrete slab approx 3m long by 1.8m wide, black simple metal railing on outer edge, bare wall-side edge. FRONT SIDE TOP and three-quarter, clean snapping ends.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "89d01f785d698fc58eb2f147a72f65dbff086c4818c0e51cf3765a49c87736ec"
+    },
+    {
+      "number": 33,
+      "id": "railing-module",
+      "title": "Railing module",
+      "category": "architecture",
+      "image": "33-railing-module.png",
+      "description": "Separate black steel estate walkway railing, simple vertical bars and top rail, approx 2m wide by 1.1m high, two base plates. FRONT SIDE and three-quarter. Consistent spacing and no ornate decoration.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "47095e5ed515d0b594653c428d4772310319cb6cb92e2c5780d3a625e72ea746"
+    },
+    {
+      "number": 34,
+      "id": "brick-corner-module",
+      "title": "Brick corner module",
+      "category": "architecture",
+      "image": "34-brick-corner-module.png",
+      "description": "L-shaped exterior corner facade module for ONSITE estate, warm brown brick with grey concrete floor band, 3m high, each arm 1.5m wide. FRONT SIDE TOP and three-quarter, match attached facade brick/material scale. No windows.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "9347e7513110c7ffcf457ac75094ae55327831a1bf195b297b57ffcd8807763b"
+    },
+    {
+      "number": 35,
+      "id": "blank-brick-module",
+      "title": "Blank brick module",
+      "category": "architecture",
+      "image": "35-blank-brick-module.png",
+      "description": "Flat blank estate facade bay matching existing window bay: warm brown weathered brick, concrete top and bottom floor bands, no window. Approx 3x3x0.25m. FRONT SIDE and three-quarter. Modular edges clean.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "45fd10dfb295804cada902ce59aac01c08f7e079171feea64f839bb0259845fa"
+    },
+    {
+      "number": 36,
+      "id": "concrete-column",
+      "title": "Concrete column",
+      "category": "architecture",
+      "image": "36-concrete-column.png",
+      "description": "Square estate structural pillar, weathered grey concrete with restrained dark rain streaks, approx 0.4m square and 3m tall. FRONT SIDE TOP and three-quarter, complete isolated column, no rebar or damage.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "34eb5948156f7bc74dc4bb048c22716f6f6580b4659e49745f368196f0be643b"
+    },
+    {
+      "number": 37,
+      "id": "concrete-planter",
+      "title": "Concrete planter",
+      "category": "prop",
+      "image": "37-concrete-planter.png",
+      "description": "Low rectangular concrete planter, weathered grey exposed aggregate, open empty soil-filled top, approx 1.5m long, 0.6m wide and 0.6m high. FRONT SIDE TOP and three-quarter. No plant; separate reusable container.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "c4b31d4d42f205028db676e85a8a5390f88e7956d742ec41fab6d3e13c0e9da5"
+    },
+    {
+      "number": 38,
+      "id": "estate-tree",
+      "title": "Estate tree",
+      "category": "prop",
+      "image": "38-estate-tree.png",
+      "description": "Single modest deciduous London courtyard tree, 5m tall, slender trunk and branching canopy with sparse autumn brown-green leaves. FRONT SIDE and three-quarter, full roots/base truncated at ground plane, no pot. Clear branching silhouette for modelling.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "869d2a8784670e793472d4ba159b76fc6b050be3fe81d09f089ef778ff193575"
+    },
+    {
+      "number": 39,
+      "id": "hedge-module",
+      "title": "Hedge module",
+      "category": "prop",
+      "image": "39-hedge-module.png",
+      "description": "One rectangular clipped evergreen hedge segment, dark green dense foliage, 2m long by 0.7m deep by 1m tall. FRONT SIDE TOP and three-quarter. Isolated foliage volume with subtle branch structure, modular ends.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0bc3d513c63e920899d1ad98647c7be68930a288746cf02b355a878712df82df"
+    },
+    {
+      "number": 40,
+      "id": "wheelie-bin",
+      "title": "Wheelie bin",
+      "category": "prop",
+      "image": "40-wheelie-bin.png",
+      "description": "Dark charcoal wheeled refuse bin with closed hinged lid and two black wheels, slightly scuffed plastic, no council branding. FRONT SIDE BACK and three-quarter, consistent handle and hinge details.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "d8a79ab3ba6d3ca2cecedb662e8b116f62caf0adb5fff6f45d2a05d108e54a9a"
+    },
+    {
+      "number": 41,
+      "id": "parked-hatchback",
+      "title": "Parked hatchback",
+      "category": "prop",
+      "image": "41-parked-hatchback.png",
+      "description": "Generic unbranded compact black five-door hatchback exterior, parked empty, dark window glass, normal road tyres. FRONT SIDE BACK and three-quarter at matched scale. No licence text, no real manufacturer styling badge, simple modelling-friendly design.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "b7d1e8d603b23a8f2acabd0c9fb280d9892edd921dc26245f0458c698f219c7a"
+    },
+    {
+      "number": 42,
+      "id": "delivery-van",
+      "title": "Delivery van",
+      "category": "prop",
+      "image": "42-delivery-van.png",
+      "description": "Generic unbranded short-wheelbase dark grey delivery van, closed cargo doors, dark windows, black tyres. FRONT SIDE BACK and three-quarter, empty parked vehicle. No real logos, blank licence plates.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "85c2e6114afde11653691d767cb4527f4a3f41f0efe47231f5c90773fdd56a5e"
+    },
+    {
+      "number": 43,
+      "id": "bus-shelter",
+      "title": "Bus shelter",
+      "category": "architecture",
+      "image": "43-bus-shelter.png",
+      "description": "Small London-style bus shelter, dark metal frame, clear glass side and rear panels, simple flat roof, narrow bench, blank route panel. FRONT SIDE BACK and three-quarter. No advertisement, no transport logo, isolated full structure.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "1e1dea214153f1364ce903b17c92b7630a8bf0f000f2596d7167e1a570095081"
+    },
+    {
+      "number": 44,
+      "id": "garage-door",
+      "title": "Garage door",
+      "category": "architecture",
+      "image": "44-garage-door.png",
+      "description": "Estate single garage door module, closed dark grey ribbed up-and-over metal door, concrete frame and small central handle. FRONT SIDE and three-quarter, approx 2.4m wide by 2.1m high. No building context.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6857e1c78081d8ff82aedfa94ec134e20760bdea052cbebc16da573deef39cb7"
+    },
+    {
+      "number": 45,
+      "id": "rooftop-vent",
+      "title": "Rooftop vent",
+      "category": "prop",
+      "image": "45-rooftop-vent.png",
+      "description": "Low rectangular rooftop ventilation unit, weathered galvanized grey metal box with horizontal louvres and short base supports. FRONT SIDE TOP and three-quarter. Exterior only, no internal mechanism, no logo.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "2cdf93bd08abe0ac84ffc518c62fc0b5020795a209447c8a262841158a840862"
+    },
+    {
+      "number": 46,
+      "id": "rooftop-tank",
+      "title": "Rooftop tank",
+      "category": "prop",
+      "image": "46-rooftop-tank.png",
+      "description": "Compact cylindrical black rooftop water tank with ribbed sides, closed circular lid, simple short outlet pipe and square base. FRONT SIDE TOP and three-quarter. Exterior only, utilitarian estate roof prop.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "3d7e023418712fe34d5a1c902501d20f3051ed52f43250f001ac1469e5952751"
+    },
+    {
+      "number": 47,
+      "id": "utility-cabinet",
+      "title": "Utility cabinet",
+      "category": "prop",
+      "image": "47-utility-cabinet.png",
+      "description": "Street utility cabinet, dark charcoal steel double doors, small vents, simple lock and concrete plinth. FRONT SIDE BACK and three-quarter. No hazard instructions, no wiring or interior.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "7b284eea26145e6b51ca4b0aedcd46895ef931b93c4b2c099a7d4800901a314d"
+    },
+    {
+      "number": 48,
+      "id": "pavement-module",
+      "title": "Pavement module",
+      "category": "architecture",
+      "image": "48-pavement-module.png",
+      "description": "Modular square London pavement slab patch, 2m square, grey concrete rectangular slabs, kerb along one edge. TOP FRONT EDGE SIDE EDGE and three-quarter. Flat neutral lighting, subtle grime, no plants or street objects. Clean tileable borders.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "88a1cfb45aaa985699ce7506897f87a996b663c74b5afb61b4cce209482e9abd"
+    },
+    {
+      "number": 49,
+      "id": "court-surface",
+      "title": "Court surface",
+      "category": "architecture",
+      "image": "49-court-surface.png",
+      "description": "Single modular five-a-side football court surface, worn dark asphalt with clear white rectangular boundary, halfway line, centre circle and small goal-area markings. TOP orthographic dominant with smaller low three-quarter, no fence, goal or people. Original game court, approx 24x14m.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "911dfbd0e55adefd79d53fcb40c9a64eb4c61c9f67c95426463c5c92d2feed6d"
+    },
+    {
+      "number": 50,
+      "id": "road-module",
+      "title": "Road module",
+      "category": "architecture",
+      "image": "50-road-module.png",
+      "description": "Straight 6m-long London estate road module, dark grey asphalt, pavement-free, double yellow curbside lines on both long edges, no centre line, subtle wear. TOP orthographic dominant plus SIDE EDGE and three-quarter. Clean snapping ends, no cars or props.",
+      "status": "reference_only",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "6a8e13375a31279f53b8455756456b65e46c75bdddd3186fdde9e169b394cfc5"
+    }
+  ]
+}
