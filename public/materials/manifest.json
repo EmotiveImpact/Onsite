@@ -1,0 +1,167 @@
+{
+  "source": "Original procedural surfaces: scripts/build-materials.py",
+  "materials": [
+    {
+      "id": "brick",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "brick-color.png",
+          "sha256": "8b211cc5067edf27dcafe0bc70f23e1d6a33162d751b082004ebe3290faa7cfb"
+        },
+        "normal": {
+          "file": "brick-normal.png",
+          "sha256": "3578a54cbd68baee32f099a15e027d090a4f9d9fc9cfb7130fbdfd4f92cbadbd"
+        },
+        "roughness": {
+          "file": "brick-roughness.png",
+          "sha256": "ef5ec010da01d3d94cbbc624ac4a69704de1740679499b5c14936c38e5989d96"
+        }
+      }
+    },
+    {
+      "id": "stock",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "stock-color.png",
+          "sha256": "fdcaf5250b2143b7ec65cd601c445399e50c03fad4e9335a869be6a4ed4cf97f"
+        },
+        "normal": {
+          "file": "stock-normal.png",
+          "sha256": "3578a54cbd68baee32f099a15e027d090a4f9d9fc9cfb7130fbdfd4f92cbadbd"
+        },
+        "roughness": {
+          "file": "stock-roughness.png",
+          "sha256": "ef5ec010da01d3d94cbbc624ac4a69704de1740679499b5c14936c38e5989d96"
+        }
+      }
+    },
+    {
+      "id": "concrete",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "concrete-color.png",
+          "sha256": "5f2bebb03c0cbf61d071a810c9fac5fc525024a5c2b93f91772e4b778e96d604"
+        },
+        "normal": {
+          "file": "concrete-normal.png",
+          "sha256": "1410b07e50389fec6f07796307e90a4b5d73bce3123925b48ccca6261af7dddd"
+        },
+        "roughness": {
+          "file": "concrete-roughness.png",
+          "sha256": "664e2c36ad4bb1c7b2888815439a38eb49a03e278a6e58ce5f4c00c562ac856e"
+        }
+      }
+    },
+    {
+      "id": "asphalt",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "asphalt-color.png",
+          "sha256": "bc518c393bd3d8c1267fe3d8844c672f21114b86b391985b96e13dd2e5f92569"
+        },
+        "normal": {
+          "file": "asphalt-normal.png",
+          "sha256": "059595d849dc646ba20a0918ef153104a2c074afcfcc130c83452446a2607ebe"
+        },
+        "roughness": {
+          "file": "asphalt-roughness.png",
+          "sha256": "96b36d99db04d29e9d7e1322244e454ae1da62a24408da6f4c4f30dc302d67de"
+        }
+      }
+    },
+    {
+      "id": "paving",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "paving-color.png",
+          "sha256": "3c7b18e4f41c33bf9bb487648461acf280904af8b4515f245be9a2d10be9e778"
+        },
+        "normal": {
+          "file": "paving-normal.png",
+          "sha256": "d4971035471450b3a7b02b56eca65b9183daa2b5dbe987777a40ae76b4ec009a"
+        },
+        "roughness": {
+          "file": "paving-roughness.png",
+          "sha256": "c89463ba6a2d37351ff6ebb5834a692d5fae9f6cbc20e32148d9af90797b027a"
+        }
+      }
+    },
+    {
+      "id": "steel",
+      "size": [
+        512,
+        512
+      ],
+      "coverage_metres": [
+        2,
+        2
+      ],
+      "metalness": 0,
+      "normal_convention": "OpenGL +Y",
+      "maps": {
+        "color": {
+          "file": "steel-color.png",
+          "sha256": "75d73481bd82007ea2973df3ffac2c14debcee8f8f0533c7a050a308ffdf7b3e"
+        },
+        "normal": {
+          "file": "steel-normal.png",
+          "sha256": "1f2541d239b9bc2cd1023ec2400502af813aeb8c3f5eb4798a3bf3b1e17d4062"
+        },
+        "roughness": {
+          "file": "steel-roughness.png",
+          "sha256": "f92df91e405ff4a1eb17adb49010ffd17e977a58f68fc7d590edd78adeb62fd0"
+        }
+      }
+    }
+  ]
+}

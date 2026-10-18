@@ -1,0 +1,12 @@
+{
+  "baseline": "0ce5a14",
+  "date": "2026-10-18",
+  "scope": "South London residential pass",
+  "sha256": {
+    "src/onsite/View.ts": "028ccecd4cb0a7a079e7b2a96a7c7fe26b33650ed44ac93733ba965208d6b735",
+    "src/onsite/level.ts": "9a907447f3ec03d093dde04883c5a1a4c0f0a2a736ab91e6bf692009380dfd45",
+    "public/models/onsite-heron-court.glb": "a423130f3be1ea0a173086ba745d11bfcae40b19dcc2989e49a34429c03370a0",
+    "public/materials/homes/stock-color.webp": "3588dcd2560276eecc0836a4ec7db851530debdf2118a17be289bf72a833be68",
+    "docs/development/evidence/layout.json": "92e33ed5402f14c9169e22565627c21c2f64bd751350cd19cfaaca173ea68c3e"
+  }
+}

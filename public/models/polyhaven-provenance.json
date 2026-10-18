@@ -1,0 +1,39 @@
+{
+  "reviewed": "2026-10-18",
+  "assets": [
+    {
+      "file": "ph-utility_box_02.glb",
+      "sha256": "a6535c1dde272b3f65702d3f13d865ff727663127794edeb91018142217ffaef",
+      "asset": "utility_box_02",
+      "sourcePage": "https://polyhaven.com/a/utility_box_02",
+      "authors": {
+        "James Ray Cock": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "intermediateRepo": "https://github.com/jeevesh2515/WWB",
+      "commit": "4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1",
+      "sourceFile": "public/assets/models/utility_box_02.glb",
+      "fetchTrail": "WWB scripts/fetch-assets.py MODELS; scripts/build-assets.py models(): glTF copy, texture resize <=1024, WebP82, dedup",
+      "embeddedTextures": 3,
+      "animations": 0
+    },
+    {
+      "file": "ph-security_light.glb",
+      "sha256": "502567e3a915642d175816e8f2a373f4938ca1be7fe0c5a69c602b6631d9d530",
+      "asset": "security_light",
+      "sourcePage": "https://polyhaven.com/a/security_light",
+      "authors": {
+        "Maximilian Schuster": "All"
+      },
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "intermediateRepo": "https://github.com/jeevesh2515/WWB",
+      "commit": "4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1",
+      "sourceFile": "public/assets/models/security_light.glb",
+      "fetchTrail": "WWB scripts/fetch-assets.py MODELS; scripts/build-assets.py models(): glTF copy, texture resize <=1024, WebP82, dedup",
+      "embeddedTextures": 3,
+      "animations": 0
+    }
+  ]
+}

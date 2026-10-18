@@ -1,0 +1,12 @@
+{
+  "generated": "2026-10-18",
+  "source": "Original ONSITE image generation in this conversation",
+  "description": "Neutral top-down dirty charcoal asphalt with grit, cracks, damp mottling and flat leaf fragments. Intended repeating colour material.",
+  "sourceFile": "asphalt-color.png",
+  "sourceSha256": "8878747cc57a4aa874c7050df53187885148314c8e392085cb5cca49bfc7caf0",
+  "runtimeFile": "public/materials/detail/generated-asphalt-color.webp",
+  "runtimeSha256": "2744217b81a305f874b5cf8ed48c076d71ee2b149553f9704d765182930e620b",
+  "runtimeBytes": 739418,
+  "processing": "RGB WebP encoding quality 88; original image preserved. No painting or colour modification.",
+  "surfaceWorkflow": "Generated colour combined with existing CC0 asphalt micro-normal/ARM. Approximate hybrid material, not a matched photogrammetry scan."
+}

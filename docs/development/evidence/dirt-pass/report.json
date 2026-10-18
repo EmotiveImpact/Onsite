@@ -1,0 +1,133 @@
+{
+  "context": "Fixed inspection cameras and frozen reload phases; actual runtime renderer; bots disabled; high-resolution stills are not a performance measurement",
+  "errors": [],
+  "failed": [],
+  "evidence": [
+    {
+      "location": "court",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3395275682978539,
+          -0.3515234592180296,
+          0.834983581251767
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624152,
+        "finite": true
+      }
+    },
+    {
+      "location": "rubbish",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3395275682978477,
+          -0.35152345921803113,
+          0.8349835812517663
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624157,
+        "finite": true
+      }
+    },
+    {
+      "location": "gallery",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.33952756829784997,
+          -0.3515234592180311,
+          0.834983581251767
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624154,
+        "finite": true
+      }
+    },
+    {
+      "location": "stair",
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3395275682978482,
+          -0.35152345921803324,
+          0.8349835812517661
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.10775117686241593,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.35,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3594377606155498,
+          0.18730109604729336,
+          0.9155152415847829
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          -0.2857906032692302,
+          0.0865755595402284
+        ],
+        "handToMagazine": 1.4217791915866692e-15,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.55,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3594377606155498,
+          0.18730109604729336,
+          0.9155152415847829
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          -0.3244269669055938,
+          0.09353010499477385
+        ],
+        "handToMagazine": 2.175583928816829e-15,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.85,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3764776512421639,
+          0.11735322535881354,
+          0.8981410130589129
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.07739228278143316,
+        "finite": true
+      }
+    }
+  ]
+}

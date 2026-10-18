@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#11191e"><link rel="icon" href="data:, "><title>ONSITE — Heron Estate</title></head>
+<body>
+<canvas id="game" aria-label="ONSITE first-person game"></canvas>
+<div id="vignette"></div><div id="damage"></div>
+<header class="brand"><span></span> ONSITE <small>FIELD TEST / 01</small></header>
+<div id="hud" hidden>
+  <div class="minimap"><canvas id="map" width="160" height="160" aria-label="Estate minimap"></canvas><span>N ↑ &nbsp; HERON ESTATE</span></div>
+  <div class="score"><b id="score">00 <i>:</i> <em>01</em></b><span id="timer">00:00</span></div>
+  <div class="objective"><small>OBJECTIVE / 01</small><strong id="task">CLEAR THE COURT</strong><span id="task-detail">Three opponents on site</span></div>
+  <div id="crosshair"><i></i><i></i><i></i><i></i></div><div id="hitmarker">×</div>
+  <div class="health"><div><span>✚</span> <b id="health">100</b><small>HEALTH</small></div><div class="health-track"><span id="health-bar"></span></div></div>
+  <div class="ammo"><span id="weapon-state">ONS-01 / AUTO</span><div><b id="ammo">24</b><span>/ <i id="reserve">96</i></span><small>▥</small></div></div>
+  <div class="controls">W A S D <span>MOVE</span> &nbsp; SHIFT <span>SPRINT</span> &nbsp; SPACE <span>JUMP</span> &nbsp; RMB <span>AIM</span> &nbsp; C <span>CROUCH</span> &nbsp; R <span>RELOAD</span> &nbsp; ESC <span>PAUSE</span></div>
+  <div id="notice" role="status"></div>
+</div>
+<section id="menu" class="menu">
+  <div class="menu-content">
+    <p class="eyebrow">LONDON · HERON ESTATE</p>
+    <h1>ONSITE<span>.</span></h1>
+    <p class="strap">KNOW YOUR ENDS.</p>
+    <div class="mission"><span>01 / COURTYARD</span><h2>Hold your ground.</h2><p>Enter the estate. Clear the court.<br>Three opponents. Two stair routes. One site.</p></div>
+    <button id="start" disabled>LOADING THE ESTATE <span>↗</span></button>
+    <p id="load-status" role="status">Preparing the courtyard…</p>
+    <div class="instructions"><span>WASD / MOVE</span><span>MOUSE / LOOK & FIRE</span><span>R / RELOAD</span><span>SPACE / JUMP</span></div>
+  </div>
+  <div class="location"><span>51° 28′ N &nbsp; 00° 04′ W</span><b>HERON<br>ESTATE</b><span>FICTIONAL LONDON LOCATION</span></div>
+  <footer><a href="/credits.html" target="_blank" rel="noopener" style="color:inherit">CREDITS</a><span>BOT ENCOUNTER · EARLY PLAYABLE</span><span>BLACK KIT / BLUE HOUR</span></footer>
+</section>
+<section id="pause" class="dialog" hidden><div><p class="eyebrow">ONSITE / PAUSED</p><h2>Take a breath.</h2><p>The encounter is paused.</p><button id="resume">BACK ON SITE <span>↗</span></button><button id="restart-pause" class="secondary">RESTART ENCOUNTER</button><label>Look sensitivity <input id="sensitivity" type="range" min="0.5" max="2" step="0.1" value="1"></label><label><input id="sound" type="checkbox" checked> Sound effects</label></div></section>
+<section id="result" class="dialog" hidden><div><p class="eyebrow">ONSITE / ENCOUNTER COMPLETE</p><h2 id="result-title">Site secured.</h2><p id="result-detail"></p><button id="restart">RUN IT BACK <span>↗</span></button></div></section>
+<script type="module" src="/src/onsite/main.ts"></script>
+</body></html>

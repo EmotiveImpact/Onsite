@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+*.blend1
+
+# Local study repositories; never ship or recursively track
+research/reference-clones/
+
+__pycache__/
+*.pyc

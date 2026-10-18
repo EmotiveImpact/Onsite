@@ -1,0 +1,158 @@
+{
+  "retrieved": "2026-10-18",
+  "normalConvention": "OpenGL +Y",
+  "armChannels": "R ambient occlusion, G roughness, B metallic",
+  "processing": "JPEG sources converted to WebP quality 88, maximum 1024px; no painted/generated content",
+  "sources": [
+    {
+      "role": "brick",
+      "asset": "brick_wall_001",
+      "page": "https://polyhaven.com/a/brick_wall_001",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "maps": {
+        "color": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_diffuse_1k.jpg",
+          "sourceSHA256": "6a1233ec0186703de830354d89f122991e61e67fb67e0846c7eaf6c5aefea902",
+          "file": "brick-color.webp",
+          "sha256": "a3b98c2c9827229f3073768073279b75ec4662f3fc0d081f9b22a8098428f0c2",
+          "bytes": 252084
+        },
+        "normal": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_nor_gl_1k.jpg",
+          "sourceSHA256": "8afbe3919308b168a6b7235fe7b930f670cfffa1a34de39ee790d55c9d7bda09",
+          "file": "brick-normal.webp",
+          "sha256": "9a343216ea9016128667577d020d383370faf9dd7981fa9e6bd9dc14b6149d9c",
+          "bytes": 273668
+        },
+        "arm": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brick_wall_001/brick_wall_001_arm_1k.jpg",
+          "sourceSHA256": "8e6ab4cecd82c4305c9511065b0795bd579df89df8364a76a7359c1278bed38d",
+          "file": "brick-arm.webp",
+          "sha256": "78a7f3727b6047f2fa21d482ebbd901e77e8a7b90da1b35dc056a9a242b58b1a",
+          "bytes": 79240
+        }
+      }
+    },
+    {
+      "role": "concrete",
+      "asset": "concrete_wall_008",
+      "page": "https://polyhaven.com/a/concrete_wall_008",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "maps": {
+        "color": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_008/concrete_wall_008_diff_1k.jpg",
+          "sourceSHA256": "a203166d280d3cfc6a91bbc9ffdae406eb9555b4a4f658cd92619063eb17c147",
+          "file": "concrete-color.webp",
+          "sha256": "81f73ecd3486b9e0e9cc13d6ff41229880e1d0e00c477a8628610ba1d31cba13",
+          "bytes": 139484
+        },
+        "normal": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_008/concrete_wall_008_nor_gl_1k.jpg",
+          "sourceSHA256": "83cd3fa2c7cbf4c81402386065daf8fa6f72e1f1f77e02ccb1eedb28496909ae",
+          "file": "concrete-normal.webp",
+          "sha256": "a1db2a25de0fdb8c402a473e4967e9bf920109b0f6b4155d79c2748e5a1ce75c",
+          "bytes": 36916
+        },
+        "arm": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_wall_008/concrete_wall_008_arm_1k.jpg",
+          "sourceSHA256": "12b8b88bd0a9b303150f45cf0080371d78b7f04744d4ab14030b8958ec7dc2e3",
+          "file": "concrete-arm.webp",
+          "sha256": "99b4526f7d382425ed125084c68028c944ec7a72992e0df99fd5d1398ff6c5dd",
+          "bytes": 90646
+        }
+      }
+    },
+    {
+      "role": "asphalt",
+      "asset": "asphalt_02",
+      "page": "https://polyhaven.com/a/asphalt_02",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "maps": {
+        "color": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_diff_1k.jpg",
+          "sourceSHA256": "1aa5ce99f58a625c71d48cfc3e68b65ca85ccb00f39e045c0a928608a0ea25ed",
+          "file": "asphalt-color.webp",
+          "sha256": "ed86c9167c024e5966cd4865d01bd001d328cc4b83d16569df54eb49bc412c79",
+          "bytes": 455162
+        },
+        "normal": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_nor_gl_1k.jpg",
+          "sourceSHA256": "42a1c381b53204e83a982db2864479a30bc127bbdeebb1006f8ee51bff099df3",
+          "file": "asphalt-normal.webp",
+          "sha256": "f4c4b5a9dfb57551deca0e8978888fe1f404733d569534efee3a4dea5698f59a",
+          "bytes": 452932
+        },
+        "arm": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/asphalt_02/asphalt_02_arm_1k.jpg",
+          "sourceSHA256": "56bd8e591a3db579846fcb5185f60b0651e0bd4ea85c3529c339e6746243c9cf",
+          "file": "asphalt-arm.webp",
+          "sha256": "68dcdf70ce4ab599feffd7a720a2c58d5355dc4b8025d35cc441c342cf2eb1ee",
+          "bytes": 320122
+        }
+      }
+    },
+    {
+      "role": "paving",
+      "asset": "concrete_floor_worn_001",
+      "page": "https://polyhaven.com/a/concrete_floor_worn_001",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "maps": {
+        "color": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+          "sourceSHA256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+          "file": "paving-color.webp",
+          "sha256": "788904f818b6845ce6d62906a086003d2c5aeeaad11f10d96b54b613ea114974",
+          "bytes": 70950
+        },
+        "normal": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.jpg",
+          "sourceSHA256": "523bd94a1be5dd2f11c2ae2b7d7c77445cf5bd9e41604db515a7c8364dcba067",
+          "file": "paving-normal.webp",
+          "sha256": "f0723f4e97ee430658def9cef9b248062c46a6b9476c8d14569008c870a2bacf",
+          "bytes": 68154
+        },
+        "arm": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_worn_001/concrete_floor_worn_001_arm_1k.jpg",
+          "sourceSHA256": "b21e63637d04b969894bd40a45df185d77671ed74b8955cd6e403c34ed465043",
+          "file": "paving-arm.webp",
+          "sha256": "2944fa93db669f4cfd78445c3a1ebba76687cdcb523bc67dd0c247b7558ae130",
+          "bytes": 102148
+        }
+      }
+    },
+    {
+      "role": "steel",
+      "asset": "corrugated_iron_02",
+      "page": "https://polyhaven.com/a/corrugated_iron_02",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "maps": {
+        "color": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/corrugated_iron_02/corrugated_iron_02_diff_1k.jpg",
+          "sourceSHA256": "7a7b43099d015c1b08ebb175da5965caeae44b86de65a727b3fffa20a7c69a93",
+          "file": "steel-color.webp",
+          "sha256": "a54228f36b2a43946823b09d62cda4f913d98eb5157477c1916c3b9febd04aef",
+          "bytes": 87310
+        },
+        "normal": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/corrugated_iron_02/corrugated_iron_02_nor_gl_1k.jpg",
+          "sourceSHA256": "9743c93668689c36a67e9c4dc8d6a0870fe91202f82dcdaf70ddc330c12f9ecb",
+          "file": "steel-normal.webp",
+          "sha256": "c05016ac1e50db967cdc23c0d554b7351116fa1b7b66e946a5449d684a73951d",
+          "bytes": 24830
+        },
+        "arm": {
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/corrugated_iron_02/corrugated_iron_02_arm_1k.jpg",
+          "sourceSHA256": "da4197f5b3e199ef693082836ca803f9d5cad2b4998a1c1c3dc4ac384f93a890",
+          "file": "steel-arm.webp",
+          "sha256": "e3fa7b755ad26d229230476ab94b4f9b37274e82d690546c859ede635f9f35ed",
+          "bytes": 248774
+        }
+      }
+    }
+  ]
+}

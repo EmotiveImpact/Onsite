@@ -1,0 +1,35 @@
+{
+  "reviewed": "2026-10-18",
+  "policy": "Full donor clones stay ignored and outside runtime. Only separately reviewed code/art is copied into src/public with notices and provenance.",
+  "sources": [
+    {
+      "id": "ironline",
+      "url": "https://github.com/cktang88/3d-fps",
+      "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "localPath": "research/reference-clones/ironline",
+      "role": "Selected art imports and implementation study; no engine merge",
+      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; twelve selected Poly Haven props and one HDRI are CC0; ambientCG Ground110/Leaking003 maps are CC0. Other bundled assets remain outside reuse scope.",
+      "importedIntoGame": true,
+      "assetManifest": "public/models/donors/provenance.json",
+      "materialManifest": "public/materials/detail/provenance.json"
+    },
+    {
+      "id": "open-claudefare",
+      "url": "https://github.com/jasonkneen/open-claudefare",
+      "commit": "51bdc6e94e60c60abfae9c23f39851bb01e088fd",
+      "localPath": "research/reference-clones/open-claudefare",
+      "role": "Read-only local study; no reuse grant established",
+      "license": "No root project licence or package licence declaration. Personal mirror; isolated texture CC0 claims do not license the overall tree.",
+      "importedIntoGame": false
+    },
+    {
+      "id": "wwb",
+      "url": "https://github.com/jeevesh2515/WWB",
+      "commit": "4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1",
+      "localPath": "research/reference-clones/wwb",
+      "role": "Actual selectively integrated gameplay runtime; see docs/development/DONOR-MAP.md",
+      "license": "MIT code; bundled assets separately reviewed. Only two traced CC0 Poly Haven GLBs imported.",
+      "importedIntoGame": true
+    }
+  ]
+}
