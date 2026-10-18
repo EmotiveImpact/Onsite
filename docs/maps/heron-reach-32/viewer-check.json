@@ -1,0 +1,10 @@
+{
+  "scope": "Static design viewer, not the FPS runtime",
+  "pages": 9,
+  "layerToggles": 5,
+  "mobileWidth": 390,
+  "pageErrors": [],
+  "pngExport": true,
+  "pdfExport": true,
+  "pdfOptimisation": "Ghostscript ebook profile; original SVGs and PNGs retained"
+}
