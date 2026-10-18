@@ -1,0 +1,106 @@
+{
+  "checks": [
+    "All materials/models loaded",
+    "Pointer lock and mouse look",
+    "Aim-down-sights reaches full blend",
+    "WWB automatic fire, recoil and timed reload",
+    "Pause/resume freezes simulation",
+    "Jump and landing",
+    "Walk through lobby doorway into court",
+    "Combat result: 3 opponents down, health 76",
+    "Clear and capture victory",
+    "Round reset restores player and opponents"
+  ],
+  "errors": [],
+  "failed": [],
+  "metrics": {
+    "softwareRenderer": true,
+    "renderer": "WebKit WebGL",
+    "frames": 244,
+    "meanFrameMs": 203.9520491803271,
+    "drawCalls": 36,
+    "triangles": 40994
+  },
+  "state": {
+    "tick": 0,
+    "status": "active",
+    "time": 0,
+    "capture": 0,
+    "player": {
+      "position": {
+        "x": -9,
+        "y": 0.04,
+        "z": 12
+      },
+      "yaw": 0,
+      "pitch": 0,
+      "health": 100,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 30,
+      "reserve": 150,
+      "reloadRemaining": 0,
+      "ads": 0
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 15,
+          "y": 0.04,
+          "z": -6
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": 12,
+          "y": 0.04,
+          "z": -12
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 6,
+          "y": 3.04,
+          "z": -7.5
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 0,
+      "hits": 0,
+      "headshots": 0,
+      "multiKills": 0,
+      "bestStreak": 0,
+      "damageDealt": 0
+    },
+    "visible": []
+  }
+}

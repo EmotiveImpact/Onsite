@@ -1,0 +1,33 @@
+{
+  "reviewed": "2026-10-18",
+  "policy": "Ignored local study copies. No runtime imports, redistribution, backend integration or recursive staging. Review each code/asset licence before any reuse.",
+  "sources": [
+    {
+      "id": "ironline",
+      "url": "https://github.com/cktang88/3d-fps",
+      "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "localPath": "research/reference-clones/ironline",
+      "role": "Visual and architectural study only",
+      "license": "ISC declared in package.json; no root project licence/notice found; asset rights vary and remain unverified",
+      "importedIntoGame": false
+    },
+    {
+      "id": "open-claudefare",
+      "url": "https://github.com/jasonkneen/open-claudefare",
+      "commit": "51bdc6e94e60c60abfae9c23f39851bb01e088fd",
+      "localPath": "research/reference-clones/open-claudefare",
+      "role": "Read-only local study; no reuse grant established",
+      "license": "No root project licence or package licence declaration. Personal mirror; isolated texture CC0 claims do not license the overall tree.",
+      "importedIntoGame": false
+    },
+    {
+      "id": "wwb",
+      "url": "https://github.com/jeevesh2515/WWB",
+      "commit": "4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1",
+      "localPath": "research/reference-clones/wwb",
+      "role": "Actual selectively integrated gameplay runtime; see docs/development/DONOR-MAP.md",
+      "license": "MIT code; bundled assets separately reviewed. Only two traced CC0 Poly Haven GLBs imported.",
+      "importedIntoGame": true
+    }
+  ]
+}

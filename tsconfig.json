@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": false,
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "src/wwb/**/*.ts",
+    "src/onsite/**/*.ts",
+    "tests/route-harness.ts"
+  ]
+}
