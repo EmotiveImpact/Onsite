@@ -1,0 +1,15 @@
+{
+  "scope": "Modelling guide geometry, not physics/nav or final art",
+  "issue": "B01",
+  "buildSpecSha256": "eeb35725bf225ae448363d326ea5fc1de7cefde0c2d28c142cc2f87ffa5b1c75",
+  "sourceMapSha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa",
+  "source": "assets/blender/maps/heron-reach-32-B01-guides.blend",
+  "meshObjects": 1757,
+  "openingLabels": 250,
+  "homeApertureCentresChecked": 144,
+  "blockedHomeApertureCentres": [],
+  "units": "metres; Blender Z up",
+  "startupView": "Ground visible; enable B1/L1/L2/R collection for other levels",
+  "omissions": "No final guards, common-hall facade kit, undercroft perimeter walls, landscape or lighting. These are specified on sheets, not built in this guide.",
+  "bytes": 487784
+}

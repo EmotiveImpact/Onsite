@@ -1,0 +1,2352 @@
+{
+  "schema": 1,
+  "issue": "B01",
+  "date": "2026-10-18",
+  "project": "ONSITE / HERON REACH",
+  "status": "DIMENSIONED GAME-ENVIRONMENT DESIGN / FOR BLENDER BLOCKOUT",
+  "sourceMap": "../map.json",
+  "sourceSha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa",
+  "sourceCommit": "4ddf69b2bfe2ee480f0d610fcf0ea857832724a2",
+  "units": "metres",
+  "paper": {
+    "size": "A1 landscape",
+    "mm": [
+      841,
+      594
+    ],
+    "print": "100%; do not fit to page"
+  },
+  "coordinates": {
+    "map": "x east; z south; y up; NW site corner = (0,0,0)",
+    "blender": "(X,Y,Z) = (x-72, 60-z, y)",
+    "glb": "(X,Y,Z) = (x-72, y, z-60)",
+    "homeMirror": "world z = instance z + 8 - local z; apply to every vertex and portal",
+    "normals": "Bake mirroring into coordinates and recalculate normals; no negative object scale"
+  },
+  "standards": {
+    "externalWall": 0.2,
+    "partition": 0.12,
+    "slab": 0.2,
+    "storey": 3,
+    "clearCeiling": 2.8,
+    "doorHead": 2.2,
+    "publicDoorHead": 2.4,
+    "windowSill": 0.9,
+    "windowHead": 2.25,
+    "guard": 1.2,
+    "handrail": 1.0,
+    "clearHall": 1.5,
+    "thresholdMax": 0.02,
+    "minimumStairHeadroom": 2.4,
+    "clearGallery": 3
+  },
+  "precedence": [
+    "map.json: site footprint, block/home/core placements, floors, route intent and landscape positions",
+    "build-spec.json B01: wall faces, clear openings, stairs, slab voids and home internals",
+    "B01 SVG/PDF: drawings of this contract; dimensions govern over image measurement",
+    "Rev 01 massing remains reference; its placeholder partitions/windows/rails are not build instructions"
+  ],
+  "changes": [
+    "Resolved 200 mm shells, 120 mm partitions and 200 mm slabs; room dimensions are now clear face-to-face.",
+    "H1 door centres shift from local x=0.75 to x=0.95 for jamb room; old graph endpoints still fall within the opening.",
+    "H1 clear hall is 1.50 m after wall thickness; side window omitted where it would face reserved solid frontage.",
+    "H2 only has a +3 front door and +6 rear door, with a 1.10 m opening into the stair landing on both floors.",
+    "Stairs use 10 risers / 9 goings per flight: 2.52 m run, not the old 10 tread-box massing.",
+    "H2 upper void stops at the top landing. Southern home stairs, voids and portals must all mirror together.",
+    "Public core interior slabs are cut at every served level; topmost core has a roof at FFL+2.8 and no stair above it.",
+    "Common floors and reserved solid strips are identified inside the former broad block floor plates.",
+    "Shop portals and side doors to Washhouse Square are explicit; no inferred holes from decorative windows."
+  ],
+  "modules": {
+    "H1": {
+      "id": "H1",
+      "name": "One-bedroom through flat",
+      "footprint": [
+        9,
+        8
+      ],
+      "levels": [
+        0
+      ],
+      "floorVoid": null,
+      "grossArea": 72,
+      "walls": [
+        {
+          "id": "N",
+          "axis": "x",
+          "at": 0,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D01",
+              "centre": 0.95,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            },
+            {
+              "id": "W01",
+              "centre": 7.5,
+              "width": 1.5,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "at": 7.8,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D02",
+              "centre": 0.95,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            },
+            {
+              "id": "W02",
+              "centre": 7.5,
+              "width": 1.5,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "W",
+          "axis": "z",
+          "at": 0,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "E",
+          "axis": "z",
+          "at": 8.8,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P1",
+          "axis": "z",
+          "at": 1.7,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "A01",
+              "centre": 3.9,
+              "width": 1.2,
+              "kind": "arch",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "axis": "x",
+          "at": 3.03,
+          "start": 1.82,
+          "end": 8.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D03",
+              "centre": 3,
+              "width": 0.9,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            },
+            {
+              "id": "D04",
+              "centre": 6.5,
+              "width": 0.9,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "axis": "x",
+          "at": 4.65,
+          "start": 1.82,
+          "end": 8.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D05",
+              "centre": 3,
+              "width": 1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            },
+            {
+              "id": "D06",
+              "centre": 6.5,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "P4",
+          "axis": "z",
+          "at": 4.38,
+          "start": 0.2,
+          "end": 3.03,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P5",
+          "axis": "z",
+          "at": 4.38,
+          "start": 4.77,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "A02",
+              "centre": 6,
+              "width": 1.5,
+              "kind": "arch",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            }
+          ]
+        }
+      ],
+      "rooms": [
+        {
+          "id": "01",
+          "label": "THROUGH HALL",
+          "rect": [
+            0.2,
+            0.2,
+            1.5,
+            7.6
+          ],
+          "clearArea": 11.4
+        },
+        {
+          "id": "02",
+          "label": "BATH / UTILITY",
+          "rect": [
+            1.82,
+            0.2,
+            2.56,
+            2.83
+          ],
+          "clearArea": 7.245
+        },
+        {
+          "id": "03",
+          "label": "BEDROOM",
+          "rect": [
+            4.5,
+            0.2,
+            4.3,
+            2.83
+          ],
+          "clearArea": 12.169
+        },
+        {
+          "id": "04",
+          "label": "CROSS HALL",
+          "rect": [
+            1.82,
+            3.15,
+            6.98,
+            1.5
+          ],
+          "clearArea": 10.47
+        },
+        {
+          "id": "05",
+          "label": "KITCHEN",
+          "rect": [
+            1.82,
+            4.77,
+            2.56,
+            3.03
+          ],
+          "clearArea": 7.757
+        },
+        {
+          "id": "06",
+          "label": "LIVING / DINING",
+          "rect": [
+            4.5,
+            4.77,
+            4.3,
+            3.03
+          ],
+          "clearArea": 13.029
+        }
+      ],
+      "furniture": [
+        [
+          "bed",
+          [
+            6.8,
+            0.4,
+            1.6,
+            2
+          ]
+        ],
+        [
+          "bath",
+          [
+            1.95,
+            0.35,
+            1.7,
+            0.75
+          ]
+        ],
+        [
+          "counter",
+          [
+            1.95,
+            5.9,
+            0.6,
+            1.5
+          ]
+        ],
+        [
+          "sofa",
+          [
+            5,
+            7,
+            2.4,
+            0.7
+          ]
+        ],
+        [
+          "table",
+          [
+            7,
+            5.2,
+            1.1,
+            0.7
+          ]
+        ]
+      ]
+    },
+    "H2-L": {
+      "id": "H2-L",
+      "name": "Maisonette lower",
+      "footprint": [
+        9,
+        8
+      ],
+      "levels": [
+        3
+      ],
+      "grossArea": 72,
+      "floorVoid": null,
+      "walls": [
+        {
+          "id": "N",
+          "axis": "x",
+          "at": 0,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "W01",
+              "centre": 2.25,
+              "width": 2,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "at": 7.8,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D01",
+              "centre": 5.25,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            },
+            {
+              "id": "W02",
+              "centre": 2.25,
+              "width": 2,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "W",
+          "axis": "z",
+          "at": 0,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "E",
+          "axis": "z",
+          "at": 8.8,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P1",
+          "axis": "z",
+          "at": 4.38,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D02",
+              "centre": 1.5,
+              "width": 0.9,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            },
+            {
+              "id": "D03",
+              "centre": 5,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "axis": "z",
+          "at": 6,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D04",
+              "centre": 1.1,
+              "width": 0.8,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            },
+            {
+              "id": "A01",
+              "centre": 6.5,
+              "width": 1.1,
+              "kind": "arch",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "axis": "x",
+          "at": 2.88,
+          "start": 0.2,
+          "end": 4.38,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P4",
+          "axis": "x",
+          "at": 1.88,
+          "start": 6.12,
+          "end": 8.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": []
+        }
+      ],
+      "rooms": [
+        {
+          "id": "01",
+          "label": "CLEAR HALL",
+          "rect": [
+            4.5,
+            0.2,
+            1.5,
+            7.6
+          ],
+          "clearArea": 11.4
+        },
+        {
+          "id": "02",
+          "label": "KITCHEN",
+          "rect": [
+            0.2,
+            0.2,
+            4.18,
+            2.68
+          ],
+          "clearArea": 11.202
+        },
+        {
+          "id": "03",
+          "label": "LIVING / DINING",
+          "rect": [
+            0.2,
+            3,
+            4.18,
+            4.8
+          ],
+          "clearArea": 20.064
+        },
+        {
+          "id": "04",
+          "label": "WC / STORE",
+          "rect": [
+            6.12,
+            0.2,
+            2.68,
+            1.68
+          ],
+          "clearArea": 4.502
+        },
+        {
+          "id": "05",
+          "label": "STAIR / LANDING",
+          "rect": [
+            6.12,
+            2,
+            2.68,
+            5.8
+          ],
+          "clearArea": 15.544
+        }
+      ],
+      "furniture": [
+        [
+          "counter",
+          [
+            0.3,
+            0.3,
+            3.6,
+            0.6
+          ]
+        ],
+        [
+          "sofa",
+          [
+            0.3,
+            4.5,
+            0.8,
+            2.4
+          ]
+        ],
+        [
+          "table",
+          [
+            2.2,
+            6,
+            1.5,
+            0.8
+          ]
+        ]
+      ]
+    },
+    "H2-U": {
+      "id": "H2-U",
+      "name": "Maisonette upper",
+      "footprint": [
+        9,
+        8
+      ],
+      "levels": [
+        6
+      ],
+      "grossArea": 72,
+      "floorVoid": [
+        6.12,
+        2.08,
+        2.68,
+        3.84
+      ],
+      "walls": [
+        {
+          "id": "N",
+          "axis": "x",
+          "at": 0,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D01",
+              "centre": 5.25,
+              "width": 1.1,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            },
+            {
+              "id": "W01",
+              "centre": 2.25,
+              "width": 2,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "S",
+          "axis": "x",
+          "at": 7.8,
+          "start": 0,
+          "end": 9,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "W02",
+              "centre": 2.25,
+              "width": 2,
+              "kind": "window",
+              "sill": 0.9,
+              "height": 1.35,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "W",
+          "axis": "z",
+          "at": 0,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "E",
+          "axis": "z",
+          "at": 8.8,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.2,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P1",
+          "axis": "z",
+          "at": 4.38,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D02",
+              "centre": 1.5,
+              "width": 0.9,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            },
+            {
+              "id": "D03",
+              "centre": 5,
+              "width": 0.9,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": -1
+            }
+          ]
+        },
+        {
+          "id": "P2",
+          "axis": "z",
+          "at": 6,
+          "start": 0.2,
+          "end": 7.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": [
+            {
+              "id": "D04",
+              "centre": 1.1,
+              "width": 0.8,
+              "kind": "door",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            },
+            {
+              "id": "A01",
+              "centre": 6.5,
+              "width": 1.1,
+              "kind": "arch",
+              "sill": 0,
+              "height": 2.2,
+              "swing": 1
+            }
+          ]
+        },
+        {
+          "id": "P3",
+          "axis": "x",
+          "at": 3.38,
+          "start": 0.2,
+          "end": 4.38,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": []
+        },
+        {
+          "id": "P4",
+          "axis": "x",
+          "at": 1.88,
+          "start": 6.12,
+          "end": 8.8,
+          "thickness": 0.12,
+          "height": 2.8,
+          "openings": []
+        }
+      ],
+      "rooms": [
+        {
+          "id": "01",
+          "label": "CLEAR HALL",
+          "rect": [
+            4.5,
+            0.2,
+            1.5,
+            7.6
+          ],
+          "clearArea": 11.4
+        },
+        {
+          "id": "02",
+          "label": "BEDROOM 1",
+          "rect": [
+            0.2,
+            0.2,
+            4.18,
+            3.18
+          ],
+          "clearArea": 13.292
+        },
+        {
+          "id": "03",
+          "label": "BEDROOM 2",
+          "rect": [
+            0.2,
+            3.5,
+            4.18,
+            4.3
+          ],
+          "clearArea": 17.974
+        },
+        {
+          "id": "04",
+          "label": "BATH",
+          "rect": [
+            6.12,
+            0.2,
+            2.68,
+            1.68
+          ],
+          "clearArea": 4.502
+        },
+        {
+          "id": "05",
+          "label": "STAIR / LANDING",
+          "rect": [
+            6.12,
+            2,
+            2.68,
+            5.8
+          ],
+          "clearArea": 15.544
+        }
+      ],
+      "furniture": [
+        [
+          "bed",
+          [
+            0.4,
+            0.4,
+            1.6,
+            2
+          ]
+        ],
+        [
+          "bed",
+          [
+            0.4,
+            5.3,
+            1.6,
+            2
+          ]
+        ],
+        [
+          "bath",
+          [
+            7.95,
+            0.25,
+            0.75,
+            1.5
+          ]
+        ]
+      ]
+    }
+  },
+  "stairs": {
+    "ST-P": {
+      "id": "ST-P",
+      "footprint": [
+        6,
+        6
+      ],
+      "flightWidth": 1.5,
+      "rise": 0.15,
+      "risersPerFlight": 10,
+      "treadsPerFlight": 9,
+      "going": 0.28,
+      "storey": 3,
+      "firstFlightX": 0.4,
+      "secondFlightX": 4.1,
+      "flightZ": 1.7,
+      "flightRun": 2.52,
+      "halfLanding": [
+        0.4,
+        0.2,
+        5.2,
+        1.5
+      ],
+      "floorLanding": [
+        0.2,
+        4.22,
+        5.6,
+        1.58
+      ],
+      "floorVoid": [
+        0.2,
+        0.2,
+        5.6,
+        4.02
+      ],
+      "slab": 0.2,
+      "stairSlab": 0.15,
+      "entry": [
+        3,
+        6
+      ],
+      "entryWidth": 1.5,
+      "outerWall": 0.2,
+      "note": "North cores enter from local south. South cores mirror local z across 6 m."
+    },
+    "ST-H": {
+      "id": "ST-H",
+      "footprint": [
+        3,
+        6
+      ],
+      "localOriginInHome": [
+        6,
+        2
+      ],
+      "flightWidth": 1.2,
+      "rise": 0.15,
+      "risersPerFlight": 10,
+      "treadsPerFlight": 9,
+      "going": 0.28,
+      "storey": 3,
+      "firstFlightX": 0.18,
+      "secondFlightX": 1.53,
+      "flightZ": 1.4,
+      "flightRun": 2.52,
+      "halfLanding": [
+        0.18,
+        0.2,
+        2.55,
+        1.2
+      ],
+      "floorLanding": [
+        0.12,
+        3.92,
+        2.68,
+        1.88
+      ],
+      "floorVoid": [
+        0.12,
+        0.08,
+        2.68,
+        3.84
+      ],
+      "slab": 0.2,
+      "stairSlab": 0.15,
+      "entry": [
+        0,
+        4.5
+      ],
+      "entryWidth": 1.1,
+      "outerWall": 0.12,
+      "note": "H2 local x/z. Mirror the complete home, void AND stairs in southern blocks."
+    }
+  },
+  "homeInstances": [
+    {
+      "id": "NW-H1-1",
+      "homeId": "NW-H1-1",
+      "module": "H1",
+      "x": 26,
+      "z": 21,
+      "y": 0,
+      "mirrorZ": false
+    },
+    {
+      "id": "NW-H2-1-L",
+      "homeId": "NW-H2-1",
+      "module": "H2-L",
+      "x": 26,
+      "z": 21,
+      "y": 3,
+      "mirrorZ": false
+    },
+    {
+      "id": "NW-H2-1-U",
+      "homeId": "NW-H2-1",
+      "module": "H2-U",
+      "x": 26,
+      "z": 21,
+      "y": 6,
+      "mirrorZ": false
+    },
+    {
+      "id": "NW-H1-2",
+      "homeId": "NW-H1-2",
+      "module": "H1",
+      "x": 49,
+      "z": 21,
+      "y": 0,
+      "mirrorZ": false
+    },
+    {
+      "id": "NW-H2-2-L",
+      "homeId": "NW-H2-2",
+      "module": "H2-L",
+      "x": 49,
+      "z": 21,
+      "y": 3,
+      "mirrorZ": false
+    },
+    {
+      "id": "NW-H2-2-U",
+      "homeId": "NW-H2-2",
+      "module": "H2-U",
+      "x": 49,
+      "z": 21,
+      "y": 6,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H1-1",
+      "homeId": "NE-H1-1",
+      "module": "H1",
+      "x": 86,
+      "z": 21,
+      "y": 0,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H2-1-L",
+      "homeId": "NE-H2-1",
+      "module": "H2-L",
+      "x": 86,
+      "z": 21,
+      "y": 3,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H2-1-U",
+      "homeId": "NE-H2-1",
+      "module": "H2-U",
+      "x": 86,
+      "z": 21,
+      "y": 6,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H1-2",
+      "homeId": "NE-H1-2",
+      "module": "H1",
+      "x": 109,
+      "z": 21,
+      "y": 0,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H2-2-L",
+      "homeId": "NE-H2-2",
+      "module": "H2-L",
+      "x": 109,
+      "z": 21,
+      "y": 3,
+      "mirrorZ": false
+    },
+    {
+      "id": "NE-H2-2-U",
+      "homeId": "NE-H2-2",
+      "module": "H2-U",
+      "x": 109,
+      "z": 21,
+      "y": 6,
+      "mirrorZ": false
+    },
+    {
+      "id": "SW-H1-1",
+      "homeId": "SW-H1-1",
+      "module": "H1",
+      "x": 26,
+      "z": 91,
+      "y": 0,
+      "mirrorZ": true
+    },
+    {
+      "id": "SW-H2-1-L",
+      "homeId": "SW-H2-1",
+      "module": "H2-L",
+      "x": 26,
+      "z": 91,
+      "y": 3,
+      "mirrorZ": true
+    },
+    {
+      "id": "SW-H2-1-U",
+      "homeId": "SW-H2-1",
+      "module": "H2-U",
+      "x": 26,
+      "z": 91,
+      "y": 6,
+      "mirrorZ": true
+    },
+    {
+      "id": "SW-H1-2",
+      "homeId": "SW-H1-2",
+      "module": "H1",
+      "x": 49,
+      "z": 91,
+      "y": 0,
+      "mirrorZ": true
+    },
+    {
+      "id": "SW-H2-2-L",
+      "homeId": "SW-H2-2",
+      "module": "H2-L",
+      "x": 49,
+      "z": 91,
+      "y": 3,
+      "mirrorZ": true
+    },
+    {
+      "id": "SW-H2-2-U",
+      "homeId": "SW-H2-2",
+      "module": "H2-U",
+      "x": 49,
+      "z": 91,
+      "y": 6,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H1-1",
+      "homeId": "SE-H1-1",
+      "module": "H1",
+      "x": 86,
+      "z": 91,
+      "y": 0,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H2-1-L",
+      "homeId": "SE-H2-1",
+      "module": "H2-L",
+      "x": 86,
+      "z": 91,
+      "y": 3,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H2-1-U",
+      "homeId": "SE-H2-1",
+      "module": "H2-U",
+      "x": 86,
+      "z": 91,
+      "y": 6,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H1-2",
+      "homeId": "SE-H1-2",
+      "module": "H1",
+      "x": 109,
+      "z": 91,
+      "y": 0,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H2-2-L",
+      "homeId": "SE-H2-2",
+      "module": "H2-L",
+      "x": 109,
+      "z": 91,
+      "y": 3,
+      "mirrorZ": true
+    },
+    {
+      "id": "SE-H2-2-U",
+      "homeId": "SE-H2-2",
+      "module": "H2-U",
+      "x": 109,
+      "z": 91,
+      "y": 6,
+      "mirrorZ": true
+    }
+  ],
+  "cores": [
+    {
+      "id": "S1",
+      "block": "NW",
+      "rect": [
+        24,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        27,
+        42
+      ],
+      "mirrorZ": false,
+      "module": "ST-P"
+    },
+    {
+      "id": "S2",
+      "block": "NW",
+      "rect": [
+        54,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        57,
+        42
+      ],
+      "mirrorZ": false,
+      "module": "ST-P"
+    },
+    {
+      "id": "S3",
+      "block": "NE",
+      "rect": [
+        84,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        87,
+        42
+      ],
+      "mirrorZ": false,
+      "module": "ST-P"
+    },
+    {
+      "id": "S4",
+      "block": "NE",
+      "rect": [
+        114,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        117,
+        42
+      ],
+      "mirrorZ": false,
+      "module": "ST-P"
+    },
+    {
+      "id": "S5",
+      "block": "SW",
+      "rect": [
+        24,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        27,
+        78
+      ],
+      "mirrorZ": true,
+      "module": "ST-P"
+    },
+    {
+      "id": "S6",
+      "block": "SW",
+      "rect": [
+        54,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        57,
+        78
+      ],
+      "mirrorZ": true,
+      "module": "ST-P"
+    },
+    {
+      "id": "S7",
+      "block": "SE",
+      "rect": [
+        84,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        87,
+        78
+      ],
+      "mirrorZ": true,
+      "module": "ST-P"
+    },
+    {
+      "id": "S8",
+      "block": "SE",
+      "rect": [
+        114,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        117,
+        78
+      ],
+      "mirrorZ": true,
+      "module": "ST-P"
+    }
+  ],
+  "circulation": [
+    {
+      "id": "NW-G-rear",
+      "level": "G",
+      "rect": [
+        24,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NW-G-common",
+      "level": "G",
+      "rect": [
+        35,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NW-G-front",
+      "level": "G",
+      "rect": [
+        24,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "NW-L1-rear",
+      "level": "L1",
+      "rect": [
+        24,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NW-L1-common",
+      "level": "L1",
+      "rect": [
+        35,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NW-L1-front",
+      "level": "L1",
+      "rect": [
+        24,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "NW-L2-rear",
+      "level": "L2",
+      "rect": [
+        24,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NW-L2-common",
+      "level": "L2",
+      "rect": [
+        35,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NW-L2-front",
+      "level": "L2",
+      "rect": [
+        24,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "NE-G-rear",
+      "level": "G",
+      "rect": [
+        84,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NE-G-common",
+      "level": "G",
+      "rect": [
+        95,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NE-G-front",
+      "level": "G",
+      "rect": [
+        84,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "NE-L1-rear",
+      "level": "L1",
+      "rect": [
+        84,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NE-L1-common",
+      "level": "L1",
+      "rect": [
+        95,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NE-L1-front",
+      "level": "L1",
+      "rect": [
+        84,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "NE-L2-rear",
+      "level": "L2",
+      "rect": [
+        84,
+        18,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "NE-L2-common",
+      "level": "L2",
+      "rect": [
+        95,
+        21,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "NE-L2-front",
+      "level": "L2",
+      "rect": [
+        84,
+        29,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SW-G-rear",
+      "level": "G",
+      "rect": [
+        24,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SW-G-common",
+      "level": "G",
+      "rect": [
+        35,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SW-G-front",
+      "level": "G",
+      "rect": [
+        24,
+        84,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SW-L1-rear",
+      "level": "L1",
+      "rect": [
+        24,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SW-L1-common",
+      "level": "L1",
+      "rect": [
+        35,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SW-L1-front",
+      "level": "L1",
+      "rect": [
+        24,
+        84,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SW-L2-rear",
+      "level": "L2",
+      "rect": [
+        24,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SW-L2-common",
+      "level": "L2",
+      "rect": [
+        35,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SW-L2-front",
+      "level": "L2",
+      "rect": [
+        24,
+        84,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SE-G-rear",
+      "level": "G",
+      "rect": [
+        84,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SE-G-common",
+      "level": "G",
+      "rect": [
+        95,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SE-G-front",
+      "level": "G",
+      "rect": [
+        84,
+        84,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SE-L1-rear",
+      "level": "L1",
+      "rect": [
+        84,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SE-L1-common",
+      "level": "L1",
+      "rect": [
+        95,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SE-L1-front",
+      "level": "L1",
+      "rect": [
+        84,
+        84,
+        36,
+        7
+      ]
+    },
+    {
+      "id": "SE-L2-rear",
+      "level": "L2",
+      "rect": [
+        84,
+        99,
+        36,
+        3
+      ]
+    },
+    {
+      "id": "SE-L2-common",
+      "level": "L2",
+      "rect": [
+        95,
+        91,
+        14,
+        8
+      ]
+    },
+    {
+      "id": "SE-L2-front",
+      "level": "L2",
+      "rect": [
+        84,
+        84,
+        36,
+        7
+      ]
+    }
+  ],
+  "reserves": [
+    {
+      "id": "NW-G-reserve-1",
+      "level": "G",
+      "rect": [
+        24,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NW-G-reserve-2",
+      "level": "G",
+      "rect": [
+        58,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NW-L1-reserve-1",
+      "level": "L1",
+      "rect": [
+        24,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NW-L1-reserve-2",
+      "level": "L1",
+      "rect": [
+        58,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NW-L2-reserve-1",
+      "level": "L2",
+      "rect": [
+        24,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NW-L2-reserve-2",
+      "level": "L2",
+      "rect": [
+        58,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-G-reserve-1",
+      "level": "G",
+      "rect": [
+        84,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-G-reserve-2",
+      "level": "G",
+      "rect": [
+        118,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-L1-reserve-1",
+      "level": "L1",
+      "rect": [
+        84,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-L1-reserve-2",
+      "level": "L1",
+      "rect": [
+        118,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-L2-reserve-1",
+      "level": "L2",
+      "rect": [
+        84,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "NE-L2-reserve-2",
+      "level": "L2",
+      "rect": [
+        118,
+        21,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-G-reserve-1",
+      "level": "G",
+      "rect": [
+        24,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-G-reserve-2",
+      "level": "G",
+      "rect": [
+        58,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-L1-reserve-1",
+      "level": "L1",
+      "rect": [
+        24,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-L1-reserve-2",
+      "level": "L1",
+      "rect": [
+        58,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-L2-reserve-1",
+      "level": "L2",
+      "rect": [
+        24,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SW-L2-reserve-2",
+      "level": "L2",
+      "rect": [
+        58,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-G-reserve-1",
+      "level": "G",
+      "rect": [
+        84,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-G-reserve-2",
+      "level": "G",
+      "rect": [
+        118,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-L1-reserve-1",
+      "level": "L1",
+      "rect": [
+        84,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-L1-reserve-2",
+      "level": "L1",
+      "rect": [
+        118,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-L2-reserve-1",
+      "level": "L2",
+      "rect": [
+        84,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    },
+    {
+      "id": "SE-L2-reserve-2",
+      "level": "L2",
+      "rect": [
+        118,
+        91,
+        2,
+        8
+      ],
+      "height": 2.8
+    }
+  ],
+  "shops": [
+    {
+      "id": "W-shops",
+      "name": "LAUNDERETTE",
+      "rect": [
+        24,
+        48,
+        18,
+        9
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 9.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            7.5
+          ],
+          [
+            10.5,
+            17.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    },
+    {
+      "id": "W-cycles",
+      "name": "CYCLE WORKSHOP",
+      "rect": [
+        24,
+        63,
+        18,
+        9
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 9.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            7.5
+          ],
+          [
+            10.5,
+            17.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    },
+    {
+      "id": "E-shop",
+      "name": "THE CORNER",
+      "rect": [
+        102,
+        48,
+        18,
+        9
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 9.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            7.5
+          ],
+          [
+            10.5,
+            17.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    },
+    {
+      "id": "E-community",
+      "name": "YOUTH ROOM",
+      "rect": [
+        102,
+        63,
+        18,
+        9
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 9.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            7.5
+          ],
+          [
+            10.5,
+            17.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    },
+    {
+      "id": "C-store",
+      "name": "WASHHOUSE",
+      "rect": [
+        60,
+        87,
+        6,
+        18
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 3.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 3.0,
+          "width": 1.5,
+          "height": 2.4
+        },
+        {
+          "id": "D03",
+          "side": "E",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            1.5
+          ],
+          [
+            4.5,
+            5.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    },
+    {
+      "id": "C-kiosk",
+      "name": "ESTATE OFFICE",
+      "rect": [
+        78,
+        87,
+        6,
+        18
+      ],
+      "wall": 0.2,
+      "height": 3,
+      "doorOpenings": [
+        {
+          "id": "D01",
+          "side": "N",
+          "offset": 3.0,
+          "width": 2,
+          "height": 2.4
+        },
+        {
+          "id": "D02",
+          "side": "S",
+          "offset": 3.0,
+          "width": 1.5,
+          "height": 2.4
+        },
+        {
+          "id": "D03",
+          "side": "W",
+          "offset": 9.0,
+          "width": 1.5,
+          "height": 2.4
+        }
+      ],
+      "glazing": {
+        "side": "N",
+        "sill": 0.6,
+        "height": 1.6,
+        "spans": [
+          [
+            0.6,
+            1.5
+          ],
+          [
+            4.5,
+            5.4
+          ]
+        ]
+      },
+      "furnishing": "Keep a 2.4 m continuous path between exits; perimeter fixtures only."
+    }
+  ],
+  "surfaceRules": {
+    "ground": "G is continuous site slab except core holes leading to B1. B1 is enclosed below it.",
+    "gallery": "Union overlapping rectangles before meshing; subtract served core footprint, then add its explicit landing.",
+    "homes": "Do not stack home slabs on the same block slab. Subtract H2-U voids from the union once.",
+    "guards": "1.2 m guards on every exposed walkable edge; omit only scheduled door/core/bridge joins.",
+    "topCore": "Core enclosure and cap continue 2.8 m above highest served FFL; highest cap never walkable.",
+    "railWidth": "Measure gallery and flight width BETWEEN guard/rail faces. Place posts outside clear walk polygon."
+  },
+  "buildOrder": [
+    "setting-out and datums",
+    "ground + one block shell",
+    "ST-P core + slab openings",
+    "gallery + rear landings",
+    "H1 and H2 modules + mirrored placements",
+    "undercroft + roof limits",
+    "shops + court",
+    "single Rapier collision / floor-aware nav verification",
+    "PBR modules + lighting rebuild in Three.js",
+    "landscape and dressing"
+  ],
+  "limits": [
+    "This package is not an as-built playable, final art or a real-world construction document.",
+    "No room-level collision/navigation or 32-actor gameplay has been verified.",
+    "Doors are held open in the first blockout; no working-door state/networking is specified.",
+    "Window glazing is closed and non-traversable; sightline/bullet behaviour must be explicit in gameplay.",
+    "Roofs need spawn sightline tests; lighting ranges are art intentions, not measured lux."
+  ]
+}

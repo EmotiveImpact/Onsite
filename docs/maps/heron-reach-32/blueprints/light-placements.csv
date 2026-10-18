@@ -1,0 +1,21 @@
+id,x,z,y,kind,kelvin,radius,runtime
+L01,21,45,4,street,2700,8,emissive / baked lighting proxy; select very few local real-time lights
+L02,21,75,4,street,2700,8,emissive / baked lighting proxy; select very few local real-time lights
+L03,123,45,4,street,2700,8,emissive / baked lighting proxy; select very few local real-time lights
+L04,123,75,4,street,2700,8,emissive / baked lighting proxy; select very few local real-time lights
+L05,54,45,4,court,3000,8,emissive / baked lighting proxy; select very few local real-time lights
+L06,90,45,4,court,3000,8,emissive / baked lighting proxy; select very few local real-time lights
+L07,54,75,4,court,3000,8,emissive / baked lighting proxy; select very few local real-time lights
+L08,90,75,4,court,3000,8,emissive / baked lighting proxy; select very few local real-time lights
+L09,63,24,2.4,garden,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L10,81,24,2.4,garden,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L11,68,90,2.4,shop,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L12,76,102,2.4,shop,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L13,28,32,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L14,28,88,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L15,52,32,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L16,52,88,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L17,88,32,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L18,88,88,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L19,112,32,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights
+L20,112,88,2.4,door,2700,4,emissive / baked lighting proxy; select very few local real-time lights

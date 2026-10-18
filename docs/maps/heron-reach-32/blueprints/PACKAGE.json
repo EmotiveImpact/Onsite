@@ -1,0 +1,311 @@
+{
+  "issue": "B01",
+  "status": "Proposed game-environment build package; not a runtime level",
+  "files": [
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/CLAUDE-BUILD-BRIEF.md",
+      "bytes": 8769,
+      "sha256": "44f0505cd4a80fb34672d7c754762a572061f113e7e6af0bf90e54d7adc391c3"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/ONSITE-HERON-REACH-B01-BLUEPRINTS.pdf",
+      "bytes": 6617979,
+      "sha256": "b28eed79416d4e7edb4ec9775867adb53cf7778bfb561d54515a2b680a42513a"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/README.md",
+      "bytes": 7674,
+      "sha256": "aa341a2c3fdeb90a2233ffb9544227682ec180cd44cfe231785bc78dcadc06c0"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b000-issue-index.png",
+      "bytes": 179618,
+      "sha256": "8b73d77685ccad18a97ad7c8d89e926f318f0cf3229218a2d7b0563c90e709ec"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b000-issue-index.svg",
+      "bytes": 124944,
+      "sha256": "7d196323348775b0c74cc99ad591113cec0397bac099daffd9c11ed00e7b37f2"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b100-site-setting-out.png",
+      "bytes": 190468,
+      "sha256": "01dd04f46f376f3147a52f2308f43388c6f5e934c41a569d161b47d51343ab8d"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b100-site-setting-out.svg",
+      "bytes": 126806,
+      "sha256": "cc8ed20e3264ed7ff1905d39cd22ba1d484a82ea5144313dc173dd4da4a6c239"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b101-ground-floor.png",
+      "bytes": 255805,
+      "sha256": "bfac0c9b16675d0e5a112e692c374ee2d99d3452e872a7b5d25418448f2e06c6"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b101-ground-floor.svg",
+      "bytes": 130454,
+      "sha256": "f0b5a43d1376c4e7e7123b04b644ed7543fbd035943554df1da4f44fb2adb0c8"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b102-gallery-floor.png",
+      "bytes": 191807,
+      "sha256": "4ada47bee9651bef7802ac8f153adeca9b76624e76352973a4a869382c84c131"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b102-gallery-floor.svg",
+      "bytes": 117096,
+      "sha256": "5560bae96ee40e04c4a0599b4fd27b710916ec04fd526ff9e03b7bc76fdbe224"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b103-upper-homes.png",
+      "bytes": 190316,
+      "sha256": "57f6552a3f0a42bc999c6695f84a76d65d9976a01f3c172daa656cd6f3037576"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b103-upper-homes.svg",
+      "bytes": 114532,
+      "sha256": "f0bdf05e55b34f5be2133f5fcc751c52fb76d4b513d2d7d786ec3339a730c3b8"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b104-roof-plan.png",
+      "bytes": 269897,
+      "sha256": "a05cc0614597facdb02bf2eb457c1e4fff119dee9723f3ffc3aaf4cf28b15f1c"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b104-roof-plan.svg",
+      "bytes": 36323,
+      "sha256": "c2b7868fc259df57affe240d9f9cc98c0b8974028fe9bbf901de808769141100"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b105-undercroft.png",
+      "bytes": 136447,
+      "sha256": "fa8fac2d31776a3f89a5a4d86e1334132f06f62af71b447030c1c5c393bb2013"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b105-undercroft.svg",
+      "bytes": 35174,
+      "sha256": "f58f30a9bd62f2b130e30d49a4eb866d437a0b0a913adfe1ce86d91e84e0b114"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b200-block-ground-and-gallery.png",
+      "bytes": 134375,
+      "sha256": "3505cac28c2d5a292984c07b4562c2dda82b0080d46bf0c9b8fb89b388214cde"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b200-block-ground-and-gallery.svg",
+      "bytes": 66011,
+      "sha256": "581369913bff2643eecc9afad410a4d8899152a34b562abd666256c98387b6c2"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b201-block-upper-and-roof.png",
+      "bytes": 157699,
+      "sha256": "cc260be68be60179a84be646491044950e6492cab5c0f3278f925371bfcefd2c"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b201-block-upper-and-roof.svg",
+      "bytes": 55764,
+      "sha256": "2fb3720247a7869d49a2383c1de58acf45d932c74f8a25839c9830dda8f56f1b"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b300-h1-through-flat.png",
+      "bytes": 116066,
+      "sha256": "45b8cc8df91f3502ee4e4322d337c26a4fdde6e1e2c80cde3d677cd8dbbcbfef"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b300-h1-through-flat.svg",
+      "bytes": 32473,
+      "sha256": "ddb1b6e43f416f959c3a417e38bef342d828ef0f536b01a324732ae013c263c8"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b301-h2-maisonette.png",
+      "bytes": 220004,
+      "sha256": "f1c35b4fe40b53a3566235a05c79cd81cfe563e4cb715812e443108e73e88cf5"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b301-h2-maisonette.svg",
+      "bytes": 39717,
+      "sha256": "6db1ca845e717efc305c27938dced26b7eb8bc9beb68da69598a599030e46c98"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b302-stair-construction.png",
+      "bytes": 218259,
+      "sha256": "17e6ebfb99d082dff881b8fa28c60f82a6d02da928240adae3fe8da02a806edb"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b302-stair-construction.svg",
+      "bytes": 27503,
+      "sha256": "51134991ec7540afaf3ea789f6edc00f5d90a5fa0f647205172144537800392e"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b400-home-elevations.png",
+      "bytes": 267555,
+      "sha256": "67f17b0f6b2752cc79e06ae3772ea87942f8c223d7d8bba5a04fda4d8c029bcd"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b400-home-elevations.svg",
+      "bytes": 22719,
+      "sha256": "6a944b795001c08ed319d22d2a9f2c95592ceba9a9a39f97df9800a33963b9c3"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b401-sections-and-datums.png",
+      "bytes": 108309,
+      "sha256": "96c4251ac9af232d383af24e0a714c3f7b813b7e66f2efd8b8b7aeb87b9fb718"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b401-sections-and-datums.svg",
+      "bytes": 18052,
+      "sha256": "cc16b067323ff36bcab78228b4395c574900cf1a00d7e9a26e70f8c2ad8fd3a7"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b500-shops-and-court.png",
+      "bytes": 101000,
+      "sha256": "3007994b4b7a03ad84fab090d82cff0f56f3134fd621780e2f58ddb45af6e30e"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b500-shops-and-court.svg",
+      "bytes": 23358,
+      "sha256": "cf2635671b04ea3476e6bd50e139965001be8d87a26c806a2f82ce4fc625224a"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b600-landscape-and-light.png",
+      "bytes": 239413,
+      "sha256": "0ab905c89841fc2176766d2b8f374446acf8840d2b1b8a88bfbacbdeaca9edda"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b600-landscape-and-light.svg",
+      "bytes": 122455,
+      "sha256": "35b80f3f534d2fc4920c10de3a423171b490b4cdf22e9c89c32071ee656bc0e1"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b700-blender-assembly.png",
+      "bytes": 141429,
+      "sha256": "6d5857928d7af4d6b6a4e529f0a28d819c3edadc97843f8a160abfd0ab25e753"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/b700-blender-assembly.svg",
+      "bytes": 20736,
+      "sha256": "3b5c9b51768fd05f795bd7f1db623d31e5b26bdf9aa6ad00489d363a748ce2b0"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/blender-guide-check.json",
+      "bytes": 757,
+      "sha256": "a2952baa96b6d89550eac8a1b28bde3a21eda5cef87764fffdbdeaf506217397"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/build-spec.json",
+      "bytes": 43185,
+      "sha256": "eeb35725bf225ae448363d326ea5fc1de7cefde0c2d28c142cc2f87ffa5b1c75"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/coordination-check.json",
+      "bytes": 9283,
+      "sha256": "1d5017cc7a121c5cad7d655a696bc7210b3a94ff91b7922e169056ab4dd90f27"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/core-instances.csv",
+      "bytes": 775,
+      "sha256": "478044c371d0f9900dde2d25fdeea7386b4dd6d1c988bb5e46c52a455dd438c5"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/cover-placements.csv",
+      "bytes": 1700,
+      "sha256": "7cda81f388537d8e96cc11c5368797dac5e415c08fc1750dd3a4ee04e2cf78af"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/drawing-check.json",
+      "bytes": 385,
+      "sha256": "5d208b341ffcae99a349df4d4d840a203591c4fe34325f27dd4380f6632b7c8c"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/home-instances.csv",
+      "bytes": 881,
+      "sha256": "e24b2dae7c5ac16dbf7c8f1bdfeb56638661bef3b52b09ec1a7a43a5823540d8"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/home-openings.csv",
+      "bytes": 10323,
+      "sha256": "b737fbef9124037c682d45e3b85cba22f0e8ce7f8693adfa79805c2df36e3487"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/index.html",
+      "bytes": 1118052,
+      "sha256": "6782ea20d927cee8dc03d787106ac230c87d39497db6f59e397730aeb573f56d"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/light-placements.csv",
+      "bytes": 2001,
+      "sha256": "118ef6f46ba89e02fe3b7e7ed337a53c3176be034479c032e6b464eff211e34d"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/sheets.json",
+      "bytes": 2005,
+      "sha256": "e939f905a0dccc6ab899be6c9781009af34fa98c4009b7bc496079a675e8a299"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/blueprints/tree-placements.csv",
+      "bytes": 1985,
+      "sha256": "db19212e4b9a0e9a36bf7ba0ce112aa94bdae27ffdf2ed7459179efb4a341956"
+    },
+    {
+      "path": "assets/blender/maps/heron-reach-32-B01-guides.blend",
+      "bytes": 487784,
+      "sha256": "579f8a2327193bb419137be78149f1398b56dfe2a8863a3602ff0fc460de4ef9"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/map.json",
+      "bytes": 111514,
+      "sha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/validation.json",
+      "bytes": 5062,
+      "sha256": "c5a2b0234ab05421d560e72d08f8dd689549fc4cd28282f954891f64f3305c37"
+    },
+    {
+      "path": "docs/concepts/onsite-london-fps.png",
+      "bytes": 2346533,
+      "sha256": "6c579545f46930aa84022a3b58481b6a0806a61244852b77269bd8c29525b825"
+    },
+    {
+      "path": "docs/concepts/MODELLING-NOTES.md",
+      "bytes": 2968,
+      "sha256": "b719863fd789fd015bedcb1dfa4aacf85fe958d2483c1f323f3495f51348773f"
+    },
+    {
+      "path": "docs/concepts/TEXTURE-PACK-30.md",
+      "bytes": 8480,
+      "sha256": "f1b77610f65c093dcce32c82e3e315c1d212b1d8c06d35bac6ad30adc5aff700"
+    },
+    {
+      "path": "scripts/maps/build_heron_blueprint_guides.py",
+      "bytes": 11725,
+      "sha256": "a40aaa21f99dfcdeb79e0ac6127ab93221763e16ec612ef4b0bea2ba833e13b1"
+    },
+    {
+      "path": "scripts/maps/draw_heron_blueprints.py",
+      "bytes": 47305,
+      "sha256": "6e5ec645412d3504935a28e554d439aad0ea9d7cb5fb3e7c31e71329a82d1f44"
+    },
+    {
+      "path": "scripts/maps/export_heron_blueprints.mjs",
+      "bytes": 6782,
+      "sha256": "0176d252804a3ffc2dccddc8763d14f702287a47b9cb07e816ae04836095976a"
+    },
+    {
+      "path": "scripts/maps/make_heron_blueprint_spec.py",
+      "bytes": 13344,
+      "sha256": "8742deecb57a336ddf6f0a3079c4ba48e1e1223c3b7145724c64565b14b3d380"
+    },
+    {
+      "path": "scripts/maps/package_heron_blueprints.py",
+      "bytes": 2960,
+      "sha256": "e96b122d301b7b302fb64ca59f3078af20e8ce758b755f4f1dbf5a3799cc09af"
+    },
+    {
+      "path": "scripts/maps/validate_heron_blueprints.py",
+      "bytes": 7987,
+      "sha256": "b887f64db21cf7b395e52010316ff1020c1e8f1092e0a844a39ab970bbd93778"
+    }
+  ]
+}
