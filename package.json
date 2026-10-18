@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts",
+    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts tests/heron-reach.test.ts",
     "test:browser": "node scripts/verify-encounter.mjs",
     "typecheck": "tsc --noEmit",
     "test:legacy": "node --test --test-isolation=none tests/simulation.test.js",
