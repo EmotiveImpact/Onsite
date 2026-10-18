@@ -96,4 +96,8 @@ proper character rig. Surrounding house exteriors and point blocks are context g
 larger accessible neighbourhood would require a separate collision/nav/gameplay expansion.
 No production-quality or smooth-performance claim is made.
 
-No push, merge or deployment. Previous checkpoints and all original reference material remain.
+These runtime checks preceded publication. For the subsequent user-requested Claude handoff,
+typecheck, all 22 tests and the production build were rerun successfully against `debebb4`;
+only documentation changed afterward. Browser results above were not rerun for that documentation
+change. No GitHub Actions workflows were configured at publication inspection. Deployment was
+not requested. Previous checkpoints and all original reference material remain.

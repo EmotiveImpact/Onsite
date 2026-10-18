@@ -51,7 +51,7 @@ npm run dev
 ```
 
 The full build recreates the file from the script; preserve manual edits before running it.
-After editing an existing `.blend`, use `blender -b --python scripts/export_estate.py` to export
+After editing an existing `.blend`, use `blender -b --python-exit-code 1 --python scripts/export_estate.py` to export
 its architecture. This refreshes packed preview materials and the runtime occlusion bake.
 Donor transforms and collision changes must also be reflected in the placement/layout manifests.
 

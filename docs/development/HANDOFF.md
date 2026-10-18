@@ -1,5 +1,8 @@
 # ONSITE continuation handoff
 
+For a fresh Claude session, start with [CLAUDE-HANDOFF.md](CLAUDE-HANDOFF.md): current entry,
+launch commands, verified results, donor boundaries, recovery points and the separate open Claude PR.
+
 ## Direction and active entry
 
 London browser FPS, bots first. The user's attached ground/upper floor plans were reviewed in chat and treated as proposals. Their 36×30 m footprint, 24×18 m court, 3 m gallery, central 18×12 m void and two stair cores guide the implementation. [As-built plan](evidence/as-built.svg) and [exact solids/spawns](evidence/layout.json) are generated from code, not the attached artwork. Stair door offsets and room openings were adjusted for physical circulation. No claim that the proposed image itself is an as-built drawing.
@@ -8,7 +11,7 @@ Active: `index.html` → `src/onsite/main.ts`. Actual WWB runtime modules in `sr
 
 ## Recovery and preserved work
 
-[CHECKPOINT.md](CHECKPOINT.md) records the verified ~993 MB pre-integration archive outside this checkout and safe restore commands. The full pre-visual-pass playable is also committed as `d5faf61`. All original concept art, generated images, original Blender sources, original PBR sets and tests remain. No merge/push/deploy. Three full reference trees remain ignored in `research/reference-clones`, with exact commits in `research/SOURCES.json`. Never recursively stage that folder. The local archive is not remotely backed up.
+[CHECKPOINT.md](CHECKPOINT.md) records the verified ~993 MB pre-integration archive outside this checkout and safe restore commands. The full pre-visual-pass playable is also committed as `d5faf61`. All original concept art, generated images, original Blender sources, original PBR sets and tests remain. The user subsequently requested a Claude handoff, push and merge of this work; deployment was not requested. Three full reference trees remain ignored in `research/reference-clones`, with exact commits in `research/SOURCES.json`. Never recursively stage that folder. The local archive is not remotely backed up.
 
 ## Current interaction
 

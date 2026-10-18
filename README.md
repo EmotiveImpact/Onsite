@@ -2,6 +2,9 @@
 
 A bots-first Three.js first-person shooter prototype set on a fictional London estate.
 
+Continuing development in Claude? Start with the [Claude handoff](docs/development/CLAUDE-HANDOFF.md)
+for the active WWB/Blender build, launch commands, evidence, remaining work and donor boundaries.
+
 ## Run the playable
 
 Requires Node.js 24 and a desktop WebGL2 browser.
@@ -19,7 +22,9 @@ npm run build
 npm run test:browser  # local server running; Chromium at /usr/bin/chromium
 ```
 
-Set `CHROMIUM_PATH` and `ONSITE_URL` if needed. Browser screenshots and reports go to ignored `test-results/`.
+The active browser check uses `/usr/bin/chromium`; install Chromium there or update the script's
+launch path for another environment. Set `ONSITE_URL` for the server being checked. Browser
+screenshots and reports go to ignored `test-results/`.
 
 The active game uses actual MIT-licensed WWB Player, Arsenal, Bot, Physics, Input, fixed-step loop, effects and round-rule modules, integrated through an ONSITE encounter wrapper. It has three opponents, a 36×30 m London courtyard, rooms, two dogleg stairs and a continuous upper gallery at 3 m. RMB aims, C crouches/slides. No networking. [Donor mapping](docs/development/DONOR-MAP.md) · [As-built layout](docs/development/evidence/as-built.svg) · [Checkpoint / restore](docs/development/CHECKPOINT.md) · [Current handoff](docs/development/HANDOFF.md).
 
