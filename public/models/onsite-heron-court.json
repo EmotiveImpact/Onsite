@@ -1,0 +1,31 @@
+{
+  "source": "assets/blender/onsite-heron-court.blend",
+  "builder": "scripts/build-estate.py",
+  "metres": true,
+  "renderObjects": 6773,
+  "runtimeMeshes": 25,
+  "vertices": 122116,
+  "dressing": {
+    "objects": 869,
+    "pavingSlabs": 600,
+    "grassClumps": 209,
+    "grassBlades": 3404,
+    "paper": 65,
+    "cans": 20,
+    "leaves": 240,
+    "dirtPatches": 28
+  },
+  "homes": {
+    "objects": 4919,
+    "windows": 134,
+    "privateBalconies": 20,
+    "accessibleHomes": 1,
+    "backgroundHouses": 6,
+    "backgroundTowers": 2
+  },
+  "collisionSource": "src/onsite/level.ts",
+  "navigationSource": "src/onsite/navigation.ts",
+  "layoutSha256": "92e33ed5402f14c9169e22565627c21c2f64bd751350cd19cfaaca173ea68c3e",
+  "glbBytes": 17791304,
+  "notes": "Original Blender architecture; separate credited donor prop GLBs. Local vertex occlusion bake. Runtime lights rebuilt in Three.js."
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "asset": "covered_car",
+    "x": 7,
+    "y": 0,
+    "z": -1.3,
+    "height": 1.35,
+    "ry": 0,
+    "collision": true,
+    "size": [
+      1.7177,
+      1.35,
+      4.2022
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "rollershutter_door",
+    "x": 0,
+    "y": 0.04,
+    "z": 1.515,
+    "height": 1.95,
+    "ry": 3.141592653589793,
+    "collision": false,
+    "size": [
+      2.5025,
+      1.95,
+      0.2438
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "metal_trash_can",
+    "x": -11.3,
+    "y": 0,
+    "z": 0.95,
+    "height": 0.95,
+    "ry": 0,
+    "collision": true,
+    "size": [
+      1.5356,
+      0.95,
+      0.431
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "metal_trash_can",
+    "x": -11.3,
+    "y": 0,
+    "z": 1.9,
+    "height": 0.95,
+    "ry": 0.3,
+    "collision": true,
+    "size": [
+      1.5356,
+      0.95,
+      0.431
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "trashbag",
+    "x": -11.15,
+    "y": 0.02,
+    "z": 2.75,
+    "height": 0.48,
+    "ry": 0.2,
+    "collision": false,
+    "size": [
+      0.4427,
+      0.48,
+      0.3881
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "exterior_aircon_unit",
+    "x": -4.6,
+    "y": 4.8,
+    "z": -8.75,
+    "height": 0.65,
+    "ry": 0,
+    "collision": false,
+    "size": [
+      1.2503,
+      0.65,
+      0.2622
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "exterior_aircon_unit",
+    "x": 4.6,
+    "y": 4.8,
+    "z": -8.75,
+    "height": 0.65,
+    "ry": 0,
+    "collision": false,
+    "size": [
+      1.2503,
+      0.65,
+      0.2622
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "concrete_road_barrier_02",
+    "x": 10.25,
+    "y": 3,
+    "z": 0,
+    "height": 0.75,
+    "ry": 1.5707963267948966,
+    "collision": true,
+    "size": [
+      1.0541,
+      0.75,
+      0.2982
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "street_lamp_01",
+    "x": -8,
+    "y": 0,
+    "z": -4.9,
+    "height": 4.2,
+    "ry": 0,
+    "collision": false,
+    "size": [
+      0.7623,
+      4.2,
+      0.4179
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "street_lamp_01",
+    "x": 8,
+    "y": 0,
+    "z": 4.9,
+    "height": 4.2,
+    "ry": 3.141592653589793,
+    "collision": false,
+    "size": [
+      0.7623,
+      4.2,
+      0.4179
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "trashbag",
+    "x": -11.2,
+    "y": 0.03,
+    "z": 3.1,
+    "height": 0.62,
+    "ry": 1.7,
+    "collision": false,
+    "size": [
+      0.5719,
+      0.62,
+      0.5013
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "trashbag",
+    "x": -10.8,
+    "y": 0.03,
+    "z": 2.65,
+    "height": 0.42,
+    "ry": -0.8,
+    "collision": false,
+    "size": [
+      0.3874,
+      0.42,
+      0.3396
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "trashbag",
+    "x": -11.5,
+    "y": 0.03,
+    "z": 3.6,
+    "height": 0.5,
+    "ry": 0.6,
+    "collision": false,
+    "size": [
+      0.4612,
+      0.5,
+      0.4043
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "trashbag",
+    "x": 10.7,
+    "y": 0.03,
+    "z": -7.8,
+    "height": 0.48,
+    "ry": 2.4,
+    "collision": false,
+    "size": [
+      0.4427,
+      0.48,
+      0.3881
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "cardboard_box_01",
+    "x": -10.9,
+    "y": 0.03,
+    "z": 3.8,
+    "height": 0.43,
+    "ry": 0.24,
+    "collision": false,
+    "size": [
+      0.4882,
+      0.43,
+      0.6535
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "cardboard_box_01",
+    "x": 10.8,
+    "y": 0.03,
+    "z": -8.2,
+    "height": 0.55,
+    "ry": 1.1,
+    "collision": false,
+    "size": [
+      0.6244,
+      0.55,
+      0.8359
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "old_tyre",
+    "x": 8.4,
+    "y": 0.03,
+    "z": -3.5,
+    "height": 0.3,
+    "ry": 0.45,
+    "collision": false,
+    "size": [
+      0.3,
+      0.3,
+      0.0825
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "rusted_wheel_rim_01",
+    "x": 8.8,
+    "y": 0.03,
+    "z": -3.9,
+    "height": 0.24,
+    "ry": -0.8,
+    "collision": false,
+    "size": [
+      0.2437,
+      0.24,
+      0.093
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "cement_bag",
+    "x": -10.8,
+    "y": 0.03,
+    "z": -7.8,
+    "height": 0.23,
+    "ry": 0.4,
+    "collision": false,
+    "size": [
+      0.5912,
+      0.23,
+      0.8944
+    ],
+    "source": "public/models/donors/provenance.json"
+  },
+  {
+    "asset": "wooden_crate_02",
+    "x": 10,
+    "y": 0.04,
+    "z": 0,
+    "height": 0.65,
+    "ry": 0,
+    "collision": false,
+    "size": [
+      0.7413,
+      0.65,
+      1.6298
+    ],
+    "source": "public/models/donors/provenance.json"
+  }
+]

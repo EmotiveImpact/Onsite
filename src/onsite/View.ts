@@ -1,0 +1,125 @@
+import * as THREE from 'three'
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
+import {RGBELoader} from 'three/addons/loaders/RGBELoader.js'
+import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js'
+import dressing from './dressing.json'
+import {donorRifle} from './DonorRifle'
+import type {Encounter} from './Encounter'
+
+/** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
+export class View {
+ readonly renderer:THREE.WebGLRenderer; readonly scene=new THREE.Scene(); readonly camera=new THREE.PerspectiveCamera(74,1,.06,160);
+ readonly vmScene=new THREE.Scene(); readonly vmCamera=new THREE.PerspectiveCamera(52,1,.025,8);
+ readonly software:boolean; readonly mats:Record<string,THREE.MeshStandardMaterial>={}; readonly ready:Promise<THREE.Object3D>;
+ private rifle!:THREE.Object3D;
+ private activeRifle?:ReturnType<typeof donorRifle>;
+ constructor(canvas:HTMLCanvasElement){
+  const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
+  this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
+  probe?.getExtension('WEBGL_lose_context')?.loseContext();
+  this.renderer=new THREE.WebGLRenderer({canvas,antialias:!this.software});
+  this.renderer.info.autoReset=false;this.renderer.setPixelRatio(this.software?.5:Math.min(devicePixelRatio,1.5));
+  this.renderer.shadowMap.enabled=!this.software;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
+  this.scene.background=new THREE.Color('#60778c');this.scene.fog=new THREE.FogExp2('#516b81',.013);
+  // Keep the credited HDRI for lighting; its rural field is not London's skyline.
+  const skyGeo=new THREE.SphereGeometry(120,24,12),skyColors:number[]=[];
+  const skyTop=new THREE.Color('#344d68'),skyHorizon=new THREE.Color('#939b9e');
+  for(let i=0;i<skyGeo.attributes.position.count;i++){const y=skyGeo.attributes.position.getY(i)/120,c=skyHorizon.clone().lerp(skyTop,Math.max(0,y));skyColors.push(c.r,c.g,c.b)}
+  skyGeo.setAttribute('color',new THREE.Float32BufferAttribute(skyColors,3));
+  this.scene.add(new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false})));
+  this.camera.rotation.order='YXZ';this.scene.add(this.camera);
+  this.scene.add(new THREE.HemisphereLight('#b4d0ee','#323e43',1.35));
+  const sun=new THREE.DirectionalLight('#b7cce2',1.35);sun.position.set(-18,25,-14);sun.castShadow=true;
+  sun.shadow.mapSize.set(2048,2048);sun.shadow.normalBias=.025;Object.assign(sun.shadow.camera,{left:-25,right:25,top:25,bottom:-25,near:1,far:90});this.scene.add(sun);
+  this.vmScene.add(this.vmCamera,new THREE.HemisphereLight('#bbd4ed','#222c36',1.4));
+  const key=new THREE.DirectionalLight('#d9e5ef',1.7);key.position.set(-1,2,3);this.vmScene.add(key);
+  this.ready=this.load();this.resize();window.addEventListener('resize',()=>this.resize());
+ }
+ private async load(){
+  const loader=new THREE.TextureLoader(),pending:Promise<unknown>[]=[];
+  for(const name of ['brick','stock','concrete','asphalt','paving','steel']){
+   const mat=new THREE.MeshStandardMaterial({roughness:1,vertexColors:true});this.mats[name]=mat;
+   if(name==='stock'){
+    pending.push(loader.loadAsync('/materials/homes/stock-color.webp').then(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=this.software?2:4;t.colorSpace=THREE.SRGBColorSpace;mat.map=t;mat.roughness=.93;mat.needsUpdate=true}));continue;
+   }
+   for(const kind of ['color','normal','arm'])pending.push(loader.loadAsync(name==='asphalt'&&kind==='color'?'/materials/detail/generated-asphalt-color.webp':`/materials/pbr/${name==='stock'?'brick':name}-${kind}.webp`).then(t=>{
+    t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=this.software?2:4;
+    if(kind==='color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(kind==='normal'){mat.normalMap=t;mat.normalScale.set(.45,.45)}else{mat.roughnessMap=t;mat.aoMap=t;if(name==='steel'){mat.metalnessMap=t;mat.metalness=.75}}
+    if(name==='stock')mat.color.set('#b9ad8e');if(name==='asphalt')mat.roughness=.55;mat.needsUpdate=true;
+   }));
+  }
+  const colors:Record<string,string>={dark:'#26323b',glass:'#364f64',lit:'#ffe3ad',trim:'#c0c2b7',soil:'#30271b',leaves:'#3e502b',wood:'#554335',paint:'#284952',wet:'#314454',amber:'#a47125',grass:'#657044',litter:'#b6a88b',rubbish_metal:'#808785',mud:'#ffffff',leak:'#ffffff',paint_worn:'#c6ac72',contact:'#20221b',plaster:'#c4bb9d',fabric:'#aaaa9f',roof:'#3b444b'};
+  for(const [name,color]of Object.entries(colors))this.mats[name]=new THREE.MeshStandardMaterial({color,vertexColors:true,roughness:name==='wet'?.12:name==='glass'?.18:.8,metalness:name==='glass'||name==='wet'?.45:0});
+  this.mats.lit.emissive.set('#ffb35b');this.mats.lit.emissiveIntensity=1.2;
+  this.mats.grass.side=THREE.DoubleSide;this.mats.litter.side=THREE.DoubleSide;
+  this.mats.rubbish_metal.metalness=.65;this.mats.rubbish_metal.roughness=.65;
+  this.mats.contact.transparent=true;this.mats.contact.depthWrite=false;this.mats.contact.side=THREE.DoubleSide;this.mats.contact.polygonOffset=true;this.mats.contact.polygonOffsetFactor=-2;
+  for(const [name,asset]of [['mud','Ground110'],['leak','Leaking003']]){
+   const mat=this.mats[name];mat.transparent=true;mat.depthWrite=false;mat.alphaTest=.025;mat.polygonOffset=true;mat.polygonOffsetFactor=-1;mat.side=THREE.DoubleSide;
+   for(const channel of ['Color','NormalGL','Roughness'])pending.push(loader.loadAsync(`/materials/detail/${asset}-${channel==='Color'&&name==='leak'?'ColorA':channel}.webp`).then(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;if(channel==='Color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(channel==='NormalGL'){mat.normalMap=t;mat.normalScale.set(.3,.3)}else mat.roughnessMap=t;mat.needsUpdate=true}));
+  }
+  const gltf=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+  const [estate,character,rifle]=await Promise.all([
+   gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
+   ...pending,this.props(gltf),this.environment()
+  ]);
+  estate.scene.name='ONSITE / Blender Heron Estate';
+  estate.scene.traverse(o=>{if(o instanceof THREE.Mesh){
+   const old=o.material as THREE.MeshStandardMaterial,name=old.name;
+   o.material=this.mats[name]??old;o.castShadow=true;o.receiveShadow=true;
+   if(name==='wet')o.castShadow=false;
+  }});
+  this.scene.add(estate.scene);this.rifle=rifle.scene;this.signage();return character.scene;
+ }
+ installWeapon(g:Encounter){this.activeRifle=donorRifle(this.rifle,g.fx.flashTexture,g.fx.flameTexture);g.arsenal.installRifle(this.activeRifle);this.vmCamera.add(g.arsenal.holder,g.arsenal.muzzleLight)}
+ weaponProbe(){const vm=this.activeRifle;if(!vm)return null;const sight=vm.root.getObjectByName('RearIronSight')!.getWorldPosition(new THREE.Vector3()).project(this.vmCamera),hand=vm.root.getObjectByName('Hand_L')!.getWorldPosition(new THREE.Vector3()),grip=vm.mag!.getObjectByName('MagazineGripSocket')!.getWorldPosition(new THREE.Vector3());return {name:vm.root.name,sightNdc:sight.toArray(),magazine:vm.mag!.position.toArray(),handToMagazine:hand.distanceTo(grip),finite:vm.root.matrixWorld.elements.every(Number.isFinite)}}
+ private async environment(){
+  const hdr=await new RGBELoader().loadAsync('/models/donors/bambanani_sunset_2k.hdr');hdr.mapping=THREE.EquirectangularReflectionMapping;
+  const pm=new THREE.PMREMGenerator(this.renderer),env=pm.fromEquirectangular(hdr).texture;
+  this.scene.environment=env;this.scene.environmentIntensity=.42;
+  this.scene.backgroundRotation.y=1.1;this.scene.environmentRotation.y=1.1;
+  this.vmScene.environment=env;this.vmScene.environmentIntensity=.6;pm.dispose();
+ }
+ private async props(loader:GLTFLoader){
+  const sources=new Map<string,THREE.Object3D>();
+  await Promise.all([...new Set(dressing.map(p=>p.asset))].map(async name=>{sources.set(name,(await loader.loadAsync(`/models/donors/${name}.glb`)).scene)}));
+  const place=(source:THREE.Object3D,x:number,y:number,z:number,height:number,ry:number)=>{
+   const m=source.clone(true),bounds=new THREE.Box3().setFromObject(m),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3()),k=height/size.y;
+   m.scale.multiplyScalar(k);m.position.set(-center.x*k,-bounds.min.y*k,-center.z*k);
+   const root=new THREE.Group();root.name='Donor / '+source.name;root.add(m);root.position.set(x,y,z);root.rotation.y=ry;this.scene.add(root);
+   m.traverse(o=>{if(o instanceof THREE.Mesh){o.castShadow=true;o.receiveShadow=true}});
+  };
+  dressing.forEach(p=>place(sources.get(p.asset)!,p.x,p.y,p.z,p.height,p.ry));
+  const [box,light,bench]=await Promise.all(['ph-utility_box_02','ph-security_light','estate-bench'].map(n=>loader.loadAsync('/models/'+n+'.glb')));
+  for(const [x,z,ry]of [[-11.5,-1.7,Math.PI/2],[11.5,1.7,-Math.PI/2]])place(box.scene,x,0,z,1.3,ry);
+  for(const x of [-6,6])place(light.scene,x,2.1,-8.8,.4,0);
+  for(const x of [-7,7])place(bench.scene,x,0,7.8,1.1,Math.PI);
+ }
+ private sign(text:string,x:number,y:number,z:number,w:number,ry=0){
+  const c=document.createElement('canvas');c.width=1024;c.height=128;const ctx=c.getContext('2d')!;
+  ctx.fillStyle='#18282d';ctx.fillRect(0,0,1024,128);ctx.fillStyle='#eee5d1';ctx.font='600 62px sans-serif';ctx.textAlign='center';ctx.fillText(text,512,85);
+  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(w,w/8),new THREE.MeshStandardMaterial({map:t,roughness:.8}));m.position.set(x,y,z);m.rotation.y=ry;this.scene.add(m);
+ }
+ private signage(){
+  this.sign('HERON COURT / SE15',0,5.2,-8.84,5);this.sign('THE CORNER / OFF LICENCE',6,2.5,8.84,4.4,Math.PI);
+  this.sign('01 / HERON COURT',-9,2.45,-8.84,1.6);
+  this.sign('STAIR A / 01—12',-11.83,2.5,-4.1,1.4,Math.PI/2);this.sign('STAIR B / 13—24',11.83,2.5,4.1,1.4,-Math.PI/2);
+  this.sign('HERON / MAINTENANCE',0,1.9,1.58,2.5);
+  // Four local pools give readable warm/cool separation without 24 per-pixel lights.
+  for(const [x,y,z]of [[-8,3.4,-4.9],[8,3.4,4.9],[-6,2.3,-8.5],[6,2.3,8.5]]){
+   const l=new THREE.PointLight('#ffad52',22,9,2);l.position.set(x,y,z);this.scene.add(l);
+  }
+  for(const x of [-8.7,-16]){const lamp=new THREE.PointLight('#ffdcaa',14,5.5,2);lamp.position.set(x,2.35,-12.5);this.scene.add(lamp)}
+ }
+ render(g:Encounter,alpha:number,dt:number,look:{x:number;y:number},overview=false){
+  g.player.eye(alpha,this.camera.position);g.audio.setListener(this.camera.position,g.player.forward(new THREE.Vector3()));
+  this.camera.rotation.set(g.player.pitch+g.arsenal.punch.pitch,g.player.yaw+g.arsenal.punch.yaw,g.arsenal.punch.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
+  g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
+  if(overview){this.camera.position.set(8.2,5.5,8.1);this.camera.lookAt(-1,3,-6);this.camera.fov=74;this.camera.updateProjectionMatrix()}
+  this.renderer.info.reset();this.renderer.autoClear=true;this.renderer.render(this.scene,this.camera);
+  if(!overview){this.renderer.autoClear=false;this.renderer.clearDepth();this.renderer.render(this.vmScene,this.vmCamera)}this.renderer.autoClear=true;
+ }
+ resize(){this.renderer.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
+}

@@ -1,0 +1,33 @@
+{
+  "retrieved": "2026-10-18",
+  "references": [
+    {
+      "page": "https://en.wikipedia.org/wiki/File:Dawson's_Heights.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Dawson%27s_Heights.jpg",
+      "bytes": 454718,
+      "use": "Visual study only; no photograph pixels, textures or meshes imported into runtime.",
+      "sha256": "ae4bca00e18d395e135a34321999d9437b02be7559f6431ec163f49558e0a7cd"
+    },
+    {
+      "page": "https://en.wikipedia.org/wiki/File:Dawsons-Heights-Overhill-Road-East-Dulwich-South-London-2008.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Dawsons-Heights-Overhill-Road-East-Dulwich-South-London-2008.jpg",
+      "bytes": 1276697,
+      "use": "Visual study only; no photograph pixels, textures or meshes imported into runtime.",
+      "sha256": "ced405d64f140000daa8229c9c79391da6288b2991371fb24097b3adc8b59018"
+    },
+    {
+      "page": "https://en.wikipedia.org/wiki/File:The_Brandon_Estate_(7327528790).jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/28/The_Brandon_Estate_%287327528790%29.jpg",
+      "bytes": 4432923,
+      "use": "Visual study only; no photograph pixels, textures or meshes imported into runtime.",
+      "sha256": "174b84d5f8f60e86cdd7c0df5121fb85a72cb93e7be3f0d4e8f35ed856a28e46"
+    },
+    {
+      "page": "https://en.wikipedia.org/wiki/File:Concrete_in_the_Brandon_estate.jpg",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Concrete_in_the_Brandon_estate.jpg",
+      "bytes": 6759026,
+      "use": "Visual study only; no photograph pixels, textures or meshes imported into runtime.",
+      "sha256": "65c834cf0f35ed9c4fefd8b533153e75ee3620bb381d345ff70c96162d05bbe8"
+    }
+  ]
+}
