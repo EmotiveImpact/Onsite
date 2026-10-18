@@ -5,3 +5,6 @@ test-results/
 
 # Local study repositories; never ship or recursively track
 research/reference-clones/
+
+__pycache__/
+*.pyc

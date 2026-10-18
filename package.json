@@ -7,13 +7,14 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts",
+    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts",
     "test:browser": "node scripts/verify-encounter.mjs",
     "typecheck": "tsc --noEmit",
     "test:legacy": "node --test --test-isolation=none tests/simulation.test.js",
     "test:browser:legacy": "node scripts/browser-check.mjs",
     "evidence:layout": "tsx scripts/layout-evidence.ts",
-    "evidence:route": "node scripts/capture-route.mjs"
+    "evidence:route": "node scripts/capture-route.mjs",
+    "assets:estate": "npm run evidence:layout && blender -b --python scripts/build-estate.py && npm run evidence:layout && blender -b --python scripts/export_estate.py"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",

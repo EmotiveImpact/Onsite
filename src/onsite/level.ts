@@ -1,5 +1,6 @@
 // Original ONSITE layout transcribed from the user-supplied proposed floor plans.
 // All dimensions metres, Y-up; render detail is separate from these collision solids.
+import dressing from './dressing.json'
 export type Solid={id:string;x:number;y:number;z:number;w:number;h:number;d:number;mat:string}
 export const solids:Solid[]=[];
 export const add=(id:string,x:number,y:number,z:number,w:number,h:number,d:number,mat='concrete')=>{const s={id,x,y,z,w,h,d,mat};solids.push(s);return s};
@@ -39,5 +40,7 @@ for(const sign of [1,-1]){
 }
 for(const [x,z,w,d]of [[-5,-4,3,1.5],[5,-5,3,1.5],[-6,4,3,1.5],[6,4,3,1.5]])add('low-cover',x,.5,z,w,1,d);
 add('central-screen',0,1.05,0,3,2.1,3,'steel');add('east-screen',10,1.05,0,.6,2.1,2.5,'steel');
+// Bounds measured by Blender from the placed donor model, separate from render triangles.
+for(const p of dressing){if(!p.collision)continue;const [w,h,d]=p.size,c=Math.abs(Math.cos(p.ry)),s=Math.abs(Math.sin(p.ry));add('dress-'+p.asset,p.x,p.y+h/2,p.z,w*c+d*s,h,d*c+w*s,'steel')}
 export const spawn={x:-9,y:.04,z:12};
 export const botSpawns=[{x:15,y:.04,z:-6},{x:12,y:.04,z:-12},{x:6,y:3.04,z:-7.5}];

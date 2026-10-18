@@ -13,6 +13,8 @@ import { noiseTexture } from './library'
  * Local frame: barrel points -Z, up +Y, right +X, metres.
  */
 export type ViewModel = {
+  /** Optional original adapter for a licensed skinned viewmodel. Presentation only. */
+  animatePose?: (reloadProgress:number)=>void
   root: THREE.Group
   /** Muzzle tip (flash + tracer origin). */
   muzzle: THREE.Object3D

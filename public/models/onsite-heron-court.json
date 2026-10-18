@@ -1,0 +1,13 @@
+{
+  "source": "assets/blender/onsite-heron-court.blend",
+  "builder": "scripts/build-estate.py",
+  "metres": true,
+  "renderObjects": 2145,
+  "runtimeMeshes": 14,
+  "vertices": 66016,
+  "collisionSource": "src/onsite/level.ts",
+  "navigationSource": "src/onsite/navigation.ts",
+  "layoutSha256": "b50ac26598ad5448274cd43831761328d414e1e2c84a3938ef30f568419c0ada",
+  "glbBytes": 7934856,
+  "notes": "Original Blender architecture; separate credited donor prop GLBs. Local vertex occlusion bake. Runtime lights rebuilt in Three.js."
+}

@@ -113,6 +113,11 @@ export class Arsenal {
   }
 
   private tripoRocket = false
+  /** Replace only the visual rifle. Ammo, hitscan, recoil and reload ownership stay here. */
+  installRifle(vm:ViewModel):void {
+    this.holder.remove(this.vms.rifle.root);this.vms.rifle=vm;
+    vm.magRest??=vm.mag?.position.clone();vm.root.visible=this.current==='rifle';this.holder.add(vm.root);
+  }
   /** Swap in the scanned launcher once stage 3 has streamed it (keeps the procedural stand-in until then). */
   upgradeRocket(): void {
     // ONSITE does not load uncleared donor assets.
@@ -532,6 +537,7 @@ export class Arsenal {
         root.rotation.z += 0.55 * inOut
         root.rotation.x += 0.18 * inOut
         root.position.y -= 0.04 * inOut
+        if(vm.animatePose){root.position.y+=.15*inOut;root.position.z-=.25*inOut;root.rotation.x-=.12*inOut;root.rotation.y+=.35*inOut;root.rotation.z-=.9*inOut}
         if (vm.mag) {
           const out = t < 0.18 ? 0 : t < 0.4 ? (t - 0.18) / 0.22 : t < 0.52 ? 1 : t < 0.7 ? 1 - (t - 0.52) / 0.18 : 0
           vm.mag.position.y -= out * 0.32
@@ -566,6 +572,7 @@ export class Arsenal {
       let i=0;while(i<keys.length-2&&u>keys[i+1][0])i++;
       const a=keys[i],b=keys[i+1],t=THREE.MathUtils.smoothstep(u,a[0],b[0]);hand.position.set(a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t,a[3]+(b[3]-a[3])*t);
     }}
+    vm.animatePose?.(this.reloading>0?1-this.reloading/this.reloadTotal:-1)
     // Muzzle flash + light.
     this.flashT = Math.max(0, this.flashT - dt)
     vm.flash.visible = this.flashT > 0

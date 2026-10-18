@@ -67,3 +67,12 @@ The hooded opponent is a stylised placeholder with black clothing and trainers, 
 IRONLINE: https://github.com/cktang88/3d-fps — requested for contemporary industrial detail, weapon presentation and elevated walkway design. Separate code/asset licensing review is pending. A package ISC declaration is not evidence that every bundled asset is cleared. No IRONLINE code or assets have been imported into this prototype.
 
 The two ignored local study clones (IRONLINE and Open Claudefare), their pinned commits and additional licence caveats are recorded in [research notes](../../research/README.md) and [source manifest](../../research/SOURCES.json). Neither is bundled or imported. Open Claudefare is an unlicensed personal mirror; no reuse grant is assumed.
+
+## Blender/donor visual pass, 18 October 2026
+
+Superseding earlier statements that no IRONLINE art was imported: selected CC BY first-person M4/arms
+and CC0 props/HDRI are now active. See [the shipped detailed credits](../../public/licenses/DONOR-ASSETS.md)
+and [per-file provenance](../../public/models/donors/provenance.json), including original API metadata
+and hashes. No Fab motion data or IRONLINE engine code is copied. `DonorRifle.ts` and the Blender
+estate generation/export scripts are original adapters. The level is editable in the new `.blend`;
+its render export excludes collision/navigation guides and uses the existing PBR library.

@@ -1,0 +1,99 @@
+{
+  "checks": [
+    "All materials/models loaded",
+    "Pointer lock and mouse look",
+    "Imported rifle and hands loaded; ADS sight aligns to centre",
+    "WWB automatic fire, recoil and timed reload",
+    "Pause/resume freezes simulation",
+    "Jump and landing",
+    "Walk through lobby doorway into court",
+    "Combat result: 2 opponents down, health 0",
+    "Player damage and death screen"
+  ],
+  "errors": [],
+  "failed": [],
+  "state": {
+    "tick": 2449,
+    "status": "lost",
+    "time": 40.81666666666563,
+    "capture": 0,
+    "player": {
+      "position": {
+        "x": 1.3844478130340576,
+        "y": 0.020098500959284116,
+        "z": 2.1093780994415283
+      },
+      "yaw": -0.9761539891498482,
+      "pitch": -0.02428829614736165,
+      "health": 0,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 24,
+      "reserve": 96,
+      "reloadRemaining": 0,
+      "ads": 0.9999999999999971
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 10.700739866821095,
+          "y": 0.01967429293319578,
+          "z": 0.940301675349474
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": 9.004848554730415,
+          "y": 0.019985299426771186,
+          "z": -3.062437640503049
+        },
+        "health": 37,
+        "alive": true,
+        "state": "engage",
+        "velocity": {
+          "x": -0.8673432449783388,
+          "y": 0,
+          "z": -1.319705011306635
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 12.488490129821002,
+          "y": 3.020150204833335,
+          "z": 3.831006115011405
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 60,
+      "hits": 11,
+      "headshots": 1,
+      "multiKills": 0,
+      "bestStreak": 2,
+      "damageDealt": 263
+    },
+    "visible": [
+      2
+    ]
+  }
+}

@@ -58,3 +58,15 @@ The image above is the original concept art, not a screenshot of the current pla
 ## 30 texture candidates
 
 [Browse the texture gallery](docs/concepts/TEXTURE-PACK-30.md): brick, concrete, roads, paving, metals, black clothing fabrics, trainer materials, timber and ground cover. These are colour images awaiting seamless-repeat checks and PBR material authoring.
+
+## Blender level and donor art
+
+The current estate is modelled in [the editable Blender file](assets/blender/onsite-heron-court.blend).
+See [the level workflow](docs/development/BLENDER-LEVEL.md) for rebuilding, exporting and collision ownership.
+The active game combines WWB gameplay with individually credited IRONLINE weapon/hand and environment models.
+[Asset credits](public/licenses/DONOR-ASSETS.md) are also available in the game menu.
+
+Actual runtime evidence: [courtyard and rifle](docs/development/evidence/courtyard-weapon.png),
+[upper gallery](docs/development/evidence/upper-route.png),
+[gameplay video](docs/development/evidence/combat-input.webm),
+[validation and measured limitations](docs/development/CURRENT-VALIDATION.md).

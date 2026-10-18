@@ -8,7 +8,7 @@ Active: `index.html` → `src/onsite/main.ts`. Actual WWB runtime modules in `sr
 
 ## Recovery and preserved work
 
-[CHECKPOINT.md](CHECKPOINT.md) records the verified ~993 MB pre-integration archive outside this checkout and safe restore commands. All original concept art, generated images, original Blender sources, original PBR sets and tests remain. No merge/push/deploy. Three full reference trees remain ignored in `research/reference-clones`, with exact commits in `research/SOURCES.json`. Never recursively stage that folder. The local archive is not remotely backed up.
+[CHECKPOINT.md](CHECKPOINT.md) records the verified ~993 MB pre-integration archive outside this checkout and safe restore commands. The full pre-visual-pass playable is also committed as `d5faf61`. All original concept art, generated images, original Blender sources, original PBR sets and tests remain. No merge/push/deploy. Three full reference trees remain ignored in `research/reference-clones`, with exact commits in `research/SOURCES.json`. Never recursively stage that folder. The local archive is not remotely backed up.
 
 ## Current interaction
 
@@ -18,9 +18,26 @@ Bot navigation is original layered geometry-derived nodes at 0.375 m horizontal 
 
 ## Art and presentation
 
-WWB procedural rifle and black gloves/sleeves replace the old basic weapon. Original additional support-hand magazine choreography; separate 52-degree viewmodel camera; ADS sight centred independently of world FOV. Preserve shot timing in the fixed-step Arsenal, never put combat decisions into animation callbacks. IRONLINE was studied, but no code/assets/tracks were copied; keep its mixed provenance caveats.
+The active architecture is now an actual Blender-authored level: `assets/blender/onsite-heron-court.blend`
+→ `public/models/onsite-heron-court.glb`. Read [BLENDER-LEVEL.md](BLENDER-LEVEL.md) before editing.
+2,145 editable architecture objects export to 14 material meshes, with metric UVs and vertex occlusion.
+Editable render, collision guides, navigation guides, donor dressing and review-lighting collections
+are separate. Runtime lighting is rebuilt in Three.js; Blender lamps do not automatically transfer.
 
-Original Blender opponent remains stylised with simple limb motion, not a production character rig. Original benches are reused. Two CC0 Poly Haven GLBs (utility box/security light) were imported through the audited WWB fetch/build trail. Five direct CC0 PBR sets serve six roles, including tinted stock brick. Records in `public/materials/pbr/provenance.json` and `public/models/polyhaven-provenance.json`. No donor Tripo/Manus models, audio, rigs or clips. See public licence notices.
+The first-person model is IRONLINE's M4A1 + DJMaesen/Cransh posed hands, with author/source/CC BY
+records and both external WebP arm textures. `src/onsite/DonorRifle.ts` adapts the art to WWB's Arsenal;
+ammo, hitscan, timing, recoil and reload completion remain WWB-owned. The original two-bone reload
+reach uses no Fab motion tracks. The original procedural weapon stays available in the source.
+
+Seven individually verified Poly Haven props and the Bambanani Sunset HDRI were imported through
+IRONLINE. The car, bins and gallery barrier have colliders measured by Blender; routes must remain
+height-aware. `dressing.json` drives both visible placement and separate collider dimensions. Existing
+WWB-sourced utility boxes/security lights and original Blender benches remain. Exact notices at
+`public/licenses/DONOR-ASSETS.md`, provenance/hashes at `public/models/donors/provenance.json`.
+The original 118 MB PNG reference pack is preserved outside runtime delivery.
+
+The stylised original hooded opponent remains unfinished; do not claim a donor character rig was
+integrated. No Claudefare implementation, Fab clips, donor Tripo/Manus models or donor audio imported.
 
 ## Commands
 
@@ -29,7 +46,7 @@ Node 24, Chromium, Blender 4.3.2 available in this session. `npm ci`; `npm run d
 ## Highest-value next work
 
 1. Controlled real-GPU profiling and player feedback. Cloud SwiftShader is slow; no smooth-play claim. Current adaptive software mode disables MSAA, shadows and world point lights and uses half pixel ratio. Hardware mode retains shadows/local lighting. Distinguish both visually and quantitatively.
-2. Art pass against the original concept: stronger estate facade composition, local grime, planted cover, more convincing black-clothed character rig and first-person sleeves/hand anatomy. Current result is improved but not concept-art fidelity.
+2. Art pass against the original concept: local grime and facade variation, a convincing black-clothed character rig, and improved first-person sleeve cuffs/hand anatomy. Planted cover and detailed facade/rail components are implemented; current result is improved but not concept-art fidelity.
 3. Human combat tuning: three-bot pressure, readable reaction windows, recoil recovery, movement speed and clear hit/death feedback. Browser automation proves mechanics, not satisfaction.
 4. Expand physical navigation regression scenarios for multi-bot separation at doorways, cover, stairs and damage while transitioning floors. Existing tests cover isolated ascent/descent; not every crowd case.
 5. Reduce the large Rapier/Three.js JS payload and unused preserved legacy runtime asset delivery. Networking stays deferred. Modern Claudefare is an unlicensed reference only; architecture notes in DONOR-MAP.

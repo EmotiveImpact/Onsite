@@ -1,12 +1,12 @@
 # Local reference repositories
 
-Pinned URLs, commits and checkout-relative paths are in [SOURCES.json](SOURCES.json). Both full trees are intentionally ignored by the root `.gitignore`; only these notes and the manifest belong in ONSITE history. Neither tree is a submodule, a runtime dependency or part of `public/`. No source or asset from these two repositories has been imported into the playable.
+Pinned URLs, commits and checkout-relative paths are in [SOURCES.json](SOURCES.json). All three full trees are intentionally ignored by the root `.gitignore`; only these notes and the manifest belong in ONSITE history. No tree is a submodule, a runtime dependency or part of `public/`. IRONLINE now contributes individually reviewed art, recorded in `public/models/donors/provenance.json`; the unlicensed mirror remains reference-only.
 
 ## IRONLINE
 
 https://github.com/cktang88/3d-fps at `130ac2a5c856401ec36e7d35afcfefe40c5801f4`, locally `research/reference-clones/ironline`.
 
-The package declares ISC, but no root project licence/notice was found. That declaration does not clear bundled models, textures, sounds, fonts or animations. Further code and per-asset review is required before reuse. This clone was made without hardlinks from the previously fetched study copy, with its origin set to the upstream URL.
+The package declares ISC, but no root project licence/notice was found. That declaration does not clear bundled models, textures, sounds, fonts or animations. Selected M4/arm, Poly Haven prop and HDRI assets have now been reviewed against original author metadata and imported with notices. Other code/assets still require their own review. This clone was made without hardlinks from the previously fetched study copy, with its origin set to the upstream URL.
 
 Useful references: `docs/screenshots/catwalk.jpg`, `docs/screenshots/action.jpg`, `docs/FP_FRAMING.md` and `docs/QUALITY_BAR.md`. Industrial beams, railings, inset facades and elevated routes suggest ways to add depth to ONSITE's London estate. Weapon framing notes discuss a separate viewmodel field of view and keeping sights readable without obscuring the centre. These are visual/design observations, not permission to copy assets or code. The package uses Three.js ^0.186.1 and Rapier ^0.21.0, and lists Recast navigation packages; evaluate navigation independently for stacked floors before considering adoption.
 
@@ -26,4 +26,4 @@ Verify locally with `git -C <localPath> rev-parse HEAD`, `git -C <localPath> sta
 
 ## WWB integration update
 
-A third ignored clone, `research/reference-clones/wwb`, is pinned to `4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1`. Actual gameplay modules are now integrated in `src/wwb`; read [DONOR-MAP.md](../docs/development/DONOR-MAP.md). Two CC0 Poly Haven props have separately recorded provenance. This changes no rights assumptions for IRONLINE or the unlicensed mirror.
+A third ignored clone, `research/reference-clones/wwb`, is pinned to `4cf34e8072ce0985eeae6d41c60c6a15cc4c1dd1`. Actual gameplay modules are now integrated in `src/wwb`; read [DONOR-MAP.md](../docs/development/DONOR-MAP.md). Two CC0 Poly Haven props have separately recorded provenance. IRONLINE asset reuse is separately recorded above; the unlicensed mirror remains excluded.

@@ -11,7 +11,7 @@ const $=(id:string)=>document.getElementById(id)!;
 async function boot(){
  const view=new View($('game') as HTMLCanvasElement);await initPhysics();const model=await view.ready;
  const audio=new Audio(),input=new Input($('game') as HTMLCanvasElement),game=new Encounter(audio,view.scene,view.camera,model);
- view.vmCamera.add(game.arsenal.holder,game.arsenal.muzzleLight);
+ view.installWeapon(game);
  if(view.software)game.fx.group.traverse(o=>{if(o instanceof Object&&'isPointLight' in o)o.visible=false});
  let started=false,paused=true,look={x:0,y:0},last=performance.now();const frames:number[]=[];
  const pause=()=>{paused=true;input.unlockPointer();input.clear();$('pause').hidden=false;loop.paused=true};
@@ -22,7 +22,7 @@ async function boot(){
  input.endFrame();if(game.state==='won'||game.state==='lost'){paused=true;loop.paused=true;input.unlockPointer();$('result').hidden=false;$('result-title').textContent=game.state==='won'?'Site secured.':'Run it back.';$('result-detail').textContent=`${game.match.stats.shots} shots · ${game.match.stats.hits} hits · ${Math.floor(game.time)} seconds`}
  },render:(alpha,dt)=>{
  const now=performance.now(),raw=now-last;last=now;if(started&&!paused){frames.push(raw);if(frames.length>360)frames.shift()}
- view.render(game,alpha,dt,look);look={x:0,y:0};hud();
+ view.render(game,alpha,dt,look,!started);look={x:0,y:0};hud();
  }});loop.paused=true;loop.start();
  function hud(){const p=game.player,a=game.arsenal,n=game.bots.filter(b=>b.alive).length;
  $('health').textContent=String(Math.ceil(p.health));$('health-bar').style.width=`${p.health}%`;$('ammo').textContent=String(a.slot.mag).padStart(2,'0');$('reserve').textContent=String(a.slot.reserve);$('weapon-state').textContent=a.reloading>0?'RELOADING':'ONS-01 / CARBINE';$('score').innerHTML=`${String(3-n).padStart(2,'0')} <i>:</i> <em>${String(n).padStart(2,'0')}</em>`;$('timer').textContent=formatClock(game.match.timeLeft);$('task').textContent=n?'CLEAR THE ESTATE':'HOLD THE COURT';$('task-detail').textContent=n?`${n} opponents · ground + gallery`:`Secure the central court · ${Math.round(game.capture/2.5*100)}%`;$('hitmarker').style.opacity=game.hit>0?'1':'0';$('damage').style.opacity=String(game.hurt*.8);$('crosshair').style.opacity=String(1-a.ads);
@@ -32,7 +32,7 @@ async function boot(){
  window.addEventListener('keydown',e=>{if(e.code==='Escape'&&started&&!paused)pause()});window.addEventListener('blur',()=>{if(started&&!paused)pause()});document.addEventListener('pointerlockchange',()=>{if(!input.locked&&started&&!paused&&game.state==='active')pause()});
  $('sensitivity').oninput=()=>{input.sensitivity=Number(($('sensitivity') as HTMLInputElement).value)};
  $('sound').onchange=()=>audio.setVolumes(0,.6,!($('sound') as HTMLInputElement).checked);
- Object.defineProperty(window,'__onsite',{value:Object.freeze({ready:true,snapshot:()=>({...game.snapshot(),visible:game.bots.filter(b=>b.alive&&game.lineOfSight(game.player.eye(1,view.camera.position.clone()),b.eye)).map(b=>b.id)}),route:(x:number,y:number,z:number)=>game.nav.findPath(game.player.position.x,game.player.position.z,x,z,game.player.position.y,y),metrics:()=>({softwareRenderer:view.software,renderer:view.renderer.getContext().getParameter(view.renderer.getContext().RENDERER),frames:frames.length,meanFrameMs:frames.reduce((a,b)=>a+b,0)/Math.max(1,frames.length),drawCalls:view.renderer.info.render.calls,triangles:view.renderer.info.render.triangles}),nav:()=>({nodes:game.nav.nodes.length})})});
+ Object.defineProperty(window,'__onsite',{value:Object.freeze({ready:true,weaponVisual:()=>view.weaponProbe(),snapshot:()=>({...game.snapshot(),visible:game.bots.filter(b=>b.alive&&game.lineOfSight(game.player.eye(1,view.camera.position.clone()),b.eye)).map(b=>b.id)}),route:(x:number,y:number,z:number)=>game.nav.findPath(game.player.position.x,game.player.position.z,x,z,game.player.position.y,y),metrics:()=>({softwareRenderer:view.software,renderer:view.renderer.getContext().getParameter(view.renderer.getContext().RENDERER),frames:frames.length,meanFrameMs:frames.reduce((a,b)=>a+b,0)/Math.max(1,frames.length),drawCalls:view.renderer.info.render.calls,triangles:view.renderer.info.render.triangles}),nav:()=>({nodes:game.nav.nodes.length})})});
  $('start').removeAttribute('disabled');$('start').innerHTML='ENTER THE ESTATE <span>↗</span>';$('load-status').textContent='Ready · RMB aim · LMB fire · R reload · C crouch';
 }
 boot().catch(e=>{console.error(e);$('load-status').textContent=`Load failed: ${e.message}`});

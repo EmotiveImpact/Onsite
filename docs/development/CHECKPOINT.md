@@ -1,3 +1,10 @@
+# Before Blender/donor visual integration
+
+Full playable checkpoint committed at `d5faf613d8b7a284fc39f7933685de28797781e2` on branch `work`.
+This includes all 125 previously unpublished implementation, asset, test and evidence files.
+No push was made. Inspect with `git show d5faf61`; recover individual files with
+`git show d5faf61:path/to/file` into a separate path. Preserve later work before any restore.
+
 # Before WWB runtime integration
 
 Recoverable archive: `/workspace/checkpoints/onsite-before-wwb-20261018.tar.gz`.

@@ -1,15 +1,16 @@
 {
   "reviewed": "2026-10-18",
-  "policy": "Ignored local study copies. No runtime imports, redistribution, backend integration or recursive staging. Review each code/asset licence before any reuse.",
+  "policy": "Full donor clones stay ignored and outside runtime. Only separately reviewed code/art is copied into src/public with notices and provenance.",
   "sources": [
     {
       "id": "ironline",
       "url": "https://github.com/cktang88/3d-fps",
       "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
       "localPath": "research/reference-clones/ironline",
-      "role": "Visual and architectural study only",
-      "license": "ISC declared in package.json; no root project licence/notice found; asset rights vary and remain unverified",
-      "importedIntoGame": false
+      "role": "Selected art imports and implementation study; no engine merge",
+      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; selected Poly Haven props/HDRI CC0. Other bundled assets remain outside reuse scope.",
+      "importedIntoGame": true,
+      "assetManifest": "public/models/donors/provenance.json"
     },
     {
       "id": "open-claudefare",

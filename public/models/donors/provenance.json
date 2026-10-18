@@ -1,0 +1,845 @@
+[
+  {
+    "file": "models/donors/covered_car.glb",
+    "bytes": 398300,
+    "sha256": "4040024d5ca188eaa592591b6b96ccc027a4024baffbdc50389e6bbd9954833c",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/covered_car/covered_car.glb",
+    "creators": {
+      "MP": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/covered_car",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Covered Car",
+        "type": 2,
+        "authors": {
+          "MP": "All"
+        },
+        "info": null,
+        "staging": null,
+        "date_published": 1700611200,
+        "categories": [
+          "props",
+          "industrial",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "garage",
+          "stored",
+          "vehicle",
+          "car",
+          "workshop",
+          "mechanic",
+          "automotive",
+          "repair shop",
+          "junkyard",
+          "scrapyard"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 12592,
+        "texel_density": 1301.910383709177,
+        "dimensions": [
+          1788.962960243225,
+          4380.25426864624,
+          1411.1130833625793
+        ],
+        "files_hash": "22592d3c2b16533339ed1bf4e4320e25e5a76cf2",
+        "description": "Free 8K model of a car under a worn, dusty fabric cover with natural folds and visible wheels- aged garage/industrial character.",
+        "sponsors": [
+          "121968951",
+          "128081732"
+        ],
+        "category_id": "ce832bb2-6034-5e17-aa05-541bbf248198",
+        "category": "Vehicles & Transport/Road Vehicles/Cars",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "fabric",
+            "rubber",
+            "metal"
+          ]
+        },
+        "img_version": "2b0decc8",
+        "download_count": 35508,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/covered_car.png?width=256&height=256&format=webp&v=2b0decc8"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/rollershutter_door.glb",
+    "bytes": 319048,
+    "sha256": "399eb167fb2517b7091454dccdc8f999199aae15707197007a1e1123d4064865",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/rollershutter_door/rollershutter_door.glb",
+    "creators": {
+      "MP": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/rollershutter_door",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Rollershutter Door",
+        "type": 2,
+        "authors": {
+          "MP": "All"
+        },
+        "info": null,
+        "date_published": 1696982400,
+        "staging": null,
+        "categories": [
+          "structures",
+          "industrial",
+          "buildings",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "urban",
+          "security shutter",
+          "garage door",
+          "shutter door",
+          "warehouse door",
+          "commercial",
+          "roller garage door"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 1104,
+        "texel_density": 3073.578383218323,
+        "dimensions": [
+          3079.9999833106995,
+          300.0857066363096,
+          2399.973489344575
+        ],
+        "files_hash": "4f4b3b132d12aa4253364b988714f8185ed45e19",
+        "description": "Free 8K model of a metal roller shutter door with top housing; realistic worn steel, rivets, dirt streaks and a colorful, graffiti-covered variant.",
+        "category_id": "49d97a62-fac9-5a07-8302-1c233afcf789",
+        "category": "Architecture/Windows & Shutters/Roller Shutters",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "steel"
+          ]
+        },
+        "img_version": "fa17f8b9",
+        "download_count": 5595,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/rollershutter_door.png?width=256&height=256&format=webp&v=fa17f8b9"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/metal_trash_can.glb",
+    "bytes": 839444,
+    "sha256": "431e7dc599b9d9d852b9c33178b1706ec843871d04ac59af1dac17f1909c838b",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/metal_trash_can/metal_trash_can.glb",
+    "creators": {
+      "GurJas Studios": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/metal_trash_can",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Metal Trash Can",
+        "type": 2,
+        "authors": {
+          "GurJas Studios": "All"
+        },
+        "info": null,
+        "date_published": 1695772800,
+        "staging": null,
+        "categories": [
+          "industrial",
+          "containers",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "bin",
+          "rubbish",
+          "garbage",
+          "disposal",
+          "litter",
+          "dumpster",
+          "outdoor trash can",
+          " urban",
+          "utility"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 13960,
+        "texel_density": 3549.006764417269,
+        "dimensions": [
+          1846.9352722167969,
+          556.2898814678192,
+          906.1697272554738
+        ],
+        "files_hash": "3ecbee3adbcc53b4af3c8f010e76e10c5b7558a2",
+        "description": "Free 8K model of a weathered metal trash can with removable lid, ribbed cylindrical body, dents, heavy rust, grime and realistic industrial wear.",
+        "category_id": "9fa7d8d0-1c7b-567d-a382-9dac692c8bbd",
+        "category": "Containers & Storage/Cans, Tins & Bottles/Trash Cans",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "rusted"
+          ],
+          "material": [
+            "metal"
+          ]
+        },
+        "img_version": "8a394a6d",
+        "download_count": 26730,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/metal_trash_can.png?width=256&height=256&format=webp&v=8a394a6d"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/trashbag.glb",
+    "bytes": 259532,
+    "sha256": "1d5e01745e7723b390364816302a7c91c13d7b3056a903b75282883a6b35b87f",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/trashbag/trashbag.glb",
+    "creators": {
+      "Benny Weimer": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/trashbag",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "type": 2,
+        "name": "Trashbag",
+        "categories": [
+          "collection: project_lighthouse",
+          "props"
+        ],
+        "tags": [
+          "garbage bag",
+          "refuse",
+          "street waste",
+          "trash",
+          "street",
+          "scrapyard",
+          "junkyard",
+          "garbage",
+          "bin",
+          "dumpster",
+          "disposal",
+          "litter",
+          "rubbish"
+        ],
+        "description": "Free 8K model of a shiny black trash bag, crumpled and heavy with visible packaging under stretched plastic, rich folds, sharp creases, and grimy wear.",
+        "authors": {
+          "Benny Weimer": "All"
+        },
+        "donated": true,
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 4482,
+        "texel_density": 6746.215197693091,
+        "dimensions": [
+          528.0700623989105,
+          462.893009185791,
+          574.9993845820427
+        ],
+        "date_published": 1780963200,
+        "staging": null,
+        "files_hash": "d291da0b535dffda7f7262b5e9210c93892576f7",
+        "category_id": "bd37d762-aa43-518f-bfac-f5d41da2223d",
+        "category": "Containers & Storage/Bags/Waste Bags",
+        "collections": [
+          "project_lighthouse"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "plastic"
+          ]
+        },
+        "img_version": "f70df19b",
+        "download_count": 2315,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/trashbag.png?width=256&height=256&format=webp&v=f70df19b"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/exterior_aircon_unit.glb",
+    "bytes": 1330484,
+    "sha256": "8e1bb1907de31a0baafb5f09349faf0191dfd003c005ebed8a226bc0eb99dca5",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/exterior_aircon_unit/exterior_aircon_unit.glb",
+    "creators": {
+      "Monsta3D": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/exterior_aircon_unit",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Exterior Aircon Unit",
+        "type": 2,
+        "authors": {
+          "Monsta3D": "All"
+        },
+        "info": null,
+        "date_published": 1692144000,
+        "staging": null,
+        "categories": [
+          "appliances",
+          "industrial",
+          "electronics",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "cooling system",
+          "aircon",
+          "climatecontrol",
+          "ventilation",
+          "utility",
+          "infrastructure"
+        ],
+        "max_resolution": [
+          4096,
+          4096
+        ],
+        "polycount": 18986,
+        "texel_density": 2814.6745239025618,
+        "dimensions": [
+          1799.971342086792,
+          374.15920197963715,
+          927.8970956802368
+        ],
+        "sponsors": [
+          "146648879"
+        ],
+        "files_hash": "afd5b9eb4b3cfc2544044a00f4acb2a92d2f310e",
+        "description": "Free 4K exterior aircon unit model with clean and heavily weathered variants, detailed grille and fan, mounting brackets and realistic rust and chipped paint.",
+        "category_id": "70d46c14-5db7-5598-9e2a-3ff1ce5bd927",
+        "category": "Industrial & Infrastructure/Utility Equipment/Aircon Units",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "weathered"
+          ],
+          "material": [
+            "metal"
+          ]
+        },
+        "img_version": "b4ddc17e",
+        "download_count": 25756,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/exterior_aircon_unit.png?width=256&height=256&format=webp&v=b4ddc17e"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/concrete_road_barrier_02.glb",
+    "bytes": 478744,
+    "sha256": "58d900eef9c7e88a3d7c318fb3ee8b3b16e6585c13813d5af132cc8322b29800",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/concrete_road_barrier_02/concrete_road_barrier_02.glb",
+    "creators": {
+      "Amal Kumar": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/concrete_road_barrier_02",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "lods": true,
+        "name": "Concrete Road Barrier 02",
+        "type": 2,
+        "authors": {
+          "Amal Kumar": "All"
+        },
+        "info": null,
+        "date_published": 1700179200,
+        "staging": null,
+        "categories": [
+          "industrial",
+          "structures",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "road barrier",
+          "traffic barrier",
+          "safety barrier",
+          "wall",
+          "road",
+          "road block",
+          "blockade"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 42578,
+        "texel_density": 3429.2818245393864,
+        "dimensions": [
+          1566.9698119163513,
+          442.20101833343506,
+          1111.9812715332955
+        ],
+        "sponsors": [
+          "146648879"
+        ],
+        "files_hash": "fbcefc03483cf10e19d91653f3f1b10112be436d",
+        "description": "Free 8K model of a weathered concrete road barrier with chipped edges, exposed rebar, rusted lifting hooks and a rough, gritty surface texture.",
+        "category_id": "94693eae-944f-56f4-9456-e7315e67cf46",
+        "category": "Industrial & Infrastructure/Traffic & Safety/Road Barriers",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "weathered"
+          ],
+          "material": [
+            "concrete",
+            "metal"
+          ],
+          "lods": true
+        },
+        "img_version": "08bfc13e",
+        "download_count": 12409,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/concrete_road_barrier_02.png?width=256&height=256&format=webp&v=08bfc13e"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/street_lamp_01.glb",
+    "bytes": 261532,
+    "sha256": "5534b0839c18377a110839107cd7dfabe1f654f5968c397e13f3bec700c6ec52",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/street_lamp_01/street_lamp_01.glb",
+    "creators": {
+      "Josh Dean": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/street_lamp_01",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Street Lamp 01",
+        "type": 2,
+        "authors": {
+          "Josh Dean": "All"
+        },
+        "info": null,
+        "date_published": 1697760000,
+        "staging": null,
+        "categories": [
+          "lighting",
+          "industrial",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "street",
+          "road",
+          "light",
+          "lamppost",
+          "outdoor",
+          "pole",
+          "sidewalk",
+          "night",
+          " urban",
+          "city"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 30610,
+        "texel_density": 3976.4525897344943,
+        "dimensions": [
+          704.3362259864807,
+          386.49316132068634,
+          3870.5554008483887
+        ],
+        "sponsors": [
+          "7934315"
+        ],
+        "files_hash": "002d697fa195d73f627e82804612208853212519",
+        "description": "Free 8K model: ornate cast-iron street lamp with glass panes, exposed bulb, weathered black finish and detailed base, finial and mounting hardware.",
+        "category_id": "ca8e62db-af7b-55a5-b668-48f0f26a1c16",
+        "category": "Lighting/Street & Outdoor/Street Lamps",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "weathered"
+          ],
+          "material": [
+            "metal",
+            "glass"
+          ]
+        },
+        "img_version": "c103ab4f",
+        "download_count": 32166,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/street_lamp_01.png?width=256&height=256&format=webp&v=c103ab4f"
+      },
+      "donorCredits": "README.md#credits--licences; World / Props"
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/m4a1-hands.glb",
+    "bytes": 1497044,
+    "sha256": "f66a03a316e8ac6a1505b21c3c7cf8ad4672fccaf1ce947a9ea5ed33600364fc",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/fp/m4a1.glb",
+    "creators": [
+      "Firewarden3D",
+      "DJMaesen",
+      "Cransh"
+    ],
+    "licence": "CC-BY-4.0",
+    "sources": [
+      "https://sketchfab.com/3d-models/40d8ef818c7549a896371cbb1f64fec6",
+      "https://sketchfab.com/3d-models/9452ce4cddde4110a4fd73e555a8e412",
+      "https://sketchfab.com/3d-models/94be8385c402474cacd39bc096c6ca14",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": [
+        {
+          "uid": "40d8ef818c7549a896371cbb1f64fec6",
+          "name": "M4A1",
+          "license": {
+            "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+            "label": "CC Attribution",
+            "fullName": "Creative Commons Attribution",
+            "requirements": "Author must be credited. Commercial use is allowed.",
+            "url": "http://creativecommons.org/licenses/by/4.0/",
+            "slug": "by"
+          },
+          "user": {
+            "uid": "e132101b8018419294d5423644942eeb",
+            "username": "Firewarden",
+            "displayName": "Firewarden3D",
+            "account": "basic",
+            "profileUrl": "https://sketchfab.com/Firewarden",
+            "avatar": {
+              "uid": "e163299b808847ba9002b0e3a295fce2",
+              "uri": "https://api.sketchfab.com/v3/avatars/e163299b808847ba9002b0e3a295fce2",
+              "images": [
+                {
+                  "width": 32,
+                  "height": 32,
+                  "size": 1835,
+                  "url": "https://media.sketchfab.com/avatars/e163299b808847ba9002b0e3a295fce2/28953f29d7fa426cbaf1fe37d5535c39.png"
+                },
+                {
+                  "width": 48,
+                  "height": 48,
+                  "size": 3336,
+                  "url": "https://media.sketchfab.com/avatars/e163299b808847ba9002b0e3a295fce2/2463f6fece3345f590f7face17db1c7d.png"
+                },
+                {
+                  "width": 90,
+                  "height": 90,
+                  "size": 6736,
+                  "url": "https://media.sketchfab.com/avatars/e163299b808847ba9002b0e3a295fce2/56eeed4e41684d3f8716ab1568d86cdf.png"
+                },
+                {
+                  "width": 100,
+                  "height": 100,
+                  "size": 7390,
+                  "url": "https://media.sketchfab.com/avatars/e163299b808847ba9002b0e3a295fce2/86bcd1428a3e4f4682aa2ee542e663f3.png"
+                }
+              ]
+            },
+            "uri": "https://api.sketchfab.com/v3/users/e132101b8018419294d5423644942eeb"
+          }
+        },
+        {
+          "uid": "9452ce4cddde4110a4fd73e555a8e412",
+          "name": "Fps arms",
+          "license": {
+            "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+            "label": "CC Attribution",
+            "fullName": "Creative Commons Attribution",
+            "requirements": "Author must be credited. Commercial use is allowed.",
+            "url": "http://creativecommons.org/licenses/by/4.0/",
+            "slug": "by"
+          },
+          "user": {
+            "uid": "6a927738448e4f07a920177aab7f7716",
+            "username": "bumstrum",
+            "displayName": "DJMaesen",
+            "account": "basic",
+            "profileUrl": "https://sketchfab.com/bumstrum",
+            "avatar": {
+              "uid": "86bd800397fb455fb38914eb5aa60cb8",
+              "uri": "https://api.sketchfab.com/v3/avatars/86bd800397fb455fb38914eb5aa60cb8",
+              "images": [
+                {
+                  "width": 32,
+                  "height": 32,
+                  "size": 839,
+                  "url": "https://media.sketchfab.com/avatars/86bd800397fb455fb38914eb5aa60cb8/7fa4143fedaa4c39b6ea9dba94e9de27.png"
+                },
+                {
+                  "width": 48,
+                  "height": 48,
+                  "size": 1252,
+                  "url": "https://media.sketchfab.com/avatars/86bd800397fb455fb38914eb5aa60cb8/957ad024d1c94ab8a1ccee6111609251.png"
+                },
+                {
+                  "width": 90,
+                  "height": 90,
+                  "size": 2189,
+                  "url": "https://media.sketchfab.com/avatars/86bd800397fb455fb38914eb5aa60cb8/385c9f4b18454e4dac200a51da88fdb4.png"
+                },
+                {
+                  "width": 100,
+                  "height": 100,
+                  "size": 2435,
+                  "url": "https://media.sketchfab.com/avatars/86bd800397fb455fb38914eb5aa60cb8/fbf10bfab1fd4d4dbb50fb744e450514.png"
+                }
+              ]
+            },
+            "uri": "https://api.sketchfab.com/v3/users/6a927738448e4f07a920177aab7f7716"
+          }
+        },
+        {
+          "uid": "94be8385c402474cacd39bc096c6ca14",
+          "name": "FPS AK-74m animations",
+          "license": {
+            "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+            "label": "CC Attribution",
+            "fullName": "Creative Commons Attribution",
+            "requirements": "Author must be credited. Commercial use is allowed.",
+            "url": "http://creativecommons.org/licenses/by/4.0/",
+            "slug": "by"
+          },
+          "user": {
+            "uid": "4b3d4e54ddc941e4bebb5cd0d83dc7b2",
+            "username": "ccransh",
+            "displayName": "Cransh",
+            "account": "basic",
+            "profileUrl": "https://sketchfab.com/ccransh",
+            "avatar": {
+              "uid": "718fae5aed5e4b5383efbf9af079ecde",
+              "uri": "https://api.sketchfab.com/v3/avatars/718fae5aed5e4b5383efbf9af079ecde",
+              "images": [
+                {
+                  "width": 32,
+                  "height": 32,
+                  "size": 1081,
+                  "url": "https://media.sketchfab.com/avatars/718fae5aed5e4b5383efbf9af079ecde/d7e4e1a41e5844f2af59e9433084e56d.jpeg"
+                },
+                {
+                  "width": 48,
+                  "height": 48,
+                  "size": 1537,
+                  "url": "https://media.sketchfab.com/avatars/718fae5aed5e4b5383efbf9af079ecde/e0c6e4b707bd4ce3b8a6612ada0aad73.jpeg"
+                },
+                {
+                  "width": 90,
+                  "height": 90,
+                  "size": 3348,
+                  "url": "https://media.sketchfab.com/avatars/718fae5aed5e4b5383efbf9af079ecde/e0abf35914454f0c9c2fe27bc0e028b9.jpeg"
+                },
+                {
+                  "width": 100,
+                  "height": 100,
+                  "size": 3876,
+                  "url": "https://media.sketchfab.com/avatars/718fae5aed5e4b5383efbf9af079ecde/8812f27652dc49369e755c4b6b918c4f.jpeg"
+                }
+              ]
+            },
+            "uri": "https://api.sketchfab.com/v3/users/4b3d4e54ddc941e4bebb5cd0d83dc7b2"
+          }
+        }
+      ],
+      "donorCredits": "README.md#credits--licences; First-person weapons. Static grip_vgrip pose only; NO Fab motion JSON or reload clips imported."
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/bambanani_sunset_2k.hdr",
+    "bytes": 6490374,
+    "sha256": "63ece1716a4a6f598f243efa3484b2e47773e9add9cba6d1677a5ec4b2ee6ef8",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/hdr/bambanani_sunset_2k.hdr",
+    "creators": {
+      "Dimitrios Savva": "Photography",
+      "Jarod Guest": "Processing"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/bambanani_sunset",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "type": 0,
+        "name": "Bambanani Sunset",
+        "categories": [
+          "outdoor",
+          "natural light",
+          "nature",
+          "skies",
+          "partly cloudy",
+          "medium contrast",
+          "sunrise-sunset"
+        ],
+        "tags": [
+          "sun",
+          "field",
+          "power line",
+          "grass",
+          "tower"
+        ],
+        "authors": {
+          "Dimitrios Savva": "Photography",
+          "Jarod Guest": "Processing"
+        },
+        "date_taken": 1735930260,
+        "coords": [
+          -28.0430714,
+          26.8181845
+        ],
+        "evs_cap": 23,
+        "whitebalance": 5539,
+        "max_resolution": [
+          20480,
+          10240
+        ],
+        "files_hash": "0de44417865c0ebe1946e73fa1c0fd3eacb093a4",
+        "date_published": 1740528000,
+        "staging": null,
+        "description": "Free 20K, unclipped HDRI. Warm, low sunset light over a dry grassy field with partly cloudy sky, medium contrast, sun near horizon and silhouetted power towers.",
+        "category_id": "3aedc6f4-5b0f-5c3b-87e9-5fecd8c5baac",
+        "category": "Fields & Countryside/Grassland & Meadows/Open Fields & Meadows",
+        "attributes": {
+          "time_of_day": "sunset",
+          "weather": "partly_cloudy",
+          "light_type": "natural",
+          "contrast": "medium",
+          "environment": "outdoor",
+          "sky_view": "open"
+        },
+        "img_version": "c0501916",
+        "download_count": 119322,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/bambanani_sunset.png?width=256&height=256&format=webp&v=c0501916"
+      }
+    },
+    "modifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only."
+  },
+  {
+    "file": "models/donors/arms_basecolor.webp",
+    "bytes": 136406,
+    "sha256": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/fp/arms_basecolor.webp",
+    "creators": [
+      "DJMaesen / bumstrum"
+    ],
+    "licence": "CC-BY-4.0",
+    "sources": [
+      "https://sketchfab.com/3d-models/9452ce4cddde4110a4fd73e555a8e412",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "checked": "2026-10-18",
+    "modifications": "Upstream arm texture derivative, copied unchanged; dark tint in runtime."
+  },
+  {
+    "file": "models/donors/arms_normal.webp",
+    "bytes": 278326,
+    "sha256": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/fp/arms_normal.webp",
+    "creators": [
+      "DJMaesen / bumstrum"
+    ],
+    "licence": "CC-BY-4.0",
+    "sources": [
+      "https://sketchfab.com/3d-models/9452ce4cddde4110a4fd73e555a8e412",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "checked": "2026-10-18",
+    "modifications": "Upstream arm texture derivative, copied unchanged; dark tint in runtime."
+  }
+]
