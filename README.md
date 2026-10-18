@@ -28,6 +28,8 @@ screenshots and reports go to ignored `test-results/`.
 
 The active game uses actual MIT-licensed WWB Player, Arsenal, Bot, Physics, Input, fixed-step loop, effects and round-rule modules, integrated through an ONSITE encounter wrapper. It has three opponents, a 36×30 m London courtyard, rooms, two dogleg stairs and a continuous upper gallery at 3 m. RMB aims, C crouches/slides. No networking. [Donor mapping](docs/development/DONOR-MAP.md) · [As-built layout](docs/development/evidence/as-built.svg) · [Checkpoint / restore](docs/development/CHECKPOINT.md) · [Current handoff](docs/development/HANDOFF.md).
 
+An earlier standalone Claude prototype is archived in [`game/`](game/README.md). It is not part of the active build.
+
 The original prototype remains accessible locally at `/legacy.html`, with its source, tests, original art, Blender assets and procedural textures preserved. `npm run typecheck` checks the current TypeScript integration; `npm test` runs legacy regression tests plus physical WWB navigation tests. Browser verification: build, start `npm run preview -- --port 4173`, then `ONSITE_URL=http://127.0.0.1:4173 npm run test:browser`. Install Chromium and `npx playwright install ffmpeg` for capture.
 
 `npm run evidence:layout` derives the plan from actual collision solids. `npm run evidence:route` uses the development server and a clearly labelled automated physical traversal fixture with bots disabled; its screenshots must not be described as human-played combat. The main browser test records real pointer-lock input combat separately.
