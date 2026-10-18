@@ -9,7 +9,7 @@ export function donorRifle(source:THREE.Object3D, flashTexture:THREE.Texture, fl
   root.name='ONS-01 / IRONLINE M4 + DJMaesen hands';
   model.traverse(o=>{if(o instanceof THREE.Mesh){
     o.frustumCulled=false;o.castShadow=false;o.receiveShadow=false;
-    const tune=(m:THREE.Material)=>{const c=(m as THREE.MeshStandardMaterial).clone();c.color.multiplyScalar(c.name==='arms'?.43:.57);c.roughness=Math.max(.55,c.roughness);
+    const tune=(m:THREE.Material)=>{const c=(m as THREE.MeshStandardMaterial).clone();c.color.multiplyScalar(c.name==='arms'?.52:.48);c.roughness=Math.max(.68,c.roughness);if(c.name==='arms'){c.metalness=0;c.roughness=.95;c.roughnessMap=null;c.metalnessMap=null;c.envMapIntensity=.3}
       if(c.name==='arms'){c.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\n diffuseColor.rgb = vec3(dot(diffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722))) * vec3(0.55, 0.58, 0.62);')};c.customProgramCacheKey=()=> 'onsite-black-kit'}return c};
     o.material=Array.isArray(o.material)?o.material.map(tune):tune(o.material);
   }});
@@ -21,7 +21,9 @@ export function donorRifle(source:THREE.Object3D, flashTexture:THREE.Texture, fl
   // Move the left chain with an original analytic two-bone reach during magazine changes.
   const bones:THREE.Object3D[]=[];model.traverse(o=>{if(o instanceof THREE.Bone)bones.push(o)});
   const rest=bones.map(b=>({p:b.position.clone(),q:b.quaternion.clone(),s:b.scale.clone()}));
-  const hip=new THREE.Vector3(.085,-.14,-.48);
+  // Use the authored rig's bore anchor, closer to the eye. The previous far-forward
+  // placement exposed the open shoulder ends and filled the image with sleeves.
+  const hip=new THREE.Vector3(.09,-.155,-.41);
   root.updateMatrixWorld(true);
   const world=(o:THREE.Object3D)=>o.getWorldPosition(new THREE.Vector3());
   const chain=(side:'L'|'R')=>{
@@ -53,7 +55,7 @@ export function donorRifle(source:THREE.Object3D, flashTexture:THREE.Texture, fl
     c.hand.position.copy(c.hand.parent!.worldToLocal(target.clone()));root.updateMatrixWorld(true);
   }
   return {root,muzzle,eject,mag:magazine,magRest,flash,sightY:.10548,sightZ:.11718,
-    hip:hip.clone(),ads:{x:.003233,y:-.10547856,z:-.43},
+    hip:hip.clone(),hipRoll:THREE.MathUtils.degToRad(5),ads:{x:.003233,y:-.10547856,z:-.43},
     animatePose(progress:number){
       bones.forEach((bone,i)=>{bone.position.copy(rest[i].p);bone.quaternion.copy(rest[i].q);bone.scale.copy(rest[i].s)});
       magazine.position.copy(magRest);magazine.rotation.set(0,0,0);bolt.position.copy(boltRest);

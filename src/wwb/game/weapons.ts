@@ -512,6 +512,7 @@ export class Arsenal {
     const root = vm.root
     root.position.set(pos.x + bx + this.swayX.x * 0.3, pos.y + by + breathe + this.land.x * 0.05 + this.swayY.x * 0.25, pos.z + this.kickZ.x * 0.035)
     root.rotation.set(this.kickRot.x * 0.035 + this.swayY.x * 0.4 + this.land.x * 0.04, this.swayX.x * 0.6 + this.kickYaw.x * 0.01, this.swayX.x * 0.3 + bx * 1.8, 'YXZ')
+    root.rotation.z+=(vm.hipRoll??0)*(1-this.ads)
     // Sprint pose.
     if (this.sprintBlend > 0.001) {
       root.position.x += 0.02 * this.sprintBlend

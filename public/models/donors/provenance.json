@@ -841,5 +841,399 @@
     ],
     "checked": "2026-10-18",
     "modifications": "Upstream arm texture derivative, copied unchanged; dark tint in runtime."
+  },
+  {
+    "file": "models/donors/cardboard_box_01.glb",
+    "bytes": 247864,
+    "sha256": "eb407e8504f5161f410efccc830e6b2fbea68521d171187e14148aebbabd7817",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/cardboard_box_01/cardboard_box_01.glb",
+    "creators": {
+      "Rahul Chaudhary": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/cardboard_box_01",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "date_published": 1671148800,
+        "name": "Cardboard Box 01",
+        "type": 2,
+        "staging": null,
+        "authors": {
+          "Rahul Chaudhary": "All"
+        },
+        "info": null,
+        "sponsors": [
+          "26820710"
+        ],
+        "categories": [
+          "industrial",
+          "containers",
+          "collection: the_shed"
+        ],
+        "tags": [
+          "warehouse",
+          "shed",
+          "storage",
+          "box",
+          "paper",
+          "worn",
+          "old",
+          "broken",
+          "damaged",
+          "garage"
+        ],
+        "max_resolution": [
+          4096,
+          4096
+        ],
+        "polycount": 16952,
+        "texel_density": 3131.7654492951356,
+        "dimensions": [
+          387.02359795570374,
+          515.8704221248627,
+          341.7995423078537
+        ],
+        "files_hash": "2a37ded0aeebc15100db0e1d285ad36cf40b8f42",
+        "description": "Free 4K model of a worn, creased cardboard box with torn flaps, taped seams and a weathered strap - aged, dented paper texture and realistic damage.",
+        "category_id": "2b755d16-ccc5-53d7-87f2-217bb6122eff",
+        "category": "Containers & Storage/Boxes & Crates/Cardboard Boxes",
+        "collections": [
+          "the_shed"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "paper"
+          ]
+        },
+        "img_version": "9b57d609",
+        "download_count": 35412,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/cardboard_box_01.png?width=256&height=256&format=webp&v=9b57d609"
+      }
+    },
+    "modifications": "Copied unchanged; placed in Blender and runtime."
+  },
+  {
+    "file": "models/donors/old_tyre.glb",
+    "bytes": 371892,
+    "sha256": "a3cb716442308c365f6661a91cdfd8f64caa1e08c9a39d65065914c795be4f78",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/old_tyre/old_tyre.glb",
+    "creators": {
+      "MP": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/old_tyre",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Old Tyre",
+        "type": 2,
+        "authors": {
+          "MP": "All"
+        },
+        "info": null,
+        "date_published": 1698624000,
+        "staging": null,
+        "categories": [
+          "industrial",
+          "props",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "wheels",
+          "wheel",
+          "trash",
+          "garbage",
+          "garage",
+          "scrapyard",
+          "junkyard",
+          "abandoned",
+          "automotive",
+          "car",
+          "vehicle"
+        ],
+        "max_resolution": [
+          4096,
+          4096
+        ],
+        "polycount": 2880,
+        "texel_density": 3402.509610901198,
+        "dimensions": [
+          600.0000238418579,
+          164.99999910593033,
+          600.0000238418579
+        ],
+        "files_hash": "8b7362724dd9d54081fe99703e32f434f75d1f0e",
+        "description": "Free 4K model of an old tyre with worn tread, scuffs, dirt and realistic rubber sidewall detail, stamped markings and gritty, abandoned-junkyard character.",
+        "category_id": "78bb232f-513b-5e0f-b2dd-bd5f71a191b5",
+        "category": "Vehicles & Transport/Parts & Accessories/Wheels & Tyres",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "rubber"
+          ]
+        },
+        "img_version": "3d683bbf",
+        "download_count": 23725,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/old_tyre.png?width=256&height=256&format=webp&v=3d683bbf"
+      }
+    },
+    "modifications": "Copied unchanged; placed in Blender and runtime."
+  },
+  {
+    "file": "models/donors/cement_bag.glb",
+    "bytes": 134772,
+    "sha256": "5da08ec7691d4e0693487d6e37d4c01e64a63e190ccb0cb2fdf0385721c67098",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/cement_bag/cement_bag.glb",
+    "creators": {
+      "PierreB3D": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/cement_bag",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "type": 2,
+        "name": "Cement Bag",
+        "tags": [
+          "industrial",
+          "warehouse",
+          "factory",
+          "building",
+          "construction",
+          "cement",
+          "cement bag",
+          "building material",
+          "building supply",
+          "construction supply"
+        ],
+        "description": "Free 4K model of a worn 50kg cement bag with red branding, crisp print, realistic paper wrinkles, scuffs and sealed corners, detailed safety icons and text.",
+        "authors": {
+          "PierreB3D": "All"
+        },
+        "donated": true,
+        "categories": [
+          "props",
+          "collection: project_lighthouse"
+        ],
+        "max_resolution": [
+          4096,
+          4096
+        ],
+        "social_post_pending": false,
+        "polycount": 844,
+        "files_hash": "5904dc1835a413b66e756f67f8561b82fa5fcdcf",
+        "texel_density": 3868.541947573179,
+        "dimensions": [
+          462.4738246202469,
+          699.5841264724731,
+          179.9098700284958
+        ],
+        "date_published": 1780911023,
+        "staging": null,
+        "category_id": "723a53df-2790-514a-94ea-5d018c473c7c",
+        "category": "Containers & Storage/Bags/Sacks",
+        "collections": [
+          "project_lighthouse"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "paper"
+          ]
+        },
+        "img_version": "3e1a81fc",
+        "download_count": 870,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/cement_bag.png?width=256&height=256&format=webp&v=3e1a81fc"
+      }
+    },
+    "modifications": "Copied unchanged; placed in Blender and runtime."
+  },
+  {
+    "file": "models/donors/rusted_wheel_rim_01.glb",
+    "bytes": 305400,
+    "sha256": "9c9472a852786e281aa4e0bb7b043ad7eb103b3d1925088c025447ed1236dcc9",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/rusted_wheel_rim_01/rusted_wheel_rim_01.glb",
+    "creators": {
+      "John Hutcheson": "All"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/rusted_wheel_rim_01",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "donated": true,
+        "name": "Rusted Wheel Rim 01",
+        "type": 2,
+        "authors": {
+          "John Hutcheson": "All"
+        },
+        "info": null,
+        "date_published": 1696204800,
+        "staging": null,
+        "categories": [
+          "industrial",
+          "props",
+          "collection: hidden_alley"
+        ],
+        "tags": [
+          "car",
+          "vehicle",
+          "old",
+          "junkyard",
+          "scrapyard",
+          "trash"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 16440,
+        "texel_density": 7784.851569938734,
+        "dimensions": [
+          402.85147726535797,
+          154.13154661655426,
+          395.4814374446869
+        ],
+        "files_hash": "c6ea2791df5e76adddaff24df87f21144350cd3a",
+        "description": "Free 8K model of a dented, heavily rusted steel wheel rim featuring realistic pitting, worn edges, bolt holes, and authentic scrapyard corrosion.",
+        "category_id": "9b8dd02b-5884-5a89-833d-addb80a80517",
+        "category": "Vehicles & Transport/Parts & Accessories/Rims",
+        "collections": [
+          "hidden_alley"
+        ],
+        "attributes": {
+          "condition": [
+            "rusted"
+          ],
+          "material": [
+            "steel"
+          ]
+        },
+        "img_version": "dfcb9679",
+        "download_count": 6685,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/rusted_wheel_rim_01.png?width=256&height=256&format=webp&v=dfcb9679"
+      }
+    },
+    "modifications": "Copied unchanged; placed in Blender and runtime."
+  },
+  {
+    "file": "models/donors/wooden_crate_02.glb",
+    "bytes": 331724,
+    "sha256": "e18d97c32a228e0605575154b3eb97a395408dde4c3462326c050bff28dac636",
+    "donor": "https://github.com/cktang88/3d-fps",
+    "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+    "donorPath": "public/assets/models/props/wooden_crate_02/wooden_crate_02.glb",
+    "creators": {
+      "James Ray Cock": "modeling",
+      "Jurita Burger": "graphic design"
+    },
+    "licence": "CC0-1.0",
+    "sources": [
+      "https://polyhaven.com/a/wooden_crate_02",
+      "https://polyhaven.com/license"
+    ],
+    "checked": "2026-10-18",
+    "evidence": {
+      "originalMetadata": {
+        "date_published": 1646179200,
+        "name": "Wooden Crate 02",
+        "type": 2,
+        "staging": null,
+        "sponsors": [
+          "26820710"
+        ],
+        "categories": [
+          "containers",
+          "props",
+          "collection: smugglers_cove"
+        ],
+        "tags": [
+          "vintage",
+          "wood",
+          "old",
+          "wooden",
+          "worn",
+          "colonial",
+          "commercial",
+          "maritime",
+          "chest",
+          "box",
+          "container",
+          "prop",
+          "farmhouse",
+          "crate",
+          "farm"
+        ],
+        "max_resolution": [
+          8192,
+          8192
+        ],
+        "polycount": 5176,
+        "texel_density": 3166.7987598321547,
+        "dimensions": [
+          1166.325867176056,
+          529.1010439395905,
+          463.95453810691833
+        ],
+        "files_hash": "2733eca1a1c1aaa3b4be262939692a4c02a9315a",
+        "description": "Free 8K model of a vintage wooden crate with worn planks, dovetail joins, brass corner plates and rope handles - ideal for maritime, colonial or farmhouse props.",
+        "authors": {
+          "James Ray Cock": "modeling",
+          "Jurita Burger": "graphic design"
+        },
+        "category_id": "7db08e6b-4676-50ac-8387-ecec2d7ffeb2",
+        "category": "Containers & Storage/Boxes & Crates/Wooden Crates",
+        "collections": [
+          "smugglers_cove"
+        ],
+        "attributes": {
+          "condition": [
+            "worn"
+          ],
+          "material": [
+            "wood",
+            "brass",
+            "metal"
+          ]
+        },
+        "img_version": "067477fc",
+        "download_count": 13074,
+        "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/wooden_crate_02.png?width=256&height=256&format=webp&v=067477fc"
+      }
+    },
+    "modifications": "Copied unchanged; placed in Blender and runtime."
   }
 ]

@@ -5,11 +5,16 @@ The active game loads `public/models/onsite-heron-court.glb`. The architecture i
 runtime box-building presentation in `View.ts`; the working WWB controller, combat and layered
 navigation remain in place.
 
-The editable file has 2,145 architectural objects: residential bays with different roof heights,
+The base architecture contained 2,145 objects: residential bays with different roof heights,
 window frames/sills, bevelled concrete, gallery balusters/handrails, two dogleg stair cores,
 stair nosings/rails, downpipes, conduits, bulkheads, doors, planters/planting, drains, cycle rails,
-a service kiosk and shallow puddles. Packed PBR preview materials are included. Ten donor prop
-placements appear in a separate collection; see `public/models/donors/provenance.json`.
+a service kiosk and shallow puddles. Packed PBR preview materials are included. Twenty donor prop
+placements now appear in a separate collection; see `public/models/donors/provenance.json`.
+
+The subsequent [dirt/grass/rubbish pass](DIRT-PASS.md) adds editable detail in child collection
+`06_DETAIL / grass litter weather`, more credited donor placements, and a generated asphalt
+colour texture. Current object/mesh counts are in `public/models/onsite-heron-court.json`;
+the original 2,145-object/14-mesh figures describe the base architecture before that dressing.
 
 ## Collections and ownership
 
@@ -20,7 +25,7 @@ placements appear in a separate collection; see `public/models/donors/provenance
   placements are recorded in `src/onsite/dressing.json` and the models load separately.
 - `05_PREVIEW / lighting and cameras, not exported`: Blender review setup only.
 
-The export merges architecture by material (14 runtime meshes) and bakes local five-direction
+The export merges architecture and detail by material (21 runtime meshes) and bakes local five-direction
 vertex occlusion. It contains no images; Three.js assigns the existing PBR maps by material
 name. Blender light objects do not become the game's lighting. `View.ts` constructs lights and
 uses the credited Poly Haven HDRI for sky/reflections. Puddles use environment reflections;
@@ -55,7 +60,7 @@ inspectable pose screenshots; it is a test fixture, not ordinary gameplay.
 
 ## Asset boundaries
 
-The IRONLINE M4/posed hands, seven Poly Haven props and HDRI are individually licensed art imports.
+The IRONLINE M4/posed hands, twelve Poly Haven props and HDRI are individually licensed art imports.
 The rifle's two external arm textures are included. Runtime dark-kit tint and reload IK are
 original ONSITE code; WWB still owns ammo, hitscan, recoil and reload completion. No Fab rifle
 motion tracks or unlicensed Claudefare implementation are imported. Donor repositories remain

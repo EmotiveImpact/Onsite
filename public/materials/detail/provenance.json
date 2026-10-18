@@ -1,0 +1,77 @@
+{
+  "checked": "2026-10-18",
+  "assets": [
+    {
+      "file": "materials/detail/Ground110-Color.webp",
+      "sha256": "b54537aecf618636580bd5a6380c1f78d6d67873dea2f9221de7b76b953931ff",
+      "bytes": 1477038,
+      "source": "https://ambientcg.com/a/Ground110",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Ground110/Color.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    },
+    {
+      "file": "materials/detail/Ground110-NormalGL.webp",
+      "sha256": "6d27893360c63c07fa2cf596e7c1e8344fc58ecfa1ca748821c80e5175b1ced9",
+      "bytes": 1879782,
+      "source": "https://ambientcg.com/a/Ground110",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Ground110/NormalGL.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    },
+    {
+      "file": "materials/detail/Ground110-Roughness.webp",
+      "sha256": "df341a61ea4e7816b6b71ccb2210ae6d56d0e4e562289e127403c025a7e74749",
+      "bytes": 355530,
+      "source": "https://ambientcg.com/a/Ground110",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Ground110/Roughness.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    },
+    {
+      "file": "materials/detail/Leaking003-ColorA.webp",
+      "sha256": "665017b69446482f1c8e5118c82fbc08570ddfcf7577ca38d7ab7a228ee0a43f",
+      "bytes": 306894,
+      "source": "https://ambientcg.com/a/Leaking003",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Leaking003/ColorA.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    },
+    {
+      "file": "materials/detail/Leaking003-NormalGL.webp",
+      "sha256": "7e9b8dae868a9a28486c810b26ea094480ecf7f45f1563b453f65e9225b18bb7",
+      "bytes": 73082,
+      "source": "https://ambientcg.com/a/Leaking003",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Leaking003/NormalGL.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    },
+    {
+      "file": "materials/detail/Leaking003-Roughness.webp",
+      "sha256": "7a1b567ea2c754d7727970a31f3b1aec82a2fda3b5cd54752b5dbc878c91ef83",
+      "bytes": 35658,
+      "source": "https://ambientcg.com/a/Leaking003",
+      "author": "ambientCG / Lennart Demes",
+      "license": "CC0-1.0",
+      "licenseURL": "https://docs.ambientcg.com/license/",
+      "donorPath": "public/assets/textures/Leaking003/Roughness.webp",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "modifications": "IRONLINE WebP conversion; copied unchanged."
+    }
+  ]
+}

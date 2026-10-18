@@ -76,3 +76,7 @@ and [per-file provenance](../../public/models/donors/provenance.json), including
 and hashes. No Fab motion data or IRONLINE engine code is copied. `DonorRifle.ts` and the Blender
 estate generation/export scripts are original adapters. The level is editable in the new `.blend`;
 its render export excludes collision/navigation guides and uses the existing PBR library.
+
+## Additional courtyard dressing
+
+The dirt pass adds five CC0 Poly Haven props and ambientCG Ground110/Leaking003 maps through the same pinned IRONLINE clone. Original publisher metadata/licence and payload hashes are retained in the donor/material manifests. Original generated asphalt source and encoding records are preserved in `assets/textures/onsite-dirt-pass`. Blender grass, folded litter, cans, fallen leaves and placement are original ONSITE work; read [DIRT-PASS.md](DIRT-PASS.md).

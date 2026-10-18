@@ -8,9 +8,10 @@
       "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
       "localPath": "research/reference-clones/ironline",
       "role": "Selected art imports and implementation study; no engine merge",
-      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; selected Poly Haven props/HDRI CC0. Other bundled assets remain outside reuse scope.",
+      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; twelve selected Poly Haven props and one HDRI are CC0; ambientCG Ground110/Leaking003 maps are CC0. Other bundled assets remain outside reuse scope.",
       "importedIntoGame": true,
-      "assetManifest": "public/models/donors/provenance.json"
+      "assetManifest": "public/models/donors/provenance.json",
+      "materialManifest": "public/materials/detail/provenance.json"
     },
     {
       "id": "open-claudefare",

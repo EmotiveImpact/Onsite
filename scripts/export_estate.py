@@ -8,13 +8,13 @@ def export_estate(ROOT, render):
     OUT=ROOT/'public/models'
     scene=bpy.context.scene
     # Runtime materials are assigned by name; do not embed another copy of the PBR images.
-    for material in {o.data.materials[0] for o in render.objects if o.type=='MESH'}:
+    for material in {o.data.materials[0] for o in render.all_objects if o.type=='MESH'}:
         for node in list(material.node_tree.nodes):
             if node.type not in ['BSDF_PRINCIPLED','OUTPUT_MATERIAL']:material.node_tree.nodes.remove(node)
     # Apply modifiers to export copies, join by material to limit draw calls, bake local occlusion into vertices.
     bpy.ops.object.select_all(action='DESELECT')
     deps=bpy.context.evaluated_depsgraph_get();groups={}
-    for o in list(render.objects):
+    for o in list(render.all_objects):
         if o.type!='MESH':continue
         mesh=bpy.data.meshes.new_from_object(o.evaluated_get(deps));mesh.transform(o.matrix_world)
         copy=bpy.data.objects.new('export-'+o.name,mesh);scene.collection.objects.link(copy)
@@ -29,7 +29,8 @@ def export_estate(ROOT, render):
         offset=len(vertices);vertices.extend(v.co.copy()for v in o.data.vertices);faces.extend([offset+i for i in p.vertices]for p in o.data.polygons)
     bvh=BVHTree.FromPolygons(vertices,faces)
     for o in export:
-        mesh=o.data;colors=mesh.color_attributes.new(name='EstateOcclusion',type='FLOAT_COLOR',domain='CORNER')
+        mesh=o.data;original=mesh.color_attributes.get('DetailTint');colors=mesh.color_attributes.new(name='EstateOcclusion',type='FLOAT_COLOR',domain='CORNER')
+        mesh.color_attributes.active_color=colors
         for poly in mesh.polygons:
             n=poly.normal;side=n.cross(Vector((0,0,1)))
             if side.length<.1:side=n.cross(Vector((1,0,0)))
@@ -41,13 +42,15 @@ def export_estate(ROOT, render):
                     a=k*math.tau/5;direction=(n*.72+(side*math.cos(a)+up*math.sin(a))*.69).normalized()
                     hit=bvh.ray_cast(origin,direction,2.5)[0];visible+=hit is None
                 ao=.55+.45*visible/5
-                colors.data[li].color=(ao,ao,ao,1)
+                tint=original.data[li].color if original else (1,1,1,1)
+                colors.data[li].color=(ao*tint[0],ao*tint[1],ao*tint[2],tint[3])
         print('AO',o.name,len(mesh.vertices),flush=True)
     bpy.ops.object.select_all(action='DESELECT')
     for o in export:o.select_set(True)
     bpy.ops.export_scene.gltf(filepath=str(OUT/'onsite-heron-court.glb'),export_format='GLB',use_selection=True,export_yup=True,export_animations=False,export_cameras=False,export_lights=False,export_vertex_color='ACTIVE')
     manifest=dict(source='assets/blender/onsite-heron-court.blend',builder='scripts/build-estate.py',metres=True,
-        renderObjects=len(render.objects),runtimeMeshes=len(export),vertices=len(vertices),
+        renderObjects=len(render.all_objects),runtimeMeshes=len(export),vertices=len(vertices),
+        dressing=json.loads(scene.get('onsite_dressing_counts','{}')),
         collisionSource='src/onsite/level.ts',navigationSource='src/onsite/navigation.ts',
         layoutSha256=hashlib.sha256((ROOT/'docs/development/evidence/layout.json').read_bytes()).hexdigest(),
         glbBytes=(OUT/'onsite-heron-court.glb').stat().st_size,
@@ -62,6 +65,8 @@ if __name__=='__main__':
     sys.path.insert(0,str(ROOT/'scripts'))
     from dress_foliage import dress_foliage
     dress_foliage()
+    from dress_estate import dress_estate
+    dress_estate(ROOT)
     from prepare_estate_materials import prepare_materials
     prepare_materials(ROOT)
     bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'assets/blender/onsite-heron-court.blend'))

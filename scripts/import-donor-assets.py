@@ -26,7 +26,8 @@ def copy(rel, name, creators, licence, sources, evidence):
         modifications='Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only.'))
 
 for name in ['covered_car', 'rollershutter_door', 'metal_trash_can', 'trashbag', 'exterior_aircon_unit',
-             'concrete_road_barrier_02', 'street_lamp_01']:
+             'concrete_road_barrier_02', 'street_lamp_01', 'cardboard_box_01', 'old_tyre',
+             'cement_bag', 'rusted_wheel_rim_01', 'wooden_crate_02']:
     info = get('https://api.polyhaven.com/info/' + name)
     copy(f'models/props/{name}/{name}.glb', name + '.glb', info['authors'], 'CC0-1.0',
          ['https://polyhaven.com/a/' + name, 'https://polyhaven.com/license'],

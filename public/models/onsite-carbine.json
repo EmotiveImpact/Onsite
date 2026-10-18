@@ -1,0 +1,17 @@
+{
+  "source": "assets/blender/onsite-carbine.blend",
+  "donor": "public/models/donors/m4a1-hands.glb",
+  "donorSHA256": "f66a03a316e8ac6a1505b21c3c7cf8ad4672fccaf1ce947a9ea5ed33600364fc",
+  "license": "CC-BY-4.0",
+  "notices": "public/licenses/DONOR-ASSETS.md",
+  "changes": [
+    {
+      "mesh": "FPArms",
+      "newVertices": 96,
+      "purpose": "Continue the open upper sleeves behind the camera; preserve authored hands/grip."
+    }
+  ],
+  "bytes": 3546756,
+  "sha256": "4f192aa8377e203c07c16eb068eb53d47ede717a92e452fba57fd82424a8d798",
+  "imageEncoding": "Colour WebP quality 90; normal and ARM WebP quality 94; PNG maps retained in Blender source."
+}

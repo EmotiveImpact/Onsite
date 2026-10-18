@@ -33,6 +33,7 @@ export type ViewModel = {
   flash: THREE.Group
   /** Optional per-model hip pose (camera space) overriding the weapon default. */
   hip?: THREE.Vector3
+  hipRoll?: number
   /** Optional ADS pose: x = lateral offset, y = height (default −sightY), z = distance in front of the eye. */
   ads?: { x: number; y?: number; z: number }
 }

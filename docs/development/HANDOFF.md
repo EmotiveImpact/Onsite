@@ -20,21 +20,21 @@ Bot navigation is original layered geometry-derived nodes at 0.375 m horizontal 
 
 The active architecture is now an actual Blender-authored level: `assets/blender/onsite-heron-court.blend`
 → `public/models/onsite-heron-court.glb`. Read [BLENDER-LEVEL.md](BLENDER-LEVEL.md) before editing.
-2,145 editable architecture objects export to 14 material meshes, with metric UVs and vertex occlusion.
+The estate now has 3,010 editable render objects, including 869 detail objects (600 paving slabs, grass, rubbish and weathering), exporting to 21 material meshes with metric UVs and vertex occlusion. See DIRT-PASS.md.
 Editable render, collision guides, navigation guides, donor dressing and review-lighting collections
 are separate. Runtime lighting is rebuilt in Three.js; Blender lamps do not automatically transfer.
 
 The first-person model is IRONLINE's M4A1 + DJMaesen/Cransh posed hands, with author/source/CC BY
-records and both external WebP arm textures. `src/onsite/DonorRifle.ts` adapts the art to WWB's Arsenal;
+records and both external WebP arm textures. The active `onsite-carbine.glb` is a Blender-finished derivative with sleeve continuations and preserved PBR maps. `src/onsite/DonorRifle.ts` adapts the art to WWB's Arsenal;
 ammo, hitscan, timing, recoil and reload completion remain WWB-owned. The original two-bone reload
 reach uses no Fab motion tracks. The original procedural weapon stays available in the source.
 
-Seven individually verified Poly Haven props and the Bambanani Sunset HDRI were imported through
+Twelve individually verified Poly Haven props and the Bambanani Sunset HDRI were imported through
 IRONLINE. The car, bins and gallery barrier have colliders measured by Blender; routes must remain
 height-aware. `dressing.json` drives both visible placement and separate collider dimensions. Existing
 WWB-sourced utility boxes/security lights and original Blender benches remain. Exact notices at
 `public/licenses/DONOR-ASSETS.md`, provenance/hashes at `public/models/donors/provenance.json`.
-The original 118 MB PNG reference pack is preserved outside runtime delivery.
+The original 118 MB PNG reference pack is preserved outside runtime delivery. The current ground also uses an original generated asphalt colour, plus individually credited ambientCG dirt/damp maps. Current framing corrects the exposed upper sleeve ends of the first visual pass.
 
 The stylised original hooded opponent remains unfinished; do not claim a donor character rig was
 integrated. No Claudefare implementation, Fab clips, donor Tripo/Manus models or donor audio imported.
@@ -43,10 +43,12 @@ integrated. No Claudefare implementation, Fab clips, donor Tripo/Manus models or
 
 Node 24, Chromium, Blender 4.3.2 available in this session. `npm ci`; `npm run dev` (port 5173). `npm run typecheck`; `npm test`; `npm run build`. For input-driven browser validation, start `npm run preview -- --port 4173`, then `ONSITE_URL=http://127.0.0.1:4173 npm run test:browser`. Video requires `npx playwright install ffmpeg`. `npm run evidence:layout` regenerates the plan. `npm run evidence:route` requires dev server and drives a test-only physical route fixture with bots disabled. It does not ship in the production bundle.
 
+Latest validation: typecheck/build and 20 tests passed; production browser completed all three bots, capture/victory and reset (76 health, 26 shots / 12 hits). SwiftShader mean **461.57 ms / ~2.17 FPS**, 141 samples; not smooth. Current screenshots/video are under `evidence/dirt-pass/`; see [CURRENT-VALIDATION.md](CURRENT-VALIDATION.md) for exact contexts.
+
 ## Highest-value next work
 
-1. Controlled real-GPU profiling and player feedback. Cloud SwiftShader is slow; no smooth-play claim. Current adaptive software mode disables MSAA, shadows and world point lights and uses half pixel ratio. Hardware mode retains shadows/local lighting. Distinguish both visually and quantitatively.
-2. Art pass against the original concept: local grime and facade variation, a convincing black-clothed character rig, and improved first-person sleeve cuffs/hand anatomy. Planted cover and detailed facade/rail components are implemented; current result is improved but not concept-art fidelity.
+1. Controlled real-GPU profiling and player feedback. Cloud SwiftShader is slow; no smooth-play claim. Current adaptive software mode disables MSAA and shadows and uses half pixel ratio. Four local world lights are shared with hardware mode. Hardware enables MSAA and sun shadows. Distinguish both visually and quantitatively.
+2. Art pass against the original concept: facade/room variation, a convincing black-clothed character rig, and further first-person hand/reload refinement. The dirty floor, grass, litter and sleeve continuation are implemented; see DIRT-PASS.md. Planted cover and detailed facade/rail components are implemented; current result is improved but not concept-art fidelity.
 3. Human combat tuning: three-bot pressure, readable reaction windows, recoil recovery, movement speed and clear hit/death feedback. Browser automation proves mechanics, not satisfaction.
 4. Expand physical navigation regression scenarios for multi-bot separation at doorways, cover, stairs and damage while transitioning floors. Existing tests cover isolated ascent/descent; not every crowd case.
 5. Reduce the large Rapier/Three.js JS payload and unused preserved legacy runtime asset delivery. Networking stays deferred. Modern Claudefare is an unlicensed reference only; architecture notes in DONOR-MAP.

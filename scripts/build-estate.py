@@ -196,6 +196,16 @@ placements=[
     dict(asset='concrete_road_barrier_02',x=10.25,y=3,z=0,height=.75,ry=math.pi/2,collision=True),
     dict(asset='street_lamp_01',x=-8,y=0,z=-4.9,height=4.2,ry=0,collision=False),
     dict(asset='street_lamp_01',x=8,y=0,z=4.9,height=4.2,ry=math.pi,collision=False),
+    dict(asset='trashbag',x=-11.2,y=.03,z=3.1,height=.62,ry=1.7,collision=False),
+    dict(asset='trashbag',x=-10.8,y=.03,z=2.65,height=.42,ry=-.8,collision=False),
+    dict(asset='trashbag',x=-11.5,y=.03,z=3.6,height=.5,ry=.6,collision=False),
+    dict(asset='trashbag',x=10.7,y=.03,z=-7.8,height=.48,ry=2.4,collision=False),
+    dict(asset='cardboard_box_01',x=-10.9,y=.03,z=3.8,height=.43,ry=.24,collision=False),
+    dict(asset='cardboard_box_01',x=10.8,y=.03,z=-8.2,height=.55,ry=1.1,collision=False),
+    dict(asset='old_tyre',x=8.4,y=.03,z=-3.5,height=.3,ry=.45,collision=False),
+    dict(asset='rusted_wheel_rim_01',x=8.8,y=.03,z=-3.9,height=.24,ry=-.8,collision=False),
+    dict(asset='cement_bag',x=-10.8,y=.03,z=-7.8,height=.23,ry=.4,collision=False),
+    dict(asset='wooden_crate_02',x=10,y=.04,z=0,height=.65,ry=0,collision=False),
 ]
 for p in placements:
     file=OUT/'donors'/(p['asset']+'.glb')
@@ -226,6 +236,8 @@ import sys
 sys.path.insert(0,str(ROOT/'scripts'))
 from dress_foliage import dress_foliage
 dress_foliage()
+from dress_estate import dress_estate
+dress_estate(ROOT,True)
 from prepare_estate_materials import prepare_materials
 prepare_materials(ROOT)
 bpy.ops.wm.save_as_mainfile(filepath=str(ROOT/'assets/blender/onsite-heron-court.blend'))

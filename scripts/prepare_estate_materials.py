@@ -9,7 +9,7 @@ def prepare_materials(root):
         for node in list(nodes):
             if node.type not in ['BSDF_PRINCIPLED','OUTPUT_MATERIAL']:nodes.remove(node)
         for kind in ['color','normal','arm']:
-            path=root/'public/materials/pbr'/f"{'brick' if name=='stock' else name}-{kind}.webp"
+            path=root/'public/materials/detail/generated-asphalt-color.webp' if name=='asphalt'and kind=='color'and(root/'public/materials/detail/generated-asphalt-color.webp').exists()else root/'public/materials/pbr'/f"{'brick' if name=='stock' else name}-{kind}.webp"
             image=bpy.data.images.load(str(path),check_existing=True)
             image.colorspace_settings.name='sRGB' if kind=='color' else 'Non-Color';image.pack()
             node=nodes.new('ShaderNodeTexImage');node.image=image

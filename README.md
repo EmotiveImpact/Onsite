@@ -66,7 +66,12 @@ See [the level workflow](docs/development/BLENDER-LEVEL.md) for rebuilding, expo
 The active game combines WWB gameplay with individually credited IRONLINE weapon/hand and environment models.
 [Asset credits](public/licenses/DONOR-ASSETS.md) are also available in the game menu.
 
-Actual runtime evidence: [courtyard and rifle](docs/development/evidence/courtyard-weapon.png),
-[upper gallery](docs/development/evidence/upper-route.png),
-[gameplay video](docs/development/evidence/combat-input.webm),
+Latest runtime inspection (bots disabled, fixed camera):
+
+![ONSITE Blender estate with imported rifle, grass, rubbish and textured paving](docs/development/evidence/dirt-pass/rubbish.png)
+
+[Courtyard and rifle](docs/development/evidence/dirt-pass/court.png) ·
+[Upper gallery](docs/development/evidence/dirt-pass/gallery.png) ·
+[Blender/texture workflow](docs/development/DIRT-PASS.md) ·
+[Game input video](docs/development/evidence/dirt-pass/combat-input.webm),
 [validation and measured limitations](docs/development/CURRENT-VALIDATION.md).

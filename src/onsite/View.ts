@@ -14,36 +14,45 @@ export class View {
  private rifle!:THREE.Object3D;
  private activeRifle?:ReturnType<typeof donorRifle>;
  constructor(canvas:HTMLCanvasElement){
-  this.renderer=new THREE.WebGLRenderer({canvas,antialias:false});
-  const gl=this.renderer.getContext(),ext=gl.getExtension('WEBGL_debug_renderer_info');this.software=!!ext&&/swiftshader|llvmpipe/i.test(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL));
+  const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
+  this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
+  probe?.getExtension('WEBGL_lose_context')?.loseContext();
+  this.renderer=new THREE.WebGLRenderer({canvas,antialias:!this.software});
   this.renderer.info.autoReset=false;this.renderer.setPixelRatio(this.software?.5:Math.min(devicePixelRatio,1.5));
   this.renderer.shadowMap.enabled=!this.software;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-  this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.05;
-  this.scene.background=new THREE.Color('#566271');this.scene.fog=new THREE.FogExp2('#566271',.009);
+  this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
+  this.scene.background=new THREE.Color('#60778c');this.scene.fog=new THREE.FogExp2('#516b81',.013);
   this.camera.rotation.order='YXZ';this.scene.add(this.camera);
-  this.scene.add(new THREE.HemisphereLight('#a9bdd5','#393d42',1.05));
-  const sun=new THREE.DirectionalLight('#ffd4a2',2.0);sun.position.set(-18,25,-14);sun.castShadow=true;
+  this.scene.add(new THREE.HemisphereLight('#b4d0ee','#323e43',1.35));
+  const sun=new THREE.DirectionalLight('#b7cce2',1.35);sun.position.set(-18,25,-14);sun.castShadow=true;
   sun.shadow.mapSize.set(2048,2048);sun.shadow.normalBias=.025;Object.assign(sun.shadow.camera,{left:-25,right:25,top:25,bottom:-25,near:1,far:90});this.scene.add(sun);
-  this.vmScene.add(this.vmCamera,new THREE.HemisphereLight('#b7c9df','#373d47',1.8));
-  const key=new THREE.DirectionalLight('#e3caab',2.1);key.position.set(-1,2,3);this.vmScene.add(key);
+  this.vmScene.add(this.vmCamera,new THREE.HemisphereLight('#bbd4ed','#222c36',1.4));
+  const key=new THREE.DirectionalLight('#d9e5ef',1.7);key.position.set(-1,2,3);this.vmScene.add(key);
   this.ready=this.load();this.resize();window.addEventListener('resize',()=>this.resize());
  }
  private async load(){
   const loader=new THREE.TextureLoader(),pending:Promise<unknown>[]=[];
   for(const name of ['brick','stock','concrete','asphalt','paving','steel']){
    const mat=new THREE.MeshStandardMaterial({roughness:1,vertexColors:true});this.mats[name]=mat;
-   for(const kind of ['color','normal','arm'])pending.push(loader.loadAsync(`/materials/pbr/${name==='stock'?'brick':name}-${kind}.webp`).then(t=>{
+   for(const kind of ['color','normal','arm'])pending.push(loader.loadAsync(name==='asphalt'&&kind==='color'?'/materials/detail/generated-asphalt-color.webp':`/materials/pbr/${name==='stock'?'brick':name}-${kind}.webp`).then(t=>{
     t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=this.software?2:4;
     if(kind==='color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(kind==='normal'){mat.normalMap=t;mat.normalScale.set(.45,.45)}else{mat.roughnessMap=t;mat.aoMap=t;if(name==='steel'){mat.metalnessMap=t;mat.metalness=.75}}
     if(name==='stock')mat.color.set('#b9ad8e');if(name==='asphalt')mat.roughness=.55;mat.needsUpdate=true;
    }));
   }
-  const colors:Record<string,string>={dark:'#26323b',glass:'#364f64',lit:'#ffe3ad',trim:'#89928c',soil:'#30271b',leaves:'#3e502b',wood:'#554335',paint:'#284952',wet:'#314454',amber:'#a47125'};
+  const colors:Record<string,string>={dark:'#26323b',glass:'#364f64',lit:'#ffe3ad',trim:'#89928c',soil:'#30271b',leaves:'#3e502b',wood:'#554335',paint:'#284952',wet:'#314454',amber:'#a47125',grass:'#657044',litter:'#b6a88b',rubbish_metal:'#808785',mud:'#ffffff',leak:'#ffffff',paint_worn:'#c6ac72',contact:'#20221b'};
   for(const [name,color]of Object.entries(colors))this.mats[name]=new THREE.MeshStandardMaterial({color,vertexColors:true,roughness:name==='wet'?.12:name==='glass'?.18:.8,metalness:name==='glass'||name==='wet'?.45:0});
   this.mats.lit.emissive.set('#ffb35b');this.mats.lit.emissiveIntensity=1.2;
+  this.mats.grass.side=THREE.DoubleSide;this.mats.litter.side=THREE.DoubleSide;
+  this.mats.rubbish_metal.metalness=.65;this.mats.rubbish_metal.roughness=.65;
+  this.mats.contact.transparent=true;this.mats.contact.depthWrite=false;this.mats.contact.side=THREE.DoubleSide;this.mats.contact.polygonOffset=true;this.mats.contact.polygonOffsetFactor=-2;
+  for(const [name,asset]of [['mud','Ground110'],['leak','Leaking003']]){
+   const mat=this.mats[name];mat.transparent=true;mat.depthWrite=false;mat.alphaTest=.025;mat.polygonOffset=true;mat.polygonOffsetFactor=-1;mat.side=THREE.DoubleSide;
+   for(const channel of ['Color','NormalGL','Roughness'])pending.push(loader.loadAsync(`/materials/detail/${asset}-${channel==='Color'&&name==='leak'?'ColorA':channel}.webp`).then(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;if(channel==='Color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(channel==='NormalGL'){mat.normalMap=t;mat.normalScale.set(.3,.3)}else mat.roughnessMap=t;mat.needsUpdate=true}));
+  }
   const gltf=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   const [estate,character,rifle]=await Promise.all([
-   gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/donors/m4a1-hands.glb'),
+   gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
    ...pending,this.props(gltf),this.environment()
   ]);
   estate.scene.name='ONSITE / Blender Heron Estate';
@@ -88,8 +97,9 @@ export class View {
   this.sign('HERON ESTATE',0,5.2,-8.84,5);this.sign('THE CORNER / OFF LICENCE',6,2.5,8.84,4.4,Math.PI);
   this.sign('STAIR A / 01—12',-11.83,2.5,-4.1,1.4,Math.PI/2);this.sign('STAIR B / 13—24',11.83,2.5,4.1,1.4,-Math.PI/2);
   this.sign('HERON / MAINTENANCE',0,1.9,1.58,2.5);
-  for(const z of [-8.5,8.5])for(const x of [-6,0,6])for(const y of [2.3,5.3]){
-   if(!this.software){const l=new THREE.PointLight('#ffbc70',6,4,2);l.position.set(x,y,z);this.scene.add(l)}
+  // Four local pools give readable warm/cool separation without 24 per-pixel lights.
+  for(const [x,y,z]of [[-8,3.4,-4.9],[8,3.4,4.9],[-6,2.3,-8.5],[6,2.3,8.5]]){
+   const l=new THREE.PointLight('#ffad52',22,9,2);l.position.set(x,y,z);this.scene.add(l);
   }
  }
  render(g:Encounter,alpha:number,dt:number,look:{x:number;y:number},overview=false){

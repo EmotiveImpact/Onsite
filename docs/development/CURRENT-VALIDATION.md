@@ -1,46 +1,92 @@
-# Blender estate / WWB integration validation
+# Blender dirt/grass/rubbish pass — validation
 
-18 October 2026. Node 24.19.0, Chromium 154.0.8037.57, Blender 4.3.2, Three.js 0.186.1 and Rapier 0.21.0.
-This records the Blender/donor visual pass after checkpoint `d5faf61`; it supersedes that checkpoint's screenshots and timing figures.
+18 October 2026. Node 24.19.0, Chromium 154.0.8037.57, Blender 4.3.2, Three.js 0.186.1, Rapier 0.21.0.
+This pass follows local checkpoint `e768260`. Its measurements and images are retained in
+[the previous validation record](VALIDATION-e768260.md); those numbers are not measurements of this pass.
 
 ## What is running
 
-`index.html` loads the actual WWB Player, Physics, Input, GameLoop, Arsenal, Bot, effects and round rules through the ONSITE encounter wrapper. The architecture now comes from an editable Blender estate, exported to a 7,934,856-byte GLB: 2,145 editable architecture objects, merged to 14 material meshes. Render geometry, collision guides, navigation guides and donor dressing are separate. Five PBR texture sets cover six material roles; the original 118 MB reference PNG pack is not served at runtime.
+`index.html` uses actual WWB Player, Physics, Input, GameLoop, Arsenal, Bot, effects and round-rule
+modules through ONSITE's encounter wrapper. One Rapier world and the existing layered navigation
+remain in charge. This pass changes presentation, not collision, combat damage or navigation.
 
-The active rifle and posed hands are individually credited IRONLINE art derivatives, with original ONSITE reload IK driven by WWB's reload clock. Seven individually verified Poly Haven prop models and one HDRI are also imported through IRONLINE. The original hooded bot model remains unfinished. Claudefare stays reference-only. See [donor map](DONOR-MAP.md), [Blender workflow](BLENDER-LEVEL.md) and [asset notices](../../public/licenses/DONOR-ASSETS.md).
+The Blender estate now has **3,010 editable render objects**, including **869 detail objects**:
+600 separate chipped paving slabs, 3,404 grass blades in 209 clumps, folded litter, crushed cans,
+fallen leaves, ground/wall grime and maintenance markings. Export batches these to **21 material
+meshes**, **13,520,528 bytes**. The new asphalt colour image is generated; ambientCG supplies
+separately credited dirt/damp colour, normal and roughness maps. The asphalt combines with existing
+CC0 normal/ARM maps and is an approximate hybrid, not a matched scan.
 
-## Results
+Twelve individually verified Poly Haven prop models from IRONLINE are now used in 20 placements,
+alongside the existing two WWB/Poly Haven props and original bench. The credited IRONLINE M4/hands
+were finished in Blender: continued sleeve ends, preserved PBR maps and skin weights. The active
+weapon derivative is **3,546,756 bytes**, with an editable `.blend`; ONSITE's original reload reach
+still follows WWB's reload clock. No donor motion clips or Claudefare code/assets were added.
 
-- `npm run typecheck`: passed, including both browser fixtures.
-- `npm test`: **20 tests passed**. Ten retained legacy tests are regressions for the old prototype, not proof of the current runtime. Seven current tests exercise layered paths, actual WWB bots and player capsules up/down both stairs, doorway traversal, wall collision/spawn protection and a continuous ground/gallery route. Three new tests check render-only GLB export/occlusion/layout provenance, imported hashes/external rifle textures and actual player collision with the donor car.
-- `npm run build`: passed. Main JS 5.114 MB / 1.880 MB gzip; Vite's >500 kB chunk warning remains. Full `dist` is about 31 MB. Preserved legacy runtime maps still copy into `dist`; payload cleanup remains outstanding.
-- Production-preview browser run: **10 recorded checks passed**, no page errors or failed/HTTP-error requests. Actual pointer lock/mouse look, imported rifle/ADS alignment, automatic fire/recoil/reload, pause/resume, jump/landing, doorway movement, live combat, capture/victory and reset. All **three opponents eliminated**, **64 health** remaining, **33 shots / 12 hits**, victory at 27.47 simulation seconds. Input automation uses normal mouse/keyboard events and read-only state/route probes; no damage, teleport or health hooks.
-- The full-round check now requires victory; a run with only two kills cannot pass. An earlier attempt ended with two kills and player death. That death screen/report is retained separately. Automation was corrected to track moving targets without an extra aim-then-fire frame delay on slow software rendering. Combat difficulty and damage were not changed for the successful rerun.
-- Separate continuous physical browser route passed: court → stair A → gallery → stair B → ground, 3,630 ticks, no page errors. Same WWB player/collision and renderer, bots explicitly disabled. No teleports after spawn. Bot ascent/descent is covered separately by the actual-brain simulation tests.
-- Frozen-pose presentation check passed at idle and 35%, 55%, 85% of the real reload clock. Finite transforms, visible magazine extraction and left-hand reach within 1.5 cm at both extraction phases. This caught and fixed the imported rig's independent hand-control branch. Pose images are inspection fixtures, not a live reload recording.
+See [donor map](DONOR-MAP.md), [Blender dressing/reproduction](DIRT-PASS.md),
+[asset notices](../../public/licenses/DONOR-ASSETS.md) and [current handoff](HANDOFF.md).
 
-## Performance and limitations
+## Checks
 
-The successful combat run used **SwiftShader software rendering**, a 1100×700 viewport at 0.5 render pixel ratio, no MSAA, shadows or world point lights. Mean wall-clock frame duration was **402.84 ms over 143 active samples (~2.48 FPS)**. Final recorded render counters: **64 calls, 171,648 triangles**, summed across world and weapon passes. No other browser/render capture ran alongside that measurement. Interaction and screenshot overhead remain included; this is not a controlled benchmark.
+- `npm run typecheck`: passed.
+- `npm test`: **20 tests passed**. Ten retained legacy regressions, seven current WWB physics/nav
+  tests, and three asset/collision tests. Physical tests exercise the actual bot brain and player
+  capsules on both stairs. New assertions catch inverted paving faces, lost vertex alpha, missing
+  weapon colour/normal maps, altered provenance hashes and accidental motion-clip imports.
+- `npm run build`: passed. Main JS **5,116.97 kB / 1,880.38 kB gzip**. The >500 kB chunk warning
+  remains. Full `dist` is approximately **46 MB**, including retained legacy and unused original
+  donor payloads. It is not an optimized download budget.
+- `node scripts/capture-detail.mjs`: passed four fixed-camera views and three frozen reload phases.
+  No page/HTTP errors. Extraction-phase left-hand/magazine reach is within 1.5 cm; transforms finite.
+  Visual inspection caught and fixed inverted slab tops and texture loss during Blender packing.
+- The continuous browser stair route was not repeated in this presentation-only pass. Its earlier
+  evidence remains labelled separately. The layout SHA is unchanged and the physical bot/player
+  stair regressions passed again.
 
-This is slow and unsuitable as a performance target. The richer scene is more expensive than the earlier simplified checkpoint. Hardware mode uses a higher pixel ratio, sun shadows and local lights; **no real-GPU performance or visual pass has been verified**. Do not describe the cloud capture as smooth or production-ready.
+- Production-preview browser check: **10 checks passed**, **no page errors or failed/HTTP-error requests**.
+  Actual pointer lock/mouse look, centred ADS, automatic fire/recoil/timed reload, pause/resume,
+  jump/landing, lobby doorway movement, live combat, capture/victory and round reset.
+  **Three bots eliminated, 76 health remaining, 26 shots / 12 hits**. The automation uses ordinary
+  mouse/keyboard input and read-only snapshots/route queries; no teleport, damage or health hooks.
 
-The physical route's final 180-sample software mean was **385.17 ms (~2.60 FPS)**, with 26 calls / 133,860 triangles. It was captured before the final leaf detail and reload-pose adjustments; collision/layout did not change. The latest combat and presentation images include those final visual changes. The high-resolution courtyard presentation still uses a 1280×800 viewport at pixel ratio 1 with sun shadows enabled for inspection; it is not the configuration measured in the combat sample.
+## Current performance measurement
 
-## Actual runtime evidence
+The input-driven production-preview run used **SwiftShader software rendering**, a **1100×700**
+viewport at **0.5 pixel ratio**, no MSAA or shadows, and four local world lights. Mean wall-clock
+frame duration was **461.57 ms across 141 active samples (~2.17 FPS)**. Final counters were
+**76 draw calls / 233,111 triangles**, summed across world and weapon passes. No other browser or
+Blender render ran alongside it. Automation and screenshot overhead are included, so this is not
+a controlled benchmark.
 
-- [Courtyard and imported weapon](evidence/courtyard-weapon.png): actual Three.js view, labelled presentation fixture, bots disabled.
-- [First-person](evidence/first-person.png), [aiming](evidence/aiming.png), [combat](evidence/combat.png), [victory](evidence/victory.png), [interaction report](evidence/report.json).
-- [Input-driven gameplay video](evidence/combat-input.webm): the successful production-preview run, including real cloud frame pacing. No generated images or cinematic render.
-- [Reload 35%](evidence/reload-35.png), [55%](evidence/reload-55.png), [85%](evidence/reload-85.png), [pose report](evidence/presentation-report.json).
-- [Stair A detail](evidence/stair-detail.png): fixed inspection position in the same runtime renderer, bots disabled. [Continuous route stair A](evidence/stairs.png), [upper gallery](evidence/upper-route.png), [stair B](evidence/stair-b.png), [route report](evidence/route-report.json).
-- [Observed death](evidence/observed-death.png) and [failed-attempt report](evidence/observed-death.json), kept distinct from the passing run.
-- [As-built plan](evidence/as-built.svg) and [exact geometry/spawn data](evidence/layout.json), generated from collision solids including measured donor obstacles.
+This is slower than the previous visual pass's 402.84 ms sample and is not smooth or suitable as
+a performance target. Detail, lighting and weapon export all changed; this measurement does not
+isolate their costs. Real-GPU profiling and payload/geometry optimization remain required.
 
-Remaining work: detailed black hoodie/joggers/trainers character rig and animation; first-person sleeve/cuff refinement; local grime and architectural variation; human combat/play-feel feedback; real-GPU profiling and payload reduction. The current scene is an improved playable foundation, below the original concept-art target.
+## Actual runtime images
 
-## Recovery and setup
+- [Courtyard and rifle](evidence/dirt-pass/court.png), [rubbish/grass/paving](evidence/dirt-pass/rubbish.png),
+  [upper gallery](evidence/dirt-pass/gallery.png), [stair A](evidence/dirt-pass/stair.png).
+- [Reload 35%](evidence/dirt-pass/reload-35.png), [55%](evidence/dirt-pass/reload-55.png),
+  [85%](evidence/dirt-pass/reload-85.png), [inspection report](evidence/dirt-pass/report.json).
+- [Input-driven gameplay video](evidence/dirt-pass/combat-input.webm),
+  [ADS](evidence/dirt-pass/aiming.png), [combat](evidence/dirt-pass/combat.png),
+  [victory](evidence/dirt-pass/victory.png), [combat report](evidence/dirt-pass/combat-report.json).
+- [Prior courtyard image](evidence/dirt-before.png), copied unchanged from checkpoint `e768260`.
+- [As-built plan](evidence/as-built.svg) and [exact collision/spawn data](evidence/layout.json).
 
-All prior unpublished work was committed as `d5faf61` before this pass. Original concepts, models, textures, tests and research are preserved. Full donor trees are clean, ignored, and absent from the index and production bundle. Their pinned commits and per-source boundaries are in `research/SOURCES.json`.
+The new inspection stills use the actual Three.js renderer at **1280×800, pixel ratio 1, sun
+shadows and four warm local lights**, with bots disabled and a labelled fixed camera. They are
+neither concept art nor an input-driven gameplay/performance sample. Software mode has no MSAA.
 
-Reusable cloud install/start instructions were saved to the environment configuration draft earlier. That draft remains unpublished and fresh-task restoration has not been verified. No push, merge, environment publication or site deployment was performed. See [handoff](HANDOFF.md) for commands and next work.
+## Limits and next work
+
+No real GPU is available in this cloud session. Hardware mode enables MSAA and sun shadows at
+up to 1.5 pixel ratio; real-GPU appearance, frame time and sustained play feel remain unverified.
+The original stylised hooded bot still needs a detailed black hoodie/joggers/trainers rig and
+animation. Facades/rooms remain repetitive; hand/reload polish and payload optimization also need
+work. This pass adds visible authored detail but does not establish concept-art fidelity or a
+production-ready game.
+
+Original concepts, textures, Blender sources and tests are preserved. All three pinned donor
+clones were verified clean and ignored, with no nested trees in Git's index. Their SHAs and licence
+boundaries are in `research/SOURCES.json`. No push, merge, deploy or cloud configuration publication.
