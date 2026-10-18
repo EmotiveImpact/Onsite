@@ -17,3 +17,7 @@ This is concept art for the proposed game, not a screenshot of a playable build.
 ## Character kit, intro and menu flow
 
 [View the 15-screen front-end concept gallery](docs/concepts/FRONT-END-GALLERY.md): selectable trainers and outfits, intro stills, three title directions, character and borough selection, match setup, squad lobby, loading, pause/settings, and results.
+
+## Black characters and modelling references
+
+[View Jay, Alex and the individual asset sheets](docs/concepts/CHARACTER-ASSET-GALLERY.md) — three consistent UI screens and eight modelling references covering two characters, trainers, hoodie, joggers, balaclava, facade and court fence. [Modelling handoff](docs/concepts/MODELLING-NOTES.md).
