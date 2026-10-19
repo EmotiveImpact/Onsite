@@ -136,7 +136,11 @@ This pass trades a larger compressed download, mainly from UASTC normals, for re
 allocation. A source-dimension RGBA8+mips estimate is **352,760,300 bytes** for these images alone.
 This is not measured VRAM. Embedded prop/foliage maps and other renderer allocations are excluded.
 Runtime `__onsite.metrics().architectureTextures` reports decoded formats and mip-byte estimates.
-Real-GPU memory and timing remain unverified.
+A software-browser probe loaded 81 architecture images as BC7 plus one uncompressed wetness mask:
+329.00 MB estimated decoded RGBA8+mips versus 83.31 MB decoded compressed mips (74.7% less).
+Local-preview transfers were 56.54 MB for WebP versus 70.71 MB for KTX2, including shared game
+assets; these are local HTTP measurements, not a CDN/gzip budget. Real-GPU memory and timing
+remain unverified.
 
 Supported hardware uses KTX2; software defaults to WebP. `&textures=webp` forces the fallback;
 `&inspect&textures=ktx2` allows a software transcoder check. Individual decode failures fall back

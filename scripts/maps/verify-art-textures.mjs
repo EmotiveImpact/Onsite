@@ -6,7 +6,7 @@ const base=process.env.ONSITE_URL||'http://127.0.0.1:4179',out=process.env.OUT||
 const manifest=JSON.parse(await readFile('public/materials/heron/ktx2/manifest.json','utf8'));
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-const report={software:true,renderer:'',runs:[],errors:[]};
+const report={kind:'Menu/loading and texture-decoder checks; no gameplay frame-time samples',software:true,renderer:'',runs:[],errors:[]};
 try{
  for(const mode of ['webp','ktx2','ktx2-corrupt-fallback']){
   const page=await browser.newPage({viewport:{width:1280,height:720}});
