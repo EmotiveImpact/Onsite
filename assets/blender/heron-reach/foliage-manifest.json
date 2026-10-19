@@ -1,0 +1,809 @@
+{
+  "kit": "heron-reach foliage",
+  "blend": "assets/blender/heron-reach/foliage-kit.blend",
+  "units": "metres, Z-up in Blender (glTF export converts to Y-up)",
+  "assets": [
+    {
+      "name": "TREE_PLANE_A",
+      "collection": "TREE_PLANE_A",
+      "kind": "tree",
+      "species": "London plane",
+      "objects": [
+        "TREE_PLANE_A_bark",
+        "TREE_PLANE_A_leaves"
+      ],
+      "triangles": 9613,
+      "triangles_bark": 5797,
+      "triangles_leaves": 3816,
+      "leaf_cards": 954,
+      "bounds_min": [
+        -2.793,
+        -2.813,
+        -0.08
+      ],
+      "bounds_max": [
+        2.6,
+        2.502,
+        7.967
+      ],
+      "height": 7.97,
+      "canopy_radius": 2.81,
+      "lowest_leaf_z": 3.11,
+      "lowest_branch_z": 2.97,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.255,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.45 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_PLANE_A_LOD1",
+          "collection": "TREE_PLANE_A_LOD1",
+          "objects": [
+            "TREE_PLANE_A_LOD1_bark",
+            "TREE_PLANE_A_LOD1_leaves"
+          ],
+          "triangles": 2653,
+          "leaf_cards": 577
+        }
+      ],
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "seed": 7101,
+      "nodes": 1210
+    },
+    {
+      "name": "TREE_PLANE_B",
+      "collection": "TREE_PLANE_B",
+      "kind": "tree",
+      "species": "London plane",
+      "objects": [
+        "TREE_PLANE_B_bark",
+        "TREE_PLANE_B_leaves"
+      ],
+      "triangles": 8995,
+      "triangles_bark": 5591,
+      "triangles_leaves": 3404,
+      "leaf_cards": 851,
+      "bounds_min": [
+        -2.139,
+        -3.117,
+        -0.074
+      ],
+      "bounds_max": [
+        2.731,
+        2.872,
+        7.541
+      ],
+      "height": 7.54,
+      "canopy_radius": 3.12,
+      "lowest_leaf_z": 3.09,
+      "lowest_branch_z": 3.12,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.267,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.49 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_PLANE_B_LOD1",
+          "collection": "TREE_PLANE_B_LOD1",
+          "objects": [
+            "TREE_PLANE_B_LOD1_bark",
+            "TREE_PLANE_B_LOD1_leaves"
+          ],
+          "triangles": 2359,
+          "leaf_cards": 496
+        }
+      ],
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "seed": 7202,
+      "nodes": 1117
+    },
+    {
+      "name": "TREE_BIRCH_A",
+      "collection": "TREE_BIRCH_A",
+      "kind": "tree",
+      "species": "silver birch",
+      "objects": [
+        "TREE_BIRCH_A_bark",
+        "TREE_BIRCH_A_leaves"
+      ],
+      "triangles": 8305,
+      "triangles_bark": 3957,
+      "triangles_leaves": 4348,
+      "leaf_cards": 1087,
+      "bounds_min": [
+        -1.645,
+        -1.908,
+        -0.069
+      ],
+      "bounds_max": [
+        2.203,
+        1.71,
+        7.002
+      ],
+      "height": 7.0,
+      "canopy_radius": 2.2,
+      "lowest_leaf_z": 2.83,
+      "lowest_branch_z": 2.94,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.203,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.30 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_BIRCH_A_LOD1",
+          "collection": "TREE_BIRCH_A_LOD1",
+          "objects": [
+            "TREE_BIRCH_A_LOD1_bark",
+            "TREE_BIRCH_A_LOD1_leaves"
+          ],
+          "triangles": 2059,
+          "leaf_cards": 634
+        }
+      ],
+      "materials": [
+        "hr_bark_birch",
+        "hr_leaf_birch"
+      ],
+      "seed": 7303,
+      "nodes": 881
+    },
+    {
+      "name": "TREE_BIRCH_B",
+      "collection": "TREE_BIRCH_B",
+      "kind": "tree",
+      "species": "silver birch",
+      "objects": [
+        "TREE_BIRCH_B_bark",
+        "TREE_BIRCH_B_leaves"
+      ],
+      "triangles": 6779,
+      "triangles_bark": 3019,
+      "triangles_leaves": 3760,
+      "leaf_cards": 940,
+      "bounds_min": [
+        -1.706,
+        -1.815,
+        -0.064
+      ],
+      "bounds_max": [
+        1.566,
+        1.681,
+        6.135
+      ],
+      "height": 6.13,
+      "canopy_radius": 1.81,
+      "lowest_leaf_z": 2.79,
+      "lowest_branch_z": 2.84,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.192,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.28 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_BIRCH_B_LOD1",
+          "collection": "TREE_BIRCH_B_LOD1",
+          "objects": [
+            "TREE_BIRCH_B_LOD1_bark",
+            "TREE_BIRCH_B_LOD1_leaves"
+          ],
+          "triangles": 1624,
+          "leaf_cards": 524
+        }
+      ],
+      "materials": [
+        "hr_bark_birch",
+        "hr_leaf_birch"
+      ],
+      "seed": 7404,
+      "nodes": 672
+    },
+    {
+      "name": "GRASS_CLUMP_A",
+      "collection": "GRASS_CLUMP_A",
+      "kind": "grass",
+      "objects": [
+        "GRASS_CLUMP_A"
+      ],
+      "triangles": 140,
+      "bounds_min": [
+        -0.216,
+        -0.169,
+        -0.005
+      ],
+      "bounds_max": [
+        0.167,
+        0.211,
+        0.141
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": null
+    },
+    {
+      "name": "GRASS_CLUMP_B",
+      "collection": "GRASS_CLUMP_B",
+      "kind": "grass",
+      "objects": [
+        "GRASS_CLUMP_B"
+      ],
+      "triangles": 168,
+      "bounds_min": [
+        -0.346,
+        -0.388,
+        -0.005
+      ],
+      "bounds_max": [
+        0.219,
+        0.35,
+        0.277
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": null
+    },
+    {
+      "name": "GRASS_CLUMP_C",
+      "collection": "GRASS_CLUMP_C",
+      "kind": "grass",
+      "objects": [
+        "GRASS_CLUMP_C"
+      ],
+      "triangles": 196,
+      "bounds_min": [
+        -0.171,
+        -0.183,
+        -0.005
+      ],
+      "bounds_max": [
+        0.177,
+        0.177,
+        0.11
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": null
+    },
+    {
+      "name": "GRASS_CLUMP_D",
+      "collection": "GRASS_CLUMP_D",
+      "kind": "grass",
+      "objects": [
+        "GRASS_CLUMP_D"
+      ],
+      "triangles": 84,
+      "bounds_min": [
+        -0.241,
+        -0.205,
+        -0.005
+      ],
+      "bounds_max": [
+        0.249,
+        0.271,
+        0.258
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": null
+    },
+    {
+      "name": "GRASS_PATCH_1M",
+      "collection": "GRASS_PATCH_1M",
+      "kind": "grass",
+      "objects": [
+        "GRASS_PATCH_1M"
+      ],
+      "triangles": 4384,
+      "bounds_min": [
+        -0.653,
+        -0.583,
+        -0.01
+      ],
+      "bounds_max": [
+        0.72,
+        0.833,
+        0.27
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": "1 m tile, place on a 1 m grid with random 90 degree turns"
+    },
+    {
+      "name": "GRASS_EDGE_1M",
+      "collection": "GRASS_EDGE_1M",
+      "kind": "grass",
+      "objects": [
+        "GRASS_EDGE_1M"
+      ],
+      "triangles": 1008,
+      "bounds_min": [
+        -0.72,
+        -0.182,
+        -0.005
+      ],
+      "bounds_max": [
+        0.65,
+        0.279,
+        0.248
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade"
+      ],
+      "tiling": null
+    },
+    {
+      "name": "WEED_TUFT_A",
+      "collection": "WEED_TUFT_A",
+      "kind": "weed",
+      "objects": [
+        "WEED_TUFT_A"
+      ],
+      "triangles": 66,
+      "bounds_min": [
+        -0.157,
+        -0.127,
+        -0.002
+      ],
+      "bounds_max": [
+        0.163,
+        0.166,
+        0.031
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_weed"
+      ]
+    },
+    {
+      "name": "WEED_TUFT_B",
+      "collection": "WEED_TUFT_B",
+      "kind": "weed",
+      "objects": [
+        "WEED_TUFT_B"
+      ],
+      "triangles": 36,
+      "bounds_min": [
+        -0.151,
+        -0.118,
+        -0.027
+      ],
+      "bounds_max": [
+        0.116,
+        0.131,
+        0.244
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_grass_blade",
+        "hr_weed"
+      ]
+    },
+    {
+      "name": "WEED_TUFT_C",
+      "collection": "WEED_TUFT_C",
+      "kind": "weed",
+      "objects": [
+        "WEED_TUFT_C"
+      ],
+      "triangles": 36,
+      "bounds_min": [
+        -0.148,
+        -0.159,
+        -0.031
+      ],
+      "bounds_max": [
+        0.134,
+        0.184,
+        0.327
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_weed"
+      ]
+    },
+    {
+      "name": "LEAF_LITTER_A",
+      "collection": "LEAF_LITTER_A",
+      "kind": "leaf litter",
+      "objects": [
+        "LEAF_LITTER_A"
+      ],
+      "triangles": 1840,
+      "bounds_min": [
+        -0.644,
+        -0.648,
+        0.005
+      ],
+      "bounds_max": [
+        0.666,
+        0.632,
+        0.051
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_leaf_litter"
+      ],
+      "note": "gutter drift, dense along the -Y edge"
+    },
+    {
+      "name": "LEAF_LITTER_B",
+      "collection": "LEAF_LITTER_B",
+      "kind": "leaf litter",
+      "objects": [
+        "LEAF_LITTER_B"
+      ],
+      "triangles": 1200,
+      "bounds_min": [
+        -0.62,
+        -0.617,
+        0.005
+      ],
+      "bounds_max": [
+        0.604,
+        0.58,
+        0.041
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_leaf_litter"
+      ],
+      "note": "small heaps"
+    },
+    {
+      "name": "LEAF_LITTER_C",
+      "collection": "LEAF_LITTER_C",
+      "kind": "leaf litter",
+      "objects": [
+        "LEAF_LITTER_C"
+      ],
+      "triangles": 480,
+      "bounds_min": [
+        -0.639,
+        -0.648,
+        0.005
+      ],
+      "bounds_max": [
+        0.654,
+        0.624,
+        0.03
+      ],
+      "collision": {
+        "type": "none"
+      },
+      "lods": [],
+      "materials": [
+        "hr_leaf_litter"
+      ],
+      "note": "sparse scatter"
+    },
+    {
+      "name": "SHRUB_A",
+      "collection": "SHRUB_A",
+      "kind": "shrub",
+      "objects": [
+        "SHRUB_A"
+      ],
+      "triangles": 1800,
+      "bounds_min": [
+        -0.512,
+        -0.516,
+        -0.026
+      ],
+      "bounds_max": [
+        0.514,
+        0.544,
+        0.613
+      ],
+      "collision": {
+        "type": "none",
+        "note": "below 0.7 m; walk-through cosmetic"
+      },
+      "lods": [],
+      "materials": [
+        "hr_bark_plane",
+        "hr_shrub_leaf"
+      ]
+    },
+    {
+      "name": "SHRUB_B",
+      "collection": "SHRUB_B",
+      "kind": "shrub",
+      "objects": [
+        "SHRUB_B"
+      ],
+      "triangles": 1920,
+      "bounds_min": [
+        -0.53,
+        -0.568,
+        -0.027
+      ],
+      "bounds_max": [
+        0.549,
+        0.507,
+        0.492
+      ],
+      "collision": {
+        "type": "none",
+        "note": "below 0.7 m; walk-through cosmetic"
+      },
+      "lods": [],
+      "materials": [
+        "hr_bark_plane",
+        "hr_shrub_leaf"
+      ]
+    },
+    {
+      "name": "SHRUB_C",
+      "collection": "SHRUB_C",
+      "kind": "shrub",
+      "objects": [
+        "SHRUB_C"
+      ],
+      "triangles": 1600,
+      "bounds_min": [
+        -0.444,
+        -0.471,
+        -0.025
+      ],
+      "bounds_max": [
+        0.416,
+        0.447,
+        0.7
+      ],
+      "collision": {
+        "type": "none",
+        "note": "below 0.7 m; walk-through cosmetic"
+      },
+      "lods": [],
+      "materials": [
+        "hr_bark_plane",
+        "hr_shrub_leaf"
+      ]
+    },
+    {
+      "name": "HEDGE_1M",
+      "collection": "HEDGE_1M",
+      "kind": "hedge",
+      "objects": [
+        "HEDGE_1M"
+      ],
+      "triangles": 938,
+      "bounds_min": [
+        -0.66,
+        -0.363,
+        -0.022
+      ],
+      "bounds_max": [
+        0.666,
+        0.408,
+        1.09
+      ],
+      "footprint": [
+        1.0,
+        0.6
+      ],
+      "collision": {
+        "type": "box",
+        "size": [
+          1.0,
+          0.6,
+          1.0
+        ],
+        "centre": [
+          0,
+          0,
+          0.5
+        ],
+        "note": "blocks players; use an explicit box collider"
+      },
+      "lods": [],
+      "materials": [
+        "hr_hedge_leaf",
+        "hr_bark_plane"
+      ],
+      "tiling": "open at -X and +X, tiles end to end along X every 1.0 m"
+    },
+    {
+      "name": "HEDGE_END",
+      "collection": "HEDGE_END",
+      "kind": "hedge",
+      "objects": [
+        "HEDGE_END"
+      ],
+      "triangles": 1074,
+      "bounds_min": [
+        -0.661,
+        -0.384,
+        -0.034
+      ],
+      "bounds_max": [
+        0.634,
+        0.405,
+        1.074
+      ],
+      "footprint": [
+        1.0,
+        0.6
+      ],
+      "collision": {
+        "type": "box",
+        "size": [
+          1.0,
+          0.6,
+          1.0
+        ],
+        "centre": [
+          0,
+          0,
+          0.5
+        ],
+        "note": "blocks players; use an explicit box collider"
+      },
+      "lods": [],
+      "materials": [
+        "hr_hedge_leaf",
+        "hr_bark_plane"
+      ],
+      "tiling": "open at -X, closed rounded end at +X; rotate 180 degrees for the other end of a run"
+    }
+  ],
+  "textures": [
+    {
+      "files": [
+        "plane-leaf-atlas-color.webp",
+        "plane-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_leaf_plane",
+      "method": "numpy: palmate 3-5 lobed outline from a soft-max of pointed polar lobes with coarse teeth; primary and secondary veins as distance fields; autumn palette yellow-green to tan and brown with blotch noise and browned margins; 2x supersampled; normal from a dome-plus-vein height map; colour bled under transparent pixels (pull-push) to stop mip fringes. Seed 4101."
+    },
+    {
+      "files": [
+        "birch-leaf-atlas-color.webp",
+        "birch-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_leaf_birch",
+      "method": "numpy: deltoid-ovate outline with acuminate tip and double serration, midrib and seven straight vein pairs; yellow-green to gold palette; clusters on thin dark twigs. Seed 4202."
+    },
+    {
+      "files": [
+        "plane-bark-color.webp",
+        "plane-bark-normal.webp",
+        "plane-bark-orm.webp"
+      ],
+      "material": "hr_bark_plane",
+      "method": "numpy: two scales of periodic, domain-warped Worley cells; each plate gets a bark age (cream, olive, grey-green, grey-brown); small flakes peel to younger layers; softened rims, rain streaks and algae tint; height from age steps; ORM = cavity AO, roughness by age, metal 0. Tiles both ways, 1 tile = 1 m. Seed 4808."
+    },
+    {
+      "files": [
+        "birch-bark-color.webp",
+        "birch-bark-normal.webp",
+        "birch-bark-orm.webp"
+      ],
+      "material": "hr_bark_birch",
+      "method": "numpy: cream-white base with grey mottling and pinkish peeled bands; 300 wrapped horizontal lenticel dashes; ragged dark fissured patches from thresholded periodic noise. Black trunk base and dark twigs come from vertex colour (COLOR_0) multiplied in the material. Seed 4909."
+    },
+    {
+      "files": [
+        "grass-blades-color.webp",
+        "grass-blades-normal.webp"
+      ],
+      "material": "hr_grass_blade",
+      "method": "numpy: twelve 64 px blade columns (damp dark greens, two yellowed) with keeled midrib, striations, darker base and ragged dried straw tips of random length; two side-view tuft cards drawn as tapered Bezier blades. Seed 4606."
+    },
+    {
+      "files": [
+        "weeds-color.webp",
+        "weeds-normal.webp"
+      ],
+      "material": "hr_weed",
+      "method": "numpy: runcinate dandelion leaves, plantain leaves with parallel veins, a grassy crack weed with seed panicles and a groundsel-type sprig with muted yellow heads. Seed 4707."
+    },
+    {
+      "files": [
+        "leaf-litter-color.webp",
+        "leaf-litter-normal.webp"
+      ],
+      "material": "hr_leaf_litter",
+      "method": "numpy: 4 x 4 grid of fallen plane and birch leaves in wet browns, with dark wet spotting, holes, curl in the height map. Seed 4505."
+    },
+    {
+      "files": [
+        "hedge-leaf-atlas-color.webp",
+        "hedge-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_hedge_leaf",
+      "method": "numpy: privet sprigs with opposite small glossy elliptic leaves, an opaque inner-foliage tile (900 overlapping leaves darkened by depth) for the hidden core, small sprig singles. Seed 4404."
+    },
+    {
+      "files": [
+        "shrub-leaf-atlas-color.webp",
+        "shrub-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_shrub_leaf",
+      "method": "numpy: evergreen laurel-type oval leaves with fine serration, a few bronze older leaves, on green twigs. Seed 4303."
+    }
+  ],
+  "materials": {
+    "all": "Principled BSDF; colour images sRGB, normal and ORM Non-Color; OpenGL normals.",
+    "alpha": "Leaf, grass, weed, hedge and litter materials feed image alpha through a Math Round node (alpha clip at 0.5) and have backface culling off, so glTF exports alphaMode MASK, doubleSided.",
+    "bark": "hr_bark_plane and hr_bark_birch multiply the base colour by the Col vertex colour attribute (glTF COLOR_0). Occlusion via the glTF Material Output group from the ORM red channel.",
+    "normals": "Leaf cards carry custom normals blended towards the canopy radial direction so crowns light softly; grass normals lean towards +Z so lawns light like the ground."
+  }
+}

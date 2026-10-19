@@ -1,0 +1,7317 @@
+{
+  "schema": 1,
+  "id": "heron-reach-32",
+  "title": "HERON REACH",
+  "brand": "ONSITE",
+  "status": "PROPOSED DESIGN / NOT A PLAYTESTED MAP",
+  "revision": "01",
+  "units": "metres",
+  "capacity": 32,
+  "mode": "16v16 / three capture areas; test 8v8 and 12v12 before 16v16",
+  "bounds": [
+    144,
+    120
+  ],
+  "coordinates": "x east, z south; origin north-west; y height. North is up on every plan.",
+  "baseCommit": "bdb9c5682dac0aab7fcecd4b01d4054a4c45ecae",
+  "levels": [
+    {
+      "id": "B1",
+      "y": -3,
+      "title": "UNDERCROFT",
+      "description": "Partial service loop; four exits, no spawn rooms."
+    },
+    {
+      "id": "G",
+      "y": 0,
+      "title": "GROUND + GARDENS",
+      "description": "Three contested spaces, homes, shops and protected starts."
+    },
+    {
+      "id": "L1",
+      "y": 3,
+      "title": "GALLERIES + MAISONETTES",
+      "description": "Continuous gallery loop; two exposed bridge crossings."
+    },
+    {
+      "id": "L2",
+      "y": 6,
+      "title": "UPPER HOMES",
+      "description": "Four separate residential islands; no floating cross-court floor."
+    },
+    {
+      "id": "R",
+      "y": 9,
+      "title": "LIMITED ROOF ROUTES",
+      "description": "North-west and south-east only; two stair exits per terrace."
+    }
+  ],
+  "standards": {
+    "primaryRoute": 4,
+    "gallery": 3,
+    "secondaryLane": 2.4,
+    "homeHall": 1.5,
+    "publicDoor": 1.5,
+    "homeDoor": 1.1,
+    "headroom": 2.4,
+    "storey": 3,
+    "stepRise": 0.15,
+    "stepGoing": 0.28,
+    "stairFlight": 1.5,
+    "stairLanding": 1.5,
+    "stepsPerStorey": 20,
+    "guard": 1.2,
+    "lowCover": 1.0,
+    "tallCover": 2.1,
+    "walkSpeed": 4.6,
+    "sprintSpeed": 6.8
+  },
+  "blocks": [
+    {
+      "id": "NW",
+      "name": "ROWAN HOUSE",
+      "rect": [
+        24,
+        18,
+        36,
+        18
+      ],
+      "height": 9,
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "roofPlayable": true,
+      "arcade": [
+        42,
+        18,
+        6,
+        18
+      ],
+      "crossArcade": [
+        24,
+        30,
+        36,
+        6
+      ]
+    },
+    {
+      "id": "NE",
+      "name": "ASH HOUSE",
+      "rect": [
+        84,
+        18,
+        36,
+        18
+      ],
+      "height": 9,
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "roofPlayable": false,
+      "arcade": [
+        102,
+        18,
+        6,
+        18
+      ],
+      "crossArcade": [
+        84,
+        30,
+        36,
+        6
+      ]
+    },
+    {
+      "id": "SW",
+      "name": "BIRCH HOUSE",
+      "rect": [
+        24,
+        84,
+        36,
+        18
+      ],
+      "height": 9,
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "roofPlayable": false,
+      "arcade": [
+        42,
+        84,
+        6,
+        18
+      ],
+      "crossArcade": [
+        24,
+        84,
+        36,
+        6
+      ]
+    },
+    {
+      "id": "SE",
+      "name": "CEDAR HOUSE",
+      "rect": [
+        84,
+        84,
+        36,
+        18
+      ],
+      "height": 9,
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "roofPlayable": true,
+      "arcade": [
+        102,
+        84,
+        6,
+        18
+      ],
+      "crossArcade": [
+        84,
+        84,
+        36,
+        6
+      ]
+    }
+  ],
+  "cores": [
+    {
+      "id": "S1",
+      "block": "NW",
+      "rect": [
+        24,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        27,
+        42
+      ]
+    },
+    {
+      "id": "S2",
+      "block": "NW",
+      "rect": [
+        54,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        57,
+        42
+      ]
+    },
+    {
+      "id": "S3",
+      "block": "NE",
+      "rect": [
+        84,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        87,
+        42
+      ]
+    },
+    {
+      "id": "S4",
+      "block": "NE",
+      "rect": [
+        114,
+        36,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        117,
+        42
+      ]
+    },
+    {
+      "id": "S5",
+      "block": "SW",
+      "rect": [
+        24,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        27,
+        78
+      ]
+    },
+    {
+      "id": "S6",
+      "block": "SW",
+      "rect": [
+        54,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        57,
+        78
+      ]
+    },
+    {
+      "id": "S7",
+      "block": "SE",
+      "rect": [
+        84,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        -3,
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        87,
+        78
+      ]
+    },
+    {
+      "id": "S8",
+      "block": "SE",
+      "rect": [
+        114,
+        78,
+        6,
+        6
+      ],
+      "levels": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "flightWidth": 1.5,
+      "risers": 20,
+      "rise": 0.15,
+      "going": 0.28,
+      "landing": 1.5,
+      "doorWidth": 1.5,
+      "portal": [
+        117,
+        78
+      ]
+    }
+  ],
+  "homes": [
+    {
+      "id": "NW-H1-1",
+      "type": "H1",
+      "x": 26,
+      "z": 21,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NW-H2-1",
+      "type": "H2",
+      "x": 26,
+      "z": 21,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NW-H1-2",
+      "type": "H1",
+      "x": 49,
+      "z": 21,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NW-H2-2",
+      "type": "H2",
+      "x": 49,
+      "z": 21,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NE-H1-1",
+      "type": "H1",
+      "x": 86,
+      "z": 21,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NE-H2-1",
+      "type": "H2",
+      "x": 86,
+      "z": 21,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NE-H1-2",
+      "type": "H1",
+      "x": 109,
+      "z": 21,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "NE-H2-2",
+      "type": "H2",
+      "x": 109,
+      "z": 21,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": false
+    },
+    {
+      "id": "SW-H1-1",
+      "type": "H1",
+      "x": 26,
+      "z": 91,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SW-H2-1",
+      "type": "H2",
+      "x": 26,
+      "z": 91,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SW-H1-2",
+      "type": "H1",
+      "x": 49,
+      "z": 91,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SW-H2-2",
+      "type": "H2",
+      "x": 49,
+      "z": 91,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SE-H1-1",
+      "type": "H1",
+      "x": 86,
+      "z": 91,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SE-H2-1",
+      "type": "H2",
+      "x": 86,
+      "z": 91,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SE-H1-2",
+      "type": "H1",
+      "x": 109,
+      "z": 91,
+      "y": 0,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        0
+      ],
+      "flipZ": true
+    },
+    {
+      "id": "SE-H2-2",
+      "type": "H2",
+      "x": 109,
+      "z": 91,
+      "y": 3,
+      "w": 9,
+      "d": 8,
+      "levels": [
+        3,
+        6
+      ],
+      "flipZ": true
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "NW-G",
+      "level": "G",
+      "rect": [
+        24,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ROWAN HOUSE"
+    },
+    {
+      "id": "NW-L1",
+      "level": "L1",
+      "rect": [
+        24,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ROWAN HOUSE"
+    },
+    {
+      "id": "NW-L2",
+      "level": "L2",
+      "rect": [
+        24,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ROWAN HOUSE"
+    },
+    {
+      "id": "NW-R",
+      "level": "R",
+      "rect": [
+        24,
+        18,
+        36,
+        18
+      ],
+      "kind": "roof",
+      "name": "ROWAN HOUSE / ROOF"
+    },
+    {
+      "id": "NE-G",
+      "level": "G",
+      "rect": [
+        84,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ASH HOUSE"
+    },
+    {
+      "id": "NE-L1",
+      "level": "L1",
+      "rect": [
+        84,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ASH HOUSE"
+    },
+    {
+      "id": "NE-L2",
+      "level": "L2",
+      "rect": [
+        84,
+        18,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "ASH HOUSE"
+    },
+    {
+      "id": "SW-G",
+      "level": "G",
+      "rect": [
+        24,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "BIRCH HOUSE"
+    },
+    {
+      "id": "SW-L1",
+      "level": "L1",
+      "rect": [
+        24,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "BIRCH HOUSE"
+    },
+    {
+      "id": "SW-L2",
+      "level": "L2",
+      "rect": [
+        24,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "BIRCH HOUSE"
+    },
+    {
+      "id": "SE-G",
+      "level": "G",
+      "rect": [
+        84,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "CEDAR HOUSE"
+    },
+    {
+      "id": "SE-L1",
+      "level": "L1",
+      "rect": [
+        84,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "CEDAR HOUSE"
+    },
+    {
+      "id": "SE-L2",
+      "level": "L2",
+      "rect": [
+        84,
+        84,
+        36,
+        18
+      ],
+      "kind": "home",
+      "name": "CEDAR HOUSE"
+    },
+    {
+      "id": "SE-R",
+      "level": "R",
+      "rect": [
+        84,
+        84,
+        36,
+        18
+      ],
+      "kind": "roof",
+      "name": "CEDAR HOUSE / ROOF"
+    },
+    {
+      "id": "W-shops",
+      "level": "G",
+      "rect": [
+        24,
+        48,
+        18,
+        9
+      ],
+      "kind": "shop",
+      "name": "LAUNDERETTE"
+    },
+    {
+      "id": "W-cycles",
+      "level": "G",
+      "rect": [
+        24,
+        63,
+        18,
+        9
+      ],
+      "kind": "shop",
+      "name": "CYCLE WORKSHOP"
+    },
+    {
+      "id": "E-shop",
+      "level": "G",
+      "rect": [
+        102,
+        48,
+        18,
+        9
+      ],
+      "kind": "shop",
+      "name": "THE CORNER"
+    },
+    {
+      "id": "E-community",
+      "level": "G",
+      "rect": [
+        102,
+        63,
+        18,
+        9
+      ],
+      "kind": "shop",
+      "name": "YOUTH ROOM"
+    },
+    {
+      "id": "C-store",
+      "level": "G",
+      "rect": [
+        60,
+        87,
+        6,
+        18
+      ],
+      "kind": "shop",
+      "name": "WASHHOUSE"
+    },
+    {
+      "id": "C-kiosk",
+      "level": "G",
+      "rect": [
+        78,
+        87,
+        6,
+        18
+      ],
+      "kind": "shop",
+      "name": "ESTATE OFFICE"
+    },
+    {
+      "id": "garden",
+      "level": "G",
+      "rect": [
+        60,
+        12,
+        24,
+        24
+      ],
+      "kind": "garden",
+      "name": "GARDEN COURT"
+    },
+    {
+      "id": "court",
+      "level": "G",
+      "rect": [
+        57,
+        50,
+        30,
+        20
+      ],
+      "kind": "court",
+      "name": "THE CAGE / 30 \u00d7 20 m"
+    },
+    {
+      "id": "gallery-north",
+      "level": "L1",
+      "rect": [
+        24,
+        36,
+        96,
+        3
+      ],
+      "kind": "gallery",
+      "name": "NORTH GALLERY"
+    },
+    {
+      "id": "gallery-south",
+      "level": "L1",
+      "rect": [
+        24,
+        81,
+        96,
+        3
+      ],
+      "kind": "gallery",
+      "name": "SOUTH GALLERY"
+    },
+    {
+      "id": "gallery-west",
+      "level": "L1",
+      "rect": [
+        39,
+        39,
+        3,
+        42
+      ],
+      "kind": "gallery",
+      "name": "WEST GALLERY"
+    },
+    {
+      "id": "gallery-east",
+      "level": "L1",
+      "rect": [
+        102,
+        39,
+        3,
+        42
+      ],
+      "kind": "gallery",
+      "name": "EAST GALLERY"
+    },
+    {
+      "id": "NW-rear",
+      "level": "L2",
+      "rect": [
+        24,
+        18,
+        36,
+        3
+      ],
+      "kind": "gallery",
+      "name": "REAR LANDING"
+    },
+    {
+      "id": "NE-rear",
+      "level": "L2",
+      "rect": [
+        84,
+        18,
+        36,
+        3
+      ],
+      "kind": "gallery",
+      "name": "REAR LANDING"
+    },
+    {
+      "id": "SW-rear",
+      "level": "L2",
+      "rect": [
+        24,
+        99,
+        36,
+        3
+      ],
+      "kind": "gallery",
+      "name": "REAR LANDING"
+    },
+    {
+      "id": "SE-rear",
+      "level": "L2",
+      "rect": [
+        84,
+        99,
+        36,
+        3
+      ],
+      "kind": "gallery",
+      "name": "REAR LANDING"
+    },
+    {
+      "id": "under-west",
+      "level": "B1",
+      "rect": [
+        48,
+        30,
+        6,
+        60
+      ],
+      "kind": "service",
+      "name": "SERVICE WEST"
+    },
+    {
+      "id": "under-east",
+      "level": "B1",
+      "rect": [
+        90,
+        30,
+        6,
+        60
+      ],
+      "kind": "service",
+      "name": "SERVICE EAST"
+    },
+    {
+      "id": "under-north",
+      "level": "B1",
+      "rect": [
+        54,
+        30,
+        36,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE NORTH"
+    },
+    {
+      "id": "under-south",
+      "level": "B1",
+      "rect": [
+        54,
+        84,
+        36,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE SOUTH"
+    },
+    {
+      "id": "under-cross-west",
+      "level": "B1",
+      "rect": [
+        54,
+        57,
+        15,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE CROSS-WEST"
+    },
+    {
+      "id": "under-cross-mid",
+      "level": "B1",
+      "rect": [
+        66,
+        57,
+        12,
+        12
+      ],
+      "kind": "service",
+      "name": "SERVICE CROSS-MID"
+    },
+    {
+      "id": "under-cross-east",
+      "level": "B1",
+      "rect": [
+        75,
+        63,
+        15,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE CROSS-EAST"
+    },
+    {
+      "id": "under-S2-link",
+      "level": "B1",
+      "rect": [
+        54,
+        36,
+        6,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE S2-LINK"
+    },
+    {
+      "id": "under-S3-link",
+      "level": "B1",
+      "rect": [
+        84,
+        36,
+        6,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE S3-LINK"
+    },
+    {
+      "id": "under-S6-link",
+      "level": "B1",
+      "rect": [
+        54,
+        78,
+        6,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE S6-LINK"
+    },
+    {
+      "id": "under-S7-link",
+      "level": "B1",
+      "rect": [
+        84,
+        78,
+        6,
+        6
+      ],
+      "kind": "service",
+      "name": "SERVICE S7-LINK"
+    },
+    {
+      "id": "S1-apron-left",
+      "level": "L1",
+      "rect": [
+        21,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-apron-right",
+      "level": "L1",
+      "rect": [
+        30,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-apron-front",
+      "level": "L1",
+      "rect": [
+        21,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-apron-left",
+      "level": "L1",
+      "rect": [
+        51,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-apron-right",
+      "level": "L1",
+      "rect": [
+        60,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-apron-front",
+      "level": "L1",
+      "rect": [
+        51,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-apron-left",
+      "level": "L1",
+      "rect": [
+        81,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-apron-right",
+      "level": "L1",
+      "rect": [
+        90,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-apron-front",
+      "level": "L1",
+      "rect": [
+        81,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-apron-left",
+      "level": "L1",
+      "rect": [
+        111,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-apron-right",
+      "level": "L1",
+      "rect": [
+        120,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-apron-front",
+      "level": "L1",
+      "rect": [
+        111,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-apron-left",
+      "level": "L1",
+      "rect": [
+        21,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-apron-right",
+      "level": "L1",
+      "rect": [
+        30,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-apron-front",
+      "level": "L1",
+      "rect": [
+        21,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-apron-left",
+      "level": "L1",
+      "rect": [
+        51,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-apron-right",
+      "level": "L1",
+      "rect": [
+        60,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-apron-front",
+      "level": "L1",
+      "rect": [
+        51,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-apron-left",
+      "level": "L1",
+      "rect": [
+        81,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-apron-right",
+      "level": "L1",
+      "rect": [
+        90,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-apron-front",
+      "level": "L1",
+      "rect": [
+        81,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-apron-left",
+      "level": "L1",
+      "rect": [
+        111,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-apron-right",
+      "level": "L1",
+      "rect": [
+        120,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-apron-front",
+      "level": "L1",
+      "rect": [
+        111,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        21,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        30,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        21,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-R-apron-left",
+      "level": "R",
+      "rect": [
+        21,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-R-apron-right",
+      "level": "R",
+      "rect": [
+        30,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S1-R-apron-front",
+      "level": "R",
+      "rect": [
+        21,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        51,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        60,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        51,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-R-apron-left",
+      "level": "R",
+      "rect": [
+        51,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-R-apron-right",
+      "level": "R",
+      "rect": [
+        60,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-R-apron-front",
+      "level": "R",
+      "rect": [
+        51,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        81,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        90,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S3-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        81,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        111,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        120,
+        36,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S4-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        111,
+        42,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        21,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        30,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S5-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        21,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        51,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        60,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S6-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        51,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        81,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        90,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        81,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-R-apron-left",
+      "level": "R",
+      "rect": [
+        81,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-R-apron-right",
+      "level": "R",
+      "rect": [
+        90,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S7-R-apron-front",
+      "level": "R",
+      "rect": [
+        81,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-L2-apron-left",
+      "level": "L2",
+      "rect": [
+        111,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-L2-apron-right",
+      "level": "L2",
+      "rect": [
+        120,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-L2-apron-front",
+      "level": "L2",
+      "rect": [
+        111,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-R-apron-left",
+      "level": "R",
+      "rect": [
+        111,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-R-apron-right",
+      "level": "R",
+      "rect": [
+        120,
+        78,
+        3,
+        6
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S8-R-apron-front",
+      "level": "R",
+      "rect": [
+        111,
+        75,
+        12,
+        3
+      ],
+      "kind": "gallery",
+      "name": "STAIR LANDING APRON"
+    },
+    {
+      "id": "S2-B1-exit",
+      "level": "B1",
+      "rect": [
+        54,
+        42,
+        6,
+        3
+      ],
+      "kind": "service",
+      "name": "STAir EXIT APRON"
+    },
+    {
+      "id": "S3-B1-exit",
+      "level": "B1",
+      "rect": [
+        84,
+        42,
+        6,
+        3
+      ],
+      "kind": "service",
+      "name": "STAir EXIT APRON"
+    },
+    {
+      "id": "S6-B1-exit",
+      "level": "B1",
+      "rect": [
+        54,
+        75,
+        6,
+        3
+      ],
+      "kind": "service",
+      "name": "STAir EXIT APRON"
+    },
+    {
+      "id": "S7-B1-exit",
+      "level": "B1",
+      "rect": [
+        84,
+        75,
+        6,
+        3
+      ],
+      "kind": "service",
+      "name": "STAir EXIT APRON"
+    }
+  ],
+  "objectives": [
+    {
+      "id": "A",
+      "name": "GARDEN COURT",
+      "x": 72,
+      "z": 24,
+      "y": 0,
+      "radius": 5
+    },
+    {
+      "id": "B",
+      "name": "THE CAGE",
+      "x": 72,
+      "z": 60,
+      "y": 0,
+      "radius": 5
+    },
+    {
+      "id": "C",
+      "name": "WASHHOUSE SQUARE",
+      "x": 72,
+      "z": 96,
+      "y": 0,
+      "radius": 5
+    }
+  ],
+  "spawns": [
+    {
+      "team": "WEST",
+      "rect": [
+        0,
+        42,
+        16,
+        36
+      ],
+      "positions": [
+        {
+          "x": 3,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 3,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 9,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "z": 72
+        }
+      ],
+      "exits": 3,
+      "notes": "Initial staging positions only. Dynamic respawn selection, line-of-sight rejection and enemy proximity checks must be implemented and tested."
+    },
+    {
+      "team": "EAST",
+      "rect": [
+        128,
+        42,
+        16,
+        36
+      ],
+      "positions": [
+        {
+          "x": 131,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 134,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 137,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 140,
+          "y": 0,
+          "z": 48
+        },
+        {
+          "x": 131,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 134,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 137,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 140,
+          "y": 0,
+          "z": 56
+        },
+        {
+          "x": 131,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 134,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 137,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 140,
+          "y": 0,
+          "z": 64
+        },
+        {
+          "x": 131,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 134,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 137,
+          "y": 0,
+          "z": 72
+        },
+        {
+          "x": 140,
+          "y": 0,
+          "z": 72
+        }
+      ],
+      "exits": 3,
+      "notes": "Initial staging positions only. Dynamic respawn selection, line-of-sight rejection and enemy proximity checks must be implemented and tested."
+    }
+  ],
+  "cover": [
+    {
+      "id": "K01",
+      "rect": [
+        20,
+        54,
+        2,
+        9
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K02",
+      "rect": [
+        122,
+        54,
+        2,
+        9
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K07",
+      "rect": [
+        36,
+        41,
+        5,
+        2
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K08",
+      "rect": [
+        103,
+        41,
+        5,
+        2
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K09",
+      "rect": [
+        49,
+        49,
+        3,
+        5
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K10",
+      "rect": [
+        92,
+        66,
+        3,
+        5
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K11",
+      "rect": [
+        49,
+        66,
+        3,
+        5
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K12",
+      "rect": [
+        92,
+        49,
+        3,
+        5
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K13",
+      "rect": [
+        61,
+        53,
+        4,
+        2
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K14",
+      "rect": [
+        79,
+        65,
+        4,
+        2
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K15",
+      "rect": [
+        66,
+        54,
+        3,
+        3
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K16",
+      "rect": [
+        75,
+        63,
+        3,
+        3
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K17",
+      "rect": [
+        31,
+        70,
+        5,
+        2
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K18",
+      "rect": [
+        108,
+        70,
+        5,
+        2
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K21",
+      "rect": [
+        62,
+        18,
+        3,
+        3
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K22",
+      "rect": [
+        77,
+        27,
+        2,
+        3
+      ],
+      "height": 1,
+      "y": 0,
+      "kind": "planter"
+    },
+    {
+      "id": "K23",
+      "rect": [
+        66,
+        90,
+        1,
+        2
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "K24",
+      "rect": [
+        75,
+        100,
+        2,
+        3
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick screen / service cabinet"
+    },
+    {
+      "id": "GP33-36",
+      "rect": [
+        33,
+        36,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP33-83.4",
+      "rect": [
+        33,
+        83.4,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP47-36",
+      "rect": [
+        47,
+        36,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP47-83.4",
+      "rect": [
+        47,
+        83.4,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP93-36",
+      "rect": [
+        93,
+        36,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP93-83.4",
+      "rect": [
+        93,
+        83.4,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP107-36",
+      "rect": [
+        107,
+        36,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "GP107-83.4",
+      "rect": [
+        107,
+        83.4,
+        3,
+        0.6
+      ],
+      "height": 2.1,
+      "y": 3,
+      "kind": "privacy screen"
+    },
+    {
+      "id": "EDGE-0-0",
+      "rect": [
+        35,
+        9,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-0-1",
+      "rect": [
+        59,
+        9,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-0-2",
+      "rect": [
+        83,
+        9,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-0-3",
+      "rect": [
+        107,
+        9,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-4-0",
+      "rect": [
+        35,
+        105,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-4-1",
+      "rect": [
+        59,
+        105,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-4-2",
+      "rect": [
+        83,
+        105,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    },
+    {
+      "id": "EDGE-4-3",
+      "rect": [
+        107,
+        105,
+        2,
+        6
+      ],
+      "height": 2.1,
+      "y": 0,
+      "kind": "brick service screen"
+    }
+  ],
+  "planting": [
+    {
+      "id": "P1",
+      "rect": [
+        2,
+        8,
+        16,
+        26
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P2",
+      "rect": [
+        126,
+        8,
+        16,
+        26
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P3",
+      "rect": [
+        2,
+        86,
+        16,
+        26
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P4",
+      "rect": [
+        126,
+        86,
+        16,
+        26
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P5",
+      "rect": [
+        63,
+        13,
+        6,
+        7
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P6",
+      "rect": [
+        75,
+        29,
+        6,
+        5
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P7",
+      "rect": [
+        21,
+        22,
+        2,
+        12
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P8",
+      "rect": [
+        121,
+        86,
+        2,
+        12
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P9",
+      "rect": [
+        27,
+        111,
+        32,
+        6
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    },
+    {
+      "id": "P10",
+      "rect": [
+        85,
+        111,
+        32,
+        6
+      ],
+      "type": "grass / soil / low shrubs",
+      "maxShrubHeight": 0.7
+    }
+  ],
+  "trees": [
+    {
+      "id": "T01",
+      "x": 8,
+      "z": 18,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T02",
+      "x": 12,
+      "z": 29,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T03",
+      "x": 132,
+      "z": 18,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T04",
+      "x": 136,
+      "z": 29,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T05",
+      "x": 8,
+      "z": 94,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T06",
+      "x": 12,
+      "z": 105,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T07",
+      "x": 132,
+      "z": 94,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T08",
+      "x": 136,
+      "z": 105,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T09",
+      "x": 65,
+      "z": 16,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T10",
+      "x": 79,
+      "z": 32,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T11",
+      "x": 29,
+      "z": 114,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T12",
+      "x": 52,
+      "z": 114,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T13",
+      "x": 92,
+      "z": 114,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T14",
+      "x": 115,
+      "z": 114,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T15",
+      "x": 21,
+      "z": 26,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T16",
+      "x": 123,
+      "z": 92,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T17",
+      "x": 48,
+      "z": 47,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T18",
+      "x": 96,
+      "z": 73,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T19",
+      "x": 48,
+      "z": 73,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    },
+    {
+      "id": "T20",
+      "x": 96,
+      "z": 47,
+      "canopyRadius": 2.7,
+      "trunkRadius": 0.22,
+      "height": 7,
+      "canopyBase": 2.7,
+      "type": "London plane / silver birch; clearance modelled, leaf cards cosmetic"
+    }
+  ],
+  "lights": [
+    {
+      "id": "L01",
+      "x": 21,
+      "z": 45,
+      "y": 4,
+      "kind": "street",
+      "kelvin": 2700,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L02",
+      "x": 21,
+      "z": 75,
+      "y": 4,
+      "kind": "street",
+      "kelvin": 2700,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L03",
+      "x": 123,
+      "z": 45,
+      "y": 4,
+      "kind": "street",
+      "kelvin": 2700,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L04",
+      "x": 123,
+      "z": 75,
+      "y": 4,
+      "kind": "street",
+      "kelvin": 2700,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L05",
+      "x": 54,
+      "z": 45,
+      "y": 4,
+      "kind": "court",
+      "kelvin": 3000,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L06",
+      "x": 90,
+      "z": 45,
+      "y": 4,
+      "kind": "court",
+      "kelvin": 3000,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L07",
+      "x": 54,
+      "z": 75,
+      "y": 4,
+      "kind": "court",
+      "kelvin": 3000,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L08",
+      "x": 90,
+      "z": 75,
+      "y": 4,
+      "kind": "court",
+      "kelvin": 3000,
+      "radius": 8,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L09",
+      "x": 63,
+      "z": 24,
+      "y": 2.4,
+      "kind": "garden",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L10",
+      "x": 81,
+      "z": 24,
+      "y": 2.4,
+      "kind": "garden",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L11",
+      "x": 68,
+      "z": 90,
+      "y": 2.4,
+      "kind": "shop",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L12",
+      "x": 76,
+      "z": 102,
+      "y": 2.4,
+      "kind": "shop",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L13",
+      "x": 28,
+      "z": 32,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L14",
+      "x": 28,
+      "z": 88,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L15",
+      "x": 52,
+      "z": 32,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L16",
+      "x": 52,
+      "z": 88,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L17",
+      "x": 88,
+      "z": 32,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L18",
+      "x": 88,
+      "z": 88,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L19",
+      "x": 112,
+      "z": 32,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    },
+    {
+      "id": "L20",
+      "x": 112,
+      "z": 88,
+      "y": 2.4,
+      "kind": "door",
+      "kelvin": 2700,
+      "radius": 4,
+      "runtime": "emissive / baked lighting proxy; select very few local real-time lights"
+    }
+  ],
+  "wetAreas": [
+    {
+      "id": "W1",
+      "rect": [
+        29,
+        43,
+        8,
+        1.5
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W2",
+      "rect": [
+        105,
+        76,
+        8,
+        1.5
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W3",
+      "rect": [
+        46,
+        58,
+        6,
+        2
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W4",
+      "rect": [
+        92,
+        61,
+        6,
+        2
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W5",
+      "rect": [
+        61,
+        44,
+        5,
+        2
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W6",
+      "rect": [
+        78,
+        74,
+        5,
+        2
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    },
+    {
+      "id": "W7",
+      "rect": [
+        67,
+        106,
+        10,
+        2
+      ],
+      "note": "shallow puddle / dirty wet edge; no collision change"
+    }
+  ],
+  "detailZones": [
+    {
+      "name": "shop-thresholds",
+      "rect": [
+        102,
+        46,
+        18,
+        28
+      ],
+      "items": "receipts, crate stacks, cartons; clear door arcs"
+    },
+    {
+      "name": "bin-bays",
+      "rect": [
+        25,
+        64,
+        16,
+        8
+      ],
+      "items": "bags, wheelie bins, stained concrete; rigid collision only on large props"
+    },
+    {
+      "name": "garden",
+      "rect": [
+        60,
+        12,
+        24,
+        24
+      ],
+      "items": "soil, leaf litter, root heave, grass seams"
+    },
+    {
+      "name": "washhouse",
+      "rect": [
+        60,
+        87,
+        24,
+        18
+      ],
+      "items": "laundry cages, torn notices, drain trails"
+    },
+    {
+      "name": "undercroft",
+      "rect": [
+        48,
+        30,
+        48,
+        60
+      ],
+      "items": "waterline decals, conduits, grilles; readable warm exit lights"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "g00",
+      "x": 18,
+      "z": 12,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g10",
+      "x": 45,
+      "z": 12,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g20",
+      "x": 72,
+      "z": 12,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g30",
+      "x": 99,
+      "z": 12,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g40",
+      "x": 126,
+      "z": 12,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g01",
+      "x": 18,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g11",
+      "x": 45,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g21",
+      "x": 72,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g31",
+      "x": 99,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g41",
+      "x": 126,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g02",
+      "x": 18,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g12",
+      "x": 45,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g32",
+      "x": 99,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g42",
+      "x": 126,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g03",
+      "x": 18,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g13",
+      "x": 45,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g23",
+      "x": 72,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g33",
+      "x": 99,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g43",
+      "x": 126,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g04",
+      "x": 18,
+      "z": 108,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g14",
+      "x": 45,
+      "z": 108,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g24",
+      "x": 72,
+      "z": 108,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g34",
+      "x": 99,
+      "z": 108,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "g44",
+      "x": 126,
+      "z": 108,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "A",
+      "x": 72,
+      "z": 24,
+      "y": 0,
+      "kind": "objective"
+    },
+    {
+      "id": "C",
+      "x": 72,
+      "z": 96,
+      "y": 0,
+      "kind": "objective"
+    },
+    {
+      "id": "B",
+      "x": 72,
+      "z": 60,
+      "y": 0,
+      "kind": "objective"
+    },
+    {
+      "id": "Wspawn",
+      "x": 8,
+      "z": 60,
+      "y": 0,
+      "kind": "spawn"
+    },
+    {
+      "id": "Wlobby",
+      "x": 12,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Wn",
+      "x": 12,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Ws",
+      "x": 12,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Wdog",
+      "x": 12,
+      "z": 69,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Wout",
+      "x": 24,
+      "z": 69,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Wmid",
+      "x": 24,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Espawn",
+      "x": 136,
+      "z": 60,
+      "y": 0,
+      "kind": "spawn"
+    },
+    {
+      "id": "Elobby",
+      "x": 132,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "En",
+      "x": 132,
+      "z": 45,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Es",
+      "x": 132,
+      "z": 75,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Edog",
+      "x": 132,
+      "z": 69,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Eout",
+      "x": 120,
+      "z": 69,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "Emid",
+      "x": 120,
+      "z": 60,
+      "y": 0,
+      "kind": "route"
+    },
+    {
+      "id": "S1@0",
+      "x": 27,
+      "z": 42,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S1@3",
+      "x": 27,
+      "z": 42,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S1@6",
+      "x": 27,
+      "z": 42,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S1@9",
+      "x": 27,
+      "z": 42,
+      "y": 9,
+      "kind": "stair"
+    },
+    {
+      "id": "S2@-3",
+      "x": 57,
+      "z": 42,
+      "y": -3,
+      "kind": "stair"
+    },
+    {
+      "id": "S2@0",
+      "x": 57,
+      "z": 42,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S2@3",
+      "x": 57,
+      "z": 42,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S2@6",
+      "x": 57,
+      "z": 42,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S2@9",
+      "x": 57,
+      "z": 42,
+      "y": 9,
+      "kind": "stair"
+    },
+    {
+      "id": "S3@-3",
+      "x": 87,
+      "z": 42,
+      "y": -3,
+      "kind": "stair"
+    },
+    {
+      "id": "S3@0",
+      "x": 87,
+      "z": 42,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S3@3",
+      "x": 87,
+      "z": 42,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S3@6",
+      "x": 87,
+      "z": 42,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S4@0",
+      "x": 117,
+      "z": 42,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S4@3",
+      "x": 117,
+      "z": 42,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S4@6",
+      "x": 117,
+      "z": 42,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S5@0",
+      "x": 27,
+      "z": 78,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S5@3",
+      "x": 27,
+      "z": 78,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S5@6",
+      "x": 27,
+      "z": 78,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S6@-3",
+      "x": 57,
+      "z": 78,
+      "y": -3,
+      "kind": "stair"
+    },
+    {
+      "id": "S6@0",
+      "x": 57,
+      "z": 78,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S6@3",
+      "x": 57,
+      "z": 78,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S6@6",
+      "x": 57,
+      "z": 78,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S7@-3",
+      "x": 87,
+      "z": 78,
+      "y": -3,
+      "kind": "stair"
+    },
+    {
+      "id": "S7@0",
+      "x": 87,
+      "z": 78,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S7@3",
+      "x": 87,
+      "z": 78,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S7@6",
+      "x": 87,
+      "z": 78,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S7@9",
+      "x": 87,
+      "z": 78,
+      "y": 9,
+      "kind": "stair"
+    },
+    {
+      "id": "S8@0",
+      "x": 117,
+      "z": 78,
+      "y": 0,
+      "kind": "stair"
+    },
+    {
+      "id": "S8@3",
+      "x": 117,
+      "z": 78,
+      "y": 3,
+      "kind": "stair"
+    },
+    {
+      "id": "S8@6",
+      "x": 117,
+      "z": 78,
+      "y": 6,
+      "kind": "stair"
+    },
+    {
+      "id": "S8@9",
+      "x": 117,
+      "z": 78,
+      "y": 9,
+      "kind": "stair"
+    },
+    {
+      "id": "uNW",
+      "x": 51,
+      "z": 33,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uN",
+      "x": 72,
+      "z": 33,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uNE",
+      "x": 93,
+      "z": 33,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uW",
+      "x": 51,
+      "z": 60,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uE",
+      "x": 93,
+      "z": 60,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uSW",
+      "x": 51,
+      "z": 87,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uS",
+      "x": 72,
+      "z": 87,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "uSE",
+      "x": 93,
+      "z": 87,
+      "y": -3,
+      "kind": "service"
+    },
+    {
+      "id": "NW-H1-1-front",
+      "x": 26.75,
+      "z": 29,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H1-1-rear",
+      "x": 26.75,
+      "z": 21,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H2-1-lower",
+      "x": 31.25,
+      "z": 29,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H2-1-upper",
+      "x": 31.25,
+      "z": 21,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H1-2-front",
+      "x": 49.75,
+      "z": 29,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H1-2-rear",
+      "x": 49.75,
+      "z": 21,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H2-2-lower",
+      "x": 54.25,
+      "z": 29,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "NW-H2-2-upper",
+      "x": 54.25,
+      "z": 21,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H1-1-front",
+      "x": 86.75,
+      "z": 29,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H1-1-rear",
+      "x": 86.75,
+      "z": 21,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H2-1-lower",
+      "x": 91.25,
+      "z": 29,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H2-1-upper",
+      "x": 91.25,
+      "z": 21,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H1-2-front",
+      "x": 109.75,
+      "z": 29,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H1-2-rear",
+      "x": 109.75,
+      "z": 21,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H2-2-lower",
+      "x": 114.25,
+      "z": 29,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "NE-H2-2-upper",
+      "x": 114.25,
+      "z": 21,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H1-1-front",
+      "x": 26.75,
+      "z": 91,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H1-1-rear",
+      "x": 26.75,
+      "z": 99,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H2-1-lower",
+      "x": 31.25,
+      "z": 91,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H2-1-upper",
+      "x": 31.25,
+      "z": 99,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H1-2-front",
+      "x": 49.75,
+      "z": 91,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H1-2-rear",
+      "x": 49.75,
+      "z": 99,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H2-2-lower",
+      "x": 54.25,
+      "z": 91,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "SW-H2-2-upper",
+      "x": 54.25,
+      "z": 99,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H1-1-front",
+      "x": 86.75,
+      "z": 91,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H1-1-rear",
+      "x": 86.75,
+      "z": 99,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H2-1-lower",
+      "x": 91.25,
+      "z": 91,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H2-1-upper",
+      "x": 91.25,
+      "z": 99,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H1-2-front",
+      "x": 109.75,
+      "z": 91,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H1-2-rear",
+      "x": 109.75,
+      "z": 99,
+      "y": 0,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H2-2-lower",
+      "x": 114.25,
+      "z": 91,
+      "y": 3,
+      "kind": "home"
+    },
+    {
+      "id": "SE-H2-2-upper",
+      "x": 114.25,
+      "z": 99,
+      "y": 6,
+      "kind": "home"
+    },
+    {
+      "id": "S1-apron",
+      "x": 27,
+      "z": 43.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S2-apron",
+      "x": 57,
+      "z": 43.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S3-apron",
+      "x": 87,
+      "z": 43.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S4-apron",
+      "x": 117,
+      "z": 43.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S5-apron",
+      "x": 27,
+      "z": 76.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S6-apron",
+      "x": 57,
+      "z": 76.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S7-apron",
+      "x": 87,
+      "z": 76.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "S8-apron",
+      "x": 117,
+      "z": 76.5,
+      "y": 3,
+      "kind": "gallery"
+    },
+    {
+      "id": "NW-rear@6",
+      "x": 42,
+      "z": 19.5,
+      "y": 6,
+      "kind": "landing"
+    },
+    {
+      "id": "NW-rear@9",
+      "x": 42,
+      "z": 19.5,
+      "y": 9,
+      "kind": "landing"
+    },
+    {
+      "id": "NE-rear@6",
+      "x": 102,
+      "z": 19.5,
+      "y": 6,
+      "kind": "landing"
+    },
+    {
+      "id": "SW-rear@6",
+      "x": 42,
+      "z": 100.5,
+      "y": 6,
+      "kind": "landing"
+    },
+    {
+      "id": "SE-rear@6",
+      "x": 102,
+      "z": 100.5,
+      "y": 6,
+      "kind": "landing"
+    },
+    {
+      "id": "SE-rear@9",
+      "x": 102,
+      "z": 100.5,
+      "y": 9,
+      "kind": "landing"
+    }
+  ],
+  "edges": [
+    {
+      "a": "g00",
+      "b": "g10",
+      "kind": "walk",
+      "via": [
+        [
+          32,
+          12,
+          0
+        ],
+        [
+          32,
+          6,
+          0
+        ],
+        [
+          40,
+          6,
+          0
+        ],
+        [
+          40,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g10",
+      "b": "g20",
+      "kind": "walk",
+      "via": [
+        [
+          56,
+          12,
+          0
+        ],
+        [
+          56,
+          6,
+          0
+        ],
+        [
+          64,
+          6,
+          0
+        ],
+        [
+          64,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g20",
+      "b": "g30",
+      "kind": "walk",
+      "via": [
+        [
+          80,
+          12,
+          0
+        ],
+        [
+          80,
+          6,
+          0
+        ],
+        [
+          88,
+          6,
+          0
+        ],
+        [
+          88,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g30",
+      "b": "g40",
+      "kind": "walk",
+      "via": [
+        [
+          104,
+          12,
+          0
+        ],
+        [
+          104,
+          6,
+          0
+        ],
+        [
+          112,
+          6,
+          0
+        ],
+        [
+          112,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g01",
+      "b": "g11",
+      "kind": "walk"
+    },
+    {
+      "a": "g11",
+      "b": "g21",
+      "kind": "walk"
+    },
+    {
+      "a": "g21",
+      "b": "g31",
+      "kind": "walk"
+    },
+    {
+      "a": "g31",
+      "b": "g41",
+      "kind": "walk"
+    },
+    {
+      "a": "g02",
+      "b": "g12",
+      "kind": "walk",
+      "via": [
+        [
+          18,
+          66,
+          0
+        ],
+        [
+          24,
+          66,
+          0
+        ],
+        [
+          24,
+          60,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g12",
+      "b": "B",
+      "kind": "walk"
+    },
+    {
+      "a": "B",
+      "b": "g32",
+      "kind": "walk"
+    },
+    {
+      "a": "g32",
+      "b": "g42",
+      "kind": "walk",
+      "via": [
+        [
+          120,
+          60,
+          0
+        ],
+        [
+          120,
+          66,
+          0
+        ],
+        [
+          126,
+          66,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g03",
+      "b": "g13",
+      "kind": "walk"
+    },
+    {
+      "a": "g13",
+      "b": "g23",
+      "kind": "walk"
+    },
+    {
+      "a": "g23",
+      "b": "g33",
+      "kind": "walk"
+    },
+    {
+      "a": "g33",
+      "b": "g43",
+      "kind": "walk"
+    },
+    {
+      "a": "g04",
+      "b": "g14",
+      "kind": "walk",
+      "via": [
+        [
+          32,
+          108,
+          0
+        ],
+        [
+          32,
+          114,
+          0
+        ],
+        [
+          40,
+          114,
+          0
+        ],
+        [
+          40,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g14",
+      "b": "g24",
+      "kind": "walk",
+      "via": [
+        [
+          56,
+          108,
+          0
+        ],
+        [
+          56,
+          114,
+          0
+        ],
+        [
+          64,
+          114,
+          0
+        ],
+        [
+          64,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g24",
+      "b": "g34",
+      "kind": "walk",
+      "via": [
+        [
+          80,
+          108,
+          0
+        ],
+        [
+          80,
+          114,
+          0
+        ],
+        [
+          88,
+          114,
+          0
+        ],
+        [
+          88,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g34",
+      "b": "g44",
+      "kind": "walk",
+      "via": [
+        [
+          104,
+          108,
+          0
+        ],
+        [
+          104,
+          114,
+          0
+        ],
+        [
+          112,
+          114,
+          0
+        ],
+        [
+          112,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "g00",
+      "b": "g01",
+      "kind": "walk"
+    },
+    {
+      "a": "g01",
+      "b": "g02",
+      "kind": "walk"
+    },
+    {
+      "a": "g02",
+      "b": "g03",
+      "kind": "walk"
+    },
+    {
+      "a": "g03",
+      "b": "g04",
+      "kind": "walk"
+    },
+    {
+      "a": "g10",
+      "b": "g11",
+      "kind": "walk"
+    },
+    {
+      "a": "g11",
+      "b": "g12",
+      "kind": "walk"
+    },
+    {
+      "a": "g12",
+      "b": "g13",
+      "kind": "walk"
+    },
+    {
+      "a": "g13",
+      "b": "g14",
+      "kind": "walk"
+    },
+    {
+      "a": "g21",
+      "b": "B",
+      "kind": "walk"
+    },
+    {
+      "a": "B",
+      "b": "g23",
+      "kind": "walk"
+    },
+    {
+      "a": "g30",
+      "b": "g31",
+      "kind": "walk"
+    },
+    {
+      "a": "g31",
+      "b": "g32",
+      "kind": "walk"
+    },
+    {
+      "a": "g32",
+      "b": "g33",
+      "kind": "walk"
+    },
+    {
+      "a": "g33",
+      "b": "g34",
+      "kind": "walk"
+    },
+    {
+      "a": "g40",
+      "b": "g41",
+      "kind": "walk"
+    },
+    {
+      "a": "g41",
+      "b": "g42",
+      "kind": "walk"
+    },
+    {
+      "a": "g42",
+      "b": "g43",
+      "kind": "walk"
+    },
+    {
+      "a": "g43",
+      "b": "g44",
+      "kind": "walk"
+    },
+    {
+      "a": "A",
+      "b": "g20",
+      "kind": "walk"
+    },
+    {
+      "a": "A",
+      "b": "g21",
+      "kind": "walk"
+    },
+    {
+      "a": "C",
+      "b": "g23",
+      "kind": "walk"
+    },
+    {
+      "a": "C",
+      "b": "g24",
+      "kind": "walk"
+    },
+    {
+      "a": "Wspawn",
+      "b": "Wlobby",
+      "kind": "walk"
+    },
+    {
+      "a": "Wlobby",
+      "b": "Wn",
+      "kind": "walk"
+    },
+    {
+      "a": "Wlobby",
+      "b": "Ws",
+      "kind": "walk"
+    },
+    {
+      "a": "Wlobby",
+      "b": "Wdog",
+      "kind": "walk"
+    },
+    {
+      "a": "Wdog",
+      "b": "Wout",
+      "kind": "walk"
+    },
+    {
+      "a": "Wout",
+      "b": "Wmid",
+      "kind": "walk"
+    },
+    {
+      "a": "Wn",
+      "b": "g01",
+      "kind": "walk"
+    },
+    {
+      "a": "Ws",
+      "b": "g03",
+      "kind": "walk"
+    },
+    {
+      "a": "Wmid",
+      "b": "g12",
+      "kind": "walk"
+    },
+    {
+      "a": "Espawn",
+      "b": "Elobby",
+      "kind": "walk"
+    },
+    {
+      "a": "Elobby",
+      "b": "En",
+      "kind": "walk"
+    },
+    {
+      "a": "Elobby",
+      "b": "Es",
+      "kind": "walk"
+    },
+    {
+      "a": "Elobby",
+      "b": "Edog",
+      "kind": "walk"
+    },
+    {
+      "a": "Edog",
+      "b": "Eout",
+      "kind": "walk"
+    },
+    {
+      "a": "Eout",
+      "b": "Emid",
+      "kind": "walk"
+    },
+    {
+      "a": "En",
+      "b": "g41",
+      "kind": "walk"
+    },
+    {
+      "a": "Es",
+      "b": "g43",
+      "kind": "walk"
+    },
+    {
+      "a": "Emid",
+      "b": "g32",
+      "kind": "walk"
+    },
+    {
+      "a": "S1@0",
+      "b": "S1@3",
+      "kind": "stairs",
+      "via": [
+        [
+          25.5,
+          41.25,
+          0
+        ],
+        [
+          25.5,
+          37.5,
+          1.5
+        ],
+        [
+          28.5,
+          37.5,
+          1.5
+        ],
+        [
+          28.5,
+          41.25,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S1@3",
+      "b": "S1@6",
+      "kind": "stairs",
+      "via": [
+        [
+          25.5,
+          41.25,
+          3
+        ],
+        [
+          25.5,
+          37.5,
+          4.5
+        ],
+        [
+          28.5,
+          37.5,
+          4.5
+        ],
+        [
+          28.5,
+          41.25,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S1@6",
+      "b": "S1@9",
+      "kind": "stairs",
+      "via": [
+        [
+          25.5,
+          41.25,
+          6
+        ],
+        [
+          25.5,
+          37.5,
+          7.5
+        ],
+        [
+          28.5,
+          37.5,
+          7.5
+        ],
+        [
+          28.5,
+          41.25,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S1@0",
+      "b": "g01",
+      "kind": "walk",
+      "via": [
+        [
+          27,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S2@-3",
+      "b": "S2@0",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          41.25,
+          -3
+        ],
+        [
+          55.5,
+          37.5,
+          -1.5
+        ],
+        [
+          58.5,
+          37.5,
+          -1.5
+        ],
+        [
+          58.5,
+          41.25,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S2@0",
+      "b": "S2@3",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          41.25,
+          0
+        ],
+        [
+          55.5,
+          37.5,
+          1.5
+        ],
+        [
+          58.5,
+          37.5,
+          1.5
+        ],
+        [
+          58.5,
+          41.25,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S2@3",
+      "b": "S2@6",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          41.25,
+          3
+        ],
+        [
+          55.5,
+          37.5,
+          4.5
+        ],
+        [
+          58.5,
+          37.5,
+          4.5
+        ],
+        [
+          58.5,
+          41.25,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S2@6",
+      "b": "S2@9",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          41.25,
+          6
+        ],
+        [
+          55.5,
+          37.5,
+          7.5
+        ],
+        [
+          58.5,
+          37.5,
+          7.5
+        ],
+        [
+          58.5,
+          41.25,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S2@0",
+      "b": "g11",
+      "kind": "walk",
+      "via": [
+        [
+          57,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S3@-3",
+      "b": "S3@0",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          41.25,
+          -3
+        ],
+        [
+          85.5,
+          37.5,
+          -1.5
+        ],
+        [
+          88.5,
+          37.5,
+          -1.5
+        ],
+        [
+          88.5,
+          41.25,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S3@0",
+      "b": "S3@3",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          41.25,
+          0
+        ],
+        [
+          85.5,
+          37.5,
+          1.5
+        ],
+        [
+          88.5,
+          37.5,
+          1.5
+        ],
+        [
+          88.5,
+          41.25,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S3@3",
+      "b": "S3@6",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          41.25,
+          3
+        ],
+        [
+          85.5,
+          37.5,
+          4.5
+        ],
+        [
+          88.5,
+          37.5,
+          4.5
+        ],
+        [
+          88.5,
+          41.25,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S3@0",
+      "b": "g31",
+      "kind": "walk",
+      "via": [
+        [
+          87,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S4@0",
+      "b": "S4@3",
+      "kind": "stairs",
+      "via": [
+        [
+          115.5,
+          41.25,
+          0
+        ],
+        [
+          115.5,
+          37.5,
+          1.5
+        ],
+        [
+          118.5,
+          37.5,
+          1.5
+        ],
+        [
+          118.5,
+          41.25,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S4@3",
+      "b": "S4@6",
+      "kind": "stairs",
+      "via": [
+        [
+          115.5,
+          41.25,
+          3
+        ],
+        [
+          115.5,
+          37.5,
+          4.5
+        ],
+        [
+          118.5,
+          37.5,
+          4.5
+        ],
+        [
+          118.5,
+          41.25,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S4@0",
+      "b": "g41",
+      "kind": "walk",
+      "via": [
+        [
+          117,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S5@0",
+      "b": "S5@3",
+      "kind": "stairs",
+      "via": [
+        [
+          25.5,
+          78.75,
+          0
+        ],
+        [
+          25.5,
+          82.5,
+          1.5
+        ],
+        [
+          28.5,
+          82.5,
+          1.5
+        ],
+        [
+          28.5,
+          78.75,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S5@3",
+      "b": "S5@6",
+      "kind": "stairs",
+      "via": [
+        [
+          25.5,
+          78.75,
+          3
+        ],
+        [
+          25.5,
+          82.5,
+          4.5
+        ],
+        [
+          28.5,
+          82.5,
+          4.5
+        ],
+        [
+          28.5,
+          78.75,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S5@0",
+      "b": "g03",
+      "kind": "walk",
+      "via": [
+        [
+          27,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S6@-3",
+      "b": "S6@0",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          78.75,
+          -3
+        ],
+        [
+          55.5,
+          82.5,
+          -1.5
+        ],
+        [
+          58.5,
+          82.5,
+          -1.5
+        ],
+        [
+          58.5,
+          78.75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S6@0",
+      "b": "S6@3",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          78.75,
+          0
+        ],
+        [
+          55.5,
+          82.5,
+          1.5
+        ],
+        [
+          58.5,
+          82.5,
+          1.5
+        ],
+        [
+          58.5,
+          78.75,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S6@3",
+      "b": "S6@6",
+      "kind": "stairs",
+      "via": [
+        [
+          55.5,
+          78.75,
+          3
+        ],
+        [
+          55.5,
+          82.5,
+          4.5
+        ],
+        [
+          58.5,
+          82.5,
+          4.5
+        ],
+        [
+          58.5,
+          78.75,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S6@0",
+      "b": "g13",
+      "kind": "walk",
+      "via": [
+        [
+          57,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S7@-3",
+      "b": "S7@0",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          78.75,
+          -3
+        ],
+        [
+          85.5,
+          82.5,
+          -1.5
+        ],
+        [
+          88.5,
+          82.5,
+          -1.5
+        ],
+        [
+          88.5,
+          78.75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S7@0",
+      "b": "S7@3",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          78.75,
+          0
+        ],
+        [
+          85.5,
+          82.5,
+          1.5
+        ],
+        [
+          88.5,
+          82.5,
+          1.5
+        ],
+        [
+          88.5,
+          78.75,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S7@3",
+      "b": "S7@6",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          78.75,
+          3
+        ],
+        [
+          85.5,
+          82.5,
+          4.5
+        ],
+        [
+          88.5,
+          82.5,
+          4.5
+        ],
+        [
+          88.5,
+          78.75,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S7@6",
+      "b": "S7@9",
+      "kind": "stairs",
+      "via": [
+        [
+          85.5,
+          78.75,
+          6
+        ],
+        [
+          85.5,
+          82.5,
+          7.5
+        ],
+        [
+          88.5,
+          82.5,
+          7.5
+        ],
+        [
+          88.5,
+          78.75,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S7@0",
+      "b": "g33",
+      "kind": "walk",
+      "via": [
+        [
+          87,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S8@0",
+      "b": "S8@3",
+      "kind": "stairs",
+      "via": [
+        [
+          115.5,
+          78.75,
+          0
+        ],
+        [
+          115.5,
+          82.5,
+          1.5
+        ],
+        [
+          118.5,
+          82.5,
+          1.5
+        ],
+        [
+          118.5,
+          78.75,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S8@3",
+      "b": "S8@6",
+      "kind": "stairs",
+      "via": [
+        [
+          115.5,
+          78.75,
+          3
+        ],
+        [
+          115.5,
+          82.5,
+          4.5
+        ],
+        [
+          118.5,
+          82.5,
+          4.5
+        ],
+        [
+          118.5,
+          78.75,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S8@6",
+      "b": "S8@9",
+      "kind": "stairs",
+      "via": [
+        [
+          115.5,
+          78.75,
+          6
+        ],
+        [
+          115.5,
+          82.5,
+          7.5
+        ],
+        [
+          118.5,
+          82.5,
+          7.5
+        ],
+        [
+          118.5,
+          78.75,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S8@0",
+      "b": "g43",
+      "kind": "walk",
+      "via": [
+        [
+          117,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "uNW",
+      "b": "uN",
+      "kind": "service"
+    },
+    {
+      "a": "uN",
+      "b": "uNE",
+      "kind": "service"
+    },
+    {
+      "a": "uNE",
+      "b": "uE",
+      "kind": "service"
+    },
+    {
+      "a": "uE",
+      "b": "uSE",
+      "kind": "service"
+    },
+    {
+      "a": "uSE",
+      "b": "uS",
+      "kind": "service"
+    },
+    {
+      "a": "uS",
+      "b": "uSW",
+      "kind": "service"
+    },
+    {
+      "a": "uSW",
+      "b": "uW",
+      "kind": "service"
+    },
+    {
+      "a": "uW",
+      "b": "uNW",
+      "kind": "service"
+    },
+    {
+      "a": "uW",
+      "b": "uE",
+      "kind": "service",
+      "via": [
+        [
+          66,
+          60,
+          -3
+        ],
+        [
+          66,
+          66,
+          -3
+        ],
+        [
+          90,
+          66,
+          -3
+        ],
+        [
+          93,
+          66,
+          -3
+        ]
+      ]
+    },
+    {
+      "a": "S2@-3",
+      "b": "uNW",
+      "kind": "service",
+      "via": [
+        [
+          57,
+          43.5,
+          -3
+        ],
+        [
+          51,
+          43.5,
+          -3
+        ]
+      ]
+    },
+    {
+      "a": "S3@-3",
+      "b": "uNE",
+      "kind": "service",
+      "via": [
+        [
+          87,
+          43.5,
+          -3
+        ],
+        [
+          93,
+          43.5,
+          -3
+        ]
+      ]
+    },
+    {
+      "a": "S6@-3",
+      "b": "uSW",
+      "kind": "service",
+      "via": [
+        [
+          57,
+          76.5,
+          -3
+        ],
+        [
+          51,
+          76.5,
+          -3
+        ]
+      ]
+    },
+    {
+      "a": "S7@-3",
+      "b": "uSE",
+      "kind": "service",
+      "via": [
+        [
+          87,
+          76.5,
+          -3
+        ],
+        [
+          93,
+          76.5,
+          -3
+        ]
+      ]
+    },
+    {
+      "a": "A",
+      "b": "g11",
+      "kind": "walk",
+      "via": [
+        [
+          63,
+          24,
+          0
+        ],
+        [
+          63,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "A",
+      "b": "g31",
+      "kind": "walk",
+      "via": [
+        [
+          81,
+          24,
+          0
+        ],
+        [
+          81,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "C",
+      "b": "g13",
+      "kind": "walk",
+      "via": [
+        [
+          69,
+          96,
+          0
+        ],
+        [
+          69,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "C",
+      "b": "g33",
+      "kind": "walk",
+      "via": [
+        [
+          75,
+          96,
+          0
+        ],
+        [
+          75,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NW-H1-1-front",
+      "b": "NW-H1-1-rear",
+      "kind": "home"
+    },
+    {
+      "a": "NW-H1-1-front",
+      "b": "g11",
+      "kind": "home",
+      "via": [
+        [
+          26.75,
+          33,
+          0
+        ],
+        [
+          45,
+          33,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NW-H1-1-rear",
+      "b": "g00",
+      "kind": "home",
+      "via": [
+        [
+          26.75,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-1-lower",
+      "b": "NW-H2-1-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          32.75,
+          27,
+          3
+        ],
+        [
+          32.75,
+          24,
+          4.5
+        ],
+        [
+          34.25,
+          24,
+          4.5
+        ],
+        [
+          34.25,
+          27,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-1-lower",
+      "b": "S1-apron",
+      "kind": "home",
+      "via": [
+        [
+          31.25,
+          33,
+          3
+        ],
+        [
+          31.5,
+          33,
+          3
+        ],
+        [
+          31.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-1-upper",
+      "b": "NW-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          31.25,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NW-H1-2-front",
+      "b": "NW-H1-2-rear",
+      "kind": "home"
+    },
+    {
+      "a": "NW-H1-2-front",
+      "b": "g11",
+      "kind": "home",
+      "via": [
+        [
+          49.75,
+          33,
+          0
+        ],
+        [
+          45,
+          33,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NW-H1-2-rear",
+      "b": "g10",
+      "kind": "home",
+      "via": [
+        [
+          49.75,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-2-lower",
+      "b": "NW-H2-2-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          55.75,
+          27,
+          3
+        ],
+        [
+          55.75,
+          24,
+          4.5
+        ],
+        [
+          57.25,
+          24,
+          4.5
+        ],
+        [
+          57.25,
+          27,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-2-lower",
+      "b": "S2-apron",
+      "kind": "home",
+      "via": [
+        [
+          54.25,
+          33,
+          3
+        ],
+        [
+          52.5,
+          33,
+          3
+        ],
+        [
+          52.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "NW-H2-2-upper",
+      "b": "NW-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          54.25,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NE-H1-1-front",
+      "b": "NE-H1-1-rear",
+      "kind": "home"
+    },
+    {
+      "a": "NE-H1-1-front",
+      "b": "g31",
+      "kind": "home",
+      "via": [
+        [
+          86.75,
+          33,
+          0
+        ],
+        [
+          99,
+          33,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NE-H1-1-rear",
+      "b": "g30",
+      "kind": "home",
+      "via": [
+        [
+          86.75,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-1-lower",
+      "b": "NE-H2-1-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          92.75,
+          27,
+          3
+        ],
+        [
+          92.75,
+          24,
+          4.5
+        ],
+        [
+          94.25,
+          24,
+          4.5
+        ],
+        [
+          94.25,
+          27,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-1-lower",
+      "b": "S3-apron",
+      "kind": "home",
+      "via": [
+        [
+          91.25,
+          33,
+          3
+        ],
+        [
+          91.5,
+          33,
+          3
+        ],
+        [
+          91.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-1-upper",
+      "b": "NE-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          91.25,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NE-H1-2-front",
+      "b": "NE-H1-2-rear",
+      "kind": "home"
+    },
+    {
+      "a": "NE-H1-2-front",
+      "b": "g31",
+      "kind": "home",
+      "via": [
+        [
+          109.75,
+          33,
+          0
+        ],
+        [
+          99,
+          33,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NE-H1-2-rear",
+      "b": "g40",
+      "kind": "home",
+      "via": [
+        [
+          109.75,
+          12,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-2-lower",
+      "b": "NE-H2-2-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          115.75,
+          27,
+          3
+        ],
+        [
+          115.75,
+          24,
+          4.5
+        ],
+        [
+          117.25,
+          24,
+          4.5
+        ],
+        [
+          117.25,
+          27,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-2-lower",
+      "b": "S4-apron",
+      "kind": "home",
+      "via": [
+        [
+          114.25,
+          33,
+          3
+        ],
+        [
+          112.5,
+          33,
+          3
+        ],
+        [
+          112.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "NE-H2-2-upper",
+      "b": "NE-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          114.25,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SW-H1-1-front",
+      "b": "SW-H1-1-rear",
+      "kind": "home"
+    },
+    {
+      "a": "SW-H1-1-front",
+      "b": "g13",
+      "kind": "home",
+      "via": [
+        [
+          26.75,
+          87,
+          0
+        ],
+        [
+          45,
+          87,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SW-H1-1-rear",
+      "b": "g04",
+      "kind": "home",
+      "via": [
+        [
+          26.75,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-1-lower",
+      "b": "SW-H2-1-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          32.75,
+          97,
+          3
+        ],
+        [
+          32.75,
+          94,
+          4.5
+        ],
+        [
+          34.25,
+          94,
+          4.5
+        ],
+        [
+          34.25,
+          97,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-1-lower",
+      "b": "S5-apron",
+      "kind": "home",
+      "via": [
+        [
+          31.25,
+          87,
+          3
+        ],
+        [
+          31.5,
+          87,
+          3
+        ],
+        [
+          31.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-1-upper",
+      "b": "SW-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          31.25,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SW-H1-2-front",
+      "b": "SW-H1-2-rear",
+      "kind": "home"
+    },
+    {
+      "a": "SW-H1-2-front",
+      "b": "g13",
+      "kind": "home",
+      "via": [
+        [
+          49.75,
+          87,
+          0
+        ],
+        [
+          45,
+          87,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SW-H1-2-rear",
+      "b": "g14",
+      "kind": "home",
+      "via": [
+        [
+          49.75,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-2-lower",
+      "b": "SW-H2-2-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          55.75,
+          97,
+          3
+        ],
+        [
+          55.75,
+          94,
+          4.5
+        ],
+        [
+          57.25,
+          94,
+          4.5
+        ],
+        [
+          57.25,
+          97,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-2-lower",
+      "b": "S6-apron",
+      "kind": "home",
+      "via": [
+        [
+          54.25,
+          87,
+          3
+        ],
+        [
+          52.5,
+          87,
+          3
+        ],
+        [
+          52.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "SW-H2-2-upper",
+      "b": "SW-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          54.25,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SE-H1-1-front",
+      "b": "SE-H1-1-rear",
+      "kind": "home"
+    },
+    {
+      "a": "SE-H1-1-front",
+      "b": "g33",
+      "kind": "home",
+      "via": [
+        [
+          86.75,
+          87,
+          0
+        ],
+        [
+          99,
+          87,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SE-H1-1-rear",
+      "b": "g34",
+      "kind": "home",
+      "via": [
+        [
+          86.75,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-1-lower",
+      "b": "SE-H2-1-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          92.75,
+          97,
+          3
+        ],
+        [
+          92.75,
+          94,
+          4.5
+        ],
+        [
+          94.25,
+          94,
+          4.5
+        ],
+        [
+          94.25,
+          97,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-1-lower",
+      "b": "S7-apron",
+      "kind": "home",
+      "via": [
+        [
+          91.25,
+          87,
+          3
+        ],
+        [
+          91.5,
+          87,
+          3
+        ],
+        [
+          91.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-1-upper",
+      "b": "SE-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          91.25,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SE-H1-2-front",
+      "b": "SE-H1-2-rear",
+      "kind": "home"
+    },
+    {
+      "a": "SE-H1-2-front",
+      "b": "g33",
+      "kind": "home",
+      "via": [
+        [
+          109.75,
+          87,
+          0
+        ],
+        [
+          99,
+          87,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SE-H1-2-rear",
+      "b": "g44",
+      "kind": "home",
+      "via": [
+        [
+          109.75,
+          108,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-2-lower",
+      "b": "SE-H2-2-upper",
+      "kind": "private-stairs",
+      "via": [
+        [
+          115.75,
+          97,
+          3
+        ],
+        [
+          115.75,
+          94,
+          4.5
+        ],
+        [
+          117.25,
+          94,
+          4.5
+        ],
+        [
+          117.25,
+          97,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-2-lower",
+      "b": "S8-apron",
+      "kind": "home",
+      "via": [
+        [
+          114.25,
+          87,
+          3
+        ],
+        [
+          112.5,
+          87,
+          3
+        ],
+        [
+          112.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "SE-H2-2-upper",
+      "b": "SE-rear@6",
+      "kind": "home",
+      "via": [
+        [
+          114.25,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "Wspawn",
+      "b": "Wn",
+      "kind": "walk",
+      "via": [
+        [
+          8,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "Wspawn",
+      "b": "Ws",
+      "kind": "walk",
+      "via": [
+        [
+          8,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "Espawn",
+      "b": "En",
+      "kind": "walk",
+      "via": [
+        [
+          136,
+          45,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "Espawn",
+      "b": "Es",
+      "kind": "walk",
+      "via": [
+        [
+          136,
+          75,
+          0
+        ]
+      ]
+    },
+    {
+      "a": "S1@3",
+      "b": "S1-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S2@3",
+      "b": "S2-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S3@3",
+      "b": "S3-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S4@3",
+      "b": "S4-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S5@3",
+      "b": "S5-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S6@3",
+      "b": "S6-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S7@3",
+      "b": "S7-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S8@3",
+      "b": "S8-apron",
+      "kind": "gallery"
+    },
+    {
+      "a": "S1-apron",
+      "b": "S2-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          31.5,
+          43.5,
+          3
+        ],
+        [
+          31.5,
+          37.5,
+          3
+        ],
+        [
+          52.5,
+          37.5,
+          3
+        ],
+        [
+          52.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S2-apron",
+      "b": "S3-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          61.5,
+          43.5,
+          3
+        ],
+        [
+          61.5,
+          37.5,
+          3
+        ],
+        [
+          82.5,
+          37.5,
+          3
+        ],
+        [
+          82.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S3-apron",
+      "b": "S4-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          91.5,
+          43.5,
+          3
+        ],
+        [
+          91.5,
+          37.5,
+          3
+        ],
+        [
+          112.5,
+          37.5,
+          3
+        ],
+        [
+          112.5,
+          43.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S5-apron",
+      "b": "S6-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          31.5,
+          76.5,
+          3
+        ],
+        [
+          31.5,
+          82.5,
+          3
+        ],
+        [
+          52.5,
+          82.5,
+          3
+        ],
+        [
+          52.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S6-apron",
+      "b": "S7-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          61.5,
+          76.5,
+          3
+        ],
+        [
+          61.5,
+          82.5,
+          3
+        ],
+        [
+          82.5,
+          82.5,
+          3
+        ],
+        [
+          82.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S7-apron",
+      "b": "S8-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          91.5,
+          76.5,
+          3
+        ],
+        [
+          91.5,
+          82.5,
+          3
+        ],
+        [
+          112.5,
+          82.5,
+          3
+        ],
+        [
+          112.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S1-apron",
+      "b": "S5-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          31.5,
+          43.5,
+          3
+        ],
+        [
+          31.5,
+          37.5,
+          3
+        ],
+        [
+          40.5,
+          37.5,
+          3
+        ],
+        [
+          40.5,
+          82.5,
+          3
+        ],
+        [
+          31.5,
+          82.5,
+          3
+        ],
+        [
+          31.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S4-apron",
+      "b": "S8-apron",
+      "kind": "gallery",
+      "via": [
+        [
+          112.5,
+          43.5,
+          3
+        ],
+        [
+          112.5,
+          37.5,
+          3
+        ],
+        [
+          103.5,
+          37.5,
+          3
+        ],
+        [
+          103.5,
+          82.5,
+          3
+        ],
+        [
+          112.5,
+          82.5,
+          3
+        ],
+        [
+          112.5,
+          76.5,
+          3
+        ]
+      ]
+    },
+    {
+      "a": "S1@6",
+      "b": "NW-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          27,
+          43.5,
+          6
+        ],
+        [
+          31.5,
+          43.5,
+          6
+        ],
+        [
+          31.5,
+          34.5,
+          6
+        ],
+        [
+          37.5,
+          34.5,
+          6
+        ],
+        [
+          37.5,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S1@9",
+      "b": "NW-rear@9",
+      "kind": "roof",
+      "via": [
+        [
+          27,
+          43.5,
+          9
+        ],
+        [
+          31.5,
+          43.5,
+          9
+        ],
+        [
+          31.5,
+          34.5,
+          9
+        ],
+        [
+          37.5,
+          34.5,
+          9
+        ],
+        [
+          37.5,
+          19.5,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S2@6",
+      "b": "NW-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          57,
+          43.5,
+          6
+        ],
+        [
+          52.5,
+          43.5,
+          6
+        ],
+        [
+          52.5,
+          34.5,
+          6
+        ],
+        [
+          46.5,
+          34.5,
+          6
+        ],
+        [
+          46.5,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S2@9",
+      "b": "NW-rear@9",
+      "kind": "roof",
+      "via": [
+        [
+          57,
+          43.5,
+          9
+        ],
+        [
+          52.5,
+          43.5,
+          9
+        ],
+        [
+          52.5,
+          34.5,
+          9
+        ],
+        [
+          58.5,
+          34.5,
+          9
+        ],
+        [
+          58.5,
+          19.5,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S3@6",
+      "b": "NE-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          87,
+          43.5,
+          6
+        ],
+        [
+          91.5,
+          43.5,
+          6
+        ],
+        [
+          91.5,
+          34.5,
+          6
+        ],
+        [
+          97.5,
+          34.5,
+          6
+        ],
+        [
+          97.5,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S4@6",
+      "b": "NE-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          117,
+          43.5,
+          6
+        ],
+        [
+          112.5,
+          43.5,
+          6
+        ],
+        [
+          112.5,
+          34.5,
+          6
+        ],
+        [
+          106.5,
+          34.5,
+          6
+        ],
+        [
+          106.5,
+          19.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S5@6",
+      "b": "SW-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          27,
+          76.5,
+          6
+        ],
+        [
+          31.5,
+          76.5,
+          6
+        ],
+        [
+          31.5,
+          85.5,
+          6
+        ],
+        [
+          37.5,
+          85.5,
+          6
+        ],
+        [
+          37.5,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S6@6",
+      "b": "SW-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          57,
+          76.5,
+          6
+        ],
+        [
+          52.5,
+          76.5,
+          6
+        ],
+        [
+          52.5,
+          85.5,
+          6
+        ],
+        [
+          46.5,
+          85.5,
+          6
+        ],
+        [
+          46.5,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S7@6",
+      "b": "SE-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          87,
+          76.5,
+          6
+        ],
+        [
+          91.5,
+          76.5,
+          6
+        ],
+        [
+          91.5,
+          85.5,
+          6
+        ],
+        [
+          97.5,
+          85.5,
+          6
+        ],
+        [
+          97.5,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S7@9",
+      "b": "SE-rear@9",
+      "kind": "roof",
+      "via": [
+        [
+          87,
+          76.5,
+          9
+        ],
+        [
+          91.5,
+          76.5,
+          9
+        ],
+        [
+          91.5,
+          85.5,
+          9
+        ],
+        [
+          97.5,
+          85.5,
+          9
+        ],
+        [
+          97.5,
+          100.5,
+          9
+        ]
+      ]
+    },
+    {
+      "a": "S8@6",
+      "b": "SE-rear@6",
+      "kind": "landing",
+      "via": [
+        [
+          117,
+          76.5,
+          6
+        ],
+        [
+          112.5,
+          76.5,
+          6
+        ],
+        [
+          112.5,
+          85.5,
+          6
+        ],
+        [
+          106.5,
+          85.5,
+          6
+        ],
+        [
+          106.5,
+          100.5,
+          6
+        ]
+      ]
+    },
+    {
+      "a": "S8@9",
+      "b": "SE-rear@9",
+      "kind": "roof",
+      "via": [
+        [
+          117,
+          76.5,
+          9
+        ],
+        [
+          112.5,
+          76.5,
+          9
+        ],
+        [
+          112.5,
+          85.5,
+          9
+        ],
+        [
+          118.5,
+          85.5,
+          9
+        ],
+        [
+          118.5,
+          100.5,
+          9
+        ]
+      ]
+    }
+  ],
+  "routes": [],
+  "homeTypes": {
+    "H1": {
+      "name": "THROUGH FLAT / ONE BED",
+      "size": [
+        9,
+        8
+      ],
+      "levels": [
+        0
+      ],
+      "description": "Two public-facing exits via a 1.5 m hall. Bedroom and bath are optional rooms, not compulsory through-routes.",
+      "doors": [
+        [
+          0.75,
+          0,
+          1.1
+        ],
+        [
+          0.75,
+          8,
+          1.1
+        ]
+      ],
+      "rooms": [
+        [
+          "HALL",
+          0,
+          0,
+          1.5,
+          8
+        ],
+        [
+          "BATH / UTILITY",
+          1.5,
+          0,
+          3,
+          3
+        ],
+        [
+          "BEDROOM",
+          4.5,
+          0,
+          4.5,
+          3
+        ],
+        [
+          "CROSS HALL",
+          1.5,
+          3,
+          7.5,
+          1.5
+        ],
+        [
+          "KITCHEN",
+          1.5,
+          4.5,
+          3,
+          3.5
+        ],
+        [
+          "LIVING / DINING",
+          4.5,
+          4.5,
+          4.5,
+          3.5
+        ]
+      ],
+      "roomDoors": [
+        [
+          1.5,
+          3.75,
+          "v",
+          1.2
+        ],
+        [
+          3,
+          3,
+          "h",
+          0.85
+        ],
+        [
+          6.5,
+          3,
+          "h",
+          0.9
+        ],
+        [
+          3,
+          4.5,
+          "h",
+          1
+        ],
+        [
+          6.5,
+          4.5,
+          "h",
+          1.1
+        ],
+        [
+          4.5,
+          6,
+          "v",
+          1.5
+        ]
+      ],
+      "windows": [
+        [
+          7.5,
+          0,
+          1.5
+        ],
+        [
+          7.5,
+          8,
+          1.5
+        ],
+        [
+          9,
+          6,
+          1.5
+        ]
+      ]
+    },
+    "H2": {
+      "name": "SPLIT-LEVEL MAISONETTE / TWO BED",
+      "size": [
+        9,
+        8
+      ],
+      "levels": [
+        3,
+        6
+      ],
+      "description": "Lower gallery entry and upper rear landing exit. Private stairs form a slower alternative to public cores.",
+      "doors": [
+        [
+          5.25,
+          8,
+          1.1
+        ],
+        [
+          5.25,
+          0,
+          1.1
+        ]
+      ],
+      "rooms": [
+        [
+          "HALL",
+          4.5,
+          0,
+          1.5,
+          8
+        ],
+        [
+          "KITCHEN",
+          0,
+          0,
+          4.5,
+          3
+        ],
+        [
+          "LIVING / DINING",
+          0,
+          3,
+          4.5,
+          5
+        ],
+        [
+          "WC / STORE",
+          6,
+          0,
+          3,
+          2
+        ],
+        [
+          "PRIVATE STAIR",
+          6,
+          2,
+          3,
+          6
+        ]
+      ],
+      "upperRooms": [
+        [
+          "HALL",
+          4.5,
+          0,
+          1.5,
+          8
+        ],
+        [
+          "BEDROOM 1",
+          0,
+          0,
+          4.5,
+          3.5
+        ],
+        [
+          "BEDROOM 2",
+          0,
+          3.5,
+          4.5,
+          4.5
+        ],
+        [
+          "BATH",
+          6,
+          0,
+          3,
+          2
+        ],
+        [
+          "STAIR VOID",
+          6,
+          2,
+          3,
+          6
+        ]
+      ],
+      "roomDoors": [
+        [
+          4.5,
+          1.5,
+          "v",
+          0.9
+        ],
+        [
+          4.5,
+          5,
+          "v",
+          1.1
+        ],
+        [
+          6,
+          1,
+          "v",
+          0.8
+        ],
+        [
+          6,
+          6.5,
+          "v",
+          1.0
+        ]
+      ],
+      "windows": [
+        [
+          2.25,
+          0,
+          2
+        ],
+        [
+          2.25,
+          8,
+          2
+        ]
+      ],
+      "privateStair": {
+        "flightWidth": 1.2,
+        "risers": 20,
+        "rise": 0.15,
+        "going": 0.28,
+        "landing": 1.2
+      }
+    }
+  },
+  "references": [
+    "docs/concepts/onsite-london-fps.png",
+    "docs/concepts/screens/09-walkway-bridge.png",
+    "docs/concepts/screens/05-corner-shop.png",
+    "docs/concepts/MODELLING-NOTES.md",
+    "docs/concepts/TEXTURE-PACK-30.md"
+  ],
+  "validationBoundary": "Design connectivity graph and metric drawing checks only. Not collision/navmesh, multiplayer capacity, dynamic respawn, combat balance or frame-time verification. All lighting and foliage counts are design placements, not new runtime assets.",
+  "floorVoids": [
+    {
+      "level": "L1",
+      "rect": [
+        24,
+        36,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        54,
+        36,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        84,
+        36,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        114,
+        36,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        24,
+        78,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        54,
+        78,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        84,
+        78,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    },
+    {
+      "level": "L1",
+      "rect": [
+        114,
+        78,
+        6,
+        6
+      ],
+      "reason": "Public stair opening. Top landings connect to external gallery aprons; no slab over the half landing."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "id": "B000",
+    "title": "ISSUE INDEX",
+    "scale": "1:500 + NTS",
+    "file": "b000-issue-index"
+  },
+  {
+    "id": "B100",
+    "title": "SITE SETTING OUT",
+    "scale": "1:250",
+    "file": "b100-site-setting-out"
+  },
+  {
+    "id": "B101",
+    "title": "GROUND FLOOR",
+    "scale": "1:250",
+    "file": "b101-ground-floor"
+  },
+  {
+    "id": "B102",
+    "title": "GALLERY FLOOR",
+    "scale": "1:250",
+    "file": "b102-gallery-floor"
+  },
+  {
+    "id": "B103",
+    "title": "UPPER HOMES",
+    "scale": "1:250",
+    "file": "b103-upper-homes"
+  },
+  {
+    "id": "B104",
+    "title": "ROOF PLAN",
+    "scale": "1:250",
+    "file": "b104-roof-plan"
+  },
+  {
+    "id": "B105",
+    "title": "UNDERCROFT",
+    "scale": "1:250",
+    "file": "b105-undercroft"
+  },
+  {
+    "id": "B200",
+    "title": "BLOCK GROUND AND GALLERY",
+    "scale": "1:125",
+    "file": "b200-block-ground-and-gallery"
+  },
+  {
+    "id": "B201",
+    "title": "BLOCK UPPER AND ROOF",
+    "scale": "1:125",
+    "file": "b201-block-upper-and-roof"
+  },
+  {
+    "id": "B300",
+    "title": "H1 THROUGH FLAT",
+    "scale": "1:25",
+    "file": "b300-h1-through-flat"
+  },
+  {
+    "id": "B301",
+    "title": "H2 MAISONETTE",
+    "scale": "1:50 + 1:25",
+    "file": "b301-h2-maisonette"
+  },
+  {
+    "id": "B302",
+    "title": "STAIR CONSTRUCTION",
+    "scale": "1:25",
+    "file": "b302-stair-construction"
+  },
+  {
+    "id": "B400",
+    "title": "HOME ELEVATIONS",
+    "scale": "1:50 + 1:25",
+    "file": "b400-home-elevations"
+  },
+  {
+    "id": "B401",
+    "title": "SECTIONS AND DATUMS",
+    "scale": "1:100 + 1:25",
+    "file": "b401-sections-and-datums"
+  },
+  {
+    "id": "B500",
+    "title": "SHOPS AND COURT",
+    "scale": "1:100",
+    "file": "b500-shops-and-court"
+  },
+  {
+    "id": "B600",
+    "title": "LANDSCAPE AND LIGHT",
+    "scale": "1:250",
+    "file": "b600-landscape-and-light"
+  },
+  {
+    "id": "B700",
+    "title": "BLENDER ASSEMBLY",
+    "scale": "1:25 + NTS",
+    "file": "b700-blender-assembly"
+  }
+]

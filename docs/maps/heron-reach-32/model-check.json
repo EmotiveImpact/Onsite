@@ -1,0 +1,22 @@
+{
+  "scope": "Massing GLB structure and metre bounds, not a runtime navigation/performance test",
+  "boundsMin": [
+    -72.0,
+    -3.17999991774559,
+    -60.0
+  ],
+  "boundsMax": [
+    72.0,
+    11.100000143051147,
+    60.0
+  ],
+  "spansXYZ": [
+    144.0,
+    14.280000060796738,
+    120.0
+  ],
+  "triangles": 21544,
+  "meshes": 1602,
+  "externalImages": 0,
+  "exportedLights": 0
+}

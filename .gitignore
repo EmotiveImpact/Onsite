@@ -8,3 +8,4 @@ research/reference-clones/
 
 __pycache__/
 *.pyc
+public/models/heron-reach/*.raw.glb

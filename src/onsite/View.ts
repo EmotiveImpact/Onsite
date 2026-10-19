@@ -3,7 +3,15 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {RGBELoader} from 'three/addons/loaders/RGBELoader.js'
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js'
 import dressing from './dressing.json'
+import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
 import {donorRifle} from './DonorRifle'
+import {heronCourt,type Level} from './levels'
+import * as reach from './heronReach'
+import {buildDecals,GrassField,HeronReachAtmosphere,HeronReachMaterials,loadHeronReachArch,loadHeronReachKits,Rain} from './heronReachArt'
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js'
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js'
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js'
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
@@ -11,9 +19,10 @@ export class View {
  readonly renderer:THREE.WebGLRenderer; readonly scene=new THREE.Scene(); readonly camera=new THREE.PerspectiveCamera(74,1,.06,160);
  readonly vmScene=new THREE.Scene(); readonly vmCamera=new THREE.PerspectiveCamera(52,1,.025,8);
  readonly software:boolean; readonly mats:Record<string,THREE.MeshStandardMaterial>={}; readonly ready:Promise<THREE.Object3D>;
- private rifle!:THREE.Object3D;
+ private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
+ private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
  private activeRifle?:ReturnType<typeof donorRifle>;
- constructor(canvas:HTMLCanvasElement){
+ constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt){
   const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
   this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
   probe?.getExtension('WEBGL_lose_context')?.loseContext();
@@ -27,11 +36,12 @@ export class View {
   const skyTop=new THREE.Color('#344d68'),skyHorizon=new THREE.Color('#939b9e');
   for(let i=0;i<skyGeo.attributes.position.count;i++){const y=skyGeo.attributes.position.getY(i)/120,c=skyHorizon.clone().lerp(skyTop,Math.max(0,y));skyColors.push(c.r,c.g,c.b)}
   skyGeo.setAttribute('color',new THREE.Float32BufferAttribute(skyColors,3));
-  this.scene.add(new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false})));
+  this.sky=new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false}));this.scene.add(this.sky);
   this.camera.rotation.order='YXZ';this.scene.add(this.camera);
-  this.scene.add(new THREE.HemisphereLight('#b4d0ee','#323e43',1.35));
-  const sun=new THREE.DirectionalLight('#b7cce2',1.35);sun.position.set(-18,25,-14);sun.castShadow=true;
+  this.hemi=new THREE.HemisphereLight('#b4d0ee','#323e43',1.35);this.scene.add(this.hemi);
+  const sun=new THREE.DirectionalLight('#b7cce2',1.35);this.sun=sun;sun.position.set(-18,25,-14);sun.castShadow=true;
   sun.shadow.mapSize.set(2048,2048);sun.shadow.normalBias=.025;Object.assign(sun.shadow.camera,{left:-25,right:25,top:25,bottom:-25,near:1,far:90});this.scene.add(sun);
+  if(level.id==='heron-reach'){const c=reach.capture;sun.target.position.set(c.x,0,c.z);sun.position.set(c.x-18,25,c.z-14);Object.assign(sun.shadow.camera,{left:-38,right:38,top:38,bottom:-38});this.scene.add(sun.target)}
   this.vmScene.add(this.vmCamera,new THREE.HemisphereLight('#bbd4ed','#222c36',1.4));
   const key=new THREE.DirectionalLight('#d9e5ef',1.7);key.position.set(-1,2,3);this.vmScene.add(key);
   this.ready=this.load();this.resize();window.addEventListener('resize',()=>this.resize());
@@ -60,6 +70,17 @@ export class View {
    for(const channel of ['Color','NormalGL','Roughness'])pending.push(loader.loadAsync(`/materials/detail/${asset}-${channel==='Color'&&name==='leak'?'ColorA':channel}.webp`).then(t=>{t.wrapS=t.wrapT=THREE.RepeatWrapping;t.anisotropy=4;if(channel==='Color'){t.colorSpace=THREE.SRGBColorSpace;mat.map=t}else if(channel==='NormalGL'){mat.normalMap=t;mat.normalScale.set(.3,.3)}else mat.roughnessMap=t;mat.needsUpdate=true}));
   }
   const gltf=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+  if(this.level.id==='heron-reach'){
+   // ?art=0 shows the collision blockout instead of the Blender build, for checking the two against each other.
+   const useArt=new URLSearchParams(location.search).get('art')!=='0';
+   const arch=useArt?HeronReachMaterials.load(this.software?2:8).then(async m=>{
+    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...reach.dressing.items,...facade],m.names())),this.grass.build(gltf,this.software?1.5:5)]);
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass);return root;
+   }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
+   const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
+   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry)}else this.blockout();
+   this.rifle=rifle.scene;return character.scene;
+  }
   const [estate,character,rifle]=await Promise.all([
    gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
    ...pending,this.props(gltf),this.environment()
@@ -71,6 +92,42 @@ export class View {
    if(name==='wet')o.castShadow=false;
   }});
   this.scene.add(estate.scene);this.rifle=rifle.scene;this.signage();return character.scene;
+ }
+ /** Heron Reach blockout: one merged mesh per material, built from the collision boxes themselves. */
+ private blockout(){
+  const metres:Record<string,number>={brick:1.2,stock:1.2,concrete:3,asphalt:4,steel:2},groups=new Map<string,THREE.BufferGeometry[]>();
+  // Guards read as dark perforated metal panels so floors stay legible; collision is unchanged.
+  this.mats.guard=new THREE.MeshStandardMaterial({color:'#2a3137',metalness:.6,roughness:.45,transparent:true,opacity:.55,vertexColors:true,depthWrite:false});
+  for(const s of this.level.solids){
+   const g=new THREE.BoxGeometry(s.w,s.h,s.d);g.translate(s.x,s.y,s.z);const pos=g.attributes.position,nor=g.attributes.normal,uv=g.attributes.uv,k=1/(metres[s.mat]??1);
+   for(let i=0;i<pos.count;i++){const [x,y,z]=[pos.getX(i),pos.getY(i),pos.getZ(i)],ax=Math.abs(nor.getX(i)),ay=Math.abs(nor.getY(i));uv.setXY(i,(ay>.5?x:ax>.5?z:x)*k,(ay>.5?z:y)*k)}
+   g.setAttribute('color',new THREE.Float32BufferAttribute(new Array(pos.count*3).fill(1),3));
+   const key=s.mat==='steel'&&(s.id==='guard'||s.id.endsWith('-guard')||s.id.endsWith('-balustrade'))?'guard':s.mat;groups.set(key,[...(groups.get(key)||[]),g]);
+  }
+  const root=new THREE.Group();root.name='ONSITE / Heron Reach blockout (B01 Rowan)';
+  for(const [mat,geos]of groups){const m=new THREE.Mesh(mergeGeometries(geos),this.mats[mat]??this.mats.concrete);m.name=mat;m.castShadow=!['glass','lit','guard'].includes(mat);m.receiveShadow=true;root.add(m);geos.forEach(g=>g.dispose())}
+  this.scene.add(root);this.reachDetails();
+ }
+ /** Heron Reach at blue hour: graded dusk sky, cool sky light, lamp pool, glow and bloom. */
+ private blueHour(){
+  this.scene.remove(this.sky);this.camera.near=.1;this.camera.far=600;this.camera.updateProjectionMatrix();
+  this.hemi.color.set('#6f8cbd');this.hemi.groundColor.set('#2a2620');this.hemi.intensity=1.5;
+  this.sun.color.set('#a9bde0');this.sun.intensity=.9;
+  this.renderer.toneMappingExposure=1.3;
+  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software);
+  this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
+  // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
+  const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
+  const covered=(x:number,y:number,z:number)=>roofs.some(s=>s.y>y&&s.y-y<12&&Math.abs(x-s.x)<s.w/2&&Math.abs(z-s.z)<s.d/2);
+  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered);this.scene.add(this.rain.mesh)}
+  if(!this.software){
+   const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
+   this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.55,.5,.82));this.composer.addPass(new OutputPass());
+  }
+ }
+ private reachDetails(){
+  for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);
+  for(const l of reach.lights){const p=new THREE.PointLight('#ffb366',l.kind==='street'||l.kind==='court'?30:14,l.kind==='street'||l.kind==='court'?12:6,2);p.position.set(l.x,l.y,l.z);this.scene.add(p)}
  }
  installWeapon(g:Encounter){this.activeRifle=donorRifle(this.rifle,g.fx.flashTexture,g.fx.flameTexture);g.arsenal.installRifle(this.activeRifle);this.vmCamera.add(g.arsenal.holder,g.arsenal.muzzleLight)}
  weaponProbe(){const vm=this.activeRifle;if(!vm)return null;const sight=vm.root.getObjectByName('RearIronSight')!.getWorldPosition(new THREE.Vector3()).project(this.vmCamera),hand=vm.root.getObjectByName('Hand_L')!.getWorldPosition(new THREE.Vector3()),grip=vm.mag!.getObjectByName('MagazineGripSocket')!.getWorldPosition(new THREE.Vector3());return {name:vm.root.name,sightNdc:sight.toArray(),magazine:vm.mag!.position.toArray(),handToMagazine:hand.distanceTo(grip),finite:vm.root.matrixWorld.elements.every(Number.isFinite)}}
@@ -117,9 +174,10 @@ export class View {
   g.player.eye(alpha,this.camera.position);g.audio.setListener(this.camera.position,g.player.forward(new THREE.Vector3()));
   this.camera.rotation.set(g.player.pitch+g.arsenal.punch.pitch,g.player.yaw+g.arsenal.punch.yaw,g.arsenal.punch.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
   g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
-  if(overview){this.camera.position.set(8.2,5.5,8.1);this.camera.lookAt(-1,3,-6);this.camera.fov=74;this.camera.updateProjectionMatrix()}
-  this.renderer.info.reset();this.renderer.autoClear=true;this.renderer.render(this.scene,this.camera);
+  if(overview){const o=this.level.overview;this.camera.position.set(o.from.x,o.from.y,o.from.z);this.camera.lookAt(o.to.x,o.to.y,o.to.z);this.camera.fov=74;this.camera.updateProjectionMatrix()}
+  const t=this.clock.getElapsedTime();this.atmosphere?.update(this.camera,t);this.grass.update(this.camera);this.rain?.update(this.camera,t,dt);
+  this.renderer.info.reset();this.renderer.autoClear=true;if(this.composer)this.composer.render();else this.renderer.render(this.scene,this.camera);
   if(!overview){this.renderer.autoClear=false;this.renderer.clearDepth();this.renderer.render(this.vmScene,this.vmCamera)}this.renderer.autoClear=true;
  }
- resize(){this.renderer.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
+ resize(){this.renderer.setSize(innerWidth,innerHeight);this.composer?.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
 }

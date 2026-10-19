@@ -1,0 +1,149 @@
+{
+  "scope": "Design connectivity graph and metric drawing checks only. Not collision/navmesh, multiplayer capacity, dynamic respawn, combat balance or frame-time verification. All lighting and foliage counts are design placements, not new runtime assets.",
+  "passed": 46,
+  "checks": [
+    "Every design node has a unique ID",
+    "All proposed floors, homes and objectives are connected",
+    "Blocking stair flights in S1 does not isolate a floor or home",
+    "Blocking stair flights in S2 does not isolate a floor or home",
+    "Blocking stair flights in S3 does not isolate a floor or home",
+    "Blocking stair flights in S4 does not isolate a floor or home",
+    "Blocking stair flights in S5 does not isolate a floor or home",
+    "Blocking stair flights in S6 does not isolate a floor or home",
+    "Blocking stair flights in S7 does not isolate a floor or home",
+    "Blocking stair flights in S8 does not isolate a floor or home",
+    "Each capture area has at least four design-graph approaches",
+    "32 initial placements: 16 per side",
+    "Initial actor centres are separated by at least 2 m",
+    "Each staging area has three independent initial route branches",
+    "All route nodes fit the declared 144 \u00d7 120 m bounds",
+    "S1: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S2: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S3: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S4: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S5: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S6: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S7: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "S8: 3 m rise and folded flight/landing dimensions fit 6 m depth",
+    "NW-H1-1 fits its residential block",
+    "NW-H2-1 fits its residential block",
+    "NW-H1-2 fits its residential block",
+    "NW-H2-2 fits its residential block",
+    "NE-H1-1 fits its residential block",
+    "NE-H2-1 fits its residential block",
+    "NE-H1-2 fits its residential block",
+    "NE-H2-2 fits its residential block",
+    "SW-H1-1 fits its residential block",
+    "SW-H2-1 fits its residential block",
+    "SW-H1-2 fits its residential block",
+    "SW-H2-2 fits its residential block",
+    "SE-H1-1 fits its residential block",
+    "SE-H2-1 fits its residential block",
+    "SE-H1-2 fits its residential block",
+    "SE-H2-2 fits its residential block",
+    "6293 sampled upper/service-route points have a declared floor; failures: []",
+    "Upper horizontal routes avoid public stair flight/half-landing voids; failures: []",
+    "Route centrelines retain 0.35 m clearance from planned hard cover; failures: []",
+    "Ground route centrelines clear planned trunks by a 0.35 m capsule radius; failures: []",
+    "Side-to-objective shortest-path difference stays below 8 m in the design graph",
+    "Only two roof islands are designated accessible",
+    "Eight through flats and eight split-level homes are placed"
+  ],
+  "nodes": 127,
+  "edges": 189,
+  "cycleRank": 63,
+  "floorSamples": 6293,
+  "spawnToObjective": {
+    "W": {
+      "A": {
+        "metres": 100.0,
+        "walkSeconds": 21.74,
+        "sprintSeconds": 14.71,
+        "path": [
+          "Wspawn",
+          "Wn",
+          "g01",
+          "g11",
+          "A"
+        ]
+      },
+      "B": {
+        "metres": 82.0,
+        "walkSeconds": 17.83,
+        "sprintSeconds": 12.06,
+        "path": [
+          "Wspawn",
+          "Wlobby",
+          "Wdog",
+          "Wout",
+          "Wmid",
+          "g12",
+          "B"
+        ]
+      },
+      "C": {
+        "metres": 100.0,
+        "walkSeconds": 21.74,
+        "sprintSeconds": 14.71,
+        "path": [
+          "Wspawn",
+          "Ws",
+          "g03",
+          "g13",
+          "C"
+        ]
+      }
+    },
+    "E": {
+      "A": {
+        "metres": 100.0,
+        "walkSeconds": 21.74,
+        "sprintSeconds": 14.71,
+        "path": [
+          "Espawn",
+          "En",
+          "g41",
+          "g31",
+          "A"
+        ]
+      },
+      "B": {
+        "metres": 82.0,
+        "walkSeconds": 17.83,
+        "sprintSeconds": 12.06,
+        "path": [
+          "Espawn",
+          "Elobby",
+          "Edog",
+          "Eout",
+          "Emid",
+          "g32",
+          "B"
+        ]
+      },
+      "C": {
+        "metres": 100.0,
+        "walkSeconds": 21.74,
+        "sprintSeconds": 14.71,
+        "path": [
+          "Espawn",
+          "Es",
+          "g43",
+          "g33",
+          "C"
+        ]
+      }
+    }
+  },
+  "largestSideDifferenceMetres": 0.0,
+  "sourceSha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa",
+  "unverified": [
+    "Actual capsule collision / stair headroom",
+    "Dynamic respawn line of sight",
+    "32 simultaneous humans or clients",
+    "Real-GPU frame time / streaming / memory",
+    "Sound propagation / stealth readability",
+    "Combat balance / objective contest time",
+    "All physical route widths around final props"
+  ]
+}

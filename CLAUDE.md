@@ -3,6 +3,11 @@
 Start with [the Claude handoff](docs/development/CLAUDE-HANDOFF.md), then inspect the current
 working tree and [latest validation](docs/development/CURRENT-VALIDATION.md).
 
+For the additional Heron Reach map, use the new
+[B01 blueprint build brief](docs/maps/heron-reach-32/blueprints/CLAUDE-BUILD-BRIEF.md)
+and its 17-sheet dimensioned drawing book. It develops the separate 32-player design;
+it does not replace the current playable or establish multiplayer readiness.
+
 - Continue the active WWB/Three.js/Rapier game at `index.html` → `src/onsite/main.ts`.
   Preserve its movement, Arsenal, bots and round systems. Do not restart with another prototype.
 - ONSITE is a fictional South London estate FPS, bots first. Networking is deferred.

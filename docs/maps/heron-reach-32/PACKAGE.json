@@ -1,0 +1,143 @@
+{
+  "purpose": "Original ONSITE map design package. Proposal and massing, not a new runtime or verified 32-player map.",
+  "baseCommit": "bdb9c5682dac0aab7fcecd4b01d4054a4c45ecae",
+  "mapSha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa",
+  "files": {
+    "assets/blender/maps/heron-reach-32.blend": {
+      "bytes": 9232908,
+      "sha256": "00d23156424fcf48164eef5291e5deedb8c274efb4f53534db9a6159d0bba0e9"
+    },
+    "docs/maps/heron-reach-32/00-masterplan.png": {
+      "bytes": 194680,
+      "sha256": "afb51c6c679a44b5386048e3a7e2c8beae40971568712e431ad8e8009109ac94"
+    },
+    "docs/maps/heron-reach-32/00-masterplan.svg": {
+      "bytes": 56939,
+      "sha256": "45b2e8bf51946c88ec096f3bf3d783435a7c5bc49e3dc3d1f54e84345c946f9b"
+    },
+    "docs/maps/heron-reach-32/01-g.png": {
+      "bytes": 193238,
+      "sha256": "8424f07bafd5689508de801816a2cfdc4feb95ed2c5b850b80a0a212ed2c7351"
+    },
+    "docs/maps/heron-reach-32/01-g.svg": {
+      "bytes": 66644,
+      "sha256": "1bfbb55da8bca3be23fca44bf769e011b48657ef7bbc2ac796ea26148c86e055"
+    },
+    "docs/maps/heron-reach-32/02-l1.png": {
+      "bytes": 143801,
+      "sha256": "d3812e61931fbe3b65c24c95b5c828b4e2acf1a7379cdbb3e9df97677b25eeb2"
+    },
+    "docs/maps/heron-reach-32/02-l1.svg": {
+      "bytes": 41154,
+      "sha256": "ad6fdef1dd73e5d142e9efdad857543a756fe255b38e91f524ba2cf597d97eff"
+    },
+    "docs/maps/heron-reach-32/03-l2.png": {
+      "bytes": 137086,
+      "sha256": "01a28b616ea79732fe93290de80ff2ee75536431de385b04b0b5a4003c437f8a"
+    },
+    "docs/maps/heron-reach-32/03-l2.svg": {
+      "bytes": 38399,
+      "sha256": "daecd49926747a89ec80e66ef9ed534e2d7f56117b8def2179bfd731c94263fa"
+    },
+    "docs/maps/heron-reach-32/04-r.png": {
+      "bytes": 143477,
+      "sha256": "2d659261b235a17c586eabedad335ecac330856bcd5a1c1c67add5b389a528c0"
+    },
+    "docs/maps/heron-reach-32/04-r.svg": {
+      "bytes": 22957,
+      "sha256": "d40348efdd4ae5773ca855472689fa1b6d65b858f5ad9c835584d2e313a56abe"
+    },
+    "docs/maps/heron-reach-32/05-b1.png": {
+      "bytes": 139318,
+      "sha256": "d267f350fc1d3465ab33faf809c5ebf5de6406c1b95753a937412e62ac9a2fce"
+    },
+    "docs/maps/heron-reach-32/05-b1.svg": {
+      "bytes": 29957,
+      "sha256": "9a2fd48ea40d670d8cbb3296ca77733ba28cb68c7a9fc2348f8dcc57d0323ed5"
+    },
+    "docs/maps/heron-reach-32/06-homes.png": {
+      "bytes": 136133,
+      "sha256": "39f8363d9e40d1134b5c6822a729fb63e0a4c92c64bc61a6b1d709212077c0db"
+    },
+    "docs/maps/heron-reach-32/06-homes.svg": {
+      "bytes": 18876,
+      "sha256": "40daef690db61266212c0b6ddb0f51bb5480a4eb97c76a401fbee41193343acc"
+    },
+    "docs/maps/heron-reach-32/07-landscape-lighting.png": {
+      "bytes": 281442,
+      "sha256": "45984ae6e89043facbd028f52c2cefc335ab709050e84f47feda615bebacf849"
+    },
+    "docs/maps/heron-reach-32/07-landscape-lighting.svg": {
+      "bytes": 59385,
+      "sha256": "93173e9e32fb0c7a8feb9aae5b57d789941582206a9265e3856663abc5ba2c45"
+    },
+    "docs/maps/heron-reach-32/08-sections.png": {
+      "bytes": 88884,
+      "sha256": "a4ad689f8cda498c5f3fc978d46c7ca03817d5125ae4c87e334e937c569f3ee0"
+    },
+    "docs/maps/heron-reach-32/08-sections.svg": {
+      "bytes": 8722,
+      "sha256": "32a6f1c5ec66c8de27330990e3cd0b72347a151f3bbe27a25dde245c59da784e"
+    },
+    "docs/maps/heron-reach-32/09-blender-massing.png": {
+      "bytes": 1860369,
+      "sha256": "28177c19791cc4939b4805537b07ac5f4cc976dde589ba1af95e5989a8ec2447"
+    },
+    "docs/maps/heron-reach-32/ONSITE-HERON-REACH-32.pdf": {
+      "bytes": 726691,
+      "sha256": "f5b7167759a96ad4b9935be5407276a50722d2aff3b06beb626832b19b6dff58"
+    },
+    "docs/maps/heron-reach-32/README.md": {
+      "bytes": 17082,
+      "sha256": "32b3b2c736970f26072cbaea6f238cd4d9161c5bf786f5cbd6ac0abf6d5007a0"
+    },
+    "docs/maps/heron-reach-32/blender-build.json": {
+      "bytes": 437,
+      "sha256": "54c722ddf3a8c1def61ba43f0590dcb523c06ea1f93a0910737acace83919ef1"
+    },
+    "docs/maps/heron-reach-32/heron-reach-32-massing.glb": {
+      "bytes": 2090204,
+      "sha256": "bb3a41ac33e0e4189b8097a72d8d6bf6674f8e77cec9efb4422eef9bbf2420ae"
+    },
+    "docs/maps/heron-reach-32/index.html": {
+      "bytes": 346505,
+      "sha256": "f84306e28e785238fdf411bbd376f1d7210eeb449052f70ed086efa2dc69db59"
+    },
+    "docs/maps/heron-reach-32/map.json": {
+      "bytes": 111514,
+      "sha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa"
+    },
+    "docs/maps/heron-reach-32/model-check.json": {
+      "bytes": 382,
+      "sha256": "53b21d678ff1b8e9d03e1bb85bda4997a91599876125d18f9c494502452f4c38"
+    },
+    "docs/maps/heron-reach-32/sheets.json": {
+      "bytes": 133,
+      "sha256": "55d0222dcfcfebfe0015413020ef4b63f860bfa84e24bfa85b173fd8d28beb09"
+    },
+    "docs/maps/heron-reach-32/validation.json": {
+      "bytes": 5062,
+      "sha256": "c5a2b0234ab05421d560e72d08f8dd689549fc4cd28282f954891f64f3305c37"
+    },
+    "docs/maps/heron-reach-32/viewer-check.json": {
+      "bytes": 261,
+      "sha256": "04a35c90d6cd40c92bd805d0fecfcdf5ccbdac88f906cb1f812d486bc9f0e6e7"
+    },
+    "scripts/maps/build_heron_reach_blender.py": {
+      "bytes": 13581,
+      "sha256": "7c109f8ee1622abe5416ef921a95de3fe26af1bdc8431a16ead718c0bcfe7634"
+    },
+    "scripts/maps/draw_heron_reach.py": {
+      "bytes": 25895,
+      "sha256": "00bf848ebe047503683b8ea225df2f9b342c0132604cdb329be9b291f360efc7"
+    },
+    "scripts/maps/export_heron_reach.mjs": {
+      "bytes": 2549,
+      "sha256": "c6a246646efb081e4644d27ee210cd560278c97989a84d666a29b231cf91d590"
+    },
+    "scripts/maps/validate_heron_reach.py": {
+      "bytes": 6434,
+      "sha256": "6b21d089ae6d1eab6bc1f63a0099511ecbf3a2f48a51c8960acbbcfef2235690"
+    }
+  }
+}

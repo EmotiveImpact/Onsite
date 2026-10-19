@@ -7,14 +7,15 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts",
+    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts tests/heron-reach.test.ts",
     "test:browser": "node scripts/verify-encounter.mjs",
     "typecheck": "tsc --noEmit",
     "test:legacy": "node --test --test-isolation=none tests/simulation.test.js",
     "test:browser:legacy": "node scripts/browser-check.mjs",
     "evidence:layout": "tsx scripts/layout-evidence.ts",
     "evidence:route": "node scripts/capture-route.mjs",
-    "assets:estate": "npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/build-estate.py && npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/export_estate.py"
+    "assets:estate": "npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/build-estate.py && npm run evidence:layout && blender -b --python-exit-code 1 --python scripts/export_estate.py",
+    "assets:heron-reach": "tsx scripts/maps/export-heron-layout.ts && python3 scripts/maps/art/build_heron_reach_art.py && python3 scripts/maps/art/export_heron_reach_glb.py && gltfpack -i public/models/heron-reach/heron-reach-arch.raw.glb -o public/models/heron-reach/heron-reach-arch.glb -cc -kn -km -kv -vp 16 -vtf && python3 scripts/maps/art/export_heron_kits_glb.py && gltfpack -i public/models/heron-reach/heron-reach-props.raw.glb -o public/models/heron-reach/heron-reach-props.glb -cc -kn -km -kv -vtf && gltfpack -i public/models/heron-reach/heron-reach-foliage.raw.glb -o public/models/heron-reach/heron-reach-foliage.glb -cc -kn -km -kv -vtf"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@playwright/test": "1.61.1",
     "@types/three": "^0.186.0",
+    "gltfpack": "^0.22.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vite": "8.3.4"

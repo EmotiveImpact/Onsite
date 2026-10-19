@@ -1,0 +1,10 @@
+{
+  "scope": "Separate design massing; not game collision, final art or runtime performance evidence",
+  "mapSha256": "2f6e2c8f4223435827f5342066e4d4bcb2efb43f198a992639bda9c44b106aaa",
+  "meshObjects": 1602,
+  "publicStairFlights": 48,
+  "homeStairFlights": 16,
+  "source": "assets/blender/maps/heron-reach-32.blend",
+  "glbBytes": 2090204,
+  "render": "Cycles CPU, 64 samples without denoising, 1400\u00d71100; review lighting only"
+}

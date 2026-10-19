@@ -1,0 +1,18 @@
+{
+  "scope": "Static drawings and viewer only",
+  "sheets": 17,
+  "paperMm": [
+    841,
+    594
+  ],
+  "vectorPdf": true,
+  "pngWidth": 2000,
+  "pageSelections": 17,
+  "mobileWidth": 390,
+  "pageErrors": [],
+  "edgeClippedText": [],
+  "pdfPages": 17,
+  "bookmarks": 17,
+  "pdfBytes": 6617979,
+  "pdfOptimisation": "Ghostscript vector-preserving rewrite; no raster/downsample preset"
+}

@@ -1,0 +1,503 @@
+{
+ "hr_asphalt": {
+  "shadow": true,
+  "map": "/materials/heron/hr_asphalt-color.webp",
+  "normalMap": "/materials/heron/hr_asphalt-normal.webp",
+  "ormMap": "/materials/heron/hr_asphalt-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.55,
+  "metalness": 0,
+  "wet": 0.42
+ },
+ "hr_brick_painted": {
+  "shadow": true,
+  "map": "/materials/heron/hr_brick_painted-color.webp",
+  "normalMap": "/materials/heron/hr_brick_painted-normal.webp",
+  "ormMap": "/materials/heron/hr_brick_painted-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.8,
+  "metalness": 0
+ },
+ "hr_brick_red": {
+  "shadow": true,
+  "map": "/materials/heron/hr_brick_red-color.webp",
+  "normalMap": "/materials/heron/hr_brick_red-normal.webp",
+  "ormMap": "/materials/heron/hr_brick_red-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.85,
+  "metalness": 0
+ },
+ "hr_brick_stock": {
+  "shadow": true,
+  "map": "/materials/heron/hr_brick_stock-color.webp",
+  "normalMap": "/materials/heron/hr_brick_stock-normal.webp",
+  "ormMap": "/materials/heron/hr_brick_stock-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.85,
+  "metalness": 0
+ },
+ "hr_ceiling": {
+  "shadow": true,
+  "color": [
+   0.7,
+   0.69,
+   0.66
+  ],
+  "roughness": 0.9,
+  "metalness": 0
+ },
+ "hr_ceramic": {
+  "shadow": true,
+  "color": [
+   0.75,
+   0.75,
+   0.74
+  ],
+  "roughness": 0.2,
+  "metalness": 0
+ },
+ "hr_concrete_aggregate": {
+  "shadow": true,
+  "map": "/materials/heron/hr_concrete_aggregate-color.webp",
+  "normalMap": "/materials/heron/hr_concrete_aggregate-normal.webp",
+  "ormMap": "/materials/heron/hr_concrete_aggregate-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.86,
+  "metalness": 0
+ },
+ "hr_concrete_board": {
+  "shadow": true,
+  "map": "/materials/heron/hr_concrete_board-color.webp",
+  "normalMap": "/materials/heron/hr_concrete_board-normal.webp",
+  "ormMap": "/materials/heron/hr_concrete_board-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.85,
+  "metalness": 0
+ },
+ "hr_concrete_cast": {
+  "shadow": true,
+  "map": "/materials/heron/hr_concrete_cast-color.webp",
+  "normalMap": "/materials/heron/hr_concrete_cast-normal.webp",
+  "ormMap": "/materials/heron/hr_concrete_cast-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.8,
+  "metalness": 0,
+  "wet": 0.8
+ },
+ "hr_concrete_rough": {
+  "shadow": true,
+  "map": "/materials/heron/hr_concrete_rough-color.webp",
+  "normalMap": "/materials/heron/hr_concrete_rough-normal.webp",
+  "ormMap": "/materials/heron/hr_concrete_rough-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.9,
+  "metalness": 0
+ },
+ "hr_court": {
+  "shadow": true,
+  "map": "/materials/heron/hr_court-color.webp",
+  "normalMap": "/materials/heron/hr_court-normal.webp",
+  "ormMap": "/materials/heron/hr_court-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.6,
+  "metalness": 0,
+  "wet": 0.45
+ },
+ "hr_door_paint": {
+  "shadow": true,
+  "color": [
+   0.35,
+   0.35,
+   0.35
+  ],
+  "roughness": 0.45,
+  "metalness": 0
+ },
+ "hr_fabric": {
+  "shadow": true,
+  "color": [
+   0.12,
+   0.12,
+   0.14
+  ],
+  "roughness": 0.95,
+  "metalness": 0
+ },
+ "hr_floor_laminate": {
+  "shadow": true,
+  "color": [
+   0.25,
+   0.15,
+   0.08
+  ],
+  "roughness": 0.45,
+  "metalness": 0
+ },
+ "hr_glass": {
+  "shadow": false,
+  "color": [
+   0.02,
+   0.025,
+   0.03
+  ],
+  "roughness": 0.05,
+  "metalness": 0,
+  "opacity": 0.28
+ },
+ "hr_glass_blocks": {
+  "shadow": false,
+  "map": "/materials/heron/hr_glass_blocks-color.webp",
+  "normalMap": "/materials/heron/hr_glass_blocks-normal.webp",
+  "ormMap": "/materials/heron/hr_glass_blocks-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.12,
+  "metalness": 0,
+  "emissiveMap": "/materials/heron/hr_glass_blocks-color.webp",
+  "emissive": [
+   1,
+   0.72,
+   0.48
+  ],
+  "emissiveIntensity": 0.55
+ },
+ "hr_glass_lit": {
+  "shadow": false,
+  "color": [
+   1.0,
+   0.62,
+   0.32
+  ],
+  "emissive": [
+   1.0,
+   0.62,
+   0.32
+  ],
+  "emissiveIntensity": 4.0,
+  "roughness": 0.4,
+  "metalness": 0
+ },
+ "hr_grass_ground": {
+  "shadow": true,
+  "map": "/materials/heron/hr_grass_ground-color.webp",
+  "normalMap": "/materials/heron/hr_grass_ground-normal.webp",
+  "ormMap": "/materials/heron/hr_grass_ground-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.9,
+  "metalness": 0
+ },
+ "hr_gravel": {
+  "shadow": true,
+  "map": "/materials/heron/hr_gravel-color.webp",
+  "normalMap": "/materials/heron/hr_gravel-normal.webp",
+  "ormMap": "/materials/heron/hr_gravel-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.9,
+  "metalness": 0
+ },
+ "hr_kitchen": {
+  "shadow": true,
+  "color": [
+   0.6,
+   0.6,
+   0.58
+  ],
+  "roughness": 0.35,
+  "metalness": 0
+ },
+ "hr_lamp_emit": {
+  "shadow": false,
+  "color": [
+   1.0,
+   0.7,
+   0.42
+  ],
+  "emissive": [
+   1.0,
+   0.7,
+   0.42
+  ],
+  "emissiveIntensity": 30.0,
+  "roughness": 0.4,
+  "metalness": 0
+ },
+ "hr_paint_white": {
+  "shadow": true,
+  "color": [
+   0.62,
+   0.62,
+   0.6
+  ],
+  "roughness": 0.55,
+  "metalness": 0
+ },
+ "hr_paint_yellow": {
+  "shadow": true,
+  "color": [
+   0.7,
+   0.5,
+   0.02
+  ],
+  "roughness": 0.55,
+  "metalness": 0
+ },
+ "hr_pavers_red": {
+  "shadow": true,
+  "map": "/materials/heron/hr_pavers_red-color.webp",
+  "normalMap": "/materials/heron/hr_pavers_red-normal.webp",
+  "ormMap": "/materials/heron/hr_pavers_red-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.65,
+  "metalness": 0,
+  "wet": 0.5
+ },
+ "hr_paving": {
+  "shadow": true,
+  "map": "/materials/heron/hr_paving-color.webp",
+  "normalMap": "/materials/heron/hr_paving-normal.webp",
+  "ormMap": "/materials/heron/hr_paving-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.6,
+  "metalness": 0,
+  "wet": 0.5
+ },
+ "hr_plaster": {
+  "shadow": true,
+  "map": "/materials/heron/hr_plaster-color.webp",
+  "normalMap": "/materials/heron/hr_plaster-normal.webp",
+  "ormMap": "/materials/heron/hr_plaster-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.9,
+  "metalness": 0
+ },
+ "hr_plastic_black": {
+  "shadow": true,
+  "color": [
+   0.02,
+   0.02,
+   0.02
+  ],
+  "roughness": 0.5,
+  "metalness": 0
+ },
+ "hr_plastic_green": {
+  "shadow": true,
+  "color": [
+   0.02,
+   0.12,
+   0.05
+  ],
+  "roughness": 0.5,
+  "metalness": 0
+ },
+ "hr_render": {
+  "shadow": true,
+  "map": "/materials/heron/hr_render-color.webp",
+  "normalMap": "/materials/heron/hr_render-normal.webp",
+  "ormMap": "/materials/heron/hr_render-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.8,
+  "metalness": 0
+ },
+ "hr_roof_felt": {
+  "shadow": true,
+  "map": "/materials/heron/hr_roof_felt-color.webp",
+  "normalMap": "/materials/heron/hr_roof_felt-normal.webp",
+  "ormMap": "/materials/heron/hr_roof_felt-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.8,
+  "metalness": 0,
+  "wet": 0.6
+ },
+ "hr_rubber": {
+  "shadow": true,
+  "map": "/materials/heron/hr_rubber-color.webp",
+  "normalMap": "/materials/heron/hr_rubber-normal.webp",
+  "ormMap": "/materials/heron/hr_rubber-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.7,
+  "metalness": 0
+ },
+ "hr_shutter": {
+  "shadow": true,
+  "map": "/materials/heron/hr_shutter-color.webp",
+  "normalMap": "/materials/heron/hr_shutter-normal.webp",
+  "ormMap": "/materials/heron/hr_shutter-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.5,
+  "metalness": 0.8
+ },
+ "hr_signage": {
+  "shadow": true,
+  "color": [
+   0.6,
+   0.6,
+   0.6
+  ],
+  "roughness": 0.5,
+  "metalness": 0
+ },
+ "hr_soil": {
+  "shadow": true,
+  "map": "/materials/heron/hr_soil-color.webp",
+  "normalMap": "/materials/heron/hr_soil-normal.webp",
+  "ormMap": "/materials/heron/hr_soil-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.95,
+  "metalness": 0
+ },
+ "hr_stair_tread": {
+  "shadow": true,
+  "map": "/materials/heron/hr_stair_tread-color.webp",
+  "normalMap": "/materials/heron/hr_stair_tread-normal.webp",
+  "ormMap": "/materials/heron/hr_stair_tread-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.62,
+  "metalness": 0
+ },
+ "hr_steel_aged": {
+  "shadow": true,
+  "map": "/materials/heron/hr_steel_aged-color.webp",
+  "normalMap": "/materials/heron/hr_steel_aged-normal.webp",
+  "ormMap": "/materials/heron/hr_steel_aged-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.7,
+  "metalness": 0.5
+ },
+ "hr_steel_black": {
+  "shadow": true,
+  "map": "/materials/heron/hr_steel_black-color.webp",
+  "normalMap": "/materials/heron/hr_steel_black-normal.webp",
+  "ormMap": "/materials/heron/hr_steel_black-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.45,
+  "metalness": 0.6
+ },
+ "hr_steel_galv": {
+  "shadow": true,
+  "map": "/materials/heron/hr_steel_galv-color.webp",
+  "normalMap": "/materials/heron/hr_steel_galv-normal.webp",
+  "ormMap": "/materials/heron/hr_steel_galv-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.45,
+  "metalness": 0.9
+ },
+ "hr_tile_underpass": {
+  "shadow": true,
+  "map": "/materials/heron/hr_tile_underpass-color.webp",
+  "normalMap": "/materials/heron/hr_tile_underpass-normal.webp",
+  "ormMap": "/materials/heron/hr_tile_underpass-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.38,
+  "metalness": 0
+ },
+ "hr_timber": {
+  "shadow": true,
+  "map": "/materials/heron/hr_timber-color.webp",
+  "normalMap": "/materials/heron/hr_timber-normal.webp",
+  "ormMap": "/materials/heron/hr_timber-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.7,
+  "metalness": 0
+ },
+ "hr_tower_elev": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "roughness": 0.9,
+  "metalness": 0,
+  "map": "/materials/heron/backdrop/tower-elevation-a-color.webp",
+  "emissiveMap": "/materials/heron/backdrop/tower-elevation-a-emit.webp",
+  "normalMap": null,
+  "ormMap": null,
+  "emissive": [
+   1,
+   0.85,
+   0.7
+  ],
+  "emissiveIntensity": 1.8,
+  "repeat": 1
+ },
+ "hr_tower_elev_b": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "roughness": 0.9,
+  "metalness": 0,
+  "map": "/materials/heron/backdrop/tower-elevation-b-color.webp",
+  "emissiveMap": "/materials/heron/backdrop/tower-elevation-b-emit.webp",
+  "normalMap": null,
+  "ormMap": null,
+  "emissive": [
+   1,
+   0.85,
+   0.7
+  ],
+  "emissiveIntensity": 1.8,
+  "repeat": 1
+ },
+ "hr_upvc_white": {
+  "shadow": true,
+  "color": [
+   0.7,
+   0.7,
+   0.68
+  ],
+  "roughness": 0.45,
+  "metalness": 0
+ },
+ "hr_window_dark": {
+  "shadow": false,
+  "color": [
+   0.01,
+   0.012,
+   0.015
+  ],
+  "roughness": 0.3,
+  "metalness": 0
+ },
+ "hr_window_interior": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "emissive": [
+   1,
+   0.8,
+   0.6
+  ],
+  "emissiveIntensity": 2.2,
+  "roughness": 0.4,
+  "metalness": 0,
+  "map": "/materials/heron/windows/interiors-photo-color.webp",
+  "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
+  "repeat": 1
+ },
+ "hr_wired_glass": {
+  "shadow": false,
+  "map": "/materials/heron/hr_wired_glass-color.webp",
+  "normalMap": "/materials/heron/hr_wired_glass-normal.webp",
+  "ormMap": "/materials/heron/hr_wired_glass-orm.webp",
+  "repeat": 2.0,
+  "roughness": 0.15,
+  "metalness": 0,
+  "opacity": 0.62
+ },
+ "hr_wood_furniture": {
+  "shadow": true,
+  "color": [
+   0.22,
+   0.13,
+   0.07
+  ],
+  "roughness": 0.6,
+  "metalness": 0
+ }
+}

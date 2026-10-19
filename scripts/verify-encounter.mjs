@@ -35,7 +35,7 @@ try{
   if(i%10===0)console.log('Tracking',JSON.stringify({tick:s.tick,health:s.player.health,target:target.id,targetHealth:target.health,hits:s.stats.hits,shots:s.stats.shots}));
  }
  await page.mouse.up();await page.mouse.up({button:'right'});await page.screenshot({path:out+'/combat.png'});const s=await snap();check(`Combat result: ${s.bots.filter(b=>!b.alive).length} opponents down, health ${s.player.health}`);assert(s.stats.hits>0,'Actual shots must damage a bot');
- if(s.bots.every(b=>!b.alive)){await routeTo(-3,0,2);await ticks(180);assert.equal((await snap()).status,'won');check('Clear and capture victory');await page.screenshot({path:out+'/victory.png'})}
+ if(s.bots.every(b=>!b.alive)){await routeTo(-2.5,0,1.5);await ticks(180);assert.equal((await snap()).status,'won');check('Clear and capture victory');await page.screenshot({path:out+'/victory.png'})}
  if((await snap()).status==='lost'){check('Player damage and death screen');await page.screenshot({path:out+'/death.png'})}
  assert.equal((await snap()).status,'won','Complete the encounter, rather than passing on partial kills');const combatState=await snap();
  await page.keyboard.press('Escape');if(await page.locator('#result').isVisible())await page.click('#restart');else await page.click('#restart-pause');await page.waitForFunction(()=>document.pointerLockElement);assert.equal((await snap()).player.health,100);check('Round reset restores player and opponents');
