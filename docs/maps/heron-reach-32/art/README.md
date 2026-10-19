@@ -42,7 +42,8 @@ are Cycles CPU renders for judging geometry and materials, not the game's lighti
 assigns the named materials. It instances the kits from the dressing plan, and scatters grass in
 8 m tiles that are hidden beyond 40 m. It also sets up the blue-hour atmosphere:
 
-- a graded dusk sky that is also used for reflections;
+- a graded dusk sky that is also used for reflections, with a far-city panorama ringing the
+  horizon;
 - a pool of real point lights handed to the nearest lamps;
 - glow sprites and wet-ground reflection streaks under every lamp;
 - puddles and graffiti decals;
@@ -89,5 +90,6 @@ Colliding props keep door arcs, spawn positions, stair entries and objective rin
 - [Conventions](CONVENTIONS.md): the shared rules for scale, UVs, material names and files.
 
 Every texture and mesh is original work, made procedurally or by script in this project, apart
-from the skyline tower elevation, which started as a ChatGPT image made for this map. No
+from the tower elevations, far-city panorama, window interiors and graffiti, which started as
+ChatGPT images made for this map (see [TEXTURES.md](TEXTURES.md)). No
 downloaded assets are used. The kit documents record how each one was made.
