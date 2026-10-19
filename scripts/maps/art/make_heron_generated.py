@@ -1,9 +1,9 @@
 """Turn the ChatGPT images made for Heron Reach into runtime textures.
 
-    git archive origin/claude/chatgpt-images docs/maps/heron-reach-32/art/generated | tar -x -C /tmp/gen
-    python3 scripts/maps/art/make_heron_generated.py /tmp/gen/docs/maps/heron-reach-32/art/generated
+    python3 scripts/maps/art/make_heron_generated.py docs/maps/heron-reach-32/art/generated
 
-The source PNGs live on the claude/chatgpt-images branch (see TEXTURES.md for provenance). This
+The source PNGs live in docs/maps/heron-reach-32/art/generated/ (merged from the
+claude/chatgpt-images branch; see TEXTURES.md for provenance). This
 script only crops, resizes, packs and keys them; it never draws new content.
 
 Writes, under public/materials/heron/:

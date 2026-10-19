@@ -63,7 +63,7 @@ Full results are in the manifest under `gltfExportTest`.
   `reusedPolyHaven` field is empty for every set.
 - The graffiti is abstract marker strokes only: no letters, words, crew names or brands.
 - The generated images above started as ChatGPT images made on the project's own account for
-  this map (`docs/maps/heron-reach-32/art/generated/` on the `claude/chatgpt-images` branch,
+  this map (`docs/maps/heron-reach-32/art/generated/`, merged to main from the `claude/chatgpt-images` branch,
   commit dd803c9). The script only crops, resizes, packs and keys them. They depict no real
   building, home or person. The graffiti pieces are illegible wildstyle and bubble letters with no
   readable words, crew names or brands.
