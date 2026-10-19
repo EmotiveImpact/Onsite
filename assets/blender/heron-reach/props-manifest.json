@@ -863,11 +863,11 @@
       "collection": "SIGN_POST",
       "group": "HR_PROPS_STREET",
       "category": "street",
-      "triangles": 622,
+      "triangles": 624,
       "bounds": {
         "min": [
           -0.3,
-          -0.067,
+          -0.069,
           -0.05
         ],
         "max": [
@@ -878,12 +878,12 @@
       },
       "size": [
         0.6,
-        0.116,
+        0.118,
         2.955
       ],
       "footprint": [
         0.6,
-        0.116
+        0.118
       ],
       "mount": "ground",
       "needsCollision": true,
@@ -901,9 +901,9 @@
         "hr_concrete_cast",
         "hr_steel_galv",
         "hr_plastic_black",
-        "hr_signage"
+        "hr_prop_estate_sign"
       ],
-      "notes": "Galvanised 76 mm post with a blank 600 x 450 sign blade facing -Y."
+      "notes": "Galvanised 76 mm post with a 600 x 450 estate sign (NO BALL GAMES) facing -Y."
     },
     {
       "name": "NOTICE_BOARD",
@@ -1520,7 +1520,7 @@
       "collection": "CAR_HATCHBACK",
       "group": "HR_PROPS_VEHICLES",
       "category": "vehicle",
-      "triangles": 9654,
+      "triangles": 9646,
       "bounds": {
         "min": [
           -1.0,
@@ -1838,12 +1838,12 @@
       "needsCollision": false,
       "collider": null,
       "materials": [
-        "hr_signage",
+        "hr_prop_fascia",
         "hr_steel_black",
         "hr_prop_sign_letters",
         "hr_steel_galv"
       ],
-      "notes": "6.0 x 0.8 m fascia with emissive 3D letters reading THE CORNER and FOOD & WINE. Origin on the wall face at the bottom centre of the fascia.",
+      "notes": "6.0 x 0.8 m dark green painted fascia with emissive 3D letters reading THE CORNER and FOOD & WINE. Origin on the wall face at the bottom centre of the fascia.",
       "lightAnchor": [
         0.0,
         -0.4,
@@ -2668,7 +2668,7 @@
       "notes": "Dumped single mattress, stained, one end flopped up. Render only by default; the collider is offered if it should block."
     }
   ],
-  "totalTriangles": 95842,
+  "totalTriangles": 95836,
   "doubleSidedMaterials": [
     "hr_concrete_cast",
     "hr_lamp_emit",
@@ -2681,6 +2681,7 @@
     "hr_prop_cone",
     "hr_prop_dark_void",
     "hr_prop_dish_paint",
+    "hr_prop_estate_sign",
     "hr_prop_fridge_liner",
     "hr_prop_glass_clear",
     "hr_prop_goal_net",

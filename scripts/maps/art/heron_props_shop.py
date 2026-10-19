@@ -360,7 +360,7 @@ def counter():
 def shop_sign():
     a = Asset("SHOP_SIGN_CORNER", "shop", 54)
     W, H, D = 6.0, 0.80, 0.10
-    a.add(box_mm(-W / 2, W / 2, -D, 0.0, 0.0, H, 0.008), "hr_signage")
+    a.add(box_mm(-W / 2, W / 2, -D, 0.0, 0.0, H, 0.008), "hr_prop_fascia")
     for z0, z1 in ((-0.02, 0.025), (H - 0.025, H + 0.02)):
         a.add(box_mm(-W / 2 - 0.02, W / 2 + 0.02, -D - 0.025, 0.0, z0, z1, 0.004), BLK)
     for sx in (-1, 1):
@@ -377,7 +377,7 @@ def shop_sign():
         for z in (0.0, H):
             a.add(dome_head(0.006, 0.003), GALV, T(x, -D - 0.026, z) @ R("X", 90))
     a.meta.update(needsCollision=False, collider=None, mount="wall", lightAnchor=[0.0, -0.4, 0.4],
-                  notes="6.0 x 0.8 m fascia with emissive 3D letters reading THE CORNER and FOOD & WINE. Origin on the wall face at the bottom centre of the fascia.")
+                  notes="6.0 x 0.8 m dark green painted fascia with emissive 3D letters reading THE CORNER and FOOD & WINE. Origin on the wall face at the bottom centre of the fascia.")
     return a
 
 

@@ -849,6 +849,34 @@ def make_fabric():
     save(to_img(np.clip(col, 0, 1)), "fabric")
 
 
+def make_estate_sign():
+    """Council-style estate sign: white enamel face, navy header, worn edges."""
+    W, H = 512, 384
+    im = Image.new("RGBA", (W, H), rgb((0.86, 0.86, 0.83)) + (255,))
+    d = ImageDraw.Draw(im)
+    navy = rgb((0.07, 0.12, 0.25))
+    d.rectangle((0, 0, W, 112), fill=navy)
+    paste_text(im, (24, 14, W - 24, 62), "HERON REACH ESTATE", F_XBOLD, rgb((0.95, 0.94, 0.90)) + (255,), 0.86)
+    paste_text(im, (40, 70, W - 40, 100), "HERON HOUSE  \u00b7  THE CAGE  \u00b7  ESTATE OFFICE", F_BOLD, rgb((0.80, 0.82, 0.86)) + (255,), 0.9)
+    ink = rgb((0.10, 0.10, 0.11)) + (255,)
+    paste_text(im, (30, 140, W - 30, 210), "NO BALL GAMES", F_XBOLD, ink, 0.84)
+    paste_text(im, (30, 226, W - 30, 276), "NO CYCLING ON FOOTPATHS", F_BOLD, ink, 0.86)
+    paste_text(im, (30, 300, W - 30, 336), "By order of the Estate Office", F_BOLD, rgb((0.30, 0.30, 0.32)) + (255,), 0.9)
+    d.rectangle((6, 6, W - 7, H - 7), outline=rgb((0.07, 0.12, 0.25)), width=4)
+    # fixing holes, rust weeps and a dent of grime toward the bottom
+    for (x, y) in ((22, 128), (W - 22, 128), (22, H - 22), (W - 22, H - 22)):
+        d.ellipse((x - 5, y - 5, x + 5, y + 5), fill=rgb((0.35, 0.36, 0.38)))
+    im = grime(im, 141, 0.35, 2.2, 0.15)
+    arr = np.asarray(im).astype(np.float32) / 255.0
+    n = pnoise(H, W, 1.2, 142)
+    yy = np.mgrid[0:H, 0:W][0] / H
+    weep = np.clip((n - 0.55) * 3.0, 0, 1) * np.clip(yy * 1.4 - 0.2, 0, 1) * 0.35
+    arr[..., 0] *= 1 - weep * 0.4
+    arr[..., 1] *= 1 - weep * 0.6
+    arr[..., 2] *= 1 - weep * 0.8
+    save(Image.fromarray((np.clip(arr, 0, 1) * 255).astype(np.uint8), "RGBA"), "estate_sign")
+
+
 def main():
     wire_mesh("cage_mesh", 1024, 20, 5.0, (0.07, 0.07, 0.075), 1)
     wire_mesh("wire_grid", 1024, 20, 4.0, (0.62, 0.63, 0.64), 2)
@@ -865,6 +893,7 @@ def main():
     make_vents()
     make_pegboard()
     make_fabric()
+    make_estate_sign()
 
 
 if __name__ == "__main__":

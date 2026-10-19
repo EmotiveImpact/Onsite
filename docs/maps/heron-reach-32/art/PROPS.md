@@ -56,7 +56,7 @@ leaves the manifest alone. The builder starts from an empty file, so do not hand
 
 ## Contents
 
-61 assets, 95,842 triangles in total. Counts are per asset; see the manifest for bounds.
+57 assets, 95,836 triangles in total. Counts are per asset; see the manifest for bounds.
 
 | group | asset | tris | notes |
 | --- | --- | ---: | --- |
@@ -76,7 +76,7 @@ leaves the manifest alone. The builder starts from an empty file, so do not hand
 | street | `KERB_1M` | 56 | half-battered kerb |
 | street | `DRAIN_GULLY` | 716 | gully grating |
 | street | `MANHOLE` | 44 | cover and frame, normal map |
-| street | `SIGN_POST` | 622 | galvanised post, blank blade |
+| street | `SIGN_POST` | 624 | galvanised post, estate sign (NO BALL GAMES) |
 | street | `NOTICE_BOARD` | 490 | estate notices behind clear cover |
 | street | `SATELLITE_DISH` | 1,028 | offset dish on bracket |
 | street | `AIRBRICK` | 44 | clay airbrick |
@@ -91,12 +91,12 @@ leaves the manifest alone. The builder starts from an empty file, so do not hand
 | cage | `CAGE_GATE_4M` | 1,728 | 4 m opening, two leaves open |
 | cage | `GOAL_FIVE_A_SIDE` | 1,172 | 3.66 x 1.22 m, slack net |
 | cage | `BALL` | 900 | 32-panel size 5 ball |
-| vehicles | `CAR_HATCHBACK` | 9,654 | generic five-door hatchback |
+| vehicles | `CAR_HATCHBACK` | 9,646 | generic five-door hatchback, roof lip spoiler |
 | vehicles | `VAN_DELIVERY` | 8,286 | generic panel van, sliding door |
 | shop | `SHOP_SHELF_UNIT` | 4,796 | 1.2 m bay, procedural stock |
 | shop | `SHOP_FRIDGE` | 6,082 | two-door drinks fridge, lit |
 | shop | `SHOP_COUNTER` | 882 | counter with till and card reader |
-| shop | `SHOP_SIGN_CORNER` | 2,184 | fascia with emissive 3D letters |
+| shop | `SHOP_SIGN_CORNER` | 2,184 | dark green fascia, emissive 3D letters |
 | shop | `WASHING_MACHINE` | 964 | launderette washer |
 | shop | `TUMBLE_DRYER` | 1,546 | stacked double dryer |
 | shop | `LAUNDRY_CAGE` | 1,370 | wheeled laundry trolley |
@@ -151,9 +151,10 @@ textures in `public/materials/heron/props/`:
 | `manhole-color`, `-normal` | 512 | cover pattern |
 | `vents-color`, `-normal` | 512 | louvres, airbrick, gully grating |
 | `cctv-color`, `pegboard-color`, `fabric-color` | 512 | camera, workshop pegboard, sofa fabric |
+| `estate_sign-color` | 512 x 384 | enamel estate sign face for `SIGN_POST` |
 
 Alpha-clipped materials wire the texture's alpha through a Round node into the BSDF Alpha,
-so they export as glTF `MASK` with the default 0.5 cutoff. Fridge glass and the notice board
+so they export as glTF `MASK` (no `alphaCutoff` is written, which means the glTF default of 0.5). Fridge glass and the notice board
 cover use a constant alpha and export as `BLEND`. Lenses, the shop sign letters, fridge
 strips and the fridge header are emissive and export with `KHR_materials_emissive_strength`.
 
@@ -182,7 +183,7 @@ Art never changes the level's collision. The manifest gives, for each asset,
 
 All brands, labels and signs are invented for Heron Reach: THE CORNER (FOOD & WINE),
 HERON and REACH own-label packs, KORA COLA, KRUNCHO, VOLTEDGE, the Heron Reach Estate
-notices and HERON HOUSE FLATS 1 TO 48. No real brands, logos or trademarks appear. Vehicles
+notices, the estate sign and HERON HOUSE FLATS 1 TO 48. No real brands, logos or trademarks appear. Vehicles
 are generic shapes with no maker badges; the number plate `HR18 0NS` uses a zero where a
 real registration needs a letter, so it cannot match a real plate. Lettering was rasterised
 from the system Inter and DejaVu fonts (both under open licences) and the 3D sign letters

@@ -530,13 +530,14 @@ def sign_post():
     a.add(lathe([(0.05, -0.05), (0.05, 0.01), (0.04, 0.02)], 14, False, True), CONC)
     a.add(cyl(0.038, 2.90, 14, -0.05), GALV)
     a.add(lathe([(0.040, 2.85), (0.040, 2.88), (0.025, 2.90), (0.0, 2.905)], 14, False, False), PBLK)
-    # blank blade with folded edges
-    a.add(box(0.60, 0.004, 0.45, 0.002, 1, (0, -0.065, 2.43)), SIGN)
+    # galvanised blade with folded edges and a printed estate sign face
+    a.add(box(0.60, 0.004, 0.45, 0.002, 1, (0, -0.065, 2.43)), GALV)
+    a.add(quad((-0.297, -0.069, 2.207), (0.297, -0.069, 2.207), (0.297, -0.069, 2.653), (-0.297, -0.069, 2.653)), "hr_prop_estate_sign", uv="rect", uv_rect=(0.0, 0.0, 1.0, 1.0))
     a.add(box(0.60, 0.018, 0.45, 0.003, 1, (0, -0.055, 2.43)), GALV)
     for z in (2.30, 2.56):
         a.add(box(0.12, 0.03, 0.03, 0.004, 1, (0, -0.04, z)), GALV)
         a.add(torus(0.042, 0.006, 16, 4), GALV, T(0, 0, z))
-    a.meta.update(needsCollision=True, collider=cyl_collider(0.05, 2.9), notes="Galvanised 76 mm post with a blank 600 x 450 sign blade facing -Y.")
+    a.meta.update(needsCollision=True, collider=cyl_collider(0.05, 2.9), notes="Galvanised 76 mm post with a 600 x 450 estate sign (NO BALL GAMES) facing -Y.")
     return a
 
 

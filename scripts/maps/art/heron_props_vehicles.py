@@ -253,6 +253,35 @@ def stations_for(x0, x1, axles, arch, extra=()):
     return sorted(xs)
 
 
+def roof_lip(body, xa, xb, s0, thick):
+    """Lofted lip from roof station xa (on the surface) back to xb, across bands s0..9..s0."""
+    bm = _new()
+    ss = [s0 + (9 - s0) * k / 6 for k in range(7)]
+    cols = [(s, -1) for s in ss] + [(s, 1) for s in reversed(ss[:-1])]
+    top_a, top_b, bot_b, bot_a = [], [], [], []
+    for (s, side) in cols:
+        p = body.point(xa, s, side)
+        n = body.normal(xa, s, side)
+        pa = p + n * 0.004
+        pb = Vector((xb, pa.y * 0.97, pa.z - 0.03))
+        top_a.append(bm.verts.new(pa))
+        top_b.append(bm.verts.new(pb))
+        bot_b.append(bm.verts.new(pb - Vector((0, 0, thick))))
+        q = body.point(xa - 0.06, s, side)
+        bot_a.append(bm.verts.new(q - body.normal(xa - 0.06, s, side) * 0.01))
+    rows = [top_a, top_b, bot_b, bot_a, top_a]
+    m = len(cols)
+    for r in range(4):
+        A_, B_ = rows[r], rows[r + 1]
+        for k in range(m - 1):
+            bm.faces.new((A_[k], B_[k], B_[k + 1], A_[k + 1]))
+    for k in (0, m - 1):
+        ring = [top_a[k], top_b[k], bot_b[k], bot_a[k]]
+        bm.faces.new(ring if k == m - 1 else list(reversed(ring)))
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    return bm
+
+
 def car_hatchback():
     a = Asset("CAR_HATCHBACK", "vehicle", 81)
     turn = R("Z", -90)
@@ -321,8 +350,9 @@ def car_hatchback():
         a.add(box(0.06, 0.08, 0.04, 0.01, 1, tuple(mp + Vector((-0.02, -side * 0.10, -0.03)))), TRIM, turn)
         a.add(box(0.004, 0.17, 0.09, 0.0, 1, tuple(mp + Vector((-0.051, 0, 0)))), GLASS, turn)
     # roof spoiler lip, fin and exhaust
-    zsp = body.params(-1.70)[1] + 0.012
-    a.add(soft_box(0.13, 1.16, 0.03, 0.012, 2, (0, 0, 0)), PAINT, turn @ T(-1.72, 0, zsp) @ R("Y", 12))
+    # lip spoiler: a thin moulding that continues the roof surface past the tailgate
+    # glass, built on the roof's own cross-section so it follows the crown
+    a.add(roof_lip(body, -1.60, -1.84, 6.6, 0.026), PAINT, turn)
     a.add(soft_box(0.16, 0.06, 0.06, 0.025, 2, (-1.30, 0, 1.49)), PAINT, turn)
     a.add(cyl_between((-1.90, -0.45, 0.25), (-2.02, -0.45, 0.25), 0.03, 10), "hr_steel_galv", turn)
     interior(a, turn, 0.62, 0.05, -0.80, 0.80, 0.25)

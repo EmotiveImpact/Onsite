@@ -191,7 +191,7 @@ def scene_cage(out):
     RP.area(scene, (-2.0, -14.0, 9.0), (55, 0, 0), 900, 14, COOL, "sky_fill")
     RP.camera(scene, (5.4, -4.9, 1.6), (-1.0, 2.6, 1.3), 21)
     # court floodlight spill from the block, out of shot
-    RP.point(scene, (-2.5, 4.0, 6.5), 900, WARM, 0.3, "court_flood")
+    RP.point(scene, (-2.5, 4.0, 6.5), 1800, WARM, 0.3, "court_flood")
     scene.render.filepath = out
     bpy.ops.render.render(write_still=True)
     print("rendered", out)
@@ -294,11 +294,11 @@ def scene_interiors(out):
     put("TABLE_FOLDING", -4.2, 1.2, 0, 90)
     put("CHAIR_STACKING", -4.9, 1.6, 0, 80)
     put("CHAIR_STACKING", -3.5, 0.9, 0, -100)
-    put("ESTATE_OFFICE_DESK", 2.8, -2.6, 0, -70)
+    put("ESTATE_OFFICE_DESK", 2.9, -0.6, 0, -90)
     for x in (-4.0, -1.0, 2.0):
         strip_light(scene, x - 0.6, x + 0.6, 2.5, 2.98, 60)
         strip_light(scene, x - 0.6, x + 0.6, -1.0, 2.98, 60)
-    RP.camera(scene, (-1.0, -4.3, 1.7), (-0.5, 2.5, 0.85), 18)
+    RP.camera(scene, (-0.9, -3.3, 1.55), (-0.4, 2.5, 0.95), 21)
     scene.render.filepath = out
     bpy.ops.render.render(write_still=True)
     print("rendered", out)
@@ -309,10 +309,10 @@ def scene_vehicles(out):
     asphalt = mat("hr_asphalt")
     paving = mat("hr_paving")
     brick = mat("hr_brick_stock")
-    plane(scene, "road", -12, 12, -10, 2.0, 0.0, asphalt)
-    plane(scene, "pavement", -12, 12, 2.0, 6.0, 0.125, paving)
-    vwall(scene, "shopfront", -12, 12, 5.0, 0.125, 8.0, brick)
-    for k in range(-11, 11):
+    plane(scene, "road", -30, 30, -10, 2.0, 0.0, asphalt)
+    plane(scene, "pavement", -30, 30, 2.0, 6.0, 0.125, paving)
+    vwall(scene, "shopfront", -30, 30, 5.0, 0.125, 8.0, brick)
+    for k in range(-14, 12):
         put("KERB_1M", k + 0.5, 2.0 - 0.0625, 0.0, 180)
     put("CAR_HATCHBACK", -2.2, 1.0, 0, 90)
     put("VAN_DELIVERY", 3.6, 1.05, 0, 90)
@@ -328,7 +328,7 @@ def scene_vehicles(out):
     # shop window glow on the pavement
     RP.area(scene, (0.0, 4.6, 1.5), (90, 0, 0), 300, 5.0, SHOP_WARM, "window_glow")
     RP.area(scene, (0.0, -14.0, 8.0), (60, 0, 0), 800, 14, COOL, "sky_fill")
-    RP.camera(scene, (-6.4, -6.2, 1.65), (0.6, 2.4, 0.9), 26)
+    RP.camera(scene, (8.2, -4.6, 1.5), (-0.4, 1.9, 1.0), 26)
     scene.render.filepath = out
     bpy.ops.render.render(write_still=True)
     print("rendered", out)

@@ -25,6 +25,7 @@ TEXTURES = {
     "vents": (512, 512, False, True),         # airbrick face
     "pegboard": (512, 512, False, False),     # 0.5 m tile
     "fabric": (512, 512, False, False),       # 0.5 m tile sofa fabric
+    "estate_sign": (512, 384, False, False),  # 600 x 450 mm estate sign face, 0-1 UVs
 }
 
 # ---------------------------------------------------------------------------
