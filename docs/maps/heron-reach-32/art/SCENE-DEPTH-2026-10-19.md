@@ -150,7 +150,26 @@ ONSITE_URL=http://127.0.0.1:4173 OUT=test-results/depth-detail \
   node scripts/maps/capture-art-review.mjs
 ```
 
-Full encounter results follow after the separate input-driven runs.
+The first full Reach run **failed** its victory assertion after five kills: the
+player died at 120.82 simulation seconds (171 shots, 27 hits, no page/request errors).
+[Failure state](evidence/scene-depth/failed-reach/failure.json),
+[screen](evidence/scene-depth/failed-reach/failure.png) and
+[log](evidence/scene-depth/failed-reach/console.txt) are retained.
+Review found the automation held LMB through later snapshots and mouse movement;
+`aim()` re-read the player after the target snapshot, and `ticks(1)` took another
+snapshot after firing began. Slow rendering allowed unattended recoil/fire batches.
+The revised Reach harness uses one player/target snapshot, fires through normal
+mouse input until a shot is observed, then releases LMB before further reads/aiming.
+It records burst sizes, changes no gameplay state and retains the full victory
+assertion. The failed run is not counted as a pass.
+
+The separate [Heron Court regression](evidence/scene-depth/court-browser.json)
+passed all **10 checks**, defeated three bots, captured and reset with 84 health.
+It recorded 27 shots / 12 hits, victory at 25.52 simulation seconds, and no page or
+request errors. Its final 135 active software samples averaged **588.57 ms/frame**
+(about 1.70 FPS), with 81 final calls / 243,902 triangles at 1100×700 / DPR 0.5.
+
+Final Reach rerun results follow below.
 
 ## Remaining quality gaps
 
