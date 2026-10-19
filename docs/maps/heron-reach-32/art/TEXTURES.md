@@ -91,6 +91,15 @@ phase-matched for jointed surfaces), file sizes and hashes.
 
 ## Known limits
 
+### Wet-ground addition, 19 October 2026
+
+`make_heron_wetness.py` generates `decals/wetness-mask.webp` and `decals/lamp-streak.webp`
+from deterministic periodic noise and a rippled falloff (NumPy/Pillow, seed 741). They are original
+ONSITE procedural work; no external pixels or model were used. Both are 512 px. The mask uses
+linear data and repeats every 11 world metres; the streak is an sRGB RGBA texture.
+`decals/wetness-manifest.json` records hashes and sizes. The runtime uses the existing PBR ground
+maps and dusk environment, with no added render pass or changes to collision.
+
 - The source images are generated and not physically measured, so coverage is a modelling
   decision, made to fit real brick, slab and paver sizes.
 - Aged steel and render keep some mid-scale blotches, so repeats show on very large flat areas.

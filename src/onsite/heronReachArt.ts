@@ -1,6 +1,8 @@
 import * as THREE from 'three'
 import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
+import {applyWetGround,surfaceBelow,wetGroundNames} from './wetGround'
+import type {Solid} from './level'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -28,6 +30,7 @@ export class HeronReachMaterials {
   // ORM: R occlusion, G roughness, B metalness (glTF packing), so one texture drives all three.
   if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=1;mat.needsUpdate=true}));
   if(e.wet)m.envMapIntensity=1.6;
+  if(wetGroundNames.has(name))this.pending.push(this.texture('/materials/heron/decals/wetness-mask.webp',false,1).then(t=>{applyWetGround(mat,t);mat.needsUpdate=true}));
   if(e.opacity!==undefined){m.transparent=true;m.opacity=e.opacity;m.depthWrite=false;m.envMapIntensity=2.2}
   this.mats.set(name,m);this.shadow.set(name,e.shadow!==false);return m;
  }
@@ -61,7 +64,7 @@ function radial(size:number,stops:[number,string][]){
  */
 export class HeronReachAtmosphere {
  readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:{x:number;y:number;z:number;big:boolean}[]=[];private streakMesh!:THREE.InstancedMesh;private readonly m=new THREE.Matrix4();private readonly q=new THREE.Quaternion();private readonly up=new THREE.Vector3(0,1,0);private next=0;
- constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean){
+ constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean,surfaces:readonly Solid[]){
   this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
   const top=new THREE.Color('#0b1426'),mid=new THREE.Color('#25385a'),horizon=new THREE.Color('#6d6478'),glow=new THREE.Color('#b0806a');
   scene.background=mid.clone();scene.fog=new THREE.FogExp2('#2a3550',.0062);
@@ -82,7 +85,7 @@ export class HeronReachAtmosphere {
   const envScene=new THREE.Scene();envScene.add(dome.clone());const pm=new THREE.PMREMGenerator(renderer);
   scene.environment=pm.fromScene(envScene,.02).texture;scene.environmentIntensity=.55;pm.dispose();
   const halo=radial(128,[[0,'rgba(255,214,160,1)'],[.18,'rgba(255,170,90,.55)'],[.5,'rgba(255,140,60,.12)'],[1,'rgba(255,120,40,0)']]);
-  const streak=radial(128,[[0,'rgba(255,190,120,.9)'],[.35,'rgba(255,150,80,.35)'],[1,'rgba(255,120,60,0)']]);
+  const streak=new THREE.TextureLoader().load('/materials/heron/decals/lamp-streak.webp');streak.colorSpace=THREE.SRGBColorSpace;streak.anisotropy=software?2:8;
   const haloMat=(size:number)=>new THREE.PointsMaterial({map:halo,size,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:true});
   const streakMat=new THREE.MeshBasicMaterial({map:streak,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,polygonOffset:true,polygonOffsetFactor:-4});
   const plane=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
@@ -91,8 +94,8 @@ export class HeronReachAtmosphere {
   for(const a of anchors){
    const big=a.kind==='street'||a.kind==='court';
    glows[big?'big':'small'].push(a.x,a.y,a.z);
-   const floor=Math.floor((a.y+.5)/3)*3;
-   if(big||a.y-floor<3.2)this.streaks.push({x:a.x,y:floor+.012,z:a.z,big});
+   const floor=surfaceBelow(a.x,a.y,a.z,surfaces);
+   if(floor!==null)this.streaks.push({x:a.x,y:floor+.018,z:a.z,big});
   }
   for(const [k,size]of [['big',3.4],['small',1.7]] as const)if(glows[k].length){ // point size is in world units before the fov term, so 1/tan(37°) larger than the old sprites
    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(glows[k],3));
@@ -112,7 +115,9 @@ export class HeronReachAtmosphere {
   const p=new THREE.Vector3(),sc=new THREE.Vector3();
   this.streaks.forEach((s,i)=>{
    const d=Math.hypot(c.x-s.x,c.z-s.z);this.q.setFromAxisAngle(this.up,Math.atan2(c.x-s.x,c.z-s.z));
-   sc.set(s.big?1.6:.9,1,(s.big?3:1.5)+Math.min(d,30)*(s.big?.3:.12));this.streakMesh.setMatrixAt(i,this.m.compose(p.set(s.x,s.y,s.z),this.q,sc));
+   // Reflection stretches towards the viewer, on its own supporting floor.
+   const length=(s.big?4:1.8)+Math.min(d,24)*(s.big?.38:.16),towards=Math.min(d*.25,length*.3);
+   sc.set(s.big?1.7:.8,1,length);this.streakMesh.setMatrixAt(i,this.m.compose(p.set(s.x+(c.x-s.x)/Math.max(d,1)*towards,s.y,s.z+(c.z-s.z)/Math.max(d,1)*towards),this.q,sc));
   });
   this.streakMesh.instanceMatrix.needsUpdate=true;
  }

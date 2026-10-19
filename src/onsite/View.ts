@@ -114,7 +114,7 @@ export class View {
   this.hemi.color.set('#6f8cbd');this.hemi.groundColor.set('#2a2620');this.hemi.intensity=1.5;
   this.sun.color.set('#a9bde0');this.sun.intensity=.9;
   this.renderer.toneMappingExposure=1.3;
-  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software);
+  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
   const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
