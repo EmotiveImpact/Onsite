@@ -702,7 +702,9 @@ def build(name, rng):
     base = OUT / name
     save_webp(srgb, str(base) + "-color.webp", 90)
     save_webp(nrm, str(base) + "-normal.webp", 92)
-    save_webp(orm, str(base) + "-orm.webp", 92)
+    # ORM is low-frequency: half resolution saves a quarter of each set's texture memory.
+    h, w = orm.shape[:2]
+    save_webp(orm.reshape(h // 2, 2, w // 2, 2, -1).mean((1, 3)), str(base) + "-orm.webp", 92)
     ph = PHASE.get(name, (None, None))
     sr_out = seam_ratio_phase(srgb, *ph)
     sr_src = seam_ratio(src)

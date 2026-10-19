@@ -241,7 +241,7 @@ export const dressing=planDressing({site:SITE,boxes,floorsG:floors.G,cores:art.c
  objectives:map.objectives as {x:number;z:number;radius:number}[],spawns:map.spawns as unknown as {rect:Rect;positions:{x:number;z:number}[]}[],stairs:art.cores.map(c=>c.rect),
  wetAreas:map.wetAreas as unknown as {rect:Rect}[],undercroftWalls:art.undercroftWalls});
 boxes.push(...dressing.colliders);
-deviations.push(`Dressing adds ${dressing.colliders.length} prop colliders (lamps, bollards, benches, bins, shop fittings, roof plant); door arcs, spawns, stair entries and objective rings stay clear.`);
+deviations.push(`Dressing adds ${dressing.colliders.length} prop colliders (lamps, bollards, benches, bins and bin stores, shop fittings, roof plant, a fenced substation, sign posts, grit bins, a dumped sofa and washing airers); door arcs, spawns, stair entries and objective rings stay clear.`);
 
 const toSolid=(b:Box):Solid=>({id:b.id,x:(b.x0+b.x1)/2-OX,y:(b.y0+b.y1)/2,z:(b.z0+b.z1)/2-OZ,w:b.x1-b.x0,h:b.y1-b.y0,d:b.z1-b.z0,mat:b.mat});
 export const solids:Solid[]=boxes.map(toSolid);
