@@ -146,4 +146,3 @@ Apache-2.0 licence, source and hashes in `public/vendor/basis/`; it is credited 
 `pigeon-net.webp` is a 512 px WebP derivative of the existing project ChatGPT-generated
 `generated/decals/hr_decal_pigeon_net.png`. Original retained; both hashes and render-only panel
 placements are in `assets/blender/heron-reach/gallery-detail-manifest.json`.
-

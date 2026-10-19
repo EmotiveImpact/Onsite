@@ -165,4 +165,3 @@ HR_FOLIAGE_WINTER=1 HR_FOLIAGE_ONLY=TREE HR_FOLIAGE_BLEND="$PWD/assets/blender/h
 blender -b --python-exit-code 1 --python scripts/maps/art/export_heron_kits_glb.py -- winter
 npx gltfpack -i public/models/heron-reach/heron-reach-winter.raw.glb -o public/models/heron-reach/heron-reach-winter.glb -cc -kn -km -kv -vtf
 ```
-
