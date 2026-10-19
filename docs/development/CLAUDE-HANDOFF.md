@@ -6,7 +6,8 @@ The owner explicitly deferred real-GPU benchmarking. Work continued on the exist
 runtime (`/?map=heron-reach`), preserving Heron Court and the WWB simulation. **Nothing from this
 visual pass has been merged by this session.** The complete result is on the final branch in the
 [review stack](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md#recovery-and-review); use that branch
-to inspect all seven items together. Main remains the live baseline.
+to inspect all seven items together. Main remains the live baseline. PRs [#5](https://github.com/EmotiveImpact/Onsite/pull/5) through
+[#11](https://github.com/EmotiveImpact/Onsite/pull/11) form the ordered review stack.
 
 Read [the visual work log](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md) for matched runtime
 screenshots, raw browser reports, rebuild commands, provenance and limitations. These are actual

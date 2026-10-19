@@ -7,9 +7,11 @@ stack, exact software-rendered evidence and current results. The residential rep
 historical and does not describe the combined Heron Reach build.
 
 Final combined source: all 43 tests, typecheck and production build passed; eight matched
-inspection views and the three-mode texture/fallback probe passed. Both final input-driven encounters passed: Heron Reach nine checks/six bots and Heron Court
+inspection views and the three-mode texture/fallback probe passed. Both final input-driven
+encounters passed: Heron Reach nine checks/six bots and Heron Court
 ten checks/three bots, each capturing and resetting without page/request errors. Software frame
-means were 680.89 ms and 563.57 ms respectively, around 1–2 FPS. Real-GPU benchmarking is explicitly deferred and remains unverified.
+means were 680.89 ms and 563.57 ms respectively, around 1–2 FPS.
+Real-GPU benchmarking is explicitly deferred and remains unverified.
 
 ## Earlier South London residential pass — validation
 
