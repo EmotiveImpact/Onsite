@@ -30,6 +30,14 @@ Heron Court. Run `npm test`, `npm run typecheck`, `npm run build`, then the two 
 encounters sequentially against a production preview. Use the work log's saved
 viewpoints for comparisons. Real-GPU benchmarking is still deferred, not a blocker.
 
+Final validation: all 55 tests, typecheck, build and both full browser encounters
+passed. Reach cleared six bots/captured/reset at 76 health; Court cleared three at
+84 health. Mean frame times were 676.45 ms / 588.57 ms on SwiftShader, not a real GPU.
+The original failed Reach run is retained; a reviewed correction bounds automation
+fire bursts and removes stale aim snapshots, preserving normal input and the full
+victory assertion. Thirteen fixed-camera captures passed with no console/page/network
+errors. The work log links the raw reports and an unretimed closing gameplay excerpt.
+
 Most valuable next work: measured local/contact shadows, then optional masked
 scene reflections, plus replacing flat shop panels with deeper authored stock.
 Characters, hand animation, audio and encounter/stealth quality need separate

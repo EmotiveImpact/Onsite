@@ -169,7 +169,30 @@ It recorded 27 shots / 12 hits, victory at 25.52 simulation seconds, and no page
 request errors. Its final 135 active software samples averaged **588.57 ms/frame**
 (about 1.70 FPS), with 81 final calls / 243,902 triangles at 1100×700 / DPR 0.5.
 
-Final Reach rerun results follow below.
+The corrected [Heron Reach encounter](evidence/scene-depth/reach-browser.json)
+passed all **9 checks**: six opponents defeated, capture victory and round reset.
+It finished at 138.10 simulation seconds with **76 health, 82 shots / 37 hits** and
+no page/request errors. Reset data confirms all six opponents alive at 100 health
+and player health 100. The 28 recorded normal-input bursts average 2.93 shots,
+maximum three; the mandatory victory assertion was not weakened. A separate
+read-only review confirmed that the correction mutates no gameplay state.
+
+Its final **360 active software samples average 676.45 ms/frame (~1.48 FPS)**,
+with 417 final calls / 1,266,761 triangles, 1100×700 / DPR 0.5. Browser runs were
+serial, with no simultaneous Blender generation or second browser. These rolling
+samples include automation/capture overhead and different encounter viewpoints;
+they are not a controlled comparison with the earlier pass or hardware benchmarks.
+
+[ADS check](evidence/scene-depth/aiming.png) ·
+[Victory](evidence/scene-depth/victory.png) ·
+[Unretimed closing capture excerpt (49.84 seconds)](evidence/scene-depth/reach-final-50s.webm).
+The clip shows the closing route/capture at the actual slow software cadence;
+it is not edited to suggest smooth gameplay. Full video remains in the ignored
+`test-results/depth-reach-burst/` folder in this session.
+
+Validation used frozen runtime implementation `5117c52`; the corrected browser
+harness is in `13e5963`. The final normal workspace production build has the same
+client bundle hash as the captured frozen build. No merge or deployment was made.
 
 ## Remaining quality gaps
 

@@ -1,4 +1,35 @@
-# Current validation: Heron Reach visual pass
+# Current validation: Heron Reach scene depth
+
+19 October 2026. Current review branch: `codex/heron-reach-scene-depth`, stacked on
+`codex/heron-reach-textures-dressing`. The [scene-depth work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
+records exact source checkpoints, sources, matched screenshots, costs and all reports.
+Nothing from this pass has been merged or deployed by this session.
+
+- **55 tests passed**, no skips; typecheck and production build passed.
+- Nine DPR 0.5 and four DPR 1 fixed-camera views passed without page/console/request
+  errors. Before/after requested camera poses match exactly. These are inspection
+  fixtures with frozen bots, rendered by Chromium 154 / ANGLE SwiftShader.
+- **Heron Reach: 9 checks passed**, six bots defeated, capture and reset. 76 health,
+  82 shots / 37 hits. Final 360 active samples: **676.45 ms/frame (~1.48 FPS)**.
+- **Heron Court: 10 checks passed**, three bots defeated, capture and reset. 84 health,
+  27 shots / 12 hits. Final 135 active samples: **588.57 ms/frame (~1.70 FPS)**.
+- An initial Reach run died after five kills. Its state/log/screenshot are retained.
+  The verifier had held fire through extra snapshots and aim updates; the corrected
+  normal-input burst loop preserves the full victory assertion. Final 28 bursts
+  averaged 2.93 shots, maximum three. No game state was altered by the verifier.
+- The physical solids, navigation and WWB gameplay modules remain unchanged.
+  New render assets add 621,826 bytes and 5,888 triangles. Fifteen exported primitives
+  exceed the initial twelve-batch target by three; eight material slots do not mean
+  eight draws.
+
+These slow software runs include automation overhead. **Real-GPU performance remains
+unverified and explicitly deferred.** Local point lights remain unshadowed; scene
+reflections and richer interior/character presentation are unfinished. Passing
+checks does not establish AAA appearance, smooth play or 32-player online readiness.
+
+## Previous seven-item art pass — historical results
+
+### Heron Reach visual pass
 
 19 October 2026. The current art work is on `codex/heron-reach-textures-dressing`,
 with seven focused review branches. Nothing from this pass has been merged or deployed by this
