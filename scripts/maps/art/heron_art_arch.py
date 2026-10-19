@@ -134,9 +134,10 @@ class Arch:
         along_x = ext in ('+z', '-z')
         a0, a1 = (x0, x1) if along_x else (z0, z1)
         run = a1 - a0
-        ww, wh, sill = (1.2, 1.35, .9) if kind == 'home' else (.75, 1.7, .7)
+        ww, wh, sill = (1.2, 1.35, .9) if kind == 'home' else (1.65, 2.35, .3)
         pitch = 2.6 if kind == 'home' else 3.0
-        n = int((run + pitch - ww - .8) // pitch) if run >= ww + .8 else 0
+        margin=.8 if kind=='home' else .45
+        n = int((run + pitch - ww - margin) // pitch) if run >= ww + margin else 0
         if n <= 0:
             return []
         out = []
@@ -279,7 +280,7 @@ class Arch:
             return (cx + ax * u + nx * d, y + v, cz + az * u + nz * d)
         y0, y1 = sill, sill + h
         fw = .065 if not shop else .08
-        frame = 'hr_upvc_white' if not shop else 'hr_steel_black'
+        frame = 'hr_steel_black' if shop or core else 'hr_upvc_white'
         def bar(u0, u1, v0, v1, d0, d1, mat=frame):
             pts = [P(u0, v0, d0), P(u1, v1, d1)]
             xs = sorted([pts[0][0], pts[1][0]]); zs = sorted([pts[0][2], pts[1][2]])
@@ -303,6 +304,8 @@ class Arch:
         if cosmetic and core:
             # Stair-core strip window: glass blocks with the lit stair glowing through.
             self.pane(grp, 'hr_glass_blocks', P(-w / 2, y0, -t / 2 + .04), P(w / 2, y1, -t / 2 + .04), (nx, nz))
+            # Thin dark glazing bars give tall vertical bays a readable industrial scale.
+            bar(-.025,.025,y0,y1,d0-.01,d1+.01,'hr_steel_black')
         if not shop:
             lit = o.get('lit') or rng.random() < (.55 if not core else .0)
             if not core:
@@ -725,7 +728,16 @@ class Arch:
             for y in c['levels']:
                 grp = self.g('cores', cx + 3, cz + 3)
                 label = labels.get(int(round(y)), str(y))
-                self.painted_text(grp, 'hr_paint_yellow', label, cx + 3, y + 2.0, wz + n * .006, n, size=.95 if len(label) == 1 else .75)
+                self.painted_text(grp, 'hr_paint_yellow', label, cx + 3, y + 2.05, wz + n * .009, n, size=1.2 if len(label) == 1 else .9)
+                # Existing entry/landing zone: fittings above the 2.4 m clearance envelope.
+                lz=cz+1 if mirror else cz+5
+                self.B.box(grp,'hr_steel_galv',cx+1.05,cx+2.45,y+2.68,y+2.78,lz-.11,lz+.11)
+                self.B.box(grp,'hr_core_strip',cx+1.1,cx+2.4,y+2.665,y+2.68,lz-.08,lz+.08,faces='-y')
+                # Riser and clips tuck into the back corner, outside the walking lane.
+                px=cx+.31; pz=wz+n*.09
+                self.B.cylinder(grp,'hr_steel_galv',(px,y+.12,pz),(px,y+2.75,pz),.035,8)
+                for h in [.4,1.5,2.5]:
+                    self.B.box(grp,'hr_steel_black',px-.055,px+.055,y+h-.025,y+h+.025,pz-.05,pz+.05)
         for a in self.L.get('anchors', []):
             if a['kind'] != 'ceiling':
                 continue

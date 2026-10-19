@@ -14,6 +14,7 @@ import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js'
 import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
+import {coreLightAnchors} from './heronCoreArt'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -122,7 +123,7 @@ export class View {
   this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
   this.sun.color.set('#c0cad4');this.sun.intensity=.65;
   this.renderer.toneMappingExposure=1.12;
-  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a),...shopLightAnchors];
+  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a),...shopLightAnchors,...coreLightAnchors];
   this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).

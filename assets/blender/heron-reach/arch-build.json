@@ -2014,9 +2014,11 @@
    "normal": true,
    "orm": true
   },
-  "hr_upvc_white": {
-   "textured": false,
-   "fallback": false
+  "hr_steel_black": {
+   "textured": true,
+   "coverage": 1.0,
+   "normal": true,
+   "orm": true
   },
   "hr_glass": {
    "textured": false,
@@ -2052,6 +2054,10 @@
    "normal": true,
    "orm": true
   },
+  "hr_upvc_white": {
+   "textured": false,
+   "fallback": false
+  },
   "hr_window_interior": {
    "textured": false,
    "emissive": 3.0
@@ -2075,12 +2081,6 @@
   "hr_soil": {
    "textured": true,
    "coverage": 2.0,
-   "normal": true,
-   "orm": true
-  },
-  "hr_steel_black": {
-   "textured": true,
-   "coverage": 1.0,
    "normal": true,
    "orm": true
   },
@@ -2202,6 +2202,10 @@
    "textured": false,
    "fallback": false
   },
+  "hr_core_strip": {
+   "textured": false,
+   "emissive": 2.5
+  },
   "hr_paint_white": {
    "textured": false,
    "fallback": false
@@ -2215,7 +2219,7 @@
    "fallback": false
   }
  },
- "objects": 764,
- "faces": 98573,
- "triangles": 198210
+ "objects": 772,
+ "faces": 101229,
+ "triangles": 203778
 }

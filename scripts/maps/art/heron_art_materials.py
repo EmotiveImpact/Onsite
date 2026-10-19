@@ -62,6 +62,7 @@ PLAIN = {
     'hr_stair_tread': ((.25, .25, .25), .62, 0),
 }
 EMIT = {
+    'hr_core_strip': ((.78, .9, 1.0), 2.5),
     'hr_glass_lit': ((1.0, .62, .32), 4.0),
     'hr_lamp_emit': ((1.0, .7, .42), 30.0),
     'hr_window_interior': ((1.0, .66, .38), 3.0),

@@ -15,7 +15,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import bpy  # noqa: E402
 from heron_art_materials import ROOT, PLAIN, EMIT, COVERAGE, DEFAULT_COVERAGE, texture_set  # noqa: E402
 
-SRC = os.path.join(ROOT, 'assets', 'blender', 'heron-reach', 'heron-reach.blend')
+SRC = os.path.join(ROOT, os.environ.get('ONSITE_ARCH_BLEND', 'assets/blender/heron-reach/heron-reach.blend'))
 OUT_DIR = os.path.join(ROOT, 'public', 'models', 'heron-reach')
 MATS = os.path.join(ROOT, 'public', 'materials', 'heron', 'runtime-materials.json')
 
@@ -23,7 +23,7 @@ MATS = os.path.join(ROOT, 'public', 'materials', 'heron', 'runtime-materials.jso
 DOUBLE = set()  # window cards are single-sided so homes can see out
 # Damp ground: roughness multiplier on top of the ORM map, so lamps and sky read in the paving.
 WET = {'hr_asphalt': .42, 'hr_paving': .5, 'hr_pavers_red': .5, 'hr_court': .45, 'hr_concrete_cast': .8, 'hr_roof_felt': .6}
-NO_SHADOW = {'hr_glass_blocks', 'hr_wired_glass', 'hr_tower_elev', 'hr_tower_elev_b', 'hr_glass', 'hr_glass_lit', 'hr_window_interior', 'hr_window_dark', 'hr_lamp_emit'}
+NO_SHADOW = {'hr_core_strip', 'hr_glass_blocks', 'hr_wired_glass', 'hr_tower_elev', 'hr_tower_elev_b', 'hr_glass', 'hr_glass_lit', 'hr_window_interior', 'hr_window_dark', 'hr_lamp_emit'}
 
 
 def rel(path):
@@ -61,7 +61,7 @@ def runtime_material(name):
         entry['opacity'] = .28
     if name == 'hr_glass_blocks':
         # The lit stairwell glows through the blocks at dusk.
-        entry.update(emissiveMap=entry['map'], emissive=[1, .72, .48], emissiveIntensity=.55)
+        entry.update(color=[.28,.42,.43],emissiveMap=entry['map'],emissive=[.6,.78,.85],emissiveIntensity=.24,roughness=.24,metalness=.08)
     if name == 'hr_wired_glass':
         entry['opacity'] = .62
     if name in WET:

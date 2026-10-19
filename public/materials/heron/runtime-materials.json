@@ -93,6 +93,22 @@
   "roughness": 0.9,
   "metalness": 0
  },
+ "hr_core_strip": {
+  "shadow": false,
+  "color": [
+   0.78,
+   0.9,
+   1.0
+  ],
+  "emissive": [
+   0.78,
+   0.9,
+   1.0
+  ],
+  "emissiveIntensity": 2.5,
+  "roughness": 0.4,
+  "metalness": 0
+ },
  "hr_court": {
   "shadow": true,
   "map": "/materials/heron/hr_court-color.webp",
@@ -150,15 +166,20 @@
   "normalMap": "/materials/heron/hr_glass_blocks-normal.webp",
   "ormMap": "/materials/heron/hr_glass_blocks-orm.webp",
   "repeat": 1.0,
-  "roughness": 0.12,
-  "metalness": 0,
+  "roughness": 0.24,
+  "metalness": 0.08,
+  "color": [
+   0.28,
+   0.42,
+   0.43
+  ],
   "emissiveMap": "/materials/heron/hr_glass_blocks-color.webp",
   "emissive": [
-   1,
-   0.72,
-   0.48
+   0.6,
+   0.78,
+   0.85
   ],
-  "emissiveIntensity": 0.55
+  "emissiveIntensity": 0.24
  },
  "hr_glass_lit": {
   "shadow": false,

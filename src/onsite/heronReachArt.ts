@@ -115,7 +115,7 @@ export class HeronReachAtmosphere {
    this.next=t+.25;
    // Rank by estimated contribution, so a low doorway lamp cannot evict every court column.
    const near=this.anchors.map(a=>({a,d:((a.x-c.x)**2+(a.y-c.y)**2*2+(a.z-c.z)**2+4)/(a.kind==='street'||a.kind==='court'?6:1)})).sort((p,q)=>p.d-q.d);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.a.kind==='court'?850:big?175:n.a.kind==='shop'?55:ceiling?11:14;l.distance=n.a.kind==='court'?42:big?25:n.a.kind==='shop'?12:9});
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling'||n.a.kind==='core';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.a.kind==='court'?850:big?175:n.a.kind==='shop'?55:ceiling?11:14;l.distance=n.a.kind==='court'?42:big?25:n.a.kind==='shop'?12:9});
   }
   const p=new THREE.Vector3(),sc=new THREE.Vector3();
   this.streaks.forEach((s,i)=>{
