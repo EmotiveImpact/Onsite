@@ -1,5 +1,10 @@
 # Brief for Astra: push Heron Reach towards the concept art
 
+**Current owner direction:** [ONSITE whole-game goal](ONSITE-GOAL.md) now extends this art brief
+to the integrated player flow, original operator kit and presentation. Read the
+[whole-game progress log](development/WHOLE-GAME-PROGRESS.md) for actual changes and evidence.
+Networking and real-GPU verification remain deferred.
+
 ## Current owner instruction and continuation
 
 The owner subsequently **deferred real-GPU benchmarking** and authorised visual implementation.

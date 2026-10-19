@@ -16,9 +16,11 @@ import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
 import {coreLightAnchors} from './heronCoreArt'
 import {loadGalleryArt} from './heronGalleryArt'
-import {HeronContactShadows} from './HeronContactShadows'
 import {installHeronDepthFog} from './HeronDepthFog'
 import {loadLivedDetail,loadScannedDetail,loadShopDepth,isReplacedShopShelf} from './heronLivedDetail'
+import {HeronContactShadows} from './HeronContactShadows'
+import {presentationProfile,cameraPresentation} from './PresentationSettings'
+import type {PlayerSettings} from './profile'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -28,10 +30,11 @@ export class View {
  private readonly coverageSamples:number;
  private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
  private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
- private contacts?:HeronContactShadows;
+ private settings:Pick<PlayerSettings,'quality'|'reducedMotion'>;private inspectionRatio?:number;private bloom?:UnrealBloomPass;private contacts?:HeronContactShadows;
  private activeRifle?:ReturnType<typeof donorRifle>;
  artTextureStats:HeronReachMaterials['textureStats']|null=null;
- constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt){
+ constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt,settings:Pick<PlayerSettings,'quality'|'reducedMotion'>={quality:'auto',reducedMotion:false}){
+  this.settings={...settings};
   const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
   this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
   probe?.getExtension('WEBGL_lose_context')?.loseContext();
@@ -42,8 +45,8 @@ export class View {
   // Inspection-only resolution override for readable art review on a software renderer.
   // It does not enable GPU-only effects or change normal gameplay's reduced profile.
   const query=new URLSearchParams(location.search),requestedDpr=Number(query.get('dpr')??.5);
-  const inspectionDpr=query.has('inspect')&&Number.isFinite(requestedDpr)?Math.max(.5,Math.min(1,requestedDpr)):.5;
-  this.renderer.info.autoReset=false;this.renderer.setPixelRatio(this.software?inspectionDpr:Math.min(devicePixelRatio,1.5));
+  this.inspectionRatio=query.has('inspect')&&Number.isFinite(requestedDpr)?requestedDpr:undefined;
+  this.renderer.info.autoReset=false;this.renderer.setPixelRatio(presentationProfile(this.settings,this.software,devicePixelRatio,this.inspectionRatio).pixelRatio);
   this.renderer.shadowMap.enabled=!this.software;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
   this.scene.background=new THREE.Color('#60778c');this.scene.fog=new THREE.FogExp2('#516b81',.013);
@@ -147,7 +150,8 @@ export class View {
    // Canvas antialiasing does not multisample the composer's offscreen scene target.
    // Enable coverage only when this half-float format supports it; otherwise nets blend alpha.
    this.composer.renderTarget1.samples=this.composer.renderTarget2.samples=this.coverageSamples;
-   this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.32,.45,1.15));this.composer.addPass(new OutputPass());
+   this.composer.addPass(new RenderPass(this.scene,this.camera));this.bloom=new UnrealBloomPass(size.multiplyScalar(.5),.32,.45,1.15);this.composer.addPass(this.bloom);this.composer.addPass(new OutputPass());
+   this.applySettings(this.settings);
   }
  }
  private reachDetails(){
@@ -197,12 +201,19 @@ export class View {
  }
  render(g:Encounter,alpha:number,dt:number,look:{x:number;y:number},overview=false){
   g.player.eye(alpha,this.camera.position);g.audio.setListener(this.camera.position,g.player.forward(new THREE.Vector3()));
-  this.camera.rotation.set(g.player.pitch+g.arsenal.punch.pitch,g.player.yaw+g.arsenal.punch.yaw,g.arsenal.punch.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
-  g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);this.contacts?.update(g.bots);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
+  const pose=cameraPresentation(g.player.pitch,g.player.yaw,g.arsenal.punch,this.settings.reducedMotion);
+  this.camera.rotation.set(pose.pitch,pose.yaw,pose.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
+  g.arsenal.animate(Math.min(dt,.033),look,this.settings.reducedMotion);for(const b of g.bots)b.render(alpha);this.contacts?.update(g.bots);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
   if(overview){const o=this.level.overview;this.camera.position.set(o.from.x,o.from.y,o.from.z);this.camera.lookAt(o.to.x,o.to.y,o.to.z);this.camera.fov=74;this.camera.updateProjectionMatrix()}
   const t=this.clock.getElapsedTime();this.atmosphere?.update(this.camera,t);this.grass.update(this.camera);this.rain?.update(this.camera,t,dt);
   this.renderer.info.reset();this.renderer.autoClear=true;if(this.composer)this.composer.render();else this.renderer.render(this.scene,this.camera);
   if(!overview){this.renderer.autoClear=false;this.renderer.clearDepth();this.renderer.render(this.vmScene,this.vmCamera)}this.renderer.autoClear=true;
  }
+ applySettings(settings:Pick<PlayerSettings,'quality'|'reducedMotion'>){
+  this.settings={...settings};const profile=presentationProfile(settings,this.software,devicePixelRatio,this.inspectionRatio);
+  if(this.renderer.getPixelRatio()!==profile.pixelRatio){this.renderer.setPixelRatio(profile.pixelRatio);this.composer?.setPixelRatio(profile.pixelRatio);this.resize()}
+  if(this.bloom)this.bloom.enabled=profile.bloom;
+ }
+ presentation(){return {...this.settings,pixelRatio:this.renderer.getPixelRatio(),bloom:!!this.bloom?.enabled,contactInstances:this.contacts?.mesh.count??0}}
  resize(){this.renderer.setSize(innerWidth,innerHeight);this.composer?.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
 }
