@@ -2,6 +2,8 @@
 
 19 October 2026. This is the next review item after the seven-part visual stack,
 on `codex/heron-reach-scene-depth`, based on `codex/heron-reach-textures-dressing`.
+Review: [PR #12](https://github.com/EmotiveImpact/Onsite/pull/12), targeting the
+previous complete visual branch. Nothing is merged or deployed.
 The [working goal](../../../development/NEXT-QUALITY-GOAL.md) is to improve the
 Cage–Corner–gallery stretch as one inhabited South London estate. This is an art
 and lighting pass on the existing playable, not a new level or multiplayer system.

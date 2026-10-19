@@ -33,6 +33,7 @@ Real-GPU benchmarking remains deferred; report software results honestly. Do not
 ## This delivery
 
 - Branch: `codex/heron-reach-scene-depth`, based on the complete visual stack at `45258da`.
+- Review: [PR #12](https://github.com/EmotiveImpact/Onsite/pull/12), stacked on PR #11; no merge/deploy.
 - Recovery: `checkpoint/heron-reach-before-depth-2026-10-19` retains that starting point.
 - First work item: a coherent lighting/material correction and additive Blender detail kit for
   the existing hero stretch, with matching gallery, shop and Cage views.

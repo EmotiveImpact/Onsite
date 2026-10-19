@@ -3,7 +3,7 @@
 ## Current: Heron Reach scene depth — 19 October 2026
 
 Continue from `codex/heron-reach-scene-depth`, based on the complete seven-item art
-stack below. The owner asked for more detail and a deeper, convincing London scene;
+stack below, in [PR #12](https://github.com/EmotiveImpact/Onsite/pull/12). The owner asked for more detail and a deeper, convincing London scene;
 [the working prompt and remaining production gaps](NEXT-QUALITY-GOAL.md) record that
 goal. [This pass's work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
 contains the actual implementation, matched before/after views, sources and checks.
