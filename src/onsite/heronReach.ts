@@ -224,7 +224,10 @@ export const cage={rect:[57,50,30,20] as Rect,height:2.6,gate:4};
  const [x,z,w,d]=cage.rect,h=cage.height,g=cage.gate/2,t=.06,mx=x+w/2,mz=z+d/2;
  for(const zz of [z,z+d]){box('fence',x,mx-g,0,h,zz-t/2,zz+t/2,'steel');box('fence',mx+g,x+w,0,h,zz-t/2,zz+t/2,'steel')}
  for(const xx of [x,x+w]){box('fence',xx-t/2,xx+t/2,0,h,z,mz-g,'steel');box('fence',xx-t/2,xx+t/2,0,h,mz+g,z+d,'steel')}
+ // Five-a-side goals stand against the end fences beside the end gates, rotationally symmetric.
+ for(const [gx,gz]of [[x+.06,mz-5.5],[x+w-1.26,mz+5.5]])box('goal',gx,gx+1.2,0,1.25,gz-1.85,gz+1.85,'steel');
 }
+deviations.push('Two five-a-side goals stand against the Cage end fences, offset 5.5 m from the end gates so the B500 gate routes stay open.');
 // Site boundary: a 3 m brick wall with railings just outside the 144 x 120 m site.
 {const [x,z,w,d]=SITE,t=.3;for(const [x0,x1,z0,z1]of [[x-t,x,z-t,z+d+t],[x+w,x+w+t,z-t,z+d+t],[x,x+w,z-t,z],[x,x+w,z+d,z+d+t]])box('boundary',x0,x1,0,3,z0,z1,'stock')}
 deviations.push('A 3 m boundary wall with railings encloses the 144 x 120 m site; the street and skyline beyond are render-only.');
