@@ -1,5 +1,5 @@
 import {chromium} from '@playwright/test';import assert from 'node:assert/strict';import{mkdir,writeFile,rm}from'node:fs/promises';
-const out='test-results/encounter';await mkdir(out,{recursive:true});await rm(out+'/report.json',{force:true});
+const out=process.env.OUT||'test-results/encounter';await mkdir(out,{recursive:true});await rm(out+'/report.json',{force:true});
 const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const context=await browser.newContext({viewport:{width:1100,height:700},recordVideo:{dir:out,size:{width:960,height:600}}});const page=await context.newPage();const errors=[],failed=[],checks=[];page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
 const snap=()=>page.evaluate(()=>__onsite.snapshot());const check=m=>{checks.push(m);console.log(m)};let mouse={x:550,y:350};

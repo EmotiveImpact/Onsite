@@ -10,6 +10,7 @@ import {createMatch,tick,registerKill,registerDeath,recordShot} from '../wwb/gam
 import {CONFIG} from '../wwb/game/config'
 import {LayeredNav} from './navigation'
 import {heronCourt,inCapture,type Level} from './levels'
+import {createCaptureMatch} from './CaptureRound'
 export type Command=MoveIntent&{fire:boolean;firePressed:boolean;reload:boolean;yaw:number;pitch:number}
 export class Encounter implements CombatWorld{
  readonly physics=new Physics();readonly player=new Player(this.physics);readonly nav:LayeredNav;readonly bots:Bot[]=[];
@@ -23,12 +24,12 @@ export class Encounter implements CombatWorld{
  this.tags.set(this.player.collider.handle,{kind:'player'});
  this.fx=new Effects((x,z,y)=>this.groundAt(x,z,y),scene.fog as THREE.FogExp2);scene.add(this.fx.group);
  this.arsenal=new Arsenal(this,this.player,camera,{hit:()=>{this.hit=.18},fired:()=>{},message:()=>{}},()=>({}));
- this.match=createMatch(level.botNames,level.seconds,level.botNames.length);
+ this.match=createCaptureMatch(level.botNames,level.seconds);
  for(let i=0;i<level.botSpawns.length;i++){const bot=new Bot(i+1,level.botNames[i],'striker','#111111','#181818',this.physics,this.nav,this,{scene:character,clips:[]},{},'operator');bot.wave=false;this.bots.push(bot);scene.add(bot.parts.root);this.tags.set(bot.collider.handle,{kind:'bot',id:i+1})}
  this.arsenal.isHead=(id,point)=>this.bots[id-1]?.isHead(point)??false;
  this.reset();this.state='ready';
  }
- reset(){this.time=0;this.steps=0;this.capture=0;this.state='active';this.match=createMatch(this.level.botNames,this.level.seconds,this.level.botNames.length);const {spawn,botSpawns}=this.level;this.player.spawn(new THREE.Vector3(spawn.x,spawn.y,spawn.z),spawn.yaw??0);this.arsenal.reset();this.arsenal.slots.shotgun.owned=false;this.bots.forEach((b,i)=>{const p=botSpawns[i];b.spawn(new THREE.Vector3(p.x,p.y,p.z),Math.PI)});this.physics.step(1/60)}
+ reset(){this.time=0;this.steps=0;this.capture=0;this.state='active';this.match=createCaptureMatch(this.level.botNames,this.level.seconds);const {spawn,botSpawns}=this.level;this.player.spawn(new THREE.Vector3(spawn.x,spawn.y,spawn.z),spawn.yaw??0);this.arsenal.reset();this.arsenal.slots.shotgun.owned=false;this.bots.forEach((b,i)=>{const p=botSpawns[i];b.spawn(new THREE.Vector3(p.x,p.y,p.z),Math.PI)});this.physics.step(1/60)}
  step(dt:number,c:Command){if(this.state!=='active')return;this.time+=dt;this.steps++;this.hit=Math.max(0,this.hit-dt);this.hurt=Math.max(0,this.hurt-dt);
  const p=this.player;p.yaw=c.yaw;p.pitch=THREE.MathUtils.clamp(c.pitch,-1.48,1.48);p.step(dt,c);
  this.arsenal.step(dt,c,p.eye(1,new THREE.Vector3()),p.sprinting);

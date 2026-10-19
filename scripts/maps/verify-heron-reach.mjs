@@ -27,16 +27,18 @@ try{
  await page.keyboard.down('Space');await ticks(8);assert((await snap()).player.position.y>.3);await page.keyboard.up('Space');await ticks(45);check('Jump and landing');
  for(let i=0;i<Number(process.env.STEPS||900);i++){
   const s=await snap();if(s.status!=='active')break;if(s.bots.every(b=>!b.alive))break;
+  if(s.weapon.ammo===0&&s.weapon.reserve===0)throw Error('No ammunition remains with live opponents');
+  if(i%50===0)console.log('Encounter progress',JSON.stringify({tick:s.tick,kills:s.bots.filter(b=>!b.alive).length,position:s.player.position,ammo:s.weapon.ammo,reserve:s.weapon.reserve}));
   const target=s.bots.filter(b=>s.visible.includes(b.id)).sort((a,b)=>a.health-b.health)[0];if(!target){await page.mouse.up();const goal=s.bots.find(b=>b.alive).position;await advanceToward(goal.x,goal.y,goal.z);continue}
   // Use one target/player snapshot and a bounded normal-input burst. Leaving LMB
   // held through later snapshots/mouse moves fires unattended recoil batches on
   // slow renderers. Wait for an actual shot, not a new tick baseline after firing.
   const p=s.player.position,b={...target.position};b.x+=target.velocity.x*.15;b.z+=target.velocity.z*.15;await aim(Math.atan2(-(b.x-p.x),-(b.z-p.z)),Math.atan2(b.y+1.25-p.y-1.62,Math.hypot(b.x-p.x,b.z-p.z)),false,s);
   await page.mouse.down({button:'right'});await page.mouse.down();
-  await page.waitForFunction(shots=>{const s=__onsite.snapshot();return s.stats.shots>shots||s.status!=='active'},s.stats.shots,{timeout:240000,polling:100});
+  await page.waitForFunction(shots=>{const s=__onsite.snapshot();return s.stats.shots>shots||s.status!=='active'||s.bots.every(b=>!b.alive)},s.stats.shots,{timeout:240000,polling:100});
   await page.mouse.up();const afterBurst=await snap();
   inputBursts.push({target:target.id,fromTick:s.tick,toTick:afterBurst.tick,shots:afterBurst.stats.shots-s.stats.shots,hits:afterBurst.stats.hits-s.stats.hits});
-  if(afterBurst.weapon.ammo<3){await page.mouse.up();await page.keyboard.press('KeyR');await ticks(140)}
+  if(afterBurst.weapon.ammo<3&&afterBurst.bots.some(b=>b.alive)){await page.mouse.up();await page.keyboard.press('KeyR');await ticks(140)}
   if(i%10===0)console.log('Tracking',JSON.stringify({tick:s.tick,health:s.player.health,target:target.id,targetHealth:target.health,hits:s.stats.hits,shots:s.stats.shots}));
  }
  await page.mouse.up();await page.mouse.up({button:'right'});await page.screenshot({path:out+'/combat.png'});const s=await snap();check(`Combat result: ${s.bots.filter(b=>!b.alive).length} opponents down, health ${s.player.health}`);assert(s.stats.hits>0,'Actual shots must damage a bot');
