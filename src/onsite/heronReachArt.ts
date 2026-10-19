@@ -115,7 +115,7 @@ export class HeronReachAtmosphere {
    this.next=t+.25;
    // Rank by estimated contribution, so a low doorway lamp cannot evict every court column.
    const near=this.anchors.map(a=>({a,d:((a.x-c.x)**2+(a.y-c.y)**2*2+(a.z-c.z)**2+4)/(a.kind==='street'||a.kind==='court'?6:1)})).sort((p,q)=>p.d-q.d);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=big?175:ceiling?11:14;l.distance=big?25:9});
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.a.kind==='court'?850:big?175:ceiling?11:14;l.distance=n.a.kind==='court'?42:big?25:9});
   }
   const p=new THREE.Vector3(),sc=new THREE.Vector3();
   this.streaks.forEach((s,i)=>{
@@ -143,9 +143,9 @@ function voidSheet(asset:string){
  m=new THREE.MeshStandardMaterial({name:'hr_void_sheet',map:t,roughness:.55,metalness:.7});voidSheets.set(asset,m);return m;
 }
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
-export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>){
+export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
- const kits=await Promise.all(['props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const kits=await Promise.all(['cage','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
  const missing:string[]=[];
  for(const [asset,list]of byAsset){
@@ -157,11 +157,16 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
    const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
    if(base==='hr_prop_sign_letters')src.emissiveIntensity=1.3;
    if(base==='hr_prop_fridge_light')src.emissiveIntensity=2.5;
+   if(base==='hr_prop_cage_mesh'||base==='hr_prop_goal_net'){
+    // Keep the fractional wire coverage in distant mips instead of dropping every wire.
+    src.alphaTest=software?.005:.18;src.alphaToCoverage=!software;src.transparent=software;src.depthWrite=!software;
+    if(src.map){src.map.anisotropy=software?2:8;src.map.minFilter=THREE.LinearMipmapLinearFilter;src.map.generateMipmaps=true;src.map.needsUpdate=true}
+   }
    const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
    const foliage=/leaf|grass|weed|litter|hedge|shrub/.test(src.name);
-   im.castShadow=!/litter|grass|weed|lamp_emit|glass/.test(src.name)&&!asset.startsWith('CRISP')&&!asset.startsWith('CRUSHED');im.receiveShadow=true;
+   im.castShadow=!/litter|grass|weed|lamp_emit|glass|cage_mesh|goal_net|court_paint/.test(src.name)&&!asset.startsWith('CRISP')&&!asset.startsWith('CRUSHED');im.receiveShadow=true;
    if(foliage&&src.alphaTest===0&&src.transparent){src.alphaTest=.5;src.transparent=false}
    group.add(im);
   });

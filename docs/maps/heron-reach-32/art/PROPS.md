@@ -209,6 +209,34 @@ saved into the kit.
 
 ## Known limits
 
+### Cage detail kit, 19 October 2026
+
+`scripts/maps/art/build_heron_cage_detail.py` builds the separate editable
+`assets/blender/heron-reach/cage-detail.blend` and the runtime `heron-reach-cage.glb`,
+using the original ONSITE `heron_props_cage.py` generators. It preserves the older kit files.
+The session has Blender 4.3.2, which cannot open the newer source `.blend` header, so this kit is
+generated from the existing source code rather than converting or overwriting the original.
+
+The kit has 5,636 triangles: existing posts, panels, gates and goals, a ball, 6.5 m paired
+floodlights and render-only court paint. Green frames retain their original footprints and gates.
+The four floodlights replace lamp render meshes at the existing court lamp positions; the
+original dressing plan and all collision remain unchanged. Pitch paint follows the as-built
+offset goals, which leave the central gates open. It is a five-a-side-inspired estate court,
+not a regulation pitch. Nothing creates a new physical obstacle.
+
+`make_heron_prop_textures.py --cage-only` draws the finer diagonal chain-link and goal net maps
+from the project's periodic wire/noise functions. These are original procedural pixels, with
+hashes in `cage-detail-manifest.json`. The runtime uses mipmaps and anisotropy; hardware uses
+alpha-to-coverage, while the software fallback retains fractional coverage with blending.
+
+Rebuild and compress without opening a newer `.blend`:
+
+```sh
+python3 scripts/maps/art/make_heron_prop_textures.py --cage-only
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_cage_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-cage.raw.glb -o public/models/heron-reach/heron-reach-cage.glb -cc -kn -km -kv -vtf
+```
+
 - The shared materials in `props-kit.blend` are placeholders until swapped.
 - The weld mesh and wire textures are fine detail; at long range they need mipmapping with
   alpha-to-coverage, or a fade to a solid lower-opacity material, to avoid shimmer.

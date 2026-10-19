@@ -32,6 +32,9 @@ SHARED = {
 
 # name: (base colour, roughness, metallic, options)  options: image, normal, alpha, emit...
 PROP = {
+    "hr_prop_cage_green": ((.028,.075,.049),.48,.45,{}),
+    "hr_prop_court_lens": ((.9,.84,.65),.32,0,{"emit":(1,.8,.5),"strength":3}),
+    "hr_prop_court_paint": ((.5,.48,.39),.68,0,{}),
     "hr_prop_cage_mesh": ((1, 1, 1), 0.55, 0.3, {"image": "cage_mesh", "alpha": True}),
     "hr_prop_wire_grid": ((1, 1, 1), 0.40, 0.8, {"image": "wire_grid", "alpha": True}),
     "hr_prop_goal_net": ((1, 1, 1), 0.90, 0.0, {"image": "goal_net", "alpha": True}),

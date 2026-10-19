@@ -158,7 +158,7 @@ def line_cov(coord, pitch, width):
     return np.clip(width / 2.0 - d + 0.5, 0.0, 1.0)
 
 
-def wire_mesh(name, size, cells, wire_px, base, seed, knot=0.0, wobble=0.0):
+def wire_mesh(name, size, cells, wire_px, base, seed, knot=0.0, wobble=0.0, diagonal=False):
     pitch = size / cells
     yy, xx = np.mgrid[0:size, 0:size].astype(np.float32) + 0.5
     if wobble > 0:
@@ -166,7 +166,7 @@ def wire_mesh(name, size, cells, wire_px, base, seed, knot=0.0, wobble=0.0):
         wy = (pnoise(size, size, 3.0, seed + 4) - 0.5) * wobble
     else:
         wx = wy = 0.0
-    a = np.maximum(line_cov(xx + wx, pitch, wire_px), line_cov(yy + wy, pitch, wire_px))
+    a = np.maximum(line_cov(xx + yy, pitch, wire_px*math.sqrt(2)),line_cov(xx - yy, pitch, wire_px*math.sqrt(2))) if diagonal else np.maximum(line_cov(xx + wx, pitch, wire_px), line_cov(yy + wy, pitch, wire_px))
     if knot > 0:
         dx = np.abs(((xx + wx) / pitch + 0.5) % 1.0 - 0.5) * pitch
         dy = np.abs(((yy + wy) / pitch + 0.5) % 1.0 - 0.5) * pitch
@@ -878,7 +878,7 @@ def make_estate_sign():
 
 
 def main():
-    wire_mesh("cage_mesh", 1024, 20, 5.0, (0.07, 0.07, 0.075), 1)
+    wire_mesh("cage_mesh", 1024, 16, 2.4, (0.18, 0.27, 0.21), 1, diagonal=True)
     wire_mesh("wire_grid", 1024, 20, 4.0, (0.62, 0.63, 0.64), 2)
     wire_mesh("goal_net", 1024, 10, 6.0, (0.80, 0.80, 0.77), 3, knot=5.0, wobble=10.0)
     make_products()
@@ -897,4 +897,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if '--cage-only' in sys.argv:
+        wire_mesh('cage_mesh',1024,16,2.4,(.18,.27,.21),1,diagonal=True)
+        wire_mesh('goal_net',1024,10,4.,(.8,.8,.77),3,knot=4.,wobble=10.)
+    else:
+        main()

@@ -78,7 +78,10 @@ export class View {
    // ?art=0 shows the collision blockout instead of the Blender build, for checking the two against each other.
    const useArt=new URLSearchParams(location.search).get('art')!=='0';
    const arch=useArt?HeronReachMaterials.load(this.software?2:8).then(async m=>{
-    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...reach.dressing.items,...facade],m.names())),this.grass.build(gltf,this.software?1.5:5)]);
+    // Render replacements only. The original dressing plan still owns every collider.
+    const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
+    const dressing=reach.dressing.items.map(p=>p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
+    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5)]);
     const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
@@ -118,12 +121,13 @@ export class View {
   this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
   this.sun.color.set('#c0cad4');this.sun.intensity=.65;
   this.renderer.toneMappingExposure=1.12;
-  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
+  const artAnchors=reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a);
+  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
   const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
   const covered=(x:number,y:number,z:number)=>roofs.some(s=>s.y>y&&s.y-y<12&&Math.abs(x-s.x)<s.w/2&&Math.abs(z-s.z)<s.d/2);
-  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,reach.lampAnchors);this.scene.add(this.rain.mesh)}
+  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,artAnchors);this.scene.add(this.rain.mesh)}
   if(!this.software){
    const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
    this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.32,.45,1.15));this.composer.addPass(new OutputPass());
