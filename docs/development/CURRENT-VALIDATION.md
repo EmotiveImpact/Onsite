@@ -1,4 +1,16 @@
-# South London residential pass — validation
+# Current validation: Heron Reach visual pass
+
+19 October 2026. The current art work is on `codex/heron-reach-textures-dressing`,
+with seven focused review branches. Nothing from this pass has been merged or deployed by this
+session. See the [visual work log](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md) for the review
+stack, exact software-rendered evidence and current results. The residential report below is
+historical and does not describe the combined Heron Reach build.
+
+Final combined source: all 43 tests, typecheck and production build passed; eight matched
+inspection views and the three-mode texture/fallback probe passed. Final input-driven encounter
+verification is running. Real-GPU benchmarking is explicitly deferred and remains unverified.
+
+## Earlier South London residential pass — validation
 
 18 October 2026. Blender 4.3.2, Node 24.19.0, Chromium 154, Three.js 0.186.1, Rapier 0.21.0.
 Baseline: `0ce5a14`; [previous results](VALIDATION-0ce5a14.md) retain that pass's screenshots and

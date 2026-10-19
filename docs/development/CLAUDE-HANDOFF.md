@@ -5,7 +5,8 @@
 The owner explicitly deferred real-GPU benchmarking. Work continued on the existing Heron Reach
 runtime (`/?map=heron-reach`), preserving Heron Court and the WWB simulation. **Nothing from this
 visual pass has been merged by this session.** The complete result is on the final branch in the
-stack below; use that branch to inspect all seven items together. Main remains the live baseline.
+[review stack](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md#recovery-and-review); use that branch
+to inspect all seven items together. Main remains the live baseline.
 
 Read [the visual work log](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md) for matched runtime
 screenshots, raw browser reports, rebuild commands, provenance and limitations. These are actual
@@ -30,6 +31,21 @@ not a download-size reduction. Normal maps use UASTC for quality. Embedded kit t
 WebP and are the next compression target. Actual GPU timing, VRAM, bloom, shadows and fine
 alpha-detail quality still need hardware verification. Wet reflections currently use the dusk
 environment plus local lamp streaks, without scene-object SSR/planar reflections.
+
+To launch the combined branch locally:
+
+```sh
+git switch codex/heron-reach-textures-dressing
+npm ci
+npm run dev
+# Open /?map=heron-reach; plain / is the Heron Court regression map.
+```
+
+For repeatable verification use Node 24, `npm test`, `npm run typecheck`, `npm run build`, then a
+production preview. Run `scripts/maps/verify-heron-reach.mjs` and `npm run test:browser` sequentially
+with `ONSITE_URL` pointing to that preview. Saved camera fixtures and capture commands live in
+the visual work log. No gameplay code or collision/nav data changed in this pass; the physical
+solid count is still 2,417. No research clone is tracked or bundled.
 
 Next valuable work: real-GPU captures at the saved viewpoints; tune bloom/shadow/foliage budgets
 from those results; assess a measured optional ground reflection pass; compress embedded kit maps
