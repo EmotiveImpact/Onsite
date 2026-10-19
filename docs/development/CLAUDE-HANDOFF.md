@@ -1,6 +1,43 @@
 # ONSITE — handoff for Claude
 
-## Heron Reach visual pass — 19 October 2026
+## Current: Heron Reach scene depth — 19 October 2026
+
+Continue from `codex/heron-reach-scene-depth`, based on the complete seven-item art
+stack below. The owner asked for more detail and a deeper, convincing London scene;
+[the working prompt and remaining production gaps](NEXT-QUALITY-GOAL.md) record that
+goal. [This pass's work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
+contains the actual implementation, matched before/after views, sources and checks.
+No merge or deployment is authorised for this pass.
+
+The existing WWB gameplay stays intact. Additions are Blender shop/service detail;
+two individually licensed Poly Haven scan types from IRONLINE; corrected storey/
+visibility selection for the fixed light pool; quieter dry/wet material response;
+cleaner gallery netting; and an MIT height-fog adaptation from Operation Blackout.
+Claude of Duty is a pinned MIT research clone, not a shipped subsystem. All five
+reference clones remain clean, ignored and outside the bundle. Read
+[the donor review](../research/NEXT-QUALITY-DONORS.md) before further imports.
+
+New Blender files are `lived-detail.blend` and `scanned-detail.blend` under
+`assets/blender/heron-reach/`; generators and exact provenance are recorded beside
+them. Do not overwrite original 5.2 sources using the available 4.3 CLI. Render-only
+additions total 621,826 bytes, 5,888 triangles and 15 exported primitives; this exceeds
+the initial 12-batch target by three. Shader hooks compose surface → wetness → fog.
+The two replaced shop fixture groups are found through `userData.name`, because
+GLTFLoader sanitises authored names. The actual-GLB regression protects this path.
+
+Launch with `npm ci`, `npm run dev`, then `/?map=heron-reach`; plain `/` remains
+Heron Court. Run `npm test`, `npm run typecheck`, `npm run build`, then the two browser
+encounters sequentially against a production preview. Use the work log's saved
+viewpoints for comparisons. Real-GPU benchmarking is still deferred, not a blocker.
+
+Most valuable next work: measured local/contact shadows, then optional masked
+scene reflections, plus replacing flat shop panels with deeper authored stock.
+Characters, hand animation, audio and encounter/stealth quality need separate
+passes. More donor clones do not by themselves solve those production gaps.
+
+## Previous seven-item visual stack
+
+### Heron Reach visual pass — 19 October 2026
 
 The owner explicitly deferred real-GPU benchmarking. Work continued on the existing Heron Reach
 runtime (`/?map=heron-reach`), preserving Heron Court and the WWB simulation. **Nothing from this

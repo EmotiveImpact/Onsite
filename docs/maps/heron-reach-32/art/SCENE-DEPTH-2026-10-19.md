@@ -60,11 +60,13 @@ Both new research clones are ignored; no nested repository is tracked or bundled
 | New runtime asset | Bytes | Geometry / materials |
 | --- | ---: | --- |
 | `heron-reach-lived.glb` | 121,404 | 3,404 triangles, 5 batches, original embedded 1024² atlas |
-| `heron-reach-scanned.glb` | 499,580 | 2,484 triangles, 3 materials, 7 preserved embedded maps |
+| `heron-reach-scanned.glb` | 499,580 | 2,484 triangles, 3 materials / 10 primitives, 7 preserved embedded maps |
 | `pigeon-net-clean.webp` | 842 | Reuses existing gallery geometry |
-| **Total added runtime payload** | **621,826** | **5,888 triangles; 8 material batches across the new kits** |
+| **Total added runtime payload** | **621,826** | **5,888 triangles; 8 material slots / 15 exported primitives across the new kits** |
 
-The lived atlas is 78,676 bytes, already included in its GLB; its separate public
+The 15 exported primitives exceed the initial 12-batch target by three; material
+sharing alone does not combine draw calls. Further joining or instancing of scan
+fixtures is a possible measured optimisation. The lived atlas is 78,676 bytes, already included in its GLB; its separate public
 copy is not additionally fetched by the loader. Source PNGs, original donor GLBs
 and editable `.blend` files stay outside the runtime directory. There is no new
 light per prop and no second render of the scene. GPU texture allocation has not
@@ -94,7 +96,61 @@ ONSITE_URL=http://127.0.0.1:4173 node scripts/maps/verify-heron-reach.mjs
 ONSITE_URL=http://127.0.0.1:4173 npm run test:browser
 ```
 
-Final evidence and measured results are recorded below after the frozen-build run.
+## Validation and runtime evidence
+
+Implementation checkpoint: `5117c52`. `npm test` passed **55 tests** (10 retained
+legacy + 45 current physics/navigation/asset/rendering tests), with no failures,
+skips or cancellations. Typecheck and production build passed. Main JavaScript is
+5,353.31 kB / 1,953.60 kB gzip; the existing >500 kB chunk warning remains.
+
+The physical geometry remains **2,417 solids**, with SHA-256
+`ebdbf67fc6a7350b33e40529c13b9a26cf3765b4bf9e0854aaccb2720e181e14`
+for `JSON.stringify({solids,surfaceIds})`. The diff against `45258da` is empty for
+WWB, Encounter, both level definitions, Reach dressing and layered navigation.
+Existing tests still walk real player/bot capsules through the stacked stair routes.
+
+All captures use **Chromium 154 / ANGLE SwiftShader**, not a real GPU. Nine views
+at 1280×720 / DPR 0.5 and four close views at DPR 1 completed without page/console
+errors or failed/HTTP-error requests. Requested poses match the previous capture
+records exactly. Bots are frozen for these inspection fixtures: they are actual
+runtime images, but not gameplay evidence. Renderer, actual positions, served JS
+and asset SHA-256 values are retained in each report.
+
+| Matched viewpoint | Before — SwiftShader, DPR 1 | After — SwiftShader, DPR 1 |
+| --- | --- | --- |
+| The Cage | [Before](evidence/textures/detail/the-cage.png) | [After](evidence/scene-depth/detail/the-cage.png) |
+| The Corner | [Before](evidence/textures/detail/the-corner.png) | [After](evidence/scene-depth/detail/the-corner.png) |
+| Upper gallery | [Before](evidence/textures/detail/gallery-edge.png) | [After](evidence/scene-depth/detail/gallery-edge.png) |
+| Corner interior | [Before](evidence/scene-depth/before/corner-interior.png) | [After](evidence/scene-depth/detail/corner-interior.png) |
+
+[Native-resolution report](evidence/scene-depth/detail/report.json) ·
+[Nine-view fallback report](evidence/scene-depth/after/report.json) ·
+[Baseline interior report](evidence/scene-depth/before/report.json).
+Additional views: [stairs](evidence/scene-depth/after/stair-core.png),
+[core exterior](evidence/scene-depth/after/stair-elevation.png),
+[roof/skyline](evidence/scene-depth/after/roof-skyline.png),
+[garden court](evidence/scene-depth/after/garden-court.png),
+[Washhouse](evidence/scene-depth/after/washhouse-square.png).
+The roof image is a saved inspection viewpoint, not proof of an input-driven route.
+
+Short inspection rolling means are 762–1,008 ms/frame at DPR 0.5 and
+1,547–1,876 ms at DPR 1. These contain few samples and capture overhead: **slow
+software rendering**, not controlled benchmarks. Across the nine views, final
+world/weapon draw counts are 276–630. The current 82-map architecture WebP fallback
+reports an estimated 328,996,233 mip bytes; this is not measured whole-scene VRAM.
+Hardware KTX2, shadows and bloom remain unverified on a real GPU.
+
+To repeat the four close captures against a frozen preview:
+
+```sh
+ONSITE_URL=http://127.0.0.1:4173 OUT=test-results/depth-detail \
+  VIEWS=the-cage,the-corner,gallery-edge,corner-interior QUERY='&dpr=1' \
+  CHECK_MARKER=1 \
+  EXTRA_ASSETS=/models/heron-reach/heron-reach-lived.glb,/models/heron-reach/heron-reach-scanned.glb,/materials/heron/decals/pigeon-net-clean.webp \
+  node scripts/maps/capture-art-review.mjs
+```
+
+Full encounter results follow after the separate input-driven runs.
 
 ## Remaining quality gaps
 

@@ -9,6 +9,13 @@ by this session. Read the [current work log](maps/heron-reach-32/art/ART-PUSH-20
 repeating this original queue. That log records actual code, assets, validation and limitations.
 The original brief below remains the visual direction. Networking stays deferred.
 
+The next quality item is now on `codex/heron-reach-scene-depth`, stacked on that
+complete pass. Read the [current goal](development/NEXT-QUALITY-GOAL.md) and
+[scene-depth work log](maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md) before
+repeating the earlier queue. It adds actual scanned fittings/covers, original
+Blender shop detail, floor/visibility-aware lighting and scoped height haze.
+Collision, navigation and gameplay remain unchanged.
+
 Written 19 October 2026 for whoever picks this repository up next under the name Astra. It assumes
 you are starting cold. Read it top to bottom once, then use the priority list as your work queue.
 

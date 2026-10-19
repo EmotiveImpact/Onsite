@@ -56,3 +56,15 @@ character/hand models, rigging and animation; authored recoil/reload/audio polis
 set dressing; encounter and stealth playtesting; spatial audio; accessibility; streaming/LOD and
 device profiling. Prioritise those by visible impact and measurements rather than the size of a
 donor repository. The 32-player map design does not establish online multiplayer readiness.
+
+
+## Implemented result
+
+The [scene-depth work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
+records the new Blender kit and scanned fittings, corrected light selection,
+material response and scoped height haze. Matched runtime captures show the
+previously washed-out gallery retaining floor texture and the shop gaining readable
+endcaps, packages and notices. Doors and collision/navigation are unchanged.
+The addition is 5,888 triangles and 621,826 runtime bytes. It exports 15 primitives,
+three above the initial 12-batch target; eight material slots do not imply eight
+draw calls. The work log retains the actual checks, costs and remaining limitations.
