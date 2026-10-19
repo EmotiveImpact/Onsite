@@ -2022,9 +2022,11 @@
    "textured": false,
    "fallback": false
   },
-  "hr_glass_lit": {
-   "textured": false,
-   "emissive": 4.0
+  "hr_glass_blocks": {
+   "textured": true,
+   "coverage": 1.0,
+   "normal": true,
+   "orm": true
   },
   "hr_concrete_cast": {
    "textured": true,
@@ -2064,6 +2066,12 @@
    "normal": true,
    "orm": true
   },
+  "hr_tile_underpass": {
+   "textured": true,
+   "coverage": 2.0,
+   "normal": true,
+   "orm": true
+  },
   "hr_soil": {
    "textured": true,
    "coverage": 2.0,
@@ -2088,6 +2096,12 @@
    "normal": true,
    "orm": true
   },
+  "hr_wired_glass": {
+   "textured": true,
+   "coverage": 0.5,
+   "normal": true,
+   "orm": true
+  },
   "hr_door_paint": {
    "textured": false,
    "fallback": false
@@ -2107,6 +2121,18 @@
   "hr_paving": {
    "textured": true,
    "coverage": 2.0,
+   "normal": true,
+   "orm": true
+  },
+  "hr_concrete_aggregate": {
+   "textured": true,
+   "coverage": 2.0,
+   "normal": true,
+   "orm": true
+  },
+  "hr_stair_tread": {
+   "textured": true,
+   "coverage": 1.0,
    "normal": true,
    "orm": true
   },
@@ -2189,7 +2215,7 @@
    "fallback": false
   }
  },
- "objects": 734,
- "faces": 99657,
- "triangles": 200378
+ "objects": 764,
+ "faces": 98573,
+ "triangles": 198210
 }

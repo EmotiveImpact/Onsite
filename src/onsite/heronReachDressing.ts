@@ -22,7 +22,7 @@ export type DressingInput={
  spawns:{rect:Rect;positions:{x:number;z:number}[]}[];stairs:Rect[];
  wetAreas:{rect:Rect}[];undercroftWalls:{x0:number;z0:number;x1:number;z1:number;nx:number;nz:number}[];
 }
-export type DecalPlan={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number}
+export type DecalPlan={kind:'puddle'|'graffiti'|'tag'|'throwup'|'buffed'|'gum';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number}
 
 type Collider={type:string;size?:number[];radius?:number;height?:number;center:number[]}
 const assets=new Map((kit.assets as {name:string;collider:Collider|Collider[]|null;needsCollision:boolean}[]).map(a=>[a.name,a]));
@@ -207,7 +207,7 @@ export function planDressing(L:DressingInput){
  const local=(p:{x:number;z:number},ry:number,ox:number,oz:number)=>({x:p.x+ox*Math.cos(ry)+oz*Math.sin(ry),z:p.z-ox*Math.sin(ry)+oz*Math.cos(ry)});
  const houses:Record<string,string>={NW:'hr_prop_sign_block_rowan',NE:'hr_prop_sign_block_ash',SW:'hr_prop_sign_block_birch',SE:'hr_prop_sign_block_cedar'};
  const blockOf=(x:number,z:number)=>L.blocks.find(b=>x>=b.rect[0]-1&&x<=b.rect[0]+b.rect[2]+1&&Math.abs(z-(z<60?b.rect[1]+b.rect[3]:b.rect[1]))<8&&(z<60)===(b.rect[1]<60));
- const stores=new Set<string>();
+ const stores=new Set<string>(),binStores:{x:number;z:number;ry:number}[]=[];
  for(const c of L.cores){
   const [cx,cz,cw,cd]=c.rect,south=c.mirror,wz=south?cz:cz+cd,n=south?-1:1,ry=face(0,n),wall=wz+n*.012;
   const g=L.doors.find(d=>d.owner===c.id&&d.y===0);if(!g)continue;
@@ -225,6 +225,7 @@ export function planDressing(L:DressingInput){
   for(const dx of [6,-6,12,-12,18,-18,2,-2]){
    const p={x:b.rect[0]+b.rect[2]/2+dx,z};
    if(!tryPlace({asset:'hr_prop_bin_store_3bay',x:p.x,y:0,z:p.z,ry,collide:true},.1,.4))continue;
+   binStores.push({...p,ry});
    for(const [ox,m]of [[-1.47,1],[1.47,-1]] as const){const q=local(p,ry,ox,.85);deco('hr_prop_bin_store_gate_leaf',q.x,0,q.z,ry+(m<0?-.45:0),m)}
    const q=local(p,ry,0,.98);deco('hr_prop_sign_bins_tuesday',q.x,1.2,q.z,ry);
    for(const side of [1,-1]){const g=local(p,ry,side*2.75,-.6);if(tryPlace({asset:'hr_prop_grit_bin',x:g.x,y:0,z:g.z,ry,collide:true},.1,.2))break}
@@ -290,6 +291,30 @@ export function planDressing(L:DressingInput){
   const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k-u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k-u.nz*.012,w,h:w*.55,ry:face(-u.nx,-u.nz),cell:Math.floor(R()*6)});
  }
  for(const c of L.cores){const [cx,cz,cw,cd]=c.rect;if(R()<.5)continue;const side=R()<.5?-1:1,x=side<0?cx-.012:cx+cw+.012;decals.push({kind:'graffiti',x,y:1.3,z:cz+cd/2,w:2.2,h:1.2,ry:face(side,0),cell:Math.floor(R()*6)})}
+
+ // South London thread's wall pieces and gum: throw-ups, tags and buffed-out patches in the
+ // undercroft (in front of its tiles), tags on bin store ends and core flanks, gum where people wait.
+ const tag=(x:number,y:number,z:number,ry:number)=>{const w=.4+R()*.3;decals.push({kind:'tag',x,y,z,w,h:w*.56,ry,cell:Math.floor(R()*12)})};
+ const runs=[...L.undercroftWalls].map(u=>({...u,len:Math.hypot(u.x1-u.x0,u.z1-u.z0)})).filter(u=>u.len>=4);
+ const at=(u:typeof runs[number],k:number)=>({x:u.x0+(u.x1-u.x0)*k-u.nx*.014,z:u.z0+(u.z1-u.z0)*k-u.nz*.014,ry:face(-u.nx,-u.nz)});
+ runs.filter(u=>u.len>=10).sort((a,b)=>b.len-a.len).slice(0,3).forEach((u,i)=>{const p=at(u,.3+R()*.4),w=2.3+R()*.4;decals.push({kind:'throwup',...p,y:-3+1.35,w,h:w*.48,cell:i%2})});
+ for(let i=0;i<14&&runs.length;i++){const u=runs[Math.floor(R()*runs.length)],p=at(u,.1+R()*.8);tag(p.x,-3+1+R()*.8,p.z,p.ry)}
+ for(let i=0;i<5&&runs.length;i++){const u=runs[Math.floor(R()*runs.length)],p=at(u,.15+R()*.7);decals.push({kind:'buffed',...p,y:-3+1.3,w:1.3,h:.65,cell:Math.floor(R()*4)})}
+ for(const b of binStores)for(const side of [1,-1]){
+  if(R()<.35)continue;const q=local(b,b.ry,side*1.97,-.1),ry=b.ry+side*Math.PI/2;
+  if(R()<.5)decals.push({kind:'buffed',x:q.x,y:1.15,z:q.z,w:1.2,h:.6,ry,cell:Math.floor(R()*4)});
+  tag(q.x,1+R()*.6,q.z,ry);
+ }
+ for(const c of L.cores){
+  const [cx,cz,cw,cd]=c.rect;if(R()<.4)continue;const side=R()<.5?-1:1,x=side<0?cx-.014:cx+cw+.014,z=cz+cd/2+(R()<.5?-1:1)*(1+R()*.6);
+  if(R()<.6)decals.push({kind:'buffed',x,y:1.25,z,w:1.3,h:.65,ry:face(side,0),cell:Math.floor(R()*4)});
+  tag(x,1.1+R()*.6,z+(R()-.5)*.4,face(side,0));
+ }
+ const gum=(x:number,z:number,size:number)=>{if(onFloor(x,z,0))decals.push({kind:'gum',x,y:0,z,w:size,h:size,ry:R()*Math.PI*2})};
+ for(const c of L.cores){const g=L.doors.find(d=>d.owner===c.id&&d.y===0);if(!g)continue;const n=c.mirror?-1:1;gum(g.x,g.z+n*1.4,2+R()*.5)}
+ for(const d of L.doors)if(d.y===0&&L.shops.some(sh=>sh.id===d.owner)){
+  const k=d.normal*1.4,x=d.x+(d.axis==='x'?0:k),z=d.z+(d.axis==='x'?k:0);gum(x,z,(d.owner.includes('CORNER')||/corner/i.test(L.shops.find(sh=>sh.id===d.owner)?.name??'')?2.6:1.8)+R()*.4);
+ }
 
  return {items,anchors,colliders:blockers,decals};
 }

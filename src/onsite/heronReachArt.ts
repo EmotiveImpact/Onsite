@@ -124,6 +124,14 @@ const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>m.compose(new THREE.Ve
 
 /** Instance the props and foliage kits from the dressing plan: one InstancedMesh per asset part. */
 /** The South London gap-fill kits name their shared surfaces mat_*; they take the texture kit's sets. */
+/** Perforated steel void sheet (1.2 x 2.4 m map) over the kit's metric UVs; windows use its top half. */
+const voidSheets=new Map<string,THREE.MeshStandardMaterial>();
+function voidSheet(asset:string){
+ let m=voidSheets.get(asset);if(m)return m;
+ const t=new THREE.TextureLoader().load('/materials/heron/props/hr_void_sheet-color.webp');t.colorSpace=THREE.SRGBColorSpace;
+ if(asset.includes('window')){t.repeat.set(1/1.3,.5/1.3);t.offset.set(.5,.5+.05*.5/1.3)}else{t.repeat.set(1/1.2,1/2.4);t.offset.set(.5,.05/2.4)}
+ m=new THREE.MeshStandardMaterial({name:'hr_void_sheet',map:t,roughness:.55,metalness:.7});voidSheets.set(asset,m);return m;
+}
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
 export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
@@ -136,7 +144,7 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
   root.traverse(o=>{
    if(!(o instanceof THREE.Mesh))return;
    const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
-   const name=SL_SHARED[src.name]??src.name,material=shared.has(name)?mats.get(name):src;
+   const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
    const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
@@ -209,7 +217,17 @@ export class Rain {
  }
 }
 
-export type Decal={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number};
+export type Decal={kind:'puddle'|'graffiti'|'tag'|'throwup'|'buffed'|'gum';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number};
+// Wall decal sheets: UV rectangles [u0, v0, u1, v1] (v up) for each cell of the South London thread's
+// tag set (12 tags, 2 throw-ups) and buffed-out patches (2 x 2).
+const TAG_COLS=[[16,688],[704,1344],[1360,2032]],TAG_ROWS=[[16,390],[400,760],[776,1160],[1648,2024]];
+const px=(x0:number,y0:number,x1:number,y1:number):number[]=>[x0/2048,1-y1/2048,x1/2048,1-y0/2048];
+const SHEETS={
+ graffiti:{url:'/materials/heron/decals/graffiti-photo-atlas.webp',cells:[0,1,2,3,4,5].map(c=>[(c%2)/2,(2-Math.floor(c/2))/3,(c%2+1)/2,(3-Math.floor(c/2))/3])},
+ tag:{url:'/materials/heron/decals/sl-tags.webp',cells:TAG_ROWS.flatMap(([y0,y1])=>TAG_COLS.map(([x0,x1])=>px(x0,y0,x1,y1)))},
+ throwup:{url:'/materials/heron/decals/sl-tags.webp',cells:[px(32,1168,1024,1640),px(1040,1168,2016,1640)]},
+ buffed:{url:'/materials/heron/decals/sl-buffed.webp',cells:[[0,.5,.5,1],[.5,.5,1,1],[0,0,.5,.5],[.5,0,1,.5]]},
+};
 /** Puddles on the ground and tags on the walls, as alpha-cut planes over the Blender surfaces: one
  * instanced mesh for the puddles and one merged mesh for the tags. */
 export function buildDecals(decals:Decal[],anisotropy:number){
@@ -217,16 +235,28 @@ export function buildDecals(decals:Decal[],anisotropy:number){
  const tex=(u:string,srgb=true)=>{const t=tl.load(u);t.anisotropy=anisotropy;t.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return t};
  const puddle=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/puddle-color.webp'),normalMap:tex('/materials/heron/decals/puddle-normal.webp',false),roughness:.03,metalness:.15,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-3,envMapIntensity:2.4});
  const tags=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/graffiti-photo-atlas.webp'),roughness:.8,transparent:true,alphaTest:.05,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2});
- const flat=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2),puddles=decals.filter(d=>d.kind==='puddle'),pieces:THREE.BufferGeometry[]=[];
+ const flat=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2),puddles=decals.filter(d=>d.kind==='puddle');
  const pm=new THREE.InstancedMesh(flat,puddle,Math.max(1,puddles.length)),o=new THREE.Object3D();pm.count=puddles.length;pm.receiveShadow=true;
  puddles.forEach((d,i)=>{o.position.set(d.x-OX,d.y+.008,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,1,d.h);o.updateMatrix();pm.setMatrixAt(i,o.matrix)});
  pm.computeBoundingSphere();group.add(pm);
+ // Chewing gum on the paving where people stand: one more instanced, alpha-blended layer.
+ const gum=decals.filter(d=>d.kind==='gum'),gm=new THREE.InstancedMesh(flat,new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/sl-gum.webp'),roughness:.7,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2}),Math.max(1,gum.length));
+ gm.count=gum.length;gm.receiveShadow=true;
+ gum.forEach((d,i)=>{o.position.set(d.x-OX,d.y+.006,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,1,d.h);o.updateMatrix();gm.setMatrixAt(i,o.matrix)});
+ gm.computeBoundingSphere();group.add(gm);
+ // Wall pieces: one merged mesh per sheet. Buffed patches sit behind fresh tags (lower polygon offset).
+ const wall=new Map<string,THREE.BufferGeometry[]>();
  for(const d of decals){
-  if(d.kind!=='graffiti')continue;
-  const g=new THREE.PlaneGeometry(1,1),cell=d.cell??0,uv=g.attributes.uv;
-  for(let i=0;i<uv.count;i++)uv.setXY(i,(cell%2+uv.getX(i))/2,(2-Math.floor(cell/2)+uv.getY(i))/3); // 2 x 3 atlas, cell 0 top left
-  o.position.set(d.x-OX,d.y,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,d.h,1);o.updateMatrix();pieces.push(g.applyMatrix4(o.matrix));
+  const sheet=d.kind==='tag'||d.kind==='throwup'?'tag':d.kind;if(!(d.kind in SHEETS))continue;
+  const cells=SHEETS[d.kind as keyof typeof SHEETS].cells,[u0,v0,u1,v1]=cells[(d.cell??0)%cells.length];
+  const g=new THREE.PlaneGeometry(1,1),uv=g.attributes.uv;
+  for(let i=0;i<uv.count;i++)uv.setXY(i,u0+(u1-u0)*uv.getX(i),v0+(v1-v0)*uv.getY(i));
+  o.position.set(d.x-OX,d.y,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,d.h,1);o.updateMatrix();
+  wall.set(sheet,[...(wall.get(sheet)??[]),g.applyMatrix4(o.matrix)]);
  }
- if(pieces.length)group.add(new THREE.Mesh(mergeGeometries(pieces),tags));
+ for(const [sheet,list]of wall){
+  const material=sheet==='graffiti'?tags:new THREE.MeshStandardMaterial({map:tex(SHEETS[sheet as keyof typeof SHEETS].url),roughness:sheet==='buffed'?.9:.8,transparent:true,alphaTest:.05,depthWrite:false,polygonOffset:true,polygonOffsetFactor:sheet==='buffed'?-1:-2});
+  const mesh=new THREE.Mesh(mergeGeometries(list),material);mesh.renderOrder=sheet==='buffed'?0:1;group.add(mesh);
+ }
  return group;
 }

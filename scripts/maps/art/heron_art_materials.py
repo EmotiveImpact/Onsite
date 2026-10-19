@@ -54,6 +54,12 @@ PLAIN = {
     'hr_window_dark': ((.01, .012, .015), .3, 0),
     'hr_tower_elev': ((.32, .31, .3), .9, 0),  # runtime swaps in the painted elevations
     'hr_tower_elev_b': ((.3, .3, .3), .9, 0),
+    # South London thread's healed ChatGPT textures (make_heron_sl_textures.py)
+    'hr_tile_underpass': ((.55, .5, .4), .38, 0),
+    'hr_concrete_aggregate': ((.3, .28, .25), .86, 0),
+    'hr_glass_blocks': ((.5, .52, .5), .12, 0),
+    'hr_wired_glass': ((.3, .33, .33), .15, 0),
+    'hr_stair_tread': ((.25, .25, .25), .62, 0),
 }
 EMIT = {
     'hr_glass_lit': ((1.0, .62, .32), 4.0),
@@ -72,7 +78,9 @@ def coverage_table():
 
 
 COVERAGE = coverage_table()
-DEFAULT_COVERAGE = {'hr_steel_black': 1.0, 'hr_steel_galv': 1.0, 'hr_steel_aged': 1.0, 'hr_rubber': 1.0}
+DEFAULT_COVERAGE = {'hr_steel_black': 1.0, 'hr_steel_galv': 1.0, 'hr_steel_aged': 1.0, 'hr_rubber': 1.0,
+                    'hr_tile_underpass': 2.0, 'hr_concrete_aggregate': 2.0, 'hr_glass_blocks': 1.0, 'hr_wired_glass': .5,
+                    'hr_stair_tread': 1.0}  # the tread is one unique 0-1 map per step
 
 
 def _image(path, non_color):

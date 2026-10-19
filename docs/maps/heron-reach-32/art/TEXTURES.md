@@ -67,6 +67,14 @@ Full results are in the manifest under `gltfExportTest`.
   commit dd803c9). The script only crops, resizes, packs and keys them. They depict no real
   building, home or person. The graffiti pieces are illegible wildstyle and bubble letters with no
   readable words, crew names or brands.
+- Underpass tiles (`hr_tile_underpass`, undercroft walls to 2.4 m), exposed aggregate concrete
+  (`hr_concrete_aggregate`, gallery upstands), glass blocks (`hr_glass_blocks`, stair core strips),
+  wired glass (`hr_wired_glass`, core door vision panels), painted stair treads (`hr_stair_tread`,
+  one map per core step), the void sheet, and the tag, buffed-patch and gum decals come from the
+  same ChatGPT commit, seam-healed and cropped by the South London research thread
+  (`/mnt/project-files/south-london/assets/textures-generated/`).
+  `scripts/maps/art/make_heron_sl_textures.py` resizes them and derives normal and ORM maps from
+  their luminance. The tags are illegible marker tags and throw-ups.
 
 ## Rebuilding
 

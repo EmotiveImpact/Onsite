@@ -73,6 +73,7 @@ class Arch:
             cx, cz, cy = (x0 + x1) / 2, (z0 + z1) / 2, (y0 + y1) / 2
             if bid == 'wall-B1':
                 self.B.box(self.g('undercroft', cx, cz), 'hr_concrete_rough', x0, x1, y0, y1, z0, z1, faces='+x -x +z -z', col=self.waterline(y0))
+                self.underpass_tiles(b)
                 continue
             kind, rect = self.owner_rect(cx, cz, cy)
             if b['mat'] == 'plaster' or kind is None:
@@ -103,6 +104,25 @@ class Arch:
         for b in self.L['boxes']:
             if b['id'] in ('reserve',) or b['id'].startswith('cover-'):
                 self.solid_feature(b)
+
+    def underpass_tiles(self, b):
+        """Cream glazed tiles to 2.4 m on the undercroft's room faces, 8 mm proud of the concrete."""
+        x0, x1, y0, z0, z1 = b['x0'], b['x1'], b['y0'], b['z0'], b['z1']
+        top = min(b['y1'], y0 + 2.4)
+        inside = lambda x, z: any(r[0] <= x <= r[0] + r[2] and r[1] <= z <= r[1] + r[3] for r in self.L['floors']['B1'])
+        grp = self.g('undercroft', (x0 + x1) / 2, (z0 + z1) / 2)
+        col = self.waterline(y0)
+        for k, (px, pz) in {'+x': (x1 + .3, (z0 + z1) / 2), '-x': (x0 - .3, (z0 + z1) / 2), '+z': ((x0 + x1) / 2, z1 + .3), '-z': ((x0 + x1) / 2, z0 - .3)}.items():
+            if (k[1] == 'x') == ((x1 - x0) > (z1 - z0)) or not inside(px, pz):
+                continue  # only the long faces that look into the room
+            if k == '+x':
+                self.B.box(grp, 'hr_tile_underpass', x1, x1 + .008, y0, top, z0, z1, faces='+x +y', col=col)
+            elif k == '-x':
+                self.B.box(grp, 'hr_tile_underpass', x0 - .008, x0, y0, top, z0, z1, faces='-x +y', col=col)
+            elif k == '+z':
+                self.B.box(grp, 'hr_tile_underpass', x0, x1, y0, top, z1, z1 + .008, faces='+z +y', col=col)
+            else:
+                self.B.box(grp, 'hr_tile_underpass', x0, x1, y0, top, z0 - .008, z0, faces='-z +y', col=col)
 
     # --- render-only windows in blank facade runs ----------------------------------------------
     def blank_windows(self, b, kind, ext):
@@ -281,8 +301,8 @@ class Arch:
         self.pane(grp, 'hr_glass', g0, g1, (nx, nz))
         # Lit interior card just behind the glass, facing out (single-sided: invisible from inside).
         if cosmetic and core:
-            # Stair-core strip window: wired glass over the lit stair, filling the reveal's back.
-            self.pane(grp, 'hr_glass_lit', P(-w / 2, y0, -t / 2 + .04), P(w / 2, y1, -t / 2 + .04), (nx, nz))
+            # Stair-core strip window: glass blocks with the lit stair glowing through.
+            self.pane(grp, 'hr_glass_blocks', P(-w / 2, y0, -t / 2 + .04), P(w / 2, y1, -t / 2 + .04), (nx, nz))
         if not shop:
             lit = o.get('lit') or rng.random() < (.55 if not core else .0)
             if not core:
@@ -349,7 +369,7 @@ class Arch:
             for s in (-1, 1):
                 hinge = s * (w / 2 - fw)
                 lw = w / 2 - fw
-                self.leaf(grp, P, hinge, -s, lw, h - fw, -t / 2 - .02, 'hr_steel_black', glass=True)
+                self.leaf(grp, P, hinge, -s, lw, h - fw, -t / 2 - .02, 'hr_steel_black', glass='hr_wired_glass')
             # wall-mounted intercom handled by dressing
         else:
             lw = w - 2 * fw
@@ -383,7 +403,7 @@ class Arch:
         self.B.box(grp, mat, *self.span(P(u0, .01, d), P(u1, lh, d_end)))
         if glass:
             g0, g1 = P(u0 - .002, lh * .45, d - .12), P(u1 + .002, lh - .15, d_end + .12)
-            self.B.box(grp, 'hr_glass', *self.span(g0, g1))
+            self.B.box(grp, glass if isinstance(glass, str) else 'hr_glass', *self.span(g0, g1))
 
     # --- slabs, roofs, edges -------------------------------------------------------------------
     def slabs(self):
@@ -431,7 +451,7 @@ class Arch:
                 rect(0, t + ext, y, y + 1.12, 'hr_brick_stock', faces='+x -x +z -z')
                 rect(-.03, t + ext + .03, y + 1.12, y + 1.2, 'hr_concrete_cast')
             else:
-                rect(0, t + ext, y, y + 1.0, 'hr_concrete_cast', faces='+x -x +z -z')
+                rect(0, t + ext, y, y + 1.0, 'hr_concrete_aggregate', faces='+x -x +z -z')
                 rect(-.02, t + ext + .02, y + 1.0, y + 1.05, 'hr_concrete_cast', faces='+y +x -x +z -z')
                 # steel handrail on short posts
                 L = math.hypot(x1 - x0, z1 - z0)
@@ -487,7 +507,9 @@ class Arch:
             x0, x1, y0, y1, z0, z1 = b['x0'], b['x1'], b['y0'], b['y1'], b['z0'], b['z1']
             cx, cz = (x0 + x1) / 2, (z0 + z1) / 2
             grp = self.g('cores', cx, cz)
-            self.B.box(grp, 'hr_concrete_cast', x0, x1, y0, y1, z0, z1, mats={'-y': 'hr_concrete_board'})
+            # Core treads get the painted tread map on top (added with the nosing below).
+            core = self.owner_rect(cx, cz, y1 - .05)[0] == 'core'
+            self.B.box(grp, 'hr_concrete_cast', x0, x1, y0, y1, z0, z1, mats={'-y': 'hr_concrete_board', '+y': None if core else 'hr_concrete_cast'})
             # anti-slip nosing on the rising edge: the edge facing down-flight is the lower neighbour side.
         self.nosings()
 
@@ -500,13 +522,26 @@ class Arch:
             x0, x1, y1, z0, z1 = b['x0'], b['x1'], b['y1'], b['z0'], b['z1']
             # Find the tread one rise lower in the same flight to know which edge is the nosing.
             lower = [q for q in tops[(round(x0, 2), round(x1, 2))] if abs(q['y1'] - (y1 - .15)) < .01 and (abs(q['z0'] - z1) < .01 or abs(q['z1'] - z0) < .01)]
+            core = self.owner_rect((x0 + x1) / 2, (z0 + z1) / 2, y1 - .05)[0] == 'core'
             if not lower:
+                if core:  # first step of a flight: plain top, as the tread box no longer draws one
+                    self.B.box(self.g('cores', (x0 + x1) / 2, z0), 'hr_concrete_cast', x0, x1, y1, y1, z0, z1, faces='+y')
                 continue
             q = lower[0]
             edge = z1 if abs(q['z0'] - z1) < .01 else z0
             s = 1 if edge == z1 else -1
+            grp = self.g('cores', (x0 + x1) / 2, edge)
+            if core:
+                # Painted tread, one 0-1 map per step with the yellow nosing (V = 0) on the front edge.
+                back = z0 if edge == z1 else z1
+                pts = [(x0, y1, edge), (x1, y1, edge), (x1, y1, back), (x0, y1, back)]
+                uv = [(0, 0), (1, 0), (1, 1), (0, 1)]
+                if s < 0:  # keep the quad facing up
+                    pts, uv = [pts[1], pts[0], pts[3], pts[2]], [uv[1], uv[0], uv[3], uv[2]]
+                self.B.quad(grp, 'hr_stair_tread', *pts, uv=uv)
+                continue
             za, zb = sorted([edge, edge - s * .055])
-            self.B.box(self.g('cores', (x0 + x1) / 2, edge), 'hr_rubber', x0 + .05, x1 - .05, y1, y1 + .006, za, zb, faces='+y +z -z')
+            self.B.box(grp, 'hr_rubber', x0 + .05, x1 - .05, y1, y1 + .006, za, zb, faces='+y +z -z')
 
     # --- columns, roofs, cores, shops -------------------------------------------------------------
     def columns(self):

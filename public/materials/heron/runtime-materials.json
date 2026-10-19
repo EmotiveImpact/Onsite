@@ -56,6 +56,15 @@
   "roughness": 0.2,
   "metalness": 0
  },
+ "hr_concrete_aggregate": {
+  "shadow": true,
+  "map": "/materials/heron/hr_concrete_aggregate-color.webp",
+  "normalMap": "/materials/heron/hr_concrete_aggregate-normal.webp",
+  "ormMap": "/materials/heron/hr_concrete_aggregate-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.86,
+  "metalness": 0
+ },
  "hr_concrete_board": {
   "shadow": true,
   "map": "/materials/heron/hr_concrete_board-color.webp",
@@ -134,6 +143,22 @@
   "roughness": 0.05,
   "metalness": 0,
   "opacity": 0.28
+ },
+ "hr_glass_blocks": {
+  "shadow": false,
+  "map": "/materials/heron/hr_glass_blocks-color.webp",
+  "normalMap": "/materials/heron/hr_glass_blocks-normal.webp",
+  "ormMap": "/materials/heron/hr_glass_blocks-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.12,
+  "metalness": 0,
+  "emissiveMap": "/materials/heron/hr_glass_blocks-color.webp",
+  "emissive": [
+   1,
+   0.72,
+   0.48
+  ],
+  "emissiveIntensity": 0.55
  },
  "hr_glass_lit": {
   "shadow": false,
@@ -320,6 +345,15 @@
   "roughness": 0.95,
   "metalness": 0
  },
+ "hr_stair_tread": {
+  "shadow": true,
+  "map": "/materials/heron/hr_stair_tread-color.webp",
+  "normalMap": "/materials/heron/hr_stair_tread-normal.webp",
+  "ormMap": "/materials/heron/hr_stair_tread-orm.webp",
+  "repeat": 1.0,
+  "roughness": 0.62,
+  "metalness": 0
+ },
  "hr_steel_aged": {
   "shadow": true,
   "map": "/materials/heron/hr_steel_aged-color.webp",
@@ -346,6 +380,15 @@
   "repeat": 1.0,
   "roughness": 0.45,
   "metalness": 0.9
+ },
+ "hr_tile_underpass": {
+  "shadow": true,
+  "map": "/materials/heron/hr_tile_underpass-color.webp",
+  "normalMap": "/materials/heron/hr_tile_underpass-normal.webp",
+  "ormMap": "/materials/heron/hr_tile_underpass-orm.webp",
+  "repeat": 0.5,
+  "roughness": 0.38,
+  "metalness": 0
  },
  "hr_timber": {
   "shadow": true,
@@ -436,6 +479,16 @@
   "map": "/materials/heron/windows/interiors-photo-color.webp",
   "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
   "repeat": 1
+ },
+ "hr_wired_glass": {
+  "shadow": false,
+  "map": "/materials/heron/hr_wired_glass-color.webp",
+  "normalMap": "/materials/heron/hr_wired_glass-normal.webp",
+  "ormMap": "/materials/heron/hr_wired_glass-orm.webp",
+  "repeat": 2.0,
+  "roughness": 0.15,
+  "metalness": 0,
+  "opacity": 0.62
  },
  "hr_wood_furniture": {
   "shadow": true,
