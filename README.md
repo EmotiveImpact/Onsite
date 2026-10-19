@@ -4,6 +4,7 @@ A bots-first Three.js first-person shooter prototype set on a fictional London e
 
 Continuing development in Claude? Start with the [Claude handoff](docs/development/CLAUDE-HANDOFF.md)
 for the active WWB/Blender build, launch commands, evidence, remaining work and donor boundaries.
+Picking up the Heron Reach art push? Read the [Astra brief](docs/ASTRA-BRIEF.md).
 
 ## Run the playable
 
