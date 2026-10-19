@@ -1,0 +1,3481 @@
+{
+  "tilingTextures": [
+    {
+      "name": "hr_brick_stock",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/01-london-stock-brick-color.png",
+        "sha256": "58f60923f6a6e9414df678d08e05fa7f6b6ea42fb7f6e0defd80cb8f6faeac5a",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "bricks",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "mortar score 'pale'; course period 83 px, brick period 266 px by autocorrelation",
+        "comb-fit bed joints, per-course head joints; 49 source bricks extracted joint-centre to joint-centre",
+        "re-laid on a regular running bond: 26 courses x 9 bricks per 2 m (course 76.9 mm, brick pitch 222.2 mm), random flips, feathered 6 px mortar overlap",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.85, 6% tint toward grime grey-brown, mean luminance 0.150",
+        "soot darkening from periodic noise (10%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 7.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.84 +/- 0.08 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 0.928,
+        "colorXY": [
+          0.928,
+          0.9
+        ],
+        "normal": 0.918,
+        "orm": 0.959,
+        "sourceColor": 1.64,
+        "colorPlain": 0.954,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (9 x, 26 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_brick_stock-color.webp",
+          "bytes": 414058,
+          "sha256": "9b994d037c4a8e01843d81e600067f136d22cd80ef4ca02babfd09b027a1b5ef",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_brick_stock-normal.webp",
+          "bytes": 311248,
+          "sha256": "988728b892a6b02039f1e66ef40055ba912e60367384ba769ffb44017908cd83",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_brick_stock-orm.webp",
+          "bytes": 102734,
+          "sha256": "a7367a0712fd7e5637a4cad3d16fecd1bb5b843f97e1ef2f477f80ca2fd5bf55",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.2,
+      "analysis": {
+        "jscale": 0.492,
+        "course_p": 83,
+        "brick_p": 266,
+        "cells": 49,
+        "courses_src": 15
+      }
+    },
+    {
+      "name": "hr_brick_red",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/02-red-estate-brick-color.png",
+        "sha256": "592b916cedc5910728fe0bea49b32932d93a1f2a3d7d911c815ed22347813813",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "bricks",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "mortar score 'pale'; course period 78 px, brick period 250 px by autocorrelation",
+        "comb-fit bed joints, per-course head joints; 55 source bricks extracted joint-centre to joint-centre",
+        "re-laid on a regular running bond: 26 courses x 9 bricks per 2 m (course 76.9 mm, brick pitch 222.2 mm), random flips, feathered 6 px mortar overlap",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.72, 10% tint toward grime grey-brown, mean luminance 0.085",
+        "soot darkening from periodic noise (6%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 7.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.84 +/- 0.08 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.038,
+        "colorXY": [
+          0.985,
+          1.038
+        ],
+        "normal": 0.937,
+        "orm": 1.005,
+        "sourceColor": 1.428,
+        "colorPlain": 1.053,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (9 x, 26 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_brick_red-color.webp",
+          "bytes": 393768,
+          "sha256": "09f3e18c173426f78371f99d2c2eaf7df5b2b1f5e20783cfe59ec02753c9b470",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_brick_red-normal.webp",
+          "bytes": 295610,
+          "sha256": "5e5fb73ec36fc3816e0bffcbe51b294475fafe2c7be5b27b50f8f3fc99ed8250",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_brick_red-orm.webp",
+          "bytes": 93554,
+          "sha256": "95f224b65b52b8cf5a3fb927691edae16e27222894b6eca86c062db0c0a7800b",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.6,
+      "analysis": {
+        "jscale": 0.492,
+        "course_p": 78,
+        "brick_p": 250,
+        "cells": 55,
+        "courses_src": 17
+      }
+    },
+    {
+      "name": "hr_brick_painted",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/03-painted-brick-color.png",
+        "sha256": "f92da72cffa3cd3fa8a8072ca0122df75c72e7523a425e1ea0683332382f214c",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "bricks",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "mortar score 'grey'; course period 64 px, brick period 354 px by autocorrelation",
+        "comb-fit bed joints, per-course head joints; 40 source bricks extracted joint-centre to joint-centre",
+        "re-laid on a regular running bond: 26 courses x 9 bricks per 2 m (course 76.9 mm, brick pitch 222.2 mm), random flips, feathered 6 px mortar overlap",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.65, 12% tint toward grime grey-brown, mean luminance 0.420",
+        "soot darkening from periodic noise (5%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 6.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.76 +/- 0.08 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 0.991,
+        "colorXY": [
+          0.991,
+          0.971
+        ],
+        "normal": 0.969,
+        "orm": 1.003,
+        "sourceColor": 2.127,
+        "colorPlain": 1.776,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (9 x, 26 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_brick_painted-color.webp",
+          "bytes": 401684,
+          "sha256": "89559198fd6d4b04d90920a506cf477f783bfbfa5406af713cdb22b0addfd41c",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_brick_painted-normal.webp",
+          "bytes": 208368,
+          "sha256": "52859d6f0d7a962fcca24edf866cac8c0b01886fb24c73bf40e29c97514e9f06",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_brick_painted-orm.webp",
+          "bytes": 85706,
+          "sha256": "d18b51ca77028401af88ddde01861fe0589aa4647f2a3730bc3dfa2707093708",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.3,
+      "analysis": {
+        "jscale": 0.492,
+        "course_p": 64,
+        "brick_p": 354,
+        "cells": 40,
+        "courses_src": 19
+      }
+    },
+    {
+      "name": "hr_concrete_cast",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/04-cast-concrete-color.png",
+        "sha256": "5e558c951909bc1d36fd6b0e8a766711da786e6979e7d6cdeac151a381cb259b",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.60, 15% tint toward grime grey-brown, mean luminance 0.200"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px)",
+        "heightDepthMillimetres": 1.6,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.86 +/- 0.07 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.037,
+        "colorXY": [
+          1.037,
+          1.029
+        ],
+        "normal": 1.095,
+        "orm": 1.204,
+        "sourceColor": 1.218,
+        "colorPlain": 1.037,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_concrete_cast-color.webp",
+          "bytes": 412520,
+          "sha256": "44624f95dea5953e5364b02b35635eb5e24d24fff84bbb596c05de91679ac10f",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_concrete_cast-normal.webp",
+          "bytes": 297640,
+          "sha256": "020673686b9b2e1199e5d7a74c09c54db31668af27829b4da386c973aecd67ba",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_concrete_cast-orm.webp",
+          "bytes": 269016,
+          "sha256": "59e551fa619962d60fa712d621b62ff6ded5ad9170c278d093adc077991f3a46",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.5
+    },
+    {
+      "name": "hr_concrete_board",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/05-board-concrete-color.png",
+        "sha256": "bfc7d4fe8f78edf977e019249b003d3ed7ff0673a43d22a92376871ee4384717",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "strips",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "joint score 'edge_y'; boards period 141 px by autocorrelation; 8 joint-to-joint source strips",
+        "each strip made periodic along its length (min-cut quilting of source strips, 96 px overlap)",
+        "10 boards stacked per 2 m (200 mm pitch), random order and offsets, feathered joints",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.60, 15% tint toward grime grey-brown, mean luminance 0.170"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 12] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 3.5,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.86 +/- 0.07 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 0.97,
+        "colorXY": [
+          0.966,
+          0.97
+        ],
+        "normal": 1.143,
+        "orm": 0.97,
+        "sourceColor": 1.175,
+        "colorPlain": 1.161,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (None x, 10 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_concrete_board-color.webp",
+          "bytes": 409030,
+          "sha256": "1d74df4659a15e457b62d01475f7bfbfc3af4ee88d40fdd5656cbad47da2c11f",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_concrete_board-normal.webp",
+          "bytes": 459524,
+          "sha256": "a9dcac37ee13319f5496343a81882db6f2f46c04c6200f14bc1488c50b7ba31f",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_concrete_board-orm.webp",
+          "bytes": 264976,
+          "sha256": "ce3b43f32199dd4a5ce9c00d7bc071a8b3e56a57de6dd83a7be872882fe69e86",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.5,
+      "analysis": {
+        "jscale": 0.8,
+        "period": 141,
+        "strips": 8,
+        "vertical": false
+      }
+    },
+    {
+      "name": "hr_concrete_rough",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/06-rough-concrete-color.png",
+        "sha256": "677efbd9430414b22666e1ac11d0eee88acb926b448f6ce3b3ef5975d64fb6fa",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.62, 18% tint toward grime grey-brown, mean luminance 0.170",
+        "broad dirt staining from periodic noise (18%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 8] px)",
+        "heightDepthMillimetres": 4.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.90 +/- 0.05 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.001,
+        "colorXY": [
+          1.001,
+          0.998
+        ],
+        "normal": 0.987,
+        "orm": 0.959,
+        "sourceColor": 1.297,
+        "colorPlain": 1.001,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_concrete_rough-color.webp",
+          "bytes": 469702,
+          "sha256": "9080f04acb973db86090127387bc348d3e3ecb7079eabe7200499fe5ac3e4ce1",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_concrete_rough-normal.webp",
+          "bytes": 428918,
+          "sha256": "d915275fee197314ba78614e646bdebcb4fe1266f6b35a1bdff8312e7241ee53",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_concrete_rough-orm.webp",
+          "bytes": 300678,
+          "sha256": "41d4a05e76af5d75a8a024aed1ced4708b2898c9abbea6e7c124e8e48be7d65c",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.8
+    },
+    {
+      "name": "hr_render",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/07-render-wall-color.png",
+        "sha256": "09b7792bc96b90290fbbf766365ea2ba32ca923f33365c90f30dadaadd8e6d7b",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "mid-frequency blotch reduction against visible repeats (sigma 40 px, 85%)",
+        "linear grade: saturation x0.60, 10% tint toward grime grey-brown, mean luminance 0.360",
+        "broad dirt staining from periodic noise (8%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 14] px)",
+        "heightDepthMillimetres": 1.4,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.82 +/- 0.06 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 0.985,
+        "colorXY": [
+          0.947,
+          0.985
+        ],
+        "normal": 1.04,
+        "orm": 1.156,
+        "sourceColor": 1.05,
+        "colorPlain": 0.985,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_render-color.webp",
+          "bytes": 434866,
+          "sha256": "f859e9cbd5ae7edaff09ae902277afba0e4f258bff3378f98bf5a5061d841269",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_render-normal.webp",
+          "bytes": 276686,
+          "sha256": "adc124cefb55ad25cb2bc790db28e0f41099c70642f99c9ae9d889e0c223afd6",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_render-orm.webp",
+          "bytes": 306466,
+          "sha256": "dbaa8e816007709ade43b76f268dcce0a04725d6315c6ca8129f7479dd9af0f6",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.1
+    },
+    {
+      "name": "hr_asphalt",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/08-asphalt-color.png",
+        "sha256": "38b8f6b6229c976863710bc37c0e8acf1fade776e0eba0aeb297d4afc2428eab",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.45, 20% tint toward grime grey-brown, mean luminance 0.055",
+        "broad dirt staining from periodic noise (15%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.7, 8] px)",
+        "heightDepthMillimetres": 3.2,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.72 +/- 0.13 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.029,
+        "colorXY": [
+          1.029,
+          0.942
+        ],
+        "normal": 1.041,
+        "orm": 1.062,
+        "sourceColor": 1.316,
+        "colorPlain": 1.029,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_asphalt-color.webp",
+          "bytes": 480810,
+          "sha256": "98e1747cb5394e69dce8947281c49f845f971d21b453c1726843522aa7e5bcb5",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_asphalt-normal.webp",
+          "bytes": 425920,
+          "sha256": "aec676435863001a783c8cf7cd385690ce977cd549662e9ab150f9029b6434e5",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_asphalt-orm.webp",
+          "bytes": 411926,
+          "sha256": "de21aafa5724c76b5fbe0d5bf38b10355ac93f528e16640caf0ee07e17d319b2",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.3
+    },
+    {
+      "name": "hr_court",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/09-court-asphalt-color.png",
+        "sha256": "9b0cab61b348b8c4e8d86dcdcca328c254839195c9b7eefabd2adc7bb90b1c20",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.40, 50% tint toward grime grey-brown, mean luminance 0.065",
+        "broad dirt staining from periodic noise (10%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.7, 8] px)",
+        "heightDepthMillimetres": 1.4,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.68 +/- 0.10 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.086,
+        "colorXY": [
+          1.086,
+          1.03
+        ],
+        "normal": 1.067,
+        "orm": 1.024,
+        "sourceColor": 1.149,
+        "colorPlain": 1.086,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_court-color.webp",
+          "bytes": 462258,
+          "sha256": "7d2b2ed5f98be226154f7b6560190a33c7be648d3445b54ee616a9455b04308c",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_court-normal.webp",
+          "bytes": 317310,
+          "sha256": "44bbf44f93163df233f83fba2cf2dca04a45de8bfdca5be803a3c4e3f46468b3",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_court-orm.webp",
+          "bytes": 412132,
+          "sha256": "913f76fdc38b319a6a2a6897ef214e001e56bbcd80cadeacdd2f48f0fcf75edf",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.0
+    },
+    {
+      "name": "hr_paving",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/10-paving-slabs-color.png",
+        "sha256": "3ad4a869482136f387027f1658d9e1fe0910c201c85f0584c5376512df85ccbe",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "slabs",
+      "processing": [
+        "sRGB to linear; delight (sigma 200 px)",
+        "dark-joint score; slab period 313 px by autocorrelation; 4 source slabs extracted",
+        "re-laid on a 4 x 4 grid per 2 m (500 mm slabs) with random 90-degree rotations and flips, 8 px feathered joints",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.55, 15% tint toward grime grey-brown, mean luminance 0.190"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 6.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.74 +/- 0.11 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 0.937,
+        "colorXY": [
+          0.937,
+          0.713
+        ],
+        "normal": 1.073,
+        "orm": 0.561,
+        "sourceColor": 1.657,
+        "colorPlain": 0.837,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (4 x, 4 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_paving-color.webp",
+          "bytes": 453856,
+          "sha256": "ffa10ce098b2c4b2d6ccf3de6d957f31792434c0831174164f3298801f7356d9",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_paving-normal.webp",
+          "bytes": 295972,
+          "sha256": "c59e177148710403b84ab89b9578f2b8c4cfbed8dc36af939b64c6c095bae22b",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_paving-orm.webp",
+          "bytes": 88350,
+          "sha256": "be040c9a97ee2564e92a77ee2033a1ef9b125dbcb99172a89660bf042e0a029a",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.5,
+      "analysis": {
+        "jscale": 0.853,
+        "period": 313,
+        "cells": 4
+      }
+    },
+    {
+      "name": "hr_pavers_red",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/11-red-pavers-color.png",
+        "sha256": "b91804671578373ff6fb697ba350c2c8a45d8f1e1ebf0bacab8ee2a226f157f2",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "herringbone",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "analytic 45-degree herringbone, 2:1 pavers, lattice 14 x 7 per 2 m (paver 202 x 101 mm), rendered at 2x and periodic-downsampled",
+        "per-paver colour drawn from 600 sampled source paver interiors; source speckle (luminance / local mean, joints removed) made tileable by min-cut wrap and multiplied in",
+        "joint fill colour = median of source joint pixels; edge wear and chipped arrises from periodic noise",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.75, 10% tint toward grime grey-brown, mean luminance 0.085"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 5.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.74 +/- 0.11 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.003,
+        "colorXY": [
+          0.979,
+          1.003
+        ],
+        "normal": 1.002,
+        "orm": 0.833,
+        "sourceColor": 1.446,
+        "colorPlain": 0.881,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (14 x, 7 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_pavers_red-color.webp",
+          "bytes": 114612,
+          "sha256": "06105664df31107ff2cfb2d26cdcb12b618c3163a2cb0020b32761b78a53fc6f",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_pavers_red-normal.webp",
+          "bytes": 136042,
+          "sha256": "8aacb1c090684fa06a6182d0aee81e40806266b21b852ac797c4ec0e3a82f650",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_pavers_red-orm.webp",
+          "bytes": 107924,
+          "sha256": "a379b1a5566ef26eeaf1d67654bcb584b9f3076e10993a438d625a6db6796f69",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 20.4,
+      "analysis": {
+        "paver_mm": 101.015
+      }
+    },
+    {
+      "name": "hr_roof_felt",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/12-roof-felt-color.png",
+        "sha256": "aadb77119f75c3284a29478f3d226917cd789156c0b2d9d104fdd479036eca5e",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.40, 20% tint toward grime grey-brown, mean luminance 0.055",
+        "broad dirt staining from periodic noise (12%)"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.7, 6] px)",
+        "heightDepthMillimetres": 2.6,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.76 +/- 0.09 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.09,
+        "colorXY": [
+          1.09,
+          0.979
+        ],
+        "normal": 1.066,
+        "orm": 1.147,
+        "sourceColor": 1.501,
+        "colorPlain": 1.09,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_roof_felt-color.webp",
+          "bytes": 489530,
+          "sha256": "4d037e31280940db51342a96f0c11e7b555b35e259fd9de1a7a7613309010b2c",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_roof_felt-normal.webp",
+          "bytes": 387674,
+          "sha256": "8f94fc04c9ee87967bb09f09efdb99c86cf952fe24e62ec0e5972725a8ff7257",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_roof_felt-orm.webp",
+          "bytes": 430022,
+          "sha256": "051f0aac7457d5f2c3de41322d79c591b091d8366c68eeb0e0cac1ce0ccaded4",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.7
+    },
+    {
+      "name": "hr_steel_black",
+      "coverageMetres": 1.0,
+      "source": {
+        "path": "assets/textures/source-30/13-black-painted-steel-color.png",
+        "sha256": "bd94c52f1ec67b0fddce582689cd3bc6598093d9f0015111b2178e78fa4c5614",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.30, 40% tint toward grime grey-brown, mean luminance 0.028",
+        "paint chips (periodic noise, ~0.0%) as bare steel, metalness 1"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 16] px)",
+        "heightDepthMillimetres": 0.35,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 0.98 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.42 +/- 0.08 with periodic noise, B metalness 1 at paint chips only"
+      },
+      "seamRatio": {
+        "color": 1.194,
+        "colorXY": [
+          1.194,
+          0.937
+        ],
+        "normal": 1.133,
+        "orm": 1.142,
+        "sourceColor": 2.309,
+        "colorPlain": 1.194,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_steel_black-color.webp",
+          "bytes": 284930,
+          "sha256": "6d1230f4927ea40ad5e5edff6b6cf71d7084cb32c22daac013549e78f3d68557",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_steel_black-normal.webp",
+          "bytes": 131808,
+          "sha256": "6050d5cb309ff9c96685b6fd9f6cdebc42704b00b90874de2f16156c7e68d81e",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_steel_black-orm.webp",
+          "bytes": 330826,
+          "sha256": "b5868a9dcb821d0d184315dea2d40fe32d25aceda6e8cf212a79648989864060",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.4
+    },
+    {
+      "name": "hr_steel_galv",
+      "coverageMetres": 1.0,
+      "source": {
+        "path": "assets/textures/source-30/14-galvanised-steel-color.png",
+        "sha256": "5fbec66c4e1146974256f102233b4b39ab1354f33953889b64371e0ac1547509",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.25, 30% tint toward grime grey-brown, mean luminance 0.330"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 16] px)",
+        "heightDepthMillimetres": 0.25,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 0.98 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.45 +/- 0.12 with periodic noise, B metalness 1 (bare galvanised)"
+      },
+      "seamRatio": {
+        "color": 1.014,
+        "colorXY": [
+          0.976,
+          1.014
+        ],
+        "normal": 1.081,
+        "orm": 0.952,
+        "sourceColor": 1.546,
+        "colorPlain": 1.014,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_steel_galv-color.webp",
+          "bytes": 339640,
+          "sha256": "3a1d4023e8935464a8df4eee727005a5ea5ba5d6a12ee622c6793dc33122d9d0",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_steel_galv-normal.webp",
+          "bytes": 59970,
+          "sha256": "0354ee9af7f8ec2c489a9b34170753861e773bbf4e2447e86be8213f7eceed1d",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_steel_galv-orm.webp",
+          "bytes": 275948,
+          "sha256": "c68604b60568e748702d99e901a11d9d165a46b8feff5c37ef5e8ea9a8fb5f04",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.9
+    },
+    {
+      "name": "hr_steel_aged",
+      "coverageMetres": 1.0,
+      "source": {
+        "path": "assets/textures/source-30/15-aged-steel-color.png",
+        "sha256": "f096342c3db8146877fba929f0e54efafb898fcca05f63a8afe2c4c6c98574cf",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "mid-frequency blotch reduction against visible repeats (sigma 50 px, 60%)",
+        "linear grade: saturation x0.75, 8% tint toward grime grey-brown, mean luminance 0.075"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 12] px)",
+        "heightDepthMillimetres": 0.9,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 0.98 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.62 +/- 0.10 with periodic noise, B metalness 0.75 on dull bare steel, 0 on rust"
+      },
+      "seamRatio": {
+        "color": 1.065,
+        "colorXY": [
+          1.065,
+          1.005
+        ],
+        "normal": 1.076,
+        "orm": 1.065,
+        "sourceColor": 1.191,
+        "colorPlain": 1.065,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_steel_aged-color.webp",
+          "bytes": 404116,
+          "sha256": "f960ad860f324f2eb6c1a8228af2c506a6b15025a91b011fcb5ed3ef4f07e6b4",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_steel_aged-normal.webp",
+          "bytes": 314750,
+          "sha256": "7b3880d3673362150d39f36763c40f7b0981d576fda50a2320f6ee95e60b12b1",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_steel_aged-orm.webp",
+          "bytes": 411308,
+          "sha256": "39b809f45d21c8ddf25b010cf68fdfe100affca9a920e3c8bed449d60bda8db3",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 6.9,
+      "analysis": {
+        "rust_cover": 0.283
+      }
+    },
+    {
+      "name": "hr_shutter",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/16-roller-shutter-color.png",
+        "sha256": "546fad77130b9610233dffd834058549855020a5ead513222e84aa5857d8c05a",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "strips",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "joint score 'dark'; slats period 59 px by autocorrelation; 20 joint-to-joint source strips",
+        "each strip made periodic along its length (min-cut quilting of source strips, 96 px overlap)",
+        "24 slats stacked per 2 m (83 mm pitch), random order and offsets, feathered joints",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "baked groove shading compressed 60% (row-profile division)",
+        "linear grade: saturation x0.30, 25% tint toward grime grey-brown, mean luminance 0.075"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 12] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 7.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.50 +/- 0.08 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.039,
+        "colorXY": [
+          0.915,
+          1.039
+        ],
+        "normal": 1.069,
+        "orm": 0.896,
+        "sourceColor": 2.688,
+        "colorPlain": 0.965,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (None x, 24 y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_shutter-color.webp",
+          "bytes": 95764,
+          "sha256": "5f894043638c39c6ffd4b2f19d073768b28fb616ecce0466bb8e548c366aaaf2",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_shutter-normal.webp",
+          "bytes": 61250,
+          "sha256": "4220de60438845fa4764db8f08d109cb4ff40a65fee3b4f5e378b1eaac384b85",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_shutter-orm.webp",
+          "bytes": 25076,
+          "sha256": "560e86cf8796df1f7aeb5e8729f1f9aa0b8a4531066b3bc12b29d147327344a1",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 11.3,
+      "analysis": {
+        "jscale": 0.805,
+        "period": 59,
+        "strips": 20,
+        "vertical": false
+      }
+    },
+    {
+      "name": "hr_rubber",
+      "coverageMetres": 1.0,
+      "source": {
+        "path": "assets/textures/source-30/17-rubber-floor-color.png",
+        "sha256": "a20c9bc6f7b642f023c4252179c2d576e7d0c9a4df875a0398ed4313a757a50d",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.35, 20% tint toward grime grey-brown, mean luminance 0.045"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.7, 6] px)",
+        "heightDepthMillimetres": 1.3,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 0.98 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.82 +/- 0.05 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.058,
+        "colorXY": [
+          1.056,
+          1.058
+        ],
+        "normal": 1.046,
+        "orm": 1.041,
+        "sourceColor": 1.308,
+        "colorPlain": 1.058,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_rubber-color.webp",
+          "bytes": 464502,
+          "sha256": "0b8dec3234e391ef35f43a769f3babc08f6830d044e8f03911a87ab6cc3e379a",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_rubber-normal.webp",
+          "bytes": 364370,
+          "sha256": "ae270fc8b11d9b380da3cb870187de4fe8709eadad15b419c445711c590fd226",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_rubber-orm.webp",
+          "bytes": 404640,
+          "sha256": "58fb6464372550f52df179e4e0964d8874827a4740c3deb61931f9b0b45edb36",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.3
+    },
+    {
+      "name": "hr_timber",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/26-bench-timber-color.png",
+        "sha256": "d64db9fa72e1d2ddd1005e242f81f829f9fd76eaacb40562a9e7ec7cf312abb1",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "strips_v",
+      "processing": [
+        "sRGB to linear; delight (sigma 125 px)",
+        "joint score 'dark'; planks period 157 px by autocorrelation; 6 joint-to-joint source strips",
+        "each strip made periodic along its length (min-cut quilting of source strips, 96 px overlap)",
+        "8 planks stacked per 2 m (250 mm pitch), random order and offsets, feathered joints",
+        "periodic Lanczos resample to 1024 px",
+        "periodic low-frequency flatten (sigma 160 px, 70%)",
+        "linear grade: saturation x0.60, 12% tint toward grime grey-brown, mean luminance 0.100"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px); joint/mortar mask from the regular layout and the carried mortar score",
+        "heightDepthMillimetres": 4.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.74 +/- 0.08 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.105,
+        "colorXY": [
+          0.625,
+          1.105
+        ],
+        "normal": 1.179,
+        "orm": 1.111,
+        "sourceColor": 2.079,
+        "colorPlain": 1.725,
+        "method": "phase-matched: wrap edge vs interior line pairs at the same joint phase (8 x, None y periods per tile)"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_timber-color.webp",
+          "bytes": 312462,
+          "sha256": "84d43371ab2ef2f21add19d03a270f963d48826d1065727559bb768015897e16",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_timber-normal.webp",
+          "bytes": 247770,
+          "sha256": "940f644a48e176ae947cfb3c29b817bf48ff00e0863667e28e79b88a20bcfbef",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_timber-orm.webp",
+          "bytes": 51212,
+          "sha256": "8d283dd714f72d79ee18b98f9694e05c37c2dd7d2e0ce5182dade117cae0421b",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.6,
+      "analysis": {
+        "jscale": 0.8,
+        "period": 157,
+        "strips": 6,
+        "vertical": true
+      }
+    },
+    {
+      "name": "hr_soil",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/27-dark-soil-color.png",
+        "sha256": "feb36b2b46f8d8bb4080eacbecaf9a951d39c0fef0dc6d9a40a36da9e801380b",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.70, 10% tint toward grime grey-brown, mean luminance 0.035"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 10] px)",
+        "heightDepthMillimetres": 5.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.74 +/- 0.11 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.055,
+        "colorXY": [
+          1.055,
+          0.975
+        ],
+        "normal": 1.004,
+        "orm": 0.952,
+        "sourceColor": 1.379,
+        "colorPlain": 1.055,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_soil-color.webp",
+          "bytes": 462146,
+          "sha256": "b226d69337d0473f0788daeda0d488113792c4e8ae4ee5e0afe4e5d1753cb792",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_soil-normal.webp",
+          "bytes": 482454,
+          "sha256": "cbe12cc35365412d1c61c367b9e96f069b21c5a8e6b46466f9f4e9d3500e6e4f",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_soil-orm.webp",
+          "bytes": 371218,
+          "sha256": "d65a61678d1c15a3efbd8ea260ae38b1455f09e48ca9b5eb56fbae0621c1e872",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 8.5
+    },
+    {
+      "name": "hr_grass_ground",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/28-short-grass-color.png",
+        "sha256": "9da92a35fdec06d3c969dbaa2189a6c3d48a03009417b504c83a40db53583830",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "grass",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "autumn grade: chroma pulled toward olive and dead-brown in periodic-noise patches",
+        "tileable hr_soil blended into blade gaps in bare patches",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.55, 25% tint toward grime grey-brown, mean luminance 0.075"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [0.8, 8] px)",
+        "heightDepthMillimetres": 3.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.76 +/- 0.09 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.064,
+        "colorXY": [
+          1.023,
+          1.064
+        ],
+        "normal": 1.018,
+        "orm": 0.993,
+        "sourceColor": 1.242,
+        "colorPlain": 1.064,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_grass_ground-color.webp",
+          "bytes": 564820,
+          "sha256": "90430f0bca9238abff890f8d4e436fd7ebb6a7e67232ec636675dcac4137faa3",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_grass_ground-normal.webp",
+          "bytes": 385768,
+          "sha256": "d7adbe2878c4d4b739393adcdd152990fec8177c88c0a266d4753b3959b749c6",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_grass_ground-orm.webp",
+          "bytes": 388878,
+          "sha256": "6c9df97e8bae2e47cde43ce8f10961915a1135983c0e5d253d6fec1b8b49e4af",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 13.1
+    },
+    {
+      "name": "hr_gravel",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/29-gravel-color.png",
+        "sha256": "7d948adbfd07650a1b30106aff3e2356a4afc0658fccf522a35afde00fcf1ca4",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 60 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "linear grade: saturation x0.50, 12% tint toward grime grey-brown, mean luminance 0.170"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 10] px)",
+        "heightDepthMillimetres": 6.0,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.74 +/- 0.11 with periodic noise, clamped 0.60-0.85 with wet patches, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.065,
+        "colorXY": [
+          0.96,
+          1.065
+        ],
+        "normal": 1.083,
+        "orm": 1.193,
+        "sourceColor": 1.879,
+        "colorPlain": 1.065,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_gravel-color.webp",
+          "bytes": 511906,
+          "sha256": "88c7ecc27a6bb8e6bb24f9e9cc88e60399852e812ca697b3295c7a347891bdb1",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_gravel-normal.webp",
+          "bytes": 389424,
+          "sha256": "d1b0351f591341b79e781ed4b8b398adb349de9f1f854549235c0498432c53fc",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_gravel-orm.webp",
+          "bytes": 232114,
+          "sha256": "286a131f9e0c4ec7a741b63cedb05ba3200c6191806b6ce35e56827b167cf3fb",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.5
+    },
+    {
+      "name": "hr_plaster",
+      "coverageMetres": 2.0,
+      "source": {
+        "path": "assets/textures/source-30/30-offwhite-interior-plaster-color.png",
+        "sha256": "5ef0efa758232b7413610bef364e3146a0ed79295982be76d22101ce88bf22a6",
+        "pixels": [
+          1254,
+          1254
+        ]
+      },
+      "method": "stochastic",
+      "processing": [
+        "sRGB to linear",
+        "delight: divide luminance by Gaussian blur (sigma 125 px at 1254 px), chroma kept",
+        "Lanczos resample 1254 to 1184 px",
+        "two closed minimum-error-cut wrap passes (overlap 160 px, 2 px feather)",
+        "periodic low-frequency flatten (sigma 200 px)",
+        "mid-frequency blotch reduction against visible repeats (sigma 45 px, 70%)",
+        "linear grade: saturation x0.55, 8% tint toward grime grey-brown, mean luminance 0.520"
+      ],
+      "derived": {
+        "height": "from processed colour: band-passed log luminance (sigma [1.0, 16] px)",
+        "heightDepthMillimetres": 0.5,
+        "normal": "OpenGL (+Y), central differences of the height in millimetres over a 1.95 mm texel",
+        "orm": "R cavity AO from height (two blur radii), G roughness base 0.88 +/- 0.04 with periodic noise, B metalness 0"
+      },
+      "seamRatio": {
+        "color": 1.017,
+        "colorXY": [
+          0.989,
+          1.017
+        ],
+        "normal": 1.086,
+        "orm": 1.212,
+        "sourceColor": 1.118,
+        "colorPlain": 1.017,
+        "method": "wrap-edge mean abs difference / mean adjacent-pixel difference"
+      },
+      "reusedPolyHaven": null,
+      "files": {
+        "color": {
+          "path": "public/materials/heron/hr_plaster-color.webp",
+          "bytes": 343836,
+          "sha256": "2b141b70de68b2d92f3782aa8db67e6216bdac73eeb61dbd452ccb6a70328b26",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "sRGB",
+          "webpQuality": 90
+        },
+        "normal": {
+          "path": "public/materials/heron/hr_plaster-normal.webp",
+          "bytes": 116598,
+          "sha256": "d1d0864dce3d0cbaa560e6280f23fb4978e18fa832f14b4626b27502deb9a4fd",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        },
+        "orm": {
+          "path": "public/materials/heron/hr_plaster-orm.webp",
+          "bytes": 292550,
+          "sha256": "16b6a5de5d7b55c1ab17135f577a122773cde4bbbe1438dc6a588e0990005f27",
+          "pixels": [
+            1024,
+            1024
+          ],
+          "colorSpace": "Non-Color",
+          "webpQuality": 92
+        }
+      },
+      "seconds": 7.1
+    }
+  ],
+  "decalAndAtlasTextures": [
+    {
+      "path": "public/materials/heron/decals/rain-streaks.webp",
+      "kind": "decal",
+      "pixels": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 44868,
+      "sha256": "da80cac13ef042250a502658af14886fe80a4befa6dbfaf03d765fc59ebd542e",
+      "physicalSizeMetres": [
+        0.5,
+        1.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "1D periodic noise for streak strength and length across the sill",
+        "exponential fall-off downward, vertical anisotropic fine noise, darker drip tips",
+        "alpha only carries the stain; colour is dark grey-brown"
+      ],
+      "seamRatio": 0.0,
+      "tiles": "horizontally",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/grime.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 101812,
+      "sha256": "ef5fab49e5406da0f2d2d67ef6e537c61ec7e6365cf2f23767f7f03888dad99a",
+      "physicalSizeMetres": [
+        1.5,
+        1.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "fractal periodic noise thresholded into soft blotches",
+        "noisy radial fade so it sits anywhere"
+      ],
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/moss-edge.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 272020,
+      "sha256": "a7eca22ad7236a3120d5fbc9d30abfdd7f26560c507d695c435f8dbe463ba022",
+      "physicalSizeMetres": [
+        1.0,
+        1.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "moss clumps from thresholded periodic noise climbing a noisy height from the bottom edge",
+        "dark green-black algae wash above the moss"
+      ],
+      "seamRatio": 0.707,
+      "tiles": "horizontally",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/puddle-mask.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 8094,
+      "sha256": "529383399c8bf88060d18de704c5f2854b07b862b1677f9a85d2a1c2f1baa860",
+      "physicalSizeMetres": [
+        2.0,
+        2.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "noisy ellipse, soft rim, faded to zero at the border; R=G=B mask"
+      ]
+    },
+    {
+      "path": "public/materials/heron/decals/puddle-normal.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 3082,
+      "sha256": "e612e5f0e30d6a80d51fc9a203fac9d4a19942dcf151707006cfe7d9bfde41bd",
+      "physicalSizeMetres": [
+        2.0,
+        2.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "OpenGL normal from rim slope plus faint ripple noise inside the mask"
+      ]
+    },
+    {
+      "path": "public/materials/heron/decals/puddle-color.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 27124,
+      "sha256": "1c8922a2b894f6bce99c395a8ebda6bb1d3185f028b1f325b115b7c24bef4135",
+      "physicalSizeMetres": [
+        2.0,
+        2.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "near-black wet tint with alpha = 0.75 x mask (for a blended decal)"
+      ],
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/line-yellow.webp",
+      "kind": "decal",
+      "pixels": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 133614,
+      "sha256": "a5191ddfd487622649c562e0139cae1fa7db69fcfb678120dd65fcb6b7f840de",
+      "physicalSizeMetres": [
+        0.5,
+        1.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "yellow line profile (100-200, 300-400 mm)",
+        "wear mask from periodic noise (paint loss, speckled aggregate showing through)"
+      ],
+      "seamRatio": 1.129,
+      "tiles": "vertically",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/line-white.webp",
+      "kind": "decal",
+      "pixels": [
+        512,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 53344,
+      "sha256": "75e049eafd1454946c07a9af1d59214cda11a5ba9393a15481d80ca65ef50f3e",
+      "physicalSizeMetres": [
+        0.5,
+        1.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "white line profile (210-290 mm)",
+        "wear mask from periodic noise (paint loss, speckled aggregate showing through)"
+      ],
+      "seamRatio": 0.861,
+      "tiles": "vertically",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/drain-grate-color.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 76770,
+      "sha256": "81f7c46ac658546ab3991379dabcd131d3601f5577b5f19f7a4f6853434a476e",
+      "physicalSizeMetres": [
+        0.5,
+        0.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "0.5 m cast-iron gully grate: 50 mm frame with chequer anti-skid pattern, 9 slots, mid rib",
+        "rust and polished-top wear from periodic noise; slots near-black",
+        "colour sRGB, alpha 1 inside the frame"
+      ],
+      "alphaMode": "MASK"
+    },
+    {
+      "path": "public/materials/heron/decals/drain-grate-normal.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 41356,
+      "sha256": "c2ec0bc72bfb87e6d9e9d742d4e18de1ea30cabc09db943cc2d2db1c0b9135bd",
+      "physicalSizeMetres": [
+        0.5,
+        0.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "OpenGL normal from the analytic grate height (6 mm relief, slots recessed)"
+      ]
+    },
+    {
+      "path": "public/materials/heron/decals/drain-grate-orm.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 139330,
+      "sha256": "90df8d1083b3a68e6a462b10926e90f5cb1244d0c6ae881633a39ab284292be2",
+      "physicalSizeMetres": [
+        0.5,
+        0.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "R AO (cavity, slots 0.08), G roughness, B metalness 0.85 on iron, 0 on rust"
+      ]
+    },
+    {
+      "path": "public/materials/heron/decals/graffiti-atlas.webp",
+      "kind": "decal atlas 2x2",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 114744,
+      "sha256": "06cef430f5741e0c138fe2f083cb88e2c96dd1d3ecc9605db2a2aacf6afeea8a",
+      "physicalSizeMetres": [
+        1.2,
+        1.2
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "four abstract tags: Catmull-Rom loops of random points, marker widths, outlines, drips",
+        "no letters, words, crew names or brands; porous-wall alpha noise"
+      ],
+      "cells": "2x2, each 512 px, about 1.2 m wide",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/decals/leaf-stains.webp",
+      "kind": "decal",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "bytes": 131864,
+      "sha256": "b44defef397f213a9d7da9d0184de201688d17896a5d65b48f75f1aa3b6fac92",
+      "physicalSizeMetres": [
+        2.0,
+        2.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "70 lobed leaf silhouettes with stems, random size 6-15 cm, wrap-placed (tileable)",
+        "soft blur, tannin rim darkening, alpha noise"
+      ],
+      "seamRatio": 0.744,
+      "tiles": "both",
+      "alphaMode": "BLEND"
+    },
+    {
+      "path": "public/materials/heron/windows/interiors-color.webp",
+      "kind": "window atlas",
+      "pixels": [
+        2048,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 37434,
+      "sha256": "5e7275957b6e3d948c1fcde8f3ba2fdcdb2ba831e3289f6a7a7bb2d48444700c",
+      "physicalSizeMetres": [
+        1.2,
+        1.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "32 procedural dusk room views (8 x 4 cells, 256 px each; painted at 480 x 600 px for a 1.2 x 1.5 m pane, then squeezed)",
+        "kinds: drawn curtains with warm glow, net curtains (full and cafe), venetian blinds (warm and cool), lamp glow, dark unlit room, TV-blue glow, kitchen strip light",
+        "warm 2700 K dominant; kitchens 4000 K, some blinds cool, TVs blue",
+        "colour = dim unlit albedo (sRGB)"
+      ],
+      "cells": [
+        {
+          "cell": 0,
+          "row": 0,
+          "col": 0,
+          "kind": "nets"
+        },
+        {
+          "cell": 1,
+          "row": 0,
+          "col": 1,
+          "kind": "nets"
+        },
+        {
+          "cell": 2,
+          "row": 0,
+          "col": 2,
+          "kind": "nets"
+        },
+        {
+          "cell": 3,
+          "row": 0,
+          "col": 3,
+          "kind": "nets"
+        },
+        {
+          "cell": 4,
+          "row": 0,
+          "col": 4,
+          "kind": "curtains"
+        },
+        {
+          "cell": 5,
+          "row": 0,
+          "col": 5,
+          "kind": "dark"
+        },
+        {
+          "cell": 6,
+          "row": 0,
+          "col": 6,
+          "kind": "curtains"
+        },
+        {
+          "cell": 7,
+          "row": 0,
+          "col": 7,
+          "kind": "curtains"
+        },
+        {
+          "cell": 8,
+          "row": 1,
+          "col": 0,
+          "kind": "lamp"
+        },
+        {
+          "cell": 9,
+          "row": 1,
+          "col": 1,
+          "kind": "lamp"
+        },
+        {
+          "cell": 10,
+          "row": 1,
+          "col": 2,
+          "kind": "dark"
+        },
+        {
+          "cell": 11,
+          "row": 1,
+          "col": 3,
+          "kind": "dark"
+        },
+        {
+          "cell": 12,
+          "row": 1,
+          "col": 4,
+          "kind": "dark"
+        },
+        {
+          "cell": 13,
+          "row": 1,
+          "col": 5,
+          "kind": "lamp"
+        },
+        {
+          "cell": 14,
+          "row": 1,
+          "col": 6,
+          "kind": "dark"
+        },
+        {
+          "cell": 15,
+          "row": 1,
+          "col": 7,
+          "kind": "lamp"
+        },
+        {
+          "cell": 16,
+          "row": 2,
+          "col": 0,
+          "kind": "curtains"
+        },
+        {
+          "cell": 17,
+          "row": 2,
+          "col": 1,
+          "kind": "blinds"
+        },
+        {
+          "cell": 18,
+          "row": 2,
+          "col": 2,
+          "kind": "kitchen"
+        },
+        {
+          "cell": 19,
+          "row": 2,
+          "col": 3,
+          "kind": "blinds"
+        },
+        {
+          "cell": 20,
+          "row": 2,
+          "col": 4,
+          "kind": "kitchen"
+        },
+        {
+          "cell": 21,
+          "row": 2,
+          "col": 5,
+          "kind": "blinds"
+        },
+        {
+          "cell": 22,
+          "row": 2,
+          "col": 6,
+          "kind": "nets"
+        },
+        {
+          "cell": 23,
+          "row": 2,
+          "col": 7,
+          "kind": "tv"
+        },
+        {
+          "cell": 24,
+          "row": 3,
+          "col": 0,
+          "kind": "tv"
+        },
+        {
+          "cell": 25,
+          "row": 3,
+          "col": 1,
+          "kind": "tv"
+        },
+        {
+          "cell": 26,
+          "row": 3,
+          "col": 2,
+          "kind": "curtains"
+        },
+        {
+          "cell": 27,
+          "row": 3,
+          "col": 3,
+          "kind": "curtains"
+        },
+        {
+          "cell": 28,
+          "row": 3,
+          "col": 4,
+          "kind": "blinds"
+        },
+        {
+          "cell": 29,
+          "row": 3,
+          "col": 5,
+          "kind": "kitchen"
+        },
+        {
+          "cell": 30,
+          "row": 3,
+          "col": 6,
+          "kind": "nets"
+        },
+        {
+          "cell": 31,
+          "row": 3,
+          "col": 7,
+          "kind": "blinds"
+        }
+      ],
+      "grid": [
+        8,
+        4
+      ]
+    },
+    {
+      "path": "public/materials/heron/windows/interiors-emit.webp",
+      "kind": "window atlas",
+      "pixels": [
+        2048,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 59410,
+      "sha256": "87b6d93e01454796c5e24d0bc42f4988cac03640ef2a16b997446a7ed2520dea",
+      "physicalSizeMetres": [
+        1.2,
+        1.5
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "32 procedural dusk room views (8 x 4 cells, 256 px each; painted at 480 x 600 px for a 1.2 x 1.5 m pane, then squeezed)",
+        "kinds: drawn curtains with warm glow, net curtains (full and cafe), venetian blinds (warm and cool), lamp glow, dark unlit room, TV-blue glow, kitchen strip light",
+        "warm 2700 K dominant; kitchens 4000 K, some blinds cool, TVs blue",
+        "emit = emitted radiance, normalised so the brightest 0.3% clip at 1, sRGB encoded"
+      ],
+      "grid": [
+        8,
+        4
+      ]
+    },
+    {
+      "path": "public/materials/heron/backdrop/tower-facade-color.webp",
+      "kind": "backdrop",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 232742,
+      "sha256": "e4f49fa33407c692e5eea27d4cfda893c1a8aec626263464c529eabbb946820c",
+      "physicalSizeMetres": [
+        12.0,
+        12.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "12 m x 12 m patch: 4 storeys of 3 m x 4 bays of 3 m; precast panels with joints, 0.3 m floor slab bands",
+        "1.9 x 1.35 m windows with white uPVC frames and mullion, spandrels, sills, rain staining under sills",
+        "panel concrete = hr_concrete_cast colour (periodic resample, 2 m drawn at 3 m)",
+        "glazing: dark sky reflection blended with interiors from the window atlas; 7 of 16 windows lit"
+      ],
+      "seamRatio": 1.0,
+      "tiles": "both",
+      "seamRatioMethod": "phase-matched (4 bays x 4 storeys)"
+    },
+    {
+      "path": "public/materials/heron/backdrop/tower-facade-emit.webp",
+      "kind": "backdrop",
+      "pixels": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "bytes": 10254,
+      "sha256": "b98d5a2b4495865af7402f8b78b9a447d564f851d3bb09335348ded39615028a",
+      "physicalSizeMetres": [
+        12.0,
+        12.0
+      ],
+      "source": "procedural (original, this script)",
+      "processing": [
+        "glazing: dark sky reflection blended with interiors from the window atlas; 7 of 16 windows lit",
+        "emit = lit window radiance, sRGB encoded"
+      ],
+      "tiles": "both"
+    }
+  ],
+  "materials": [
+    {
+      "name": "hr_brick_stock",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_brick_stock-color.webp",
+        "hr_brick_stock-normal.webp",
+        "hr_brick_stock-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_brick_red",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_brick_red-color.webp",
+        "hr_brick_red-normal.webp",
+        "hr_brick_red-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_brick_painted",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_brick_painted-color.webp",
+        "hr_brick_painted-normal.webp",
+        "hr_brick_painted-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_concrete_cast",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_concrete_cast-color.webp",
+        "hr_concrete_cast-normal.webp",
+        "hr_concrete_cast-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_concrete_board",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_concrete_board-color.webp",
+        "hr_concrete_board-normal.webp",
+        "hr_concrete_board-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_concrete_rough",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_concrete_rough-color.webp",
+        "hr_concrete_rough-normal.webp",
+        "hr_concrete_rough-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_render",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_render-color.webp",
+        "hr_render-normal.webp",
+        "hr_render-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_asphalt",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_asphalt-color.webp",
+        "hr_asphalt-normal.webp",
+        "hr_asphalt-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_court",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_court-color.webp",
+        "hr_court-normal.webp",
+        "hr_court-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_paving",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_paving-color.webp",
+        "hr_paving-normal.webp",
+        "hr_paving-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_pavers_red",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_pavers_red-color.webp",
+        "hr_pavers_red-normal.webp",
+        "hr_pavers_red-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_roof_felt",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_roof_felt-color.webp",
+        "hr_roof_felt-normal.webp",
+        "hr_roof_felt-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_steel_black",
+      "kind": "tiling",
+      "coverageMetres": 1,
+      "mappingScale": 1.0,
+      "maps": [
+        "hr_steel_black-color.webp",
+        "hr_steel_black-normal.webp",
+        "hr_steel_black-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_steel_galv",
+      "kind": "tiling",
+      "coverageMetres": 1,
+      "mappingScale": 1.0,
+      "maps": [
+        "hr_steel_galv-color.webp",
+        "hr_steel_galv-normal.webp",
+        "hr_steel_galv-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_steel_aged",
+      "kind": "tiling",
+      "coverageMetres": 1,
+      "mappingScale": 1.0,
+      "maps": [
+        "hr_steel_aged-color.webp",
+        "hr_steel_aged-normal.webp",
+        "hr_steel_aged-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_shutter",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_shutter-color.webp",
+        "hr_shutter-normal.webp",
+        "hr_shutter-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_rubber",
+      "kind": "tiling",
+      "coverageMetres": 1,
+      "mappingScale": 1.0,
+      "maps": [
+        "hr_rubber-color.webp",
+        "hr_rubber-normal.webp",
+        "hr_rubber-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_timber",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_timber-color.webp",
+        "hr_timber-normal.webp",
+        "hr_timber-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_soil",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_soil-color.webp",
+        "hr_soil-normal.webp",
+        "hr_soil-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_grass_ground",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_grass_ground-color.webp",
+        "hr_grass_ground-normal.webp",
+        "hr_grass_ground-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_gravel",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_gravel-color.webp",
+        "hr_gravel-normal.webp",
+        "hr_gravel-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_plaster",
+      "kind": "tiling",
+      "coverageMetres": 2,
+      "mappingScale": 0.5,
+      "maps": [
+        "hr_plaster-color.webp",
+        "hr_plaster-normal.webp",
+        "hr_plaster-orm.webp"
+      ]
+    },
+    {
+      "name": "hr_glass",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.012,
+        0.015,
+        0.02
+      ],
+      "roughness": 0.06,
+      "metallic": 0.0,
+      "note": "dark reflective glazing, opaque (no transmission)"
+    },
+    {
+      "name": "hr_glass_lit",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.03,
+        0.02,
+        0.012
+      ],
+      "roughness": 0.08,
+      "metallic": 0.0,
+      "note": "warm 2700 K emissive glazing, strength 3",
+      "emission": {
+        "colorLinear": [
+          1.0,
+          0.56,
+          0.24
+        ],
+        "strength": 3.0,
+        "note": "linear (1.0, 0.56, 0.24), approximately a 2700 K blackbody"
+      }
+    },
+    {
+      "name": "hr_lamp_emit",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.8,
+        0.7,
+        0.55
+      ],
+      "roughness": 0.3,
+      "metallic": 0.0,
+      "note": "lamp lenses, warm 2700 K, strength 12",
+      "emission": {
+        "colorLinear": [
+          1.0,
+          0.56,
+          0.24
+        ],
+        "strength": 12.0,
+        "note": "linear (1.0, 0.56, 0.24), approximately a 2700 K blackbody"
+      }
+    },
+    {
+      "name": "hr_upvc_white",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.62,
+        0.62,
+        0.6
+      ],
+      "roughness": 0.38,
+      "metallic": 0.0,
+      "note": "weathered white uPVC"
+    },
+    {
+      "name": "hr_paint_yellow",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.55,
+        0.36,
+        0.035
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "note": "muted safety yellow"
+    },
+    {
+      "name": "hr_plastic_black",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.018,
+        0.018,
+        0.019
+      ],
+      "roughness": 0.48,
+      "metallic": 0.0,
+      "note": "black plastic"
+    },
+    {
+      "name": "hr_plastic_green",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.025,
+        0.06,
+        0.035
+      ],
+      "roughness": 0.5,
+      "metallic": 0.0,
+      "note": "dark bin green"
+    },
+    {
+      "name": "hr_door_paint",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "roughness": 0.42,
+      "metallic": 0.0,
+      "note": "gloss front-door paint; base colour = active colour attribute (glTF COLOR_0)"
+    },
+    {
+      "name": "hr_signage",
+      "kind": "plain",
+      "baseColorLinear": [
+        0.7,
+        0.7,
+        0.68
+      ],
+      "roughness": 0.4,
+      "metallic": 0.0,
+      "note": "sign face backing"
+    },
+    {
+      "name": "hr_decal_rain_streaks",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/rain-streaks.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_grime",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/grime.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_moss",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/moss-edge.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_puddle",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/puddle-color.webp",
+        "decals/puddle-normal.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_line_yellow",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/line-yellow.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_line_white",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/line-white.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_drain",
+      "kind": "decal",
+      "alphaMode": "MASK",
+      "maps": [
+        "decals/drain-grate-color.webp",
+        "decals/drain-grate-normal.webp",
+        "decals/drain-grate-orm.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_graffiti",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/graffiti-atlas.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_decal_leaf_stains",
+      "kind": "decal",
+      "alphaMode": "BLEND",
+      "maps": [
+        "decals/leaf-stains.webp"
+      ],
+      "uv": "0-1 over the decal quad (Mapping scale 1)"
+    },
+    {
+      "name": "hr_window_interior",
+      "kind": "atlas",
+      "maps": [
+        "windows/interiors-color.webp",
+        "windows/interiors-emit.webp"
+      ],
+      "emissionStrength": 3.0,
+      "note": "8 x 4 atlas, one cell per pane (UV the pane to one cell); emission strength 3",
+      "coverageMetres": null
+    },
+    {
+      "name": "hr_backdrop_tower",
+      "kind": "atlas",
+      "maps": [
+        "backdrop/tower-facade-color.webp",
+        "backdrop/tower-facade-emit.webp"
+      ],
+      "emissionStrength": 2.5,
+      "note": "distant tower facade, 12 m tile, lit windows strength 2.5",
+      "coverageMetres": 12.0
+    }
+  ],
+  "blend": {
+    "path": "assets/blender/heron-reach/materials.blend",
+    "bytes": 24517113,
+    "imagesPacked": true,
+    "materialCount": 42,
+    "buildSeconds": 0.6,
+    "graph": "UV Map -> Mapping (Point, scale 1/coverage) -> Image Texture; normal via Normal Map node; ORM via Separate Color (R -> glTF Material Output.Occlusion, G -> Roughness, B -> Metallic)"
+  },
+  "gltfExportTest": {
+    "WEBP": {
+      "file": "/tmp/claude-0/-home-claude-Onsite/527592e2-1aa2-5555-b55a-405f618191b3/scratchpad/hr_export_test_webp.glb",
+      "bytes": 2127840,
+      "seconds": 0.74,
+      "extensionsUsed": [
+        "KHR_materials_emissive_strength",
+        "KHR_texture_transform",
+        "EXT_texture_webp"
+      ],
+      "extensionsRequired": [
+        "KHR_texture_transform",
+        "EXT_texture_webp"
+      ],
+      "images": [
+        {
+          "name": "hr_brick_stock-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_brick_stock-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_brick_stock-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "graffiti-atlas",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "tower-facade-emit",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "tower-facade-color",
+          "mimeType": "image/webp"
+        }
+      ],
+      "materials": [
+        {
+          "name": "hr_brick_stock",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 2,
+            "image": 2,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 1,
+            "image": 1,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 0,
+            "image": 0,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 1,
+            "image": 1,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_steel_galv",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 5,
+            "image": 5,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 4,
+            "image": 4,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 3,
+            "image": 3,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 4,
+            "image": 4,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_decal_drain",
+          "alphaMode": "MASK",
+          "baseColor": {
+            "texture": 8,
+            "image": 8,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 7,
+            "image": 7,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 6,
+            "image": 6,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 7,
+            "image": 7,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_glass_lit",
+          "alphaMode": "OPAQUE",
+          "emissiveFactor": [
+            1,
+            0.5600000023841858,
+            0.23999999463558197
+          ],
+          "extensions": {
+            "KHR_materials_emissive_strength": {
+              "emissiveStrength": 3
+            }
+          }
+        },
+        {
+          "name": "hr_decal_graffiti",
+          "alphaMode": "BLEND",
+          "baseColor": {
+            "texture": 9,
+            "image": 9,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_backdrop_tower",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 11,
+            "image": 11,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.9166666641831398
+              ],
+              "scale": [
+                0.0833333358168602,
+                0.0833333358168602
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "emissive": {
+            "texture": 10,
+            "image": 10,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.9166666641831398
+              ],
+              "scale": [
+                0.0833333358168602,
+                0.0833333358168602
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "emissiveFactor": [
+            1,
+            1,
+            1
+          ],
+          "extensions": {
+            "KHR_materials_emissive_strength": {
+              "emissiveStrength": 2.5
+            }
+          }
+        }
+      ]
+    },
+    "AUTO": {
+      "file": "/tmp/claude-0/-home-claude-Onsite/527592e2-1aa2-5555-b55a-405f618191b3/scratchpad/hr_export_test_auto.glb",
+      "bytes": 2127840,
+      "seconds": 0.05,
+      "extensionsUsed": [
+        "KHR_materials_emissive_strength",
+        "KHR_texture_transform",
+        "EXT_texture_webp"
+      ],
+      "extensionsRequired": [
+        "KHR_texture_transform",
+        "EXT_texture_webp"
+      ],
+      "images": [
+        {
+          "name": "hr_brick_stock-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_brick_stock-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_brick_stock-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "hr_steel_galv-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-normal",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-orm",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "drain-grate-color",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "graffiti-atlas",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "tower-facade-emit",
+          "mimeType": "image/webp"
+        },
+        {
+          "name": "tower-facade-color",
+          "mimeType": "image/webp"
+        }
+      ],
+      "materials": [
+        {
+          "name": "hr_brick_stock",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 2,
+            "image": 2,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 1,
+            "image": 1,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 0,
+            "image": 0,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 1,
+            "image": 1,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.5
+              ],
+              "scale": [
+                0.5,
+                0.5
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_steel_galv",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 5,
+            "image": 5,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 4,
+            "image": 4,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 3,
+            "image": 3,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 4,
+            "image": 4,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_decal_drain",
+          "alphaMode": "MASK",
+          "baseColor": {
+            "texture": 8,
+            "image": 8,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "metallicRoughness": {
+            "texture": 7,
+            "image": 7,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "normal": {
+            "texture": 6,
+            "image": 6,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "occlusion": {
+            "texture": 7,
+            "image": 7,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_glass_lit",
+          "alphaMode": "OPAQUE",
+          "emissiveFactor": [
+            1,
+            0.5600000023841858,
+            0.23999999463558197
+          ],
+          "extensions": {
+            "KHR_materials_emissive_strength": {
+              "emissiveStrength": 3
+            }
+          }
+        },
+        {
+          "name": "hr_decal_graffiti",
+          "alphaMode": "BLEND",
+          "baseColor": {
+            "texture": 9,
+            "image": 9,
+            "KHR_texture_transform": null,
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          }
+        },
+        {
+          "name": "hr_backdrop_tower",
+          "alphaMode": "OPAQUE",
+          "baseColor": {
+            "texture": 11,
+            "image": 11,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.9166666641831398
+              ],
+              "scale": [
+                0.0833333358168602,
+                0.0833333358168602
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "emissive": {
+            "texture": 10,
+            "image": 10,
+            "KHR_texture_transform": {
+              "offset": [
+                0,
+                0.9166666641831398
+              ],
+              "scale": [
+                0.0833333358168602,
+                0.0833333358168602
+              ]
+            },
+            "textureExtensions": [
+              "EXT_texture_webp"
+            ]
+          },
+          "emissiveFactor": [
+            1,
+            1,
+            1
+          ],
+          "extensions": {
+            "KHR_materials_emissive_strength": {
+              "emissiveStrength": 2.5
+            }
+          }
+        }
+      ]
+    }
+  },
+  "previews": {
+    "tex-swatches.png": {
+      "path": "/mnt/project-files/heron-reach/progress/kit/tex-swatches.png",
+      "renderSeconds": 31.3,
+      "settings": "Cycles CPU, 960 x 640, 64 samples, OpenImageDenoise, AgX; world RGB (0.05, 0.075, 0.16) x 1.6 plus one 2700 K point light"
+    },
+    "tex-tiling.png": {
+      "path": "/mnt/project-files/heron-reach/progress/kit/tex-tiling.png",
+      "renderSeconds": 54.8,
+      "settings": "Cycles CPU, 960 x 640, 64 samples, OpenImageDenoise, AgX; world RGB (0.05, 0.075, 0.16) x 1.6 plus one 2700 K point light"
+    },
+    "tex-decals.png": {
+      "path": "/mnt/project-files/heron-reach/progress/kit/tex-decals.png",
+      "renderSeconds": 84.5,
+      "settings": "Cycles CPU, 960 x 640, 64 samples, OpenImageDenoise, AgX; world RGB (0.05, 0.075, 0.16) x 1.6 plus one 2700 K point light"
+    }
+  },
+  "webpTotalBytes": 22261006,
+  "webpFiles": {
+    "public/materials/heron/backdrop/tower-facade-color.webp": 232742,
+    "public/materials/heron/backdrop/tower-facade-emit.webp": 10254,
+    "public/materials/heron/decals/drain-grate-color.webp": 76770,
+    "public/materials/heron/decals/drain-grate-normal.webp": 41356,
+    "public/materials/heron/decals/drain-grate-orm.webp": 139330,
+    "public/materials/heron/decals/graffiti-atlas.webp": 114744,
+    "public/materials/heron/decals/grime.webp": 101812,
+    "public/materials/heron/decals/leaf-stains.webp": 131864,
+    "public/materials/heron/decals/line-white.webp": 53344,
+    "public/materials/heron/decals/line-yellow.webp": 133614,
+    "public/materials/heron/decals/moss-edge.webp": 272020,
+    "public/materials/heron/decals/puddle-color.webp": 27124,
+    "public/materials/heron/decals/puddle-mask.webp": 8094,
+    "public/materials/heron/decals/puddle-normal.webp": 3082,
+    "public/materials/heron/decals/rain-streaks.webp": 44868,
+    "public/materials/heron/hr_asphalt-color.webp": 480810,
+    "public/materials/heron/hr_asphalt-normal.webp": 425920,
+    "public/materials/heron/hr_asphalt-orm.webp": 411926,
+    "public/materials/heron/hr_brick_painted-color.webp": 401684,
+    "public/materials/heron/hr_brick_painted-normal.webp": 208368,
+    "public/materials/heron/hr_brick_painted-orm.webp": 85706,
+    "public/materials/heron/hr_brick_red-color.webp": 393768,
+    "public/materials/heron/hr_brick_red-normal.webp": 295610,
+    "public/materials/heron/hr_brick_red-orm.webp": 93554,
+    "public/materials/heron/hr_brick_stock-color.webp": 414058,
+    "public/materials/heron/hr_brick_stock-normal.webp": 311248,
+    "public/materials/heron/hr_brick_stock-orm.webp": 102734,
+    "public/materials/heron/hr_concrete_board-color.webp": 409030,
+    "public/materials/heron/hr_concrete_board-normal.webp": 459524,
+    "public/materials/heron/hr_concrete_board-orm.webp": 264976,
+    "public/materials/heron/hr_concrete_cast-color.webp": 412520,
+    "public/materials/heron/hr_concrete_cast-normal.webp": 297640,
+    "public/materials/heron/hr_concrete_cast-orm.webp": 269016,
+    "public/materials/heron/hr_concrete_rough-color.webp": 469702,
+    "public/materials/heron/hr_concrete_rough-normal.webp": 428918,
+    "public/materials/heron/hr_concrete_rough-orm.webp": 300678,
+    "public/materials/heron/hr_court-color.webp": 462258,
+    "public/materials/heron/hr_court-normal.webp": 317310,
+    "public/materials/heron/hr_court-orm.webp": 412132,
+    "public/materials/heron/hr_grass_ground-color.webp": 564820,
+    "public/materials/heron/hr_grass_ground-normal.webp": 385768,
+    "public/materials/heron/hr_grass_ground-orm.webp": 388878,
+    "public/materials/heron/hr_gravel-color.webp": 511906,
+    "public/materials/heron/hr_gravel-normal.webp": 389424,
+    "public/materials/heron/hr_gravel-orm.webp": 232114,
+    "public/materials/heron/hr_pavers_red-color.webp": 114612,
+    "public/materials/heron/hr_pavers_red-normal.webp": 136042,
+    "public/materials/heron/hr_pavers_red-orm.webp": 107924,
+    "public/materials/heron/hr_paving-color.webp": 453856,
+    "public/materials/heron/hr_paving-normal.webp": 295972,
+    "public/materials/heron/hr_paving-orm.webp": 88350,
+    "public/materials/heron/hr_plaster-color.webp": 343836,
+    "public/materials/heron/hr_plaster-normal.webp": 116598,
+    "public/materials/heron/hr_plaster-orm.webp": 292550,
+    "public/materials/heron/hr_render-color.webp": 434866,
+    "public/materials/heron/hr_render-normal.webp": 276686,
+    "public/materials/heron/hr_render-orm.webp": 306466,
+    "public/materials/heron/hr_roof_felt-color.webp": 489530,
+    "public/materials/heron/hr_roof_felt-normal.webp": 387674,
+    "public/materials/heron/hr_roof_felt-orm.webp": 430022,
+    "public/materials/heron/hr_rubber-color.webp": 464502,
+    "public/materials/heron/hr_rubber-normal.webp": 364370,
+    "public/materials/heron/hr_rubber-orm.webp": 404640,
+    "public/materials/heron/hr_shutter-color.webp": 95764,
+    "public/materials/heron/hr_shutter-normal.webp": 61250,
+    "public/materials/heron/hr_shutter-orm.webp": 25076,
+    "public/materials/heron/hr_soil-color.webp": 462146,
+    "public/materials/heron/hr_soil-normal.webp": 482454,
+    "public/materials/heron/hr_soil-orm.webp": 371218,
+    "public/materials/heron/hr_steel_aged-color.webp": 404116,
+    "public/materials/heron/hr_steel_aged-normal.webp": 314750,
+    "public/materials/heron/hr_steel_aged-orm.webp": 411308,
+    "public/materials/heron/hr_steel_black-color.webp": 284930,
+    "public/materials/heron/hr_steel_black-normal.webp": 131808,
+    "public/materials/heron/hr_steel_black-orm.webp": 330826,
+    "public/materials/heron/hr_steel_galv-color.webp": 339640,
+    "public/materials/heron/hr_steel_galv-normal.webp": 59970,
+    "public/materials/heron/hr_steel_galv-orm.webp": 275948,
+    "public/materials/heron/hr_timber-color.webp": 312462,
+    "public/materials/heron/hr_timber-normal.webp": 247770,
+    "public/materials/heron/hr_timber-orm.webp": 51212,
+    "public/materials/heron/windows/interiors-color.webp": 37434,
+    "public/materials/heron/windows/interiors-emit.webp": 59410
+  },
+  "generator": [
+    "scripts/maps/art/heron_tex_common.py",
+    "scripts/maps/art/make_heron_textures.py",
+    "scripts/maps/art/make_heron_decals.py",
+    "scripts/maps/art/make_heron_materials.py"
+  ]
+}

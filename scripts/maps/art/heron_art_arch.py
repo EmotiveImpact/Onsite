@@ -678,8 +678,104 @@ class Arch:
                     self.B.box(grp, 'hr_wood_furniture', a, a + .04, y0, y1 - .04, c, c + .04, faces='+x -x +z -z')
 
     def cores_extra(self):
-        """Big painted level numbers on the stair walls and ceiling bulkheads."""
-        pass
+        """Big painted level numbers on each core's back wall, above the half landing, as in the
+        stairwell concept frame; and ceiling strip fittings under the decks where the dressing
+        plan put a ceiling light."""
+        labels = {-3: 'B1', 0: 'G', 3: '1', 6: '2', 9: 'R'}
+        for c in self.cores:
+            cx, cz = c['rect'][0], c['rect'][1]
+            mirror = c['mirror']
+            wz = cz + 5.8 if mirror else cz + .2
+            n = -1 if mirror else 1
+            for y in c['levels']:
+                grp = self.g('cores', cx + 3, cz + 3)
+                label = labels.get(int(round(y)), str(y))
+                self.painted_text(grp, 'hr_paint_yellow', label, cx + 3, y + 2.0, wz + n * .006, n, size=.95 if len(label) == 1 else .75)
+        for a in self.L.get('anchors', []):
+            if a['kind'] != 'ceiling':
+                continue
+            x, y, z = a['x'], a['y'], a['z']
+            grp = self.g('galleries', x, z)
+            top = y + .26
+            self.B.box(grp, 'hr_steel_galv', x - .65, x + .65, top - .09, top, z - .09, z + .09, faces='+x -x +z -z -y', mats={'-y': None})
+            self.B.box(grp, 'hr_lamp_emit', x - .6, x + .6, top - .1, top - .09, z - .06, z + .06, faces='-y')
+
+    def painted_text(self, grp, mat, text, x, y, z, n, size=.9):
+        """Text as flat mesh on a wall facing +z (n=1) or -z (n=-1), centred on (x, y)."""
+        import bpy
+        cu = bpy.data.curves.new('label', 'FONT')
+        cu.body = text
+        cu.size = size
+        cu.align_x = 'CENTER'
+        cu.align_y = 'CENTER'
+        ob = bpy.data.objects.new('label', cu)
+        bpy.context.scene.collection.objects.link(ob)
+        dg = bpy.context.evaluated_depsgraph_get()
+        me = ob.evaluated_get(dg).to_mesh()
+        me.calc_loop_triangles()
+        acc = self.B.acc(grp, mat)
+        for t in me.loop_triangles:
+            pts = [me.vertices[i].co for i in t.vertices]
+            # font X -> along the wall (mirrored for -z so it reads correctly), font Y -> up
+            P = [(x + n * p.x, y + p.y, z) for p in pts]
+            if n < 0:
+                P = P[::-1]
+            acc.poly(P, [(0, 0)] * 3, (1, 1, 1, 1))
+        ob.evaluated_get(dg).to_mesh_clear()
+        bpy.data.objects.remove(ob)
+        bpy.data.curves.remove(cu)
+
+    def facade_dressing(self):
+        """Render-only kit fittings on the brick: downpipes at wall ends, satellite dishes, airbricks
+        and kitchen vents. Placements use the kits' wall mount (origin on the face, front outward)."""
+        rng = random.Random(77)
+        items = []
+        face = lambda nx, nz: math.atan2(nx, nz)
+        for b in self.L['boxes']:
+            bid = b['id']
+            if not bid.startswith('wall-') or b['mat'] == 'plaster' or bid == 'wall-B1':
+                continue
+            x0, x1, y0, y1, z0, z1 = b['x0'], b['x1'], b['y0'], b['y1'], b['z0'], b['z1']
+            cx, cz = (x0 + x1) / 2, (z0 + z1) / 2
+            kind, rect = self.owner_rect(cx, cz, (y0 + y1) / 2)
+            if kind != 'home':
+                continue
+            mx, mz = rect[0] + rect[2] / 2, rect[1] + rect[3] / 2
+            along_x = (x1 - x0) > (z1 - z0)
+            run = (x1 - x0) if along_x else (z1 - z0)
+            if run < 2.5:
+                continue
+            if along_x:
+                nz = 1 if cz > mz else -1
+                fz = z1 if nz > 0 else z0
+                pos = lambda u: (x0 + u, fz)
+                ry = face(0, nz)
+                probe = lambda u, y: (x0 + u, y, fz + nz * .25)
+            else:
+                nx = 1 if cx > mx else -1
+                fx = x1 if nx > 0 else x0
+                pos = lambda u: (fx, z0 + u)
+                ry = face(nx, 0)
+                probe = lambda u, y: (fx + nx * .25, y, z0 + u)
+            if self.occupied(probe(run / 2, y0 + 1.5)):
+                continue
+            if rng.random() < .45:
+                u = .35 if rng.random() < .5 else run - .35
+                for k in range(int((y1 - y0) // 3) + 1):
+                    if y0 + k * 3 + 2.7 <= y1 + .05 and not self.occupied(probe(u, y0 + k * 3 + 1.4)):
+                        px, pz = pos(u)
+                        items.append(dict(asset='DOWNPIPE_3M', x=px, y=y0 + k * 3, z=pz, ry=ry))
+            if y0 >= 2.9 and rng.random() < .22:
+                px, pz = pos(rng.uniform(.6, run - .6))
+                items.append(dict(asset='SATELLITE_DISH', x=px, y=y0 + rng.uniform(1.9, 2.3), z=pz, ry=ry))
+            if y0 < .1 and rng.random() < .6:
+                for k in range(2):
+                    px, pz = pos(rng.uniform(.5, run - .5))
+                    items.append(dict(asset='AIRBRICK', x=px, y=.22, z=pz, ry=ry))
+            if rng.random() < .25:
+                px, pz = pos(rng.uniform(.5, run - .5))
+                items.append(dict(asset='VENT_GRILLE', x=px, y=y0 + 2.3, z=pz, ry=ry))
+        self.facade_items = items
 
     def boundary(self):
         """Dwarf brick wall with piers and railings along the site edge (collision is the 3 m box)."""
@@ -723,3 +819,5 @@ class Arch:
         self.undercroft()
         self.interiors()
         self.boundary()
+        self.cores_extra()
+        self.facade_dressing()

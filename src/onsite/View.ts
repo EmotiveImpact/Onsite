@@ -74,11 +74,11 @@ export class View {
    // ?art=0 shows the collision blockout instead of the Blender build, for checking the two against each other.
    const useArt=new URLSearchParams(location.search).get('art')!=='0';
    const arch=useArt?HeronReachMaterials.load(this.software?2:8).then(async m=>{
-    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),loadHeronReachKits(gltf,m,reach.dressing.items,m.names()),this.grass.build(gltf,this.software?1.5:5)]);
+    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...reach.dressing.items,...facade],m.names())),this.grass.build(gltf,this.software?1.5:5)]);
     const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
-   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w)}else this.blockout();
+   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry)}else this.blockout();
    this.rifle=rifle.scene;return character.scene;
   }
   const [estate,character,rifle]=await Promise.all([
@@ -121,7 +121,7 @@ export class View {
   }
  }
  private reachDetails(){
-  for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w);
+  for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);
   for(const l of reach.lights){const p=new THREE.PointLight('#ffb366',l.kind==='street'||l.kind==='court'?30:14,l.kind==='street'||l.kind==='court'?12:6,2);p.position.set(l.x,l.y,l.z);this.scene.add(p)}
  }
  installWeapon(g:Encounter){this.activeRifle=donorRifle(this.rifle,g.fx.flashTexture,g.fx.flameTexture);g.arsenal.installRifle(this.activeRifle);this.vmCamera.add(g.arsenal.holder,g.arsenal.muzzleLight)}

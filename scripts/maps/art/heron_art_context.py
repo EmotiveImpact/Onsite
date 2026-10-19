@@ -80,7 +80,7 @@ class Context:
                 mat = 'hr_window_interior' if is_lit else 'hr_window_dark'
                 hw = ww / 2
                 p = [(cx - ux * hw, vy, cz - uz * hw), (cx + ux * hw, vy, cz + uz * hw), (cx + ux * hw, vy + wh, cz + uz * hw), (cx - ux * hw, vy + wh, cz - uz * hw)]
-                if (p[1][0] - p[0][0]) * nz - (p[1][2] - p[0][2]) * nx > 0:
+                if (p[1][0] - p[0][0]) * nz - (p[1][2] - p[0][2]) * nx < 0:
                     p = [p[1], p[0], p[3], p[2]]
                 self.B.quad(grp, mat, *p)
                 acc = self.B.acc(grp, mat)

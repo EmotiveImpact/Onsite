@@ -191,8 +191,8 @@ export function planDressing(L:DressingInput){
 
  // --- the street beyond the boundary: parked cars and vans, render-only ---
  const park=(x:number,z:number,ry:number)=>deco(R()<.22?'VAN_DELIVERY':'CAR_HATCHBACK',x,0,z,ry+(R()-.5)*.04);
- for(let x=SX+6;x<SX+SW;x+=5.6+R()*2.5){if(R()<.8)park(x,SZ-4.2,Math.PI/2);if(R()<.8)park(x,SZ+SD+4.2,-Math.PI/2)}
- for(let z=SZ+6;z<SZ+SD;z+=5.6+R()*2.5){if(R()<.8)park(SX-4.2,z,0);if(R()<.8)park(SX+SW+4.2,z,Math.PI)}
+ for(let x=SX+6;x<SX+SW;x+=5.6+R()*2.5){if(R()<.5)park(x,SZ-4.2,Math.PI/2);if(R()<.5)park(x,SZ+SD+4.2,-Math.PI/2)}
+ for(let z=SZ+6;z<SZ+SD;z+=5.6+R()*2.5){if(R()<.5)park(SX-4.2,z,0);if(R()<.5)park(SX+SW+4.2,z,Math.PI)}
  for(let x=SX+3;x<SX+SW;x+=9)for(const z of [SZ-1.4,SZ+SD+1.4])deco('LAMP_COLUMN',x,0,z,0),anchors.push({x,y:4.75,z,kind:'street'});
 
  return {items,anchors,colliders:blockers};

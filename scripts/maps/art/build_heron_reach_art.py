@@ -61,6 +61,9 @@ def main():
     with open(grass, 'w') as f:
         json.dump({'cell': 2, 'cells': [[round(x, 2), round(z, 2)] for x, z in arch.grass_cells]}, f, separators=(',', ':'))
 
+    with open(os.path.join(ROOT, 'public', 'models', 'heron-reach', 'facade-dressing.json'), 'w') as f:
+        json.dump([{k: (round(v, 3) if isinstance(v, float) else v) for k, v in it.items()} for it in arch.facade_items], f, separators=(',', ':'))
+
     bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=OUT, compress=True)
     print(f'built {len(objs)} objects, {tris} triangles, {len(mats.report)} materials in {time.time() - t0:.1f}s -> {OUT}')

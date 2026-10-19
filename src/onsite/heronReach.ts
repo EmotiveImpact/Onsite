@@ -260,6 +260,8 @@ export const lampAnchors=dressing.anchors.map(a=>({...at(a.x,a.y,a.z),kind:a.kin
 export const lights=(map.lights as {id:string;x:number;z:number;y:number;kind:string}[]).map(l=>({...at(l.x,l.y,l.z),kind:l.kind}));
 export const signs=[
  ...blocks.map(b=>{const south=b.rect[1]>60,z=south?b.rect[1]-.02:b.rect[1]+b.rect[3]+.02;return {text:b.name,...at(b.rect[0]+b.rect[2]/2,2.5,z),w:4,ry:south?Math.PI:0}}),
+ // Shop fascias over the north shopfronts.
+ ...(spec.shops as unknown as {name:string;rect:Rect}[]).map(sh=>({text:sh.name,...at(sh.rect[0]+sh.rect[2]/2,2.52,sh.rect[1]-.03),w:Math.min(5.2,sh.rect[2]-.8),ry:Math.PI})),
  ...cores.map(c=>{const [cx,cz]=c.rect,south=c.mirrorZ,levels=c.levels.map(y=>Object.keys(levelY).find(k=>levelY[k]===y)).join(' / ');return {text:`${c.id} / ${levels}`,...at(cx+3,2.65,south?cz-.02:cz+6.02),w:1.6,ry:south?Math.PI:0}}),
 ];
 export const overview={from:at(-14,34,128),to:at(70,0,58)};
