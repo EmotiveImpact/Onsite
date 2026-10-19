@@ -2179,9 +2179,13 @@
   "hr_paint_white": {
    "textured": false,
    "fallback": false
+  },
+  "hr_tower_elev": {
+   "textured": false,
+   "fallback": false
   }
  },
- "objects": 731,
- "faces": 113010,
- "triangles": 227084
+ "objects": 733,
+ "faces": 99702,
+ "triangles": 200468
 }

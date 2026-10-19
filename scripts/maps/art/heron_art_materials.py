@@ -52,6 +52,7 @@ PLAIN = {
     'hr_kitchen': ((.6, .6, .58), .35, 0),
     'hr_ceramic': ((.75, .75, .74), .2, 0),
     'hr_window_dark': ((.01, .012, .015), .3, 0),
+    'hr_tower_elev': ((.32, .31, .3), .9, 0),  # runtime swaps in the painted elevation
 }
 EMIT = {
     'hr_glass_lit': ((1.0, .62, .32), 4.0),

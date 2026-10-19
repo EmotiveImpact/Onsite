@@ -23,7 +23,7 @@ MATS = os.path.join(ROOT, 'public', 'materials', 'heron', 'runtime-materials.jso
 DOUBLE = set()  # window cards are single-sided so homes can see out
 # Damp ground: roughness multiplier on top of the ORM map, so lamps and sky read in the paving.
 WET = {'hr_asphalt': .42, 'hr_paving': .5, 'hr_pavers_red': .5, 'hr_court': .45, 'hr_concrete_cast': .8, 'hr_roof_felt': .6}
-NO_SHADOW = {'hr_glass', 'hr_glass_lit', 'hr_window_interior', 'hr_window_dark', 'hr_lamp_emit'}
+NO_SHADOW = {'hr_tower_elev', 'hr_glass', 'hr_glass_lit', 'hr_window_interior', 'hr_window_dark', 'hr_lamp_emit'}
 
 
 def rel(path):
@@ -51,6 +51,10 @@ def runtime_material(name):
         if os.path.exists(os.path.join(atlas, 'interiors-color.webp')):
             entry.update(map=rel(os.path.join(atlas, 'interiors-color.webp')), emissiveMap=rel(os.path.join(atlas, 'interiors-emit.webp')),
                          color=[1, 1, 1], emissive=[1, .8, .6], emissiveIntensity=2.2, repeat=1)
+    if name == 'hr_tower_elev':
+        back = os.path.join(ROOT, 'public', 'materials', 'heron', 'backdrop')
+        entry.update(map=rel(os.path.join(back, 'tower-elevation-a-color.webp')), emissiveMap=rel(os.path.join(back, 'tower-elevation-a-emit.webp')),
+                     normalMap=None, ormMap=None, color=[1, 1, 1], emissive=[1, .85, .7], emissiveIntensity=1.8, roughness=.9, metalness=0, repeat=1)
     if name == 'hr_glass':
         entry['opacity'] = .28
     if name in WET:

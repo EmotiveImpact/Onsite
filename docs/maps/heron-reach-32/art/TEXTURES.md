@@ -22,6 +22,9 @@ packing (R occlusion, G roughness, B metalness).
   2700 K dominates; kitchens are 4000 K and TVs are blue.
 - **Distant tower facade** in `backdrop/`: a 12 by 12 m tileable patch of a 1960s precast
   concrete tower (4 storeys by 4 bays) with colour and emission maps for low-poly background towers.
+- **Skyline tower elevation** in `backdrop/tower-elevation-a-{color,emit}.webp` (512 by 1620): a
+  full 20-storey tower front used as `hr_tower_elev` on every skyline tower, tiled across in 17 m
+  bays. Its emission map keeps only the warm lit windows.
 - **Blender library** `assets/blender/heron-reach/materials.blend`: one Principled BSDF material
   per conventions name, the 9 plain shared materials, `hr_decal_<kind>` materials, plus
   `hr_window_interior` and `hr_backdrop_tower`. Images are packed. Tiling materials use
@@ -50,6 +53,10 @@ Full results are in the manifest under `gltfExportTest`.
   existing CC0 sets in `public/materials/pbr/` were not needed, so the manifest's
   `reusedPolyHaven` field is empty for every set.
 - The graffiti is abstract marker strokes only: no letters, words, crew names or brands.
+- The skyline tower elevation started as an image generated with ChatGPT on the project's own
+  account for this map (`docs/maps/heron-reach-32/art/generated/backdrop/tower-elevation-a.png`
+  on the `claude/chatgpt-images` branch). It was cropped to the building, resized, and its
+  emission map was keyed from the warm window pixels with numpy. It depicts no real building.
 
 ## Rebuilding
 

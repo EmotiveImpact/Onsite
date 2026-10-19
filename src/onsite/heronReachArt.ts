@@ -105,9 +105,11 @@ const OX=72,OZ=60;
 const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(p.sx??1,1,1));
 
 /** Instance the props and foliage kits from the dressing plan: one InstancedMesh per asset part. */
+/** The South London gap-fill kits name their shared surfaces mat_*; they take the texture kit's sets. */
+const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
 export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
- const kits=await Promise.all(['props','foliage'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const kits=await Promise.all(['props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
  const missing:string[]=[];
  for(const [asset,list]of byAsset){
@@ -116,7 +118,7 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
   root.traverse(o=>{
    if(!(o instanceof THREE.Mesh))return;
    const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
-   const material=shared.has(src.name)?mats.get(src.name):src;
+   const name=SL_SHARED[src.name]??src.name,material=shared.has(name)?mats.get(name):src;
    const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();

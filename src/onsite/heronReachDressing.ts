@@ -27,6 +27,13 @@ export type DecalPlan={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:num
 type Collider={type:string;size?:number[];radius?:number;height?:number;center:number[]}
 const assets=new Map((kit.assets as {name:string;collider:Collider|Collider[]|null;needsCollision:boolean}[]).map(a=>[a.name,a]));
 
+// The South London gap-fill kits (assets/blender/heron-reach/south-london) have no collider list;
+// these boxes follow their measured bounds, in the same Blender axes as the props manifest.
+const box=(sx:number,sy:number,sz:number,cx=0,cy=0):Collider=>({type:'box',size:[sx,sy,sz],center:[cx,cy,sz/2]});
+for(const [name,collider]of [['hr_prop_bin_store_3bay',box(3.9,2.1,1.77,0,.05)],['hr_prop_substation',box(4.62,3.3,2.92,.16)],['hr_prop_palisade_panel_2m75',box(2.8,.12,2.5)],
+ ['hr_prop_palisade_panel_2m75_green',box(2.8,.12,2.5)],['hr_prop_dumped_sofa',box(1.6,1.06,.87,0,-.1)],['hr_prop_grit_bin',box(.92,.61,.76)],['hr_prop_clothes_airer',box(.82,.62,.95)],
+ ['hr_prop_sign_no_dogs_please_post',box(.12,.12,2.4,0,.04)],['hr_prop_sign_dog_fouling_post',box(.12,.12,2.4,0,.04)]] as const)assets.set(name,{name,collider,needsCollision:true});
+
 function rng(seed:number){let s=seed>>>0;return()=>{s=(s+0x6d2b79f5)>>>0;let t=s;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296}}
 
 /** Box colliders for a placement. Blender +Y is map -z; rotation is about y in quarter turns only. */
@@ -196,11 +203,83 @@ export function planDressing(L:DressingInput){
  tryPlace({asset:'SHOPPING_TROLLEY',x:118,y:0,z:45.6,ry:.0,collide:true});
  deco('MATTRESS_DUMPED',40.5,0,58.2,0.3);
 
+ // --- South London fittings: block names, fire and bin signs, dry risers, grit bins, bin stores ---
+ const local=(p:{x:number;z:number},ry:number,ox:number,oz:number)=>({x:p.x+ox*Math.cos(ry)+oz*Math.sin(ry),z:p.z-ox*Math.sin(ry)+oz*Math.cos(ry)});
+ const houses:Record<string,string>={NW:'hr_prop_sign_block_rowan',SW:'hr_prop_sign_block_birch'};
+ const blockOf=(x:number,z:number)=>L.blocks.find(b=>x>=b.rect[0]-1&&x<=b.rect[0]+b.rect[2]+1&&Math.abs(z-(z<60?b.rect[1]+b.rect[3]:b.rect[1]))<8&&(z<60)===(b.rect[1]<60));
+ const stores=new Set<string>();
+ for(const c of L.cores){
+  const [cx,cz,cw,cd]=c.rect,south=c.mirror,wz=south?cz:cz+cd,n=south?-1:1,ry=face(0,n),wall=wz+n*.012;
+  const g=L.doors.find(d=>d.owner===c.id&&d.y===0);if(!g)continue;
+  const b=blockOf(g.x,g.z),house=b&&houses[b.id];
+  if(house)deco(house,g.x,g.height+.18,wall,ry);
+  deco('hr_prop_sign_close_the_door',g.x+g.width/2+.35,1.55,wall,ry);
+  deco('hr_prop_dry_riser_inlet',g.x-g.width/2-.62,.12,wall,ry);deco('hr_prop_sign_dry_riser',g.x-g.width/2-.62,.68,wall,ry);
+  deco('hr_prop_sign_cctv',cx+cw-.15,2.1,wall,ry);
+  if(R()<.5)deco(R()<.5?'hr_prop_sign_no_ball_games':'hr_prop_sign_no_ball_games_please',south?cx-.012:cx+cw+.012,1.55,cz+cd/2,face(south?-1:1,0));
+ }
+ // One three-bay bin store per block, backed onto the boundary wall nearest it, gates facing in,
+ // with a grit bin beside it.
+ for(const b of L.blocks){
+  const north=b.rect[1]<60,z=north?SZ+1.6:SZ+SD-1.6,ry=north?0:Math.PI;
+  for(const dx of [6,-6,12,-12,18,-18,2,-2]){
+   const p={x:b.rect[0]+b.rect[2]/2+dx,z};
+   if(!tryPlace({asset:'hr_prop_bin_store_3bay',x:p.x,y:0,z:p.z,ry,collide:true},.1,.4))continue;
+   for(const [ox,m]of [[-1.47,1],[1.47,-1]] as const){const q=local(p,ry,ox,.85);deco('hr_prop_bin_store_gate_leaf',q.x,0,q.z,ry+(m<0?-.45:0),m)}
+   const q=local(p,ry,0,.98);deco('hr_prop_sign_bins_tuesday',q.x,1.2,q.z,ry);
+   for(const side of [1,-1]){const g=local(p,ry,side*2.75,-.6);if(tryPlace({asset:'hr_prop_grit_bin',x:g.x,y:0,z:g.z,ry,collide:true},.1,.2))break}
+   break;
+  }
+ }
+ // Fly-tipping where the service lanes meet the bins: a notice, a sofa, a telly and a pallet.
+ for(const sh of L.shops.filter(s=>s.rect[2]>s.rect[3]&&s.rect[1]<60)){
+  const [x,z,w,d]=sh.rect,wall=z+d+.012;
+  deco('hr_prop_sign_no_fly_tipping',x+w/2,1.6,wall,0);
+  for(const u of [w/2+1.2,w/2-1.5,w/2+3.5,w/2-4])if(tryPlace({asset:'hr_prop_dumped_sofa',x:x+u,y:0,z:z+d+.95,ry:Math.PI+.12,collide:true},.05,.2)){deco('hr_prop_crt_tv_dumped',x+u-1.6,0,z+d+.6,2.6);deco('hr_prop_pallet',x+u+1.9,0,z+d+.7,.3);break}
+ }
+ // Washing out on a few gallery balconies.
+ let airers=0;
+ for(const d of L.doors)if(d.y>=3&&airers<5&&!L.cores.some(c=>c.id===d.owner)&&R()<.3){
+  const ox=d.axis==='x'?2.7:d.normal*.75,oz=d.axis==='x'?d.normal*.75:2.7;
+  if(tryPlace({asset:'hr_prop_clothes_airer',x:d.x+ox,y:d.y,z:d.z+oz,ry:R()*.3,collide:true},.1,.3))airers++;
+ }
+ // Garden signs on posts, and nitrous canisters where people hang about.
+ for(const p of L.planting.slice(0,6)){const [x,z,w]=p.rect;tryPlace({asset:R()<.5?'hr_prop_sign_no_dogs_please_post':'hr_prop_sign_dog_fouling_post',x:x+w/2,y:0,z:z-.35,ry:Math.PI,collide:true},.05,.3)}
+ for(const o of L.objectives){const a=R()*6.28;deco('hr_prop_litter_nos_canisters',o.x+Math.cos(a)*(o.radius+2.5),.002,o.z+Math.sin(a)*(o.radius+2.5),R()*6.28)}
+ {const [x,z,w,d]=L.cage.rect;deco('hr_prop_litter_nos_canisters',x-1.2,.002,z+d*.7,1.1)}
+ // A substation fenced off in a corner of the site.
+ for(const [x,z,ry]of [[SX+5.5,SZ+SD-5,Math.PI],[SX+SW-5.5,SZ+SD-5,Math.PI],[SX+5.5,SZ+5,0],[SX+SW-5.5,SZ+5,0]] as const){
+  if(!tryPlace({asset:'hr_prop_substation',x,y:0,z,ry,collide:true},.2))continue;
+  deco('hr_prop_sign_danger_of_death',x,1.6,z+(ry?-1:1)*1.66,ry);
+  for(const ox of [-1.4,1.4]){const q=local({x,z},ry,ox+.16,2.9);tryPlace({asset:'hr_prop_palisade_panel_2m75',x:q.x,y:0,z:q.z,ry,collide:true},0,-.06)}
+  for(const ox of [-2.66,2.98]){const q=local({x,z},ry,ox,1.5);tryPlace({asset:'hr_prop_palisade_panel_2m75',x:q.x,y:0,z:q.z,ry:ry+Math.PI/2,collide:true},0,-.06)}
+  break;
+ }
+ // Estate boards by the two entrances, outside the wall.
+ for(const s of L.spawns){const [x,z,w]=s.rect,west=x<SX+SW/2;deco('hr_prop_sign_estate_board_posts',west?SX-1.9:SX+SW+1.9,0,z-2.5,face(west?-1:1,0))}
+
  // --- the street beyond the boundary: parked cars and vans, render-only ---
- const park=(x:number,z:number,ry:number)=>deco(R()<.22?'VAN_DELIVERY':'CAR_HATCHBACK',x,0,z,ry+(R()-.5)*.04);
+ // Bike hangars and speed cushions take a few of the kerbside bays.
+ const kept:number[][]=[];
+ for(const [x,z,ry]of [[SX+38,SZ-4.4,0],[SX+SW-38,SZ+SD+4.4,Math.PI],[SX+SW-50,SZ-4.4,0]] as const){deco('hr_prop_bike_hangar',x,0,z,ry);kept.push([x,z])}
+ for(const x of [SX+60,SX+SW-24])for(const z of [SZ-5.8,SZ-10.2,SZ+SD+5.8,SZ+SD+10.2]){deco('hr_prop_speed_hump_rubber_3m',x,0,z,0);kept.push([x,z])}
+ const park=(x:number,z:number,ry:number)=>{if(!kept.some(([kx,kz])=>Math.abs(kx-x)<4.5&&Math.abs(kz-z)<3))deco(R()<.22?'VAN_DELIVERY':'CAR_HATCHBACK',x,0,z,ry+(R()-.5)*.04)};
  for(let x=SX+6;x<SX+SW;x+=5.6+R()*2.5){if(R()<.5)park(x,SZ-4.2,Math.PI/2);if(R()<.5)park(x,SZ+SD+4.2,-Math.PI/2)}
  for(let z=SZ+6;z<SZ+SD;z+=5.6+R()*2.5){if(R()<.5)park(SX-4.2,z,0);if(R()<.5)park(SX+SW+4.2,z,Math.PI)}
  for(let x=SX+3;x<SX+SW;x+=9)for(const z of [SZ-1.4,SZ+SD+1.4])deco('LAMP_COLUMN',x,0,z,0),anchors.push({x,y:4.75,z,kind:'street'});
+
+ // --- undercroft: caged wall lamps and ceiling services ---
+ let caged=0;
+ for(const u of L.undercroftWalls){const len=Math.hypot(u.x1-u.x0,u.z1-u.z0);if(len<6||caged>=14)continue;
+  // nx, nz is the B1 floor edge's outward normal; the wall's room face looks the other way.
+  const k=.5,x=u.x0+(u.x1-u.x0)*k-u.nx*.012,z=u.z0+(u.z1-u.z0)*k-u.nz*.012;
+  if(anchors.some(a=>a.kind==='wall'&&a.y<0&&Math.hypot(a.x-x,a.z-z)<9))continue;
+  deco('hr_prop_light_wall_caged',x,-.8,z,face(-u.nx,-u.nz));anchors.push({x:x-u.nx*.3,y:-.85,z:z-u.nz*.3,kind:'wall'});caged++;
+ }
+ for(const b of L.boxes.filter(b=>b.id==='slab'&&Math.abs(b.y1+3)<.01))for(let z=b.z0+2.2;z<b.z1-1;z+=12)for(let x=b.x0+.2;x+3<b.x1;x+=3){
+  const top=-.2;if(hits(x-.05,x+3.05,top-.5,top-.02,z-.25,z+.25,solid))continue;
+  deco('hr_prop_cable_tray_3m',x,top,z,0);if(!hits(x-.05,x+3.05,top-.5,top-.02,z+.3,z+.75,solid))deco('hr_prop_ceiling_pipes_3m',x,top,z+.5,0);
+ }
 
  // --- decals: puddles where water collects, tags in the undercroft and on core flanks ---
  const decals:DecalPlan[]=[];
@@ -212,7 +291,7 @@ export function planDressing(L:DressingInput){
  }
  for(let i=0;i<18&&i<L.undercroftWalls.length;i++){
   const u=L.undercroftWalls[Math.floor(R()*L.undercroftWalls.length)],len=Math.hypot(u.x1-u.x0,u.z1-u.z0);if(len<3)continue;
-  const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k+u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k+u.nz*.012,w,h:w*.55,ry:face(u.nx,u.nz),cell:Math.floor(R()*4)});
+  const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k-u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k-u.nz*.012,w,h:w*.55,ry:face(-u.nx,-u.nz),cell:Math.floor(R()*4)});
  }
  for(const c of L.cores){const [cx,cz,cw,cd]=c.rect;if(R()<.5)continue;const side=R()<.5?-1:1,x=side<0?cx-.012:cx+cw+.012;decals.push({kind:'graffiti',x,y:1.3,z:cz+cd/2,w:2.2,h:1.2,ry:face(side,0),cell:Math.floor(R()*4)})}
 

@@ -2,8 +2,8 @@
 
 Nothing here can be reached. It gives the frame the concept art's depth: a street with parked cars
 around the estate wall, three- and four-storey terraces and walk-up blocks across the road, and
-council towers with lit windows at 70 to 260 m. Windows are flat cards (lit or dark) with frames,
-so the skyline reads at blue hour without any texture; the tower facade texture refines it later.
+council towers at 150 to 300 m. Low blocks carry flat window cards (lit or dark); the towers wear
+the painted tower elevation, whose lit windows glow.
 """
 import math
 import random
@@ -98,6 +98,19 @@ class Context:
             self.facade_cards(grp, x0, z0, x0, z1, 0, h, (-1, 0), storey=storey, lit=lit)
             self.facade_cards(grp, x1, z1, x1, z0, 0, h, (1, 0), storey=storey, lit=lit)
 
+    def elevation(self, grp, x0, z0, x1, z1, h, n_out):
+        """The painted tower elevation (a ChatGPT image, see TEXTURES.md) on one face, 5 cm proud.
+        It tiles across in 17 m bays and spans the full height, with its lit windows as emission."""
+        nx, nz = n_out
+        length = math.hypot(x1 - x0, z1 - z0)
+        rx, rz = nz, -nx  # right, seen from outside
+        cx, cz = (x0 + x1) / 2 + nx * .05, (z0 + z1) / 2 + nz * .05
+        hw, k = length / 2, max(1, round(length / 17))
+        u0 = self.rng.choice([0, .5])
+        p = [(cx - rx * hw, 0, cz - rz * hw), (cx + rx * hw, 0, cz + rz * hw), (cx + rx * hw, h, cz + rz * hw), (cx - rx * hw, h, cz - rz * hw)]
+        self.B.quad(grp, 'hr_tower_elev', *p)
+        self.B.acc(grp, 'hr_tower_elev').uvs[-1] = [(u0, 0), (u0 + k, 0), (u0 + k, 1), (u0, 1)]
+
     def grime(self):
         def f(p):
             k = 1 - .3 * math.exp(-p[1] / .6)
@@ -153,7 +166,10 @@ class Context:
             if ry:
                 fw, fd = fd, fw
             mat = rng.choice(['hr_concrete_board', 'hr_concrete_cast', 'hr_brick_stock', 'hr_concrete_board'])
-            self.block('OUT/towers', tx - fw / 2, tz - fd / 2, tx + fw / 2, tz + fd / 2, h, mat, lit=.38, storey=2.75, parapet=1.2)
+            x0, z0, x1, z1 = tx - fw / 2, tz - fd / 2, tx + fw / 2, tz + fd / 2
+            self.block('OUT/towers', x0, z0, x1, z1, h, mat, parapet=1.2, windows=False)
+            for (ax, az, bx, bz, n) in [(x0, z1, x1, z1, (0, 1)), (x1, z0, x0, z0, (0, -1)), (x0, z0, x0, z1, (-1, 0)), (x1, z1, x1, z0, (1, 0))]:
+                self.elevation('OUT/towers', ax, az, bx, bz, h, n)
             # lift motor room on top
             self.B.box('OUT/towers', mat, tx - 3, tx + 3, h, h + 3.2, tz - 2.5, tz + 2.5, col=self.grime())
         # a few walk-up slab blocks in the middle distance

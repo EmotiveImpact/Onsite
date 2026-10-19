@@ -23,7 +23,8 @@ That runs, in order:
      ground zoning with kerbs; undercroft services; home interiors; painted core level numbers;
      ceiling strip fittings; and facade fittings (downpipes, dishes, airbricks, vents).
    - `heron_art_context.py`: the render-only world outside the wall, with the street ring,
-     terraces across the road and a tower skyline at 150 to 300 m.
+     terraces across the road and a tower skyline at 150 to 300 m wearing the painted tower
+     elevation.
    - `heron_art_materials.py`: materials by name from the texture kit's WebP sets.
    It also writes `public/models/heron-reach/grass-cells.json` and `facade-dressing.json`.
 3. `export_heron_reach_glb.py` joins the authored objects per 36 × 30 m chunk and material, then
@@ -65,8 +66,11 @@ deterministic dressing plan. It places:
 - roof plant;
 - the Cage panels and goals;
 - trees and planting;
-- litter;
-- parked cars beyond the wall.
+- litter and fly-tipping;
+- block name, fire, bin and dog signs, dry risers, grit bins, bin stores and a fenced substation;
+- caged lamps, cable trays and pipes in the undercroft;
+- washing out on a few gallery balconies;
+- parked cars, bike hangars and speed cushions beyond the wall.
 
 Colliding props keep door arcs, spawn positions, stair entries and objective rings clear.
 
@@ -77,7 +81,13 @@ Colliding props keep door arcs, spawn positions, stair entries and objective rin
 - [Foliage](FOLIAGE.md): London planes, birches, grass clumps, shrubs, hedges, weeds and leaf
   litter.
 - [Props](PROPS.md): street furniture, the Cage, vehicles, shop fit-outs and clutter.
+- South London gap-fill kits in
+  [`assets/blender/heron-reach/south-london/`](../../../../assets/blender/heron-reach/south-london/README.md):
+  estate signs, car park and undercroft services, bin stores, a substation, garages, bike hangars,
+  window grilles and fly-tipping. Made in this project by the South London research thread; the
+  runtime maps their shared `mat_*` surfaces onto the texture kit's `hr_*` sets.
 - [Conventions](CONVENTIONS.md): the shared rules for scale, UVs, material names and files.
 
-Every texture and mesh is original work, made procedurally or by script in this repository. No
+Every texture and mesh is original work, made procedurally or by script in this project, apart
+from the skyline tower elevation, which started as a ChatGPT image made for this map. No
 downloaded assets are used. The kit documents record how each one was made.

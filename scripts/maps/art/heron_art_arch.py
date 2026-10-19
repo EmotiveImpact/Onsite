@@ -775,6 +775,21 @@ class Arch:
             if rng.random() < .25:
                 px, pz = pos(rng.uniform(.5, run - .5))
                 items.append(dict(asset='VENT_GRILLE', x=px, y=y0 + 2.3, z=pz, ry=ry))
+        # Ground-floor flats: security grilles on some windows and a boarded void now and then
+        # (South London kit, origin at the bottom of the back face).
+        voids = set()
+        for w in self.windows:
+            if w['y'] > 3 or w['w'] < 1:
+                continue
+            sill = w['y'] - w['h'] / 2
+            block = ('N' if w['z'] < 60 else 'S') + ('W' if w['x'] < 72 else 'E')
+            r = rng.random()
+            if block not in voids and not w['lit'] and r < .12:
+                voids.add(block)
+                items.append(dict(asset='hr_prop_void_sheet_window_1200', x=w['x'], y=sill - .02, z=w['z'], ry=face(w['nx'], w['nz'])))
+            elif r < .3:
+                asset = 'hr_prop_window_grille_1200' if rng.random() < .65 else 'hr_prop_window_grille_1200_black'
+                items.append(dict(asset=asset, x=w['x'], y=sill + .08, z=w['z'], ry=face(w['nx'], w['nz'])))
         self.facade_items = items
 
     def boundary(self):
