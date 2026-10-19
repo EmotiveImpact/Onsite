@@ -22,6 +22,7 @@ export class View {
  readonly renderer:THREE.WebGLRenderer; readonly scene=new THREE.Scene(); readonly camera=new THREE.PerspectiveCamera(74,1,.06,160);
  readonly vmScene=new THREE.Scene(); readonly vmCamera=new THREE.PerspectiveCamera(52,1,.025,8);
  readonly software:boolean; readonly mats:Record<string,THREE.MeshStandardMaterial>={}; readonly ready:Promise<THREE.Object3D>;
+ private readonly coverageSamples:number;
  private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
  private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
  private activeRifle?:ReturnType<typeof donorRifle>;
@@ -31,6 +32,9 @@ export class View {
   this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
   probe?.getExtension('WEBGL_lose_context')?.loseContext();
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:!this.software});
+  const gl=this.renderer.getContext() as WebGL2RenderingContext;
+  const samples=this.software?[]:Array.from(gl.getInternalformatParameter(gl.RENDERBUFFER,gl.RGBA16F,gl.SAMPLES) as Int32Array);
+  this.coverageSamples=samples.includes(2)?2:samples.includes(4)?4:0;
   // Inspection-only resolution override for readable art review on a software renderer.
   // It does not enable GPU-only effects or change normal gameplay's reduced profile.
   const query=new URLSearchParams(location.search),requestedDpr=Number(query.get('dpr')??.5);
@@ -85,7 +89,7 @@ export class View {
     // Render replacements only. The original dressing plan still owns every collider.
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
     const dressing=reach.dressing.items.map(p=>p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
-    const [built,kits,grass,shops,gallery]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software)]);
+    const [built,kits,grass,shops,gallery]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software,this.coverageSamples>0)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0)]);
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
     const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
@@ -135,6 +139,9 @@ export class View {
   if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,artAnchors);this.scene.add(this.rain.mesh)}
   if(!this.software){
    const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
+   // Canvas antialiasing does not multisample the composer's offscreen scene target.
+   // Enable coverage only when this half-float format supports it; otherwise nets blend alpha.
+   this.composer.renderTarget1.samples=this.composer.renderTarget2.samples=this.coverageSamples;
    this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.32,.45,1.15));this.composer.addPass(new OutputPass());
   }
  }

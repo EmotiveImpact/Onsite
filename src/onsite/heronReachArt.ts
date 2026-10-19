@@ -170,7 +170,7 @@ function voidSheet(asset:string){
  m=new THREE.MeshStandardMaterial({name:'hr_void_sheet',map:t,roughness:.55,metalness:.7});voidSheets.set(asset,m);return m;
 }
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
-export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false){
+export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false,coverage=false){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
  const kits=await Promise.all(['cage','winter','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
@@ -186,7 +186,7 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
    if(base==='hr_prop_fridge_light')src.emissiveIntensity=2.5;
    if(base==='hr_prop_cage_mesh'||base==='hr_prop_goal_net'){
     // Keep the fractional wire coverage in distant mips instead of dropping every wire.
-    src.alphaTest=software?.005:.18;src.alphaToCoverage=!software;src.transparent=software;src.depthWrite=!software;
+    src.alphaTest=coverage?.18:.005;src.alphaToCoverage=coverage;src.transparent=!coverage;src.depthWrite=coverage;
     if(src.map){src.map.anisotropy=software?2:8;src.map.minFilter=THREE.LinearMipmapLinearFilter;src.map.generateMipmaps=true;src.map.needsUpdate=true}
    }
    const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
