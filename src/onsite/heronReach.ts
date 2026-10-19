@@ -8,6 +8,7 @@
 import spec from '../../docs/maps/heron-reach-32/blueprints/build-spec.json'
 import map from '../../docs/maps/heron-reach-32/map.json'
 import type {Solid} from './level'
+import {planDressing} from './heronReachDressing'
 
 type Rect=[number,number,number,number] // x, z, width, depth
 type Box={id:string;x0:number;x1:number;y0:number;y1:number;z0:number;z1:number;mat:string}
@@ -233,6 +234,14 @@ deviations.push('Two five-a-side goals stand against the Cage end fences, offset
 deviations.push('A 3 m boundary wall with railings encloses the 144 x 120 m site; the street and skyline beyond are render-only.');
 deviations.push('The Cage fence (2.6 m, four 4 m gates) blocks movement but not bullets or bot sight, matching the B500 note that the mesh is visually porous.');
 
+// Dressing: kit placements from the same layout; large props add their own box colliders.
+export const dressing=planDressing({site:SITE,boxes,floorsG:floors.G,cores:art.cores,
+ doors:art.openings.filter(o=>o.kind==='door'),shops:spec.shops as unknown as Parameters<typeof planDressing>[0]['shops'],blocks:blocks as unknown as Parameters<typeof planDressing>[0]['blocks'],
+ lights:map.lights as {id:string;x:number;y:number;z:number;kind:string}[],trees,cage,planting:map.planting as unknown as {id:string;rect:Rect}[],
+ objectives:map.objectives as {x:number;z:number;radius:number}[],spawns:map.spawns as unknown as {rect:Rect;positions:{x:number;z:number}[]}[],stairs:art.cores.map(c=>c.rect)});
+boxes.push(...dressing.colliders);
+deviations.push(`Dressing adds ${dressing.colliders.length} prop colliders (lamps, bollards, benches, bins, shop fittings, roof plant); door arcs, spawns, stair entries and objective rings stay clear.`);
+
 const toSolid=(b:Box):Solid=>({id:b.id,x:(b.x0+b.x1)/2-OX,y:(b.y0+b.y1)/2,z:(b.z0+b.z1)/2-OZ,w:b.x1-b.x0,h:b.y1-b.y0,d:b.z1-b.z0,mat:b.mat});
 export const solids:Solid[]=boxes.map(toSolid);
 /** Ids whose top faces are floors. Everything else is wall, guard, furniture, roof or cap. */
@@ -246,6 +255,8 @@ export const botNames=['EAST YARD','THE CAGE','NORTH BRIDGE','GARDEN COURT','CED
 export const objectives=(map.objectives as {id:string;name:string;x:number;z:number;radius:number}[]).map(o=>({...at(o.x,0,o.z),id:o.id,radius:o.radius,minY:-.5,maxY:1.5,label:o.name}));
 /** The Cage is the round's capture; floor-aware so the undercroft below it never counts. */
 export const capture=objectives.find(o=>o.id==='B')!;
+/** Every lamp, wall light and ceiling strip from the dressing plan, for the runtime light pool. */
+export const lampAnchors=dressing.anchors.map(a=>({...at(a.x,a.y,a.z),kind:a.kind}));
 export const lights=(map.lights as {id:string;x:number;z:number;y:number;kind:string}[]).map(l=>({...at(l.x,l.y,l.z),kind:l.kind}));
 export const signs=[
  ...blocks.map(b=>{const south=b.rect[1]>60,z=south?b.rect[1]-.02:b.rect[1]+b.rect[3]+.02;return {text:b.name,...at(b.rect[0]+b.rect[2]/2,2.5,z),w:4,ry:south?Math.PI:0}}),
@@ -256,4 +267,4 @@ export const toMap=(x:number,y:number,z:number)=>({x:x+OX,y,z:z+OZ});
 export {at as fromMap};
 export const layout={site:SITE,levelY,floors,voids,cores:art.cores,homes:art.homes,openings:art.openings,guards:art.guards,columns:art.columns,undercroftWalls:art.undercroftWalls,
  shops:spec.shops,blocks,cover,trees,cage,planting:map.planting,wetAreas:map.wetAreas,detailZones:map.detailZones,lights:map.lights,objectives:map.objectives,spawns:map.spawns,reserves,
- surfaces:map.surfaces,stairs:spec.stairs,deviations};
+ surfaces:map.surfaces,stairs:spec.stairs,deviations,dressing:dressing.items,anchors:dressing.anchors};

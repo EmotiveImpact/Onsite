@@ -40,6 +40,7 @@ PLAIN = {
     'hr_glass': ((.02, .025, .03), .05, 0),
     'hr_upvc_white': ((.7, .7, .68), .45, 0),
     'hr_paint_yellow': ((.7, .5, .02), .55, 0),
+    'hr_paint_white': ((.62, .62, .6), .55, 0),
     'hr_plastic_black': ((.02, .02, .02), .5, 0),
     'hr_plastic_green': ((.02, .12, .05), .5, 0),
     'hr_door_paint': ((.35, .35, .35), .45, 0),
@@ -102,6 +103,7 @@ class Library:
     def make(self, name):
         mat = bpy.data.materials.get(name) or bpy.data.materials.new(name)
         mat.use_nodes = True
+        mat.use_backface_culling = True
         nt = mat.node_tree
         nt.nodes.clear()
         out = nt.nodes.new('ShaderNodeOutputMaterial')
@@ -172,6 +174,9 @@ class Library:
         bsdf.inputs['Roughness'].default_value = rough
         bsdf.inputs['Metallic'].default_value = metal
         if name == 'hr_glass':
+            # Thin glazing over the interior cards: mostly reflection, the room shows through.
             bsdf.inputs['Specular IOR Level'].default_value = .8
+            bsdf.inputs['Alpha'].default_value = .28
+            mat.blend_method = 'BLEND' if hasattr(mat, 'blend_method') else None
         self.report[name] = {'textured': False, 'fallback': name not in PLAIN}
         return mat

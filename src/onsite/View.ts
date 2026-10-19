@@ -7,6 +7,11 @@ import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
 import {donorRifle} from './DonorRifle'
 import {heronCourt,type Level} from './levels'
 import * as reach from './heronReach'
+import {GrassField,HeronReachAtmosphere,HeronReachMaterials,loadHeronReachArch,loadHeronReachKits} from './heronReachArt'
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js'
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js'
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js'
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
@@ -14,7 +19,8 @@ export class View {
  readonly renderer:THREE.WebGLRenderer; readonly scene=new THREE.Scene(); readonly camera=new THREE.PerspectiveCamera(74,1,.06,160);
  readonly vmScene=new THREE.Scene(); readonly vmCamera=new THREE.PerspectiveCamera(52,1,.025,8);
  readonly software:boolean; readonly mats:Record<string,THREE.MeshStandardMaterial>={}; readonly ready:Promise<THREE.Object3D>;
- private rifle!:THREE.Object3D;
+ private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
+ private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();
  private activeRifle?:ReturnType<typeof donorRifle>;
  constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt){
   const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
@@ -30,10 +36,10 @@ export class View {
   const skyTop=new THREE.Color('#344d68'),skyHorizon=new THREE.Color('#939b9e');
   for(let i=0;i<skyGeo.attributes.position.count;i++){const y=skyGeo.attributes.position.getY(i)/120,c=skyHorizon.clone().lerp(skyTop,Math.max(0,y));skyColors.push(c.r,c.g,c.b)}
   skyGeo.setAttribute('color',new THREE.Float32BufferAttribute(skyColors,3));
-  this.scene.add(new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false})));
+  this.sky=new THREE.Mesh(skyGeo,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false}));this.scene.add(this.sky);
   this.camera.rotation.order='YXZ';this.scene.add(this.camera);
-  this.scene.add(new THREE.HemisphereLight('#b4d0ee','#323e43',1.35));
-  const sun=new THREE.DirectionalLight('#b7cce2',1.35);sun.position.set(-18,25,-14);sun.castShadow=true;
+  this.hemi=new THREE.HemisphereLight('#b4d0ee','#323e43',1.35);this.scene.add(this.hemi);
+  const sun=new THREE.DirectionalLight('#b7cce2',1.35);this.sun=sun;sun.position.set(-18,25,-14);sun.castShadow=true;
   sun.shadow.mapSize.set(2048,2048);sun.shadow.normalBias=.025;Object.assign(sun.shadow.camera,{left:-25,right:25,top:25,bottom:-25,near:1,far:90});this.scene.add(sun);
   if(level.id==='heron-reach'){const c=reach.capture;sun.target.position.set(c.x,0,c.z);sun.position.set(c.x-18,25,c.z-14);Object.assign(sun.shadow.camera,{left:-38,right:38,top:38,bottom:-38});this.scene.add(sun.target)}
   this.vmScene.add(this.vmCamera,new THREE.HemisphereLight('#bbd4ed','#222c36',1.4));
@@ -65,8 +71,15 @@ export class View {
   }
   const gltf=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   if(this.level.id==='heron-reach'){
-   const [character,rifle]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),...pending,this.environment()]);
-   this.blockout();this.rifle=rifle.scene;return character.scene;
+   // ?art=0 shows the collision blockout instead of the Blender build, for checking the two against each other.
+   const useArt=new URLSearchParams(location.search).get('art')!=='0';
+   const arch=useArt?HeronReachMaterials.load(this.software?2:8).then(async m=>{
+    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),loadHeronReachKits(gltf,m,reach.dressing.items,m.names()),this.grass.build(gltf,this.software?1.5:5)]);
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass);return root;
+   }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
+   const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
+   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w)}else this.blockout();
+   this.rifle=rifle.scene;return character.scene;
   }
   const [estate,character,rifle]=await Promise.all([
    gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
@@ -93,7 +106,21 @@ export class View {
   }
   const root=new THREE.Group();root.name='ONSITE / Heron Reach blockout (B01 Rowan)';
   for(const [mat,geos]of groups){const m=new THREE.Mesh(mergeGeometries(geos),this.mats[mat]??this.mats.concrete);m.name=mat;m.castShadow=!['glass','lit','guard'].includes(mat);m.receiveShadow=true;root.add(m);geos.forEach(g=>g.dispose())}
-  this.scene.add(root);
+  this.scene.add(root);this.reachDetails();
+ }
+ /** Heron Reach at blue hour: graded dusk sky, cool sky light, lamp pool, glow and bloom. */
+ private blueHour(){
+  this.scene.remove(this.sky);this.camera.near=.1;this.camera.far=600;this.camera.updateProjectionMatrix();
+  this.hemi.color.set('#6f8cbd');this.hemi.groundColor.set('#2a2620');this.hemi.intensity=1.5;
+  this.sun.color.set('#a9bde0');this.sun.intensity=.9;
+  this.renderer.toneMappingExposure=1.3;
+  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software);
+  if(!this.software){
+   const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
+   this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.55,.5,.82));this.composer.addPass(new OutputPass());
+  }
+ }
+ private reachDetails(){
   for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w);
   for(const l of reach.lights){const p=new THREE.PointLight('#ffb366',l.kind==='street'||l.kind==='court'?30:14,l.kind==='street'||l.kind==='court'?12:6,2);p.position.set(l.x,l.y,l.z);this.scene.add(p)}
  }
@@ -143,8 +170,9 @@ export class View {
   this.camera.rotation.set(g.player.pitch+g.arsenal.punch.pitch,g.player.yaw+g.arsenal.punch.yaw,g.arsenal.punch.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
   g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
   if(overview){const o=this.level.overview;this.camera.position.set(o.from.x,o.from.y,o.from.z);this.camera.lookAt(o.to.x,o.to.y,o.to.z);this.camera.fov=74;this.camera.updateProjectionMatrix()}
-  this.renderer.info.reset();this.renderer.autoClear=true;this.renderer.render(this.scene,this.camera);
+  this.atmosphere?.update(this.camera,this.clock.getElapsedTime());this.grass.update(this.camera);
+  this.renderer.info.reset();this.renderer.autoClear=true;if(this.composer)this.composer.render();else this.renderer.render(this.scene,this.camera);
   if(!overview){this.renderer.autoClear=false;this.renderer.clearDepth();this.renderer.render(this.vmScene,this.vmCamera)}this.renderer.autoClear=true;
  }
- resize(){this.renderer.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
+ resize(){this.renderer.setSize(innerWidth,innerHeight);this.composer?.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
 }

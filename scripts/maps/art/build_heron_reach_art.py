@@ -16,6 +16,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import bpy  # noqa: E402
 from heron_art_mesh import Builder  # noqa: E402
 from heron_art_arch import Arch  # noqa: E402
+from heron_art_context import Context  # noqa: E402
 from heron_art_materials import Library, ROOT  # noqa: E402
 
 LAYOUT = os.path.join(ROOT, 'assets', 'blender', 'heron-reach', 'layout.json')
@@ -45,6 +46,7 @@ def main():
     builder = Builder(collection_for)
     arch = Arch(L, builder)
     arch.build_all()
+    Context(L, builder).build_all()
     faces = sum(len(a) for a in builder.groups.values())
     objs = builder.build(mats, smooth_groups=('/columns',))
     tris = sum(sum(len(p.vertices) - 2 for p in o.data.polygons) for o in objs)
@@ -54,6 +56,12 @@ def main():
     with open(os.path.join(ROOT, 'assets', 'blender', 'heron-reach', 'arch-build.json'), 'w') as f:
         json.dump(meta, f, indent=1)
 
+    grass = os.path.join(ROOT, 'public', 'models', 'heron-reach', 'grass-cells.json')
+    os.makedirs(os.path.dirname(grass), exist_ok=True)
+    with open(grass, 'w') as f:
+        json.dump({'cell': 2, 'cells': [[round(x, 2), round(z, 2)] for x, z in arch.grass_cells]}, f, separators=(',', ':'))
+
+    bpy.context.preferences.filepaths.save_version = 0
     bpy.ops.wm.save_as_mainfile(filepath=OUT, compress=True)
     print(f'built {len(objs)} objects, {tris} triangles, {len(mats.report)} materials in {time.time() - t0:.1f}s -> {OUT}')
     missing = [k for k, v in mats.report.items() if not v.get('textured') and k not in ('hr_glass',)]

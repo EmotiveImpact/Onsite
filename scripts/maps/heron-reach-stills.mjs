@@ -6,10 +6,11 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/
 const page=await browser.newPage({viewport:{width:1280,height:720}});const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>m.type()==='error'&&errors.push(m.text()));
 const at=(x,y,z)=>[x-72,y+.04,z-60],face=(dx,dz)=>Math.atan2(-dx,-dz);
 const ticks=async n=>{const t=await page.evaluate(()=>__onsite.snapshot().tick);await page.waitForFunction(t=>__onsite.snapshot().tick>=t,t+n,{timeout:120000,polling:100})};
-await page.goto((process.env.ONSITE_URL||'http://127.0.0.1:5173')+'/?map=heron-reach&inspect');await page.waitForFunction(()=>window.__onsite?.ready,null,{timeout:180000});
+await page.goto((process.env.ONSITE_URL||'http://127.0.0.1:5173')+'/?map=heron-reach&inspect'+(process.env.QUERY||''));await page.waitForFunction(()=>window.__onsite?.ready,null,{timeout:180000});
 await page.evaluate(()=>{document.getElementById('menu').hidden=true});await page.waitForTimeout(1500);await page.screenshot({path:`${out}/00-overview.png`});
 await page.evaluate(()=>{document.getElementById('menu').hidden=false});await page.click('#start');await ticks(10);
-const views=[
+// VIEWS='[[name,x,y,z,dx,dz,pitch],...]' in map coordinates overrides the default viewpoints.
+const views=process.env.VIEWS?JSON.parse(process.env.VIEWS).map(([n,x,y,z,dx,dz,p])=>[n,at(x,y,z),face(dx,dz),p]):[
  ['01-arrival-courtyard',at(50,0,47),face(-8,-15),.08],
  ['02-ground-arcade',at(42,0,34),face(0,-1),.02],
  ['03-s1-stair-from-ground',at(25.15,0,41.2),face(0,-1),.32],

@@ -1,0 +1,168 @@
+import * as THREE from 'three'
+import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
+
+/** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
+type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
+
+export class HeronReachMaterials {
+ readonly mats=new Map<string,THREE.MeshStandardMaterial>();readonly shadow=new Map<string,boolean>();
+ private readonly textures=new Map<string,Promise<THREE.Texture>>();private readonly loader=new THREE.TextureLoader();private pending:Promise<unknown>[]=[];
+ constructor(private readonly lib:Record<string,Entry>,private readonly anisotropy:number){}
+ static async load(anisotropy:number){return new HeronReachMaterials(await (await fetch('/materials/heron/runtime-materials.json')).json(),anisotropy)}
+ private texture(url:string,srgb:boolean,repeat:number){
+  const key=url+'@'+repeat;let t=this.textures.get(key);
+  if(!t){t=this.loader.loadAsync(url).then(tex=>{tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=this.anisotropy;tex.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return tex});this.textures.set(key,t)}
+  return t;
+ }
+ get(name:string){
+  let m=this.mats.get(name);if(m)return m;
+  const e=this.lib[name]??{color:[.5,.5,.5],roughness:.8},repeat=e.repeat??1;
+  m=new THREE.MeshStandardMaterial({name,vertexColors:true,roughness:e.roughness??1,metalness:e.metalness??(e.ormMap?1:0),side:e.doubleSided?THREE.DoubleSide:THREE.FrontSide});
+  if(e.color)m.color.setRGB(e.color[0],e.color[1],e.color[2],THREE.LinearSRGBColorSpace);
+  if(e.emissive){m.emissive.setRGB(e.emissive[0],e.emissive[1],e.emissive[2],THREE.LinearSRGBColorSpace);m.emissiveIntensity=e.emissiveIntensity??1}
+  const mat=m;
+  if(e.map)this.pending.push(this.texture(e.map,true,repeat).then(t=>{mat.map=t;mat.needsUpdate=true}));
+  if(e.emissiveMap)this.pending.push(this.texture(e.emissiveMap,true,repeat).then(t=>{mat.emissiveMap=t;mat.needsUpdate=true}));
+  if(e.normalMap)this.pending.push(this.texture(e.normalMap,false,repeat).then(t=>{mat.normalMap=t;mat.normalScale.set(.8,.8);mat.needsUpdate=true}));
+  // ORM: R occlusion, G roughness, B metalness (glTF packing), so one texture drives all three.
+  if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=1;mat.needsUpdate=true}));
+  if(e.wet)m.envMapIntensity=1.6;
+  if(e.opacity!==undefined){m.transparent=true;m.opacity=e.opacity;m.depthWrite=false;m.envMapIntensity=2.2}
+  this.mats.set(name,m);this.shadow.set(name,e.shadow!==false);return m;
+ }
+ ready(){return Promise.all(this.pending)}
+ names(){return new Set(Object.keys(this.lib))}
+}
+
+/** Load the authored architecture and give every mesh its named material. */
+export async function loadHeronReachArch(gltf:GLTFLoader,mats:HeronReachMaterials){
+ const arch=await gltf.loadAsync('/models/heron-reach/heron-reach-arch.glb');
+ arch.scene.name='ONSITE / Heron Reach (Blender)';
+ arch.scene.traverse(o=>{if(o instanceof THREE.Mesh){
+  const name=(o.material as THREE.Material).name,m=mats.get(name);(o.material as THREE.Material).dispose();
+  o.material=m;o.castShadow=mats.shadow.get(name)!==false;o.receiveShadow=true;
+ }});
+ await mats.ready();
+ return arch.scene;
+}
+
+export type LightAnchor={x:number;y:number;z:number;kind:string;head?:boolean};
+
+function radial(size:number,stops:[number,string][]){
+ const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d')!,gr=g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+ for(const [o,col]of stops)gr.addColorStop(o,col);g.fillStyle=gr;g.fillRect(0,0,size,size);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t;
+}
+
+/**
+ * Blue-hour dusk for Heron Reach: graded sky, cool sky light, warm 2700 K lamps. Real point lights are a
+ * small pool given to the lamps nearest the camera; every lamp also gets a glow sprite and a stretched
+ * wet-ground reflection streak, which is what carries the look of the concept frames at little cost.
+ */
+export class HeronReachAtmosphere {
+ readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:THREE.Mesh[]=[];private next=0;
+ constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean){
+  this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
+  const top=new THREE.Color('#0b1426'),mid=new THREE.Color('#25385a'),horizon=new THREE.Color('#6d6478'),glow=new THREE.Color('#b0806a');
+  scene.background=mid.clone();scene.fog=new THREE.FogExp2('#2a3550',.0062);
+  const sky=new THREE.SphereGeometry(520,48,24),cols:number[]=[],p=sky.attributes.position;
+  for(let i=0;i<p.count;i++){
+   const y=p.getY(i)/520,az=Math.atan2(p.getZ(i),p.getX(i)),warm=Math.max(0,Math.cos(az-2.4))**3*Math.max(0,1-Math.abs(y)*6);
+   const c=y<0?horizon.clone().multiplyScalar(.55):y<.12?horizon.clone().lerp(mid,y/.12):mid.clone().lerp(top,Math.min(1,(y-.12)/.6));
+   c.lerp(glow,warm*.65);cols.push(c.r,c.g,c.b);
+  }
+  sky.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
+  const dome=new THREE.Mesh(sky,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false}));dome.name='blue hour sky';dome.renderOrder=-10;this.group.add(dome);
+  // Reflections come from the same graded sky so glass and wet paving pick up the dusk.
+  const envScene=new THREE.Scene();envScene.add(dome.clone());const pm=new THREE.PMREMGenerator(renderer);
+  scene.environment=pm.fromScene(envScene,.02).texture;scene.environmentIntensity=.55;pm.dispose();
+  const halo=radial(128,[[0,'rgba(255,214,160,1)'],[.18,'rgba(255,170,90,.55)'],[.5,'rgba(255,140,60,.12)'],[1,'rgba(255,120,40,0)']]);
+  const streak=radial(128,[[0,'rgba(255,190,120,.9)'],[.35,'rgba(255,150,80,.35)'],[1,'rgba(255,120,60,0)']]);
+  const haloMat=new THREE.SpriteMaterial({map:halo,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:true});
+  const streakMat=new THREE.MeshBasicMaterial({map:streak,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,polygonOffset:true,polygonOffsetFactor:-4});
+  const plane=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
+  for(const a of anchors){
+   const big=a.kind==='street'||a.kind==='court';
+   const s=new THREE.Sprite(haloMat);s.position.set(a.x,a.y,a.z);s.scale.setScalar(big?2.6:1.3);this.group.add(s);
+   const floor=Math.floor((a.y+.5)/3)*3;
+   if(big||a.y-floor<3.2){const m=new THREE.Mesh(plane,streakMat);m.position.set(a.x,floor+.012,a.z);m.scale.set(big?1.6:.9,1,big?9:4);m.userData.big=big;this.group.add(m);this.streaks.push(m)}
+  }
+  for(let i=0;i<(software?4:10);i++){const l=new THREE.PointLight('#ffb36b',0,14,2);this.pool.push(l);this.group.add(l)}
+ }
+ /** Hand the light pool to the nearest lamps, and turn reflection streaks towards the viewer. */
+ update(camera:THREE.Camera,t:number){
+  const c=camera.position;
+  if(t>=this.next){
+   this.next=t+.25;
+   const near=this.anchors.map(a=>({a,d:(a.x-c.x)**2+(a.y-c.y)**2*4+(a.z-c.z)**2})).sort((p,q)=>p.d-q.d);
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court';l.position.set(n.a.x,n.a.y-.25,n.a.z);l.intensity=big?60:22;l.distance=big?16:8});
+  }
+  for(const m of this.streaks){m.rotation.y=Math.atan2(c.x-m.position.x,c.z-m.position.z);const d=Math.hypot(c.x-m.position.x,c.z-m.position.z);m.scale.z=(m.userData.big?3:1.5)+Math.min(d,30)*(m.userData.big?.3:.12)}
+ }
+}
+
+export type KitPlacement={asset:string;x:number;y:number;z:number;ry:number;sx?:number};
+const OX=72,OZ=60;
+const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(p.sx??1,1,1));
+
+/** Instance the props and foliage kits from the dressing plan: one InstancedMesh per asset part. */
+export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>){
+ const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
+ const kits=await Promise.all(['props','foliage'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
+ const missing:string[]=[];
+ for(const [asset,list]of byAsset){
+  const root=kits.map(k=>k?.getObjectByName(asset)).find(Boolean);if(!root){missing.push(asset);continue}
+  root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert();
+  root.traverse(o=>{
+   if(!(o instanceof THREE.Mesh))return;
+   const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
+   const material=shared.has(src.name)?mats.get(src.name):src;
+   const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
+   const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
+   im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
+   const foliage=/leaf|grass|weed|litter|hedge|shrub/.test(src.name);
+   im.castShadow=!/litter|grass|weed|lamp_emit|glass/.test(src.name)&&!asset.startsWith('CRISP')&&!asset.startsWith('CRUSHED');im.receiveShadow=true;
+   if(foliage&&src.alphaTest===0&&src.transparent){src.alphaTest=.5;src.transparent=false}
+   group.add(im);
+  });
+ }
+ if(missing.length)console.warn('Heron Reach kits: no model yet for',missing.join(', '));
+ await mats.ready();
+ return group;
+}
+
+/**
+ * Grass: clumps from the foliage kit scattered over the Blender ground's grass cells, in 8 m tiles
+ * that are frustum-culled and hidden beyond a draw distance, so the field stays dense near the player.
+ */
+export class GrassField {
+ readonly group=new THREE.Group();private tiles:THREE.InstancedMesh[]=[];
+ constructor(private readonly reach=40){this.group.name='ONSITE / Heron Reach grass'}
+ async build(gltf:GLTFLoader,density:number){
+  const [scene,cells]=await Promise.all([gltf.loadAsync('/models/heron-reach/heron-reach-foliage.glb').then(g=>g.scene).catch(()=>null),fetch('/models/heron-reach/grass-cells.json').then(r=>r.json()).catch(()=>null)]);
+  if(!scene||!cells)return this.group;
+  const parts:{geo:THREE.BufferGeometry;mat:THREE.Material;local:THREE.Matrix4}[][]=[];
+  for(const name of ['GRASS_CLUMP_A','GRASS_CLUMP_B','GRASS_CLUMP_C','GRASS_CLUMP_D']){
+   const root=scene.getObjectByName(name);if(!root)continue;root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert(),list:typeof parts[number]=[];
+   root.traverse(o=>{if(o instanceof THREE.Mesh)list.push({geo:o.geometry,mat:o.material as THREE.Material,local:new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld)})});parts.push(list);
+  }
+  if(!parts.length)return this.group;
+  const size:number=cells.cell,tiles=new Map<string,[number,number][]>();
+  let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+  for(const [x,z]of cells.cells as [number,number][]){
+   const n=Math.round(size*size*density*(.7+rnd()*.6));
+   for(let i=0;i<n;i++){const px=x+rnd()*size,pz=z+rnd()*size,key=`${Math.floor(px/8)},${Math.floor(pz/8)}`;(tiles.get(key)??tiles.set(key,[]).get(key)!).push([px,pz])}
+  }
+  const m=new THREE.Matrix4(),q=new THREE.Quaternion(),up=new THREE.Vector3(0,1,0);
+  for(const pts of tiles.values())parts.forEach((list,k)=>{
+   const mine=pts.filter((_,i)=>i%parts.length===k);if(!mine.length)return;
+   for(const part of list){
+    const im=new THREE.InstancedMesh(part.geo,part.mat,mine.length);im.receiveShadow=true;
+    mine.forEach(([px,pz],i)=>{const s=.8+rnd()*.6;m.compose(new THREE.Vector3(px-OX,0,pz-OZ),q.setFromAxisAngle(up,rnd()*6.283),new THREE.Vector3(s,s*(.8+rnd()*.5),s)).multiply(part.local);im.setMatrixAt(i,m)});
+    im.computeBoundingSphere();this.tiles.push(im);this.group.add(im);
+   }
+  });
+  return this.group;
+ }
+ update(camera:THREE.Camera){const c=camera.position;for(const t of this.tiles){const s=t.boundingSphere!;t.visible=s.center.distanceTo(c)<this.reach+s.radius}}
+}

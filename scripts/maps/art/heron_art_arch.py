@@ -577,6 +577,8 @@ class Arch:
                     if r[0] <= x <= r[0] + r[2] and r[1] <= z <= r[1] + r[3]:
                         mat = m
                 cells[(i, j)] = mat
+        # Grass cells (2 m) for the runtime grass field, in map coordinates.
+        self.grass_cells = [(site[0] + i * step, site[1] + j * step) for (i, j), m in sorted(cells.items()) if m == 'hr_grass_ground']
         # Ground quads, skipped where a B1 core opens below G.
         holes = [c['rect'] for c in self.cores if c['levels'][0] < 0]
         def dirt(p):

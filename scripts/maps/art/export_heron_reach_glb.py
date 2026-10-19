@@ -5,7 +5,7 @@
 Joins the authored objects per export chunk and material, then writes
 public/models/heron-reach/heron-reach-arch.raw.glb without images. The runtime assigns materials
 by name from public/materials/heron/runtime-materials.json, so textures are shared with the kits
-and never duplicated inside the model. scripts/maps/art/pack-heron-reach.mjs compresses the result.
+and never duplicated inside the model. `npm run assets:heron-reach` runs the whole chain and compresses the result with gltfpack.
 """
 import json
 import os
@@ -20,7 +20,9 @@ OUT_DIR = os.path.join(ROOT, 'public', 'models', 'heron-reach')
 MATS = os.path.join(ROOT, 'public', 'materials', 'heron', 'runtime-materials.json')
 
 # Runtime-only hints: alpha cutouts, double-sided cards, materials that never cast shadows.
-DOUBLE = {'hr_window_interior', 'hr_window_dark'}
+DOUBLE = set()  # window cards are single-sided so homes can see out
+# Damp ground: roughness multiplier on top of the ORM map, so lamps and sky read in the paving.
+WET = {'hr_asphalt': .42, 'hr_paving': .5, 'hr_pavers_red': .5, 'hr_court': .45, 'hr_concrete_cast': .8, 'hr_roof_felt': .6}
 NO_SHADOW = {'hr_glass', 'hr_glass_lit', 'hr_window_interior', 'hr_window_dark', 'hr_lamp_emit'}
 
 
@@ -49,6 +51,10 @@ def runtime_material(name):
         if os.path.exists(os.path.join(atlas, 'interiors-color.webp')):
             entry.update(map=rel(os.path.join(atlas, 'interiors-color.webp')), emissiveMap=rel(os.path.join(atlas, 'interiors-emit.webp')),
                          color=[1, 1, 1], emissive=[1, .8, .6], emissiveIntensity=2.2, repeat=1)
+    if name == 'hr_glass':
+        entry['opacity'] = .28
+    if name in WET:
+        entry['wet'] = WET[name]
     if name in DOUBLE:
         entry['doubleSided'] = True
     return entry
@@ -86,7 +92,8 @@ def main():
     bpy.ops.export_scene.gltf(filepath=raw, export_format='GLB', use_visible=True, export_image_format='NONE',
                               export_materials='EXPORT', export_vertex_color='ACTIVE', export_normals=True,
                               export_texcoords=True, export_apply=True, export_yup=True, export_extras=False)
-    names = sorted({m for _, m in groups})
+    # Every known shared material, so the kits can swap their placeholders for the same library.
+    names = sorted({m for _, m in groups} | set(PLAIN) | set(EMIT) | set(COVERAGE))
     library = {n: runtime_material(n) for n in names}
     with open(MATS, 'w') as f:
         json.dump(library, f, indent=1)
