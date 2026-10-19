@@ -1,0 +1,79 @@
+{
+  "asset": "Heron Reach original lived-in corner-shop texture atlas",
+  "authoring_date": "2026-10-19",
+  "origin": "Original procedural artwork authored for ONSITE using Pillow and numpy; no photographs, downloaded artwork, external logo, donor texture or image generation.",
+  "design": "Muted green, cream, rust and ochre UK corner-shop notices; five invented pantry package designs. Product names and packaging artwork were devised for the fictional setting.",
+  "source": "scripts/maps/art/make_heron_lived_texture.py",
+  "source_image": "assets/textures/heron/lived/shop-lived-color.png",
+  "source_sha256": "8d80d8c6066f27ff87d20d1f1514c5cac8f59b61baf558d618af5e1fbbb8c26a",
+  "rebuild": "python scripts/maps/art/make_heron_lived_texture.py",
+  "random_seed": 291019,
+  "encoding": {
+    "mode": "RGB",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "webp_quality": 88,
+    "webp_method": 6,
+    "alpha": false
+  },
+  "fonts": [
+    {
+      "file": "OpenSans-Bold.ttf",
+      "source": "/usr/share/fonts/truetype/open-sans/OpenSans-Bold.ttf",
+      "sha256": "5894a3649b213cf5b2d673b6e7a871815fd1d120fa68a463592f27db14eae323",
+      "family": "Open Sans",
+      "copyright": "Digitized data copyright (c) 2010-2011, Google Corporation.",
+      "licence": "Apache-2.0",
+      "licence_source": "/usr/share/doc/fonts-open-sans/copyright",
+      "licence_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "use": "Locally installed font rasterised into original artwork; font binaries are not shipped."
+    },
+    {
+      "file": "OpenSans-ExtraBold.ttf",
+      "source": "/usr/share/fonts/truetype/open-sans/OpenSans-ExtraBold.ttf",
+      "sha256": "0fcbdb5cbeea00ae532352c7c94a7d288ebc911ba85f4d595012032dcab64ba8",
+      "family": "Open Sans",
+      "copyright": "Digitized data copyright (c) 2010-2011, Google Corporation.",
+      "licence": "Apache-2.0",
+      "licence_source": "/usr/share/doc/fonts-open-sans/copyright",
+      "licence_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "use": "Locally installed font rasterised into original artwork; font binaries are not shipped."
+    },
+    {
+      "file": "OpenSans-Semibold.ttf",
+      "source": "/usr/share/fonts/truetype/open-sans/OpenSans-Semibold.ttf",
+      "sha256": "aa3b0ef53db12e3d45094030cac0e69d384e44cc5978643dd4390041cad546e2",
+      "family": "Open Sans",
+      "copyright": "Digitized data copyright (c) 2010-2011, Google Corporation.",
+      "licence": "Apache-2.0",
+      "licence_source": "/usr/share/doc/fonts-open-sans/copyright",
+      "licence_url": "https://www.apache.org/licenses/LICENSE-2.0",
+      "use": "Locally installed font rasterised into original artwork; font binaries are not shipped."
+    }
+  ],
+  "outputs": [
+    {
+      "file": "shop-lived-color.png",
+      "path": "assets/textures/heron/lived/shop-lived-color.png",
+      "role": "source",
+      "bytes": 683429,
+      "sha256": "b9ff4c6229463741865e925aab6aff4f517ad97d547fca2d15502cbdb6a60ea6"
+    },
+    {
+      "file": "shop-lived-color.webp",
+      "path": "public/materials/heron/lived/shop-lived-color.webp",
+      "role": "runtime",
+      "bytes": 78676,
+      "sha256": "b09121e6afc82be769b2fb86d763baaae0cb090d0476bcbc5237e29c14f26565"
+    },
+    {
+      "file": "atlas.json",
+      "path": "public/materials/heron/lived/atlas.json",
+      "role": "runtime",
+      "bytes": 4474,
+      "sha256": "24f07ba9fac9ad815236946a46f79d47d8452cdec8b3fa00c7f416bf4805cfb3"
+    }
+  ]
+}

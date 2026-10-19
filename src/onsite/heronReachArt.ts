@@ -1,9 +1,11 @@
 import * as THREE from 'three'
 import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
-import {applyWetGround,surfaceBelow,wetGroundNames} from './wetGround'
+import {applyWetGround,wetGroundNames} from './wetGround'
 import type {Solid} from './level'
 import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
+import {applyHeronSurfaceResponse,surfaceNormalScale} from './heronSurfaceResponse'
+import {lightReceiverBelow,lightReceiverFloor,prepareLightOccluders,prepareReceiverLights,selectReceiverLights,type PreparedLight,type LightOccluder} from './heronLightSelection'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -53,9 +55,12 @@ export class HeronReachMaterials {
   const mat=m;
   if(e.map)this.pending.push(this.texture(e.map,true,repeat).then(t=>{mat.map=t;mat.needsUpdate=true}));
   if(e.emissiveMap)this.pending.push(this.texture(e.emissiveMap,true,repeat).then(t=>{mat.emissiveMap=t;mat.needsUpdate=true}));
-  if(e.normalMap)this.pending.push(this.texture(e.normalMap,false,repeat).then(t=>{mat.normalMap=t;mat.normalScale.set(.8,.8);mat.needsUpdate=true}));
+  if(e.normalMap){
+   applyHeronSurfaceResponse(mat);
+   this.pending.push(this.texture(e.normalMap,false,repeat).then(t=>{mat.normalMap=t;mat.normalScale.setScalar(surfaceNormalScale(name));mat.needsUpdate=true}));
+  }
   // ORM: R occlusion, G roughness, B metalness (glTF packing), so one texture drives all three.
-  if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=1;mat.needsUpdate=true}));
+  if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=e.metalness??1;mat.needsUpdate=true}));
   if(e.wet)m.envMapIntensity=1.6;
   if(wetGroundNames.has(name))this.pending.push(this.texture('/materials/heron/decals/wetness-mask.webp',false,1).then(t=>{applyWetGround(mat,t);mat.needsUpdate=true}));
   if(e.opacity!==undefined){m.transparent=true;m.opacity=e.opacity;m.depthWrite=false;m.envMapIntensity=2.2}
@@ -78,7 +83,7 @@ export async function loadHeronReachArch(gltf:GLTFLoader,mats:HeronReachMaterial
  return arch.scene;
 }
 
-export type LightAnchor={x:number;y:number;z:number;kind:string;head?:boolean};
+export type LightAnchor={x:number;y:number;z:number;kind:string;head?:boolean;floorY?:number};
 
 function radial(size:number,stops:[number,string][]){
  const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d')!,gr=g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
@@ -92,7 +97,9 @@ function radial(size:number,stops:[number,string][]){
  */
 export class HeronReachAtmosphere {
  readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:{x:number;y:number;z:number;big:boolean}[]=[];private streakMesh!:THREE.InstancedMesh;private readonly m=new THREE.Matrix4();private readonly q=new THREE.Quaternion();private readonly up=new THREE.Vector3(0,1,0);private next=0;
- constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean,surfaces:readonly Solid[]){
+ private readonly receiverLights:PreparedLight<LightAnchor>[];private readonly occluders:LightOccluder[];private cameraFloor:number|null=0;
+ constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,anchors:LightAnchor[],software:boolean,private readonly surfaces:readonly Solid[],allSolids:readonly Solid[]){
+  this.receiverLights=prepareReceiverLights(anchors,surfaces);this.occluders=prepareLightOccluders(allSolids);
   this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
   const top=new THREE.Color('#263b50'),mid=new THREE.Color('#53697d'),horizon=new THREE.Color('#929ca4'),glow=new THREE.Color('#bda18c');
   scene.background=mid.clone();scene.fog=new THREE.FogExp2('#687b8d',.007);
@@ -125,7 +132,7 @@ export class HeronReachAtmosphere {
   for(const a of anchors){
    const big=a.kind==='street'||a.kind==='court';
    glows[big?'big':'small'].push(a.x,a.y,a.z);
-   const floor=surfaceBelow(a.x,a.y,a.z,surfaces);
+   const floor=lightReceiverFloor(a,surfaces);
    if(floor!==null)this.streaks.push({x:a.x,y:floor+.018,z:a.z,big});
   }
   for(const [k,size]of [['big',3.4],['small',1.7]] as const)if(glows[k].length){ // point size is in world units before the fov term, so 1/tan(37°) larger than the old sprites
@@ -140,18 +147,24 @@ export class HeronReachAtmosphere {
   const c=camera.position;
   if(t>=this.next){
    this.next=t+.25;
-   // Rank by estimated contribution, so a low doorway lamp cannot evict every court column.
-   const near=this.anchors.map(a=>({a,d:((a.x-c.x)**2+(a.y-c.y)**2*2+(a.z-c.z)**2+4)/(a.kind==='street'||a.kind==='court'?6:1)})).sort((p,q)=>p.d-q.d);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling'||n.a.kind==='core';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.a.kind==='court'?850:big?175:n.a.kind==='shop'?55:ceiling?11:14;l.distance=n.a.kind==='court'?42:big?25:n.a.kind==='shop'?12:9});
+   this.cameraFloor=lightReceiverBelow(c,this.surfaces);
+   const near=selectReceiverLights(this.receiverLights,c,this.cameraFloor,this.occluders,this.pool.length);
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const ceiling=n.anchor.kind==='ceiling'||n.anchor.kind==='core';l.position.copy(n.position);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.intensity;l.distance=n.range});
   }
-  const p=new THREE.Vector3(),sc=new THREE.Vector3();
+  const p=new THREE.Vector3(),sc=new THREE.Vector3(),tint=new THREE.Color();
   this.streaks.forEach((s,i)=>{
    const d=Math.hypot(c.x-s.x,c.z-s.z);this.q.setFromAxisAngle(this.up,Math.atan2(c.x-s.x,c.z-s.z));
    // Reflection stretches towards the viewer, on its own supporting floor.
    const length=(s.big?4:1.8)+Math.min(d,24)*(s.big?.38:.16),towards=Math.min(d*.25,length*.3);
    sc.set(s.big?1.7:.8,1,length);this.streakMesh.setMatrixAt(i,this.m.compose(p.set(s.x+(c.x-s.x)/Math.max(d,1)*towards,s.y,s.z+(c.z-s.z)/Math.max(d,1)*towards),this.q,sc));
+   const grazing=Math.abs(c.y-s.y)/Math.max(1,Math.hypot(d,c.y-s.y));
+   const receiverMatch=this.cameraFloor!==null&&Math.abs(this.cameraFloor-(s.y-.018))<1.6;
+   // Avoid grazing smears and the old opaque-looking additive patch beneath the viewer.
+   const gain=receiverMatch?THREE.MathUtils.smoothstep(grazing,.04,.25)*THREE.MathUtils.smoothstep(d,1,4)*.48:0;
+   this.streakMesh.setColorAt(i,tint.setRGB(gain,gain,gain));
   });
   this.streakMesh.instanceMatrix.needsUpdate=true;
+  if(this.streakMesh.instanceColor)this.streakMesh.instanceColor.needsUpdate=true;
  }
 }
 

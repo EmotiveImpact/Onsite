@@ -16,6 +16,8 @@ import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
 import {coreLightAnchors} from './heronCoreArt'
 import {loadGalleryArt} from './heronGalleryArt'
+import {installHeronDepthFog} from './HeronDepthFog'
+import {loadLivedDetail,loadScannedDetail} from './heronLivedDetail'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -88,13 +90,14 @@ export class View {
    const arch=useArt?HeronReachMaterials.load(this.renderer,this.software).then(async m=>{
     // Render replacements only. The original dressing plan still owns every collider.
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
-    const dressing=reach.dressing.items.map(p=>p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
-    const [built,kits,grass,shops,gallery]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software,this.coverageSamples>0)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0)]);
+    const dressing=reach.dressing.items.map(p=>p.asset==='WALL_LAMP'&&Math.hypot(p.x-111,p.z-47.99)<.1?{...p,x:103}:p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
+    const [built,kits,grass,shops,gallery,lived]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software,this.coverageSamples>0)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0),loadLivedDetail(gltf,m)]);
+    const scanned=await loadScannedDetail(gltf,shops);
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery);return root;
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
-   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry)}else this.blockout();
+   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene)}else this.blockout();
    this.rifle=rifle.scene;return character.scene;
   }
   const [estate,character,rifle]=await Promise.all([
@@ -130,8 +133,8 @@ export class View {
   this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
   this.sun.color.set('#c0cad4');this.sun.intensity=.65;
   this.renderer.toneMappingExposure=1.12;
-  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a),...shopLightAnchors,...coreLightAnchors];
-  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
+  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35,floorY:0}:a.kind==='wall'&&Math.hypot(a.x-39,a.z+12.78)<.1?{...a,x:31}:a),...shopLightAnchors,...coreLightAnchors,...[52,61].map(x=>({x:x-72,y:5.8,z:38.1-60,kind:'gallery',floorY:3}))];
+  this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)),this.level.solids);
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
   const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
@@ -149,7 +152,7 @@ export class View {
   for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);
   for(const l of reach.lights){const p=new THREE.PointLight('#ffb366',l.kind==='street'||l.kind==='court'?30:14,l.kind==='street'||l.kind==='court'?12:6,2);p.position.set(l.x,l.y,l.z);this.scene.add(p)}
  }
- installWeapon(g:Encounter){this.activeRifle=donorRifle(this.rifle,g.fx.flashTexture,g.fx.flameTexture);g.arsenal.installRifle(this.activeRifle);this.vmCamera.add(g.arsenal.holder,g.arsenal.muzzleLight)}
+ installWeapon(g:Encounter){this.activeRifle=donorRifle(this.rifle,g.fx.flashTexture,g.fx.flameTexture);g.arsenal.installRifle(this.activeRifle);this.vmCamera.add(g.arsenal.holder,g.arsenal.muzzleLight);if(this.level.id==='heron-reach')installHeronDepthFog(this.scene)}
  weaponProbe(){const vm=this.activeRifle;if(!vm)return null;const sight=vm.root.getObjectByName('RearIronSight')!.getWorldPosition(new THREE.Vector3()).project(this.vmCamera),hand=vm.root.getObjectByName('Hand_L')!.getWorldPosition(new THREE.Vector3()),grip=vm.mag!.getObjectByName('MagazineGripSocket')!.getWorldPosition(new THREE.Vector3());return {name:vm.root.name,sightNdc:sight.toArray(),magazine:vm.mag!.position.toArray(),handToMagazine:hand.distanceTo(grip),finite:vm.root.matrixWorld.elements.every(Number.isFinite)}}
  private async environment(){
   const hdr=await new RGBELoader().loadAsync('/models/donors/bambanani_sunset_2k.hdr');hdr.mapping=THREE.EquirectangularReflectionMapping;
