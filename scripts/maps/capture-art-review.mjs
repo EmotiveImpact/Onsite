@@ -39,7 +39,8 @@ try {
  const pixelRatio=await page.evaluate(()=>document.querySelector('#game').width/innerWidth);
  const scripts=await page.locator('script[src]').evaluateAll(nodes=>nodes.map(n=>n.src));
  const servedScripts=await Promise.all(scripts.map(async url=>({url,sha256:createHash('sha256').update(Buffer.from(await (await fetch(url)).arrayBuffer())).digest('hex')})));
- const report={kind:'Fixed-camera inspection fixtures; bots frozen; not gameplay evidence',frozenBuildUrl,servedScripts,renderer,software:true,viewport:{width:1280,height:720},pixelRatio,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
+ const servedAssets=await Promise.all(['/models/heron-reach/heron-reach-arch.glb','/materials/heron/runtime-materials.json'].map(async path=>{const response=await fetch(frozenBuildUrl+path);assert(response.ok);const bytes=Buffer.from(await response.arrayBuffer());return {path,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')}}));
+ const report={kind:'Fixed-camera inspection fixtures; bots frozen; not gameplay evidence',frozenBuildUrl,servedScripts,servedAssets,renderer,software:true,viewport:{width:1280,height:720},pixelRatio,harnessCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
  await writeFile(`${out}/report.json`,JSON.stringify(report,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);assert.equal(captures.length,selected?.length??views.length);
 }finally{await browser.close()}
