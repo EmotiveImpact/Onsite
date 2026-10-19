@@ -47,6 +47,12 @@ with `ONSITE_URL` pointing to that preview. Saved camera fixtures and capture co
 the visual work log. No gameplay code or collision/nav data changed in this pass; the physical
 solid count is still 2,417. No research clone is tracked or bundled.
 
+Final validation: all 43 tests, typecheck, production build, eight matched inspection views,
+three texture/fallback probes and both full browser encounters passed. Reach cleared six bots,
+captured and reset (60 health); Court cleared three, captured and reset (96 health). No page or
+request errors. Rolling SwiftShader frame means were 680.89 ms / 563.57 ms — around 1–2 FPS,
+not smooth. The visual work log links raw reports and an unretimed gameplay excerpt.
+
 Next valuable work: real-GPU captures at the saved viewpoints; tune bloom/shadow/foliage budgets
 from those results; assess a measured optional ground reflection pass; compress embedded kit maps
 and reduce duplicate texture allocations; review room/interior depth and distant-window repetition.
