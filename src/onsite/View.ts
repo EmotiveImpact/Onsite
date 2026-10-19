@@ -27,7 +27,11 @@ export class View {
   this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
   probe?.getExtension('WEBGL_lose_context')?.loseContext();
   this.renderer=new THREE.WebGLRenderer({canvas,antialias:!this.software});
-  this.renderer.info.autoReset=false;this.renderer.setPixelRatio(this.software?.5:Math.min(devicePixelRatio,1.5));
+  // Inspection-only resolution override for readable art review on a software renderer.
+  // It does not enable GPU-only effects or change normal gameplay's reduced profile.
+  const query=new URLSearchParams(location.search),requestedDpr=Number(query.get('dpr')??.5);
+  const inspectionDpr=query.has('inspect')&&Number.isFinite(requestedDpr)?Math.max(.5,Math.min(1,requestedDpr)):.5;
+  this.renderer.info.autoReset=false;this.renderer.setPixelRatio(this.software?inspectionDpr:Math.min(devicePixelRatio,1.5));
   this.renderer.shadowMap.enabled=!this.software;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.12;
   this.scene.background=new THREE.Color('#60778c');this.scene.fog=new THREE.FogExp2('#516b81',.013);
@@ -111,18 +115,18 @@ export class View {
  /** Heron Reach at blue hour: graded dusk sky, cool sky light, lamp pool, glow and bloom. */
  private blueHour(){
   this.scene.remove(this.sky);this.camera.near=.1;this.camera.far=600;this.camera.updateProjectionMatrix();
-  this.hemi.color.set('#6f8cbd');this.hemi.groundColor.set('#2a2620');this.hemi.intensity=1.5;
-  this.sun.color.set('#a9bde0');this.sun.intensity=.9;
-  this.renderer.toneMappingExposure=1.3;
+  this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
+  this.sun.color.set('#c0cad4');this.sun.intensity=.65;
+  this.renderer.toneMappingExposure=1.12;
   this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,reach.lampAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
   const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
   const covered=(x:number,y:number,z:number)=>roofs.some(s=>s.y>y&&s.y-y<12&&Math.abs(x-s.x)<s.w/2&&Math.abs(z-s.z)<s.d/2);
-  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered);this.scene.add(this.rain.mesh)}
+  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,reach.lampAnchors);this.scene.add(this.rain.mesh)}
   if(!this.software){
    const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
-   this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.55,.5,.82));this.composer.addPass(new OutputPass());
+   this.composer.addPass(new RenderPass(this.scene,this.camera));this.composer.addPass(new UnrealBloomPass(size.multiplyScalar(.5),.32,.45,1.15));this.composer.addPass(new OutputPass());
   }
  }
  private reachDetails(){

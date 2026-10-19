@@ -10,6 +10,7 @@ await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 try {
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[],failed=[],captures=[];
+ page.setDefaultTimeout(120000);
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
  page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));
  page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
@@ -28,7 +29,8 @@ try {
   console.log('Captured',name);
  }
  const renderer=await page.evaluate(()=>{const gl=document.querySelector('#game').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return e?gl.getParameter(e.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)});
- const report={kind:'Fixed-camera inspection fixtures; bots frozen; not gameplay evidence',renderer,software:true,viewport:{width:1280,height:720},pixelRatio:.5,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
+ const pixelRatio=await page.evaluate(()=>document.querySelector('#game').width/innerWidth);
+ const report={kind:'Fixed-camera inspection fixtures; bots frozen; not gameplay evidence',renderer,software:true,viewport:{width:1280,height:720},pixelRatio,commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
  await writeFile(`${out}/report.json`,JSON.stringify(report,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);assert.equal(captures.length,selected?.length??views.length);
 }finally{await browser.close()}

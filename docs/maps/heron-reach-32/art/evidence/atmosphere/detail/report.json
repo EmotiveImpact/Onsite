@@ -1,0 +1,45 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "commit": "696dd9157cebdc7958d4f1800aa5766c3659c221",
+  "workingTree": ".../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md | 27 +++++++++++++++++\n scripts/maps/capture-art-review.mjs                |  4 ++-\n src/onsite/View.ts                                 | 16 ++++++----\n src/onsite/heronReachArt.ts                        | 35 ++++++++++++++--------\n 4 files changed, 62 insertions(+), 20 deletions(-)",
+  "captures": [
+    {
+      "name": "the-cage",
+      "requestedPose": {
+        "x": -20,
+        "y": 0.04,
+        "z": 0,
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -19.999998092651367,
+          "y": 0.02008830857957944,
+          "z": -0.000001959445398824755
+        },
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 5,
+        "meanFrameMs": 1517.479999999702,
+        "drawCalls": 602,
+        "triangles": 1349133
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

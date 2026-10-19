@@ -23,6 +23,7 @@ export class HeronReachMaterials {
   m=new THREE.MeshStandardMaterial({name,vertexColors:true,roughness:e.roughness??1,metalness:e.metalness??(e.ormMap?1:0),side:e.doubleSided?THREE.DoubleSide:THREE.FrontSide});
   if(e.color)m.color.setRGB(e.color[0],e.color[1],e.color[2],THREE.LinearSRGBColorSpace);
   if(e.emissive){m.emissive.setRGB(e.emissive[0],e.emissive[1],e.emissive[2],THREE.LinearSRGBColorSpace);m.emissiveIntensity=e.emissiveIntensity??1}
+  if(name==='hr_lamp_emit')m.emissiveIntensity=4;
   const mat=m;
   if(e.map)this.pending.push(this.texture(e.map,true,repeat).then(t=>{mat.map=t;mat.needsUpdate=true}));
   if(e.emissiveMap)this.pending.push(this.texture(e.emissiveMap,true,repeat).then(t=>{mat.emissiveMap=t;mat.needsUpdate=true}));
@@ -66,8 +67,8 @@ export class HeronReachAtmosphere {
  readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:{x:number;y:number;z:number;big:boolean}[]=[];private streakMesh!:THREE.InstancedMesh;private readonly m=new THREE.Matrix4();private readonly q=new THREE.Quaternion();private readonly up=new THREE.Vector3(0,1,0);private next=0;
  constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean,surfaces:readonly Solid[]){
   this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
-  const top=new THREE.Color('#0b1426'),mid=new THREE.Color('#25385a'),horizon=new THREE.Color('#6d6478'),glow=new THREE.Color('#b0806a');
-  scene.background=mid.clone();scene.fog=new THREE.FogExp2('#2a3550',.0062);
+  const top=new THREE.Color('#263b50'),mid=new THREE.Color('#53697d'),horizon=new THREE.Color('#929ca4'),glow=new THREE.Color('#bda18c');
+  scene.background=mid.clone();scene.fog=new THREE.FogExp2('#687b8d',.007);
   const sky=new THREE.SphereGeometry(520,48,24),cols:number[]=[],p=sky.attributes.position;
   for(let i=0;i<p.count;i++){
    const y=p.getY(i)/520,az=Math.atan2(p.getZ(i),p.getX(i)),warm=Math.max(0,Math.cos(az-2.4))**3*Math.max(0,1-Math.abs(y)*6);
@@ -79,11 +80,14 @@ export class HeronReachAtmosphere {
   // The far city: a wrap-around panorama (a ChatGPT image) between the tower skyline and the dome,
   // three mirrored repeats round a 470 m ring (seen from inside), its horizon a few degrees above the eye and its top fading out.
   const pano=new THREE.TextureLoader().load('/materials/heron/backdrop/skyline-panorama.webp',t=>{t.colorSpace=THREE.SRGBColorSpace;t.wrapS=THREE.RepeatWrapping;t.repeat.set(-3,1);t.needsUpdate=true});
-  const ring=new THREE.Mesh(new THREE.CylinderGeometry(470,470,246,96,1,true),new THREE.MeshBasicMaterial({map:pano,side:THREE.BackSide,transparent:true,depthWrite:false,fog:false,color:'#b9c0d4'}));
+  const panoramaMaterial=new THREE.MeshBasicMaterial({map:pano,side:THREE.BackSide,transparent:true,depthWrite:false,fog:true,color:'#aeb7c1'});
+  panoramaMaterial.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`#include <color_fragment>
+   diffuseColor.rgb=mix(vec3(dot(diffuseColor.rgb,vec3(.2126,.7152,.0722))),diffuseColor.rgb,.3);`)};
+  const ring=new THREE.Mesh(new THREE.CylinderGeometry(470,470,246,96,1,true),panoramaMaterial);
   ring.position.y=83;ring.name='far city';ring.renderOrder=-9;this.group.add(ring);
   // Reflections come from the same graded sky so glass and wet paving pick up the dusk.
   const envScene=new THREE.Scene();envScene.add(dome.clone());const pm=new THREE.PMREMGenerator(renderer);
-  scene.environment=pm.fromScene(envScene,.02).texture;scene.environmentIntensity=.55;pm.dispose();
+  scene.environment=pm.fromScene(envScene,.02).texture;scene.environmentIntensity=.7;pm.dispose();
   const halo=radial(128,[[0,'rgba(255,214,160,1)'],[.18,'rgba(255,170,90,.55)'],[.5,'rgba(255,140,60,.12)'],[1,'rgba(255,120,40,0)']]);
   const streak=new THREE.TextureLoader().load('/materials/heron/decals/lamp-streak.webp');streak.colorSpace=THREE.SRGBColorSpace;streak.anisotropy=software?2:8;
   const haloMat=(size:number)=>new THREE.PointsMaterial({map:halo,size,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:true});
@@ -102,15 +106,16 @@ export class HeronReachAtmosphere {
    const pts=new THREE.Points(g,haloMat(size));pts.name=`lamp glow ${k}`;this.group.add(pts);
   }
   this.streakMesh=new THREE.InstancedMesh(plane,streakMat,Math.max(1,this.streaks.length));this.streakMesh.count=this.streaks.length;this.streakMesh.frustumCulled=false;this.group.add(this.streakMesh);
-  for(let i=0;i<(software?4:10);i++){const l=new THREE.PointLight('#ffb36b',0,14,2);this.pool.push(l);this.group.add(l)}
+  for(let i=0;i<(software?4:10);i++){const l=new THREE.PointLight('#ffd09a',0,20,2);this.pool.push(l);this.group.add(l)}
  }
  /** Hand the light pool to the nearest lamps, and turn reflection streaks towards the viewer. */
  update(camera:THREE.Camera,t:number){
   const c=camera.position;
   if(t>=this.next){
    this.next=t+.25;
-   const near=this.anchors.map(a=>({a,d:(a.x-c.x)**2+(a.y-c.y)**2*4+(a.z-c.z)**2})).sort((p,q)=>p.d-q.d);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court';l.position.set(n.a.x,n.a.y-.25,n.a.z);l.intensity=big?60:22;l.distance=big?16:8});
+   // Rank by estimated contribution, so a low doorway lamp cannot evict every court column.
+   const near=this.anchors.map(a=>({a,d:((a.x-c.x)**2+(a.y-c.y)**2*2+(a.z-c.z)**2+4)/(a.kind==='street'||a.kind==='court'?6:1)})).sort((p,q)=>p.d-q.d);
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=big?175:ceiling?11:14;l.distance=big?25:9});
   }
   const p=new THREE.Vector3(),sc=new THREE.Vector3();
   this.streaks.forEach((s,i)=>{
@@ -150,6 +155,8 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
    if(!(o instanceof THREE.Mesh))return;
    const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
    const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
+   if(base==='hr_prop_sign_letters')src.emissiveIntensity=1.3;
+   if(base==='hr_prop_fridge_light')src.emissiveIntensity=2.5;
    const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
@@ -202,23 +209,25 @@ export class GrassField {
 
 /** Rain: streaks that live in world space and wrap around the camera, faded out under cover. */
 export class Rain {
- readonly mesh:THREE.LineSegments;private readonly uniforms={uCam:{value:new THREE.Vector3()},uTime:{value:0},uAlpha:{value:.32}};private fade=1;
- constructor(count:number,private readonly covered:(x:number,y:number,z:number)=>boolean){
+ readonly mesh:THREE.LineSegments;private readonly uniforms={uCam:{value:new THREE.Vector3()},uTime:{value:0},uAlpha:{value:.12},uLamps:{value:Array.from({length:8},()=>new THREE.Vector3())}};private fade=1;private next=0;
+ constructor(count:number,private readonly covered:(x:number,y:number,z:number)=>boolean,private readonly anchors:readonly LightAnchor[]=[]){
   const seeds=new Float32Array(count*2*3),ends=new Float32Array(count*2);
   for(let i=0;i<count;i++){const s=[Math.random(),Math.random(),Math.random()];for(const k of [0,1]){seeds.set(s,(i*2+k)*3);ends[i*2+k]=k}}
   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(count*2*3),3));g.setAttribute('seed',new THREE.BufferAttribute(seeds,3));g.setAttribute('tail',new THREE.BufferAttribute(ends,1));
   const m=new THREE.ShaderMaterial({uniforms:this.uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
-   vertexShader:`attribute vec3 seed;attribute float tail;uniform vec3 uCam;uniform float uTime;varying float vA;
+   vertexShader:`attribute vec3 seed;attribute float tail;uniform vec3 uCam;uniform float uTime;uniform vec3 uLamps[8];varying float vA;varying float vLamp;
     const vec3 S=vec3(36.,18.,36.);
     void main(){vec3 p=uCam+(fract((seed*S-uCam)/S+.5)-.5)*S;p.y=uCam.y-6.+fract(seed.y-uTime*.62)*S.y;
-     p+=vec3(.06,-.55,.03)*tail;vA=(1.-tail*.7)*smoothstep(0.,6.,distance(p.xz,uCam.xz)+2.)*(1.-smoothstep(12.,18.,distance(p.xz,uCam.xz)));
+     p+=vec3(.025,-.24,.012)*tail;vA=(1.-tail*.7)*smoothstep(0.,6.,distance(p.xz,uCam.xz)+2.)*(1.-smoothstep(12.,18.,distance(p.xz,uCam.xz)));
+     vLamp=0.;for(int i=0;i<8;i++){vLamp=max(vLamp,(1.-smoothstep(0.,7.,distance(p,uLamps[i])))*step(p.y,uLamps[i].y+.2));}
      gl_Position=projectionMatrix*viewMatrix*vec4(p,1.);}`,
-   fragmentShader:`uniform float uAlpha;varying float vA;void main(){gl_FragColor=vec4(vec3(.62,.7,.82),uAlpha*vA);}`});
+   fragmentShader:`uniform float uAlpha;varying float vA;varying float vLamp;void main(){gl_FragColor=vec4(mix(vec3(.34,.44,.56),vec3(1.,.67,.32),vLamp),uAlpha*vA*(.3+vLamp));}`});
   this.mesh=new THREE.LineSegments(g,m);this.mesh.frustumCulled=false;this.mesh.name='ONSITE / rain';this.mesh.renderOrder=5;
  }
  update(camera:THREE.Camera,t:number,dt:number){
   const c=camera.position;this.fade+=((this.covered(c.x,c.y,c.z)?.18:1)-this.fade)*Math.min(1,dt*3);
-  this.uniforms.uCam.value.copy(c);this.uniforms.uTime.value=t;this.uniforms.uAlpha.value=.3*this.fade;
+  if(t>=this.next){this.next=t+.5;const near=[...this.anchors].sort((a,b)=>(a.x-c.x)**2+(a.z-c.z)**2-((b.x-c.x)**2+(b.z-c.z)**2));this.uniforms.uLamps.value.forEach((p,i)=>{const a=near[i];p.set(a?.x??0,a?.y??-1000,a?.z??0)})}
+  this.uniforms.uCam.value.copy(c);this.uniforms.uTime.value=t;this.uniforms.uAlpha.value=.23*this.fade;
  }
 }
 
