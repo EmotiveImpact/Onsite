@@ -17,7 +17,7 @@ import {loadShopArt,shopLightAnchors} from './heronShopArt'
 import {coreLightAnchors} from './heronCoreArt'
 import {loadGalleryArt} from './heronGalleryArt'
 import {installHeronDepthFog} from './HeronDepthFog'
-import {loadLivedDetail,loadScannedDetail} from './heronLivedDetail'
+import {loadLivedDetail,loadScannedDetail,loadShopDepth,isReplacedShopShelf} from './heronLivedDetail'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -90,11 +90,11 @@ export class View {
    const arch=useArt?HeronReachMaterials.load(this.renderer,this.software).then(async m=>{
     // Render replacements only. The original dressing plan still owns every collider.
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
-    const dressing=reach.dressing.items.map(p=>p.asset==='WALL_LAMP'&&Math.hypot(p.x-111,p.z-47.99)<.1?{...p,x:103}:p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
+    const dressing=reach.dressing.items.filter(p=>!isReplacedShopShelf(p)).map(p=>p.asset==='WALL_LAMP'&&Math.hypot(p.x-111,p.z-47.99)<.1?{...p,x:103}:p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
     const [built,kits,grass,shops,gallery,lived]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software,this.coverageSamples>0)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0),loadLivedDetail(gltf,m)]);
-    const scanned=await loadScannedDetail(gltf,shops);
+    const [scanned,shopDepth]=await Promise.all([loadScannedDetail(gltf,shops),loadShopDepth(gltf,m,lived,shops)]);
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned);return root;
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned,shopDepth);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene)}else this.blockout();
