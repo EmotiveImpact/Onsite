@@ -21,7 +21,7 @@ import heron_props_atlas as A
 VEH = "hr_prop_vehicle"
 GLASS = "hr_glass"
 TRIM = "hr_plastic_black"
-TYRE = "hr_rubber"
+TYRE = "hr_prop_tyre"
 
 
 def smooth_interp(x, table):
@@ -160,17 +160,24 @@ def patch(body, xa, xb, sa, sb, side, nx=6, ns=4, off=0.004):
     return bm
 
 
-def wheel(a, centre, r, width, side, face_rect, turn, spokes_alloy=True):
+def wheel(a, centre, r, width, side, face_rect, turn, spokes_alloy=True, far=False):
     """Tyre with sidewall bulge, recessed textured wheel face, dark barrel."""
     cx, cy, cz = centre
     m = turn @ T(cx, cy, cz) @ R("X", -90 if side > 0 else 90)
     w = width / 2
-    prof = [(r * 0.66, -w * 0.9), (r * 0.80, -w * 1.0), (r * 0.93, -w * 0.96), (r * 0.99, -w * 0.70),
-            (r, -w * 0.3), (r, w * 0.3), (r * 0.99, w * 0.70), (r * 0.93, w * 0.96), (r * 0.80, w * 1.0), (r * 0.66, w * 0.9)]
-    a.add(lathe(prof, 28, False, False), TYRE, m)
+    seg = 12 if far else 28
+    if far:
+        prof = [(r * 0.66, -w * 0.9), (r * 0.93, -w * 0.96), (r, -w * 0.4), (r, w * 0.4), (r * 0.93, w * 0.96), (r * 0.66, w * 0.9)]
+    else:
+        prof = [(r * 0.66, -w * 0.9), (r * 0.80, -w * 1.0), (r * 0.93, -w * 0.96), (r * 0.99, -w * 0.70),
+                (r, -w * 0.3), (r, w * 0.3), (r * 0.99, w * 0.70), (r * 0.93, w * 0.96), (r * 0.80, w * 1.0), (r * 0.66, w * 0.9)]
+    a.add(lathe(prof, seg, False, False), TYRE, m)
     # rim lip and textured face (outer side is +local z)
-    a.add(lathe([(r * 0.66, w * 0.9), (r * 0.645, w * 0.82), (r * 0.62, w * 0.70)], 28, False, False), "hr_steel_galv" if not spokes_alloy else "hr_steel_black", m)
-    face = lathe([(r * 0.62, w * 0.70), (0.0, w * 0.62)], 28, False, False)
+    if not far:
+        a.add(lathe([(r * 0.66, w * 0.9), (r * 0.645, w * 0.82), (r * 0.62, w * 0.70)], 28, False, False), "hr_steel_galv" if not spokes_alloy else "hr_steel_black", m)
+    else:
+        a.add(lathe([(r * 0.66, w * 0.9), (r * 0.62, w * 0.70)], seg, False, False), "hr_steel_galv" if not spokes_alloy else "hr_steel_black", m)
+    face = lathe([(r * 0.62, w * 0.70), (0.0, w * 0.62)], seg, False, False)
     uvl = face.loops.layers.uv.active
     u0, v0, u1, v1 = face_rect
     for f in face.faces:
@@ -178,12 +185,12 @@ def wheel(a, centre, r, width, side, face_rect, turn, spokes_alloy=True):
             x, y = l.vert.co.x, l.vert.co.y
             l[uvl].uv = (u0 + (u1 - u0) * (0.5 + x / (2 * r * 0.62)), v0 + (v1 - v0) * (0.5 + y / (2 * r * 0.62)))
     a.add(face, VEH, m, uv="keep")
-    a.add(lathe([(r * 0.62, w * 0.70), (r * 0.60, -w * 0.8)], 20, False, False), "hr_prop_dark_void", m, flip=True)
+    if not far:
+        a.add(lathe([(r * 0.62, w * 0.70), (r * 0.60, -w * 0.8)], 20, False, False), "hr_prop_dark_void", m, flip=True)
 
 
-def arch_liner(a, ax, R_, y0, y1, wheel_r, turn, side):
+def arch_liner(a, ax, R_, y0, y1, wheel_r, turn, side, n=14):
     bm = _new()
-    n = 14
     rows = []
     for k in range(n + 1):
         ang = math.pi * k / n
@@ -234,29 +241,30 @@ HATCH = {
 }
 
 
-def stations_for(x0, x1, axles, arch, extra=()):
+def stations_for(x0, x1, axles, arch, extra=(), far=False):
     xs = set()
-    k = 0
-    x = x0
-    # dense near the ends, regular in the middle
-    for t in (0.0, 0.004, 0.012, 0.025, 0.045, 0.07, 0.10, 0.14, 0.19):
+    # dense near the ends, regular in the middle; the far variant keeps only the
+    # stations that carry the silhouette, the arches and the glass edges
+    ends = (0.0, 0.012, 0.045, 0.10, 0.19) if far else (0.0, 0.004, 0.012, 0.025, 0.045, 0.07, 0.10, 0.14, 0.19)
+    for t in ends:
         xs.add(round(x0 + t, 4))
         xs.add(round(x1 - t, 4))
-    n = 34
+    n = 8 if far else 34
     for i in range(n + 1):
         xs.add(round(x0 + 0.19 + (x1 - x0 - 0.38) * i / n, 4))
+    ak = 2 if far else 7
     for (ax, _) in axles:
-        for k in range(-7, 8):
-            xs.add(round(ax + arch * k / 7.0, 4))
+        for k in range(-ak, ak + 1):
+            xs.add(round(ax + arch * k / float(ak), 4))
     for e in extra:
         xs.add(round(e, 4))
     return sorted(xs)
 
 
-def roof_lip(body, xa, xb, s0, thick):
+def roof_lip(body, xa, xb, s0, thick, n=6):
     """Lofted lip from roof station xa (on the surface) back to xb, across bands s0..9..s0."""
     bm = _new()
-    ss = [s0 + (9 - s0) * k / 6 for k in range(7)]
+    ss = [s0 + (9 - s0) * k / n for k in range(n + 1)]
     cols = [(s, -1) for s in ss] + [(s, 1) for s in reversed(ss[:-1])]
     top_a, top_b, bot_b, bot_a = [], [], [], []
     for (s, side) in cols:
@@ -282,8 +290,8 @@ def roof_lip(body, xa, xb, s0, thick):
     return bm
 
 
-def car_hatchback():
-    a = Asset("CAR_HATCHBACK", "vehicle", 81)
+def car_hatchback(far=False):
+    a = Asset("CAR_HATCHBACK_FAR" if far else "CAR_HATCHBACK", "vehicle", 81)
     turn = R("Z", -90)
     PAINT = "hr_prop_car_paint"
     body = Body(HATCH)
@@ -308,7 +316,11 @@ def car_hatchback():
                 return 1 if band >= 7 else 0
         return 0
 
-    st = stations_for(-2.0, 2.0, HATCH["axles"], HATCH["arch"], tuple(0.20 + 0.04 * k for k in range(20)) + tuple(-1.93 + 0.03 * k for k in range(10)) + (-0.08, 0.84, -1.00, -0.25, -1.13, -1.32, -0.24, -1.12))
+    if far:
+        glass_x = (0.20, 0.45, 0.70, 0.97, -1.93, -1.80, -1.66)
+    else:
+        glass_x = tuple(0.20 + 0.04 * k for k in range(20)) + tuple(-1.93 + 0.03 * k for k in range(10))
+    st = stations_for(-2.0, 2.0, HATCH["axles"], HATCH["arch"], glass_x + (-0.08, 0.84, -1.00, -0.25, -1.13, -1.32, -0.24, -1.12), far)
     bm = body_mesh(body, st, band_mat)
     a.add(bm, mats, turn, sharp=48)
     # underbody pieces avoiding the wheels
@@ -317,22 +329,39 @@ def car_hatchback():
         a.add(box(x1 - x0, 2 * hy, 0.02, 0.0, 1, ((x0 + x1) / 2, 0, 0.215)), TRIM, turn)
     for (ax, _) in HATCH["axles"]:
         for side in (-1, 1):
-            arch_liner(a, ax, HATCH["arch"] - 0.005, 0.50, 0.86, HATCH["wheel_r"], turn, side)
-            wheel(a, (ax, side * 0.745, HATCH["wheel_r"]), HATCH["wheel_r"], 0.205, side, A.VEHICLE["alloy"], turn)
+            arch_liner(a, ax, HATCH["arch"] - 0.005, 0.50, 0.86, HATCH["wheel_r"], turn, side, 5 if far else 14)
+            wheel(a, (ax, side * 0.745, HATCH["wheel_r"]), HATCH["wheel_r"], 0.205, side, A.VEHICLE["alloy"], turn, True, far)
     # front: grille, lower intake, plate, headlights
     xf = 2.0
     a.add(box(0.03, 0.80, 0.14, 0.01, 1, (xf - 0.005, 0, 0.53)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["grille"])
     a.add(box(0.03, 1.00, 0.10, 0.01, 1, (xf - 0.012, 0, 0.34)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["grille"])
     a.add(box(0.012, 0.52, 0.111, 0.003, 1, (xf + 0.006, 0, 0.43)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["plate_front"])
     for side in (-1, 1):
-        a.add(patch(body, 1.70, 1.988, 2.5, 4.5, side, 6, 3, 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["headlight"])
-        a.add(patch(body, -1.995, -1.90, 2.2, 3.9, side, 4, 3, 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["taillight"])
-        # fog lamp recesses
-        a.add(box(0.02, 0.16, 0.06, 0.008, 1, (xf - 0.02, side * 0.62, 0.33)), TRIM, turn)
+        a.add(patch(body, 1.70, 1.988, 2.5, 4.5, side, 2 if far else 6, 2 if far else 3, 0.006 if far else 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["headlight"])
+        a.add(patch(body, -1.995, -1.90, 2.2, 3.9, side, 1 if far else 4, 2 if far else 3, 0.006 if far else 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["taillight"])
+        if not far:
+            # fog lamp recesses
+            a.add(box(0.02, 0.16, 0.06, 0.008, 1, (xf - 0.02, side * 0.62, 0.33)), TRIM, turn)
     # rear: plate, reflectors, wiper, bumper insert
     xr = -2.0
     a.add(box(0.012, 0.52, 0.111, 0.003, 1, (xr - 0.006, 0, 0.62)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["plate_rear"])
     a.add(box(0.03, 1.10, 0.10, 0.01, 1, (xr + 0.012, 0, 0.33)), TRIM, turn)
+    if far:
+        # mirrors, lip spoiler and a dark seat silhouette; shut lines, handles,
+        # reflectors, wiper, fin and exhaust are below what reads past 10 m
+        for side in (-1, 1):
+            mp = body.point(0.78, 5.0, side) + Vector((0, side * 0.10, 0.02))
+            a.add(box(0.10, 0.20, 0.12, 0.0, 1, tuple(mp)), PAINT, turn)
+            a.add(box(0.004, 0.17, 0.09, 0.0, 1, tuple(mp + Vector((-0.051, 0, 0)))), GLASS, turn)
+            a.add(box(0.14, 0.46, 0.60, 0.0, 1, (-0.25, side * 0.36, 0.72)), "hr_prop_fabric", turn, uv_scale=2.0)
+        a.add(box(0.14, 1.30, 0.55, 0.0, 1, (-1.10, 0, 0.72)), "hr_prop_fabric", turn, uv_scale=2.0)
+        a.add(box(0.40, 1.40, 0.20, 0.0, 1, (0.62, 0, 0.77)), TRIM, turn)
+        a.add(roof_lip(body, -1.60, -1.84, 6.6, 0.026, 3), PAINT, turn)
+        a.meta.update(needsCollision=True,
+                      collider=[box_collider((1.75, 4.0, 0.75), (0, 0, 0.55)), box_collider((1.40, 2.3, 0.55), (0, 0.4, 1.20))],
+                      lod="far", fullAsset="CAR_HATCHBACK",
+                      notes="Distance variant of CAR_HATCHBACK (same origin, front, size, materials and collider) for parked cars seen from about 10 m and beyond. Simplified loft, 12-sided wheels, no shut lines, handles or detailed interior.")
+        return a
     for side in (-1, 1):
         a.add(box(0.012, 0.10, 0.025, 0.004, 1, (xr + 0.004, side * 0.55, 0.36)), "hr_prop_lens_red", turn)
     a.add(box(0.30, 0.012, 0.01, 0.002, 1, (-1.86, 0.12, 1.10)), TRIM, turn @ T(-1.86, 0.12, 1.10) @ R("Y", 50) @ T(1.86, -0.12, -1.10))
@@ -377,8 +406,8 @@ VAN = {
 }
 
 
-def van_delivery():
-    a = Asset("VAN_DELIVERY", "vehicle", 82)
+def van_delivery(far=False):
+    a = Asset("VAN_DELIVERY_FAR" if far else "VAN_DELIVERY", "vehicle", 82)
     turn = R("Z", -90)
     PAINT = "hr_prop_van_paint"
     body = Body(VAN)
@@ -395,24 +424,39 @@ def van_delivery():
             return 1 if band >= 7 or (band == 6 and 1.2 < x < 1.8) else 0
         return 0
 
-    st = stations_for(-2.475, 2.475, VAN["axles"], VAN["arch"], (0.70, 0.78, 0.86, 1.80, 1.12, 1.86))
+    st = stations_for(-2.475, 2.475, VAN["axles"], VAN["arch"], (0.70, 0.78, 0.86, 1.80, 1.12, 1.86) + ((1.45,) if far else ()), far)
     a.add(body_mesh(body, st, band_mat), mats, turn, sharp=48)
     for (x0, x1, hy) in ((-2.30, -1.95, 0.88), (-1.95, -1.15, 0.62), (-1.15, 1.18, 0.88), (1.18, 1.98, 0.62), (1.98, 2.38, 0.88)):
         a.add(box(x1 - x0, 2 * hy, 0.02, 0.0, 1, ((x0 + x1) / 2, 0, 0.255)), TRIM, turn)
     for (ax, _) in VAN["axles"]:
         for side in (-1, 1):
-            arch_liner(a, ax, VAN["arch"] - 0.005, 0.56, 0.95, VAN["wheel_r"], turn, side)
-            wheel(a, (ax, side * 0.82, VAN["wheel_r"]), VAN["wheel_r"], 0.215, side, A.VEHICLE["steel_wheel"], turn, False)
+            arch_liner(a, ax, VAN["arch"] - 0.005, 0.56, 0.95, VAN["wheel_r"], turn, side, 5 if far else 14)
+            wheel(a, (ax, side * 0.82, VAN["wheel_r"]), VAN["wheel_r"], 0.215, side, A.VEHICLE["steel_wheel"], turn, False, far)
     xf, xr = 2.475, -2.475
     a.add(box(0.03, 1.00, 0.20, 0.01, 1, (xf - 0.008, 0, 0.70)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["grille"])
     a.add(box(0.05, 1.70, 0.22, 0.02, 2, (xf - 0.012, 0, 0.40)), TRIM, turn)
     a.add(box(0.012, 0.52, 0.111, 0.003, 1, (xf + 0.016, 0, 0.42)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["plate_front"])
     for side in (-1, 1):
-        a.add(patch(body, 2.30, 2.468, 2.4, 3.8, side, 5, 3, 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["headlight"])
+        a.add(patch(body, 2.30, 2.468, 2.4, 3.8, side, 2 if far else 5, 2 if far else 3, 0.006 if far else 0.004), VEH, turn, uv="rect", uv_rect=A.VEHICLE["headlight"])
         # tall rear lamp stacks on the corners
         a.add(box(0.03, 0.10, 0.48, 0.008, 1, (xr + 0.002, side * 0.88, 1.02)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["van_lamp"])
     a.add(box(0.06, 1.90, 0.20, 0.02, 2, (xr + 0.01, 0, 0.40)), TRIM, turn)
     a.add(box(0.012, 0.52, 0.111, 0.003, 1, (xr - 0.025, 0, 0.62)), VEH, turn, uv="fit", fit_axis="Y", uv_rect=A.VEHICLE["plate_rear"])
+    if far:
+        a.add(box(0.006, 0.008, 1.48, 0.0, 1, (xr - 0.002, 0, 1.18)), TRIM, turn)
+        a.add(box(0.02, 0.30, 0.05, 0.0, 1, (xr - 0.005, 0, 1.92)), "hr_prop_lens_red", turn)
+        for side in (-1, 1):
+            a.add(patch(body, -0.62, 0.70, 5.22, 5.30, side, 1, 1, 0.003), TRIM, turn, uv="keep")
+            a.add(patch(body, -2.30, 1.20, 1.05, 1.45, side, 3, 1, 0.006), TRIM, turn, uv="keep")
+            mp = body.point(1.70, 5.0, side) + Vector((0, side * 0.13, 0.05))
+            a.add(box(0.10, 0.22, 0.26, 0.0, 1, tuple(mp)), TRIM, turn)
+            a.add(box(0.004, 0.18, 0.21, 0.0, 1, tuple(mp + Vector((-0.051, 0, 0)))), GLASS, turn)
+            a.add(box(0.14, 0.46, 0.60, 0.0, 1, (0.80, side * 0.40, 0.92)), "hr_prop_fabric", turn, uv_scale=2.0)
+        a.add(box(0.04, 1.82, 1.30, 0.0, 1, (0.62, 0, 1.0)), TRIM, turn)
+        a.meta.update(needsCollision=True, collider=[box_collider((1.92, 4.95, 1.95), (0, 0, 0.975))],
+                      lod="far", fullAsset="VAN_DELIVERY",
+                      notes="Distance variant of VAN_DELIVERY (same origin, front, size, materials and collider) for parked vans seen from about 10 m and beyond. Simplified loft and wheels, no handles, roof rails or cab interior detail.")
+        return a
     # rear barn door split, handle, step and high brake light
     a.add(box(0.006, 0.008, 1.48, 0.0, 1, (xr - 0.002, 0, 1.18)), TRIM, turn)
     a.add(box(0.03, 0.14, 0.05, 0.01, 1, (xr - 0.01, -0.10, 1.05)), TRIM, turn)
@@ -439,4 +483,12 @@ def van_delivery():
     return a
 
 
-BUILDERS = [car_hatchback, van_delivery]
+def car_hatchback_far():
+    return car_hatchback(far=True)
+
+
+def van_delivery_far():
+    return van_delivery(far=True)
+
+
+BUILDERS = [car_hatchback, van_delivery, car_hatchback_far, van_delivery_far]

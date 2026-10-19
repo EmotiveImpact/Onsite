@@ -128,6 +128,9 @@ def main(argv):
                 entry["lightAnchor"] = meta["lightAnchor"]
             if "budget" in meta:
                 entry["budget"] = meta["budget"]
+            for key in ("lod", "fullAsset"):
+                if key in meta:
+                    entry[key] = meta[key]
             manifest["assets"].append(entry)
             print(f"{a.name:26s} {st['triangles']:6d} tris  size {st['size']}")
     manifest["totalTriangles"] = total

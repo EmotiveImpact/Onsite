@@ -235,7 +235,7 @@
       "materials": [
         "hr_plastic_black",
         "hr_steel_galv",
-        "hr_rubber"
+        "hr_prop_tyre"
       ],
       "notes": "240 litre two-wheel bin, lid hinged at the back (+Y), wheels at the back."
     },
@@ -284,7 +284,7 @@
       "materials": [
         "hr_plastic_green",
         "hr_steel_galv",
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_plastic_black"
       ],
       "notes": "240 litre two-wheel bin, lid hinged at the back (+Y), wheels at the back."
@@ -333,7 +333,7 @@
       },
       "materials": [
         "hr_steel_galv",
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_plastic_black"
       ],
       "notes": "Galvanised 1100 litre communal bin on four castors, flat lid, comb bar on the front."
@@ -476,7 +476,7 @@
         ]
       },
       "materials": [
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_steel_galv",
         "hr_prop_bike_paint",
         "hr_plastic_black",
@@ -1576,7 +1576,7 @@
         "hr_prop_car_paint",
         "hr_glass",
         "hr_plastic_black",
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_steel_black",
         "hr_prop_vehicle",
         "hr_prop_dark_void",
@@ -1634,7 +1634,7 @@
         "hr_prop_van_paint",
         "hr_glass",
         "hr_plastic_black",
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_steel_galv",
         "hr_prop_vehicle",
         "hr_prop_dark_void",
@@ -1642,6 +1642,134 @@
         "hr_prop_fabric"
       ],
       "notes": "Generic short-wheelbase panel van, about 4.95 x 1.92 x 1.95 m, dark grey, steel wheels, sliding side door and rear barn doors, nose faces -Y."
+    },
+    {
+      "name": "CAR_HATCHBACK_FAR",
+      "collection": "CAR_HATCHBACK_FAR",
+      "group": "HR_PROPS_VEHICLES",
+      "category": "vehicle",
+      "triangles": 2626,
+      "bounds": {
+        "min": [
+          -1.0,
+          -2.012,
+          0.0
+        ],
+        "max": [
+          1.0,
+          2.012,
+          1.439
+        ]
+      },
+      "size": [
+        2.0,
+        4.024,
+        1.439
+      ],
+      "footprint": [
+        2.0,
+        4.024
+      ],
+      "mount": "ground",
+      "needsCollision": true,
+      "collider": [
+        {
+          "type": "box",
+          "size": [
+            1.75,
+            4.0,
+            0.75
+          ],
+          "center": [
+            0,
+            0,
+            0.55
+          ]
+        },
+        {
+          "type": "box",
+          "size": [
+            1.4,
+            2.3,
+            0.55
+          ],
+          "center": [
+            0,
+            0.4,
+            1.2
+          ]
+        }
+      ],
+      "materials": [
+        "hr_prop_car_paint",
+        "hr_glass",
+        "hr_plastic_black",
+        "hr_prop_tyre",
+        "hr_steel_black",
+        "hr_prop_vehicle",
+        "hr_prop_fabric"
+      ],
+      "notes": "Distance variant of CAR_HATCHBACK (same origin, front, size, materials and collider) for parked cars seen from about 10 m and beyond. Simplified loft, 12-sided wheels, no shut lines, handles or detailed interior.",
+      "lod": "far",
+      "fullAsset": "CAR_HATCHBACK"
+    },
+    {
+      "name": "VAN_DELIVERY_FAR",
+      "collection": "VAN_DELIVERY_FAR",
+      "group": "HR_PROPS_VEHICLES",
+      "category": "vehicle",
+      "triangles": 2522,
+      "bounds": {
+        "min": [
+          -1.124,
+          -2.497,
+          0.0
+        ],
+        "max": [
+          1.124,
+          2.506,
+          1.95
+        ]
+      },
+      "size": [
+        2.247,
+        5.003,
+        1.95
+      ],
+      "footprint": [
+        2.247,
+        5.003
+      ],
+      "mount": "ground",
+      "needsCollision": true,
+      "collider": [
+        {
+          "type": "box",
+          "size": [
+            1.92,
+            4.95,
+            1.95
+          ],
+          "center": [
+            0,
+            0,
+            0.975
+          ]
+        }
+      ],
+      "materials": [
+        "hr_prop_van_paint",
+        "hr_glass",
+        "hr_plastic_black",
+        "hr_prop_tyre",
+        "hr_steel_galv",
+        "hr_prop_vehicle",
+        "hr_prop_lens_red",
+        "hr_prop_fabric"
+      ],
+      "notes": "Distance variant of VAN_DELIVERY (same origin, front, size, materials and collider) for parked vans seen from about 10 m and beyond. Simplified loft and wheels, no handles, roof rails or cab interior detail.",
+      "lod": "far",
+      "fullAsset": "VAN_DELIVERY"
     },
     {
       "name": "SHOP_SHELF_UNIT",
@@ -2053,7 +2181,7 @@
         "hr_plastic_black",
         "hr_prop_tool_red",
         "hr_steel_aged",
-        "hr_rubber"
+        "hr_prop_tyre"
       ],
       "notes": "Cycle workshop bench, steel frame, timber top, pegboard back with tools, vice, toolbox, inner tubes and a wheel."
     },
@@ -2563,7 +2691,7 @@
         ]
       },
       "materials": [
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_prop_cone",
         "hr_prop_reflective"
       ],
@@ -2615,7 +2743,7 @@
         "hr_prop_wire_grid",
         "hr_steel_galv",
         "hr_prop_trolley_plastic",
-        "hr_rubber",
+        "hr_prop_tyre",
         "hr_plastic_black"
       ],
       "notes": "Abandoned shopping trolley, wire basket alpha clipped (25 mm grid). Generic, no branding."
@@ -2668,7 +2796,7 @@
       "notes": "Dumped single mattress, stained, one end flopped up. Render only by default; the collider is offered if it should block."
     }
   ],
-  "totalTriangles": 95836,
+  "totalTriangles": 100984,
   "doubleSidedMaterials": [
     "hr_concrete_cast",
     "hr_lamp_emit",
@@ -2693,10 +2821,10 @@
     "hr_prop_shop",
     "hr_prop_shop_lit",
     "hr_prop_stainless",
+    "hr_prop_tyre",
     "hr_prop_van_paint",
     "hr_prop_vehicle",
     "hr_prop_wire_grid",
-    "hr_rubber",
     "hr_steel_black",
     "hr_steel_galv"
   ]

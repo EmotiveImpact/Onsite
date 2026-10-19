@@ -24,7 +24,7 @@ YEL = "hr_paint_yellow"
 LAMP = "hr_lamp_emit"
 GLASS = "hr_glass"
 SIGN = "hr_signage"
-RUBBER = "hr_rubber"
+RUBBER = "hr_prop_tyre"
 UPVC = "hr_upvc_white"
 VOID = "hr_prop_dark_void"
 

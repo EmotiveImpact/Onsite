@@ -60,6 +60,8 @@ PROP = {
     "hr_prop_cctv": ((1, 1, 1), 0.60, 0.0, {"image": "cctv"}),
     "hr_prop_manhole": ((1, 1, 1), 0.60, 0.6, {"image": "manhole", "normal": True}),
     "hr_prop_vents": ((1, 1, 1), 0.85, 0.0, {"image": "vents", "normal": True}),
+    # tyres and moulded rubber parts; hr_rubber is the shared rubber floor tile
+    "hr_prop_tyre": ((0.030, 0.030, 0.032), 0.78, 0.0, {}),
     "hr_prop_estate_sign": ((1, 1, 1), 0.45, 0.0, {"image": "estate_sign"}),
     "hr_prop_pegboard": ((1, 1, 1), 0.80, 0.0, {"image": "pegboard"}),
     "hr_prop_fabric": ((1, 1, 1), 0.95, 0.0, {"image": "fabric"}),

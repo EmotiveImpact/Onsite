@@ -21,6 +21,6 @@ const views=process.env.VIEWS?JSON.parse(process.env.VIEWS).map(([n,x,y,z,dx,dz,
  ['08-rowan-roof',at(38,9,34),face(1,-1),-.06],
 ];
 const metrics=[];
-for(const [name,[x,y,z],yaw,pitch]of views){await page.evaluate(({x,y,z,yaw,pitch})=>__onsite.place(x,y,z,yaw,pitch),{x,y,z,yaw,pitch});await ticks(6);await page.screenshot({path:`${out}/${name}.png`});const s=await page.evaluate(()=>__onsite.snapshot());metrics.push({name,player:s.player.position,status:s.status});console.log(name,JSON.stringify(s.player.position))}
+for(const [name,[x,y,z],yaw,pitch]of views){await page.evaluate(({x,y,z,yaw,pitch})=>__onsite.place(x,y,z,yaw,pitch),{x,y,z,yaw,pitch});await ticks(6);await page.screenshot({path:`${out}/${name}.png`});const s=await page.evaluate(()=>__onsite.snapshot());const r=await page.evaluate(()=>__onsite.metrics());metrics.push({name,player:s.player.position,status:s.status,drawCalls:r.drawCalls,triangles:r.triangles});console.log(name,JSON.stringify(s.player.position))}
 await writeFile(`${out}/stills.json`,JSON.stringify({kind:'inspection fixtures',errors,metrics,runtime:await page.evaluate(()=>__onsite.metrics())},null,2));
 console.log('errors',errors);await browser.close();

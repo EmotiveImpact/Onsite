@@ -148,8 +148,8 @@ def cardboard_flat():
 
 def traffic_cone():
     a = Asset("TRAFFIC_CONE", "litter", 77)
-    a.add(box(0.38, 0.38, 0.035, 0.012, 2, (0, 0, 0.0175)), "hr_rubber")
-    a.add(lathe([(0.17, 0.035), (0.16, 0.05)], 20, False, False), "hr_rubber")
+    a.add(box(0.38, 0.38, 0.035, 0.012, 2, (0, 0, 0.0175)), "hr_prop_tyre")
+    a.add(lathe([(0.17, 0.035), (0.16, 0.05)], 20, False, False), "hr_prop_tyre")
     prof = [(0.155, 0.045), (0.150, 0.06)]
     zs = [0.06, 0.34, 0.345, 0.48, 0.485, 0.55, 0.555, 0.63, 0.635, 0.70]
     rr = lambda z: 0.150 - (0.150 - 0.030) * (z - 0.06) / (0.72 - 0.06)
@@ -197,7 +197,7 @@ def shopping_trolley():
     # castors
     for (x, y) in ((-0.20, -0.40), (0.20, -0.40), (-0.24, 0.34), (0.24, 0.34)):
         a.add(box(0.035, 0.05, 0.05, 0.004, 1, (x, y, 0.105)), G)
-        _wheel(a, 0.062, 0.03, (x, y + 0.02, 0.062), "X", "hr_rubber", "hr_plastic_black", 0)
+        _wheel(a, 0.062, 0.03, (x, y + 0.02, 0.062), "X", "hr_prop_tyre", "hr_plastic_black", 0)
     a.meta.update(needsCollision=True, collider=box_collider((0.62, 1.0, 1.06), (0, 0.0, 0.53)),
                   notes="Abandoned shopping trolley, wire basket alpha clipped (25 mm grid). Generic, no branding.")
     return a

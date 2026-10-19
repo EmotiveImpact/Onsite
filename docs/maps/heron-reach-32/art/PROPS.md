@@ -56,7 +56,7 @@ leaves the manifest alone. The builder starts from an empty file, so do not hand
 
 ## Contents
 
-57 assets, 95,836 triangles in total. Counts are per asset; see the manifest for bounds.
+59 assets, 100,984 triangles in total. Counts are per asset; see the manifest for bounds.
 
 | group | asset | tris | notes |
 | --- | --- | ---: | --- |
@@ -93,6 +93,8 @@ leaves the manifest alone. The builder starts from an empty file, so do not hand
 | cage | `BALL` | 900 | 32-panel size 5 ball |
 | vehicles | `CAR_HATCHBACK` | 9,646 | generic five-door hatchback, roof lip spoiler |
 | vehicles | `VAN_DELIVERY` | 8,286 | generic panel van, sliding door |
+| vehicles | `CAR_HATCHBACK_FAR` | 2,626 | distance variant of the hatchback |
+| vehicles | `VAN_DELIVERY_FAR` | 2,522 | distance variant of the van |
 | shop | `SHOP_SHELF_UNIT` | 4,796 | 1.2 m bay, procedural stock |
 | shop | `SHOP_FRIDGE` | 6,082 | two-door drinks fridge, lit |
 | shop | `SHOP_COUNTER` | 882 | counter with till and card reader |
@@ -119,15 +121,23 @@ the bench, euro bin and roof tank sit between 2k and 4k as medium props), medium
 4k, the shelf bay with stock under 8k, the fridge about 6k and the vehicles under 10k
 against a 15k budget.
 
-`WHEELIE_BIN_240_GREEN`, `BIN_BAG_B`, `BIN_BAG_C` and `RAILING_POST` are variants added
-beyond the brief's list.
+`CAR_HATCHBACK_FAR` and `VAN_DELIVERY_FAR` are lighter builds of the same vehicles for
+parked rows seen from about 10 to 40 m: same origin, front, size, materials and collider,
+built by the same code with fewer loft stations, 12-sided wheels, simple mirrors and seat
+silhouettes, and no shut lines, handles, reflectors or detailed interior. Glass, wheel faces,
+plates, head and tail lamps are kept. Their manifest entries carry `"lod": "far"` and
+`fullAsset`. Use the full assets where a player can walk right up to a vehicle.
+
+`WHEELIE_BIN_240_GREEN`, `BIN_BAG_B`, `BIN_BAG_C`, `RAILING_POST` and the two `_FAR`
+vehicles are variants added beyond the brief's list.
 
 ## Materials and textures
 
-Shared materials (`hr_steel_black`, `hr_steel_galv`, `hr_steel_aged`, `hr_concrete_cast`,
-`hr_concrete_rough`, `hr_timber`, `hr_plastic_black`, `hr_plastic_green`, `hr_paint_yellow`,
-`hr_lamp_emit`, `hr_glass`, `hr_glass_lit`, `hr_signage`, `hr_rubber`, `hr_upvc_white`,
-`hr_soil`) are plain Principled placeholders with the correct names. Swap in the texture
+Shared materials used by the kit (`hr_steel_black`, `hr_steel_galv`, `hr_steel_aged`,
+`hr_concrete_cast`, `hr_concrete_rough`, `hr_timber`, `hr_plastic_black`, `hr_plastic_green`,
+`hr_paint_yellow`, `hr_lamp_emit`, `hr_glass`, `hr_upvc_white`) are plain Principled
+placeholders with the correct names. Tyres and moulded rubber use the kit's own
+`hr_prop_tyre`, because the shared `hr_rubber` is a rubber floor tile. Swap in the texture
 kit's versions from `assets/blender/heron-reach/materials.blend` by name; the preview script
 does exactly this with `user_remap`. Faces using them carry metre UVs (1 UV unit = 1 m,
 box projected per face), so the tiling textures land at real scale.
@@ -173,8 +183,8 @@ Art never changes the level's collision. The manifest gives, for each asset,
   `EURO_BIN_1100`, `BENCH`, `CYCLE_HOOP`, `UTILITY_CABINET`, `PLANTER_EDGE`, `RAILING_1M`,
   `RAILING_POST`, `SIGN_POST`, `NOTICE_BOARD`, `ROOF_VENT`, `ROOF_TANK`, `CAGE_POST`,
   `CAGE_PANEL_2_5M`, `CAGE_GATE_4M` (four boxes: both posts and both open leaves; the header is overhead),
-  `GOAL_FIVE_A_SIDE`, `CAR_HATCHBACK` (two boxes: body and cabin),
-  `VAN_DELIVERY`, every shop and interior fixture, and `SHOPPING_TROLLEY`.
+  `GOAL_FIVE_A_SIDE`, `CAR_HATCHBACK` and `CAR_HATCHBACK_FAR` (two boxes: body and cabin),
+  `VAN_DELIVERY` and `VAN_DELIVERY_FAR`, every shop and interior fixture, and `SHOPPING_TROLLEY`.
 - Render only: wall-mounted items, `KERB_1M` (the level owns the kerb step), `DRAIN_GULLY`,
   `MANHOLE`, `BIKE` (thin; a box is given if wanted), `BALL`, `TRAFFIC_CONE` and the
   litter. `BIN_BAG_C` and `MATTRESS_DUMPED` can take a low box if they should block.

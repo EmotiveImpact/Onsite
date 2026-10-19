@@ -377,6 +377,27 @@
   "emissiveIntensity": 1.8,
   "repeat": 1
  },
+ "hr_tower_elev_b": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "roughness": 0.9,
+  "metalness": 0,
+  "map": "/materials/heron/backdrop/tower-elevation-b-color.webp",
+  "emissiveMap": "/materials/heron/backdrop/tower-elevation-b-emit.webp",
+  "normalMap": null,
+  "ormMap": null,
+  "emissive": [
+   1,
+   0.85,
+   0.7
+  ],
+  "emissiveIntensity": 1.8,
+  "repeat": 1
+ },
  "hr_upvc_white": {
   "shadow": true,
   "color": [
@@ -412,8 +433,8 @@
   "emissiveIntensity": 2.2,
   "roughness": 0.4,
   "metalness": 0,
-  "map": "/materials/heron/windows/interiors-color.webp",
-  "emissiveMap": "/materials/heron/windows/interiors-emit.webp",
+  "map": "/materials/heron/windows/interiors-photo-color.webp",
+  "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
   "repeat": 1
  },
  "hr_wood_furniture": {

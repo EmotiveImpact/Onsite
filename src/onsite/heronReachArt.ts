@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
+import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -59,7 +60,7 @@ function radial(size:number,stops:[number,string][]){
  * wet-ground reflection streak, which is what carries the look of the concept frames at little cost.
  */
 export class HeronReachAtmosphere {
- readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:THREE.Mesh[]=[];private next=0;
+ readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:{x:number;y:number;z:number;big:boolean}[]=[];private streakMesh!:THREE.InstancedMesh;private readonly m=new THREE.Matrix4();private readonly q=new THREE.Quaternion();private readonly up=new THREE.Vector3(0,1,0);private next=0;
  constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean){
   this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
   const top=new THREE.Color('#0b1426'),mid=new THREE.Color('#25385a'),horizon=new THREE.Color('#6d6478'),glow=new THREE.Color('#b0806a');
@@ -72,20 +73,32 @@ export class HeronReachAtmosphere {
   }
   sky.setAttribute('color',new THREE.Float32BufferAttribute(cols,3));
   const dome=new THREE.Mesh(sky,new THREE.MeshBasicMaterial({vertexColors:true,side:THREE.BackSide,depthWrite:false,fog:false}));dome.name='blue hour sky';dome.renderOrder=-10;this.group.add(dome);
+  // The far city: a wrap-around panorama (a ChatGPT image) between the tower skyline and the dome,
+  // three mirrored repeats round a 470 m ring (seen from inside), its horizon a few degrees above the eye and its top fading out.
+  const pano=new THREE.TextureLoader().load('/materials/heron/backdrop/skyline-panorama.webp',t=>{t.colorSpace=THREE.SRGBColorSpace;t.wrapS=THREE.RepeatWrapping;t.repeat.set(-3,1);t.needsUpdate=true});
+  const ring=new THREE.Mesh(new THREE.CylinderGeometry(470,470,246,96,1,true),new THREE.MeshBasicMaterial({map:pano,side:THREE.BackSide,transparent:true,depthWrite:false,fog:false,color:'#b9c0d4'}));
+  ring.position.y=83;ring.name='far city';ring.renderOrder=-9;this.group.add(ring);
   // Reflections come from the same graded sky so glass and wet paving pick up the dusk.
   const envScene=new THREE.Scene();envScene.add(dome.clone());const pm=new THREE.PMREMGenerator(renderer);
   scene.environment=pm.fromScene(envScene,.02).texture;scene.environmentIntensity=.55;pm.dispose();
   const halo=radial(128,[[0,'rgba(255,214,160,1)'],[.18,'rgba(255,170,90,.55)'],[.5,'rgba(255,140,60,.12)'],[1,'rgba(255,120,40,0)']]);
   const streak=radial(128,[[0,'rgba(255,190,120,.9)'],[.35,'rgba(255,150,80,.35)'],[1,'rgba(255,120,60,0)']]);
-  const haloMat=new THREE.SpriteMaterial({map:halo,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:true});
+  const haloMat=(size:number)=>new THREE.PointsMaterial({map:halo,size,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,fog:true});
   const streakMat=new THREE.MeshBasicMaterial({map:streak,blending:THREE.AdditiveBlending,depthWrite:false,transparent:true,polygonOffset:true,polygonOffsetFactor:-4});
   const plane=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
+  // Glows and streaks are batched: two point clouds and one instanced mesh, whatever the lamp count.
+  const glows:Record<'big'|'small',number[]>={big:[],small:[]};
   for(const a of anchors){
    const big=a.kind==='street'||a.kind==='court';
-   const s=new THREE.Sprite(haloMat);s.position.set(a.x,a.y,a.z);s.scale.setScalar(big?2.6:1.3);this.group.add(s);
+   glows[big?'big':'small'].push(a.x,a.y,a.z);
    const floor=Math.floor((a.y+.5)/3)*3;
-   if(big||a.y-floor<3.2){const m=new THREE.Mesh(plane,streakMat);m.position.set(a.x,floor+.012,a.z);m.scale.set(big?1.6:.9,1,big?9:4);m.userData.big=big;this.group.add(m);this.streaks.push(m)}
+   if(big||a.y-floor<3.2)this.streaks.push({x:a.x,y:floor+.012,z:a.z,big});
   }
+  for(const [k,size]of [['big',3.4],['small',1.7]] as const)if(glows[k].length){ // point size is in world units before the fov term, so 1/tan(37°) larger than the old sprites
+   const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(glows[k],3));
+   const pts=new THREE.Points(g,haloMat(size));pts.name=`lamp glow ${k}`;this.group.add(pts);
+  }
+  this.streakMesh=new THREE.InstancedMesh(plane,streakMat,Math.max(1,this.streaks.length));this.streakMesh.count=this.streaks.length;this.streakMesh.frustumCulled=false;this.group.add(this.streakMesh);
   for(let i=0;i<(software?4:10);i++){const l=new THREE.PointLight('#ffb36b',0,14,2);this.pool.push(l);this.group.add(l)}
  }
  /** Hand the light pool to the nearest lamps, and turn reflection streaks towards the viewer. */
@@ -96,7 +109,12 @@ export class HeronReachAtmosphere {
    const near=this.anchors.map(a=>({a,d:(a.x-c.x)**2+(a.y-c.y)**2*4+(a.z-c.z)**2})).sort((p,q)=>p.d-q.d);
    this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court';l.position.set(n.a.x,n.a.y-.25,n.a.z);l.intensity=big?60:22;l.distance=big?16:8});
   }
-  for(const m of this.streaks){m.rotation.y=Math.atan2(c.x-m.position.x,c.z-m.position.z);const d=Math.hypot(c.x-m.position.x,c.z-m.position.z);m.scale.z=(m.userData.big?3:1.5)+Math.min(d,30)*(m.userData.big?.3:.12)}
+  const p=new THREE.Vector3(),sc=new THREE.Vector3();
+  this.streaks.forEach((s,i)=>{
+   const d=Math.hypot(c.x-s.x,c.z-s.z);this.q.setFromAxisAngle(this.up,Math.atan2(c.x-s.x,c.z-s.z));
+   sc.set(s.big?1.6:.9,1,(s.big?3:1.5)+Math.min(d,30)*(s.big?.3:.12));this.streakMesh.setMatrixAt(i,this.m.compose(p.set(s.x,s.y,s.z),this.q,sc));
+  });
+  this.streakMesh.instanceMatrix.needsUpdate=true;
  }
 }
 
@@ -192,18 +210,23 @@ export class Rain {
 }
 
 export type Decal={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number};
-/** Puddles on the ground and tags on the walls, as alpha-cut planes over the Blender surfaces. */
+/** Puddles on the ground and tags on the walls, as alpha-cut planes over the Blender surfaces: one
+ * instanced mesh for the puddles and one merged mesh for the tags. */
 export function buildDecals(decals:Decal[],anisotropy:number){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach decals';const tl=new THREE.TextureLoader();
  const tex=(u:string,srgb=true)=>{const t=tl.load(u);t.anisotropy=anisotropy;t.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return t};
  const puddle=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/puddle-color.webp'),normalMap:tex('/materials/heron/decals/puddle-normal.webp',false),roughness:.03,metalness:.15,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-3,envMapIntensity:2.4});
- const tags=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/graffiti-atlas.webp'),roughness:.8,transparent:true,alphaTest:.05,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2});
- const flat=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
+ const tags=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/graffiti-photo-atlas.webp'),roughness:.8,transparent:true,alphaTest:.05,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2});
+ const flat=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2),puddles=decals.filter(d=>d.kind==='puddle'),pieces:THREE.BufferGeometry[]=[];
+ const pm=new THREE.InstancedMesh(flat,puddle,Math.max(1,puddles.length)),o=new THREE.Object3D();pm.count=puddles.length;pm.receiveShadow=true;
+ puddles.forEach((d,i)=>{o.position.set(d.x-OX,d.y+.008,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,1,d.h);o.updateMatrix();pm.setMatrixAt(i,o.matrix)});
+ pm.computeBoundingSphere();group.add(pm);
  for(const d of decals){
-  if(d.kind==='puddle'){const m=new THREE.Mesh(flat,puddle);m.position.set(d.x-OX,d.y+.008,d.z-OZ);m.rotation.y=d.ry;m.scale.set(d.w,1,d.h);m.receiveShadow=true;group.add(m);continue}
+  if(d.kind!=='graffiti')continue;
   const g=new THREE.PlaneGeometry(1,1),cell=d.cell??0,uv=g.attributes.uv;
-  for(let i=0;i<uv.count;i++)uv.setXY(i,(cell%2+uv.getX(i))/2,(1-Math.floor(cell/2)-1+uv.getY(i))/2);
-  const m=new THREE.Mesh(g,tags);m.position.set(d.x-OX,d.y,d.z-OZ);m.rotation.y=d.ry;m.scale.set(d.w,d.h,1);group.add(m);
+  for(let i=0;i<uv.count;i++)uv.setXY(i,(cell%2+uv.getX(i))/2,(2-Math.floor(cell/2)+uv.getY(i))/3); // 2 x 3 atlas, cell 0 top left
+  o.position.set(d.x-OX,d.y,d.z-OZ);o.rotation.set(0,d.ry,0);o.scale.set(d.w,d.h,1);o.updateMatrix();pieces.push(g.applyMatrix4(o.matrix));
  }
+ if(pieces.length)group.add(new THREE.Mesh(mergeGeometries(pieces),tags));
  return group;
 }

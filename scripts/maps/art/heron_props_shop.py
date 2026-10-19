@@ -504,7 +504,7 @@ def work_bench():
     a.add(box(0.03, 0.025, 0.30, 0.004, 1, (0.40, yb - 0.02, H + 0.52)), TIMBER)
     a.add(box(0.11, 0.03, 0.035, 0.006, 1, (0.40, yb - 0.02, H + 0.68)), "hr_steel_aged")
     for k in range(3):
-        a.add(torus(0.17 - k * 0.01, 0.011, 20, 5), "hr_rubber", T(0.68, yb - 0.02 - k * 0.02, H + 0.62) @ R("X", 90))
+        a.add(torus(0.17 - k * 0.01, 0.011, 20, 5), "hr_prop_tyre", T(0.68, yb - 0.02 - k * 0.02, H + 0.62) @ R("X", 90))
     # vice at the right end, toolbox, a wheel and a pump on the bench
     vx = 0.72
     a.add(box(0.14, 0.18, 0.05, 0.006, 1, (vx, -0.22, H + 0.025)), "hr_prop_tool_red")
@@ -516,7 +516,7 @@ def work_bench():
     a.add(cyl_between((-0.70, 0.05, H + 0.22), (-0.40, 0.05, H + 0.22), 0.008, 6), BLK)
     for x in (-0.70, -0.40):
         a.add(cyl_between((x, 0.05, H + 0.18), (x, 0.05, H + 0.22), 0.008, 6), BLK)
-    a.add(torus(0.30, 0.016, 32, 6), "hr_rubber", T(0.05, -0.02, H + 0.017))
+    a.add(torus(0.30, 0.016, 32, 6), "hr_prop_tyre", T(0.05, -0.02, H + 0.017))
     a.add(torus(0.28, 0.008, 32, 4), "hr_steel_galv", T(0.05, -0.02, H + 0.017))
     a.add(cyl(0.02, 0.42, 10, 0.0), "hr_plastic_black", T(-0.86, -0.42, 0.0))
     a.add(box(0.12, 0.05, 0.015, 0.003, 1, (-0.86, -0.42, 0.007)), "hr_plastic_black")

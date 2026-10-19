@@ -263,22 +263,18 @@ export function planDressing(L:DressingInput){
  const kept:number[][]=[];
  for(const [x,z,ry]of [[SX+38,SZ-4.4,0],[SX+SW-38,SZ+SD+4.4,Math.PI],[SX+SW-50,SZ-4.4,0]] as const){deco('hr_prop_bike_hangar',x,0,z,ry);kept.push([x,z])}
  for(const x of [SX+60,SX+SW-24])for(const z of [SZ-5.8,SZ-10.2,SZ+SD+5.8,SZ+SD+10.2]){deco('hr_prop_speed_hump_rubber_3m',x,0,z,0);kept.push([x,z])}
- const park=(x:number,z:number,ry:number)=>{if(!kept.some(([kx,kz])=>Math.abs(kx-x)<4.5&&Math.abs(kz-z)<3))deco(R()<.22?'VAN_DELIVERY':'CAR_HATCHBACK',x,0,z,ry+(R()-.5)*.04)};
+ const park=(x:number,z:number,ry:number)=>{if(!kept.some(([kx,kz])=>Math.abs(kx-x)<4.5&&Math.abs(kz-z)<3))deco(R()<.22?'VAN_DELIVERY_FAR':'CAR_HATCHBACK_FAR',x,0,z,ry+(R()-.5)*.04)};
  for(let x=SX+6;x<SX+SW;x+=5.6+R()*2.5){if(R()<.5)park(x,SZ-4.2,Math.PI/2);if(R()<.5)park(x,SZ+SD+4.2,-Math.PI/2)}
  for(let z=SZ+6;z<SZ+SD;z+=5.6+R()*2.5){if(R()<.5)park(SX-4.2,z,0);if(R()<.5)park(SX+SW+4.2,z,Math.PI)}
  for(let x=SX+3;x<SX+SW;x+=9)for(const z of [SZ-1.4,SZ+SD+1.4])deco('LAMP_COLUMN',x,0,z,0),anchors.push({x,y:4.75,z,kind:'street'});
 
- // --- undercroft: caged wall lamps and ceiling services ---
+ // --- undercroft: caged wall lamps (the Blender build already runs pipes and trays along the soffit) ---
  let caged=0;
  for(const u of L.undercroftWalls){const len=Math.hypot(u.x1-u.x0,u.z1-u.z0);if(len<6||caged>=14)continue;
   // nx, nz is the B1 floor edge's outward normal; the wall's room face looks the other way.
   const k=.5,x=u.x0+(u.x1-u.x0)*k-u.nx*.012,z=u.z0+(u.z1-u.z0)*k-u.nz*.012;
   if(anchors.some(a=>a.kind==='wall'&&a.y<0&&Math.hypot(a.x-x,a.z-z)<9))continue;
   deco('hr_prop_light_wall_caged',x,-.8,z,face(-u.nx,-u.nz));anchors.push({x:x-u.nx*.3,y:-.85,z:z-u.nz*.3,kind:'wall'});caged++;
- }
- for(const b of L.boxes.filter(b=>b.id==='slab'&&Math.abs(b.y1+3)<.01))for(let z=b.z0+2.2;z<b.z1-1;z+=12)for(let x=b.x0+.2;x+3<b.x1;x+=3){
-  const top=-.2;if(hits(x-.05,x+3.05,top-.5,top-.02,z-.25,z+.25,solid))continue;
-  deco('hr_prop_cable_tray_3m',x,top,z,0);if(!hits(x-.05,x+3.05,top-.5,top-.02,z+.3,z+.75,solid))deco('hr_prop_ceiling_pipes_3m',x,top,z+.5,0);
  }
 
  // --- decals: puddles where water collects, tags in the undercroft and on core flanks ---
@@ -291,9 +287,9 @@ export function planDressing(L:DressingInput){
  }
  for(let i=0;i<18&&i<L.undercroftWalls.length;i++){
   const u=L.undercroftWalls[Math.floor(R()*L.undercroftWalls.length)],len=Math.hypot(u.x1-u.x0,u.z1-u.z0);if(len<3)continue;
-  const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k-u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k-u.nz*.012,w,h:w*.55,ry:face(-u.nx,-u.nz),cell:Math.floor(R()*4)});
+  const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k-u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k-u.nz*.012,w,h:w*.55,ry:face(-u.nx,-u.nz),cell:Math.floor(R()*6)});
  }
- for(const c of L.cores){const [cx,cz,cw,cd]=c.rect;if(R()<.5)continue;const side=R()<.5?-1:1,x=side<0?cx-.012:cx+cw+.012;decals.push({kind:'graffiti',x,y:1.3,z:cz+cd/2,w:2.2,h:1.2,ry:face(side,0),cell:Math.floor(R()*4)})}
+ for(const c of L.cores){const [cx,cz,cw,cd]=c.rect;if(R()<.5)continue;const side=R()<.5?-1:1,x=side<0?cx-.012:cx+cw+.012;decals.push({kind:'graffiti',x,y:1.3,z:cz+cd/2,w:2.2,h:1.2,ry:face(side,0),cell:Math.floor(R()*6)})}
 
  return {items,anchors,colliders:blockers,decals};
 }

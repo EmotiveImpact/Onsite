@@ -316,6 +316,9 @@ def scene_vehicles(out):
         put("KERB_1M", k + 0.5, 2.0 - 0.0625, 0.0, 180)
     put("CAR_HATCHBACK", -2.2, 1.0, 0, 90)
     put("VAN_DELIVERY", 3.6, 1.05, 0, 90)
+    # distance variants further down the kerb
+    put("CAR_HATCHBACK_FAR", -8.4, 1.0, 0, 90)
+    put("VAN_DELIVERY_FAR", -14.2, 1.05, 0, 90)
     put("SHOP_SIGN_CORNER", 0.0, 5.0, 3.0)
     RP.point(scene, (0.0, 4.4, 3.4), 60, (1.0, 0.85, 0.65), 0.6, "sign_spill")
     put("LAMP_COLUMN", -6.0, 2.6, 0.125)

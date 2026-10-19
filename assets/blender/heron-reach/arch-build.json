@@ -2183,9 +2183,13 @@
   "hr_tower_elev": {
    "textured": false,
    "fallback": false
+  },
+  "hr_tower_elev_b": {
+   "textured": false,
+   "fallback": false
   }
  },
- "objects": 733,
- "faces": 99702,
- "triangles": 200468
+ "objects": 734,
+ "faces": 99657,
+ "triangles": 200378
 }
