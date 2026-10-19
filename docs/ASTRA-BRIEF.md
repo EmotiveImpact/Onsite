@@ -1,5 +1,14 @@
 # Brief for Astra: push Heron Reach towards the concept art
 
+## Current owner instruction and continuation
+
+The owner subsequently **deferred real-GPU benchmarking** and authorised visual implementation.
+Do not reinstate it as a blocker. The seven-item art pass is on
+`codex/heron-reach-textures-dressing`, stacked above six focused branches; it has not been merged
+by this session. Read the [current work log](maps/heron-reach-32/art/ART-PUSH-2026-10-19.md) before
+repeating this original queue. That log records actual code, assets, validation and limitations.
+The original brief below remains the visual direction. Networking stays deferred.
+
 Written 19 October 2026 for whoever picks this repository up next under the name Astra. It assumes
 you are starting cold. Read it top to bottom once, then use the priority list as your work queue.
 

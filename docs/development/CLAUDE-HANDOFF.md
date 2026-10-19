@@ -1,5 +1,41 @@
 # ONSITE — handoff for Claude
 
+## Heron Reach visual pass — 19 October 2026
+
+The owner explicitly deferred real-GPU benchmarking. Work continued on the existing Heron Reach
+runtime (`/?map=heron-reach`), preserving Heron Court and the WWB simulation. **Nothing from this
+visual pass has been merged by this session.** The complete result is on the final branch in the
+stack below; use that branch to inspect all seven items together. Main remains the live baseline.
+
+Read [the visual work log](../maps/heron-reach-32/art/ART-PUSH-2026-10-19.md) for matched runtime
+screenshots, raw browser reports, rebuild commands, provenance and limitations. These are actual
+SwiftShader captures, not concept artwork or evidence of hardware performance.
+
+The pass adds patchy wet PBR ground and floor-aware lamp streaks; warm pools and blue-grey haze;
+a Blender football cage kit; lit shop cards behind existing 3D stock; frosted stairwell glazing,
+fluorescents and service details; eight middle-distance towers and winter trees; KTX2 architecture
+textures with WebP fallback; Blender gallery netting and an amber objective marker.
+
+Keep using the existing architecture. Collision/navigation remain in `heronReach.ts` and the
+layered navigation module. This is still a six-bot playable on a map designed for future 32-player
+matches, not an implemented 32-player online mode.
+
+Current environment: Node 24.19, Three.js 0.186.1, Rapier 0.21, Blender 4.3.2 CLI, Chromium 154 /
+ANGLE SwiftShader. No hardware GPU. Original Blender 5.2 sources are preserved; 4.3 cannot read
+them. New compatible files rebuild from the original Python generators. A fixed Blender 4.3
+UV/colour-layer issue now has generator and exported-GLB regression checks.
+
+The KTX2 library is 34.71 MB versus 20.04 MB for its WebP sources: a GPU allocation optimisation,
+not a download-size reduction. Normal maps use UASTC for quality. Embedded kit textures remain
+WebP and are the next compression target. Actual GPU timing, VRAM, bloom, shadows and fine
+alpha-detail quality still need hardware verification. Wet reflections currently use the dusk
+environment plus local lamp streaks, without scene-object SSR/planar reflections.
+
+Next valuable work: real-GPU captures at the saved viewpoints; tune bloom/shadow/foliage budgets
+from those results; assess a measured optional ground reflection pass; compress embedded kit maps
+and reduce duplicate texture allocations; review room/interior depth and distant-window repetition.
+Do not treat passing tests as proof of concept-art parity or smooth gameplay.
+
 Prepared 18 October 2026 for the user's requested push and merge. Gameplay/assets checkpoint:
 `debebb46aaa6895af080bf633d928d61a1b46173`. This handoff changes documentation only; the previous
 four local implementation commits are included in the publication. Start from the current remote

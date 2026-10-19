@@ -52,5 +52,7 @@ test('Compressed PBR library covers each source, preserves hashes and contains c
   assert.equal(packed.subarray(0,12).toString('hex'),'ab4b5458203230bb0d0a1a0a',url+' signature');
   assert.equal(packed.readUInt32LE(20),e.width);assert.equal(packed.readUInt32LE(24),e.height);
   assert.equal(packed.readUInt32LE(40),Math.floor(Math.log2(Math.max(e.width,e.height)))+1,url+' mip chain');
+  const dfd=packed.readUInt32LE(48);
+  assert.equal(packed[dfd+14],e.role==='colour'?2:1,url+' must preserve sRGB versus linear data');
  }
 });
