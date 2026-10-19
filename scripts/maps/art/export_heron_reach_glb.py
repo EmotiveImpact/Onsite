@@ -46,12 +46,17 @@ def runtime_material(name):
     else:
         col, rough, metal = PLAIN.get(name, ((.5, .1, .5), .5, 0))
         entry.update(color=list(col), roughness=rough, metalness=metal)
-    if name == 'hr_window_interior':
+    if name.startswith('hr_window_interior'):
         atlas = os.path.join(ROOT, 'public', 'materials', 'heron', 'windows')
         kind = 'interiors-photo' if os.path.exists(os.path.join(atlas, 'interiors-photo-color.webp')) else 'interiors'
         if os.path.exists(os.path.join(atlas, f'{kind}-color.webp')):
             entry.update(map=rel(os.path.join(atlas, f'{kind}-color.webp')), emissiveMap=rel(os.path.join(atlas, f'{kind}-emit.webp')),
                          color=[1, 1, 1], emissive=[1, .8, .6], emissiveIntensity=2.2, repeat=1)
+            entry['shadow']=False
+            if name.endswith('_dim'):
+                entry.update(emissive=[1,.56,.27],emissiveIntensity=.45)
+            elif name.endswith('_cool'):
+                entry.update(emissive=[.65,.8,1],emissiveIntensity=.8)
     if name in ('hr_tower_elev', 'hr_tower_elev_b'):
         back = os.path.join(ROOT, 'public', 'materials', 'heron', 'backdrop')
         v = 'b' if name.endswith('_b') else 'a'

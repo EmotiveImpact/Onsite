@@ -34,7 +34,7 @@ REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 TEX = os.path.join(REPO, "public", "materials", "heron", "foliage")
 OUT_DIR = os.path.join(REPO, "assets", "blender", "heron-reach")
 BLEND = os.environ.get("HR_FOLIAGE_BLEND") or os.path.join(OUT_DIR, "foliage-kit.blend")
-MANIFEST = os.path.join(OUT_DIR, "foliage-manifest.json")
+MANIFEST = os.environ.get('HR_FOLIAGE_MANIFEST') or os.path.join(OUT_DIR, "foliage-manifest.json")
 
 Z = Vector((0, 0, 1))
 
@@ -1182,6 +1182,10 @@ def main():
     for name, p in TREES.items():
         if not want(name):
             continue
+        if os.environ.get('HR_FOLIAGE_WINTER') == '1':
+            # The same deterministic trunk/branch skeleton, with only 4% lingering leaves.
+            # Does not change the original collider manifest or any runtime placement.
+            p={**p,'cards':max(12,round(p['cards']*.04))}
         pos, parent, radii, kids, keep = build_tree_skeleton(name, p)
         chains = chains_from(pos, parent, radii, kids, keep)
         pos = smooth_chain_positions(pos, chains)
@@ -1302,7 +1306,11 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     bpy.context.preferences.filepaths.save_version = 0  # no .blend1 backups beside the kit
     bpy.ops.wm.save_as_mainfile(filepath=BLEND, compress=True)
-    if not only:
+    if not only or os.environ.get('HR_FOLIAGE_MANIFEST'):
+        manifest['blend']=os.path.relpath(BLEND,REPO)
+        manifest['provenance']='Original ONSITE deterministic tree generators and existing project procedural bark/leaf textures. No external meshes.'
+        manifest['winter']=os.environ.get('HR_FOLIAGE_WINTER')=='1'
+        manifest['blender']=bpy.app.version_string
         with open(MANIFEST, "w") as fh:
             json.dump(manifest, fh, indent=2)
     print("saved", BLEND)

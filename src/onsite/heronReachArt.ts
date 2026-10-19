@@ -145,7 +145,7 @@ function voidSheet(asset:string){
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
 export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
- const kits=await Promise.all(['cage','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const kits=await Promise.all(['cage','winter','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
  const missing:string[]=[];
  for(const [asset,list]of byAsset){

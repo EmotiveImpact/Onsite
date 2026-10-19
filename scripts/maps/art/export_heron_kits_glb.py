@@ -16,7 +16,7 @@ import bpy  # noqa: E402
 from mathutils import Vector  # noqa: E402
 from heron_art_materials import ROOT  # noqa: E402
 
-KITS = {'props': 'props-kit.blend', 'foliage': 'foliage-kit.blend'}
+KITS = {'props': 'props-kit.blend', 'foliage': 'foliage-kit.blend', 'winter': 'winter-trees.blend'}
 
 
 def export(kit):
@@ -63,5 +63,6 @@ def export(kit):
 
 
 if __name__ == '__main__':
-    for k in sys.argv[1:] or list(KITS):
+    args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else sys.argv[1:]
+    for k in args or ['props','foliage']:
         export(k)
