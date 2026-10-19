@@ -238,7 +238,8 @@ deviations.push('The Cage fence (2.6 m, four 4 m gates) blocks movement but not 
 export const dressing=planDressing({site:SITE,boxes,floorsG:floors.G,cores:art.cores,
  doors:art.openings.filter(o=>o.kind==='door'),shops:spec.shops as unknown as Parameters<typeof planDressing>[0]['shops'],blocks:blocks as unknown as Parameters<typeof planDressing>[0]['blocks'],
  lights:map.lights as {id:string;x:number;y:number;z:number;kind:string}[],trees,cage,planting:map.planting as unknown as {id:string;rect:Rect}[],
- objectives:map.objectives as {x:number;z:number;radius:number}[],spawns:map.spawns as unknown as {rect:Rect;positions:{x:number;z:number}[]}[],stairs:art.cores.map(c=>c.rect)});
+ objectives:map.objectives as {x:number;z:number;radius:number}[],spawns:map.spawns as unknown as {rect:Rect;positions:{x:number;z:number}[]}[],stairs:art.cores.map(c=>c.rect),
+ wetAreas:map.wetAreas as unknown as {rect:Rect}[],undercroftWalls:art.undercroftWalls});
 boxes.push(...dressing.colliders);
 deviations.push(`Dressing adds ${dressing.colliders.length} prop colliders (lamps, bollards, benches, bins, shop fittings, roof plant); door arcs, spawns, stair entries and objective rings stay clear.`);
 

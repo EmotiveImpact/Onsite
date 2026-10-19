@@ -166,3 +166,42 @@ export class GrassField {
  }
  update(camera:THREE.Camera){const c=camera.position;for(const t of this.tiles){const s=t.boundingSphere!;t.visible=s.center.distanceTo(c)<this.reach+s.radius}}
 }
+
+/** Rain: streaks that live in world space and wrap around the camera, faded out under cover. */
+export class Rain {
+ readonly mesh:THREE.LineSegments;private readonly uniforms={uCam:{value:new THREE.Vector3()},uTime:{value:0},uAlpha:{value:.32}};private fade=1;
+ constructor(count:number,private readonly covered:(x:number,y:number,z:number)=>boolean){
+  const seeds=new Float32Array(count*2*3),ends=new Float32Array(count*2);
+  for(let i=0;i<count;i++){const s=[Math.random(),Math.random(),Math.random()];for(const k of [0,1]){seeds.set(s,(i*2+k)*3);ends[i*2+k]=k}}
+  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(new Float32Array(count*2*3),3));g.setAttribute('seed',new THREE.BufferAttribute(seeds,3));g.setAttribute('tail',new THREE.BufferAttribute(ends,1));
+  const m=new THREE.ShaderMaterial({uniforms:this.uniforms,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+   vertexShader:`attribute vec3 seed;attribute float tail;uniform vec3 uCam;uniform float uTime;varying float vA;
+    const vec3 S=vec3(36.,18.,36.);
+    void main(){vec3 p=uCam+(fract((seed*S-uCam)/S+.5)-.5)*S;p.y=uCam.y-6.+fract(seed.y-uTime*.62)*S.y;
+     p+=vec3(.06,-.55,.03)*tail;vA=(1.-tail*.7)*smoothstep(0.,6.,distance(p.xz,uCam.xz)+2.)*(1.-smoothstep(12.,18.,distance(p.xz,uCam.xz)));
+     gl_Position=projectionMatrix*viewMatrix*vec4(p,1.);}`,
+   fragmentShader:`uniform float uAlpha;varying float vA;void main(){gl_FragColor=vec4(vec3(.62,.7,.82),uAlpha*vA);}`});
+  this.mesh=new THREE.LineSegments(g,m);this.mesh.frustumCulled=false;this.mesh.name='ONSITE / rain';this.mesh.renderOrder=5;
+ }
+ update(camera:THREE.Camera,t:number,dt:number){
+  const c=camera.position;this.fade+=((this.covered(c.x,c.y,c.z)?.18:1)-this.fade)*Math.min(1,dt*3);
+  this.uniforms.uCam.value.copy(c);this.uniforms.uTime.value=t;this.uniforms.uAlpha.value=.3*this.fade;
+ }
+}
+
+export type Decal={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number};
+/** Puddles on the ground and tags on the walls, as alpha-cut planes over the Blender surfaces. */
+export function buildDecals(decals:Decal[],anisotropy:number){
+ const group=new THREE.Group();group.name='ONSITE / Heron Reach decals';const tl=new THREE.TextureLoader();
+ const tex=(u:string,srgb=true)=>{const t=tl.load(u);t.anisotropy=anisotropy;t.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return t};
+ const puddle=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/puddle-color.webp'),normalMap:tex('/materials/heron/decals/puddle-normal.webp',false),roughness:.03,metalness:.15,transparent:true,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-3,envMapIntensity:2.4});
+ const tags=new THREE.MeshStandardMaterial({map:tex('/materials/heron/decals/graffiti-atlas.webp'),roughness:.8,transparent:true,alphaTest:.05,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2});
+ const flat=new THREE.PlaneGeometry(1,1).rotateX(-Math.PI/2);
+ for(const d of decals){
+  if(d.kind==='puddle'){const m=new THREE.Mesh(flat,puddle);m.position.set(d.x-OX,d.y+.008,d.z-OZ);m.rotation.y=d.ry;m.scale.set(d.w,1,d.h);m.receiveShadow=true;group.add(m);continue}
+  const g=new THREE.PlaneGeometry(1,1),cell=d.cell??0,uv=g.attributes.uv;
+  for(let i=0;i<uv.count;i++)uv.setXY(i,(cell%2+uv.getX(i))/2,(1-Math.floor(cell/2)-1+uv.getY(i))/2);
+  const m=new THREE.Mesh(g,tags);m.position.set(d.x-OX,d.y,d.z-OZ);m.rotation.y=d.ry;m.scale.set(d.w,d.h,1);group.add(m);
+ }
+ return group;
+}

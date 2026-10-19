@@ -20,7 +20,9 @@ export type DressingInput={
  trees:{id:string;x:number;z:number}[];cage:{rect:Rect;height:number;gate:number};
  planting:{id:string;rect:Rect}[];objectives:{x:number;z:number;radius:number}[];
  spawns:{rect:Rect;positions:{x:number;z:number}[]}[];stairs:Rect[];
+ wetAreas:{rect:Rect}[];undercroftWalls:{x0:number;z0:number;x1:number;z1:number;nx:number;nz:number}[];
 }
+export type DecalPlan={kind:'puddle'|'graffiti';x:number;y:number;z:number;w:number;h:number;ry:number;cell?:number}
 
 type Collider={type:string;size?:number[];radius?:number;height?:number;center:number[]}
 const assets=new Map((kit.assets as {name:string;collider:Collider|Collider[]|null;needsCollision:boolean}[]).map(a=>[a.name,a]));
@@ -87,6 +89,11 @@ export function planDressing(L:DressingInput){
  // Covered ground under the L1 deck (arcades, cross arcades) gets ceiling strip lights every 9 m.
  for(const b of L.blocks)for(let x=b.rect[0]+4.5;x<b.rect[0]+b.rect[2];x+=9)for(let z=b.rect[1]+4.5;z<b.rect[1]+b.rect[3];z+=9){
   if(!hits(x-.4,x+.4,.3,2.6,z-.4,z+.4,solid)&&hits(x-.2,x+.2,2.7,3.01,z-.2,z+.2,L.boxes))anchors.push({x,y:2.72,z,kind:'ceiling'});
+ }
+
+ // The undercroft gets the same strips, on a 9 m grid over its floor slabs.
+ for(const b of L.boxes.filter(b=>b.id==='slab'&&Math.abs(b.y1+3)<.01))for(let x=b.x0+4.5;x<b.x1;x+=9)for(let z=b.z0+4.5;z<b.z1;z+=9){
+  if(!hits(x-.4,x+.4,-2.7,-.4,z-.4,z+.4,solid))anchors.push({x,y:-.48,z,kind:'ceiling'});
  }
 
  // --- core entrances: CCTV, intercom and a notice board on every ground-floor core ---
@@ -195,5 +202,19 @@ export function planDressing(L:DressingInput){
  for(let z=SZ+6;z<SZ+SD;z+=5.6+R()*2.5){if(R()<.5)park(SX-4.2,z,0);if(R()<.5)park(SX+SW+4.2,z,Math.PI)}
  for(let x=SX+3;x<SX+SW;x+=9)for(const z of [SZ-1.4,SZ+SD+1.4])deco('LAMP_COLUMN',x,0,z,0),anchors.push({x,y:4.75,z,kind:'street'});
 
- return {items,anchors,colliders:blockers};
+ // --- decals: puddles where water collects, tags in the undercroft and on core flanks ---
+ const decals:DecalPlan[]=[];
+ for(const w of L.wetAreas){const [x,z,ww,d]=w.rect;decals.push({kind:'puddle',x:x+ww/2,y:0,z:z+d/2,w:ww+1.5,h:d+1.5,ry:0})}
+ for(let i=0,tries=0;i<70&&tries<2000;tries++){
+  const x=SX+3+R()*(SW-6),z=SZ+3+R()*(SD-6),w=1.2+R()*3.2,h=w*(.5+R()*.6);
+  if(!onFloor(x,z,0)||hits(x-w/2,x+w/2,.02,2,z-h/2,z+h/2,solid)||hits(x-w/2,x+w/2,.02,2,z-h/2,z+h/2,blockers))continue;
+  decals.push({kind:'puddle',x,y:0,z,w,h,ry:R()*Math.PI});i++;
+ }
+ for(let i=0;i<18&&i<L.undercroftWalls.length;i++){
+  const u=L.undercroftWalls[Math.floor(R()*L.undercroftWalls.length)],len=Math.hypot(u.x1-u.x0,u.z1-u.z0);if(len<3)continue;
+  const k=.2+R()*.6,w=1.6+R()*1.4;decals.push({kind:'graffiti',x:u.x0+(u.x1-u.x0)*k+u.nx*.012,y:-3+1.2+R()*.4,z:u.z0+(u.z1-u.z0)*k+u.nz*.012,w,h:w*.55,ry:face(u.nx,u.nz),cell:Math.floor(R()*4)});
+ }
+ for(const c of L.cores){const [cx,cz,cw,cd]=c.rect;if(R()<.5)continue;const side=R()<.5?-1:1,x=side<0?cx-.012:cx+cw+.012;decals.push({kind:'graffiti',x,y:1.3,z:cz+cd/2,w:2.2,h:1.2,ry:face(side,0),cell:Math.floor(R()*4)})}
+
+ return {items,anchors,colliders:blockers,decals};
 }
