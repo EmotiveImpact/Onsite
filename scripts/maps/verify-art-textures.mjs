@@ -10,6 +10,8 @@ const report={software:true,renderer:'',runs:[],errors:[]};
 try{
  for(const mode of ['webp','ktx2','ktx2-corrupt-fallback']){
   const page=await browser.newPage({viewport:{width:1280,height:720}});
+  const network=await page.context().newCDPSession(page);await network.send('Network.enable');
+  let transferredBytes=0;network.on('Network.loadingFinished',e=>transferredBytes+=e.encodedDataLength);
   page.on('pageerror',e=>report.errors.push(e.message));
   if(mode==='ktx2-corrupt-fallback'){
    const url=manifest.entries['/materials/heron/hr_brick_stock-normal.webp'].url;
@@ -26,7 +28,7 @@ try{
    assert.equal(t.compressed,good.compressed-1);assert.equal(t.webp,good.webp+1);
   }
   report.renderer=await page.evaluate(()=>{const g=document.querySelector('#game').getContext('webgl2'),e=g.getExtension('WEBGL_debug_renderer_info');return g.getParameter(e.UNMASKED_RENDERER_WEBGL)});
-  report.runs.push({mode,metrics});console.log(mode,JSON.stringify(t));await page.close();
+  report.runs.push({mode,metrics,transferredBytes});console.log(mode,JSON.stringify(t),'transferred bytes',transferredBytes);await page.close();
  }
  assert.deepEqual(report.errors,[]);
 }finally{await writeFile(out+'/report.json',JSON.stringify(report,null,2)+'\n');await browser.close()}

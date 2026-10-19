@@ -27,6 +27,11 @@ try {
   const tick=await page.evaluate(()=>__onsite.snapshot().tick);
   await page.waitForFunction(t=>__onsite.snapshot().tick>=t+12,tick,{timeout:120000,polling:100});
   await page.screenshot({path:`${out}/${name}.png`});
+  if(process.env.CHECK_MARKER==='1'&&['the-cage','gallery-edge'].includes(name)){
+   assert(await page.locator('#objective-marker').isVisible(),'Objective diamond must be visible from '+name);
+   const label=await page.locator('#objective-marker').innerText();assert.match(label,/THE CAGE/);assert.match(label,/\d+ m/);
+   if(name==='gallery-edge')assert.match(label,/GROUND FLOOR/,'Upper gallery must identify the lower objective level');
+  }
   captures.push({name,requestedPose:pose,actualPlayer:await page.evaluate(()=>__onsite.snapshot().player),metrics:await page.evaluate(()=>__onsite.metrics())});
   console.log('Captured',name);
  }
