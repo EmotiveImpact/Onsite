@@ -118,7 +118,7 @@ def sign_estate_board(img):
     heron(d, w * 0.03, h * 0.02, h * 0.26, WHITE)
     d.text((w * 0.2, h * 0.06), "HERON REACH ESTATE", font=fit(d, "HERON REACH ESTATE", "Bold", w * 0.76, h * 0.16), fill=WHITE)
     f = font("SemiBold", h * 0.075)
-    rows = ["Rowan House  1 – 48", "Alder House  1 – 64", "Birch House  1 – 36", "Maple Court  1 – 120"]
+    rows = ["Rowan House  1 – 48", "Ash House  1 – 48", "Birch House  1 – 48", "Cedar House  1 – 48"]
     for i, r in enumerate(rows):
         d.text((w * 0.05, h * (0.36 + i * 0.1)), r, font=f, fill=NAVY)
         arrow(d, w * 0.5, h * (0.37 + i * 0.1), h * 0.07, NAVY, "right" if i % 2 else "up")
@@ -256,6 +256,8 @@ SIGNS = [
     ("estate_board", (1800, 900), sign_estate_board, "post2", "Estate name board at each vehicle and footpath entrance"),
     ("block_rowan", (900, 300), sign_block("ROWAN HOUSE", "Flats 1 – 48", "up"), "wall", "Beside Rowan House entrances"),
     ("block_alder", (900, 300), sign_block("ALDER HOUSE", "Flats 13 – 23", "right"), "wall", "Alder House; deliberately missing 1 to 12, a real estate quirk"),
+    ("block_ash", (900, 300), sign_block("ASH HOUSE", "Flats 1 – 48", "right"), "wall", "Ash House entrances (NE block)"),
+    ("block_cedar", (900, 300), sign_block("CEDAR HOUSE", "Flats 1 – 48", "up"), "wall", "Cedar House entrances (SE block)"),
     ("block_birch", (900, 300), sign_block("BIRCH HOUSE", "Flats 1 – 36", "right"), "wall", "Birch House entrance"),
     ("block_maple", (900, 300), sign_block("MAPLE COURT", "Flats 1 – 120", "up"), "wall", "Point block lobby"),
     ("no_ball_games", (450, 300), sign_text(["NO BALL GAMES"], RED, WHITE), "wall", "Classic; walls facing grass and windows"),

@@ -205,7 +205,7 @@ export function planDressing(L:DressingInput){
 
  // --- South London fittings: block names, fire and bin signs, dry risers, grit bins, bin stores ---
  const local=(p:{x:number;z:number},ry:number,ox:number,oz:number)=>({x:p.x+ox*Math.cos(ry)+oz*Math.sin(ry),z:p.z-ox*Math.sin(ry)+oz*Math.cos(ry)});
- const houses:Record<string,string>={NW:'hr_prop_sign_block_rowan',SW:'hr_prop_sign_block_birch'};
+ const houses:Record<string,string>={NW:'hr_prop_sign_block_rowan',NE:'hr_prop_sign_block_ash',SW:'hr_prop_sign_block_birch',SE:'hr_prop_sign_block_cedar'};
  const blockOf=(x:number,z:number)=>L.blocks.find(b=>x>=b.rect[0]-1&&x<=b.rect[0]+b.rect[2]+1&&Math.abs(z-(z<60?b.rect[1]+b.rect[3]:b.rect[1]))<8&&(z<60)===(b.rect[1]<60));
  const stores=new Set<string>();
  for(const c of L.cores){
