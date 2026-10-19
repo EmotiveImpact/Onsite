@@ -1,4 +1,18 @@
-# Current validation: Heron Reach scene depth
+# Current validation: ONSITE whole-game tranche
+
+19 October 2026. Continue from `codex/onsite-game-foundation` and read the
+[whole-game goal](../ONSITE-GOAL.md) and [implementation/evidence log](WHOLE-GAME-PROGRESS.md).
+The log supersedes the historical results below. No merge or deployment.
+
+**84 tests**, typecheck and production build pass at runtime source `3284c4d`.
+The production player flow and isolated keyboard/persistence fixture pass. Both
+full input-driven encounters pass: Court **10 checks / three bots**, Reach **nine
+checks / six bots**, followed by capture, exactly-once local results and reset.
+Software frame means are **518.33 ms Court / 694.25 ms Reach** (roughly 1–2 FPS).
+Real-GPU performance remains unverified. The final-shot/deadline freeze found during
+Reach verification is fixed and regression-tested; the original failure is retained.
+
+# Previous validation: Heron Reach scene depth
 
 19 October 2026. Current review branch: `codex/heron-reach-scene-depth`, stacked on
 `codex/heron-reach-textures-dressing`. The [scene-depth work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
@@ -8,7 +22,8 @@ Nothing from this pass has been merged or deployed by this session.
 - **55 tests passed**, no skips; typecheck and production build passed.
 - Nine DPR 0.5 and four DPR 1 fixed-camera views passed without page/console/request
   errors. Before/after requested camera poses match exactly. These are inspection
-  fixtures with frozen bots, rendered by Chromium 154 / ANGLE SwiftShader.
+  fixtures rendered by Chromium 154 / ANGLE SwiftShader. Correction: the earlier
+  “frozen bots” label was inaccurate; inspection mode leaves them active.
 - **Heron Reach: 9 checks passed**, six bots defeated, capture and reset. 76 health,
   82 shots / 37 hits. Final 360 active samples: **676.45 ms/frame (~1.48 FPS)**.
 - **Heron Court: 10 checks passed**, three bots defeated, capture and reset. 84 health,

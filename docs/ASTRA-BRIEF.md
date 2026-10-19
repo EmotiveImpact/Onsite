@@ -76,7 +76,7 @@ npm run build
 ```
 
 Useful URL switches on Heron Reach: `&art=0` shows the collision blockout, `&rain=0` turns rain
-off, `&inspect` freezes bots for camera placement.
+off, `&inspect` enables camera placement; bots remain active.
 
 Browser checks run against a frozen build, because the dev server reloads mid-run when `src/` or
 `props-manifest.json` changes:

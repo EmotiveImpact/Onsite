@@ -1,6 +1,36 @@
 # ONSITE — handoff for Claude
 
-## Current: Heron Reach scene depth — 19 October 2026
+
+## Current: whole-game foundation — 19 October 2026
+
+The owner explicitly asked for the whole-game goal and its implementation. Start
+with [ONSITE-GOAL.md](../ONSITE-GOAL.md), then [the current work/evidence log](WHOLE-GAME-PROGRESS.md).
+Continue from `codex/onsite-game-foundation`, above the focused operator, reload,
+shop-depth and contact-grounding branches. The historical scene-depth section below
+is the preserved baseline. No merge or deployment is authorised.
+
+This tranche adds the real title/map/kit/settings/pause/results journey and local
+records, an original weighted Blender operator, continuous licensed-rifle reload
+poses, dimensional shop stock and floor-aware contact patches. The working WWB
+player, bot, damage, rounds, physics and layered navigation remain. Input now lets
+menus use native keyboard controls while pointer lock is released. ONSITE owns
+clear-and-capture victory: its adapter keeps the donor score race from ending at the
+last kill, so final-shot statistics and the deadline continue correctly. Death and
+timeout take precedence over same-tick capture. Donor rules remain intact. No networking.
+
+The operator is a stylised rigged foundation; original sources and alternatives
+remain. New stock respects the existing furniture footprints. Read the character
+and shop provenance documents before rebuilding. The original Blender 5.2 estate
+sources must not be overwritten with the available 4.3 CLI. `?inspect` enables
+camera placement but **does not freeze bots**; earlier capture labels were corrected.
+
+Run the commands in the current log; use serial frozen-build browser encounters.
+Real-GPU verification is deferred and unverified. Remaining work includes richer
+character/animation production, local-light shadows/reflections, more architectural
+variation, spatial sound, human playtesting and a measured hardware budget. The
+32-player map design is still not an implemented online match service.
+
+## Previous: Heron Reach scene depth — 19 October 2026
 
 Continue from `codex/heron-reach-scene-depth`, based on the complete seven-item art
 stack below, in [PR #12](https://github.com/EmotiveImpact/Onsite/pull/12). The owner asked for more detail and a deeper, convincing London scene;

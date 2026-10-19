@@ -1,0 +1,250 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4184",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4184/assets/index-Ckwn9MIt.js",
+      "sha256": "0faef6414b870d8f73127faeade326479024537900b60fa4daf3dbb29c398b96"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/onsite-operator.glb",
+      "bytes": 1150548,
+      "sha256": "5a262f334a60decd6bb798eb576bf4dd18f84560f9a724337d90f25dcf40a647"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-shop-depth.glb",
+      "bytes": 184612,
+      "sha256": "2fb3dd9aa78ca11ee75717ec0b5f3be0705e16d8b713eb13171558ccc99adb18"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-lived.glb",
+      "bytes": 110100,
+      "sha256": "611d7b7066e3cefa597e004fa11b4ec8a863a3ac348c2ccf18ba2b94fc629e71"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "0fc55fc7291aef85243d1f797bde3954c293f51f",
+  "workingTree": "",
+  "captures": [
+    {
+      "name": "washhouse-square",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0,
+          "y": 0.020099957082129527,
+          "z": 23.999999996697824
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 7,
+        "meanFrameMs": 1496.88571428614,
+        "medianFrameMs": 1604.699999988079,
+        "p95FrameMs": 3602.7000000029802,
+        "drawCalls": 397,
+        "triangles": 1272977,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 88,
+          "formats": {
+            "1023": 88
+          },
+          "estimatedMipBytes": 354162061
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 12,
+        "meanFrameMs": 1548.7416666659217,
+        "medianFrameMs": 1606.2000000029802,
+        "p95FrameMs": 3602.7000000029802,
+        "drawCalls": 546,
+        "triangles": 1341628,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 88,
+          "formats": {
+            "1023": 88
+          },
+          "estimatedMipBytes": 354162061
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "corner-interior",
+      "requestedPose": {
+        "x": 39,
+        "y": 0.04,
+        "z": -10,
+        "yaw": -3.141592653589793,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38.9999994310632,
+          "y": 0.020033780646917854,
+          "z": -9.999999799266249
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 16,
+        "meanFrameMs": 1747.7625000001863,
+        "medianFrameMs": 1649.3999999910593,
+        "p95FrameMs": 4092.1000000089407,
+        "drawCalls": 513,
+        "triangles": 1346043,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 88,
+          "formats": {
+            "1023": 88
+          },
+          "estimatedMipBytes": 354162061
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "operator-yard",
+      "requestedPose": {
+        "x": 62,
+        "y": 0.04,
+        "z": 0,
+        "yaw": 0,
+        "pitch": -0.1
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 61.999995888183975,
+          "y": 0.01996798072068484,
+          "z": 5.515555621116164e-7
+        },
+        "yaw": 0,
+        "pitch": -0.1,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 20,
+        "meanFrameMs": 1699.589999999851,
+        "medianFrameMs": 1614.7000000029802,
+        "p95FrameMs": 4092.1000000089407,
+        "drawCalls": 368,
+        "triangles": 1222188,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 88,
+          "formats": {
+            "1023": 88
+          },
+          "estimatedMipBytes": 354162061
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

@@ -32,7 +32,7 @@ try {
    const label=await page.locator('#objective-marker').innerText();assert.match(label,/THE CAGE/);assert.match(label,/\d+ m/);
    if(name==='gallery-edge')assert.match(label,/GROUND FLOOR/,'Upper gallery must identify the lower objective level');
   }
-  captures.push({name,requestedPose:pose,actualPlayer:await page.evaluate(()=>__onsite.snapshot().player),metrics:await page.evaluate(()=>__onsite.metrics())});
+  captures.push({name,requestedPose:pose,actualPlayer:await page.evaluate(()=>__onsite.snapshot().player),actors:await page.evaluate(()=>__onsite.snapshot().bots),metrics:await page.evaluate(()=>__onsite.metrics())});
   console.log('Captured',name);
  }
  const renderer=await page.evaluate(()=>{const gl=document.querySelector('#game').getContext('webgl2'),e=gl.getExtension('WEBGL_debug_renderer_info');return e?gl.getParameter(e.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER)});
@@ -40,7 +40,7 @@ try {
  const scripts=await page.locator('script[src]').evaluateAll(nodes=>nodes.map(n=>n.src));
  const servedScripts=await Promise.all(scripts.map(async url=>({url,sha256:createHash('sha256').update(Buffer.from(await (await fetch(url)).arrayBuffer())).digest('hex')})));
  const servedAssets=await Promise.all(['/models/heron-reach/heron-reach-arch.glb','/materials/heron/runtime-materials.json',...(process.env.EXTRA_ASSETS||'').split(',').filter(Boolean)].map(async path=>{const response=await fetch(frozenBuildUrl+path);assert(response.ok);const bytes=Buffer.from(await response.arrayBuffer());return {path,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')}}));
- const report={kind:'Fixed-camera inspection fixtures; bots frozen; not gameplay evidence',frozenBuildUrl,servedScripts,servedAssets,renderer,software:true,viewport:{width:1280,height:720},pixelRatio,harnessCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
+ const report={kind:'Fixed-camera inspection fixtures; actors remain active; not gameplay evidence',frozenBuildUrl,servedScripts,servedAssets,renderer,software:true,viewport:{width:1280,height:720},pixelRatio,harnessCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),workingTree:execFileSync('git',['diff','--stat'],{encoding:'utf8'}).trim(),captures,errors,failed};
  await writeFile(`${out}/report.json`,JSON.stringify(report,null,2)+'\n');
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);assert.equal(captures.length,selected?.length??views.length);
 }finally{await browser.close()}
