@@ -237,6 +237,20 @@ blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_cage_detai
 npx gltfpack -i public/models/heron-reach/heron-reach-cage.raw.glb -o public/models/heron-reach/heron-reach-cage.glb -cc -kn -km -kv -vtf
 ```
 
+### Shop detail kit, 19 October 2026
+
+`assets/blender/heron-reach/shop-detail.blend` is an original procedural assembly made with
+Blender 4.3.2 by `build_heron_shop_detail.py`. It adds single-sided image backdrops at the rear
+walls of The Corner, the Launderette and the Washhouse, plus high-level strip fittings. The
+2.1 m backdrop gaps preserve rear exits. No collision, navigation or existing prop changes.
+Image provenance is in [TEXTURES.md](TEXTURES.md) and `public/materials/heron/shops/manifest.json`.
+
+```sh
+python3 scripts/maps/art/make_heron_shop_textures.py
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_shop_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-shops.raw.glb -o public/models/heron-reach/heron-reach-shops.glb -cc -kn -km -kv -vtf
+```
+
 - The shared materials in `props-kit.blend` are placeholders until swapped.
 - The weld mesh and wire textures are fine detail; at long range they need mipmapping with
   alpha-to-coverage, or a fade to a solid lower-opacity material, to avoid shimmer.

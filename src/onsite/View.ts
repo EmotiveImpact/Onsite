@@ -13,6 +13,7 @@ import {RenderPass} from 'three/addons/postprocessing/RenderPass.js'
 import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js'
 import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
+import {loadShopArt,shopLightAnchors} from './heronShopArt'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -81,8 +82,8 @@ export class View {
     // Render replacements only. The original dressing plan still owns every collider.
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
     const dressing=reach.dressing.items.map(p=>p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
-    const [built,kits,grass]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5)]);
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass);return root;
+    const [built,kits,grass,shops]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf)]);
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry)}else this.blockout();
@@ -121,7 +122,7 @@ export class View {
   this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
   this.sun.color.set('#c0cad4');this.sun.intensity=.65;
   this.renderer.toneMappingExposure=1.12;
-  const artAnchors=reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a);
+  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35}:a),...shopLightAnchors];
   this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)));
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).

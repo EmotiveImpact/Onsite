@@ -100,6 +100,18 @@ linear data and repeats every 11 world metres; the streak is an sRGB RGBA textur
 `decals/wetness-manifest.json` records hashes and sizes. The runtime uses the existing PBR ground
 maps and dusk environment, with no added render pass or changes to collision.
 
+### Shop backdrop addition, 19 October 2026
+
+`make_heron_shop_textures.py` prepares the existing project ChatGPT images
+`generated/shops/corner-shop-interior.png` and `launderette-interior.png` at 1024 × 512,
+WebP quality 88. Sources are preserved; no external pixels were downloaded. The source commit
+is `dd803c9`, the same generated-image set already credited above. Source/runtime hashes and
+processing notes live in `public/materials/heron/shops/manifest.json`.
+
+The Blender shop-detail kit places single-sided backdrops against existing rear walls, behind the
+three-dimensional shelves and washers. Rear doorway gaps stay clear. These are lit image cards,
+not fully modelled shelves inside the image; the existing prop geometry supplies foreground depth.
+
 - The source images are generated and not physically measured, so coverage is a modelling
   decision, made to fit real brick, slab and paver sizes.
 - Aged steel and render keep some mid-scale blotches, so repeats show on very large flat areas.
