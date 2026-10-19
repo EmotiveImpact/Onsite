@@ -15,6 +15,7 @@ import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
 import {coreLightAnchors} from './heronCoreArt'
+import {loadGalleryArt} from './heronGalleryArt'
 
 /** Blender-authored estate presentation. Collision and simulation remain in Encounter. */
 export class View {
@@ -24,6 +25,7 @@ export class View {
  private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
  private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
  private activeRifle?:ReturnType<typeof donorRifle>;
+ artTextureStats:HeronReachMaterials['textureStats']|null=null;
  constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt){
   const probe=document.createElement('canvas').getContext('webgl2'),ext=probe?.getExtension('WEBGL_debug_renderer_info');
   this.software=!!probe&&!!ext&&/swiftshader|llvmpipe/i.test(probe.getParameter(ext.UNMASKED_RENDERER_WEBGL));
@@ -79,12 +81,13 @@ export class View {
   if(this.level.id==='heron-reach'){
    // ?art=0 shows the collision blockout instead of the Blender build, for checking the two against each other.
    const useArt=new URLSearchParams(location.search).get('art')!=='0';
-   const arch=useArt?HeronReachMaterials.load(this.software?2:8).then(async m=>{
+   const arch=useArt?HeronReachMaterials.load(this.renderer,this.software).then(async m=>{
     // Render replacements only. The original dressing plan still owns every collider.
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
     const dressing=reach.dressing.items.map(p=>p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
-    const [built,kits,grass,shops]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf)]);
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops);return root;
+    const [built,kits,grass,shops,gallery]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software)]);
+    await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry)}else this.blockout();

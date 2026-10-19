@@ -3,6 +3,7 @@ import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
 import {applyWetGround,surfaceBelow,wetGroundNames} from './wetGround'
 import type {Solid} from './level'
+import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -10,11 +11,36 @@ type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissive
 export class HeronReachMaterials {
  readonly mats=new Map<string,THREE.MeshStandardMaterial>();readonly shadow=new Map<string,boolean>();
  private readonly textures=new Map<string,Promise<THREE.Texture>>();private readonly loader=new THREE.TextureLoader();private pending:Promise<unknown>[]=[];
+ private ktx?:KTX2Loader;private compressed:Record<string,{url:string}>={};
+ readonly textureStats={compressed:0,webp:0,formats:{} as Record<string,number>,estimatedMipBytes:0};
  constructor(private readonly lib:Record<string,Entry>,private readonly anisotropy:number){}
- static async load(anisotropy:number){return new HeronReachMaterials(await (await fetch('/materials/heron/runtime-materials.json')).json(),anisotropy)}
+ static async load(renderer:THREE.WebGLRenderer,software:boolean){
+  const m=new HeronReachMaterials(await (await fetch('/materials/heron/runtime-materials.json')).json(),software?2:8);
+  const q=new URLSearchParams(location.search),forced=q.has('inspect')&&q.get('textures')==='ktx2';
+  const compressed=['WEBGL_compressed_texture_astc','EXT_texture_compression_bptc','WEBGL_compressed_texture_s3tc','WEBGL_compressed_texture_etc'].some(e=>renderer.extensions.has(e));
+  if(compressed&&(forced||(!software&&q.get('textures')!=='webp'))){
+   try{
+    const response=await fetch('/materials/heron/ktx2/manifest.json');if(!response.ok)throw new Error(String(response.status));
+    m.compressed=(await response.json()).entries;
+    m.ktx=new KTX2Loader().setTranscoderPath('/vendor/basis/').setWorkerLimit(2).detectSupport(renderer);
+   }catch(e){console.warn('Compressed material library unavailable; using WebP',e)}
+  }
+  return m;
+ }
  private texture(url:string,srgb:boolean,repeat:number){
-  const key=url+'@'+repeat;let t=this.textures.get(key);
-  if(!t){t=this.loader.loadAsync(url).then(tex=>{tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=this.anisotropy;tex.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return tex});this.textures.set(key,t)}
+  const key=url+'@'+repeat+'@'+srgb;let t=this.textures.get(key);
+  if(!t){
+   const path=this.compressed[url]?.url;
+   const load=this.ktx&&path?this.ktx.loadAsync(path).catch(e=>{console.warn('Compressed texture unavailable; using WebP',url,e);return this.loader.loadAsync(url)}):this.loader.loadAsync(url);
+   t=load.then(tex=>{
+    tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=this.anisotropy;tex.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;
+    const compressed=tex instanceof THREE.CompressedTexture;this.textureStats[compressed?'compressed':'webp']++;
+    const format=String(tex.format);this.textureStats.formats[format]=(this.textureStats.formats[format]??0)+1;
+    // Allocation estimate from decoded dimensions/mips; not a measured driver VRAM counter.
+    this.textureStats.estimatedMipBytes+=compressed?tex.mipmaps.reduce((n,m)=>n+(m.data?.byteLength??0),0):Math.ceil(tex.image.width*tex.image.height*4*4/3);
+    return tex;
+   });this.textures.set(key,t);
+  }
   return t;
  }
  get(name:string){
@@ -36,6 +62,7 @@ export class HeronReachMaterials {
   this.mats.set(name,m);this.shadow.set(name,e.shadow!==false);return m;
  }
  ready(){return Promise.all(this.pending)}
+ disposeTranscoder(){this.ktx?.dispose()}
  names(){return new Set(Object.keys(this.lib))}
 }
 

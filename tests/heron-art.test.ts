@@ -6,6 +6,7 @@ import {readFileSync} from 'node:fs'
 import * as THREE from 'three'
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js'
+import {createHash} from 'node:crypto'
 
 const floor=(y:number):Solid=>({id:'slab',x:0,y:y-.1,z:0,w:8,h:.2,d:8,mat:'concrete'});
 test('Compressed Blender architecture preserves metre-scale wall, roof and paving UVs',async()=>{
@@ -35,4 +36,21 @@ test('Street lamps reflect at ground level and unsupported positions stay empty'
  assert.equal(surfaceBelow(0,4.75,0,[floor(0)]),0);
  assert.equal(surfaceBelow(5,4.75,0,[floor(0)]),null);
  assert.equal(surfaceBelow(0,-4,0,[floor(-3)]),null);
+});
+
+test('Compressed PBR library covers each source, preserves hashes and contains complete KTX2 mip chains',()=>{
+ const lib=JSON.parse(readFileSync('public/materials/heron/runtime-materials.json','utf8'));
+ const manifest=JSON.parse(readFileSync('public/materials/heron/ktx2/manifest.json','utf8'));
+ const urls=new Set<string>();
+ for(const e of Object.values(lib) as Record<string,unknown>[]){for(const key of ['map','normalMap','ormMap','emissiveMap'])if(e[key])urls.add(String(e[key]))}
+ assert.equal(Object.keys(manifest.entries).length,urls.size);
+ for(const url of urls){
+  const e=manifest.entries[url];assert.ok(e,url);
+  const source=readFileSync('public'+url),packed=readFileSync('public'+e.url);
+  assert.equal(createHash('sha256').update(source).digest('hex'),e.sourceSHA256,url+' stale source');
+  assert.equal(createHash('sha256').update(packed).digest('hex'),e.sha256,url+' stale output');
+  assert.equal(packed.subarray(0,12).toString('hex'),'ab4b5458203230bb0d0a1a0a',url+' signature');
+  assert.equal(packed.readUInt32LE(20),e.width);assert.equal(packed.readUInt32LE(24),e.height);
+  assert.equal(packed.readUInt32LE(40),Math.floor(Math.log2(Math.max(e.width,e.height)))+1,url+' mip chain');
+ }
 });
