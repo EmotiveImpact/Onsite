@@ -16,6 +16,7 @@ import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
 import {coreLightAnchors} from './heronCoreArt'
 import {loadGalleryArt} from './heronGalleryArt'
+import {HeronContactShadows} from './HeronContactShadows'
 import {installHeronDepthFog} from './HeronDepthFog'
 import {loadLivedDetail,loadScannedDetail,loadShopDepth,isReplacedShopShelf} from './heronLivedDetail'
 
@@ -27,6 +28,7 @@ export class View {
  private readonly coverageSamples:number;
  private rifle!:THREE.Object3D;private sky!:THREE.Mesh;private hemi!:THREE.HemisphereLight;private sun!:THREE.DirectionalLight;
  private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
+ private contacts?:HeronContactShadows;
  private activeRifle?:ReturnType<typeof donorRifle>;
  artTextureStats:HeronReachMaterials['textureStats']|null=null;
  constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt){
@@ -97,7 +99,7 @@ export class View {
     const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned,shopDepth);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
-   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene)}else this.blockout();
+   if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene);this.contacts=new HeronContactShadows(this.scene,this.level)}else this.blockout();
    this.rifle=rifle.scene;return character.scene;
   }
   const [estate,character,rifle]=await Promise.all([
@@ -196,7 +198,7 @@ export class View {
  render(g:Encounter,alpha:number,dt:number,look:{x:number;y:number},overview=false){
   g.player.eye(alpha,this.camera.position);g.audio.setListener(this.camera.position,g.player.forward(new THREE.Vector3()));
   this.camera.rotation.set(g.player.pitch+g.arsenal.punch.pitch,g.player.yaw+g.arsenal.punch.yaw,g.arsenal.punch.roll,'YXZ');this.camera.fov=74*g.arsenal.fovScale();this.camera.updateProjectionMatrix();
-  g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
+  g.arsenal.animate(Math.min(dt,.033),look,false);for(const b of g.bots)b.render(alpha);this.contacts?.update(g.bots);g.fx.update(Math.min(dt,.05));this.vmCamera.position.copy(this.camera.position);this.vmCamera.quaternion.copy(this.camera.quaternion);
   if(overview){const o=this.level.overview;this.camera.position.set(o.from.x,o.from.y,o.from.z);this.camera.lookAt(o.to.x,o.to.y,o.to.z);this.camera.fov=74;this.camera.updateProjectionMatrix()}
   const t=this.clock.getElapsedTime();this.atmosphere?.update(this.camera,t);this.grass.update(this.camera);this.rain?.update(this.camera,t,dt);
   this.renderer.info.reset();this.renderer.autoClear=true;if(this.composer)this.composer.render();else this.renderer.render(this.scene,this.camera);
