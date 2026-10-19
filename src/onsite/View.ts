@@ -96,12 +96,12 @@ export class View {
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
     const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
-   const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
+   const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene)}else this.blockout();
    this.rifle=rifle.scene;return character.scene;
   }
   const [estate,character,rifle]=await Promise.all([
-   gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/hooded-opponent.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
+   gltf.loadAsync('/models/onsite-heron-court.glb'),gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),
    ...pending,this.props(gltf),this.environment()
   ]);
   estate.scene.name='ONSITE / Blender Heron Estate';
