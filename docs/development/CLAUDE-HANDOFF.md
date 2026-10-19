@@ -7,7 +7,9 @@ The owner explicitly asked for the whole-game goal and its implementation. Start
 with [ONSITE-GOAL.md](../ONSITE-GOAL.md), then [the current work/evidence log](WHOLE-GAME-PROGRESS.md).
 Continue from `codex/onsite-game-foundation`, above the focused operator, reload,
 shop-depth and contact-grounding branches. The historical scene-depth section below
-is the preserved baseline. No merge or deployment is authorised.
+is the preserved baseline. The complete review tip is [PR #17](https://github.com/EmotiveImpact/Onsite/pull/17);
+focused PRs #13–16 precede it in the [review stack](WHOLE-GAME-PROGRESS.md#review-stack).
+All are pushed and open. No merge or deployment is authorised.
 
 This tranche adds the real title/map/kit/settings/pause/results journey and local
 records, an original weighted Blender operator, continuous licensed-rifle reload

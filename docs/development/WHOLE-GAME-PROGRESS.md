@@ -154,3 +154,19 @@ placeholder. There is no completed stealth system, content progression, online
 service or tested 32-player load/balance. Hardware profiling and a device budget
 remain necessary before declaring performance adequate. Continue from the whole-game
 goal; do not restart the engine or treat this tranche as the entire finished game.
+
+## Review stack
+
+All five focused branches are pushed. They are stacked above existing scene-depth
+PR #12; none was merged or deployed. The complete playable is on
+`codex/onsite-game-foundation`. Review in this order:
+
+- [Add an original articulated Blender operator and black kit variants](https://github.com/EmotiveImpact/Onsite/pull/13) — `codex/onsite-articulated-operator`.
+- [Remove reload endpoint snaps and ease magazine seating](https://github.com/EmotiveImpact/Onsite/pull/14) — `codex/onsite-reload-motion`.
+- [Replace flat shop stock with dimensional Blender interiors](https://github.com/EmotiveImpact/Onsite/pull/15) — `codex/heron-reach-shop-depth`.
+- [Ground estate props and operator feet on their receiving floors](https://github.com/EmotiveImpact/Onsite/pull/16) — `codex/heron-reach-contact-grounding`.
+- [Connect ONSITE’s player journey, saved settings and real encounter results](https://github.com/EmotiveImpact/Onsite/pull/17) — `codex/onsite-game-foundation`.
+
+The first four snapshots independently typecheck/build. Full encounter and interface
+validation above describes the combined runtime at `3284c4d`, not five independent
+full browser runs. Later commits record evidence and these review links only.
