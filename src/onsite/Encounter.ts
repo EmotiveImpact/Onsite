@@ -37,7 +37,7 @@ export class Encounter implements CombatWorld{
  const targets=[{id:0,pos:p.position,vel:p.velocity,alive:p.alive,isPlayer:true}];
  for(const b of this.bots)b.update(dt,{targets,playerEye:p.eye(1,new THREE.Vector3()),playerId:0,frozen:false,items:[],hotspots:this.level.botSpawns.map(s=>new THREE.Vector3(s.x,s.y,s.z))},this.bots);
  this.physics.step(dt);
- if(!p.alive||this.match.timeLeft<=0)this.state='lost';
+ if(!p.alive||this.match.timeLeft<=0){this.state='lost';return}
  if(this.bots.every(b=>!b.alive)&&inCapture(this.level.capture,p.position))this.capture+=dt;else this.capture=0;
  if(this.capture>=2.5)this.state='won';
  }
