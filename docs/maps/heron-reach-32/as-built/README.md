@@ -112,3 +112,10 @@ What has been done for performance so far:
 - Lamp glows, reflection streaks, puddles and graffiti are batched into four draws.
 - ORM maps are at half resolution.
 - Software rendering automatically drops bloom, thins the grass and uses fewer point lights.
+
+## Visual work after the initial build
+
+The owner deferred real-GPU benchmarking on 19 October so the art pass can proceed.
+The [visual work log](../art/ART-PUSH-2026-10-19.md) records paired runtime views, provenance,
+validation and the branch stack. The wet-ground pass adds 91,170 bytes of textures; its browser
+encounters passed on both maps with the art enabled. Real-GPU performance remains unverified.
