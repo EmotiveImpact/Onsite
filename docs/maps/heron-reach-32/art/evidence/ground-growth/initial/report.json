@@ -1,0 +1,943 @@
+{
+  "kind": "Fixed-camera inspection fixtures; actors remain active; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4191",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4191/assets/index-CSZIsO9q.js",
+      "sha256": "1f329528f9940cfd3081f296be84915bbf7ee52d60ed9e241ca0535829dea64f"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/building-detail.glb",
+      "bytes": 484816,
+      "sha256": "437d8c49fc2cb5cd00232d655d663f42718920181338b8e925b9d68dc829f8fa"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-detail.glb",
+      "bytes": 158884,
+      "sha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-trees.glb",
+      "bytes": 57740,
+      "sha256": "b933b2f6e2767bece6a871ca2c2b5e7ab638d24c8f499abda77a81d181928209"
+    },
+    {
+      "path": "/models/heron-reach/ground-plan.json",
+      "bytes": 214642,
+      "sha256": "e4b30453833e2b737f6384f661375c7c5fd51986944f19b6a5af024da7797fce"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "42471abf57ca460ee59c1459edbf1ca488aa5e77",
+  "workingTree": "",
+  "captures": [
+    {
+      "name": "washhouse-square",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0,
+          "y": 0.020099957082129527,
+          "z": 23.999999996697824
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 57.93152580037713,
+            "y": 0.02009221108921333,
+            "z": -3.937695272021301
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.999994880356561,
+            "y": 0,
+            "z": 0.0014478362901391788
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 8.458986003883183,
+            "y": 0.464633038136817,
+            "z": 6.51423268369399
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": 0.5242371238141124,
+            "y": 0,
+            "z": 0.23217491073134433
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 4.061709463596344,
+            "y": 3.017055440097756,
+            "z": -22.31231802323964
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999864047494658,
+            "y": 0,
+            "z": -0.0025657905698093313
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.1877187313948525,
+            "y": 0.017698771182331208,
+            "z": -32.096411906182766
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0016211133510347898,
+            "y": 0,
+            "z": 2.9999893771869295
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 30.187391927580393,
+            "y": 9.020069889127917,
+            "z": 29.021983560174704
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0012378201260311579,
+            "y": 0,
+            "z": -2.9999910541015864
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 1.7035535331815481,
+            "y": -2.9803385272968446,
+            "z": 4.482988145202398
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.2400179430934883,
+            "y": 0,
+            "z": 2.3575757702814677
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 6,
+        "meanFrameMs": 1332.9166666666667,
+        "medianFrameMs": 1427.5999999940395,
+        "p95FrameMs": 3072,
+        "drawCalls": 444,
+        "triangles": 1303941,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 55.02401637658477,
+            "y": 0.015444205470266703,
+            "z": -3.937498490637722
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.9999999974610825,
+            "y": 0,
+            "z": -0.00005523291693897305
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 8.438312579644844,
+            "y": 0.1787094885297119,
+            "z": 9.127196215093136
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": 0.044863785851474304,
+            "y": 0,
+            "z": 2.9978312448732045
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 7.012266922742128,
+            "y": 3.019541713023791,
+            "z": -22.312509586364794
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999999964479866,
+            "y": 0,
+            "z": -0.00004628043133542618
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.18686699531099293,
+            "y": 0.020321136755519498,
+            "z": -29.236101027578115
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.005898764563268659,
+            "y": 0,
+            "z": 2.9999932936863183
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 30.187163122671336,
+            "y": 9.020054330918647,
+            "z": 26.12153174355626
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.0023322210888945564,
+            "y": 0,
+            "z": -2.9999982526762152
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 3.4141401387751102,
+            "y": -2.9801096833686462,
+            "z": 6.207566697150469
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.137980069476996,
+            "y": 0,
+            "z": 1.573021158590641
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 10,
+        "meanFrameMs": 1511.810000000894,
+        "medianFrameMs": 1475.2000000029802,
+        "p95FrameMs": 3072,
+        "drawCalls": 630,
+        "triangles": 1399152,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "roof-skyline",
+      "requestedPose": {
+        "x": -34,
+        "y": 9.04,
+        "z": -26,
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -34,
+          "y": 9.019950498522666,
+          "z": -25.99999996351995
+        },
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 52.39965840204968,
+            "y": 0.019979035562137093,
+            "z": -4.100510064512491
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.5217590369646823,
+            "y": 0,
+            "z": -2.0010504647496425
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 6.0617666356265545,
+            "y": 0.019982159771025132,
+            "z": 9.561239670598297
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -2.999238205212072,
+            "y": 0,
+            "z": 0.005118303485036671
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 10.011729247868061,
+            "y": 3.0203063373849726,
+            "z": -22.312502236368914
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999999997034762,
+            "y": 0,
+            "z": 0.00010049796211373087
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 1.370116826146841,
+            "y": 0.01997833133675153,
+            "z": -27.5654816031456
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.4758347647010878,
+            "y": 0,
+            "z": 2.7824915432183417
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 28.92928645387292,
+            "y": 9.019950019872631,
+            "z": 24.573010611347854
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.957641278772812,
+            "y": 0,
+            "z": 0.1392116769935028
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 4.944173831492662,
+            "y": -2.98039510934148,
+            "z": 8.129301546141505
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 1.997580625340893,
+            "y": 0,
+            "z": 1.651582595137027
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 15,
+        "meanFrameMs": 1510.3933333337307,
+        "medianFrameMs": 1475.2000000029802,
+        "p95FrameMs": 3072,
+        "drawCalls": 556,
+        "triangles": 1360618,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "garden-court",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000011404964084,
+          "y": 0.02007853666291337,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 52.019377298653126,
+            "y": 0.01650213157729008,
+            "z": -6.660392798483372
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.401738914586249,
+            "y": 0,
+            "z": -0.4897915996201278
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 3.2120644599199295,
+            "y": 0.019982025638746514,
+            "z": 9.56258028758566
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -2.999999883259971,
+            "y": 0,
+            "z": 0.000003952215220594383
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 11.42182904452784,
+            "y": 3.020099573630723,
+            "z": -20.85663938894868
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.051223609226941115,
+            "y": 0,
+            "z": 2.9717156620097107
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 2.8380385246127844,
+            "y": 0.020624730496201615,
+            "z": -28.413438508287072
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": 1.6086810219834393,
+            "y": 0,
+            "z": -1.857011036590996
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 25.982865650206804,
+            "y": 9.018997361752845,
+            "z": 24.562580947098468
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.9999925075448273,
+            "y": 0,
+            "z": -0.0010929280243397645
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 7.714584436267614,
+            "y": -2.9805604341160508,
+            "z": 8.438314119150164
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9989045860289525,
+            "y": 0,
+            "z": 0.02670283208276312
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 20,
+        "meanFrameMs": 1402.7,
+        "medianFrameMs": 1475.2000000029802,
+        "p95FrameMs": 3072,
+        "drawCalls": 391,
+        "triangles": 1270515,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "gallery-edge",
+      "requestedPose": {
+        "x": -20,
+        "y": 3.04,
+        "z": -22.9,
+        "yaw": -3.141592653589793,
+        "pitch": 0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20,
+          "y": 3.019712169263221,
+          "z": -22.900000134057677
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 49.15547639131546,
+            "y": 0.019988754713558543,
+            "z": -6.56390323874075
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.9996992262173996,
+            "y": 0,
+            "z": 0.01383847696302953
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 1.699470445048064,
+            "y": 0.019554918493959073,
+            "z": 10.870134565979242
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": 0.14550636911289666,
+            "y": 0,
+            "z": 2.957060798197739
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 11.437316369898326,
+            "y": 3.020100606474734,
+            "z": -17.860162172466516
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.0021440369267148006,
+            "y": 0,
+            "z": 2.9999919429395097
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.4520602189004421,
+            "y": 0.019174687419144854,
+            "z": -28.684497404348804
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -2.998759150376062,
+            "y": 0,
+            "z": -0.01576711317898994
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 23.13320303708315,
+            "y": 9.020069772246934,
+            "z": 24.562557979519624
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.999999945014018,
+            "y": 0,
+            "z": -0.00041277761366438815
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 10.615399185568094,
+            "y": -2.979953268673562,
+            "z": 8.437521176710788
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999997798783906,
+            "y": 0,
+            "z": -0.00010385156754441928
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 24,
+        "meanFrameMs": 1475.8458333338301,
+        "medianFrameMs": 1475.2000000029802,
+        "p95FrameMs": 3072,
+        "drawCalls": 664,
+        "triangles": 1386490,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "north-boundary-trees",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": -56,
+        "yaw": 0.24497866312686414,
+        "pitch": 0.35
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0.000003067815896429238,
+          "y": 0.020064281570375875,
+          "z": -56.000000036884686
+        },
+        "yaw": 0.24497866312686414,
+        "pitch": 0.35,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 48.56414240086451,
+            "y": 0.020100036381627384,
+            "z": -8.764489490538836
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.060071061690823484,
+            "y": 0,
+            "z": -2.995967879446216
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 1.6868736637115944,
+            "y": 0.02043344146688464,
+            "z": 13.864469673484564
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": 0.0033834387630513854,
+            "y": 0,
+            "z": 2.999988156318558
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 13.799062009900808,
+            "y": 3.0180214209033873,
+            "z": -17.43768909870414
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9975052912286566,
+            "y": 0,
+            "z": 0.045188513441411456
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.28877731767715886,
+            "y": 0.020192896838416297,
+            "z": -30.61759140342474
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": 0.001711520320332503,
+            "y": 0,
+            "z": -2.3411725985943055
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 20.36044232174754,
+            "y": 9.019975599272875,
+            "z": 24.358363911509514
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.7262897525146843,
+            "y": 0,
+            "z": -2.1715535100243146
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 13.466929208487272,
+            "y": -2.98023272085964,
+            "z": 8.437502140481627
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999999999511677,
+            "y": 0,
+            "z": -0.000044373431252208284
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 28,
+        "meanFrameMs": 1470.3714285716414,
+        "medianFrameMs": 1475.2000000029802,
+        "p95FrameMs": 3072,
+        "drawCalls": 205,
+        "triangles": 1030316,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290
+        },
+        "audioPaused": false
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

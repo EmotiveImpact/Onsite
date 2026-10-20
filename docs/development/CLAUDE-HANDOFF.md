@@ -1,6 +1,65 @@
 # ONSITE — handoff for Claude
 
-## Current: building and private stair construction — 20 October 2026
+## Release continuation — 20 October 2026
+
+The owner has authorised pushing and merging the complete PR #5–#20 dependency
+chain. Continue from `main` once [the final integration PR #5](https://github.com/EmotiveImpact/Onsite/pull/5)
+is marked merged. The release carries the combined reviewed tree `9270abe` and
+runtime source `623bc24`; this release note changes no implementation or assets.
+The existing Vercel integration publishes main automatically.
+
+The review status and “no merge/deployment” wording below record the state when each
+item was originally verified; consult the PR records for publication status.
+Before publication, main was `b5bfd44293390436cbc024cc9743bf643260eefe`, preserved
+locally as `checkpoint/onsite-before-main-publication-2026-10-20`. Keep the original
+review branches and evidence. The 127 tests, build/typecheck and both combat reports
+below apply to the unchanged release runtime; real-GPU performance remains unverified.
+
+## Current: ground, planting and trees — 20 October 2026
+
+Review: [PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged,
+stacked on [building PR #19](https://github.com/EmotiveImpact/Onsite/pull/19).
+
+Continue from `codex/heron-reach-ground-growth`, above building PR #19 and public
+stair PR #18. The owner prioritised stairs/buildings, then realistic ground,
+growth/plants and more trees. Read the [ground work/evidence log](../maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) and
+[construction/provenance record](../maps/heron-reach-32/art/GROUND-GROWTH.md).
+Final validated implementation is `623bc24`, including the denser planters and scoped weed-face correction.
+Earlier tree-only and sparse-planter evidence remains explicitly superseded.
+
+The original Blender additions include 131 irregular soil pockets, 89 moss/edge
+deposits, 45 small leaf drifts, soil rings around 20 existing trunks, 53 ground-edge weed
+clumps and 48 varied low shrub/weed clumps rooted inside the eight existing planters. Sixteen fuller
+London plane trees fill the sealed north/south perimeter. All placements respect
+existing support/door/objective routes; no new playable trunk or solid cover is
+implied. Corrected grass winding restores lighting from above; surviving instances
+retain their exact transforms. The same scoped correction fixes 126 inverted weed
+leaf/blade triangles while preserving upright cards. Original assets and load-failure
+fallbacks remain.
+
+The three fetched runtime files total 416,938 bytes before HTTP compression;
+they share existing PBR and winter materials and add no texture images or lights.
+Initial pale/sparse birches failed visual review and were replaced; their evidence
+is labelled superseded. The final two-plane kit is 36,640 bytes. New authored
+Blender sources stay separate from the original 5.2 estate files.
+
+**127 tests, typecheck and production build pass.** Seven matched camera pairs
+pass on SwiftShader at 1280 × 720, DPR 1, including the new ground close-up. Both
+serial normal-input encounters pass capture, persistence and reset: Court ten
+checks/three bots; Reach nine checks/six bots. Final errors/failed requests are empty.
+Software frame means are 480.76 ms Court / 641.96 ms Reach, at 1100 × 700 / DPR 0.5,
+including automation overhead. Real-GPU performance is deferred and unverified.
+
+Movement/weapons/bots/rounds, collision, layered navigation and Heron Court remain.
+The building log below retains the mirrored private stair walk evidence. Next work
+should improve soil/grass transitions, foliage detail, interior lighting/furnishings
+and local shadows/reflections, then
+room visibility/culling and measured hardware budgets; authored character motion,
+spatial sound and human playtesting remain. This is not completed AAA quality.
+No merge or production deployment was invoked. Existing PR integration may
+automatically build a Vercel preview after branch publication.
+
+## Previous: building and private stair construction — 20 October 2026
 
 Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
 Review: [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19), pushed and unmerged.
