@@ -6,6 +6,7 @@ import type {Solid} from './level'
 import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
 import {applyHeronSurfaceResponse,surfaceNormalScale} from './heronSurfaceResponse'
 import {lightReceiverBelow,lightReceiverFloor,prepareLightOccluders,prepareReceiverLights,selectReceiverLights,type PreparedLight,type LightOccluder} from './heronLightSelection'
+import {stairCorePhotometry} from './heronStairLighting'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -52,6 +53,7 @@ export class HeronReachMaterials {
   if(e.color)m.color.setRGB(e.color[0],e.color[1],e.color[2],THREE.LinearSRGBColorSpace);
   if(e.emissive){m.emissive.setRGB(e.emissive[0],e.emissive[1],e.emissive[2],THREE.LinearSRGBColorSpace);m.emissiveIntensity=e.emissiveIntensity??1}
   if(name==='hr_lamp_emit')m.emissiveIntensity=4;
+  if(name==='hr_core_strip'){m.color.set(stairCorePhotometry.color);m.emissive.set(stairCorePhotometry.color)}
   const mat=m;
   if(e.map)this.pending.push(this.texture(e.map,true,repeat).then(t=>{mat.map=t;mat.needsUpdate=true}));
   if(e.emissiveMap)this.pending.push(this.texture(e.emissiveMap,true,repeat).then(t=>{mat.emissiveMap=t;mat.needsUpdate=true}));
@@ -130,6 +132,9 @@ export class HeronReachAtmosphere {
   // Glows and streaks are batched: two point clouds and one instanced mesh, whatever the lamp count.
   const glows:Record<'big'|'small',number[]>={big:[],small:[]};
   for(const a of anchors){
+   // Sheltered stair strips have actual emissive lenses, not outdoor amber halos
+   // or wet-pavement reflection cards. They remain in the same real-light pool.
+   if(a.kind==='core')continue;
    const big=a.kind==='street'||a.kind==='court';
    glows[big?'big':'small'].push(a.x,a.y,a.z);
    const floor=lightReceiverFloor(a,surfaces);
@@ -149,7 +154,7 @@ export class HeronReachAtmosphere {
    this.next=t+.25;
    this.cameraFloor=lightReceiverBelow(c,this.surfaces);
    const near=selectReceiverLights(this.receiverLights,c,this.cameraFloor,this.occluders,this.pool.length);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const ceiling=n.anchor.kind==='ceiling'||n.anchor.kind==='core';l.position.copy(n.position);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=n.intensity;l.distance=n.range});
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}l.position.copy(n.position);l.color.set(n.anchor.kind==='core'?stairCorePhotometry.color:n.anchor.kind==='ceiling'?'#e4e9df':'#ffd09a');l.intensity=n.intensity;l.distance=n.range});
   }
   const p=new THREE.Vector3(),sc=new THREE.Vector3(),tint=new THREE.Color();
   this.streaks.forEach((s,i)=>{

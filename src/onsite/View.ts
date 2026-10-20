@@ -14,7 +14,8 @@ import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js'
 import {OutputPass} from 'three/addons/postprocessing/OutputPass.js'
 import type {Encounter} from './Encounter'
 import {loadShopArt,shopLightAnchors} from './heronShopArt'
-import {coreLightAnchors} from './heronCoreArt'
+import {stairLightAnchors} from './heronStairLighting'
+import {loadStairArt} from './heronStairArt'
 import {loadGalleryArt} from './heronGalleryArt'
 import {installHeronDepthFog} from './HeronDepthFog'
 import {loadLivedDetail,loadScannedDetail,loadShopDepth,isReplacedShopShelf} from './heronLivedDetail'
@@ -97,9 +98,10 @@ export class View {
     const courtLamps=reach.lampAnchors.filter(a=>a.kind==='court');
     const dressing=reach.dressing.items.filter(p=>!isReplacedShopShelf(p)).map(p=>p.asset==='WALL_LAMP'&&Math.hypot(p.x-111,p.z-47.99)<.1?{...p,x:103}:p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
     const [built,kits,grass,shops,gallery,lived]=await Promise.all([loadHeronReachArch(gltf,m),fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[]).then(facade=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade],m.names(),this.software,this.coverageSamples>0)),this.grass.build(gltf,this.software?1.5:5),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0),loadLivedDetail(gltf,m)]);
-    const [scanned,shopDepth]=await Promise.all([loadScannedDetail(gltf,shops),loadShopDepth(gltf,m,lived,shops)]);
+    const [scanned,shopDepth,stairs]=await Promise.all([loadScannedDetail(gltf,shops),loadShopDepth(gltf,m,lived,shops),
+     loadStairArt(gltf,m,built).catch(e=>{console.warn('Constructed stairs unavailable; retaining original stair art',e);return new THREE.Group()})]);
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned,shopDepth);return root;
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,grass,shops,gallery,lived,scanned,shopDepth,stairs);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene);this.contacts=new HeronContactShadows(this.scene,this.level)}else this.blockout();
@@ -138,13 +140,15 @@ export class View {
   this.hemi.color.set('#b3c5d8');this.hemi.groundColor.set('#343a3d');this.hemi.intensity=1.8;
   this.sun.color.set('#c0cad4');this.sun.intensity=.65;
   this.renderer.toneMappingExposure=1.12;
-  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35,floorY:0}:a.kind==='wall'&&Math.hypot(a.x-39,a.z+12.78)<.1?{...a,x:31}:a),...shopLightAnchors,...coreLightAnchors,...[52,61].map(x=>({x:x-72,y:5.8,z:38.1-60,kind:'gallery',floorY:3}))];
+  const artAnchors=[...reach.lampAnchors.map(a=>a.kind==='court'?{...a,y:6.35,floorY:0}:a.kind==='wall'&&Math.hypot(a.x-39,a.z+12.78)<.1?{...a,x:31}:a),...shopLightAnchors,...stairLightAnchors,...[52,61].map(x=>({x:x-72,y:5.8,z:38.1-60,kind:'gallery',floorY:3}))];
   this.atmosphere=new HeronReachAtmosphere(this.scene,this.renderer,artAnchors,this.software,this.level.solids.filter(s=>this.level.surfaceIds.includes(s.id)),this.level.solids);
   this.scene.add(buildDecals(reach.dressing.decals,this.software?2:8));
   // Rain thins out under any slab or roof above the camera (decks, arcades, cores, the undercroft).
   const roofs=this.level.solids.filter(s=>['slab','roof','landing','ground'].includes(s.id)||s.id.endsWith('-cap'));
   const covered=(x:number,y:number,z:number)=>roofs.some(s=>s.y>y&&s.y-y<12&&Math.abs(x-s.x)<s.w/2&&Math.abs(z-s.z)<s.d/2);
-  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,artAnchors);this.scene.add(this.rain.mesh)}
+  // Rain's exterior colour proxies have no floor/occlusion selection. Sheltered
+  // stair strips must not consume those slots or colour outside rain orange.
+  if(new URLSearchParams(location.search).get('rain')!=='0'){this.rain=new Rain(this.software?1500:6000,covered,artAnchors.filter(a=>a.kind!=='core'));this.scene.add(this.rain.mesh)}
   if(!this.software){
    const size=this.renderer.getSize(new THREE.Vector2());this.composer=new EffectComposer(this.renderer);
    // Canvas antialiasing does not multisample the composer's offscreen scene target.
