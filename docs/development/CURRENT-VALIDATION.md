@@ -1,4 +1,28 @@
-# Current validation: Heron Reach public stairs
+# Current validation: building and private stair construction
+
+20 October 2026. Branch `codex/heron-reach-building-detail`, implementation checkpoint
+`2608c6e`, above public stair PR #18. Read the [work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+for exact hashes, preserved sources, screenshot pairs, physical routes and commands.
+
+- **100 tests pass**, no skips; typecheck and production build pass.
+- Ten final building views pass; all nine paired requested poses match exactly,
+  1280 × 720 / DPR 1 / ANGLE SwiftShader. Inspection leaves actors active.
+- Both mirrored private stair fixtures pass all ten assertions and eight grounded
+  checkpoints, continuously walking +3 → +6 → +3 m. The initial cold-Vite SW request
+  abort is retained; its unchanged serial retry passed without errors.
+- Both normal-input production encounters pass serially: Court ten checks/three
+  bots; Reach nine checks/six bots. Both capture, save once and reset. Final page,
+  console and request errors are empty.
+- Software frame means: **478.01 ms Court / 687.22 ms Reach**, at 1100 × 700 / DPR 0.5.
+  Raw sample counts/median/p95 are in the log; automation overhead is included.
+  **Real-GPU performance remains deferred and unverified.**
+
+The 484,816-byte model adds 35,344 triangles/52 batches and retires 4,576 exact old
+triangles. No new textures/lights. Original source geometry and gameplay/physical
+routes remain intact. Interior lighting, furnishing variation, local shadows,
+reflections, animation, sound, culling and human playtesting remain. No merge/deploy.
+
+# Previous validation: Heron Reach public stairs
 
 20 October 2026. Branch `codex/heron-reach-stair-construction`, final code/asset
 checkpoint `8c08fad`. Read the [stair work/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)

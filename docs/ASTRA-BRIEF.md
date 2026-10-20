@@ -7,12 +7,15 @@ Networking and real-GPU verification remain deferred.
 
 ## Current construction pass — 20 October 2026
 
-The active continuation is `codex/heron-reach-stair-construction`. The owner then
-prioritised proper stairs. Read the [stair work log](maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
-for all eight public cores, exact Blender sources, matched views and final verification.
-It is pushed as [PR #18](https://github.com/EmotiveImpact/Onsite/pull/18), above #17.
-Its render assembly preserves the existing physical/nav routes; private-home stairs
-remain a future item. The broader quality gates below still apply. No merge/deploy.
+Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
+The owner prioritised stairs/buildings, then ground, growth and trees. Read the
+[building work log](maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md).
+Private-home stairs now have coherent flights, visible physical dividers and
+finish sheets cut around their existing voids. Mirrored routes are verified with
+the actual WWB player/Rapier. Building details share existing materials.
+The separate `codex/heron-reach-ground-growth` continuation adds ground/planting.
+Consult [current validation](development/CURRENT-VALIDATION.md) before using older
+counts below. No physical/nav route is moved; no merge/deploy.
 
 ## Current owner instruction and continuation
 

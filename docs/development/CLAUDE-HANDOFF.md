@@ -1,7 +1,39 @@
 # ONSITE — handoff for Claude
 
+## Current: building and private stair construction — 20 October 2026
 
-## Current: public stair construction — 20 October 2026
+Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
+Read the [building work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+and [exact Blender construction/provenance](../maps/heron-reach-32/art/BUILDING-CONSTRUCTION.md).
+The owner prioritised stairs/buildings, then realistic ground, plants and more trees.
+Building source checkpoint is `2608c6e`; later commits retain review evidence.
+
+All eight H2 homes gain properly supported private flights, visible physical
+centre dividers/guards and finish sheets cut around the existing mirrored voids.
+Corrected door surrounds and held-open leaves clear the existing physical routes.
+Public portals, gallery coping/joints, window drips, drainage, bearings and pendant
+supports add construction detail. The 484,816-byte GLB shares existing PBR images;
+no new texture or light is added. Original sources and fallback remain intact.
+
+100 tests, typecheck and production build pass. Ten final building views use
+SwiftShader at 1280 × 720, DPR 1; all nine paired requested poses match exactly.
+Both mirrored private stair fixtures traverse +3 → +6 → +3 m continuously, with
+ten assertions each and no errors in their passing reports. An initial cold-Vite
+SW request-abort failure is retained and explained in the log.
+
+Both serial normal-input encounters also pass: Court ten checks, Reach nine,
+including capture/persistence/reset, with no page/console/request errors. Software
+means are 478.01 ms Court / 687.22 ms Reach; these include automation overhead.
+
+Private interiors still need more considered lighting and varied furnishings.
+Collision/nav and WWB movement/weapons/bots/rounds are unchanged. The separate
+`codex/heron-reach-ground-growth` item adds soil/moss/leaf deposits, weeds, planter
+shrubs and sixteen perimeter trees. Keep the original Blender 5.2 files intact;
+additive files use Blender 4.3. Real-GPU verification is deferred and unverified.
+No merge or deployment.
+
+
+## Previous: public stair construction — 20 October 2026
 
 Continue from `codex/heron-reach-stair-construction`, above the complete whole-game
 foundation below. The owner specifically prioritised properly modelled stairs.
