@@ -4,7 +4,8 @@
 `c583afeb32b3d82fe2d069b81076de9e993bf51c`. Recover the unchanged released implementation
 from that commit or local checkpoint `checkpoint/onsite-before-world-dressing-2026-10-20`.
 Review: [PR #21](https://github.com/EmotiveImpact/Onsite/pull/21), pushed and unmerged.
-This pass does not merge or deploy the new work.
+Production remains on released main. Branch publication triggers the existing
+automatic Vercel preview; no manual deployment or merge was invoked.
 
 ## What changed
 
