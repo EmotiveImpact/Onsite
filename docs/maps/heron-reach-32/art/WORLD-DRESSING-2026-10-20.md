@@ -3,7 +3,8 @@
 20 October 2026. Branch `codex/heron-reach-world-dressing`, based on released main
 `c583afeb32b3d82fe2d069b81076de9e993bf51c`. Recover the unchanged released implementation
 from that commit or local checkpoint `checkpoint/onsite-before-world-dressing-2026-10-20`.
-This pass is for review; it does not merge or deploy the new work.
+Review: [PR #21](https://github.com/EmotiveImpact/Onsite/pull/21), pushed and unmerged.
+This pass does not merge or deploy the new work.
 
 ## What changed
 

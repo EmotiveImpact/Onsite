@@ -2,6 +2,8 @@
 
 ## Current: scanned world dressing — 20 October 2026
 
+Review: [PR #21](https://github.com/EmotiveImpact/Onsite/pull/21), pushed and unmerged.
+
 Continue from `codex/heron-reach-world-dressing`, implementation `2cef5c8`, based on
 released main `c583afeb`. The previous PR #5–#20 chain was merged and the release
 was verified live. This new pass is separate review work; no merge/deploy is authorised
