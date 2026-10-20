@@ -20,7 +20,9 @@ Blender 4.3 CLI, metre scale and the existing material library.
 
 The review sequence is building/stair construction first on
 `codex/heron-reach-building-detail`, then ground/planting on a branch above it.
-Each item records its actual exported costs, matched runtime views and checks.
+The building item is [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19),
+stacked on #18, pushed and unmerged. Each item records its actual exported costs,
+matched runtime views and checks.
 Real-GPU performance remains unverified and deferred. No merge or deployment.
 
 ## Recovery

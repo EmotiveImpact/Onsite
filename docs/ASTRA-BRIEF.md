@@ -7,7 +7,8 @@ Networking and real-GPU verification remain deferred.
 
 ## Current construction pass — 20 October 2026
 
-Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
+Continue from `codex/heron-reach-building-detail`, above public stair PR #18,
+as [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19), pushed and unmerged.
 The owner prioritised stairs/buildings, then ground, growth and trees. Read the
 [building work log](maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md).
 Private-home stairs now have coherent flights, visible physical dividers and

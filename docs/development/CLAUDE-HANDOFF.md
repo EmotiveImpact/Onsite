@@ -3,6 +3,7 @@
 ## Current: building and private stair construction — 20 October 2026
 
 Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
+Review: [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19), pushed and unmerged.
 Read the [building work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
 and [exact Blender construction/provenance](../maps/heron-reach-32/art/BUILDING-CONSTRUCTION.md).
 The owner prioritised stairs/buildings, then realistic ground, plants and more trees.
