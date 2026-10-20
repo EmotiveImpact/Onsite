@@ -1,0 +1,28 @@
+{
+  "provenance": "ChatGPT images generated for ONSITE, supplied in this repository at dd803c9. No external photography or downloaded asset.",
+  "processing": "Resize to 1024 x 512 and WebP quality 88; no new painted content.",
+  "files": [
+    {
+      "source": "docs/maps/heron-reach-32/art/generated/shops/corner-shop-interior.png",
+      "sourceSha256": "67db5a1053960e4a436eb5fcb76cdae6b4e2faa171fc2c2741011df4114c9e75",
+      "runtime": "public/materials/heron/shops/corner-shop-interior.webp",
+      "sha256": "91c49a8e7a773cec0f0b333b1309b2b42e22600c918b83f84a672cbac732dcf3",
+      "bytes": 133500,
+      "size": [
+        1024,
+        512
+      ]
+    },
+    {
+      "source": "docs/maps/heron-reach-32/art/generated/shops/launderette-interior.png",
+      "sourceSha256": "04131a283b4fbfe31a45a0c98a4b7cbf0596aba3e6437b84877b66c6adfabc46",
+      "runtime": "public/materials/heron/shops/launderette-interior.webp",
+      "sha256": "c1d2bf7543882ff4062513b9731789b7c84c0ef3603835c0240a3eb0eff25af9",
+      "bytes": 88930,
+      "size": [
+        1024,
+        512
+      ]
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+{
+  "checks": [
+    "All materials/models loaded",
+    "Pointer lock and mouse look",
+    "Imported rifle and hands loaded; ADS sight aligns to centre",
+    "WWB automatic fire, recoil and timed reload",
+    "Pause/resume freezes simulation",
+    "Jump and landing",
+    "Combat result: 6 opponents down, health 84",
+    "Clear and capture victory",
+    "Round reset restores player and opponents"
+  ],
+  "errors": [],
+  "failed": [],
+  "inputBursts": [
+    {
+      "target": 4,
+      "fromTick": 780,
+      "toTick": 855,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 3,
+      "fromTick": 900,
+      "toTick": 945,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 3,
+      "fromTick": 945,
+      "toTick": 975,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 3,
+      "fromTick": 975,
+      "toTick": 1005,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 3,
+      "fromTick": 1005,
+      "toTick": 1035,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 1,
+      "fromTick": 1260,
+      "toTick": 1335,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 4,
+      "fromTick": 1335,
+      "toTick": 1365,
+      "shots": 3,
+      "hits": 3
+    },
+    {
+      "target": 4,
+      "fromTick": 1365,
+      "toTick": 1395,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 4,
+      "fromTick": 1395,
+      "toTick": 1425,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 4,
+      "fromTick": 1425,
+      "toTick": 1455,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 1,
+      "fromTick": 1605,
+      "toTick": 1635,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 1,
+      "fromTick": 1635,
+      "toTick": 1665,
+      "shots": 3,
+      "hits": 3
+    },
+    {
+      "target": 6,
+      "fromTick": 2160,
+      "toTick": 2205,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 6,
+      "fromTick": 2265,
+      "toTick": 2310,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 6,
+      "fromTick": 2310,
+      "toTick": 2340,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 6,
+      "fromTick": 2340,
+      "toTick": 2370,
+      "shots": 3,
+      "hits": 3
+    },
+    {
+      "target": 6,
+      "fromTick": 2370,
+      "toTick": 2400,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 6,
+      "fromTick": 2400,
+      "toTick": 2430,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 6,
+      "fromTick": 2430,
+      "toTick": 2460,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 6,
+      "fromTick": 2460,
+      "toTick": 2490,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 5,
+      "fromTick": 3240,
+      "toTick": 3300,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 5,
+      "fromTick": 3300,
+      "toTick": 3325,
+      "shots": 2,
+      "hits": 2
+    },
+    {
+      "target": 5,
+      "fromTick": 3325,
+      "toTick": 3355,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 5,
+      "fromTick": 3355,
+      "toTick": 3385,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 2,
+      "fromTick": 4225,
+      "toTick": 4285,
+      "shots": 3,
+      "hits": 0
+    },
+    {
+      "target": 2,
+      "fromTick": 4285,
+      "toTick": 4315,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 2,
+      "fromTick": 4315,
+      "toTick": 4345,
+      "shots": 3,
+      "hits": 2
+    },
+    {
+      "target": 2,
+      "fromTick": 4345,
+      "toTick": 4375,
+      "shots": 3,
+      "hits": 1
+    },
+    {
+      "target": 2,
+      "fromTick": 4375,
+      "toTick": 4405,
+      "shots": 3,
+      "hits": 1
+    }
+  ],
+  "combatState": {
+    "tick": 5745,
+    "status": "won",
+    "time": 95.74999999999585,
+    "capture": 2.5166666666666626,
+    "player": {
+      "position": {
+        "x": -0.9552093759655782,
+        "y": 0.015598852719995171,
+        "z": -1.3110251438230103
+      },
+      "yaw": 4.350002915390732,
+      "pitch": 0.0010214059795354065,
+      "health": 84,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 4,
+      "reserve": 90,
+      "reloadRemaining": 0,
+      "ads": 2.359494336416727e-155
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 4.953427881002426,
+          "y": 0.01658825144142606,
+          "z": 0.9468887909315526
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": -9.191007138695568,
+          "y": 0.013881068844348143,
+          "z": -1.202841755002737
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 17.53746212273836,
+          "y": 0.019941532890079494,
+          "z": -17.437478525487677
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 4,
+        "position": {
+          "x": 11.829727943986654,
+          "y": 0.01585536250815489,
+          "z": 1.6878189478156855
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 5,
+        "position": {
+          "x": 19.510285578668118,
+          "y": 0.020086875054694198,
+          "z": -13.687482227404871
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 6,
+        "position": {
+          "x": 7.763552628457546,
+          "y": 3.0179982527191167,
+          "z": -21.551907829241827
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 86,
+      "hits": 36,
+      "headshots": 2,
+      "multiKills": 0,
+      "bestStreak": 6,
+      "damageDealt": 600
+    },
+    "visible": []
+  },
+  "metrics": {
+    "softwareRenderer": true,
+    "renderer": "WebKit WebGL",
+    "frames": 360,
+    "meanFrameMs": 694.25,
+    "medianFrameMs": 684.7999999970198,
+    "p95FrameMs": 879.3000000119209,
+    "drawCalls": 412,
+    "triangles": 1222938,
+    "architectureTextures": {
+      "compressed": 0,
+      "webp": 82,
+      "formats": {
+        "1023": 82
+      },
+      "estimatedMipBytes": 328996233
+    },
+    "presentation": {
+      "sensitivity": 1,
+      "sound": true,
+      "volume": 0.6,
+      "reducedMotion": false,
+      "quality": "auto",
+      "pixelRatio": 0.5,
+      "bloom": false,
+      "contactInstances": 278
+    },
+    "audioPaused": true
+  },
+  "state": {
+    "tick": 0,
+    "status": "active",
+    "time": 0,
+    "capture": 0,
+    "player": {
+      "position": {
+        "x": -64,
+        "y": 0.04,
+        "z": 0
+      },
+      "yaw": -1.5707963267948966,
+      "pitch": 0,
+      "health": 100,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 30,
+      "reserve": 150,
+      "reloadRemaining": 0,
+      "ads": 0
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 62,
+          "y": 0.04,
+          "z": -4
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": 8,
+          "y": 0.04,
+          "z": 6
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 0,
+          "y": 3.04,
+          "z": -22.5
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 4,
+        "position": {
+          "x": 0,
+          "y": 0.04,
+          "z": -36
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 5,
+        "position": {
+          "x": 30,
+          "y": 9.04,
+          "z": 33
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 6,
+        "position": {
+          "x": 0,
+          "y": -2.96,
+          "z": 3
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 0,
+      "hits": 0,
+      "headshots": 0,
+      "multiKills": 0,
+      "bestStreak": 0,
+      "damageDealt": 0
+    },
+    "visible": []
+  }
+}

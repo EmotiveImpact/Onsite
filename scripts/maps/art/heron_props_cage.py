@@ -11,7 +11,7 @@ from heron_props_lib import (
 )
 from heron_props_street import box_collider, cyl_collider
 
-BLK = "hr_steel_black"
+BLK = "hr_prop_cage_green"
 MESH = "hr_prop_cage_mesh"
 NET = "hr_prop_goal_net"
 PAINT = "hr_prop_goal_paint"
@@ -62,7 +62,7 @@ def cage_panel():
             a.add(box(0.05, 0.05, 0.06, 0.004, 1, (sx * (xi + 0.004), 0, z)), BLK)
             a.add(bolt_head(0.008, 0.008), BLK, T(sx * (xi + 0.004), -0.025, z) @ R("X", 90))
     a.meta.update(needsCollision=True, collider=box_collider((PANEL_W, 0.06, PANEL_H), (0, 0, PANEL_H / 2)),
-                  notes="2.5 m wide, 2.6 m high weld-mesh panel (50 mm square mesh as an alpha-clipped texture on one double-sided sheet) in a 40 mm box frame. Place between CAGE_POST instances at 2.5 m centres; tiles along X.")
+                  notes="2.5 m wide, 2.6 m high chain-link panel (fine diagonal wire texture on a double-sided sheet) in a green 40 mm box frame. Existing footprint and gates retained.")
     return a
 
 
@@ -249,6 +249,42 @@ def ball():
     _b.ops.translate(a.bm, vec=(0, 0, Rr), verts=a.bm.verts)
     a.meta.update(needsCollision=False, collider=cyl_collider(Rr, 2 * Rr),
                   notes="Size 5 ball, 0.22 m, 32 panels with stitched seams. Dynamic prop if wanted; static it can be ignored by collision.")
+    return a
+
+
+def floodlight():
+    """Render replacement on the four existing lamp-column footprints; no new collider."""
+    a = Asset('CAGE_FLOODLIGHT', 'cage', 47)
+    a.add(cyl(.085, 6.25, 12), BLK)
+    a.add(box(.28, .28, .025, .008, 1, (0, 0, .0125)), BLK)
+    a.add(box(1.1, .08, .08, .008, 1, (0, 0, 6.22)), BLK)
+    for x in [-.34, .34]:
+        a.add(box(.48, .18, .32, .02, 2, (x, 0, 6.36)), BLK)
+        a.add(box(.42, .012, .25, .01, 1, (x, -.097, 6.36)), 'hr_prop_court_lens')
+        for u in [-.12, 0, .12]:
+            a.add(box(.015, .012, .24, 0, 1, (x+u, -.107, 6.36)), 'hr_steel_galv')
+    a.meta.update(needsCollision=False, notes='6.5 m paired court floodlight head; replaces render mesh at existing LAMP_COLUMN positions. Existing collision remains authoritative.')
+    return a
+
+
+def markings():
+    """Original worn pitch paint. Goals retain their as-built offsets from the four gates."""
+    a = Asset('CAGE_MARKINGS', 'cage', 48)
+    def line(x0, y0, x1, y1, width=.075):
+        dx, dy = x1-x0, y1-y0
+        length = math.hypot(dx, dy)
+        nx, ny = -dy/length*width/2, dx/length*width/2
+        a.add(quad((x0+nx,y0+ny,.014),(x0-nx,y0-ny,.014),(x1-nx,y1-ny,.014),(x1+nx,y1+ny,.014)), 'hr_prop_court_paint', uv='keep')
+    for x in [-14,14]: line(x,-9,x,9)
+    for y in [-9,9]: line(-14,y,14,y)
+    line(0,-9,0,9)
+    for i in range(64):
+        p=i*math.tau/64; q=(i+1)*math.tau/64
+        line(2.5*math.cos(p),2.5*math.sin(p),2.5*math.cos(q),2.5*math.sin(q))
+    # Blender Y is opposite map Z; goals are deliberately offset to preserve central gates.
+    for x,y,side in [(-14,5.5,1),(14,-5.5,-1)]:
+        line(x,y-2.7,x+side*4,y-2.7);line(x+side*4,y-2.7,x+side*4,y+2.7);line(x+side*4,y+2.7,x,y+2.7)
+    a.meta.update(needsCollision=False, notes='30 x 20 m court, 75 mm paint lines, 5 m centre circle. Render-only; five-a-side goal offsets match the as-built fence gate clearance.')
     return a
 
 

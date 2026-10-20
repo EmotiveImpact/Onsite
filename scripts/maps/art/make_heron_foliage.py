@@ -34,7 +34,7 @@ REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 TEX = os.path.join(REPO, "public", "materials", "heron", "foliage")
 OUT_DIR = os.path.join(REPO, "assets", "blender", "heron-reach")
 BLEND = os.environ.get("HR_FOLIAGE_BLEND") or os.path.join(OUT_DIR, "foliage-kit.blend")
-MANIFEST = os.path.join(OUT_DIR, "foliage-manifest.json")
+MANIFEST = os.environ.get('HR_FOLIAGE_MANIFEST') or os.path.join(OUT_DIR, "foliage-manifest.json")
 
 Z = Vector((0, 0, 1))
 
@@ -801,10 +801,12 @@ def blade(mb, base, h, w, phi, bend, col_idx, rng, mat=0, segs=4):
     for s in range(segs - 1):
         a, b = rows[s]
         d, c = rows[s + 1]
-        mb.face([a[0], b[0], c[0], d[0]], [a[1], b[1], c[1], d[1]], mat)
+        # Upper blade surface is front-facing; retain each corner's existing UV.
+        # Authored upward lighting normals remain independent of the blade bend.
+        mb.face([d[0], c[0], b[0], a[0]], [d[1], c[1], b[1], a[1]], mat)
     a, b = rows[segs - 1]
     t = rows[segs][0]
-    mb.face([a[0], b[0], t[0]], [a[1], b[1], t[1]], mat)
+    mb.face([t[0], b[0], a[0]], [t[1], b[1], a[1]], mat)
 
 
 GRASS_CLUMPS = {
@@ -882,7 +884,9 @@ def strip_leaf(mb, base, phi, L, Wd, rise, droop, rect, mat, segs=3):
     for s in range(segs):
         a, b = rows[s]
         d, c = rows[s + 1]
-        mb.face([a[0], b[0], c[0], d[0]], [a[1], b[1], c[1], d[1]], mat)
+        # Rosette upper surface faces +Z, consistent with its authored upward normals.
+        # Reverse corners and their UVs together; upright cross_cards stay unchanged.
+        mb.face([d[0], c[0], b[0], a[0]], [d[1], c[1], b[1], a[1]], mat)
 
 
 def cross_cards(mb, rect, pivot, w, h, n, rng, mat, yaw0=0.0):
@@ -1182,6 +1186,10 @@ def main():
     for name, p in TREES.items():
         if not want(name):
             continue
+        if os.environ.get('HR_FOLIAGE_WINTER') == '1':
+            # The same deterministic trunk/branch skeleton, with only 4% lingering leaves.
+            # Does not change the original collider manifest or any runtime placement.
+            p={**p,'cards':max(12,round(p['cards']*.04))}
         pos, parent, radii, kids, keep = build_tree_skeleton(name, p)
         chains = chains_from(pos, parent, radii, kids, keep)
         pos = smooth_chain_positions(pos, chains)
@@ -1302,7 +1310,11 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     bpy.context.preferences.filepaths.save_version = 0  # no .blend1 backups beside the kit
     bpy.ops.wm.save_as_mainfile(filepath=BLEND, compress=True)
-    if not only:
+    if not only or os.environ.get('HR_FOLIAGE_MANIFEST'):
+        manifest['blend']=os.path.relpath(BLEND,REPO)
+        manifest['provenance']='Original ONSITE deterministic tree generators and existing project procedural bark/leaf textures. No external meshes.'
+        manifest['winter']=os.environ.get('HR_FOLIAGE_WINTER')=='1'
+        manifest['blender']=bpy.app.version_string
         with open(MANIFEST, "w") as fh:
             json.dump(manifest, fh, indent=2)
     print("saved", BLEND)

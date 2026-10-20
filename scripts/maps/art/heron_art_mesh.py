@@ -109,6 +109,9 @@ class Builder:
             mesh.from_pydata(acc.verts, [], acc.faces)
             uvl = mesh.uv_layers.new(name='UVMap')
             colour = mesh.color_attributes.new(name='Col', type='FLOAT_COLOR', domain='CORNER')
+            # Adding CustomData invalidates the UV-layer RNA handle in Blender 4.3.
+            # Reacquire it or foreach_set silently leaves default 0..1 UVs on every face.
+            uvl = mesh.uv_layers['UVMap']
             # Loops follow face order and vertex order, so flattened per-face lists line up.
             uvl.data.foreach_set('uv', [c for f in acc.uvs for uv in f for c in uv])
             colour.data.foreach_set('color', [c for f in acc.cols for rgba in f for c in rgba])

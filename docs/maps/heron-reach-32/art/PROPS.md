@@ -209,8 +209,67 @@ saved into the kit.
 
 ## Known limits
 
+### Cage detail kit, 19 October 2026
+
+`scripts/maps/art/build_heron_cage_detail.py` builds the separate editable
+`assets/blender/heron-reach/cage-detail.blend` and the runtime `heron-reach-cage.glb`,
+using the original ONSITE `heron_props_cage.py` generators. It preserves the older kit files.
+The session has Blender 4.3.2, which cannot open the newer source `.blend` header, so this kit is
+generated from the existing source code rather than converting or overwriting the original.
+
+The kit has 5,636 triangles: existing posts, panels, gates and goals, a ball, 6.5 m paired
+floodlights and render-only court paint. Green frames retain their original footprints and gates.
+The four floodlights replace lamp render meshes at the existing court lamp positions; the
+original dressing plan and all collision remain unchanged. Pitch paint follows the as-built
+offset goals, which leave the central gates open. It is a five-a-side-inspired estate court,
+not a regulation pitch. Nothing creates a new physical obstacle.
+
+`make_heron_prop_textures.py --cage-only` draws the finer diagonal chain-link and goal net maps
+from the project's periodic wire/noise functions. These are original procedural pixels, with
+hashes in `cage-detail-manifest.json`. The runtime uses mipmaps and anisotropy; hardware uses
+alpha-to-coverage, while the software fallback retains fractional coverage with blending.
+
+Rebuild and compress without opening a newer `.blend`:
+
+```sh
+python3 scripts/maps/art/make_heron_prop_textures.py --cage-only
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_cage_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-cage.raw.glb -o public/models/heron-reach/heron-reach-cage.glb -cc -kn -km -kv -vtf
+```
+
+### Shop detail kit, 19 October 2026
+
+`assets/blender/heron-reach/shop-detail.blend` is an original procedural assembly made with
+Blender 4.3.2 by `build_heron_shop_detail.py`. It adds single-sided image backdrops at the rear
+walls of The Corner, the Launderette and the Washhouse, plus high-level strip fittings. The
+2.1 m backdrop gaps preserve rear exits. No collision, navigation or existing prop changes.
+Image provenance is in [TEXTURES.md](TEXTURES.md) and `public/materials/heron/shops/manifest.json`.
+
+```sh
+python3 scripts/maps/art/make_heron_shop_textures.py
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_shop_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-shops.raw.glb -o public/models/heron-reach/heron-reach-shops.glb -cc -kn -km -kv -vtf
+```
+
 - The shared materials in `props-kit.blend` are placeholders until swapped.
 - The weld mesh and wire textures are fine detail; at long range they need mipmapping with
   alpha-to-coverage, or a fade to a solid lower-opacity material, to avoid shimmer.
 - The vehicles are generic lofted bodies tuned to read as a hatchback and a panel van; they
   have no opening doors and a simple interior.
+
+
+## Gallery pigeon-net detail kit
+
+Original ONSITE supports/cables around the existing upper gallery parapets. Twelve panels, 1,008
+triangles, 104 KB compressed GLB, with no collision or navigation geometry. Artwork is the
+project's existing generated pigeon-net PNG, retained at its original path. The manifest records
+source/derived texture hashes, metre-scale world placements and the Blender version.
+
+```sh
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_gallery_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-gallery.raw.glb -o public/models/heron-reach/heron-reach-gallery.glb -cc -kn -km -kv -vtf
+```
+
+The additive editable source is `assets/blender/heron-reach/gallery-detail.blend`. The runtime
+loads it separately, using fractional alpha coverage on software and alpha-to-coverage on hardware.
+No doors, gallery junctions or stairs are closed by this cosmetic layer.

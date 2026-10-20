@@ -14,7 +14,7 @@ export function donorRifle(source:THREE.Object3D, flashTexture:THREE.Texture, fl
     o.material=Array.isArray(o.material)?o.material.map(tune):tune(o.material);
   }});
   const muzzle=model.getObjectByName('MuzzleSocket')!,eject=model.getObjectByName('EjectionPort')!;
-  const magazine=model.getObjectByName('Magazine')!,magRest=magazine.position.clone();
+  const magazine=model.getObjectByName('Magazine')!,magRest=magazine.position.clone(),magRotation=magazine.quaternion.clone();
   const bolt=model.getObjectByName('ChargingHandle')!,boltRest=bolt.position.clone();
   const flash=flashGroup(flashTexture,flameTexture,.6);muzzle.add(flash);
   // The artist-authored base pose already wraps the hands around this gun.
@@ -58,16 +58,29 @@ export function donorRifle(source:THREE.Object3D, flashTexture:THREE.Texture, fl
     hip:hip.clone(),hipRoll:THREE.MathUtils.degToRad(5),ads:{x:.003233,y:-.10547856,z:-.43},
     animatePose(progress:number){
       bones.forEach((bone,i)=>{bone.position.copy(rest[i].p);bone.quaternion.copy(rest[i].q);bone.scale.copy(rest[i].s)});
-      magazine.position.copy(magRest);magazine.rotation.set(0,0,0);bolt.position.copy(boltRest);
-      if(progress<0)return;
-      const out=progress<.18?0:progress<.4?(progress-.18)/.22:progress<.52?1:progress<.72?1-(progress-.52)/.2:0;
+      magazine.position.copy(magRest);magazine.quaternion.copy(magRotation);bolt.position.copy(boltRest);
+      if(progress<=0||progress>=1)return;
+      // Keep the same removal/return landmarks and travel, but decelerate into
+      // both stops. The magazine is fully seated before the support hand leaves.
+      const out=THREE.MathUtils.smoothstep(progress,.18,.4)*(1-THREE.MathUtils.smoothstep(progress,.52,.72));
       magazine.position.y-=out*.5;magazine.position.z+=out*.09;
       root.updateMatrixWorld(true);
-      const reach=THREE.MathUtils.smoothstep(progress,0,.18)*(1-THREE.MathUtils.smoothstep(progress,.72,.92));
+      const reach=THREE.MathUtils.smoothstep(progress,0,.18)*(1-THREE.MathUtils.smoothstep(progress,.78,.95));
       const grip=magazine.getObjectByName('MagazineGripSocket')!;
       const target=root.localToWorld(left.wrist.clone()).lerp(world(grip),reach);
       const rightTarget=root.localToWorld(right.wrist.clone());
       solve(left,target,-1);solve(right,rightTarget,1);
-      if(progress>.78&&progress<.9)bolt.position.z+=Math.sin((progress-.78)/.12*Math.PI)*.08;
+      // The analytic elbow pole differs from the sculpted idle pose. Applying
+      // it instantly snapped the right forearm by 28 degrees at both ends of a
+      // reload. Blend the solved controls in/out; retain full IK while gripping
+      // the moving magazine, including the short seated hold at 72–78%.
+      const ik=THREE.MathUtils.smoothstep(progress,0,.12)*(1-THREE.MathUtils.smoothstep(progress,.88,1));
+      if(ik<1)bones.forEach((bone,i)=>{
+        bone.position.lerp(rest[i].p,1-ik);
+        bone.quaternion.slerp(rest[i].q,1-ik);
+        bone.scale.lerp(rest[i].s,1-ik);
+      });
+      root.updateMatrixWorld(true);
+      if(progress>.78&&progress<.9)bolt.position.z+=Math.sin(THREE.MathUtils.smoothstep(progress,.78,.9)*Math.PI)*.08;
     }};
 }

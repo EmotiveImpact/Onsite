@@ -58,6 +58,8 @@ export class Input {
       this.listeners.push(() => target.removeEventListener(type, fn as EventListener, opts))
     }
     on(window, 'keydown', e => {
+      // Menus retain native Tab, Space and select-arrow behaviour while gameplay is unlocked.
+      if (!this.locked) return
       const typing = (e.target as HTMLElement | null)?.matches?.('input, textarea')
       if (typing) return
       if (e.code === 'Tab' || e.code === 'Space' || e.code.startsWith('Arrow')) e.preventDefault()
