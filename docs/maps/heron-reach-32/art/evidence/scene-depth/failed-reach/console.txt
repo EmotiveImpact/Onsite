@@ -1,0 +1,24 @@
+All materials/models loaded
+Pointer lock and mouse look
+Imported rifle and hands loaded; ADS sight aligns to centre
+WWB automatic fire, recoil and timed reload
+Pause/resume freezes simulation
+Jump and landing
+Tracking {"tick":1572,"health":100,"target":3,"targetHealth":100,"hits":0,"shots":3}
+Tracking {"tick":4212,"health":80,"target":3,"targetHealth":100,"hits":11,"shots":56}
+Tracking {"tick":4827,"health":68,"target":3,"targetHealth":73.87756099700927,"hits":18,"shots":75}
+Tracking {"tick":6705,"health":40,"target":3,"targetHealth":73.87756099700927,"hits":18,"shots":115}
+Combat result: 5 opponents down, health 0
+Player damage and death screen
+AssertionError [ERR_ASSERTION]: Complete the encounter, rather than passing on partial kills
+
+'lost' !== 'won'
+
+    at file:///workspace/Onsite/scripts/maps/verify-heron-reach.mjs:41:9 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'lost',
+  expected: 'won',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

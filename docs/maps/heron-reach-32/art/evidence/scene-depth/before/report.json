@@ -1,0 +1,72 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4182",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4182/assets/index-UCPz4fKE.js",
+      "sha256": "e8901867caa603c93fd165091c713d708ec9939636194a450565d3a9dfe9503c"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "45258da7479177a439376ac808775e8958ebd29f",
+  "workingTree": "package.json                        |  2 +-\n scripts/maps/art-review-views.json  | 89 +++++++++++++++++++++++++++++++++----\n scripts/maps/capture-art-review.mjs |  2 +-\n src/onsite/View.ts                  | 17 ++++---\n src/onsite/heronGalleryArt.ts       |  4 +-\n src/onsite/heronReachArt.ts         | 33 +++++++++-----\n src/onsite/wetGround.ts             | 21 +++++----\n 7 files changed, 131 insertions(+), 37 deletions(-)",
+  "captures": [
+    {
+      "name": "corner-interior",
+      "requestedPose": {
+        "x": 39,
+        "y": 0.04,
+        "z": -10,
+        "yaw": -3.141592653589793,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38.9999994310632,
+          "y": 0.020033780646917854,
+          "z": -9.999999799266249
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 7,
+        "meanFrameMs": 1853.5428571445602,
+        "drawCalls": 462,
+        "triangles": 1274371,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

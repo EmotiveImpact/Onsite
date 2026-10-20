@@ -1,8 +1,14 @@
 import * as THREE from 'three'
 import type {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js'
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js'
-import {applyWetGround,surfaceBelow,wetGroundNames} from './wetGround'
+import {applyWetGround,wetGroundNames} from './wetGround'
 import type {Solid} from './level'
+import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
+import {applyHeronSurfaceResponse,surfaceNormalScale} from './heronSurfaceResponse'
+import {lightReceiverBelow,lightReceiverFloor,prepareLightOccluders,prepareReceiverLights,selectReceiverLights,type PreparedLight,type LightOccluder} from './heronLightSelection'
+import {stairCorePhotometry} from './heronStairLighting'
+import {correctFoliageWinding,correctGrassWinding} from './heronGrassGeometry'
+import {acceptGrassCandidate,type GroundDensityMask} from './heronGroundRuntime'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -10,11 +16,36 @@ type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissive
 export class HeronReachMaterials {
  readonly mats=new Map<string,THREE.MeshStandardMaterial>();readonly shadow=new Map<string,boolean>();
  private readonly textures=new Map<string,Promise<THREE.Texture>>();private readonly loader=new THREE.TextureLoader();private pending:Promise<unknown>[]=[];
+ private ktx?:KTX2Loader;private compressed:Record<string,{url:string}>={};
+ readonly textureStats={compressed:0,webp:0,formats:{} as Record<string,number>,estimatedMipBytes:0};
  constructor(private readonly lib:Record<string,Entry>,private readonly anisotropy:number){}
- static async load(anisotropy:number){return new HeronReachMaterials(await (await fetch('/materials/heron/runtime-materials.json')).json(),anisotropy)}
+ static async load(renderer:THREE.WebGLRenderer,software:boolean){
+  const m=new HeronReachMaterials(await (await fetch('/materials/heron/runtime-materials.json')).json(),software?2:8);
+  const q=new URLSearchParams(location.search),forced=q.has('inspect')&&q.get('textures')==='ktx2';
+  const compressed=['WEBGL_compressed_texture_astc','EXT_texture_compression_bptc','WEBGL_compressed_texture_s3tc','WEBGL_compressed_texture_etc'].some(e=>renderer.extensions.has(e));
+  if(compressed&&(forced||(!software&&q.get('textures')!=='webp'))){
+   try{
+    const response=await fetch('/materials/heron/ktx2/manifest.json');if(!response.ok)throw new Error(String(response.status));
+    m.compressed=(await response.json()).entries;
+    m.ktx=new KTX2Loader().setTranscoderPath('/vendor/basis/').setWorkerLimit(2).detectSupport(renderer);
+   }catch(e){console.warn('Compressed material library unavailable; using WebP',e)}
+  }
+  return m;
+ }
  private texture(url:string,srgb:boolean,repeat:number){
-  const key=url+'@'+repeat;let t=this.textures.get(key);
-  if(!t){t=this.loader.loadAsync(url).then(tex=>{tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=this.anisotropy;tex.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;return tex});this.textures.set(key,t)}
+  const key=url+'@'+repeat+'@'+srgb;let t=this.textures.get(key);
+  if(!t){
+   const path=this.compressed[url]?.url;
+   const load=this.ktx&&path?this.ktx.loadAsync(path).catch(e=>{console.warn('Compressed texture unavailable; using WebP',url,e);return this.loader.loadAsync(url)}):this.loader.loadAsync(url);
+   t=load.then(tex=>{
+    tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=this.anisotropy;tex.colorSpace=srgb?THREE.SRGBColorSpace:THREE.NoColorSpace;
+    const compressed=tex instanceof THREE.CompressedTexture;this.textureStats[compressed?'compressed':'webp']++;
+    const format=String(tex.format);this.textureStats.formats[format]=(this.textureStats.formats[format]??0)+1;
+    // Allocation estimate from decoded dimensions/mips; not a measured driver VRAM counter.
+    this.textureStats.estimatedMipBytes+=compressed?tex.mipmaps.reduce((n,m)=>n+(m.data?.byteLength??0),0):Math.ceil(tex.image.width*tex.image.height*4*4/3);
+    return tex;
+   });this.textures.set(key,t);
+  }
   return t;
  }
  get(name:string){
@@ -24,18 +55,23 @@ export class HeronReachMaterials {
   if(e.color)m.color.setRGB(e.color[0],e.color[1],e.color[2],THREE.LinearSRGBColorSpace);
   if(e.emissive){m.emissive.setRGB(e.emissive[0],e.emissive[1],e.emissive[2],THREE.LinearSRGBColorSpace);m.emissiveIntensity=e.emissiveIntensity??1}
   if(name==='hr_lamp_emit')m.emissiveIntensity=4;
+  if(name==='hr_core_strip'){m.color.set(stairCorePhotometry.color);m.emissive.set(stairCorePhotometry.color)}
   const mat=m;
   if(e.map)this.pending.push(this.texture(e.map,true,repeat).then(t=>{mat.map=t;mat.needsUpdate=true}));
   if(e.emissiveMap)this.pending.push(this.texture(e.emissiveMap,true,repeat).then(t=>{mat.emissiveMap=t;mat.needsUpdate=true}));
-  if(e.normalMap)this.pending.push(this.texture(e.normalMap,false,repeat).then(t=>{mat.normalMap=t;mat.normalScale.set(.8,.8);mat.needsUpdate=true}));
+  if(e.normalMap){
+   applyHeronSurfaceResponse(mat);
+   this.pending.push(this.texture(e.normalMap,false,repeat).then(t=>{mat.normalMap=t;mat.normalScale.setScalar(surfaceNormalScale(name));mat.needsUpdate=true}));
+  }
   // ORM: R occlusion, G roughness, B metalness (glTF packing), so one texture drives all three.
-  if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=1;mat.needsUpdate=true}));
+  if(e.ormMap)this.pending.push(this.texture(e.ormMap,false,repeat).then(t=>{mat.aoMap=t;mat.roughnessMap=t;mat.metalnessMap=t;mat.roughness=e.wet??1;mat.metalness=e.metalness??1;mat.needsUpdate=true}));
   if(e.wet)m.envMapIntensity=1.6;
   if(wetGroundNames.has(name))this.pending.push(this.texture('/materials/heron/decals/wetness-mask.webp',false,1).then(t=>{applyWetGround(mat,t);mat.needsUpdate=true}));
   if(e.opacity!==undefined){m.transparent=true;m.opacity=e.opacity;m.depthWrite=false;m.envMapIntensity=2.2}
   this.mats.set(name,m);this.shadow.set(name,e.shadow!==false);return m;
  }
  ready(){return Promise.all(this.pending)}
+ disposeTranscoder(){this.ktx?.dispose()}
  names(){return new Set(Object.keys(this.lib))}
 }
 
@@ -51,7 +87,7 @@ export async function loadHeronReachArch(gltf:GLTFLoader,mats:HeronReachMaterial
  return arch.scene;
 }
 
-export type LightAnchor={x:number;y:number;z:number;kind:string;head?:boolean};
+export type LightAnchor={x:number;y:number;z:number;kind:string;head?:boolean;floorY?:number};
 
 function radial(size:number,stops:[number,string][]){
  const c=document.createElement('canvas');c.width=c.height=size;const g=c.getContext('2d')!,gr=g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
@@ -65,7 +101,9 @@ function radial(size:number,stops:[number,string][]){
  */
 export class HeronReachAtmosphere {
  readonly group=new THREE.Group();private readonly pool:THREE.PointLight[]=[];private readonly streaks:{x:number;y:number;z:number;big:boolean}[]=[];private streakMesh!:THREE.InstancedMesh;private readonly m=new THREE.Matrix4();private readonly q=new THREE.Quaternion();private readonly up=new THREE.Vector3(0,1,0);private next=0;
- constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,private readonly anchors:LightAnchor[],software:boolean,surfaces:readonly Solid[]){
+ private readonly receiverLights:PreparedLight<LightAnchor>[];private readonly occluders:LightOccluder[];private cameraFloor:number|null=0;
+ constructor(private readonly scene:THREE.Scene,renderer:THREE.WebGLRenderer,anchors:LightAnchor[],software:boolean,private readonly surfaces:readonly Solid[],allSolids:readonly Solid[]){
+  this.receiverLights=prepareReceiverLights(anchors,surfaces);this.occluders=prepareLightOccluders(allSolids);
   this.group.name='ONSITE / Heron Reach blue hour';scene.add(this.group);
   const top=new THREE.Color('#263b50'),mid=new THREE.Color('#53697d'),horizon=new THREE.Color('#929ca4'),glow=new THREE.Color('#bda18c');
   scene.background=mid.clone();scene.fog=new THREE.FogExp2('#687b8d',.007);
@@ -96,9 +134,12 @@ export class HeronReachAtmosphere {
   // Glows and streaks are batched: two point clouds and one instanced mesh, whatever the lamp count.
   const glows:Record<'big'|'small',number[]>={big:[],small:[]};
   for(const a of anchors){
+   // Sheltered stair strips have actual emissive lenses, not outdoor amber halos
+   // or wet-pavement reflection cards. They remain in the same real-light pool.
+   if(a.kind==='core')continue;
    const big=a.kind==='street'||a.kind==='court';
    glows[big?'big':'small'].push(a.x,a.y,a.z);
-   const floor=surfaceBelow(a.x,a.y,a.z,surfaces);
+   const floor=lightReceiverFloor(a,surfaces);
    if(floor!==null)this.streaks.push({x:a.x,y:floor+.018,z:a.z,big});
   }
   for(const [k,size]of [['big',3.4],['small',1.7]] as const)if(glows[k].length){ // point size is in world units before the fov term, so 1/tan(37°) larger than the old sprites
@@ -113,24 +154,30 @@ export class HeronReachAtmosphere {
   const c=camera.position;
   if(t>=this.next){
    this.next=t+.25;
-   // Rank by estimated contribution, so a low doorway lamp cannot evict every court column.
-   const near=this.anchors.map(a=>({a,d:((a.x-c.x)**2+(a.y-c.y)**2*2+(a.z-c.z)**2+4)/(a.kind==='street'||a.kind==='court'?6:1)})).sort((p,q)=>p.d-q.d);
-   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}const big=n.a.kind==='street'||n.a.kind==='court',ceiling=n.a.kind==='ceiling';l.position.set(n.a.x,n.a.y-.35,n.a.z);l.color.set(ceiling?'#e4e9df':'#ffd09a');l.intensity=big?175:ceiling?11:14;l.distance=big?25:9});
+   this.cameraFloor=lightReceiverBelow(c,this.surfaces);
+   const near=selectReceiverLights(this.receiverLights,c,this.cameraFloor,this.occluders,this.pool.length);
+   this.pool.forEach((l,i)=>{const n=near[i];if(!n){l.intensity=0;return}l.position.copy(n.position);l.color.set(n.anchor.kind==='core'?stairCorePhotometry.color:n.anchor.kind==='ceiling'?'#e4e9df':'#ffd09a');l.intensity=n.intensity;l.distance=n.range});
   }
-  const p=new THREE.Vector3(),sc=new THREE.Vector3();
+  const p=new THREE.Vector3(),sc=new THREE.Vector3(),tint=new THREE.Color();
   this.streaks.forEach((s,i)=>{
    const d=Math.hypot(c.x-s.x,c.z-s.z);this.q.setFromAxisAngle(this.up,Math.atan2(c.x-s.x,c.z-s.z));
    // Reflection stretches towards the viewer, on its own supporting floor.
    const length=(s.big?4:1.8)+Math.min(d,24)*(s.big?.38:.16),towards=Math.min(d*.25,length*.3);
    sc.set(s.big?1.7:.8,1,length);this.streakMesh.setMatrixAt(i,this.m.compose(p.set(s.x+(c.x-s.x)/Math.max(d,1)*towards,s.y,s.z+(c.z-s.z)/Math.max(d,1)*towards),this.q,sc));
+   const grazing=Math.abs(c.y-s.y)/Math.max(1,Math.hypot(d,c.y-s.y));
+   const receiverMatch=this.cameraFloor!==null&&Math.abs(this.cameraFloor-(s.y-.018))<1.6;
+   // Avoid grazing smears and the old opaque-looking additive patch beneath the viewer.
+   const gain=receiverMatch?THREE.MathUtils.smoothstep(grazing,.04,.25)*THREE.MathUtils.smoothstep(d,1,4)*.48:0;
+   this.streakMesh.setColorAt(i,tint.setRGB(gain,gain,gain));
   });
   this.streakMesh.instanceMatrix.needsUpdate=true;
+  if(this.streakMesh.instanceColor)this.streakMesh.instanceColor.needsUpdate=true;
  }
 }
 
-export type KitPlacement={asset:string;x:number;y:number;z:number;ry:number;sx?:number};
+export type KitPlacement={asset:string;x:number;y:number;z:number;ry:number;sx?:number;scale?:number};
 const OX=72,OZ=60;
-const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(p.sx??1,1,1));
+const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>{const s=p.scale??1;return m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(s*(p.sx??1),s,s))};
 
 /** Instance the props and foliage kits from the dressing plan: one InstancedMesh per asset part. */
 /** The South London gap-fill kits name their shared surfaces mat_*; they take the texture kit's sets. */
@@ -143,25 +190,41 @@ function voidSheet(asset:string){
  m=new THREE.MeshStandardMaterial({name:'hr_void_sheet',map:t,roughness:.55,metalness:.7});voidSheets.set(asset,m);return m;
 }
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
-export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>){
+export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false,coverage=false){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
- const kits=await Promise.all(['props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const groundTree=(asset:string)=>/^TREE_(PLANE|BIRCH)_[AB]_LOD1$/.test(asset);
+ const kitNames=['cage','winter','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'];
+ if(placements.some(p=>groundTree(p.asset)))kitNames.push('ground-trees');
+ const kits=await Promise.all(kitNames.map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ // Additive LOD geometry exports no images: reuse exact winter material/texture objects.
+ const winterMaterials=new Map<string,THREE.MeshStandardMaterial>();
+ kits[kitNames.indexOf('winter')]?.traverse(o=>{if(o instanceof THREE.Mesh&&!Array.isArray(o.material)){const m=o.material as THREE.MeshStandardMaterial;winterMaterials.set(m.name.replace(/\.\d+$/,''),m)}});
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
  const missing:string[]=[];
  for(const [asset,list]of byAsset){
   const root=kits.map(k=>k?.getObjectByName(asset)).find(Boolean);if(!root){missing.push(asset);continue}
+  if(groundTree(asset)){
+   let complete=true;root.traverse(o=>{if(o instanceof THREE.Mesh&&(Array.isArray(o.material)||!winterMaterials.has(o.material.name.replace(/\.\d+$/,''))))complete=false});
+   if(!complete){missing.push(`${asset} (winter material unavailable)`);continue}
+  }
   root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert();
   root.traverse(o=>{
    if(!(o instanceof THREE.Mesh))return;
    const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
-   const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
+   const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=groundTree(asset)?winterMaterials.get(base)!:base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
    if(base==='hr_prop_sign_letters')src.emissiveIntensity=1.3;
    if(base==='hr_prop_fridge_light')src.emissiveIntensity=2.5;
-   const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
+   if(base==='hr_prop_cage_mesh'||base==='hr_prop_goal_net'){
+    // Keep the fractional wire coverage in distant mips instead of dropping every wire.
+    src.alphaTest=coverage?.18:.005;src.alphaToCoverage=coverage;src.transparent=!coverage;src.depthWrite=coverage;
+    if(src.map){src.map.anisotropy=software?2:8;src.map.minFilter=THREE.LinearMipmapLinearFilter;src.map.generateMipmaps=true;src.map.needsUpdate=true}
+   }
+   const geometry=correctFoliageWinding(o.geometry,local,asset,src.name);
+   const im=new THREE.InstancedMesh(geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
    const foliage=/leaf|grass|weed|litter|hedge|shrub/.test(src.name);
-   im.castShadow=!/litter|grass|weed|lamp_emit|glass/.test(src.name)&&!asset.startsWith('CRISP')&&!asset.startsWith('CRUSHED');im.receiveShadow=true;
+   im.castShadow=!/litter|grass|weed|lamp_emit|glass|cage_mesh|goal_net|court_paint/.test(src.name)&&!asset.startsWith('CRISP')&&!asset.startsWith('CRUSHED');im.receiveShadow=true;
    if(foliage&&src.alphaTest===0&&src.transparent){src.alphaTest=.5;src.transparent=false}
    group.add(im);
   });
@@ -178,13 +241,13 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
 export class GrassField {
  readonly group=new THREE.Group();private tiles:THREE.InstancedMesh[]=[];
  constructor(private readonly reach=40){this.group.name='ONSITE / Heron Reach grass'}
- async build(gltf:GLTFLoader,density:number){
-  const [scene,cells]=await Promise.all([gltf.loadAsync('/models/heron-reach/heron-reach-foliage.glb').then(g=>g.scene).catch(()=>null),fetch('/models/heron-reach/grass-cells.json').then(r=>r.json()).catch(()=>null)]);
+ async build(gltf:GLTFLoader,density:number,options:{densityMask?:GroundDensityMask|Promise<GroundDensityMask|undefined>}={}){
+  const [scene,cells,mask]=await Promise.all([gltf.loadAsync('/models/heron-reach/heron-reach-foliage.glb').then(g=>g.scene).catch(()=>null),fetch('/models/heron-reach/grass-cells.json').then(r=>r.json()).catch(()=>null),Promise.resolve(options.densityMask).catch(e=>{console.warn('Ground grass mask unavailable; retaining original grass',e);return undefined})]);
   if(!scene||!cells)return this.group;
   const parts:{geo:THREE.BufferGeometry;mat:THREE.Material;local:THREE.Matrix4}[][]=[];
   for(const name of ['GRASS_CLUMP_A','GRASS_CLUMP_B','GRASS_CLUMP_C','GRASS_CLUMP_D']){
    const root=scene.getObjectByName(name);if(!root)continue;root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert(),list:typeof parts[number]=[];
-   root.traverse(o=>{if(o instanceof THREE.Mesh)list.push({geo:o.geometry,mat:o.material as THREE.Material,local:new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld)})});parts.push(list);
+   root.traverse(o=>{if(o instanceof THREE.Mesh){const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld);list.push({geo:correctGrassWinding(o.geometry,local),mat:o.material as THREE.Material,local})}});parts.push(list);
   }
   if(!parts.length)return this.group;
   const size:number=cells.cell,tiles=new Map<string,[number,number][]>();
@@ -198,7 +261,14 @@ export class GrassField {
    const mine=pts.filter((_,i)=>i%parts.length===k);if(!mine.length)return;
    for(const part of list){
     const im=new THREE.InstancedMesh(part.geo,part.mat,mine.length);im.receiveShadow=true;
-    mine.forEach(([px,pz],i)=>{const s=.8+rnd()*.6;m.compose(new THREE.Vector3(px-OX,0,pz-OZ),q.setFromAxisAngle(up,rnd()*6.283),new THREE.Vector3(s,s*(.8+rnd()*.5),s)).multiply(part.local);im.setMatrixAt(i,m)});
+    let count=0;
+    mine.forEach(([px,pz])=>{
+     // Consume every original transform draw before compacting, even when this instance is rejected.
+     // This preserves all remaining matrices and leaves unrelated tiles unchanged.
+     const s=.8+rnd()*.6;m.compose(new THREE.Vector3(px-OX,0,pz-OZ),q.setFromAxisAngle(up,rnd()*6.283),new THREE.Vector3(s,s*(.8+rnd()*.5),s)).multiply(part.local);
+     if(!mask||acceptGrassCandidate(px,pz,mask(px,pz)))im.setMatrixAt(count++,m);
+    });
+    im.count=count;if(!count){im.dispose();continue}
     im.computeBoundingSphere();this.tiles.push(im);this.group.add(im);
    }
   });

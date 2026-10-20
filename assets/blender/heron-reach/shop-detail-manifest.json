@@ -1,0 +1,41 @@
+{
+  "provenance": "Original ONSITE Blender geometry; backdrops from the project ChatGPT images, see public/materials/heron/shops/manifest.json.",
+  "builder": "scripts/maps/art/build_heron_shop_detail.py",
+  "blender": "4.3.2",
+  "units": "metres; Blender Z up; glTF Y up",
+  "collision": "None. Backdrops are against existing solid back walls, clear of rear exits.",
+  "shops": [
+    {
+      "id": "W-shops",
+      "rect": [
+        24,
+        48,
+        18,
+        9
+      ],
+      "rearDoorClearWidth": 2.1
+    },
+    {
+      "id": "E-shop",
+      "rect": [
+        102,
+        48,
+        18,
+        9
+      ],
+      "rearDoorClearWidth": 2.1
+    },
+    {
+      "id": "C-store",
+      "rect": [
+        60,
+        87,
+        6,
+        18
+      ],
+      "rearDoorClearWidth": 2.1
+    }
+  ],
+  "objects": 9,
+  "triangles": 96
+}

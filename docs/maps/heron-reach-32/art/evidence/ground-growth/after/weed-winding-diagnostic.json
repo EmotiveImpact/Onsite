@@ -1,0 +1,348 @@
+{
+  "source": "public/models/heron-reach/heron-reach-foliage.glb",
+  "sha256": "2dcd63bcdd13cf3d8f57ff51f0c2b95373b85cd6adc3897ab5a5469ca2b4ba8a",
+  "parts": [
+    {
+      "asset": "WEED_TUFT_A",
+      "mesh": "mesh_22",
+      "material": "hr_weed",
+      "vertices": 88,
+      "triangles": {
+        "count": 66,
+        "downward": 66,
+        "geometricYRange": [
+          -0.9999382132544006,
+          -0.8730418624399449
+        ],
+        "normalYRange": [
+          0.9931116421012709,
+          0.994688624296317
+        ]
+      },
+      "upNormals": {
+        "count": 66,
+        "downward": 66,
+        "geometricYRange": [
+          -0.9999382132544006,
+          -0.8730418624399449
+        ],
+        "normalYRange": [
+          0.9931116421012709,
+          0.994688624296317
+        ]
+      },
+      "otherNormals": {
+        "count": 0,
+        "downward": 0,
+        "geometricYRange": [
+          null,
+          null
+        ],
+        "normalYRange": [
+          null,
+          null
+        ]
+      },
+      "local": [
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        -2.79323149,
+        -0.079692848,
+        -2.8716507,
+        1
+      ],
+      "allUpTriangleIndices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ]
+    },
+    {
+      "asset": "WEED_TUFT_B",
+      "mesh": "mesh_23",
+      "material": "hr_weed",
+      "vertices": 12,
+      "triangles": {
+        "count": 6,
+        "downward": 2,
+        "geometricYRange": [
+          -0.19850098701927602,
+          0.17683122529899095
+        ],
+        "normalYRange": [
+          0.9039439209903095,
+          0.9298547766256365
+        ]
+      },
+      "upNormals": {
+        "count": 0,
+        "downward": 0,
+        "geometricYRange": [
+          null,
+          null
+        ],
+        "normalYRange": [
+          null,
+          null
+        ]
+      },
+      "otherNormals": {
+        "count": 6,
+        "downward": 2,
+        "geometricYRange": [
+          -0.19850098701927602,
+          0.17683122529899095
+        ],
+        "normalYRange": [
+          0.9039439209903095,
+          0.9298547766256365
+        ]
+      },
+      "local": [
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        -2.79323149,
+        -0.079692848,
+        -2.8716507,
+        1
+      ],
+      "allUpTriangleIndices": []
+    },
+    {
+      "asset": "WEED_TUFT_B",
+      "mesh": "mesh_23_1",
+      "material": "hr_grass_blade",
+      "vertices": 42,
+      "triangles": {
+        "count": 30,
+        "downward": 30,
+        "geometricYRange": [
+          -0.9937118653325239,
+          -0.26285277487722686
+        ],
+        "normalYRange": [
+          0.876956736551416,
+          0.9205466936440014
+        ]
+      },
+      "upNormals": {
+        "count": 0,
+        "downward": 0,
+        "geometricYRange": [
+          null,
+          null
+        ],
+        "normalYRange": [
+          null,
+          null
+        ]
+      },
+      "otherNormals": {
+        "count": 30,
+        "downward": 30,
+        "geometricYRange": [
+          -0.9937118653325239,
+          -0.26285277487722686
+        ],
+        "normalYRange": [
+          0.876956736551416,
+          0.9205466936440014
+        ]
+      },
+      "local": [
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        -2.79323149,
+        -0.079692848,
+        -2.8716507,
+        1
+      ],
+      "allUpTriangleIndices": []
+    },
+    {
+      "asset": "WEED_TUFT_C",
+      "mesh": "mesh_24",
+      "material": "hr_weed",
+      "vertices": 52,
+      "triangles": {
+        "count": 36,
+        "downward": 32,
+        "geometricYRange": [
+          -0.9987523388778446,
+          0.07636373624235755
+        ],
+        "normalYRange": [
+          0.9145205384667523,
+          0.9943478554909116
+        ]
+      },
+      "upNormals": {
+        "count": 30,
+        "downward": 30,
+        "geometricYRange": [
+          -0.9987523388778446,
+          -0.8947025273799057
+        ],
+        "normalYRange": [
+          0.9932041982122006,
+          0.9943478554909116
+        ]
+      },
+      "otherNormals": {
+        "count": 6,
+        "downward": 2,
+        "geometricYRange": [
+          -0.06558193776241145,
+          0.07636373624235755
+        ],
+        "normalYRange": [
+          0.9145205384667523,
+          0.9212312847353814
+        ]
+      },
+      "local": [
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        0,
+        0,
+        0,
+        0.000491169223,
+        0,
+        -2.79323149,
+        -0.079692848,
+        -2.8716507,
+        1
+      ],
+      "allUpTriangleIndices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ]
+    }
+  ]
+}

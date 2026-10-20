@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-18",
+  "reviewed": "2026-10-19",
   "policy": "Full donor clones stay ignored and outside runtime. Only separately reviewed code/art is copied into src/public with notices and provenance.",
   "sources": [
     {
@@ -8,10 +8,12 @@
       "commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
       "localPath": "research/reference-clones/ironline",
       "role": "Selected art imports and implementation study; no engine merge",
-      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; twelve selected Poly Haven props and one HDRI are CC0; ambientCG Ground110/Leaking003 maps are CC0. Other bundled assets remain outside reuse scope.",
+      "license": "ISC package metadata not used as asset permission. Imported M4/arms derivatives individually CC BY 4.0; twelve original Poly Haven props, two additional scanned-detail assets and one HDRI are individually CC0; ambientCG Ground110/Leaking003 maps are CC0. Other bundled assets remain outside reuse scope.",
       "importedIntoGame": true,
       "assetManifest": "public/models/donors/provenance.json",
-      "materialManifest": "public/materials/detail/provenance.json"
+      "materialManifest": "public/materials/detail/provenance.json",
+      "scannedDetailManifest": "assets/blender/heron-reach/scanned-detail-manifest.json",
+      "scannedDetailNotice": "public/licenses/polyhaven-scanned-notice.md"
     },
     {
       "id": "open-claudefare",
@@ -30,6 +32,28 @@
       "role": "Actual selectively integrated gameplay runtime; see docs/development/DONOR-MAP.md",
       "license": "MIT code; bundled assets separately reviewed. Only two traced CC0 Poly Haven GLBs imported.",
       "importedIntoGame": true
+    },
+    {
+      "id": "operation-blackout",
+      "url": "https://github.com/rushindrasinha/operation-blackout",
+      "commit": "51816a061cac321e9fdd3e85f34db1969985dd77",
+      "localPath": "research/reference-clones/operation-blackout",
+      "role": "Scoped height/directional fog adaptation in src/onsite/HeronDepthFog.ts; other presentation code studied only; no gameplay or engine merge",
+      "license": "Full root MIT licence, copyright 2026 Rushindra Sinha. Selected atmosphere code adapted with the complete notice; no donor game assets imported.",
+      "importedIntoGame": true,
+      "adaptedSource": "src/lighting/AtmosphereFog.js",
+      "notice": "public/licenses/OPERATION-BLACKOUT-MIT.txt",
+      "integrationRecord": "docs/research/OPERATION-BLACKOUT-NOTICE.md"
+    },
+    {
+      "id": "claude-of-duty",
+      "url": "https://github.com/mshumer/Claude-of-Duty",
+      "commit": "d9b237b75c9304ab8d9ef4cfa0c3568c7c11a853",
+      "localPath": "research/reference-clones/claude-of-duty",
+      "role": "Read-only study of isolated reflection, contact-shadow and shader-warmup techniques; no runtime reuse",
+      "license": "Full root MIT licence, copyright 2026 mshumer. No code or procedural assets imported; any later adaptation must retain its notice.",
+      "importedIntoGame": false,
+      "researchRecord": "docs/research/NEXT-QUALITY-DONORS.md"
     }
   ]
 }

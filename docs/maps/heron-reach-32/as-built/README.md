@@ -97,11 +97,11 @@ Draw calls and triangles include the shadow pass. The mean frame time was about 
 SwiftShader. With the blockout (`&art=0`) the same fight runs at about 650 ms per frame with 26 draw
 calls and 72k triangles.
 
-Download for the map (excluding the shared game bundle) is about 34 MB: 11.4 MB of meshopt-compressed
+At the initial art checkpoint, download for the map (excluding the shared game bundle) was about 34 MB: 11.4 MB of meshopt-compressed
 models, 21 MB of WebP textures and 1 MB of decals. With RGBA8 and mipmaps, every texture the map
 can load would take about 600 MB of GPU memory. Only materials that are actually placed get
-loaded, so the real figure is lower. GPU texture compression (KTX2) is the next step if that
-proves too much.
+loaded, so the real figure is lower. KTX2 was not implemented at that checkpoint; current measured
+transfer costs and decoded texture estimates are recorded below.
 
 What has been done for performance so far:
 
@@ -117,5 +117,29 @@ What has been done for performance so far:
 
 The owner deferred real-GPU benchmarking on 19 October so the art pass can proceed.
 The [visual work log](../art/ART-PUSH-2026-10-19.md) records paired runtime views, provenance,
-validation and the branch stack. The wet-ground pass adds 91,170 bytes of textures; its browser
-encounters passed on both maps with the art enabled. Real-GPU performance remains unverified.
+validation and the branch stack. The combined implementation is on
+`codex/heron-reach-textures-dressing`; main is not changed by this session.
+
+Current local-preview transfer measurements, **including shared game assets**, are 56.54 MB with
+WebP and 70.71 MB with KTX2. These cannot be directly compared with the original map-only estimate.
+The architecture material probe estimates 329.00 MB of decoded RGBA8+mips versus 83.31 MB of BC7
+mips plus the wetness mask: 74.7% less. These are decoded texture-data estimates, not measured
+driver VRAM, and exclude embedded kit maps, render targets and other allocations. The probe runs
+at the menu, so its zero timed-gameplay frame count is not a frame-time measurement.
+
+KTX2 has a larger download here because normals use UASTC for quality. Original WebPs remain the
+software fallback. Corrupting one KTX2 normal map in a browser fixture successfully loaded its
+WebP instead, with no page errors. The production package excludes raw Blender GLBs even when
+the intermediate files are present locally; original source art stays outside the runtime bundle.
+
+Real-GPU timing, memory, postprocessing MSAA/bloom, shadows and alpha-detail quality remain
+unverified. The software encounters remain slow; this work does not establish smooth gameplay.
+
+
+## Subsequent scene-depth art pass
+
+The review branch `codex/heron-reach-scene-depth` adds lighting/material corrections
+and Blender detail without moving collision/navigation or changing this as-built
+layout. See [the current work log](../art/SCENE-DEPTH-2026-10-19.md) for matched
+evidence, asset costs and latest validation. Earlier timings in this document
+describe their dated builds, not this newer branch. Real-GPU testing remains deferred.

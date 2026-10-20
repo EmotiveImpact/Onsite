@@ -1,0 +1,229 @@
+{
+  "builder": "scripts/maps/art/import_heron_scanned_detail.py",
+  "blender": "4.3.2",
+  "units": "metres; Blender (X=x-72,Y=60-z,Z=y); glTF (X=x-72,Y=y,Z=z-60)",
+  "sources": [
+    {
+      "id": "water_manhole_cover",
+      "author": "Raunox",
+      "licence": "CC0-1.0",
+      "sourceURL": "https://polyhaven.com/a/water_manhole_cover",
+      "licenceURL": "https://polyhaven.com/license",
+      "originalMetadataURL": "https://api.polyhaven.com/info/water_manhole_cover",
+      "originalFilesHash": "88b0825bb7daa072702c8238ed1f245321008fc5",
+      "checked": "2026-10-19",
+      "donorRepository": "https://github.com/cktang88/3d-fps",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "donorPath": "public/assets/models/props/water_manhole_cover/water_manhole_cover.glb",
+      "preservedSource": "assets/reference/polyhaven-scanned/water_manhole_cover.glb",
+      "bytes": 385564,
+      "sha256": "04f305364c9e0ffcff0ba453f02c41de91bf1ab1b84bfcb904f695eb465be0f3",
+      "inspection": {
+        "blenderBoundsXYZ": [
+          [
+            -0.3453802466392517,
+            -0.3453802466392517,
+            -0.028761375695466995
+          ],
+          [
+            0.3453802466392517,
+            0.3453802466392517,
+            0.03885641321539879
+          ]
+        ],
+        "triangles": 918,
+        "materials": [
+          "water_manhole_cover"
+        ]
+      }
+    },
+    {
+      "id": "mounted_fluorescent_lights",
+      "author": "Ulan Cabanilla",
+      "licence": "CC0-1.0",
+      "sourceURL": "https://polyhaven.com/a/mounted_fluorescent_lights",
+      "licenceURL": "https://polyhaven.com/license",
+      "originalMetadataURL": "https://api.polyhaven.com/info/mounted_fluorescent_lights",
+      "originalFilesHash": "0f8286f500f15e7c1476596bec518a25695012c5",
+      "checked": "2026-10-19",
+      "donorRepository": "https://github.com/cktang88/3d-fps",
+      "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+      "donorPath": "public/assets/models/props/mounted_fluorescent_lights/mounted_fluorescent_lights.glb",
+      "preservedSource": "assets/reference/polyhaven-scanned/mounted_fluorescent_lights.glb",
+      "bytes": 211204,
+      "sha256": "8852f9cad1005d4a01f29d98e2af4508f93abfec927cc43e09e134d76f4052ad",
+      "inspection": {
+        "blenderBoundsXYZ": [
+          [
+            -0.4560902714729309,
+            -0.320084810256958,
+            -0.03505275025963783
+          ],
+          [
+            0.4560905694961548,
+            0.3252824544906616,
+            8.535356755601242e-05
+          ]
+        ],
+        "triangles": 1576,
+        "materials": [
+          "mounted_fluorescent_lights",
+          "mounted_fluorescent_lights_glass"
+        ],
+        "selectedVariantBlenderBoundsXYZ": [
+          [
+            -0.4560902714729309,
+            -0.320084810256958,
+            -0.03505275025963783
+          ],
+          [
+            0.4560902714729309,
+            -0.2799152135848999,
+            8.53327801451087e-05
+          ]
+        ],
+        "selectedVariantTriangles": 162
+      }
+    }
+  ],
+  "placements": [
+    {
+      "name": "scanned_manhole_corner",
+      "sourceAsset": "water_manhole_cover",
+      "mapBounds": {
+        "x0": 107.65462112426758,
+        "x1": 108.34537887573242,
+        "y0": -0.049117788672447205,
+        "y1": 0.01850000023841858,
+        "z0": 44.65462017059326,
+        "z1": 45.34537982940674
+      },
+      "triangles": 918,
+      "needsCollision": false
+    },
+    {
+      "name": "scanned_manhole_cage",
+      "sourceAsset": "water_manhole_cover",
+      "mapBounds": {
+        "x0": 91.65461921691895,
+        "x1": 92.34538078308105,
+        "y0": -0.049117788672447205,
+        "y1": 0.01850000023841858,
+        "z0": 60.65461975336075,
+        "z1": 61.3453803062439
+      },
+      "triangles": 918,
+      "needsCollision": false
+    },
+    {
+      "name": "scanned_corner_strip_west",
+      "sourceAsset": "mounted_fluorescent_lights",
+      "mapBounds": {
+        "x0": 106.04391098022461,
+        "x1": 106.95608901977539,
+        "y0": 2.7148618698120117,
+        "y1": 2.75,
+        "z0": 48.87991523742676,
+        "z1": 48.920084953308105
+      },
+      "triangles": 162,
+      "needsCollision": false
+    },
+    {
+      "name": "scanned_corner_strip_east",
+      "sourceAsset": "mounted_fluorescent_lights",
+      "mapBounds": {
+        "x0": 115.04391098022461,
+        "x1": 115.95608901977539,
+        "y0": 2.7148618698120117,
+        "y1": 2.75,
+        "z0": 48.87991523742676,
+        "z1": 48.920084953308105
+      },
+      "triangles": 162,
+      "needsCollision": false
+    },
+    {
+      "name": "scanned_gallery_strip_west",
+      "sourceAsset": "mounted_fluorescent_lights",
+      "mapBounds": {
+        "x0": 51.54390907287598,
+        "x1": 52.45609092712402,
+        "y0": 5.774861812591553,
+        "y1": 5.809999942779541,
+        "z0": 38.07991409301758,
+        "z1": 38.12008476257324
+      },
+      "triangles": 162,
+      "needsCollision": false,
+      "soffitUnderside": 5.8,
+      "floorY": 3,
+      "soffitEmbedDepth": 0.01
+    },
+    {
+      "name": "scanned_gallery_strip_east",
+      "sourceAsset": "mounted_fluorescent_lights",
+      "mapBounds": {
+        "x0": 60.54391002655029,
+        "x1": 61.45608997344971,
+        "y0": 5.774861812591553,
+        "y1": 5.809999942779541,
+        "z0": 38.07991409301758,
+        "z1": 38.12008476257324
+      },
+      "triangles": 162,
+      "needsCollision": false,
+      "soffitUnderside": 5.8,
+      "floorY": 3,
+      "soffitEmbedDepth": 0.01
+    }
+  ],
+  "objects": 6,
+  "triangles": 2484,
+  "collision": "None. No physical solids/navigation changed.",
+  "modifications": [
+    "Source IRONLINE derivatives already simplified and converted to embedded WebP; preserved byte-for-byte.",
+    "Original metre scale, normals, UVs and texture/material assignment retained.",
+    "Manhole frame embedded below ground with highest relief 18.5mm proud.",
+    "Extracted first complete strip variant from the seven-variant fluorescent catalogue; placed twice in Corner and twice under the northern L2 slab.",
+    "Gallery strips embed their upper 10mm in verified y5.8 soffits; minimum head clearance 2.77486m above the y3 floor. East strip moves to x61 to clear the x59.8..60 core wall.",
+    "Fluorescent tube uses original emission texture at strength 1.4; no light objects.",
+    "Baked world placements; original embedded WebP bytes retained in Blender and GLB; meshopt geometry compression."
+  ],
+  "layoutSHA256": "277dbbaab1765c3dad9a9ea1fd440530de02770e071c31b3854dffd3d123c707",
+  "blend": {
+    "path": "assets/blender/heron-reach/scanned-detail.blend",
+    "bytes": 601775,
+    "sha256": "155667c668088efd225a49f91a8fc806ea558a0fb518dc2e5ef4d452d6a97943"
+  },
+  "runtime": {
+    "path": "public/models/heron-reach/heron-reach-scanned.glb",
+    "bytes": 499580,
+    "sha256": "9b59f1d1cc0132d4eceb3fe279db57647a1014dd2a441d6d42fe9d50a1f61029",
+    "extensionsRequired": [
+      "KHR_mesh_quantization",
+      "EXT_meshopt_compression",
+      "EXT_texture_webp"
+    ],
+    "materials": [
+      "hr_scanned_manhole",
+      "hr_scanned_fluorescent_housing",
+      "hr_scanned_fluorescent_tube"
+    ]
+  },
+  "compression": {
+    "tool": "gltfpack 0.22 native",
+    "sha256": "e29d2e19e75243bf51eb3e5085ceabc6043c7815d4994e5a0b0707c3ca2b927d",
+    "options": "-c -kn -km -ke -vp 16 -vt 14"
+  },
+  "runtimeIntegration": {
+    "load": "/models/heron-reach/heron-reach-scanned.glb",
+    "rootTransform": "identity",
+    "materialPolicy": "Keep embedded PBR maps/emission; do not replace with shared HeronReachMaterials.",
+    "replaceExistingGroupsWhenLoaded": [
+      "E-shop/interior / hr_shop_fitting",
+      "E-shop/interior / hr_shop_strip"
+    ],
+    "shadows": "Ground covers receive shadows; optional casting disabled for these small decorative pieces."
+  }
+}

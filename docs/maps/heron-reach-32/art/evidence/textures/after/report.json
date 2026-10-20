@@ -1,0 +1,331 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4182",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4182/assets/index-UCPz4fKE.js",
+      "sha256": "e8901867caa603c93fd165091c713d708ec9939636194a450565d3a9dfe9503c"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 0.5,
+  "harnessCommit": "647bb89d44760ffd1fce824d3a9b3a8e4df369ba",
+  "workingTree": "",
+  "captures": [
+    {
+      "name": "the-cage",
+      "requestedPose": {
+        "x": -20,
+        "y": 0.04,
+        "z": 0,
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20,
+          "y": 0.020088481972925343,
+          "z": 9.516618888483208e-7
+        },
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 7,
+        "meanFrameMs": 807.9571428575686,
+        "drawCalls": 621,
+        "triangles": 1319015,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "washhouse-square",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0,
+          "y": 0.020082568867655914,
+          "z": 23.999999996648903
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 11,
+        "meanFrameMs": 948.2727272727273,
+        "drawCalls": 338,
+        "triangles": 1189071,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.02008146355510687,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 15,
+        "meanFrameMs": 859.4,
+        "drawCalls": 524,
+        "triangles": 1274278,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "stair-core",
+      "requestedPose": {
+        "x": -46.85,
+        "y": 0.04,
+        "z": -18.799999999999997,
+        "yaw": 0,
+        "pitch": 0.15
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -46.85000258990959,
+          "y": 0.01971163339621851,
+          "z": -18.799999246469646
+        },
+        "yaw": 0,
+        "pitch": 0.15,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 21,
+        "meanFrameMs": 793.5761904762614,
+        "drawCalls": 276,
+        "triangles": 1122953,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "roof-skyline",
+      "requestedPose": {
+        "x": -34,
+        "y": 9.04,
+        "z": -26,
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -34,
+          "y": 9.01999312522239,
+          "z": -25.999999962937114
+        },
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 25,
+        "meanFrameMs": 811.2159999999404,
+        "drawCalls": 446,
+        "triangles": 1237656,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "garden-court",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000011404964084,
+          "y": 0.02007853666291337,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 31,
+        "meanFrameMs": 741.9129032257104,
+        "drawCalls": 294,
+        "triangles": 1156127,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "stair-elevation",
+      "requestedPose": {
+        "x": -44,
+        "y": 0.04,
+        "z": -12,
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -43.9999885559082,
+          "y": 0.02008647523471152,
+          "z": -12.006924358894935
+        },
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 36,
+        "meanFrameMs": 713.266666666708,
+        "drawCalls": 302,
+        "triangles": 1154583,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "gallery-edge",
+      "requestedPose": {
+        "x": -20,
+        "y": 3.04,
+        "z": -22.9,
+        "yaw": -3.141592653589793,
+        "pitch": 0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -19.999998092651367,
+          "y": 3.019711930844642,
+          "z": -22.90009878178228
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 40,
+        "meanFrameMs": 731.6949999999255,
+        "drawCalls": 547,
+        "triangles": 1249662,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

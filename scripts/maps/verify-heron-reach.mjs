@@ -3,10 +3,10 @@
 import {chromium} from '@playwright/test';import assert from 'node:assert/strict';import{mkdir,writeFile,rm}from'node:fs/promises';
 const out=process.env.OUT||'test-results/heron-reach/encounter';await mkdir(out,{recursive:true});await rm(out+'/report.json',{force:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
-const context=await browser.newContext({viewport:{width:1100,height:700},recordVideo:{dir:out,size:{width:960,height:600}}});const page=await context.newPage();const errors=[],failed=[],checks=[];page.on('pageerror',e=>errors.push(e.message));page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
+const context=await browser.newContext({viewport:{width:1100,height:700},recordVideo:{dir:out,size:{width:960,height:600}}});const page=await context.newPage();const errors=[],failed=[],checks=[],inputBursts=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/Heron Reach art unavailable|Constructed stairs unavailable|Building construction unavailable|Ground plan unavailable|Ground detail unavailable|Ground grass mask unavailable|Heron Reach kits: no model/.test(m.text()))errors.push(m.text())});page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
 const snap=()=>page.evaluate(()=>__onsite.snapshot());const check=m=>{checks.push(m);console.log(m)};let mouse={x:550,y:350};
 async function ticks(n){const t=(await snap()).tick;await page.waitForFunction(t=>__onsite.snapshot().tick>=t||['won','lost'].includes(__onsite.snapshot().status),t+n,{timeout:240000,polling:100})}
-async function aim(yaw,pitch=0,settle=true){const s=await snap(),dx=Math.atan2(Math.sin(yaw-s.player.yaw),Math.cos(yaw-s.player.yaw)),dy=pitch-s.player.pitch;const n=Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/.45)||1;for(let i=0;i<n;i++){mouse.x-=dx/.0019/n;mouse.y-=dy/.0019/n;await page.mouse.move(mouse.x,mouse.y)}if(settle)await ticks(1)}
+async function aim(yaw,pitch=0,settle=true,knownState){const s=knownState??await snap(),dx=Math.atan2(Math.sin(yaw-s.player.yaw),Math.cos(yaw-s.player.yaw)),dy=pitch-s.player.pitch;const n=Math.ceil(Math.max(Math.abs(dx),Math.abs(dy))/.45)||1;for(let i=0;i<n;i++){mouse.x-=dx/.0019/n;mouse.y-=dy/.0019/n;await page.mouse.move(mouse.x,mouse.y)}if(settle)await ticks(1)}
 async function moveTo(x,z){let count=0;while(count++<60){const s=await snap(),p=s.player.position;if(Math.hypot(x-p.x,z-p.z)<.65)return;if(s.status!=='active')throw Error('Round ended while walking');await aim(Math.atan2(-(x-p.x),-(z-p.z)));await page.keyboard.down('KeyW');await ticks(3);await page.keyboard.up('KeyW')}throw Error(`Could not walk to ${x},${z}: ${JSON.stringify((await snap()).player)}`)}
 async function advanceToward(x,y,z){
  const s=await snap(),p=s.player.position,path=await page.evaluate(({x,y,z})=>__onsite.route(x,y,z),{x,y,z});
@@ -27,18 +27,25 @@ try{
  await page.keyboard.down('Space');await ticks(8);assert((await snap()).player.position.y>.3);await page.keyboard.up('Space');await ticks(45);check('Jump and landing');
  for(let i=0;i<Number(process.env.STEPS||900);i++){
   const s=await snap();if(s.status!=='active')break;if(s.bots.every(b=>!b.alive))break;
+  if(s.weapon.ammo===0&&s.weapon.reserve===0)throw Error('No ammunition remains with live opponents');
+  if(i%50===0)console.log('Encounter progress',JSON.stringify({tick:s.tick,kills:s.bots.filter(b=>!b.alive).length,position:s.player.position,ammo:s.weapon.ammo,reserve:s.weapon.reserve}));
   const target=s.bots.filter(b=>s.visible.includes(b.id)).sort((a,b)=>a.health-b.health)[0];if(!target){await page.mouse.up();const goal=s.bots.find(b=>b.alive).position;await advanceToward(goal.x,goal.y,goal.z);continue}
-  // Track through normal mouse input once per rendered update. A separate aim wait
-  // followed by a fire wait leaves a moving target ~0.5 s stale on SwiftShader.
-  const p=s.player.position,b={...target.position};b.x+=target.velocity.x*.15;b.z+=target.velocity.z*.15;await aim(Math.atan2(-(b.x-p.x),-(b.z-p.z)),Math.atan2(b.y+1.25-p.y-1.62,Math.hypot(b.x-p.x,b.z-p.z)),false);
-  await page.mouse.down({button:'right'});await page.mouse.down();await ticks(1);
-  if((await snap()).weapon.ammo<3){await page.mouse.up();await page.keyboard.press('KeyR');await ticks(140)}
+  // Use one target/player snapshot and a bounded normal-input burst. Leaving LMB
+  // held through later snapshots/mouse moves fires unattended recoil batches on
+  // slow renderers. Wait for an actual shot, not a new tick baseline after firing.
+  const p=s.player.position,b={...target.position};b.x+=target.velocity.x*.15;b.z+=target.velocity.z*.15;await aim(Math.atan2(-(b.x-p.x),-(b.z-p.z)),Math.atan2(b.y+1.25-p.y-1.62,Math.hypot(b.x-p.x,b.z-p.z)),false,s);
+  await page.mouse.down({button:'right'});await page.mouse.down();
+  await page.waitForFunction(shots=>{const s=__onsite.snapshot();return s.stats.shots>shots||s.status!=='active'||s.bots.every(b=>!b.alive)},s.stats.shots,{timeout:240000,polling:100});
+  await page.mouse.up();const afterBurst=await snap();
+  inputBursts.push({target:target.id,fromTick:s.tick,toTick:afterBurst.tick,shots:afterBurst.stats.shots-s.stats.shots,hits:afterBurst.stats.hits-s.stats.hits});
+  if(afterBurst.weapon.ammo<3&&afterBurst.bots.some(b=>b.alive)){await page.mouse.up();await page.keyboard.press('KeyR');await ticks(140)}
   if(i%10===0)console.log('Tracking',JSON.stringify({tick:s.tick,health:s.player.health,target:target.id,targetHealth:target.health,hits:s.stats.hits,shots:s.stats.shots}));
  }
  await page.mouse.up();await page.mouse.up({button:'right'});await page.screenshot({path:out+'/combat.png'});const s=await snap();check(`Combat result: ${s.bots.filter(b=>!b.alive).length} opponents down, health ${s.player.health}`);assert(s.stats.hits>0,'Actual shots must damage a bot');
  if(s.bots.every(b=>!b.alive)){await routeTo(0,0,0);await ticks(240);assert.equal((await snap()).status,'won');check('Clear and capture victory');await page.screenshot({path:out+'/victory.png'})}
  if((await snap()).status==='lost'){check('Player damage and death screen');await page.screenshot({path:out+'/death.png'})}
- assert.equal((await snap()).status,'won','Complete the encounter, rather than passing on partial kills');const combatState=await snap();
+ assert.equal((await snap()).status,'won','Complete the encounter, rather than passing on partial kills');const combatState=await snap(),metrics=await page.evaluate(()=>__onsite.metrics());
+ const saved=await page.evaluate(()=>JSON.parse(localStorage.getItem('onsite.player.v1')));assert.equal(saved.records['heron-reach'].last.outcome,'won','Actual capture must persist');assert.equal(saved.records['heron-reach'].played,1,'Only completed rounds count');
  await page.keyboard.press('Escape');if(await page.locator('#result').isVisible())await page.click('#restart');else await page.click('#restart-pause');await page.waitForFunction(()=>document.pointerLockElement);assert.equal((await snap()).player.health,100);check('Round reset restores player and opponents');
- const report={checks,errors,failed,combatState,metrics:await page.evaluate(()=>__onsite.metrics()),state:await snap()};await writeFile(out+'/report.json',JSON.stringify(report,null,2));assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);console.log(JSON.stringify(report.metrics));
-}catch(e){console.error(e);await page.screenshot({path:out+'/failure.png'});await writeFile(out+'/failure.json',JSON.stringify({checks,errors,failed,state:await snap().catch(()=>null)},null,2));process.exitCode=1}finally{await context.close();await browser.close()}
+ const report={checks,errors,failed,inputBursts,combatState,metrics,state:await snap()};await writeFile(out+'/report.json',JSON.stringify(report,null,2));assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);console.log(JSON.stringify(report.metrics));
+}catch(e){console.error(e);await page.screenshot({path:out+'/failure.png'});await writeFile(out+'/failure.json',JSON.stringify({checks,errors,failed,inputBursts,state:await snap().catch(()=>null)},null,2));process.exitCode=1}finally{await context.close();await browser.close()}
