@@ -1,0 +1,592 @@
+{
+  "context": "Private H2 stair traversal fixture; scripted steering, bots disabled; not combat evidence",
+  "home": "SW-H2-1",
+  "base": 3,
+  "concurrentFixtureCount": 1,
+  "rendering": "Chromium / ANGLE SwiftShader, normal software fallback; not a real-GPU benchmark",
+  "checks": [
+    "Actual private stair replacement and floor/ceiling correction loaded; original WWB player/nav/Rapier; opponents disabled",
+    "entry: feet y=3.020 m, grounded",
+    "first-flight: feet y=3.767 m, grounded",
+    "half-landing: feet y=4.520 m, grounded",
+    "return-flight: feet y=5.280 m, grounded",
+    "upper-landing: feet y=6.020 m, grounded",
+    "upper-hall: feet y=6.020 m, grounded",
+    "descending-half: feet y=4.520 m, grounded",
+    "returned-entry: feet y=3.020 m, grounded",
+    "Continuous ascent, dogleg turn and descent completed without any post-spawn teleport"
+  ],
+  "captures": [
+    {
+      "image": "01-entry.png",
+      "label": "Lower home / private stair entry",
+      "checkpoint": {
+        "name": "entry",
+        "label": "Lower home / private stair entry",
+        "tick": 69,
+        "position": {
+          "x": -39.353362639877076,
+          "y": 3.0199734998546774,
+          "z": 32.43834686279297
+        },
+        "mapPosition": {
+          "x": 32.646637360122924,
+          "y": 3.0199734998546774,
+          "z": 92.43834686279297
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 3,
+          "z": 32.5
+        },
+        "pathNodes": 4
+      }
+    },
+    {
+      "image": "02-first-flight.png",
+      "label": "Ascending / first private flight",
+      "checkpoint": {
+        "name": "first-flight",
+        "label": "Ascending / first private flight",
+        "tick": 212,
+        "position": {
+          "x": -39.18759918309246,
+          "y": 3.767050695003127,
+          "z": 34.150694408877825
+        },
+        "mapPosition": {
+          "x": 32.81240081690754,
+          "y": 3.767050695003127,
+          "z": 94.15069440887783
+        },
+        "expectedY": 3.75,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 3.75,
+          "z": 34.34
+        },
+        "pathNodes": 5
+      }
+    },
+    {
+      "image": "03-half-landing.png",
+      "label": "Half landing / private dogleg turn",
+      "checkpoint": {
+        "name": "half-landing",
+        "label": "Half landing / private dogleg turn",
+        "tick": 400,
+        "position": {
+          "x": -37.86259458636885,
+          "y": 4.520098841903382,
+          "z": 36.18501281285198
+        },
+        "mapPosition": {
+          "x": 34.13740541363115,
+          "y": 4.520098841903382,
+          "z": 96.18501281285198
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "pathNodes": 9
+      }
+    },
+    {
+      "image": "04-return-flight.png",
+      "label": "Ascending / private return flight",
+      "checkpoint": {
+        "name": "return-flight",
+        "label": "Ascending / private return flight",
+        "tick": 549,
+        "position": {
+          "x": -37.68756866484869,
+          "y": 5.279750229945057,
+          "z": 34.50432208544953
+        },
+        "mapPosition": {
+          "x": 34.31243133515131,
+          "y": 5.279750229945057,
+          "z": 94.50432208544953
+        },
+        "expectedY": 5.25,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 5.25,
+          "z": 34.34
+        },
+        "pathNodes": 5
+      }
+    },
+    {
+      "image": "05-upper-landing.png",
+      "label": "Upper landing / +6 m reached",
+      "checkpoint": {
+        "name": "upper-landing",
+        "label": "Upper landing / +6 m reached",
+        "tick": 696,
+        "position": {
+          "x": -37.68754100884479,
+          "y": 6.019649068062426,
+          "z": 32.622367829110935
+        },
+        "mapPosition": {
+          "x": 34.31245899115521,
+          "y": 6.019649068062426,
+          "z": 92.62236782911094
+        },
+        "expectedY": 6,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 6,
+          "z": 32.5
+        },
+        "pathNodes": 5
+      }
+    },
+    {
+      "image": "06-upper-hall.png",
+      "label": "Upper home / through the landing arch",
+      "checkpoint": {
+        "name": "upper-hall",
+        "label": "Upper home / through the landing arch",
+        "tick": 853,
+        "position": {
+          "x": -40.52704631609412,
+          "y": 6.0198459220860965,
+          "z": 32.43752670288086
+        },
+        "mapPosition": {
+          "x": 31.472953683905878,
+          "y": 6.0198459220860965,
+          "z": 92.43752670288086
+        },
+        "expectedY": 6,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -40.75,
+          "y": 6,
+          "z": 32.5
+        },
+        "pathNodes": 8
+      }
+    },
+    {
+      "image": "07-descending-half.png",
+      "label": "Descending / private half landing",
+      "checkpoint": {
+        "name": "descending-half",
+        "label": "Descending / private half landing",
+        "tick": 1130,
+        "position": {
+          "x": -39.011543148864874,
+          "y": 4.519999726087553,
+          "z": 36.18029029667048
+        },
+        "mapPosition": {
+          "x": 32.988456851135126,
+          "y": 4.519999726087553,
+          "z": 96.18029029667048
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "pathNodes": 20
+      }
+    },
+    {
+      "image": "08-returned-entry.png",
+      "label": "Returned / lower home hall",
+      "checkpoint": {
+        "name": "returned-entry",
+        "label": "Returned / lower home hall",
+        "tick": 1347,
+        "position": {
+          "x": -40.51678840969611,
+          "y": 3.0200521541570198,
+          "z": 32.44364929199219
+        },
+        "mapPosition": {
+          "x": 31.48321159030389,
+          "y": 3.0200521541570198,
+          "z": 92.44364929199219
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -40.75,
+          "y": 3,
+          "z": 32.5
+        },
+        "pathNodes": 14
+      }
+    }
+  ],
+  "asset": {
+    "url": "http://127.0.0.1:5184/models/heron-reach/building-detail.glb",
+    "bytes": 484816,
+    "sha256": "437d8c49fc2cb5cd00232d655d663f42718920181338b8e925b9d68dc829f8fa"
+  },
+  "errors": [],
+  "failed": [],
+  "warnings": [
+    "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+    "RGBELoader has been deprecated. Please use HDRLoader instead."
+  ],
+  "error": null,
+  "elapsedWallSeconds": 217.996,
+  "video": "page@35eac26eddea0cb4acbeb25549ac07a5.webm",
+  "state": {
+    "ready": true,
+    "done": true,
+    "error": null,
+    "home": "SW-H2-1",
+    "base": 3,
+    "mirror": true,
+    "stage": "returned-entry",
+    "phase": "complete",
+    "ticks": 1407,
+    "position": {
+      "x": -40.51678840969611,
+      "y": 3.0200521541570198,
+      "z": 32.44364929199219
+    },
+    "mapPosition": {
+      "x": 31.48321159030389,
+      "y": 3.0200521541570198,
+      "z": 92.44364929199219
+    },
+    "grounded": true,
+    "initial": {
+      "x": -40.75,
+      "y": 3.04,
+      "z": 32.5
+    },
+    "spawnCount": 1,
+    "maximumPhysicsStep": 0.056484957263498545,
+    "botsDisabled": true,
+    "checkpoints": [
+      {
+        "name": "entry",
+        "label": "Lower home / private stair entry",
+        "tick": 69,
+        "position": {
+          "x": -39.353362639877076,
+          "y": 3.0199734998546774,
+          "z": 32.43834686279297
+        },
+        "mapPosition": {
+          "x": 32.646637360122924,
+          "y": 3.0199734998546774,
+          "z": 92.43834686279297
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 3,
+          "z": 32.5
+        },
+        "pathNodes": 4
+      },
+      {
+        "name": "first-flight",
+        "label": "Ascending / first private flight",
+        "tick": 212,
+        "position": {
+          "x": -39.18759918309246,
+          "y": 3.767050695003127,
+          "z": 34.150694408877825
+        },
+        "mapPosition": {
+          "x": 32.81240081690754,
+          "y": 3.767050695003127,
+          "z": 94.15069440887783
+        },
+        "expectedY": 3.75,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 3.75,
+          "z": 34.34
+        },
+        "pathNodes": 5
+      },
+      {
+        "name": "half-landing",
+        "label": "Half landing / private dogleg turn",
+        "tick": 400,
+        "position": {
+          "x": -37.86259458636885,
+          "y": 4.520098841903382,
+          "z": 36.18501281285198
+        },
+        "mapPosition": {
+          "x": 34.13740541363115,
+          "y": 4.520098841903382,
+          "z": 96.18501281285198
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "pathNodes": 9
+      },
+      {
+        "name": "return-flight",
+        "label": "Ascending / private return flight",
+        "tick": 549,
+        "position": {
+          "x": -37.68756866484869,
+          "y": 5.279750229945057,
+          "z": 34.50432208544953
+        },
+        "mapPosition": {
+          "x": 34.31243133515131,
+          "y": 5.279750229945057,
+          "z": 94.50432208544953
+        },
+        "expectedY": 5.25,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 5.25,
+          "z": 34.34
+        },
+        "pathNodes": 5
+      },
+      {
+        "name": "upper-landing",
+        "label": "Upper landing / +6 m reached",
+        "tick": 696,
+        "position": {
+          "x": -37.68754100884479,
+          "y": 6.019649068062426,
+          "z": 32.622367829110935
+        },
+        "mapPosition": {
+          "x": 34.31245899115521,
+          "y": 6.019649068062426,
+          "z": 92.62236782911094
+        },
+        "expectedY": 6,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -37.87,
+          "y": 6,
+          "z": 32.5
+        },
+        "pathNodes": 5
+      },
+      {
+        "name": "upper-hall",
+        "label": "Upper home / through the landing arch",
+        "tick": 853,
+        "position": {
+          "x": -40.52704631609412,
+          "y": 6.0198459220860965,
+          "z": 32.43752670288086
+        },
+        "mapPosition": {
+          "x": 31.472953683905878,
+          "y": 6.0198459220860965,
+          "z": 92.43752670288086
+        },
+        "expectedY": 6,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -40.75,
+          "y": 6,
+          "z": 32.5
+        },
+        "pathNodes": 8
+      },
+      {
+        "name": "descending-half",
+        "label": "Descending / private half landing",
+        "tick": 1130,
+        "position": {
+          "x": -39.011543148864874,
+          "y": 4.519999726087553,
+          "z": 36.18029029667048
+        },
+        "mapPosition": {
+          "x": 32.988456851135126,
+          "y": 4.519999726087553,
+          "z": 96.18029029667048
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -39.22,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "pathNodes": 20
+      },
+      {
+        "name": "returned-entry",
+        "label": "Returned / lower home hall",
+        "tick": 1347,
+        "position": {
+          "x": -40.51678840969611,
+          "y": 3.0200521541570198,
+          "z": 32.44364929199219
+        },
+        "mapPosition": {
+          "x": 31.48321159030389,
+          "y": 3.0200521541570198,
+          "z": 92.44364929199219
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -40.75,
+          "y": 3,
+          "z": 32.5
+        },
+        "pathNodes": 14
+      }
+    ],
+    "plan": [
+      {
+        "name": "entry",
+        "label": "Lower home / private stair entry",
+        "target": {
+          "x": -39.22,
+          "y": 3,
+          "z": 32.5
+        },
+        "expectedY": 3,
+        "tolerance": 0.18
+      },
+      {
+        "name": "first-flight",
+        "label": "Ascending / first private flight",
+        "target": {
+          "x": -39.22,
+          "y": 3.75,
+          "z": 34.34
+        },
+        "expectedY": 3.75,
+        "tolerance": 0.35
+      },
+      {
+        "name": "half-landing",
+        "label": "Half landing / private dogleg turn",
+        "target": {
+          "x": -37.87,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18
+      },
+      {
+        "name": "return-flight",
+        "label": "Ascending / private return flight",
+        "target": {
+          "x": -37.87,
+          "y": 5.25,
+          "z": 34.34
+        },
+        "expectedY": 5.25,
+        "tolerance": 0.35
+      },
+      {
+        "name": "upper-landing",
+        "label": "Upper landing / +6 m reached",
+        "target": {
+          "x": -37.87,
+          "y": 6,
+          "z": 32.5
+        },
+        "expectedY": 6,
+        "tolerance": 0.18
+      },
+      {
+        "name": "upper-hall",
+        "label": "Upper home / through the landing arch",
+        "target": {
+          "x": -40.75,
+          "y": 6,
+          "z": 32.5
+        },
+        "expectedY": 6,
+        "tolerance": 0.18
+      },
+      {
+        "name": "descending-half",
+        "label": "Descending / private half landing",
+        "target": {
+          "x": -39.22,
+          "y": 4.5,
+          "z": 36.2
+        },
+        "expectedY": 4.5,
+        "tolerance": 0.18
+      },
+      {
+        "name": "returned-entry",
+        "label": "Returned / lower home hall",
+        "target": {
+          "x": -40.75,
+          "y": 3,
+          "z": 32.5
+        },
+        "expectedY": 3,
+        "tolerance": 0.18
+      }
+    ],
+    "path": {
+      "index": 14,
+      "length": 14,
+      "next": null
+    },
+    "art": {
+      "loaded": true,
+      "retiredTriangles": 3616,
+      "retiredForHome": 452
+    },
+    "metrics": {
+      "softwareRenderer": true,
+      "pixelRatio": 0.5,
+      "drawCalls": 661,
+      "triangles": 1330692,
+      "frames": 138,
+      "meanFrameMs": 848.031884057971,
+      "note": "Software/fixture timing, not a real-GPU benchmark"
+    }
+  }
+}

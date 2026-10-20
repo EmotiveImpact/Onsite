@@ -1,0 +1,20 @@
+{
+  "sourceCommit": "3284c4d7529628c688ab6faa3f076f64c4dd3690",
+  "baseCommit": "483cc0ae14a9e498b757fe15e1084a86829c27ec",
+  "server": "http://127.0.0.1:4184",
+  "frozenDirectory": "/tmp/onsite-whole-dist",
+  "renderer": "Chromium 154 / ANGLE SwiftShader (software)",
+  "gpuVerified": false,
+  "files": [
+    {
+      "path": "assets/index-DdFp8Ala.css",
+      "bytes": 16073,
+      "sha256": "14fa38f62c2053838acba4367d0f325efea960356a3e928f3f5781ed6615a353"
+    },
+    {
+      "path": "assets/index-aZuXA2MZ.js",
+      "bytes": 5375904,
+      "sha256": "0966dc6ab5ccbc3776e0722159412e416dd92c8d32d2a9a2eaaf06ea19f631e0"
+    }
+  ]
+}

@@ -1,0 +1,527 @@
+{
+  "context": "Physical stair traversal fixture; scripted steering, bots disabled; not combat evidence",
+  "core": "S1",
+  "base": 0,
+  "concurrentFixtureCount": 2,
+  "rendering": "Chromium / ANGLE SwiftShader, normal software fallback; not a real-GPU benchmark",
+  "checks": [
+    "Actual constructed stair asset loaded; original WWB player/nav/Rapier; opponents disabled",
+    "entry: feet y=0.020 m, grounded",
+    "first-flight: feet y=0.882 m, grounded",
+    "half-landing: feet y=1.520 m, grounded",
+    "return-flight: feet y=2.212 m, grounded",
+    "upper-landing: feet y=3.020 m, grounded",
+    "descending-half: feet y=1.520 m, grounded",
+    "returned-entry: feet y=0.017 m, grounded",
+    "Continuous ascent, dogleg turn and descent completed without any post-spawn teleport"
+  ],
+  "captures": [
+    {
+      "image": "01-entry.png",
+      "label": "Entry / first flight ahead",
+      "checkpoint": {
+        "name": "entry",
+        "label": "Entry / first flight ahead",
+        "tick": 71,
+        "position": {
+          "x": -44.81407195376832,
+          "y": 0.019942481610632945,
+          "z": -18.7470627017614
+        },
+        "mapPosition": {
+          "x": 27.18592804623168,
+          "y": 0.019942481610632945,
+          "z": 41.2529372982386
+        },
+        "expectedY": 0,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -18.950000000000003
+        },
+        "pathNodes": 5
+      }
+    },
+    {
+      "image": "02-first-flight.png",
+      "label": "Ascending / first flight",
+      "checkpoint": {
+        "name": "first-flight",
+        "label": "Ascending / first flight",
+        "tick": 280,
+        "position": {
+          "x": -46.68741226196289,
+          "y": 0.8822858697909396,
+          "z": -21.010444356270455
+        },
+        "mapPosition": {
+          "x": 25.31258773803711,
+          "y": 0.8822858697909396,
+          "z": 38.989555643729545
+        },
+        "expectedY": 0.9,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -46.85,
+          "y": 0.75,
+          "z": -21.04
+        },
+        "pathNodes": 12
+      }
+    },
+    {
+      "image": "03-half-landing.png",
+      "label": "Half landing / dogleg turn",
+      "checkpoint": {
+        "name": "half-landing",
+        "label": "Half landing / dogleg turn",
+        "tick": 516,
+        "position": {
+          "x": -43.484107971191406,
+          "y": 1.5199508456331388,
+          "z": -23.001100544778524
+        },
+        "mapPosition": {
+          "x": 28.515892028808594,
+          "y": 1.5199508456331388,
+          "z": 36.998899455221476
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -43.15,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "pathNodes": 14
+      }
+    },
+    {
+      "image": "04-return-flight.png",
+      "label": "Ascending / return flight",
+      "checkpoint": {
+        "name": "return-flight",
+        "label": "Ascending / return flight",
+        "tick": 657,
+        "position": {
+          "x": -43.31267547607422,
+          "y": 2.2116455519440934,
+          "z": -21.388046497271716
+        },
+        "mapPosition": {
+          "x": 28.68732452392578,
+          "y": 2.2116455519440934,
+          "z": 38.611953502728284
+        },
+        "expectedY": 2.1,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -43.15,
+          "y": 2.25,
+          "z": -21.04
+        },
+        "pathNodes": 5
+      }
+    },
+    {
+      "image": "05-upper-landing.png",
+      "label": "Upper landing / +3 m reached",
+      "checkpoint": {
+        "name": "upper-landing",
+        "label": "Upper landing / +3 m reached",
+        "tick": 857,
+        "position": {
+          "x": -44.748657217488436,
+          "y": 3.020068375125993,
+          "z": -19.07953641445243
+        },
+        "mapPosition": {
+          "x": 27.251342782511564,
+          "y": 3.020068375125993,
+          "z": 40.920463585547566
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 3,
+          "z": -18.950000000000003
+        },
+        "pathNodes": 10
+      }
+    },
+    {
+      "image": "06-descending-half.png",
+      "label": "Descending / half landing",
+      "checkpoint": {
+        "name": "descending-half",
+        "label": "Descending / half landing",
+        "tick": 1173,
+        "position": {
+          "x": -46.60589217233471,
+          "y": 1.5200983583286871,
+          "z": -22.88995933532715
+        },
+        "mapPosition": {
+          "x": 25.394107827665287,
+          "y": 1.5200983583286871,
+          "z": 37.11004066467285
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -46.85,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "pathNodes": 24
+      }
+    },
+    {
+      "image": "07-returned-entry.png",
+      "label": "Returned / original floor",
+      "checkpoint": {
+        "name": "returned-entry",
+        "label": "Returned / original floor",
+        "tick": 1453,
+        "position": {
+          "x": -44.87889863156343,
+          "y": 0.01748992928478399,
+          "z": -17.232200622472984
+        },
+        "mapPosition": {
+          "x": 27.12110136843657,
+          "y": 0.01748992928478399,
+          "z": 42.76779937752701
+        },
+        "expectedY": 0,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -17.25
+        },
+        "pathNodes": 21
+      }
+    }
+  ],
+  "asset": {
+    "url": "http://127.0.0.1:5184/models/heron-reach/stair-detail.glb",
+    "bytes": 405636,
+    "sha256": "dd8c0896c64c5e2852a3a62cc98afa690d7ebd54243b7fd5eca4831ba1514be2"
+  },
+  "errors": [],
+  "failed": [],
+  "warnings": [
+    "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+    "RGBELoader has been deprecated. Please use HDRLoader instead."
+  ],
+  "error": null,
+  "elapsedWallSeconds": 478.028,
+  "video": "page@609cec2375915d51d3af6a24473c45f6.webm",
+  "state": {
+    "ready": true,
+    "done": true,
+    "error": null,
+    "core": "S1",
+    "base": 0,
+    "mirror": false,
+    "stage": "returned-entry",
+    "phase": "complete",
+    "ticks": 1513,
+    "position": {
+      "x": -44.87889862060547,
+      "y": 0.020095775523805037,
+      "z": -17.232200622558594
+    },
+    "mapPosition": {
+      "x": 27.12110137939453,
+      "y": 0.020095775523805037,
+      "z": 42.767799377441406
+    },
+    "grounded": true,
+    "initial": {
+      "x": -45,
+      "y": 0.04,
+      "z": -17.25
+    },
+    "spawnCount": 1,
+    "maximumPhysicsStep": 0.056174269258524895,
+    "botsDisabled": true,
+    "checkpoints": [
+      {
+        "name": "entry",
+        "label": "Entry / first flight ahead",
+        "tick": 71,
+        "position": {
+          "x": -44.81407195376832,
+          "y": 0.019942481610632945,
+          "z": -18.7470627017614
+        },
+        "mapPosition": {
+          "x": 27.18592804623168,
+          "y": 0.019942481610632945,
+          "z": 41.2529372982386
+        },
+        "expectedY": 0,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -18.950000000000003
+        },
+        "pathNodes": 5
+      },
+      {
+        "name": "first-flight",
+        "label": "Ascending / first flight",
+        "tick": 280,
+        "position": {
+          "x": -46.68741226196289,
+          "y": 0.8822858697909396,
+          "z": -21.010444356270455
+        },
+        "mapPosition": {
+          "x": 25.31258773803711,
+          "y": 0.8822858697909396,
+          "z": 38.989555643729545
+        },
+        "expectedY": 0.9,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -46.85,
+          "y": 0.75,
+          "z": -21.04
+        },
+        "pathNodes": 12
+      },
+      {
+        "name": "half-landing",
+        "label": "Half landing / dogleg turn",
+        "tick": 516,
+        "position": {
+          "x": -43.484107971191406,
+          "y": 1.5199508456331388,
+          "z": -23.001100544778524
+        },
+        "mapPosition": {
+          "x": 28.515892028808594,
+          "y": 1.5199508456331388,
+          "z": 36.998899455221476
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -43.15,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "pathNodes": 14
+      },
+      {
+        "name": "return-flight",
+        "label": "Ascending / return flight",
+        "tick": 657,
+        "position": {
+          "x": -43.31267547607422,
+          "y": 2.2116455519440934,
+          "z": -21.388046497271716
+        },
+        "mapPosition": {
+          "x": 28.68732452392578,
+          "y": 2.2116455519440934,
+          "z": 38.611953502728284
+        },
+        "expectedY": 2.1,
+        "tolerance": 0.35,
+        "grounded": true,
+        "target": {
+          "x": -43.15,
+          "y": 2.25,
+          "z": -21.04
+        },
+        "pathNodes": 5
+      },
+      {
+        "name": "upper-landing",
+        "label": "Upper landing / +3 m reached",
+        "tick": 857,
+        "position": {
+          "x": -44.748657217488436,
+          "y": 3.020068375125993,
+          "z": -19.07953641445243
+        },
+        "mapPosition": {
+          "x": 27.251342782511564,
+          "y": 3.020068375125993,
+          "z": 40.920463585547566
+        },
+        "expectedY": 3,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 3,
+          "z": -18.950000000000003
+        },
+        "pathNodes": 10
+      },
+      {
+        "name": "descending-half",
+        "label": "Descending / half landing",
+        "tick": 1173,
+        "position": {
+          "x": -46.60589217233471,
+          "y": 1.5200983583286871,
+          "z": -22.88995933532715
+        },
+        "mapPosition": {
+          "x": 25.394107827665287,
+          "y": 1.5200983583286871,
+          "z": 37.11004066467285
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -46.85,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "pathNodes": 24
+      },
+      {
+        "name": "returned-entry",
+        "label": "Returned / original floor",
+        "tick": 1453,
+        "position": {
+          "x": -44.87889863156343,
+          "y": 0.01748992928478399,
+          "z": -17.232200622472984
+        },
+        "mapPosition": {
+          "x": 27.12110136843657,
+          "y": 0.01748992928478399,
+          "z": 42.76779937752701
+        },
+        "expectedY": 0,
+        "tolerance": 0.18,
+        "grounded": true,
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -17.25
+        },
+        "pathNodes": 21
+      }
+    ],
+    "plan": [
+      {
+        "name": "entry",
+        "label": "Entry / first flight ahead",
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -18.950000000000003
+        },
+        "expectedY": 0,
+        "tolerance": 0.18
+      },
+      {
+        "name": "first-flight",
+        "label": "Ascending / first flight",
+        "target": {
+          "x": -46.85,
+          "y": 0.75,
+          "z": -21.04
+        },
+        "expectedY": 0.9,
+        "tolerance": 0.35
+      },
+      {
+        "name": "half-landing",
+        "label": "Half landing / dogleg turn",
+        "target": {
+          "x": -43.15,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18
+      },
+      {
+        "name": "return-flight",
+        "label": "Ascending / return flight",
+        "target": {
+          "x": -43.15,
+          "y": 2.25,
+          "z": -21.04
+        },
+        "expectedY": 2.1,
+        "tolerance": 0.35
+      },
+      {
+        "name": "upper-landing",
+        "label": "Upper landing / +3 m reached",
+        "target": {
+          "x": -45,
+          "y": 3,
+          "z": -18.950000000000003
+        },
+        "expectedY": 3,
+        "tolerance": 0.18
+      },
+      {
+        "name": "descending-half",
+        "label": "Descending / half landing",
+        "target": {
+          "x": -46.85,
+          "y": 1.5,
+          "z": -23.049999999999997
+        },
+        "expectedY": 1.5,
+        "tolerance": 0.18
+      },
+      {
+        "name": "returned-entry",
+        "label": "Returned / original floor",
+        "target": {
+          "x": -45,
+          "y": 0,
+          "z": -17.25
+        },
+        "expectedY": 0,
+        "tolerance": 0.18
+      }
+    ],
+    "path": {
+      "index": 21,
+      "length": 21,
+      "next": null
+    },
+    "art": {
+      "loaded": true,
+      "retiredTriangles": 35072
+    },
+    "metrics": {
+      "softwareRenderer": true,
+      "pixelRatio": 0.5,
+      "drawCalls": 280,
+      "triangles": 1121169,
+      "frames": 171,
+      "meanFrameMs": 1740.280701754386,
+      "note": "Software/fixture timing, not a real-GPU benchmark"
+    }
+  }
+}

@@ -1,4 +1,101 @@
-# Current validation: Heron Reach scene depth
+# Current validation: ground, planting and trees
+
+20 October 2026. Branch `codex/heron-reach-ground-growth`, corrected implementation
+`623bc24`, including six-clump planters and the scoped weed-face correction. Read the
+[ground work/evidence log](../maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) for exact asset hashes, sources, matched views,
+initial rejected tree iteration and full reports.
+
+- **127 tests pass**, no skips; typecheck and production build pass. The 27 added
+  tests cover exported support/route geometry, planter and canopy clearances,
+  original decoded plane-tree preservation, grass winding, deterministic filtering
+  and independent load-failure fallbacks. Actual-GLB checks also prove the scoped weed
+  strip/blade correction preserves all upright cards and source attributes.
+- Seven final before/after requested camera poses match exactly at 1280 × 720,
+  DPR 1, on ANGLE SwiftShader. Inspection actors remain active; this is art evidence.
+- Both normal-input production encounters pass serially: Court ten checks/three
+  bots, Reach nine checks/six bots; capture, exactly-once results and reset pass.
+  Final page/console errors, failed requests and art-fallback warnings are empty.
+- Software means: **480.76 ms Court / 641.96 ms Reach**, 1100 × 700 / DPR 0.5. Raw counts,
+  median/p95 and draw submissions are in the log; automation overhead is included.
+  **Real-GPU performance remains deferred and unverified.**
+
+Ground/plant/tree additions share existing materials and add no texture images or
+lights. The ground GLB is 158,884 bytes; the corrected tree kit is 36,640 bytes;
+the separate runtime plan is 221,414 bytes. Geometry/culling, the roughly 329 MB
+architecture-texture estimate and 5.39 MB main JS chunk remain material costs.
+Physical/navigation geometry and WWB gameplay are unchanged. No merge or production
+deployment was invoked; the existing PR integration may build preview deployments.
+
+# Previous validation: building and private stair construction
+
+20 October 2026. Branch `codex/heron-reach-building-detail`, implementation checkpoint
+`2608c6e`, above public stair PR #18. Read the [work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+for exact hashes, preserved sources, screenshot pairs, physical routes and commands.
+
+- **100 tests pass**, no skips; typecheck and production build pass.
+- Ten final building views pass; all nine paired requested poses match exactly,
+  1280 × 720 / DPR 1 / ANGLE SwiftShader. Inspection leaves actors active.
+- Both mirrored private stair fixtures pass all ten assertions and eight grounded
+  checkpoints, continuously walking +3 → +6 → +3 m. The initial cold-Vite SW request
+  abort is retained; its unchanged serial retry passed without errors.
+- Both normal-input production encounters pass serially: Court ten checks/three
+  bots; Reach nine checks/six bots. Both capture, save once and reset. Final page,
+  console and request errors are empty.
+- Software frame means: **478.01 ms Court / 687.22 ms Reach**, at 1100 × 700 / DPR 0.5.
+  Raw sample counts/median/p95 are in the log; automation overhead is included.
+  **Real-GPU performance remains deferred and unverified.**
+
+The 484,816-byte model adds 35,344 triangles/52 batches and retires 4,576 exact old
+triangles. No new textures/lights. Original source geometry and gameplay/physical
+routes remain intact. Interior lighting, furnishing variation, local shadows,
+reflections, animation, sound, culling and human playtesting remain. No merge/deploy.
+
+# Previous validation: Heron Reach public stairs
+
+20 October 2026. Branch `codex/heron-reach-stair-construction`, final code/asset
+checkpoint `8c08fad`. Read the [stair work/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+for exact hashes, recovery, source provenance, all captures and commands. No merge/deploy.
+
+- **93 tests pass**, no skips; typecheck and production build pass. Actual compressed
+  geometry checks cover 432 treads, all eight cores, headroom, rail visibility and
+  supported joints, preserved landings/walls/private stairs and safe loader fallback.
+- **Eight matched before/after views** pass at identical requested camera poses:
+  Chromium/ANGLE SwiftShader, 1280 × 720, DPR 1. These are inspection fixtures with
+  active bots, not gameplay or hardware benchmarks.
+- **Both continuous stair walks pass**, seven grounded checkpoints each: S1 ground
+  → +3 m → ground and mirrored S7 basement → ground → basement. Actual WWB player,
+  Rapier and layered navigation; one spawn, no subsequent teleports. These scripted
+  routes disable bots. They ran concurrently and their timing is not the performance sample.
+- **Both serial normal-input encounters pass**: Court ten checks/three bots/84 health;
+  Reach nine checks/six bots/88 health. Both capture, persist a single result and reset.
+  Page/console errors and failed requests are empty in all final browser reports.
+- Software frame means: **457.15 ms Court (~2.19 FPS)** and **622.24 ms Reach (~1.61 FPS)**,
+  at 1100 × 700 / DPR 0.5. Median/p95 and raw sample counts are in the log. These include
+  automation overhead and do not establish smoothness or a performance improvement.
+  **Real-GPU performance remains deferred and unverified.**
+
+The final Blender GLB is 405,636 bytes / 29,904 triangles / 28 batches. Retiring 35,072
+old triangles gives a net reduction of 5,168, with no new runtime textures. Calls can
+increase: the matched S1 view changes from 334 to 340. Large geometry submissions,
+texture costs and the 5.38 MB JavaScript chunk remain. Local shadows/reflections,
+authored character motion, spatial sound, varied interiors/private stairs, culling
+and human playtesting are still production work; this is not a completed AAA claim.
+
+# Previous validation: ONSITE whole-game tranche
+
+19 October 2026. Continue from `codex/onsite-game-foundation` and read the
+[whole-game goal](../ONSITE-GOAL.md) and [implementation/evidence log](WHOLE-GAME-PROGRESS.md).
+The log supersedes the historical results below. No merge or deployment.
+
+**84 tests**, typecheck and production build pass at runtime source `3284c4d`.
+The production player flow and isolated keyboard/persistence fixture pass. Both
+full input-driven encounters pass: Court **10 checks / three bots**, Reach **nine
+checks / six bots**, followed by capture, exactly-once local results and reset.
+Software frame means are **518.33 ms Court / 694.25 ms Reach** (roughly 1–2 FPS).
+Real-GPU performance remains unverified. The final-shot/deadline freeze found during
+Reach verification is fixed and regression-tested; the original failure is retained.
+
+# Previous validation: Heron Reach scene depth
 
 19 October 2026. Current review branch: `codex/heron-reach-scene-depth`, stacked on
 `codex/heron-reach-textures-dressing`. The [scene-depth work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
@@ -8,7 +105,8 @@ Nothing from this pass has been merged or deployed by this session.
 - **55 tests passed**, no skips; typecheck and production build passed.
 - Nine DPR 0.5 and four DPR 1 fixed-camera views passed without page/console/request
   errors. Before/after requested camera poses match exactly. These are inspection
-  fixtures with frozen bots, rendered by Chromium 154 / ANGLE SwiftShader.
+  fixtures rendered by Chromium 154 / ANGLE SwiftShader. Correction: the earlier
+  “frozen bots” label was inaccurate; inspection mode leaves them active.
 - **Heron Reach: 9 checks passed**, six bots defeated, capture and reset. 76 health,
   82 shots / 37 hits. Final 360 active samples: **676.45 ms/frame (~1.48 FPS)**.
 - **Heron Court: 10 checks passed**, three bots defeated, capture and reset. 84 health,
