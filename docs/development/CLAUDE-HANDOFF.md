@@ -5,6 +5,8 @@
 
 Continue from `codex/heron-reach-stair-construction`, above the complete whole-game
 foundation below. The owner specifically prioritised properly modelled stairs.
+Review: [PR #18](https://github.com/EmotiveImpact/Onsite/pull/18), stacked on #17;
+the branch is pushed, open and unmerged.
 Read the [stair implementation/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
 and [Blender construction/provenance record](../maps/heron-reach-32/art/STAIR-CONSTRUCTION.md).
 Final code/asset checkpoint is `8c08fad`; later commits record evidence and handoff.

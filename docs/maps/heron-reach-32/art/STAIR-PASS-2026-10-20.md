@@ -3,6 +3,8 @@
 20 October 2026. Continuing the [whole-game goal](../../../ONSITE-GOAL.md).
 Branch: `codex/heron-reach-stair-construction`, based on the complete player-flow
 review tip `5d381091d3fad2a42a648923cce62c390a350b38` (PR #17).
+Review: [PR #18](https://github.com/EmotiveImpact/Onsite/pull/18), stacked on #17;
+pushed for review, not merged or deployed.
 Local recovery ref: `checkpoint/onsite-before-stair-construction-2026-10-20`.
 Do not reset the working checkout over later work. Original Blender files,
 architecture GLB, private stairs, reference art and tests are retained.

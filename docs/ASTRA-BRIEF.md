@@ -10,6 +10,7 @@ Networking and real-GPU verification remain deferred.
 The active continuation is `codex/heron-reach-stair-construction`. The owner then
 prioritised proper stairs. Read the [stair work log](maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
 for all eight public cores, exact Blender sources, matched views and final verification.
+It is pushed as [PR #18](https://github.com/EmotiveImpact/Onsite/pull/18), above #17.
 Its render assembly preserves the existing physical/nav routes; private-home stairs
 remain a future item. The broader quality gates below still apply. No merge/deploy.
 
