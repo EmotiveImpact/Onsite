@@ -81,6 +81,11 @@ merge or deploy without separate instruction.
 
 ## Work order and present state
 
+**Current owner order:** stairs and buildings, then realistic ground, growth,
+planting and more trees. The [building and ground continuation](maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+builds on the completed public stair construction, preserves physical routes and
+uses matched runtime evidence to judge the improvement.
+
 **20 October continuation:** the initial whole-game tranche is reviewed in
 [its implementation log](development/WHOLE-GAME-PROGRESS.md). The owner then
 prioritised properly constructed stairs and asked what else prevents the quality

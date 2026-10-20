@@ -7,6 +7,8 @@ import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
 import {applyHeronSurfaceResponse,surfaceNormalScale} from './heronSurfaceResponse'
 import {lightReceiverBelow,lightReceiverFloor,prepareLightOccluders,prepareReceiverLights,selectReceiverLights,type PreparedLight,type LightOccluder} from './heronLightSelection'
 import {stairCorePhotometry} from './heronStairLighting'
+import {correctFoliageWinding,correctGrassWinding} from './heronGrassGeometry'
+import {acceptGrassCandidate,type GroundDensityMask} from './heronGroundRuntime'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
 type Entry={map?:string|null;normalMap?:string|null;ormMap?:string|null;emissiveMap?:string|null;repeat?:number;color?:number[];emissive?:number[];emissiveIntensity?:number;roughness?:number;metalness?:number;shadow?:boolean;doubleSided?:boolean;wet?:number;opacity?:number}
@@ -173,9 +175,9 @@ export class HeronReachAtmosphere {
  }
 }
 
-export type KitPlacement={asset:string;x:number;y:number;z:number;ry:number;sx?:number};
+export type KitPlacement={asset:string;x:number;y:number;z:number;ry:number;sx?:number;scale?:number};
 const OX=72,OZ=60;
-const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(p.sx??1,1,1));
+const placeMatrix=(p:KitPlacement,m=new THREE.Matrix4())=>{const s=p.scale??1;return m.compose(new THREE.Vector3(p.x-OX,p.y,p.z-OZ),new THREE.Quaternion().setFromAxisAngle(new THREE.Object3D().up,p.ry),new THREE.Vector3(s*(p.sx??1),s,s))};
 
 /** Instance the props and foliage kits from the dressing plan: one InstancedMesh per asset part. */
 /** The South London gap-fill kits name their shared surfaces mat_*; they take the texture kit's sets. */
@@ -190,16 +192,26 @@ function voidSheet(asset:string){
 const SL_SHARED:Record<string,string>={mat_brick_london_stock:'hr_brick_stock',mat_brick_red:'hr_brick_red',mat_concrete_cast:'hr_concrete_cast',mat_roof_felt:'hr_roof_felt',mat_steel_black_painted:'hr_steel_black',mat_galvanised_steel:'hr_steel_galv'};
 export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterials,placements:KitPlacement[],shared:Set<string>,software=false,coverage=false){
  const group=new THREE.Group();group.name='ONSITE / Heron Reach kits';
- const kits=await Promise.all(['cage','winter','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'].map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ const groundTree=(asset:string)=>/^TREE_(PLANE|BIRCH)_[AB]_LOD1$/.test(asset);
+ const kitNames=['cage','winter','props','foliage','sl-signs','sl-lights','sl-structures','sl-extras'];
+ if(placements.some(p=>groundTree(p.asset)))kitNames.push('ground-trees');
+ const kits=await Promise.all(kitNames.map(k=>gltf.loadAsync(`/models/heron-reach/heron-reach-${k}.glb`).then(g=>g.scene).catch(()=>null)));
+ // Additive LOD geometry exports no images: reuse exact winter material/texture objects.
+ const winterMaterials=new Map<string,THREE.MeshStandardMaterial>();
+ kits[kitNames.indexOf('winter')]?.traverse(o=>{if(o instanceof THREE.Mesh&&!Array.isArray(o.material)){const m=o.material as THREE.MeshStandardMaterial;winterMaterials.set(m.name.replace(/\.\d+$/,''),m)}});
  const byAsset=new Map<string,KitPlacement[]>();for(const p of placements)byAsset.set(p.asset,[...(byAsset.get(p.asset)??[]),p]);
  const missing:string[]=[];
  for(const [asset,list]of byAsset){
   const root=kits.map(k=>k?.getObjectByName(asset)).find(Boolean);if(!root){missing.push(asset);continue}
+  if(groundTree(asset)){
+   let complete=true;root.traverse(o=>{if(o instanceof THREE.Mesh&&(Array.isArray(o.material)||!winterMaterials.has(o.material.name.replace(/\.\d+$/,''))))complete=false});
+   if(!complete){missing.push(`${asset} (winter material unavailable)`);continue}
+  }
   root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert();
   root.traverse(o=>{
    if(!(o instanceof THREE.Mesh))return;
    const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld),src=o.material as THREE.MeshStandardMaterial;
-   const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
+   const base=src.name.replace(/\.\d+$/,''),name=SL_SHARED[base]??src.name,material=groundTree(asset)?winterMaterials.get(base)!:base==='mat_void_sheet'?voidSheet(asset):shared.has(name)?mats.get(name):src;
    if(base==='hr_prop_sign_letters')src.emissiveIntensity=1.3;
    if(base==='hr_prop_fridge_light')src.emissiveIntensity=2.5;
    if(base==='hr_prop_cage_mesh'||base==='hr_prop_goal_net'){
@@ -207,7 +219,8 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
     src.alphaTest=coverage?.18:.005;src.alphaToCoverage=coverage;src.transparent=!coverage;src.depthWrite=coverage;
     if(src.map){src.map.anisotropy=software?2:8;src.map.minFilter=THREE.LinearMipmapLinearFilter;src.map.generateMipmaps=true;src.map.needsUpdate=true}
    }
-   const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
+   const geometry=correctFoliageWinding(o.geometry,local,asset,src.name);
+   const im=new THREE.InstancedMesh(geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
    const foliage=/leaf|grass|weed|litter|hedge|shrub/.test(src.name);
@@ -228,13 +241,13 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
 export class GrassField {
  readonly group=new THREE.Group();private tiles:THREE.InstancedMesh[]=[];
  constructor(private readonly reach=40){this.group.name='ONSITE / Heron Reach grass'}
- async build(gltf:GLTFLoader,density:number){
-  const [scene,cells]=await Promise.all([gltf.loadAsync('/models/heron-reach/heron-reach-foliage.glb').then(g=>g.scene).catch(()=>null),fetch('/models/heron-reach/grass-cells.json').then(r=>r.json()).catch(()=>null)]);
+ async build(gltf:GLTFLoader,density:number,options:{densityMask?:GroundDensityMask|Promise<GroundDensityMask|undefined>}={}){
+  const [scene,cells,mask]=await Promise.all([gltf.loadAsync('/models/heron-reach/heron-reach-foliage.glb').then(g=>g.scene).catch(()=>null),fetch('/models/heron-reach/grass-cells.json').then(r=>r.json()).catch(()=>null),Promise.resolve(options.densityMask).catch(e=>{console.warn('Ground grass mask unavailable; retaining original grass',e);return undefined})]);
   if(!scene||!cells)return this.group;
   const parts:{geo:THREE.BufferGeometry;mat:THREE.Material;local:THREE.Matrix4}[][]=[];
   for(const name of ['GRASS_CLUMP_A','GRASS_CLUMP_B','GRASS_CLUMP_C','GRASS_CLUMP_D']){
    const root=scene.getObjectByName(name);if(!root)continue;root.updateMatrixWorld(true);const inv=new THREE.Matrix4().copy(root.matrixWorld).invert(),list:typeof parts[number]=[];
-   root.traverse(o=>{if(o instanceof THREE.Mesh)list.push({geo:o.geometry,mat:o.material as THREE.Material,local:new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld)})});parts.push(list);
+   root.traverse(o=>{if(o instanceof THREE.Mesh){const local=new THREE.Matrix4().multiplyMatrices(inv,o.matrixWorld);list.push({geo:correctGrassWinding(o.geometry,local),mat:o.material as THREE.Material,local})}});parts.push(list);
   }
   if(!parts.length)return this.group;
   const size:number=cells.cell,tiles=new Map<string,[number,number][]>();
@@ -248,7 +261,14 @@ export class GrassField {
    const mine=pts.filter((_,i)=>i%parts.length===k);if(!mine.length)return;
    for(const part of list){
     const im=new THREE.InstancedMesh(part.geo,part.mat,mine.length);im.receiveShadow=true;
-    mine.forEach(([px,pz],i)=>{const s=.8+rnd()*.6;m.compose(new THREE.Vector3(px-OX,0,pz-OZ),q.setFromAxisAngle(up,rnd()*6.283),new THREE.Vector3(s,s*(.8+rnd()*.5),s)).multiply(part.local);im.setMatrixAt(i,m)});
+    let count=0;
+    mine.forEach(([px,pz])=>{
+     // Consume every original transform draw before compacting, even when this instance is rejected.
+     // This preserves all remaining matrices and leaves unrelated tiles unchanged.
+     const s=.8+rnd()*.6;m.compose(new THREE.Vector3(px-OX,0,pz-OZ),q.setFromAxisAngle(up,rnd()*6.283),new THREE.Vector3(s,s*(.8+rnd()*.5),s)).multiply(part.local);
+     if(!mask||acceptGrassCandidate(px,pz,mask(px,pz)))im.setMatrixAt(count++,m);
+    });
+    im.count=count;if(!count){im.dispose();continue}
     im.computeBoundingSphere();this.tiles.push(im);this.group.add(im);
    }
   });
