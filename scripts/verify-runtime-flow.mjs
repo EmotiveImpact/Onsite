@@ -1,0 +1,45 @@
+// Actual production runtime controls; no synthetic results or mutable simulation hooks.
+import {chromium} from '@playwright/test'
+import assert from 'node:assert/strict'
+import {mkdir,writeFile} from 'node:fs/promises'
+const origin=process.env.ONSITE_URL||'http://127.0.0.1:4184',out=process.env.OUT||'test-results/runtime-flow'
+await mkdir(out,{recursive:true})
+const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']})
+const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[],failed=[],checks=[]
+page.setDefaultTimeout(120000)
+page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/art unavailable/.test(m.text()))errors.push(m.text())})
+page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});page.on('requestfailed',r=>failed.push(r.url()))
+const ready=()=>page.waitForFunction(()=>window.__onsite?.ready,null,{timeout:240000})
+const tick=()=>page.evaluate(()=>__onsite.snapshot().tick)
+try{
+ await page.goto(origin+'/?map=heron-reach');await ready()
+ assert.equal(await page.locator('#mission-bots').textContent(),'06')
+ await page.screenshot({path:out+'/title-reach.png'})
+ await page.click('#tab-kit');await page.waitForFunction(()=>document.querySelector('#kit-preview-status').textContent==='')
+ await page.screenshot({path:out+'/operator-default.png'})
+ await page.locator('input[name="trainers"][value="high"]').check();await page.locator('input[name="hood"][value="down"]').check()
+ await page.screenshot({path:out+'/operator-high-down.png'});checks.push('Actual Reach title and lazy Blender kit renderer, two kit combinations')
+ await page.click('#tab-settings');await page.locator('#menu-quality').focus();await page.keyboard.press('ArrowDown')
+ assert.equal(await page.locator('#menu-quality').inputValue(),'balanced');await page.check('#menu-reduced-motion');await page.uncheck('#menu-sound')
+ const settings=await page.evaluate(()=>__onsite.metrics().presentation);assert.equal(settings.quality,'balanced');assert.equal(settings.reducedMotion,true);assert.equal(settings.pixelRatio,.5);assert.equal(settings.bloom,false)
+ checks.push('Native quality arrows and saved presentation settings reach the live renderer; SwiftShader stays at DPR 0.5')
+ await page.locator('#start').focus();await page.keyboard.press('Space');await page.waitForFunction(()=>document.pointerLockElement)
+ await page.keyboard.press('Escape');await page.waitForFunction(()=>!document.pointerLockElement)
+ const pausedTick=await tick();await page.waitForTimeout(800);assert.equal(await tick(),pausedTick);assert.equal(await page.evaluate(()=>__onsite.metrics().audioPaused),true)
+ await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.id),'restart-pause')
+ await page.click('#resume');await page.waitForFunction(()=>document.pointerLockElement);assert.equal(await page.evaluate(()=>__onsite.metrics().audioPaused),false)
+ await page.keyboard.press('Escape');await page.click('#leave-pause');assert(await page.locator('#menu').isVisible());assert(!(await page.locator('#hud').isVisible()))
+ const titleTick=await tick();await page.waitForTimeout(800);assert.equal(await tick(),titleTick);checks.push('Space enters pointer-locked game; Escape pauses input/simulation/audio; Tab, resume and return to title work')
+ await page.reload();await ready();await page.click('#tab-settings')
+ assert(await page.isChecked('#menu-reduced-motion'));assert(!(await page.isChecked('#menu-sound')));assert.equal(await page.inputValue('#menu-quality'),'balanced')
+ await page.click('#tab-kit');assert(await page.isChecked('input[name="hood"][value="down"]'));assert(await page.isChecked('input[name="trainers"][value="high"]'))
+ checks.push('Production preferences and visible kit controls survive reload')
+ await page.click('#tab-play');await page.click('[data-map="heron-court"]');await ready();assert.equal(new URL(page.url()).search,'');assert.equal(await page.locator('#mission-bots').textContent(),'03')
+ await page.click('#start');await page.waitForFunction(()=>document.pointerLockElement)
+ const before=await page.evaluate(()=>__onsite.snapshot().player.position);await page.keyboard.down('KeyW');const start=await tick();await page.waitForFunction(t=>__onsite.snapshot().tick>=t+15,start);await page.keyboard.up('KeyW')
+ const after=await page.evaluate(()=>__onsite.snapshot().player.position);assert(Math.hypot(after.x-before.x,after.z-before.z)>.2)
+ await page.keyboard.press('Escape');await page.click('#leave-pause');await page.screenshot({path:out+'/title-court.png'});checks.push('Real map link loads Court and normal keyboard movement remains active')
+ await page.setViewportSize({width:390,height:844});await page.click('#tab-settings');assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:out+'/settings-narrow.png'})
+ assert.deepEqual(errors,[]);assert.deepEqual(failed,[])
+ await writeFile(out+'/report.json',JSON.stringify({kind:'Production runtime keyboard/mouse flow; no synthetic results',renderer:'Chromium ANGLE SwiftShader (software)',checks,errors,failed},null,2));console.log(checks.join('\n'))
+}catch(e){await page.screenshot({path:out+'/failure.png'});await writeFile(out+'/failure.json',JSON.stringify({checks,errors,failed,error:String(e)},null,2));throw e}finally{await browser.close()}

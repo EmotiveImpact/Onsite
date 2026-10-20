@@ -7,11 +7,14 @@ reported with its footprint so the generator can give it an explicit box collide
 
 ## Tools
 
-- Blender 5.2.2 runs as a Python module: `python3 script.py` with `import bpy`.
-  There is no GUI. Cycles on the CPU works for preview renders. Do not rely on EEVEE.
-- Python has numpy and Pillow. Do not install packages or download assets. Poly Haven,
-  ambientCG and similar hosts are blocked here. Every new texture and mesh is
-  original work, made procedurally or by hand-written code. Record how it was made.
+- The original kit was authored with Blender 5.2.2 as a Python module. In the 19 October visual
+  session, the available tool is **Blender 4.3.2 CLI**; system Python has no `bpy`. Use
+  `blender -b --python-exit-code 1 --python script.py`. It cannot open the newer original files.
+  Preserve them and rebuild from the generators into the additive files documented in the work log.
+- Python has numpy and Pillow. Network/tool availability is session-dependent; do not assume a
+  previous environment's blocked hosts or installed modules apply. Every new asset or dependency
+  needs a provenance/licence record. This pass reuses existing textures and original procedural
+  geometry; its downloaded native gltfpack tool is version/hash-pinned in the compression manifest.
 - The machine has 4 CPU cores. Keep preview renders small (for example 960 × 640,
   64 to 128 samples, with denoising).
 

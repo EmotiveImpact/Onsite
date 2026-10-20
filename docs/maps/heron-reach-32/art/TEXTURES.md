@@ -91,9 +91,62 @@ phase-matched for jointed surfaces), file sizes and hashes.
 
 ## Known limits
 
+### Wet-ground addition, 19 October 2026
+
+`make_heron_wetness.py` generates `decals/wetness-mask.webp` and `decals/lamp-streak.webp`
+from deterministic periodic noise and a rippled falloff (NumPy/Pillow, seed 741). They are original
+ONSITE procedural work; no external pixels or model were used. Both are 512 px. The mask uses
+linear data and repeats every 11 world metres; the streak is an sRGB RGBA texture.
+`decals/wetness-manifest.json` records hashes and sizes. The runtime uses the existing PBR ground
+maps and dusk environment, with no added render pass or changes to collision.
+
+### Shop backdrop addition, 19 October 2026
+
+`make_heron_shop_textures.py` prepares the existing project ChatGPT images
+`generated/shops/corner-shop-interior.png` and `launderette-interior.png` at 1024 × 512,
+WebP quality 88. Sources are preserved; no external pixels were downloaded. The source commit
+is `dd803c9`, the same generated-image set already credited above. Source/runtime hashes and
+processing notes live in `public/materials/heron/shops/manifest.json`.
+
+The Blender shop-detail kit places single-sided backdrops against existing rear walls, behind the
+three-dimensional shelves and washers. Rear doorway gaps stay clear. These are lit image cards,
+not fully modelled shelves inside the image; the existing prop geometry supplies foreground depth.
+
 - The source images are generated and not physically measured, so coverage is a modelling
   decision, made to fit real brick, slab and paver sizes.
 - Aged steel and render keep some mid-scale blotches, so repeats show on very large flat areas.
   Break them up with decals or vertex-colour variation.
 - The window interiors are flat-shaded painted views meant for glazing seen from outside. They
   carry no parallax.
+# Runtime compression pass — 19 October 2026
+
+`public/materials/heron/ktx2/manifest.json` records encoding-only derivatives of all 87 distinct
+architecture PBR textures, including source/output SHA-256, dimensions, encoding and byte counts.
+Original source artwork and WebPs are preserved. Existing provenance below still applies.
+Colour/ORM use ETC1S; normals use UASTC with Zstd to retain normal detail. The native encoder may
+round dimensions to a multiple of four; source and encoded dimensions are recorded separately.
+
+Rebuild: `GLTFPACK=/path/to/native/gltfpack python3 scripts/maps/art/compress_heron_textures.py`.
+Use native meshoptimizer gltfpack **v0.22**, tag commit `4affad044571506a5724c9a6f15424f43e86f731`
+(MIT; Basis Universal encoder Apache-2.0). The npm/WASM build cannot compress textures. The
+encoder executable hash is in the manifest; binaries are not committed.
+
+The 87 original WebPs total **20,038,822 bytes**; the KTX2 alternatives total **34,714,740 bytes**.
+This pass trades a larger compressed download, mainly from UASTC normals, for reduced GPU texture
+allocation. A source-dimension RGBA8+mips estimate is **352,760,300 bytes** for these images alone.
+This is not measured VRAM. Embedded prop/foliage maps and other renderer allocations are excluded.
+Runtime `__onsite.metrics().architectureTextures` reports decoded formats and mip-byte estimates.
+A software-browser probe loaded 81 architecture images as BC7 plus one uncompressed wetness mask:
+329.00 MB estimated decoded RGBA8+mips versus 83.31 MB decoded compressed mips (74.7% less).
+Local-preview transfers were 56.54 MB for WebP versus 70.71 MB for KTX2, including shared game
+assets; these are local HTTP measurements, not a CDN/gzip budget. Real-GPU memory and timing
+remain unverified.
+
+Supported hardware uses KTX2; software defaults to WebP. `&textures=webp` forces the fallback;
+`&inspect&textures=ktx2` allows a software transcoder check. Individual decode failures fall back
+to the original WebP. The Basis transcoder is copied unchanged from Three.js 0.186.1, with its
+Apache-2.0 licence, source and hashes in `public/vendor/basis/`; it is credited in the game.
+
+`pigeon-net.webp` is a 512 px WebP derivative of the existing project ChatGPT-generated
+`generated/decals/hr_decal_pigeon_net.png`. Original retained; both hashes and render-only panel
+placements are in `assets/blender/heron-reach/gallery-detail-manifest.json`.

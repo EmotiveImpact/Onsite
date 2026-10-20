@@ -1,0 +1,190 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 0.5,
+  "commit": "b5bfd44293390436cbc024cc9743bf643260eefe",
+  "workingTree": "package.json                |  2 +-\n src/onsite/View.ts          |  2 +-\n src/onsite/heronReachArt.ts | 15 ++++++++++-----\n 3 files changed, 12 insertions(+), 7 deletions(-)",
+  "captures": [
+    {
+      "name": "the-cage",
+      "requestedPose": {
+        "x": -20,
+        "y": 0.04,
+        "z": 0,
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20.00000161740141,
+          "y": 0.02009166302887022,
+          "z": -0.0000014068737073102966
+        },
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 7,
+        "meanFrameMs": 712.0999999993613,
+        "drawCalls": 602,
+        "triangles": 1349133
+      }
+    },
+    {
+      "name": "washhouse-square",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 2.8999366463722254e-7,
+          "y": 0.020100016686774302,
+          "z": 23.999999996697824
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 12,
+        "meanFrameMs": 675.4249999995033,
+        "drawCalls": 325,
+        "triangles": 1215327
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 17,
+        "meanFrameMs": 635.4117647058823,
+        "drawCalls": 509,
+        "triangles": 1302514
+      }
+    },
+    {
+      "name": "stair-core",
+      "requestedPose": {
+        "x": -46.85,
+        "y": 0.04,
+        "z": -18.799999999999997,
+        "yaw": 0,
+        "pitch": 0.15
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -46.85000273238518,
+          "y": 0.01962636999960521,
+          "z": -18.799999264783473
+        },
+        "yaw": 0,
+        "pitch": 0.15,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 22,
+        "meanFrameMs": 629.2727272727273,
+        "drawCalls": 270,
+        "triangles": 1140771
+      }
+    },
+    {
+      "name": "roof-skyline",
+      "requestedPose": {
+        "x": -34,
+        "y": 9.04,
+        "z": -26,
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -34,
+          "y": 9.01999312522239,
+          "z": -25.999999962937114
+        },
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 26,
+        "meanFrameMs": 653.5230769228476,
+        "drawCalls": 431,
+        "triangles": 1269538
+      }
+    },
+    {
+      "name": "garden-court",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000013789149875,
+          "y": 0.02007853666291337,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 31,
+        "meanFrameMs": 682.938709677227,
+        "drawCalls": 282,
+        "triangles": 1187541
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

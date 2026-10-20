@@ -1,0 +1,104 @@
+{
+  "createdUTC": "2026-10-20T03:23:33.140060+00:00",
+  "provenance": "Original ONSITE Playwright mouse/keyboard verification recording. Raw source retained in ignored test-results/building-ground/ground-reach; no donor video or concept artwork.",
+  "context": "Final 90 seconds of passing Heron Reach normal-input verification: closing combat and capture victory. Automatic keyboard/mouse input, not human play. Reset is asserted in the browser report, but the recorded closing frames show the victory screen before the next rendered frame.",
+  "rendering": "Chromium / ANGLE SwiftShader, 1100 x 700 viewport, DPR 0.5, captured 960 x 600; not a real-GPU benchmark or evidence of smooth play.",
+  "sourceCommit": "623bc24ad98aa60db86f41b50da6e9dae12daeb4",
+  "frozenBuild": "http://127.0.0.1:4194",
+  "servedJavaScript": {
+    "file": "index-UnAVxv0V.js",
+    "sha256": "47f60eae723149b82c78933b0071e23f829bf83c9e1234b7236709395e2d8a54"
+  },
+  "processing": "Original wall-clock speed retained; sampled at 10 fps, VP9 CRF 40, cpu-used 6, two threads. No source audio.",
+  "durationToleranceSeconds": 0.2,
+  "file": "reach-closing.webm",
+  "source": {
+    "path": "/workspace/Onsite/test-results/building-ground/ground-reach/page@4d09726d28a5e4d68f86464bf9a959ed.webm",
+    "bytes": 25079889,
+    "sha256": "4d503161b6f041b5ddcd457569188c614fa37ba0cce82084a6f5168cc21a8714",
+    "durationSeconds": 245.72,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 960,
+          "height": 600,
+          "avg_frame_rate": "25/1"
+        }
+      ],
+      "format": {
+        "duration": "245.720000",
+        "size": "25079889"
+      }
+    }
+  },
+  "excerpt": {
+    "startSeconds": 155.72,
+    "endSeconds": 245.72,
+    "expectedDurationSeconds": 90.0,
+    "timeScale": 1
+  },
+  "output": {
+    "bytes": 1400299,
+    "sha256": "1851e10efd5f793cd02eec18f99bc04d7c87823b851d9d6e3c7f6e3932baf4f4",
+    "durationSeconds": 90.0,
+    "durationDifferenceSeconds": 0.0,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 960,
+          "height": 600,
+          "avg_frame_rate": "10/1"
+        }
+      ],
+      "format": {
+        "duration": "90.000000",
+        "size": "1400299"
+      }
+    }
+  },
+  "command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-ss",
+    "155.720000",
+    "-i",
+    "/workspace/Onsite/test-results/building-ground/ground-reach/page@4d09726d28a5e4d68f86464bf9a959ed.webm",
+    "-t",
+    "90.000000",
+    "-map",
+    "0:v:0",
+    "-an",
+    "-vf",
+    "scale=960:600:flags=lanczos,fps=10",
+    "-c:v",
+    "libvpx-vp9",
+    "-b:v",
+    "0",
+    "-crf",
+    "40",
+    "-cpu-used",
+    "6",
+    "-threads",
+    "2",
+    "-row-mt",
+    "1",
+    "docs/maps/heron-reach-32/art/evidence/ground-growth/video/reach-closing.webm"
+  ],
+  "ffmpegVersion": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+  "visualInspection": {
+    "sampledOutputSeconds": [
+      88,
+      89.8
+    ],
+    "observed": "Site secured, 6 of 6 opponents, capture complete; final reset state is reported by the verifier rather than visibly established by this clip."
+  }
+}

@@ -1,0 +1,414 @@
+{
+  "provenance": "Original ONSITE procedural shelf/stock geometry; reuses original lived atlas with its existing font/art provenance.",
+  "builder": "scripts/maps/art/build_heron_shop_depth.py",
+  "builderSHA256": "7cca5a952e68e5034aa1b481aae5c855f58d87efac71c2d50daa9c954d2f4351",
+  "blender": "4.3.2",
+  "coordinates": "Map metres, glTF world x=mapX-72,y=mapY,z=mapZ-60. No loader offset.",
+  "layoutSHA256": "277dbbaab1765c3dad9a9ea1fd440530de02770e071c31b3854dffd3d123c707",
+  "collision": "No changes. New shelving is contained within four existing collider boxes.",
+  "triangles": 7944,
+  "materialBatches": 6,
+  "sharedMaterials": [
+    "hr_upvc_white",
+    "hr_steel_black",
+    "hr_steel_galv"
+  ],
+  "embeddedMaterial": "hr_lived_atlas",
+  "textureSHA256": "b09121e6afc82be769b2fb86d763baaae0cb090d0476bcbc5237e29c14f26565",
+  "reuseAtlasMaterial": "Reuse the same hr_lived_atlas material instance as the lived kit where possible to avoid a second decoded texture allocation.",
+  "hideOriginalShelfRenderPlacements": [
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 107.24000000000001,
+      "y": 0,
+      "z": 56.519999999999996,
+      "ry": 3.141592653589793,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 108.52000000000001,
+      "y": 0,
+      "z": 56.519999999999996,
+      "ry": 3.141592653589793,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 109.4,
+      "y": 0,
+      "z": 52.5,
+      "ry": 0,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 112.6,
+      "y": 0,
+      "z": 52.5,
+      "ry": 0,
+      "collide": true
+    }
+  ],
+  "hideCardNodes": [
+    "E-shop/interior / hr_shop_image_corner",
+    "W-shops/interior / hr_shop_image_laundry",
+    "C-store/interior / hr_shop_image_laundry"
+  ],
+  "features": [
+    {
+      "name": "Corner replacement shelf at 107.24,56.52",
+      "mapBounds": {
+        "min": [
+          106.64000000000001,
+          0,
+          56.278
+        ],
+        "max": [
+          107.84,
+          2.07,
+          56.76
+        ]
+      },
+      "allowedBounds": [
+        [
+          106.64000000000001,
+          0,
+          56.269999999999996
+        ],
+        [
+          107.84,
+          2.07,
+          56.769999999999996
+        ]
+      ],
+      "notes": "North-facing rear-wall shelving"
+    },
+    {
+      "name": "Corner replacement shelf at 108.52,56.52",
+      "mapBounds": {
+        "min": [
+          107.92000000000002,
+          0,
+          56.278
+        ],
+        "max": [
+          109.12,
+          2.07,
+          56.76
+        ]
+      },
+      "allowedBounds": [
+        [
+          107.92000000000002,
+          0,
+          56.269999999999996
+        ],
+        [
+          109.12,
+          2.07,
+          56.769999999999996
+        ]
+      ],
+      "notes": "North-facing rear-wall shelving"
+    },
+    {
+      "name": "Corner replacement shelf at 109.40,52.50",
+      "mapBounds": {
+        "min": [
+          108.80000000000001,
+          0,
+          52.258
+        ],
+        "max": [
+          110.0,
+          2.07,
+          52.742
+        ]
+      },
+      "allowedBounds": [
+        [
+          108.80000000000001,
+          0,
+          52.25
+        ],
+        [
+          110.0,
+          2.07,
+          52.75
+        ]
+      ],
+      "notes": "Double-sided centre gondola"
+    },
+    {
+      "name": "Corner replacement shelf at 112.60,52.50",
+      "mapBounds": {
+        "min": [
+          112.0,
+          0,
+          52.258
+        ],
+        "max": [
+          113.19999999999999,
+          2.07,
+          52.742
+        ]
+      },
+      "allowedBounds": [
+        [
+          112.0,
+          0,
+          52.25
+        ],
+        [
+          113.19999999999999,
+          2.07,
+          52.75
+        ]
+      ],
+      "notes": "Double-sided centre gondola"
+    },
+    {
+      "name": "LAUNDERETTE washer-top detail 0",
+      "mapBounds": {
+        "min": [
+          24.729999999999997,
+          1.1009999513626099,
+          56.22
+        ],
+        "max": [
+          25.077001571655273,
+          1.274999976158142,
+          56.44
+        ]
+      },
+      "allowedBounds": [
+        [
+          24.5,
+          1.1,
+          55.87
+        ],
+        [
+          25.2,
+          1.29,
+          56.73
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "LAUNDERETTE washer-top detail 1",
+      "mapBounds": {
+        "min": [
+          25.509999999999998,
+          1.1009999513626099,
+          56.22
+        ],
+        "max": [
+          25.85700035095215,
+          1.274999976158142,
+          56.44
+        ]
+      },
+      "allowedBounds": [
+        [
+          25.28,
+          1.1,
+          55.87
+        ],
+        [
+          25.98,
+          1.29,
+          56.73
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "LAUNDERETTE washer-top detail 2",
+      "mapBounds": {
+        "min": [
+          26.29,
+          1.1009999513626099,
+          56.22
+        ],
+        "max": [
+          26.637001037597656,
+          1.274999976158142,
+          56.44
+        ]
+      },
+      "allowedBounds": [
+        [
+          26.06,
+          1.1,
+          55.87
+        ],
+        [
+          26.76,
+          1.29,
+          56.73
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "LAUNDERETTE washer-top detail 3",
+      "mapBounds": {
+        "min": [
+          27.069999999999993,
+          1.1009999513626099,
+          56.22
+        ],
+        "max": [
+          27.41699981689453,
+          1.274999976158142,
+          56.44
+        ]
+      },
+      "allowedBounds": [
+        [
+          26.84,
+          1.1,
+          55.87
+        ],
+        [
+          27.54,
+          1.29,
+          56.73
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "WASHHOUSE washer-top detail 0",
+      "mapBounds": {
+        "min": [
+          60.540000000000006,
+          1.1009999513626099,
+          89.28999999999999
+        ],
+        "max": [
+          60.88699722290039,
+          1.274999976158142,
+          89.50999999999999
+        ]
+      },
+      "allowedBounds": [
+        [
+          60.27,
+          1.1,
+          89.06
+        ],
+        [
+          61.13,
+          1.29,
+          89.76
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "WASHHOUSE washer-top detail 1",
+      "mapBounds": {
+        "min": [
+          60.540000000000006,
+          1.1009999513626099,
+          90.07
+        ],
+        "max": [
+          60.88699722290039,
+          1.274999976158142,
+          90.28999999999999
+        ]
+      },
+      "allowedBounds": [
+        [
+          60.27,
+          1.1,
+          89.84
+        ],
+        [
+          61.13,
+          1.29,
+          90.54
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    },
+    {
+      "name": "WASHHOUSE washer-top detail 2",
+      "mapBounds": {
+        "min": [
+          60.540000000000006,
+          1.1009999513626099,
+          90.85
+        ],
+        "max": [
+          60.88699722290039,
+          1.274999976158142,
+          91.07
+        ]
+      },
+      "allowedBounds": [
+        [
+          60.27,
+          1.1,
+          90.62
+        ],
+        [
+          61.13,
+          1.29,
+          91.32
+        ]
+      ],
+      "notes": "Small folded goods and sealed supplies rest on the existing 1.10m washer top; x/z collider footprint unchanged"
+    }
+  ],
+  "routeChecks": "passed",
+  "footprintChecks": "passed",
+  "protectedRoutes": [
+    [
+      "front",
+      [
+        110.14,
+        0.035,
+        47.55
+      ],
+      [
+        111.86,
+        2.4,
+        50.15
+      ]
+    ],
+    [
+      "centre aisle",
+      [
+        110,
+        0.035,
+        50.15
+      ],
+      [
+        112,
+        2.4,
+        55.8
+      ]
+    ],
+    [
+      "rear",
+      [
+        110.31,
+        0.035,
+        55.8
+      ],
+      [
+        111.69,
+        2.4,
+        57.45
+      ]
+    ]
+  ],
+  "rawGLBBytes": 772004,
+  "compressedGLBBytes": 184612,
+  "compressedGLBSHA256": "2fb3dd9aa78ca11ee75717ec0b5f3be0705e16d8b713eb13171558ccc99adb18"
+}

@@ -1,0 +1,214 @@
+{
+  "provenance": "Original ONSITE procedural geometry and original Pillow/numpy printed artwork; no external asset downloads. Fonts and artwork sources recorded in public/materials/heron/lived/manifest.json.",
+  "builder": "scripts/maps/art/build_heron_lived_detail.py",
+  "builderSHA256": "7a69ab221013b6020a0afc6664ca6fa46543482bbdbcf09dc734be272e87779d",
+  "blender": "4.3.2",
+  "units": "metres; authoring x east, y up, z south; glTF world x=mapX-72, y=mapY, z=mapZ-60",
+  "layoutSHA256": "277dbbaab1765c3dad9a9ea1fd440530de02770e071c31b3854dffd3d123c707",
+  "collection": "HR_LIVED_DETAIL",
+  "collision": "None; additions fit existing walls, glazing, open leaf, shelf footprints and ground.",
+  "sharedRuntimeMaterials": [
+    "hr_steel_black",
+    "hr_steel_aged",
+    "hr_steel_galv",
+    "hr_rubber"
+  ],
+  "embeddedMaterials": {
+    "hr_lived_atlas": {
+      "texture": "public/materials/heron/lived/shop-lived-color.webp",
+      "colourSpace": "sRGB",
+      "roughness": 0.78,
+      "metalness": 0,
+      "emissiveStrength": 0.08,
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "estimatedRGBA8MipBytes": 5592405
+    }
+  },
+  "textureSHA256": "b09121e6afc82be769b2fb86d763baaae0cb090d0476bcbc5237e29c14f26565",
+  "materialBatches": 5,
+  "triangles": 2242,
+  "features": [
+    {
+      "name": "Recessed window trim and raised shutter housings",
+      "support": "Existing north wall and window frames",
+      "mapBounds": {
+        "min": [
+          102.535,
+          0.03,
+          47.8
+        ],
+        "max": [
+          119.465,
+          2.49,
+          48.15
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Both glazing bays retain their open views. Door housing starts above the 2.4 m portal."
+    },
+    {
+      "name": "Shop window notices",
+      "support": "Existing closed north glazing, z=48.10",
+      "mapBounds": {
+        "min": [
+          103.068,
+          0.84887,
+          48.061
+        ],
+        "max": [
+          117.212,
+          1.917,
+          48.076
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Small opaque printed cards cover under 10 percent of the two glazing bays. No portal signs."
+    },
+    {
+      "name": "Open door pushbar and security conduit",
+      "support": "Existing north door leaf and solid north-east jamb",
+      "mapBounds": {
+        "min": [
+          110.106,
+          0.15,
+          47.922
+        ],
+        "max": [
+          112.34,
+          2.2,
+          49.769
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Pushbar hugs the pre-existing leaf at x=110.06..110.105; new geometry ends at x=110.130. The central doorway stays clear."
+    },
+    {
+      "name": "Front rainwater pipe and flush pavement drains",
+      "support": "Existing north-east brick pier and ground at y=0",
+      "mapBounds": {
+        "min": [
+          104.78,
+          0.003,
+          47.37
+        ],
+        "max": [
+          119.9,
+          2.73,
+          57.49
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Pipe is 90 mm across and hugs the solid end pier. Grates are 5 mm above the existing paving, away from the portal."
+    },
+    {
+      "name": "Rear service ventilation, electrical box and access notices",
+      "support": "Existing solid south wall, clear of the rear door",
+      "mapBounds": {
+        "min": [
+          113.603,
+          1.38,
+          56.986
+        ],
+        "max": [
+          119.3,
+          2.6,
+          57.12
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Ventilator/box projection is at most 11 cm. All are east of x=113.60, rear opening is x=110.25..111.75."
+    }
+  ],
+  "protectedRoutes": [
+    {
+      "name": "front portal between existing open leaf and opposite frame",
+      "min": [
+        110.14,
+        0.035,
+        47.55
+      ],
+      "max": [
+        111.86,
+        2.4,
+        50.15
+      ]
+    },
+    {
+      "name": "central aisle between existing shelf colliders",
+      "min": [
+        110.0,
+        0.035,
+        50.15
+      ],
+      "max": [
+        112.0,
+        2.4,
+        55.8
+      ]
+    },
+    {
+      "name": "rear portal between existing frames",
+      "min": [
+        110.31,
+        0.035,
+        55.8
+      ],
+      "max": [
+        111.69,
+        2.4,
+        57.45
+      ]
+    }
+  ],
+  "protectedRoutePolygonCheck": "passed",
+  "existingShelfPlacements": [
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 107.24000000000001,
+      "y": 0,
+      "z": 56.519999999999996,
+      "ry": 3.141592653589793,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 108.52000000000001,
+      "y": 0,
+      "z": 56.519999999999996,
+      "ry": 3.141592653589793,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 109.4,
+      "y": 0,
+      "z": 52.5,
+      "ry": 0,
+      "collide": true
+    },
+    {
+      "asset": "SHOP_SHELF_UNIT",
+      "x": 112.6,
+      "y": 0,
+      "z": 52.5,
+      "ry": 0,
+      "collide": true
+    }
+  ],
+  "rawGLBBytes": 285432,
+  "compressedGLBBytes": 110100,
+  "compressedGLBSHA256": "611d7b7066e3cefa597e004fa11b4ec8a863a3ac348c2ccf18ba2b94fc629e71",
+  "compression": {
+    "tool": "npm gltfpack",
+    "version": "0.22.0",
+    "flags": [
+      "-cc",
+      "-kn",
+      "-km",
+      "-kv",
+      "-vtf"
+    ],
+    "lockfileSHA256": "c5e02d76cbb5e3c741aadf877fdd452d53c8011c22a6561e3b1b6979215ad4d0"
+  }
+}

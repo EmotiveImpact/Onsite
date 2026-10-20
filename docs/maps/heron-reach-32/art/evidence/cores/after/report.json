@@ -1,0 +1,265 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4180",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4180/assets/index-D4qOC027.js",
+      "sha256": "f098d7489ee31fe08e3414c461c50fede38f4c3635363d3b0986d590c973d896"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 0.5,
+  "commit": "e227a10947a7c8995d4eaf4bd54a3bfddc4a259b",
+  "workingTree": "docs/maps/heron-reach-32/art/ART-PUSH-2026-10-19.md | 6 ++++--\n docs/maps/heron-reach-32/art/FOLIAGE.md             | 1 -\n docs/maps/heron-reach-32/art/TEXTURES.md            | 1 -\n 3 files changed, 4 insertions(+), 4 deletions(-)",
+  "captures": [
+    {
+      "name": "the-cage",
+      "requestedPose": {
+        "x": -20,
+        "y": 0.04,
+        "z": 0,
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -19.999998092651367,
+          "y": 0.02008830857957944,
+          "z": -1.959445398824755e-06
+        },
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 6,
+        "meanFrameMs": 652.5999999990066,
+        "drawCalls": 612,
+        "triangles": 1351713
+      }
+    },
+    {
+      "name": "washhouse-square",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0,
+          "y": 0.020099957082129527,
+          "z": 23.999999996697824
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 12,
+        "meanFrameMs": 659.96666666617,
+        "drawCalls": 329,
+        "triangles": 1221785
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 17,
+        "meanFrameMs": 638.6764705882352,
+        "drawCalls": 502,
+        "triangles": 1304934
+      }
+    },
+    {
+      "name": "stair-core",
+      "requestedPose": {
+        "x": -46.85,
+        "y": 0.04,
+        "z": -18.799999999999997,
+        "yaw": 0,
+        "pitch": 0.15
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -46.85000258990959,
+          "y": 0.01971163339621851,
+          "z": -18.799999246469646
+        },
+        "yaw": 0,
+        "pitch": 0.15,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 22,
+        "meanFrameMs": 646.5590909089555,
+        "drawCalls": 270,
+        "triangles": 1138567
+      }
+    },
+    {
+      "name": "roof-skyline",
+      "requestedPose": {
+        "x": -34,
+        "y": 9.04,
+        "z": -26,
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -34,
+          "y": 9.020064396261295,
+          "z": -26
+        },
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 27,
+        "meanFrameMs": 648.2666666665011,
+        "drawCalls": 437,
+        "triangles": 1270400
+      }
+    },
+    {
+      "name": "garden-court",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000013789149875,
+          "y": 0.020078596267558146,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 33,
+        "meanFrameMs": 630.7212121211218,
+        "drawCalls": 285,
+        "triangles": 1188873
+      }
+    },
+    {
+      "name": "stair-elevation",
+      "requestedPose": {
+        "x": -44,
+        "y": 0.04,
+        "z": -12,
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -44.0000054553218,
+          "y": 0.020070097228744976,
+          "z": -12.006428582899389
+        },
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 38,
+        "meanFrameMs": 610.944736842066,
+        "drawCalls": 296,
+        "triangles": 1170205
+      }
+    },
+    {
+      "name": "gallery-edge",
+      "requestedPose": {
+        "x": -20,
+        "y": 3.04,
+        "z": -22.9,
+        "yaw": -3.141592653589793,
+        "pitch": 0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20.000000037304392,
+          "y": 3.0198118282292854,
+          "z": -22.900099313594524
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 43,
+        "meanFrameMs": 634.7418604650816,
+        "drawCalls": 551,
+        "triangles": 1284772
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "frozenAssetHashesRecordedAfterCapture": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "sha256": "6c437968e6e22f3e2ef343cc8e4c44426c90a6ff133aedf6bbc99ce7ab4e5baa"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "sha256": "7b9a2c951870cbfa0c142f978b6a32830d03fcddf19977cd17824a3c3f775bf1"
+    }
+  ]
+}

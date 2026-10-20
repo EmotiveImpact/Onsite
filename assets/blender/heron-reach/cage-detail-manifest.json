@@ -1,0 +1,139 @@
+{
+  "provenance": "Original ONSITE procedural Blender geometry, derived from the existing project prop generators. No external assets.",
+  "builder": "scripts/maps/art/build_heron_cage_detail.py",
+  "blender": "4.3.2",
+  "units": "metres; Blender Z up, glTF Y up",
+  "collision": "Render replacements only. Existing runtime solids and navigation are unchanged.",
+  "assets": [
+    {
+      "name": "CAGE_POST",
+      "triangles": 444,
+      "bounds": {
+        "min": [
+          -0.1,
+          -0.1,
+          0.0
+        ],
+        "max": [
+          0.1,
+          0.1,
+          2.732
+        ]
+      },
+      "needsCollision": false,
+      "notes": "80 mm SHS court post, 2.72 m, on a bolted base plate. Posts sit every 2.5 m between CAGE_PANEL_2_5M modules."
+    },
+    {
+      "name": "CAGE_PANEL_2_5M",
+      "triangles": 734,
+      "bounds": {
+        "min": [
+          -1.227,
+          -0.033,
+          0.02
+        ],
+        "max": [
+          1.227,
+          0.025,
+          2.6
+        ]
+      },
+      "needsCollision": false,
+      "notes": "2.5 m wide, 2.6 m high chain-link panel (fine diagonal wire texture on a double-sided sheet) in a green 40 mm box frame. Existing footprint and gates retained."
+    },
+    {
+      "name": "CAGE_GATE_4M",
+      "triangles": 1728,
+      "bounds": {
+        "min": [
+          -2.405,
+          -1.959,
+          -0.003
+        ],
+        "max": [
+          2.405,
+          0.12,
+          2.912
+        ]
+      },
+      "needsCollision": false,
+      "notes": "4.0 m clear opening between 100 mm posts with a header beam; two 1.97 m leaves swung 100 degrees outward to -Y. The opening itself is walkable; collide posts and the open leaves only."
+    },
+    {
+      "name": "GOAL_FIVE_A_SIDE",
+      "triangles": 1172,
+      "bounds": {
+        "min": [
+          -1.905,
+          -0.542,
+          0.0
+        ],
+        "max": [
+          1.905,
+          0.522,
+          1.3
+        ]
+      },
+      "needsCollision": false,
+      "notes": "3.66 x 1.22 m five-a-side goal, mouth faces -Y, white painted steel with a slack alpha-clipped net."
+    },
+    {
+      "name": "BALL",
+      "triangles": 900,
+      "bounds": {
+        "min": [
+          -0.108,
+          -0.108,
+          0.002
+        ],
+        "max": [
+          0.108,
+          0.108,
+          0.218
+        ]
+      },
+      "needsCollision": false,
+      "notes": "Size 5 ball, 0.22 m, 32 panels with stitched seams. Dynamic prop if wanted; static it can be ignored by collision."
+    },
+    {
+      "name": "CAGE_FLOODLIGHT",
+      "triangles": 508,
+      "bounds": {
+        "min": [
+          -0.58,
+          -0.14,
+          0.0
+        ],
+        "max": [
+          0.58,
+          0.14,
+          6.52
+        ]
+      },
+      "needsCollision": false,
+      "notes": "6.5 m paired court floodlight head; replaces render mesh at existing LAMP_COLUMN positions. Existing collision remains authoritative."
+    },
+    {
+      "name": "CAGE_MARKINGS",
+      "triangles": 150,
+      "bounds": {
+        "min": [
+          -14.038,
+          -9.038,
+          0.014
+        ],
+        "max": [
+          14.038,
+          9.038,
+          0.014
+        ]
+      },
+      "needsCollision": false,
+      "notes": "30 x 20 m court, 75 mm paint lines, 5 m centre circle. Render-only; five-a-side goal offsets match the as-built fence gate clearance."
+    }
+  ],
+  "textures": {
+    "cage_mesh-color.webp": "65255e1686d02e8d19cdb9c8c8f4a160cb41fe43e6f7aabd7ff8489049dedfdd",
+    "goal_net-color.webp": "91a3238762171d40d5592ecea940cb0a5a8d05215243f07305f1667e4d9c1862"
+  }
+}

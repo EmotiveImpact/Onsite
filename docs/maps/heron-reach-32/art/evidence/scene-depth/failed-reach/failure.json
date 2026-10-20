@@ -1,0 +1,146 @@
+{
+  "checks": [
+    "All materials/models loaded",
+    "Pointer lock and mouse look",
+    "Imported rifle and hands loaded; ADS sight aligns to centre",
+    "WWB automatic fire, recoil and timed reload",
+    "Pause/resume freezes simulation",
+    "Jump and landing",
+    "Combat result: 5 opponents down, health 0",
+    "Player damage and death screen"
+  ],
+  "errors": [],
+  "failed": [],
+  "state": {
+    "tick": 7249,
+    "status": "lost",
+    "time": 120.81666666666109,
+    "capture": 0,
+    "player": {
+      "position": {
+        "x": 0.18560041896300028,
+        "y": 0.020085399993695296,
+        "z": 5.303462508308075
+      },
+      "yaw": -8.517358903908775,
+      "pitch": 0.04402075011822461,
+      "health": 0,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 2,
+      "reserve": 7,
+      "reloadRemaining": 1.2833333333333354,
+      "ads": 0.00004668081583492667
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 15.66381521243602,
+          "y": 0.020089334626682054,
+          "z": 17.557540399953723
+        },
+        "health": 100,
+        "alive": true,
+        "state": "engage",
+        "velocity": {
+          "x": -0.6075905149817773,
+          "y": 0,
+          "z": 0.803105232555587
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": -15.514354936778545,
+          "y": 0.016768590882129453,
+          "z": -11.08940890058875
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 17.10381088615395,
+          "y": 0.020077993962622664,
+          "z": 15.456270657479763
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 4,
+        "position": {
+          "x": 38.036891151219606,
+          "y": 9.022653920976445,
+          "z": 24.54661287499863
+        },
+        "health": 0,
+        "alive": false,
+        "state": "chase",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 5,
+        "position": {
+          "x": -14.478303674608469,
+          "y": 0.020184463610639747,
+          "z": -18.586446209810674
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 6,
+        "position": {
+          "x": -14.07654545083642,
+          "y": 0.013968537430919192,
+          "z": -30.5480376733467
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 171,
+      "hits": 27,
+      "headshots": 2,
+      "multiKills": 0,
+      "bestStreak": 5,
+      "damageDealt": 499.99999999999994
+    },
+    "visible": [
+      1
+    ]
+  }
+}

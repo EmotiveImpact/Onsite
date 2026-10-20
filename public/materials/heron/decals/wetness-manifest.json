@@ -1,0 +1,15 @@
+{
+  "provenance": "Original ONSITE procedural NumPy/Pillow work, seed 741. No external image source.",
+  "script": "scripts/maps/art/make_heron_wetness.py",
+  "maskCoverageMetres": 11,
+  "files": {
+    "wetness-mask.webp": {
+      "bytes": 48048,
+      "sha256": "d9c1cc463f275fbfb20eb784793809c75ffc0d504e379706ff7cf745d835c47f"
+    },
+    "lamp-streak.webp": {
+      "bytes": 43122,
+      "sha256": "646d2aeb319dc13fcc19102ef29c4ec002549345b0d1aa2473f956e6733612e6"
+    }
+  }
+}
