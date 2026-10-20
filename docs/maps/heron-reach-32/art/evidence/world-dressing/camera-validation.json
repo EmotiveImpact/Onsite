@@ -1,0 +1,33 @@
+{
+  "kind": "Additional review-camera physical validation, not gameplay evidence",
+  "tuple": [
+    "garden-large-planter",
+    53.4,
+    0,
+    72.5,
+    -2.9,
+    -4,
+    -0.23
+  ],
+  "target": {
+    "planter": "K11",
+    "mapCentre": [
+      50.5,
+      68.5
+    ]
+  },
+  "method": "All actual Heron Reach solids instantiated in Rapier; standing capsule queried at initial camera feet. Nine footprint support samples checked, then actual WWB Player.step and physics.step for 60 stationary ticks.",
+  "solids": 2417,
+  "capsuleRadius": 0.38,
+  "capsuleFullHeight": 1.8,
+  "intersectionCount": 0,
+  "supportSamples": 9,
+  "settledFeet": {
+    "x": -18.59999275292887,
+    "y": 0.01997920574794987,
+    "z": 12.5
+  },
+  "grounded": true,
+  "horizontalDriftMetres": 7.24707113e-06,
+  "assertions": "Zero capsule intersections; all nine support samples valid; grounded feet within 0.05 m of ground; horizontal drift under 0.005 m"
+}

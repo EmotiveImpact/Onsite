@@ -1,0 +1,202 @@
+{
+  "checks": [
+    "All materials/models loaded",
+    "Pointer lock and mouse look",
+    "Imported rifle and hands loaded; ADS sight aligns to centre",
+    "WWB automatic fire, recoil and timed reload",
+    "Pause/resume freezes simulation",
+    "Jump and landing",
+    "Walk through lobby doorway into court",
+    "Combat result: 3 opponents down, health 56",
+    "Clear and capture victory",
+    "Round reset restores player and opponents"
+  ],
+  "errors": [],
+  "failed": [],
+  "combatState": {
+    "tick": 1691,
+    "status": "won",
+    "time": 28.183333333333014,
+    "capture": 2.5166666666666626,
+    "player": {
+      "position": {
+        "x": -2.6785728931427,
+        "y": 0.01993821333744561,
+        "z": 1.7448433613703351
+      },
+      "yaw": -0.22780220316054023,
+      "pitch": 0.0008399104082713372,
+      "health": 56,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 30,
+      "reserve": 121,
+      "reloadRemaining": 0,
+      "ads": 6.342118289276495e-69
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 11.075950529426336,
+          "y": 0.013975745394709471,
+          "z": 7.37266643345356
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": -2.7340174439596012,
+          "y": 0.019991123452491544,
+          "z": -4.6576544269919395
+        },
+        "health": 0,
+        "alive": false,
+        "state": "cover",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 15.58237864554394,
+          "y": 0.17962194448802615,
+          "z": 3.8752750824205577
+        },
+        "health": 0,
+        "alive": false,
+        "state": "engage",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 29,
+      "hits": 15,
+      "headshots": 1,
+      "multiKills": 1,
+      "bestStreak": 3,
+      "damageDealt": 300
+    },
+    "visible": []
+  },
+  "metrics": {
+    "softwareRenderer": true,
+    "renderer": "WebKit WebGL",
+    "frames": 115,
+    "meanFrameMs": 497.46521739130435,
+    "medianFrameMs": 501.5,
+    "p95FrameMs": 633.3999999910593,
+    "drawCalls": 85,
+    "triangles": 269187,
+    "architectureTextures": null,
+    "presentation": {
+      "sensitivity": 1,
+      "sound": true,
+      "volume": 0.6,
+      "reducedMotion": false,
+      "quality": "auto",
+      "pixelRatio": 0.5,
+      "bloom": false,
+      "contactInstances": 0
+    },
+    "audioPaused": true
+  },
+  "state": {
+    "tick": 0,
+    "status": "active",
+    "time": 0,
+    "capture": 0,
+    "player": {
+      "position": {
+        "x": -9,
+        "y": 0.04,
+        "z": 12
+      },
+      "yaw": 0,
+      "pitch": 0,
+      "health": 100,
+      "grounded": true
+    },
+    "weapon": {
+      "ammo": 30,
+      "reserve": 150,
+      "reloadRemaining": 0,
+      "ads": 0
+    },
+    "bots": [
+      {
+        "id": 1,
+        "position": {
+          "x": 15,
+          "y": 0.04,
+          "z": -6
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 2,
+        "position": {
+          "x": 12,
+          "y": 0.04,
+          "z": -12
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      },
+      {
+        "id": 3,
+        "position": {
+          "x": 6,
+          "y": 3.04,
+          "z": -7.5
+        },
+        "health": 100,
+        "alive": true,
+        "state": "roam",
+        "velocity": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        }
+      }
+    ],
+    "stats": {
+      "shots": 0,
+      "hits": 0,
+      "headshots": 0,
+      "multiKills": 0,
+      "bestStreak": 0,
+      "damageDealt": 0
+    },
+    "visible": []
+  }
+}

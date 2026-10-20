@@ -84,3 +84,13 @@ The dirt pass adds five CC0 Poly Haven props and ambientCG Ground110/Leaking003 
 ## South London residential pass
 
 Original Blender homes/furniture and visual surroundings: `scripts/build_homes.py`, `assets/blender/onsite-heron-court.blend`. Four Dawson's Heights/Brandon Estate photographs were visually studied; URLs/hashes in `research/SOUTH-LONDON-REFERENCES.json`. No photograph pixels or new donor assets were imported. Stock brick uses the existing original generated source, encoded by `scripts/prepare-home-material.py`; provenance at `public/materials/homes/provenance.json`.
+
+## Heron Reach scanned world dressing, 20 October 2026
+
+Six individual prop variants are extracted from already cleared Poly Haven scans in the pinned IRONLINE import: a rubbish bag, closed rusty metal bin, rusty air-conditioning unit, cardboard box, wooden crate and tyre. The originals and their original publisher notices remain unchanged in `public/models/donors`. The new Blender kit isolates each usable variant, closes the bin lid, seats objects at metre-scale base origins and reduces repeated-object texture resolutions. No IRONLINE engine code or uncleared art is introduced.
+
+The fern and clay planter are newly downloaded CC0 originals from Poly Haven: `fern_02` by Rob Tuytel/Rico Cilliers and `planter_pot_clay` by Amal Kumar. Original glTF dependencies, publisher metadata, licence evidence and SHA-256 hashes are preserved in `assets/reference/world-dressing/source-manifest.json`. The fern's original separate opacity PNG is combined with its colour map; it is not a generated substitute. Four individual fern variants and one pot are exported. The soil insert inside the pot is original ONSITE geometry/material.
+
+Rebuild scripts: `scripts/maps/art/build_heron_world_props.py` and `build_heron_world_plants.py`; editable packed Blender files and derived texture/model hashes, scale, bounds and cost records: `assets/blender/heron-reach/world-props-manifest.json` and `world-plants-manifest.json`. Runtime uses only the two derived GLBs in `public/models/heron-reach`, never the reference source folders. Instancing and placement are original ONSITE code. Render additions preserve existing physics and navigation.
+
+Read [the asset audit](../research/WORLD-ASSET-AUDIT-2026-10-20.md) for the donor inventory, selected sources, deferred models and licensing exclusions. Open Claudefare remains reference-only; its unlicensed code and assets are not copied.

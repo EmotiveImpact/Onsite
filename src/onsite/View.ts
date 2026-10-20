@@ -19,6 +19,8 @@ import {loadStairArt} from './heronStairArt'
 import {loadBuildingArt} from './heronBuildingArt'
 import {loadHeronGroundArt} from './heronGroundArt'
 import {loadHeronGroundPlan,createGroundGrassDensity} from './heronGroundRuntime'
+import {loadWorldAssetLibrary,buildWorldArt} from './heronWorldArt'
+import {buildHeronWorldDressing,worldReplacementKey,type WorldDressingPlan} from './heronWorldDressing'
 import {loadGalleryArt} from './heronGalleryArt'
 import {installHeronDepthFog} from './HeronDepthFog'
 import {loadLivedDetail,loadScannedDetail,loadShopDepth,isReplacedShopShelf} from './heronLivedDetail'
@@ -36,6 +38,7 @@ export class View {
  private atmosphere?:HeronReachAtmosphere;private composer?:EffectComposer;private readonly clock=new THREE.Clock();private readonly grass=new GrassField();private rain?:Rain;
  private settings:Pick<PlayerSettings,'quality'|'reducedMotion'>;private inspectionRatio?:number;private bloom?:UnrealBloomPass;private contacts?:HeronContactShadows;
  private activeRifle?:ReturnType<typeof donorRifle>;
+ private worldDressingStats?:WorldDressingPlan['stats'];
  artTextureStats:HeronReachMaterials['textureStats']|null=null;
  constructor(canvas:HTMLCanvasElement,readonly level:Level=heronCourt,settings:Pick<PlayerSettings,'quality'|'reducedMotion'>={quality:'auto',reducedMotion:false}){
   this.settings={...settings};
@@ -102,16 +105,33 @@ export class View {
     const dressing=reach.dressing.items.filter(p=>!isReplacedShopShelf(p)).map(p=>p.asset==='WALL_LAMP'&&Math.hypot(p.x-111,p.z-47.99)<.1?{...p,x:103}:p.asset==='LAMP_COLUMN'&&courtLamps.some(a=>Math.hypot(a.x-(p.x-72),a.z-(p.z-60))<.2)?{...p,asset:'CAGE_FLOODLIGHT',ry:Math.atan2(72-p.x,60-p.z)}:p);
     // Optional plan is generated from the actual layout offline; failures retain the original dressing.
     const groundPlan=loadHeronGroundPlan();
-    const kitTask=Promise.all([groundPlan,fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[])]).then(([plan,facade])=>loadHeronReachKits(gltf,m,[...dressing,{asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade,...(plan?[...plan.plants,...plan.perimeterTrees]:[])],m.names(),this.software,this.coverageSamples>0));
+    // New objects only replace originals once their individual model roots are usable.
+    const worldTask=Promise.all([loadWorldAssetLibrary(gltf),groundPlan]).then(([library,ground])=>{
+     const plan=buildHeronWorldDressing({
+      placements:reach.dressing.items,solids:reach.solids,doors:reach.layout.openings,
+      blocks:reach.layout.blocks,planters:reach.cover,groundPlants:ground?.plants,
+      potSoilSurfaceY:library.get('WORLD_CLAY_POT')?.soilSurfaceY,
+      potSoilRadius:library.get('WORLD_CLAY_POT')?.soilRadius,
+      fernStemXZ:new Map([...library].filter(([,asset])=>asset.stemXZ).map(([name,asset])=>[name,asset.stemXZ!])),
+      fernStemBasalY:new Map([...library].filter(([,asset])=>asset.stemBasalY!==undefined).map(([name,asset])=>[name,asset.stemBasalY!])),
+     },new Map([...library].map(([name,asset])=>[name,asset.bounds])));
+     const group=buildWorldArt(library,plan.placements);this.worldDressingStats=plan.stats;
+     return {group,plan};
+    });
+    const kitTask=Promise.all([groundPlan,worldTask,fetch('/models/heron-reach/facade-dressing.json').then(r=>r.json()).catch(()=>[])]).then(([plan,world,facade])=>loadHeronReachKits(gltf,m,[
+     ...dressing.filter(p=>!world.plan.replacementKeys.has(worldReplacementKey(p))),
+     {asset:'CAGE_MARKINGS',x:72,y:0,z:60,ry:0},...facade,
+     ...(plan?[...plan.plants.filter(p=>!world.plan.groundReplacementKeys.has(worldReplacementKey(p))),...plan.perimeterTrees]:[]),
+    ],m.names(),this.software,this.coverageSamples>0));
     const groundTask=Promise.all([groundPlan,kitTask]).then(async([plan,kits])=>({plan,...(plan?await loadHeronGroundArt(gltf,m,kits):{group:new THREE.Group(),loaded:false})}));
     // Grass assets fetch in parallel; thinning waits for explicit ground success, never child counts.
     const densityMask=groundTask.then(({plan,loaded})=>plan&&loaded?createGroundGrassDensity(plan):undefined);
-    const [built,kits,ground,grass,shops,gallery,lived]=await Promise.all([loadHeronReachArch(gltf,m),kitTask,groundTask,this.grass.build(gltf,this.software?1.5:5,{densityMask}),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0),loadLivedDetail(gltf,m)]);
+    const [built,kits,ground,grass,shops,gallery,lived,world]=await Promise.all([loadHeronReachArch(gltf,m),kitTask,groundTask,this.grass.build(gltf,this.software?1.5:5,{densityMask}),loadShopArt(gltf),loadGalleryArt(gltf,this.software,this.coverageSamples>0),loadLivedDetail(gltf,m),worldTask]);
     const [scanned,shopDepth,stairs,buildings]=await Promise.all([loadScannedDetail(gltf,shops),loadShopDepth(gltf,m,lived,shops),
      loadStairArt(gltf,m,built).catch(e=>{console.warn('Constructed stairs unavailable; retaining original stair art',e);return new THREE.Group()}),
      loadBuildingArt(gltf,m,built).catch(e=>{console.warn('Building construction unavailable; retaining original building art',e);return new THREE.Group()})]);
     await m.ready();this.artTextureStats=m.textureStats;m.disposeTranscoder();
-    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,ground.group,grass,shops,gallery,lived,scanned,shopDepth,stairs,buildings);return root;
+    const root=new THREE.Group();root.name='ONSITE / Heron Reach';root.add(built,kits,ground.group,grass,shops,gallery,lived,scanned,shopDepth,stairs,buildings,world.group);return root;
    }).catch(e=>{console.warn('Heron Reach art unavailable; showing the blockout',e);return null}):Promise.resolve(null);
    const [character,rifle,art]=await Promise.all([gltf.loadAsync('/models/onsite-operator.glb'),gltf.loadAsync('/models/onsite-carbine.glb'),arch,...pending,this.environment()]);
    if(art){this.scene.add(art);this.blueHour();for(const t of reach.signs)this.sign(t.text,t.x,t.y,t.z,t.w,t.ry);installHeronDepthFog(this.scene);this.contacts=new HeronContactShadows(this.scene,this.level)}else this.blockout();
@@ -228,6 +248,6 @@ export class View {
   if(this.renderer.getPixelRatio()!==profile.pixelRatio){this.renderer.setPixelRatio(profile.pixelRatio);this.composer?.setPixelRatio(profile.pixelRatio);this.resize()}
   if(this.bloom)this.bloom.enabled=profile.bloom;
  }
- presentation(){return {...this.settings,pixelRatio:this.renderer.getPixelRatio(),bloom:!!this.bloom?.enabled,contactInstances:this.contacts?.mesh.count??0}}
+ presentation(){return {...this.settings,pixelRatio:this.renderer.getPixelRatio(),bloom:!!this.bloom?.enabled,contactInstances:this.contacts?.mesh.count??0,...(this.worldDressingStats?{worldDressing:this.worldDressingStats}:{})}}
  resize(){this.renderer.setSize(innerWidth,innerHeight);this.composer?.setSize(innerWidth,innerHeight);this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.vmCamera.aspect=this.camera.aspect;this.vmCamera.updateProjectionMatrix()}
 }

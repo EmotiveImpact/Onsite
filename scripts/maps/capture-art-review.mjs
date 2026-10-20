@@ -12,13 +12,14 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/
 try {
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[],failed=[],captures=[];
  page.setDefaultTimeout(120000);
- page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/Heron Reach art unavailable|Heron Reach kits: no model|Constructed stairs unavailable|Building construction unavailable|Ground plan unavailable|Ground detail unavailable|Ground grass mask unavailable/.test(m.text()))errors.push(m.text())});
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/Heron Reach art unavailable|Heron Reach kits: no model|Constructed stairs unavailable|Building construction unavailable|Ground plan unavailable|Ground detail unavailable|Ground grass mask unavailable|World dressing kit unavailable|World dressing asset unavailable/.test(m.text()))errors.push(m.text())});
  page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));
  page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
  await page.addInitScript(()=>{let seed=741;Math.random=()=>((seed=Math.imul(seed,1664525)+1013904223>>>0)/4294967296)});
  const frozenBuildUrl=process.env.ONSITE_URL||'http://127.0.0.1:4173';
  await page.goto(frozenBuildUrl+'/?map=heron-reach&inspect'+(process.env.QUERY||''));
  await page.waitForFunction(()=>window.__onsite?.ready,null,{timeout:240000});
+ if(process.env.EXPECT_WORLD_DRESSING)assert.deepEqual(await page.evaluate(()=>__onsite.metrics().presentation.worldDressing),JSON.parse(process.env.EXPECT_WORLD_DRESSING),'Expected scanned world dressing must be loaded');
  await page.click('#start');await page.waitForFunction(()=>document.pointerLockElement);
  for(const [name,x,y,z,dx,dz,pitch] of views){
   if(selected&&!selected.includes(name))continue;
