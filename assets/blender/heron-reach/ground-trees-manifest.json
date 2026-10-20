@@ -1,0 +1,217 @@
+{
+  "kit": "Heron Reach ground-pass London planes (existing LOD1)",
+  "blender": "4.3.2",
+  "builder": "scripts/maps/art/export_heron_ground_trees.py",
+  "builderSHA256": "bb76009861cf52d2e2a32359795376499ac06bee881fce764cadd2c12598225d",
+  "units": "metres; ground-centred origins; glTF Y-up",
+  "source": {
+    "file": "assets/blender/heron-reach/winter-trees.blend",
+    "sha256": "cef4a4bb25c814a23e8b3264043d89757e7871b2d2e67acf16fdd3fa62eb35ad",
+    "manifest": "assets/blender/heron-reach/winter-manifest.json"
+  },
+  "blend": "assets/blender/heron-reach/ground-trees.blend",
+  "glb": "public/models/heron-reach/heron-reach-ground-trees.glb",
+  "provenance": "Two existing original ONSITE winter London-plane LOD1 meshes and unchanged project procedural textures. Perimeter birches were removed after initial silhouette review; original winter assets are unchanged. No new or external assets.",
+  "runtimeMaterials": "The GLB has texture-free named placeholders. Resolve each exact material name from the already-loaded winter kit; this preserves bark and leaf maps without duplicate texture allocation. The additive Blend retains original packed materials.",
+  "assets": [
+    {
+      "name": "TREE_PLANE_A_LOD1",
+      "collection": "TREE_PLANE_A_LOD1",
+      "objects": [
+        "TREE_PLANE_A_LOD1_bark",
+        "TREE_PLANE_A_LOD1_leaves"
+      ],
+      "triangles": 1533,
+      "boundsBlender": {
+        "min": [
+          -2.5337166786193848,
+          -3.1692326068878174,
+          -0.0795951634645462
+        ],
+        "max": [
+          2.2379422187805176,
+          2.020228147506714,
+          7.51237678527832
+        ]
+      },
+      "boundsYUp": {
+        "min": [
+          -2.5337166786193848,
+          -0.0795951634645462,
+          -2.020228147506714
+        ],
+        "max": [
+          2.2379422187805176,
+          7.51237678527832,
+          3.1692326068878174
+        ]
+      },
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "collision": {
+        "type": "none",
+        "note": "Render-only kit; existing runtime owns trunk collision."
+      }
+    },
+    {
+      "name": "TREE_PLANE_B_LOD1",
+      "collection": "TREE_PLANE_B_LOD1",
+      "objects": [
+        "TREE_PLANE_B_LOD1_bark",
+        "TREE_PLANE_B_LOD1_leaves"
+      ],
+      "triangles": 1393,
+      "boundsBlender": {
+        "min": [
+          -1.5478367805480957,
+          -2.6612796783447266,
+          -0.07324378937482834
+        ],
+        "max": [
+          2.451824903488159,
+          2.4291815757751465,
+          7.1958723068237305
+        ]
+      },
+      "boundsYUp": {
+        "min": [
+          -1.5478367805480957,
+          -0.07324378937482834,
+          -2.4291815757751465
+        ],
+        "max": [
+          2.451824903488159,
+          7.1958723068237305,
+          2.6612796783447266
+        ]
+      },
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "collision": {
+        "type": "none",
+        "note": "Render-only kit; existing runtime owns trunk collision."
+      }
+    }
+  ],
+  "textures": [
+    {
+      "file": "public/materials/heron/foliage/plane-bark-color.webp",
+      "sha256": "6c0760da4788ca0d255a0b9929e39a17e3bd7fa6d30e33f15a6517ba6ccedacc",
+      "packed": true
+    },
+    {
+      "file": "public/materials/heron/foliage/plane-bark-normal.webp",
+      "sha256": "64d77c3d167eefa632375a40964dd6f593c6ec18c6d0bc2dde080e746711dcce",
+      "packed": true
+    },
+    {
+      "file": "public/materials/heron/foliage/plane-bark-orm.webp",
+      "sha256": "ad36eb107bfad4c601780919010fd578a2e1928ea19c4d8da3389f31c5be512d",
+      "packed": true
+    },
+    {
+      "file": "public/materials/heron/foliage/plane-leaf-atlas-color.webp",
+      "sha256": "25d757bdcd1908a06146524c069ed841473e7697d437c34a75752cf95a92f477",
+      "packed": true
+    },
+    {
+      "file": "public/materials/heron/foliage/plane-leaf-atlas-normal.webp",
+      "sha256": "128c48c9ec4de7d861df6749df6b2d96b868502afc580a653d2f3609a8d22005",
+      "packed": true
+    }
+  ],
+  "compression": {
+    "tool": "npm gltfpack",
+    "version": "0.22.0",
+    "flags": [
+      "-cc",
+      "-kn",
+      "-km",
+      "-kv",
+      "-vpf",
+      "-vtf"
+    ],
+    "package": "node_modules/gltfpack/package.json",
+    "packageSHA256": "0392fdaf091eeb086cf3af73cdec530a3f314b88f086ccdbfcf3efa74eee294e",
+    "lockfileSHA256": "c5e02d76cbb5e3c741aadf877fdd452d53c8011c22a6561e3b1b6979215ad4d0",
+    "lockedIntegrity": "sha512-+X+HKxvxWzyddytuYiimiM4WXi61rkpFgOc7xuFlVeMLuiXzC1Aci8Ci9/mbq6aI7dmjjD7GC9wsB5fwnmSkNQ==",
+    "files": [
+      {
+        "file": "node_modules/gltfpack/cli.js",
+        "sha256": "cfc906ea2b1e41ba542070af1071774620b9a2be57c510e6446f0c77d3eda1b4"
+      },
+      {
+        "file": "node_modules/gltfpack/library.js",
+        "sha256": "627823672823ccc822aca053d820d889bd97143f104abeecdb7a0365c279ac0d"
+      },
+      {
+        "file": "node_modules/gltfpack/library.wasm",
+        "sha256": "1572dc84e479babb7609634bcbc007c06da47441dc0815728723b862eff845e1"
+      }
+    ]
+  },
+  "export": {
+    "nodeNames": [
+      "TREE_PLANE_A_LOD1_bark",
+      "TREE_PLANE_A_LOD1_leaves",
+      "TREE_PLANE_A_LOD1",
+      "TREE_PLANE_B_LOD1_bark",
+      "TREE_PLANE_B_LOD1_leaves",
+      "TREE_PLANE_B_LOD1"
+    ],
+    "roots": [
+      "TREE_PLANE_A_LOD1",
+      "TREE_PLANE_B_LOD1"
+    ],
+    "triangles": 2926,
+    "meshes": 4,
+    "primitives": 4,
+    "materials": [
+      "hr_bark_plane",
+      "hr_leaf_plane"
+    ],
+    "meshAttributes": {
+      "mesh_0": [
+        "COLOR_0",
+        "NORMAL",
+        "POSITION",
+        "TEXCOORD_0"
+      ],
+      "mesh_1": [
+        "NORMAL",
+        "POSITION",
+        "TEXCOORD_0"
+      ],
+      "mesh_2": [
+        "COLOR_0",
+        "NORMAL",
+        "POSITION",
+        "TEXCOORD_0"
+      ],
+      "mesh_3": [
+        "NORMAL",
+        "POSITION",
+        "TEXCOORD_0"
+      ]
+    },
+    "images": 0,
+    "textures": 0,
+    "extensionsUsed": [
+      "KHR_mesh_quantization",
+      "EXT_meshopt_compression"
+    ],
+    "extensionsRequired": [
+      "KHR_mesh_quantization",
+      "EXT_meshopt_compression"
+    ],
+    "rawGLBBytes": 122316,
+    "rawGLBSha256": "21f6bae564c242eb698b98f1a9aca2b6bb7b766f3a6a29b57c2a1b4f9a8fe50a",
+    "glbBytes": 36640,
+    "blendBytes": 1901368,
+    "glbSha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"
+  }
+}

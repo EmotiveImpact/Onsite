@@ -1,0 +1,204 @@
+{
+  "baselineCommit": "9adc2923233d3a95c6ba450a58093cdcb8a65830",
+  "frozenBuildSourceCommit": "8c08fad308b4d5d9c3d4123e775fa1dbebf30de8",
+  "runtimeDifferenceCheck": "git diff 8c08fad..9adc292 -- src index.html public package.json produced no changes",
+  "frozenBuildDirectory": "/tmp/onsite-stair-reviewed-dist",
+  "frozenBuildUrl": "http://127.0.0.1:4187",
+  "kind": "Fixed-camera inspection fixtures; actors remain active; not gameplay evidence",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "pixelRatio": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "command": "ONSITE_URL=http://127.0.0.1:4187 OUT=test-results/building-ground/before VIEWS=stair-elevation,gallery-edge,garden-court,washhouse-square,the-corner,roof-skyline,stair-core QUERY='&dpr=1' EXTRA_ASSETS=/models/heron-reach/stair-detail.glb node scripts/maps/capture-art-review.mjs",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4187/assets/index-BqdiVh_h.js",
+      "sha256": "1e047cbc2820b224501afbbd93cd84e6809ab528e1df9c35613e3ef60ae73059"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/stair-detail.glb",
+      "bytes": 405636,
+      "sha256": "dd8c0896c64c5e2852a3a62cc98afa690d7ebd54243b7fd5eca4831ba1514be2"
+    }
+  ],
+  "captures": [
+    {
+      "file": "washhouse-square.png",
+      "bytes": 1096315,
+      "sha256": "ecc2c53d788fd39331e5531017e989104a7943953ee0ffebc45c0422183e6110",
+      "requestedPose": {
+        "x": 0,
+        "y": 0.04,
+        "z": 24,
+        "yaw": -3.141592653589793,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 0,
+          "y": 0.020099957082129527,
+          "z": 23.999999996697824
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "the-corner.png",
+      "bytes": 1165267,
+      "sha256": "433521208db2fc9022e87ac266b745a9e8bbb1d5cd49ef7378d34c7027a23249",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "stair-core.png",
+      "bytes": 1151158,
+      "sha256": "d7fca2728c32cd670477846b8e7cc9eee00748e3bea9fb84aa28899192133e2d",
+      "requestedPose": {
+        "x": -46.85,
+        "y": 0.04,
+        "z": -18.799999999999997,
+        "yaw": 0,
+        "pitch": 0.15
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -46.85000273238518,
+          "y": 0.01962636999960521,
+          "z": -18.799999264783473
+        },
+        "yaw": 0,
+        "pitch": 0.15,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "roof-skyline.png",
+      "bytes": 1023973,
+      "sha256": "727bdf02db2be4022fa3b4a66a3e2d65c32a64bf6273618e5ddf914052a25ee0",
+      "requestedPose": {
+        "x": -34,
+        "y": 9.04,
+        "z": -26,
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -34,
+          "y": 9.01999312522239,
+          "z": -25.999999962937114
+        },
+        "yaw": -0.7853981633974483,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "garden-court.png",
+      "bytes": 1296914,
+      "sha256": "fde5e7d751a175faa60b254df2064efec42941ab3cefdf783c9592254fe3977f",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000017723380665,
+          "y": 0.02007853666291337,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "stair-elevation.png",
+      "bytes": 1437259,
+      "sha256": "2293b3c4aa1716ae8b97b31c99d3b0aa4da987a389b25e4bdeb8bd7fa4fe8276",
+      "requestedPose": {
+        "x": -44,
+        "y": 0.04,
+        "z": -12,
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -43.999965001116834,
+          "y": 0.02008576881198676,
+          "z": -12.005823393228638
+        },
+        "yaw": 0.11065722117389563,
+        "pitch": 0.35,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "file": "gallery-edge.png",
+      "bytes": 1368824,
+      "sha256": "2c0b2281757a6afa850f0c7a041304090e5c31f14824872d92808aa6854d6e69",
+      "requestedPose": {
+        "x": -20,
+        "y": 3.04,
+        "z": -22.9,
+        "yaw": -3.141592653589793,
+        "pitch": 0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20.000009500082072,
+          "y": 3.020044664930174,
+          "z": -22.90009883732027
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.08,
+        "health": 100,
+        "grounded": true
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "note": "Matched pose set retained here independently of future edits to art-review-views.json. Active actors and scripted placement make these inspection fixtures, not gameplay evidence. No hardware performance claim."
+}

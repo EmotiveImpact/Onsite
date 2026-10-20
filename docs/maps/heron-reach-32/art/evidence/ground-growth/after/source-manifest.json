@@ -1,0 +1,142 @@
+{
+  "source": "623bc24ad98aa60db86f41b50da6e9dae12daeb4",
+  "base": "ca97cd49e96ffff97d0259e48e9308f794202c72",
+  "files": [
+    {
+      "path": "assets/blender/heron-reach/ground-detail-manifest.json",
+      "bytes": 16489,
+      "sha256": "5da9cd0aab388c288b6898685b672e37442c062dc45ccb2e083212211fea6c60"
+    },
+    {
+      "path": "assets/blender/heron-reach/ground-detail.blend",
+      "bytes": 3894770,
+      "sha256": "87e943a3e460c5afa23a6d80c3e4cc6c99c2fe9e46f70bd6e9c34b3691fa1a11"
+    },
+    {
+      "path": "assets/blender/heron-reach/ground-plan.json",
+      "bytes": 434585,
+      "sha256": "8ce58577bf3a746a1530be8219683b629947662cf3538d6eaf86b1d762129520"
+    },
+    {
+      "path": "assets/blender/heron-reach/ground-trees-manifest.json",
+      "bytes": 6396,
+      "sha256": "f3270b0f9d6aba2af201defa30c9f9a5d67e93ef39018e7d3a446eb3bb4f174a"
+    },
+    {
+      "path": "assets/blender/heron-reach/ground-trees.blend",
+      "bytes": 1901368,
+      "sha256": "452ba251d0c1f9affca22310f277b2909783342d1a0dbce9628a5a0d85cb0b4a"
+    },
+    {
+      "path": "docs/maps/heron-reach-32/art/GROUND-GROWTH.md",
+      "bytes": 11309,
+      "sha256": "7803c6373d1d03066070c18a53b58d94342e544e96cf05fccda814eb1746f2a8"
+    },
+    {
+      "path": "package.json",
+      "bytes": 2385,
+      "sha256": "a94f3dcc09ac00343550d4ade1be1a0c0ff1fd0b22252e45890b16f5892fc4f0"
+    },
+    {
+      "path": "public/models/heron-reach/ground-plan.json",
+      "bytes": 221414,
+      "sha256": "f3d512ad368107769fbb0a6bea78660a5b0fa0abad0092f31194e728b1a4124b"
+    },
+    {
+      "path": "public/models/heron-reach/heron-reach-ground-detail.glb",
+      "bytes": 158884,
+      "sha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a"
+    },
+    {
+      "path": "public/models/heron-reach/heron-reach-ground-trees.glb",
+      "bytes": 36640,
+      "sha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"
+    },
+    {
+      "path": "scripts/maps/art-review-views.json",
+      "bytes": 1535,
+      "sha256": "05f453a7a1341e595b6d60ee4146598063376592457e54c97c5e4637517e41b2"
+    },
+    {
+      "path": "scripts/maps/art/build_heron_ground_detail.py",
+      "bytes": 11227,
+      "sha256": "e146d3069a280d043aef59d1c616402c573f032dbdcc035f87cad5e48fb8e791"
+    },
+    {
+      "path": "scripts/maps/art/export_heron_ground_trees.py",
+      "bytes": 14276,
+      "sha256": "bb76009861cf52d2e2a32359795376499ac06bee881fce764cadd2c12598225d"
+    },
+    {
+      "path": "scripts/maps/art/make_heron_foliage.py",
+      "bytes": 61763,
+      "sha256": "8d51e6b97b2d16663b916da4792a1b8fdd05b93ab92b0413727a8ae287012642"
+    },
+    {
+      "path": "scripts/maps/capture-art-review.mjs",
+      "bytes": 4608,
+      "sha256": "0e525b702dd6311281e10de6e5f307c53a04815899365968f025344edad09b88"
+    },
+    {
+      "path": "scripts/maps/export-heron-ground-plan.ts",
+      "bytes": 861,
+      "sha256": "ce46cf45f5609c0f0747f9d2a2b58a9156c146abb14b36893dd440eb85300fe8"
+    },
+    {
+      "path": "scripts/maps/verify-heron-reach.mjs",
+      "bytes": 9103,
+      "sha256": "52b09b1fd223a1f61d6ce7e41e2bfbb73969627795303422cb39fe926d8fab43"
+    },
+    {
+      "path": "scripts/verify-encounter.mjs",
+      "bytes": 8042,
+      "sha256": "29f73bd6861458daa1342ab0308d3dde295aa4b3f4803c914cbebfb343f88a4a"
+    },
+    {
+      "path": "src/onsite/View.ts",
+      "bytes": 23077,
+      "sha256": "c9d53ce46608fbebd2b55000ccf86ecab2fe4b30da3b8a371f947bbcd2c6ed3f"
+    },
+    {
+      "path": "src/onsite/heronGrassGeometry.ts",
+      "bytes": 2442,
+      "sha256": "c7b33220a803b3932d816eb20703af31e00e539883f523607dd393702f2b8b56"
+    },
+    {
+      "path": "src/onsite/heronGroundArt.ts",
+      "bytes": 1855,
+      "sha256": "e338152e502c7f493e235fec6634bbafb2592a80e6b35c1610a0840e6e5bf9af"
+    },
+    {
+      "path": "src/onsite/heronGroundPlan.ts",
+      "bytes": 10688,
+      "sha256": "06c54bce5df65ad3bd619ed17d48c9403337beecbddb6385ab3559519d05d18e"
+    },
+    {
+      "path": "src/onsite/heronGroundRuntime.ts",
+      "bytes": 3183,
+      "sha256": "3e944d4b4810a5e320aa7c7145d60e0244631c2da3a1013b1fc1c727989fc7a2"
+    },
+    {
+      "path": "src/onsite/heronReachArt.ts",
+      "bytes": 28866,
+      "sha256": "97212af7f3dc440e5dc7f0de3dbe5969fb8178682d01d62f534877ac778be818"
+    },
+    {
+      "path": "tests/heron-grass-geometry.test.ts",
+      "bytes": 14612,
+      "sha256": "1ac86a914988030f94ffe31747d9e692fad9f16cb097756db5e41422c87cf435"
+    },
+    {
+      "path": "tests/heron-ground-plan.test.ts",
+      "bytes": 20931,
+      "sha256": "8a3e28ccaff04d01b9194d3f5f8579fa6685a96e8f032dfa8034c0c344b7eec6"
+    },
+    {
+      "path": "tests/heron-ground-runtime.test.ts",
+      "bytes": 13893,
+      "sha256": "10ade4000e228366ca098c9e1697e8aea4e2b821bdfe348bdcc35f5495d71f83"
+    }
+  ],
+  "scope": "Implementation file bytes at the recorded source commit, before later evidence/handoff-only documentation edits."
+}

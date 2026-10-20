@@ -1,0 +1,96 @@
+{
+  "provenance": "Supports: original ONSITE Blender geometry. Net: existing ONSITE ChatGPT-generated artwork, encoding/resizing only; source retained.",
+  "source": "docs/maps/heron-reach-32/art/generated/decals/hr_decal_pigeon_net.png",
+  "sourceSHA256": "ddf73c21c7d071698625ddd1b310b9c2b9530ad9cf184ec15bdeb0c0db731a5e",
+  "textureSHA256": "0e82f3cdf986486529948e57acb41892df62f22aa05bef589289738cd72d92eb",
+  "blender": "4.3.2",
+  "units": "metres; Blender Z up, glTF Y up",
+  "collision": "None; above existing solid gallery parapets, away from door/stair openings.",
+  "panels": [
+    {
+      "x": 48,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 51,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 54,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 90,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 93,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 96,
+      "z": 38.96,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 48,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 51,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 54,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 90,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 93,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    },
+    {
+      "x": 96,
+      "z": 81.04,
+      "minY": 4.12,
+      "maxY": 5.75,
+      "width": 2.85
+    }
+  ],
+  "triangles": 1008
+}

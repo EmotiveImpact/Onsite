@@ -1,0 +1,80 @@
+{
+  "baselineCommit": "9adc2923233d3a95c6ba450a58093cdcb8a65830",
+  "frozenBuildSource": "8c08fad",
+  "frozenBuildUrl": "http://127.0.0.1:4187",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "pixelRatio": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "kind": "Fixed-camera inspection fixtures; actors remain active; not gameplay evidence",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4187/assets/index-BqdiVh_h.js",
+      "sha256": "1e047cbc2820b224501afbbd93cd84e6809ab528e1df9c35613e3ef60ae73059"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/stair-detail.glb",
+      "bytes": 405636,
+      "sha256": "dd8c0896c64c5e2852a3a62cc98afa690d7ebd54243b7fd5eca4831ba1514be2"
+    }
+  ],
+  "poses": [
+    {
+      "name": "private-stair",
+      "requestedPose": {
+        "x": -39.22,
+        "y": 3.04,
+        "z": -31.7,
+        "yaw": 0,
+        "pitch": 0.25
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -39.220001220703125,
+          "y": 3.019941256492166,
+          "z": -31.70000119275278
+        },
+        "yaw": 0,
+        "pitch": 0.25,
+        "health": 100,
+        "grounded": true
+      }
+    },
+    {
+      "name": "private-stair-turn",
+      "requestedPose": {
+        "x": -38.55,
+        "y": 4.54,
+        "z": -36.2,
+        "yaw": -2.601173153319209,
+        "pitch": 0.12
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -38.54999923706055,
+          "y": 4.520099992174073,
+          "z": -36.20000081742929
+        },
+        "yaw": -2.601173153319209,
+        "pitch": 0.12,
+        "health": 100,
+        "grounded": true
+      }
+    }
+  ],
+  "note": "These additional private-stair views retain the original seven-view report unchanged. Baseline shows the erroneous floor/ceiling sheets across ST-H."
+}

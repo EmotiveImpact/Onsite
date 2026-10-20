@@ -1,0 +1,320 @@
+{
+  "kit": "heron-reach foliage",
+  "blend": "assets/blender/heron-reach/winter-trees.blend",
+  "units": "metres, Z-up in Blender (glTF export converts to Y-up)",
+  "assets": [
+    {
+      "name": "TREE_PLANE_A",
+      "collection": "TREE_PLANE_A",
+      "kind": "tree",
+      "species": "London plane",
+      "objects": [
+        "TREE_PLANE_A_bark",
+        "TREE_PLANE_A_leaves"
+      ],
+      "triangles": 5949,
+      "triangles_bark": 5797,
+      "triangles_leaves": 152,
+      "leaf_cards": 38,
+      "bounds_min": [
+        -2.431,
+        -2.572,
+        -0.08
+      ],
+      "bounds_max": [
+        2.328,
+        2.257,
+        7.512
+      ],
+      "height": 7.51,
+      "canopy_radius": 2.57,
+      "lowest_leaf_z": 3.45,
+      "lowest_branch_z": 2.97,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.255,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.45 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_PLANE_A_LOD1",
+          "collection": "TREE_PLANE_A_LOD1",
+          "objects": [
+            "TREE_PLANE_A_LOD1_bark",
+            "TREE_PLANE_A_LOD1_leaves"
+          ],
+          "triangles": 1533,
+          "leaf_cards": 17
+        }
+      ],
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "seed": 7101,
+      "nodes": 1210
+    },
+    {
+      "name": "TREE_PLANE_B",
+      "collection": "TREE_PLANE_B",
+      "kind": "tree",
+      "species": "London plane",
+      "objects": [
+        "TREE_PLANE_B_bark",
+        "TREE_PLANE_B_leaves"
+      ],
+      "triangles": 5755,
+      "triangles_bark": 5591,
+      "triangles_leaves": 164,
+      "leaf_cards": 41,
+      "bounds_min": [
+        -2.058,
+        -3.096,
+        -0.074
+      ],
+      "bounds_max": [
+        2.507,
+        2.429,
+        7.336
+      ],
+      "height": 7.34,
+      "canopy_radius": 3.1,
+      "lowest_leaf_z": 3.58,
+      "lowest_branch_z": 3.12,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.267,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.49 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_PLANE_B_LOD1",
+          "collection": "TREE_PLANE_B_LOD1",
+          "objects": [
+            "TREE_PLANE_B_LOD1_bark",
+            "TREE_PLANE_B_LOD1_leaves"
+          ],
+          "triangles": 1393,
+          "leaf_cards": 13
+        }
+      ],
+      "materials": [
+        "hr_bark_plane",
+        "hr_leaf_plane"
+      ],
+      "seed": 7202,
+      "nodes": 1117
+    },
+    {
+      "name": "TREE_BIRCH_A",
+      "collection": "TREE_BIRCH_A",
+      "kind": "tree",
+      "species": "silver birch",
+      "objects": [
+        "TREE_BIRCH_A_bark",
+        "TREE_BIRCH_A_leaves"
+      ],
+      "triangles": 4125,
+      "triangles_bark": 3957,
+      "triangles_leaves": 168,
+      "leaf_cards": 42,
+      "bounds_min": [
+        -1.477,
+        -1.775,
+        -0.069
+      ],
+      "bounds_max": [
+        1.963,
+        1.487,
+        6.984
+      ],
+      "height": 6.98,
+      "canopy_radius": 1.96,
+      "lowest_leaf_z": 2.94,
+      "lowest_branch_z": 2.94,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.203,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.30 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_BIRCH_A_LOD1",
+          "collection": "TREE_BIRCH_A_LOD1",
+          "objects": [
+            "TREE_BIRCH_A_LOD1_bark",
+            "TREE_BIRCH_A_LOD1_leaves"
+          ],
+          "triangles": 827,
+          "leaf_cards": 18
+        }
+      ],
+      "materials": [
+        "hr_bark_birch",
+        "hr_leaf_birch"
+      ],
+      "seed": 7303,
+      "nodes": 881
+    },
+    {
+      "name": "TREE_BIRCH_B",
+      "collection": "TREE_BIRCH_B",
+      "kind": "tree",
+      "species": "silver birch",
+      "objects": [
+        "TREE_BIRCH_B_bark",
+        "TREE_BIRCH_B_leaves"
+      ],
+      "triangles": 3143,
+      "triangles_bark": 3019,
+      "triangles_leaves": 124,
+      "leaf_cards": 31,
+      "bounds_min": [
+        -1.736,
+        -1.734,
+        -0.064
+      ],
+      "bounds_max": [
+        1.319,
+        1.575,
+        6.135
+      ],
+      "height": 6.13,
+      "canopy_radius": 1.74,
+      "lowest_leaf_z": 2.99,
+      "lowest_branch_z": 2.84,
+      "collision": {
+        "type": "cylinder",
+        "radius": 0.192,
+        "height": 2.0,
+        "centre": [
+          0,
+          0,
+          1.0
+        ],
+        "note": "trunk radius at 0.3-2.0 m plus 5 percent; root flare reaches 0.28 m at ground level and is cosmetic; canopy has no collision"
+      },
+      "lods": [
+        {
+          "name": "TREE_BIRCH_B_LOD1",
+          "collection": "TREE_BIRCH_B_LOD1",
+          "objects": [
+            "TREE_BIRCH_B_LOD1_bark",
+            "TREE_BIRCH_B_LOD1_leaves"
+          ],
+          "triangles": 610,
+          "leaf_cards": 17
+        }
+      ],
+      "materials": [
+        "hr_bark_birch",
+        "hr_leaf_birch"
+      ],
+      "seed": 7404,
+      "nodes": 672
+    }
+  ],
+  "textures": [
+    {
+      "files": [
+        "plane-leaf-atlas-color.webp",
+        "plane-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_leaf_plane",
+      "method": "numpy: palmate 3-5 lobed outline from a soft-max of pointed polar lobes with coarse teeth; primary and secondary veins as distance fields; autumn palette yellow-green to tan and brown with blotch noise and browned margins; 2x supersampled; normal from a dome-plus-vein height map; colour bled under transparent pixels (pull-push) to stop mip fringes. Seed 4101."
+    },
+    {
+      "files": [
+        "birch-leaf-atlas-color.webp",
+        "birch-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_leaf_birch",
+      "method": "numpy: deltoid-ovate outline with acuminate tip and double serration, midrib and seven straight vein pairs; yellow-green to gold palette; clusters on thin dark twigs. Seed 4202."
+    },
+    {
+      "files": [
+        "plane-bark-color.webp",
+        "plane-bark-normal.webp",
+        "plane-bark-orm.webp"
+      ],
+      "material": "hr_bark_plane",
+      "method": "numpy: two scales of periodic, domain-warped Worley cells; each plate gets a bark age (cream, olive, grey-green, grey-brown); small flakes peel to younger layers; softened rims, rain streaks and algae tint; height from age steps; ORM = cavity AO, roughness by age, metal 0. Tiles both ways, 1 tile = 1 m. Seed 4808."
+    },
+    {
+      "files": [
+        "birch-bark-color.webp",
+        "birch-bark-normal.webp",
+        "birch-bark-orm.webp"
+      ],
+      "material": "hr_bark_birch",
+      "method": "numpy: cream-white base with grey mottling and pinkish peeled bands; 300 wrapped horizontal lenticel dashes; ragged dark fissured patches from thresholded periodic noise. Black trunk base and dark twigs come from vertex colour (COLOR_0) multiplied in the material. Seed 4909."
+    },
+    {
+      "files": [
+        "grass-blades-color.webp",
+        "grass-blades-normal.webp"
+      ],
+      "material": "hr_grass_blade",
+      "method": "numpy: twelve 64 px blade columns (damp dark greens, two yellowed) with keeled midrib, striations, darker base and ragged dried straw tips of random length; two side-view tuft cards drawn as tapered Bezier blades. Seed 4606."
+    },
+    {
+      "files": [
+        "weeds-color.webp",
+        "weeds-normal.webp"
+      ],
+      "material": "hr_weed",
+      "method": "numpy: runcinate dandelion leaves, plantain leaves with parallel veins, a grassy crack weed with seed panicles and a groundsel-type sprig with muted yellow heads. Seed 4707."
+    },
+    {
+      "files": [
+        "leaf-litter-color.webp",
+        "leaf-litter-normal.webp"
+      ],
+      "material": "hr_leaf_litter",
+      "method": "numpy: 4 x 4 grid of fallen plane and birch leaves in wet browns, with dark wet spotting, holes, curl in the height map. Seed 4505."
+    },
+    {
+      "files": [
+        "hedge-leaf-atlas-color.webp",
+        "hedge-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_hedge_leaf",
+      "method": "numpy: privet sprigs with opposite small glossy elliptic leaves, an opaque inner-foliage tile (900 overlapping leaves darkened by depth) for the hidden core, small sprig singles. Seed 4404."
+    },
+    {
+      "files": [
+        "shrub-leaf-atlas-color.webp",
+        "shrub-leaf-atlas-normal.webp"
+      ],
+      "material": "hr_shrub_leaf",
+      "method": "numpy: evergreen laurel-type oval leaves with fine serration, a few bronze older leaves, on green twigs. Seed 4303."
+    }
+  ],
+  "materials": {
+    "all": "Principled BSDF; colour images sRGB, normal and ORM Non-Color; OpenGL normals.",
+    "alpha": "Leaf, grass, weed, hedge and litter materials feed image alpha through a Math Round node (alpha clip at 0.5) and have backface culling off, so glTF exports alphaMode MASK, doubleSided.",
+    "bark": "hr_bark_plane and hr_bark_birch multiply the base colour by the Col vertex colour attribute (glTF COLOR_0). Occlusion via the glTF Material Output group from the ORM red channel.",
+    "normals": "Leaf cards carry custom normals blended towards the canopy radial direction so crowns light softly; grass normals lean towards +Z so lawns light like the ground."
+  },
+  "provenance": "Original ONSITE deterministic tree generators and existing project procedural bark/leaf textures. No external meshes.",
+  "winter": true,
+  "blender": "4.3.2"
+}
