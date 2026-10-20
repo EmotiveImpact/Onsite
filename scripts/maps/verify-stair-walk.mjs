@@ -41,6 +41,6 @@ try{
 }catch(e){error=String(e);process.exitCode=1;finalState=await snapshot().catch(()=>null);await page.screenshot({path:`${out}/failure.png`}).catch(()=>{});console.error(e)}
 finally{
   const video=page.video();await context.close();const videoPath=await video?.path();await browser.close()
-  const report={context:'Physical stair traversal fixture; scripted steering, bots disabled; not combat evidence',core,base,rendering:'Chromium / ANGLE SwiftShader, normal software fallback; not a real-GPU benchmark',checks,captures,asset,errors,failed,warnings,error,elapsedWallSeconds:(Date.now()-started)/1000,video:videoPath?.split('/').at(-1),state:finalState}
+  const report={context:'Physical stair traversal fixture; scripted steering, bots disabled; not combat evidence',core,base,concurrentFixtureCount:Number(process.env.FIXTURE_CONCURRENCY||1),rendering:'Chromium / ANGLE SwiftShader, normal software fallback; not a real-GPU benchmark',checks,captures,asset,errors,failed,warnings,error,elapsedWallSeconds:(Date.now()-started)/1000,video:videoPath?.split('/').at(-1),state:finalState}
   await writeFile(`${out}/${error?'failure':'report'}.json`,JSON.stringify(report,null,2));console.log(JSON.stringify({core,base,checks:checks.length,error,elapsedWallSeconds:report.elapsedWallSeconds}))
 }

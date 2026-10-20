@@ -61,6 +61,9 @@ backing sheet stays continuous. Landing-guard ribs likewise recess around the ho
 These cuts keep the handrails visibly continuous instead of letting a raised strip conceal them.
 End stiles remain as the rail termination supports. Buried back/base faces on the adjusted seam
 pieces are omitted to retain the original triangle budget.
+The horizontal landing rail embeds 42 mm into each 60 mm corner support: its x endpoints are
+1.918 / 4.082, with exposed span beginning beyond x=1.96 and ending before x=4.04. The hidden
+terminal portions form supported joints to the return rail and next-flight connector.
 
 | Element | Existing local envelope retained | Construction constraint |
 | --- | --- | --- |
@@ -137,7 +140,10 @@ integration; Blender preview renders are not substituted for runtime evidence.
 
 All six strengthened construction test groups passed against the final compressed asset,
 including tread samples 20 mm from either edge and intermediate surface samples on both inner
-and outer rails. The reopened Blend passed the packed-image check independently of the export.
+and outer rails. First-visible-surface rays reproduce the previous seam defect and now confirm
+black steel at all 48 central spine crossings, central landing seams and immediately beyond the
+corner supports. Separate contact checks verify that the supported rail ends meet the posts.
+The reopened Blend passed the packed-image check independently of the export.
 
 The final export contains **29,904 triangles, 28 batches and 405,636 compressed bytes**.
 Its SHA256 is `dd8c0896c64c5e2852a3a62cc98afa690d7ebd54243b7fd5eca4831ba1514be2`;
