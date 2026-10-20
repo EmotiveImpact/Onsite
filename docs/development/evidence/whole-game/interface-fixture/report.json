@@ -1,0 +1,17 @@
+{
+  "context": "Isolated frontend fixture; synthetic results, not gameplay evidence",
+  "renderer": "Chromium / ANGLE SwiftShader",
+  "checks": [
+    "Reach menu accurately describes six bots and five levels",
+    "Keyboard tabs and actual 3D kit preview; hood and trainers selected",
+    "Native select arrows work with the actual gameplay Input listener installed",
+    "Settings and kit survive reload",
+    "Native Space activates Enter the Estate with gameplay Input installed",
+    "Native intermediate Tab, pause focus wrap, synchronised controls and return to title",
+    "Results record once, retry resets UI, loss preserves best, separate map records",
+    "Court menu accurately describes three bots, two levels and three minutes",
+    "390 px menu/settings remain reachable without horizontal overflow"
+  ],
+  "errors": [],
+  "failed": []
+}

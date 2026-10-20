@@ -2210,6 +2210,14 @@
    "textured": false,
    "fallback": false
   },
+  "hr_window_interior_cool": {
+   "textured": false,
+   "emissive": 0.8
+  },
+  "hr_window_interior_dim": {
+   "textured": false,
+   "emissive": 0.45
+  },
   "hr_tower_elev": {
    "textured": false,
    "fallback": false
@@ -2219,7 +2227,7 @@
    "fallback": false
   }
  },
- "objects": 772,
- "faces": 101229,
- "triangles": 203778
+ "objects": 782,
+ "faces": 121111,
+ "triangles": 243574
 }

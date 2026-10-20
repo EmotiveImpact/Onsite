@@ -1,0 +1,12 @@
+{
+  "kind": "Input-driven encounter excerpt, not inspection fixture",
+  "renderer": "Chromium 154 / ANGLE SwiftShader; software rendering",
+  "source": "test-results/final-reach/page@b5498e7ff0a99fcb449a88e869c64934.webm",
+  "sourceSha256": "018404b4fe122823049d31ba0714d0020e09dd660765e3d9f10e16429f9e5e1b",
+  "clipSha256": "9d4acdd45d97f119970f62f1aef1212988f44b8d18f8b4691358ca80ea76a83f",
+  "requestedSourceStartSeconds": 220,
+  "requestedDurationSeconds": 40,
+  "actualClipDurationSeconds": 44.96,
+  "method": "ffmpeg stream copy with keyframe-aligned start; no retiming, interpolation or speed-up",
+  "sizeBytes": 5543606
+}

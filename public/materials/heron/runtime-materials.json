@@ -501,6 +501,44 @@
   "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
   "repeat": 1
  },
+ "hr_window_interior_cool": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "emissive": [
+   0.65,
+   0.8,
+   1
+  ],
+  "emissiveIntensity": 0.8,
+  "roughness": 0.4,
+  "metalness": 0,
+  "map": "/materials/heron/windows/interiors-photo-color.webp",
+  "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
+  "repeat": 1
+ },
+ "hr_window_interior_dim": {
+  "shadow": false,
+  "color": [
+   1,
+   1,
+   1
+  ],
+  "emissive": [
+   1,
+   0.56,
+   0.27
+  ],
+  "emissiveIntensity": 0.45,
+  "roughness": 0.4,
+  "metalness": 0,
+  "map": "/materials/heron/windows/interiors-photo-color.webp",
+  "emissiveMap": "/materials/heron/windows/interiors-photo-emit.webp",
+  "repeat": 1
+ },
  "hr_wired_glass": {
   "shadow": false,
   "map": "/materials/heron/hr_wired_glass-color.webp",

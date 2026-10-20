@@ -152,3 +152,16 @@ with all textures embedded in the binary chunk via `EXT_texture_webp`; the bark 
   They show the look of the assets, not in-engine performance.
 - Tree triangle counts are within budget, but crowns are alpha heavy (about 850 to 1,100 cards).
   Measure overdraw in the browser before placing many trees close together.
+# Winter render variant — 19 October 2026
+
+`winter-trees.blend` / `winter-manifest.json` contain the existing four original ONSITE
+deterministic plane and birch skeletons, with 4% of the autumn leaf-card count. They use this
+document's existing procedural bark/leaf textures. Runtime render replacement only: the original
+foliage kit, placement scale and collider manifest are preserved. Blender 4.3.2; metre scale,
+ground-centred pivots; glTF Y-up export. No external asset or licence is introduced.
+
+```sh
+HR_FOLIAGE_WINTER=1 HR_FOLIAGE_ONLY=TREE HR_FOLIAGE_BLEND="$PWD/assets/blender/heron-reach/winter-trees.blend" HR_FOLIAGE_MANIFEST="$PWD/assets/blender/heron-reach/winter-manifest.json" blender -b --python-exit-code 1 --python scripts/maps/art/make_heron_foliage.py
+blender -b --python-exit-code 1 --python scripts/maps/art/export_heron_kits_glb.py -- winter
+npx gltfpack -i public/models/heron-reach/heron-reach-winter.raw.glb -o public/models/heron-reach/heron-reach-winter.glb -cc -kn -km -kv -vtf
+```

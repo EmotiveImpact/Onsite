@@ -1,0 +1,404 @@
+{
+  "baseline": "42471ab",
+  "file": "public/models/heron-reach/heron-reach-ground-trees.glb",
+  "comparison": "All decoded plane position/normal/UV/colour components and index arrays are identical. -vpf quantizes the Float32 export; original and current raw-vs-packed bounds differ identically.",
+  "exports": {
+    "previous": {
+      "glbSHA256": "b933b2f6e2767bece6a871ca2c2b5e7ab638d24c8f499abda77a81d181928209",
+      "bytes": 57740,
+      "roots": {
+        "TREE_PLANE_A_LOD1": {
+          "min": [
+            -2.53369140625,
+            -0.07958984375,
+            -2.020263671875
+          ],
+          "max": [
+            2.238037109375,
+            7.51220703125,
+            3.169189453125
+          ],
+          "parts": {
+            "TREE_PLANE_A_LOD1_bark": {
+              "geometrySHA256": "e073cbe737a713c47f30ee2d200e034085bf0bbc3d9d5e0e9f78bfee56ecbb5e",
+              "attributes": {
+                "color": {
+                  "count": 1262,
+                  "itemSize": 4,
+                  "sha256": "fba0f4ad96882e0b0b4acc79b2c78acfe32e6b451e30c641902c85f01b001a42"
+                },
+                "normal": {
+                  "count": 1262,
+                  "itemSize": 3,
+                  "sha256": "21fcab9f8d0a33ed1e148e209d8d06d8e2eee29744a98daf22c17cb91dc4d8e0"
+                },
+                "position": {
+                  "count": 1262,
+                  "itemSize": 3,
+                  "sha256": "5dd3e39d868f7846f22dc1351150527535b872ad85d46feb0bbc33b4e441085c"
+                },
+                "uv": {
+                  "count": 1262,
+                  "itemSize": 2,
+                  "sha256": "d997b38cff00b750b81effc8d32ef930332fd330e23b6a94e1bec505f0cb4e7e"
+                }
+              },
+              "indices": 4497,
+              "indexSHA256": "4bf2d99875126b403ee91b20214b166a2ee7299469fc547d26cb475a266ffd69"
+            },
+            "TREE_PLANE_A_LOD1_leaves": {
+              "geometrySHA256": "4153768521d48d4b24d71bbebb2b46a36c476d36cdeddfb7c2343fa6157b891d",
+              "attributes": {
+                "normal": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "6d6a9aaf8b4b10afc89d53b086bb11fb9af50a22f8a95ec1bd58af0f6ad98f03"
+                },
+                "position": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "71b5f4e8fae315e5d3e469475b419cdc4d1889243f5a11a35923dcf4053fea56"
+                },
+                "uv": {
+                  "count": 68,
+                  "itemSize": 2,
+                  "sha256": "a302e86a0bec8c01e43cb3a8e7a63f35944211a7276a8c8c5d0c919cdb9dbcb6"
+                }
+              },
+              "indices": 102,
+              "indexSHA256": "2ba8ac0c6c7ecaf1b31065a47324c46767267cc8de77dfe486a5eb7737ae8277"
+            }
+          }
+        },
+        "TREE_PLANE_B_LOD1": {
+          "min": [
+            -1.5478515625,
+            -0.0732421875,
+            -2.42919921875
+          ],
+          "max": [
+            2.451904296875,
+            7.19580078125,
+            2.661376953125
+          ],
+          "parts": {
+            "TREE_PLANE_B_LOD1_bark": {
+              "geometrySHA256": "06748811cdce708cda99ac3cabe180f9b90ae57b042524a3d14831c9b22a765b",
+              "attributes": {
+                "color": {
+                  "count": 1141,
+                  "itemSize": 4,
+                  "sha256": "5a0fe52197e0fdbe2ba997aa9485d7b8b857c3dc0500690b1841d8fbefce21c0"
+                },
+                "normal": {
+                  "count": 1141,
+                  "itemSize": 3,
+                  "sha256": "c17158bac09615ec08a47665b93963aae329c15672f662026d035707b62ddbad"
+                },
+                "position": {
+                  "count": 1141,
+                  "itemSize": 3,
+                  "sha256": "f9026b8ecab977ccb986674fab93d0e51d04106fa509e33474aa4d7164aa0238"
+                },
+                "uv": {
+                  "count": 1141,
+                  "itemSize": 2,
+                  "sha256": "26770a014d6da14a4f4abec3d061a31069a9e8739d04f7999e3b91e12f67f387"
+                }
+              },
+              "indices": 4101,
+              "indexSHA256": "3f999f7afe62a12f90cc20c9921f32150d9c05f59bf8001715ca5d6d16ebc555"
+            },
+            "TREE_PLANE_B_LOD1_leaves": {
+              "geometrySHA256": "24323e27218729415c65c9153923a0ae2c474f64b5abb594bdcd7090785691b1",
+              "attributes": {
+                "normal": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "1de03338e2c8825afb2739b17be6cae8bd0bb8325c5f84e6da3b4ad3ec7f6489"
+                },
+                "position": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "4ae00c72449d497f952afd191c7b3f5466030b14b77c44a6680f4eb2ebb64d63"
+                },
+                "uv": {
+                  "count": 52,
+                  "itemSize": 2,
+                  "sha256": "b8adb1b5722ddeadbcbe6c7a90313ca19a6445bc2bd090087330698537b1de9c"
+                }
+              },
+              "indices": 78,
+              "indexSHA256": "4f7eca5aaef67bb65074e06b3cbbf4e7704461540d9d3bb5e50d7654e63221c7"
+            }
+          }
+        }
+      }
+    },
+    "current": {
+      "glbSHA256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87",
+      "bytes": 36640,
+      "roots": {
+        "TREE_PLANE_A_LOD1": {
+          "min": [
+            -2.53369140625,
+            -0.07958984375,
+            -2.020263671875
+          ],
+          "max": [
+            2.238037109375,
+            7.51220703125,
+            3.169189453125
+          ],
+          "parts": {
+            "TREE_PLANE_A_LOD1_bark": {
+              "geometrySHA256": "e073cbe737a713c47f30ee2d200e034085bf0bbc3d9d5e0e9f78bfee56ecbb5e",
+              "attributes": {
+                "color": {
+                  "count": 1262,
+                  "itemSize": 4,
+                  "sha256": "fba0f4ad96882e0b0b4acc79b2c78acfe32e6b451e30c641902c85f01b001a42"
+                },
+                "normal": {
+                  "count": 1262,
+                  "itemSize": 3,
+                  "sha256": "21fcab9f8d0a33ed1e148e209d8d06d8e2eee29744a98daf22c17cb91dc4d8e0"
+                },
+                "position": {
+                  "count": 1262,
+                  "itemSize": 3,
+                  "sha256": "5dd3e39d868f7846f22dc1351150527535b872ad85d46feb0bbc33b4e441085c"
+                },
+                "uv": {
+                  "count": 1262,
+                  "itemSize": 2,
+                  "sha256": "d997b38cff00b750b81effc8d32ef930332fd330e23b6a94e1bec505f0cb4e7e"
+                }
+              },
+              "indices": 4497,
+              "indexSHA256": "4bf2d99875126b403ee91b20214b166a2ee7299469fc547d26cb475a266ffd69"
+            },
+            "TREE_PLANE_A_LOD1_leaves": {
+              "geometrySHA256": "4153768521d48d4b24d71bbebb2b46a36c476d36cdeddfb7c2343fa6157b891d",
+              "attributes": {
+                "normal": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "6d6a9aaf8b4b10afc89d53b086bb11fb9af50a22f8a95ec1bd58af0f6ad98f03"
+                },
+                "position": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "71b5f4e8fae315e5d3e469475b419cdc4d1889243f5a11a35923dcf4053fea56"
+                },
+                "uv": {
+                  "count": 68,
+                  "itemSize": 2,
+                  "sha256": "a302e86a0bec8c01e43cb3a8e7a63f35944211a7276a8c8c5d0c919cdb9dbcb6"
+                }
+              },
+              "indices": 102,
+              "indexSHA256": "2ba8ac0c6c7ecaf1b31065a47324c46767267cc8de77dfe486a5eb7737ae8277"
+            }
+          }
+        },
+        "TREE_PLANE_B_LOD1": {
+          "min": [
+            -1.5478515625,
+            -0.0732421875,
+            -2.42919921875
+          ],
+          "max": [
+            2.451904296875,
+            7.19580078125,
+            2.661376953125
+          ],
+          "parts": {
+            "TREE_PLANE_B_LOD1_bark": {
+              "geometrySHA256": "06748811cdce708cda99ac3cabe180f9b90ae57b042524a3d14831c9b22a765b",
+              "attributes": {
+                "color": {
+                  "count": 1141,
+                  "itemSize": 4,
+                  "sha256": "5a0fe52197e0fdbe2ba997aa9485d7b8b857c3dc0500690b1841d8fbefce21c0"
+                },
+                "normal": {
+                  "count": 1141,
+                  "itemSize": 3,
+                  "sha256": "c17158bac09615ec08a47665b93963aae329c15672f662026d035707b62ddbad"
+                },
+                "position": {
+                  "count": 1141,
+                  "itemSize": 3,
+                  "sha256": "f9026b8ecab977ccb986674fab93d0e51d04106fa509e33474aa4d7164aa0238"
+                },
+                "uv": {
+                  "count": 1141,
+                  "itemSize": 2,
+                  "sha256": "26770a014d6da14a4f4abec3d061a31069a9e8739d04f7999e3b91e12f67f387"
+                }
+              },
+              "indices": 4101,
+              "indexSHA256": "3f999f7afe62a12f90cc20c9921f32150d9c05f59bf8001715ca5d6d16ebc555"
+            },
+            "TREE_PLANE_B_LOD1_leaves": {
+              "geometrySHA256": "24323e27218729415c65c9153923a0ae2c474f64b5abb594bdcd7090785691b1",
+              "attributes": {
+                "normal": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "1de03338e2c8825afb2739b17be6cae8bd0bb8325c5f84e6da3b4ad3ec7f6489"
+                },
+                "position": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "4ae00c72449d497f952afd191c7b3f5466030b14b77c44a6680f4eb2ebb64d63"
+                },
+                "uv": {
+                  "count": 52,
+                  "itemSize": 2,
+                  "sha256": "b8adb1b5722ddeadbcbe6c7a90313ca19a6445bc2bd090087330698537b1de9c"
+                }
+              },
+              "indices": 78,
+              "indexSHA256": "4f7eca5aaef67bb65074e06b3cbbf4e7704461540d9d3bb5e50d7654e63221c7"
+            }
+          }
+        }
+      }
+    },
+    "raw": {
+      "glbSHA256": "21f6bae564c242eb698b98f1a9aca2b6bb7b766f3a6a29b57c2a1b4f9a8fe50a",
+      "bytes": 122316,
+      "roots": {
+        "TREE_PLANE_A_LOD1": {
+          "min": [
+            -2.5337166786193848,
+            -0.0795951634645462,
+            -2.020228147506714
+          ],
+          "max": [
+            2.2379422187805176,
+            7.51237678527832,
+            3.1692326068878174
+          ],
+          "parts": {
+            "TREE_PLANE_A_LOD1_bark": {
+              "geometrySHA256": "4fec5aef46af33907d4bb093067269cca7a5a830fda504247015ed3c48e25389",
+              "attributes": {
+                "color": {
+                  "count": 1266,
+                  "itemSize": 4,
+                  "sha256": "0c0eda0c2fa6addd16a56c909d190ddf365fd7196a96a1cbeaa9cf8c57992ae2"
+                },
+                "normal": {
+                  "count": 1266,
+                  "itemSize": 3,
+                  "sha256": "1cc984e388742954b0918cec5586c1168acb03cd53b89be8d9aefc13a31ebead"
+                },
+                "position": {
+                  "count": 1266,
+                  "itemSize": 3,
+                  "sha256": "35bf9938f847bf6f117c2467258a85be59b30921c1552382a595e617f3215256"
+                },
+                "uv": {
+                  "count": 1266,
+                  "itemSize": 2,
+                  "sha256": "184c23b07577b053b7851882ef085ffd3e399901515678e484f0bbd4a42a7643"
+                }
+              },
+              "indices": 4497,
+              "indexSHA256": "c8f2feece1e15cc843a1144557698d8982687589cfe5af8bee8388325e608873"
+            },
+            "TREE_PLANE_A_LOD1_leaves": {
+              "geometrySHA256": "3d63490e35ab048c2bd7f0504b9a4ba51a07bc89cbf0423962bcbe4871495d60",
+              "attributes": {
+                "normal": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "87f29094843e79a7f2d50dee088a9b851f72ca0bf06e4a13f5f1bfe56319161a"
+                },
+                "position": {
+                  "count": 68,
+                  "itemSize": 3,
+                  "sha256": "b2c214bea5d8fed50aecd129a06977c3a57237efedaa4de7aa8b5bd0fcb36833"
+                },
+                "uv": {
+                  "count": 68,
+                  "itemSize": 2,
+                  "sha256": "5e5117c4591294668cecb644b8473c73c7b5d9a7d00fa36168a422ee1d130b21"
+                }
+              },
+              "indices": 102,
+              "indexSHA256": "29aa6a9999fe64e1250c1706912e73abbcfe90dadf2cf9b159a38b332c1510b9"
+            }
+          }
+        },
+        "TREE_PLANE_B_LOD1": {
+          "min": [
+            -1.5478367805480957,
+            -0.07324378937482834,
+            -2.4291815757751465
+          ],
+          "max": [
+            2.451824903488159,
+            7.1958723068237305,
+            2.6612796783447266
+          ],
+          "parts": {
+            "TREE_PLANE_B_LOD1_bark": {
+              "geometrySHA256": "194d98d4f3a458fbfe027bf697ca9a35d0ab6296e0832710f0dd8aee39ef31ab",
+              "attributes": {
+                "color": {
+                  "count": 1148,
+                  "itemSize": 4,
+                  "sha256": "4f9a9d4ba92bc8b5b516cb2758a4a0cf51b2bdc0b84d9b0729352030fd4fa203"
+                },
+                "normal": {
+                  "count": 1148,
+                  "itemSize": 3,
+                  "sha256": "fe108c18988ff3257dd6064c81e7d0ececc3fbee19797c8871118837089ad9e7"
+                },
+                "position": {
+                  "count": 1148,
+                  "itemSize": 3,
+                  "sha256": "0323331129fed08c022acc0063b6a2457951fc2e3cf853dd7448e03e3131b20f"
+                },
+                "uv": {
+                  "count": 1148,
+                  "itemSize": 2,
+                  "sha256": "150a0862ed05e39c458702de53b66584f886027a773d30c42644aedfa6d49b8e"
+                }
+              },
+              "indices": 4101,
+              "indexSHA256": "3d041e4427cd5f2b66e2d7ec07d6a452071a48e26c6e56a599a44ee31797c457"
+            },
+            "TREE_PLANE_B_LOD1_leaves": {
+              "geometrySHA256": "5c1aa217c1b5ff29e3a0e7f15684986fa2d12935b7a9d34ace057140e29100a1",
+              "attributes": {
+                "normal": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "5f91bae492ad4aebbd819c13cbc8425cd1d5902d5b90cf4cbb9e2c0093b28e99"
+                },
+                "position": {
+                  "count": 52,
+                  "itemSize": 3,
+                  "sha256": "e9eaaac0bc2dcb702d15f2ec73e3c534dae5a244187b1a7be085a5047b77cd87"
+                },
+                "uv": {
+                  "count": 52,
+                  "itemSize": 2,
+                  "sha256": "b63c3c945945f73e5b05855dadf96e70eb8f5eb89bed6f4a0a746168a691ea22"
+                }
+              },
+              "indices": 78,
+              "indexSHA256": "641954bbfc52df7cb86f25ff7c23512d53498d4c5a107b6c77f24a9c7b5ed89d"
+            }
+          }
+        }
+      }
+    }
+  },
+  "identical": true
+}

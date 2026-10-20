@@ -256,3 +256,20 @@ npx gltfpack -i public/models/heron-reach/heron-reach-shops.raw.glb -o public/mo
   alpha-to-coverage, or a fade to a solid lower-opacity material, to avoid shimmer.
 - The vehicles are generic lofted bodies tuned to read as a hatchback and a panel van; they
   have no opening doors and a simple interior.
+
+
+## Gallery pigeon-net detail kit
+
+Original ONSITE supports/cables around the existing upper gallery parapets. Twelve panels, 1,008
+triangles, 104 KB compressed GLB, with no collision or navigation geometry. Artwork is the
+project's existing generated pigeon-net PNG, retained at its original path. The manifest records
+source/derived texture hashes, metre-scale world placements and the Blender version.
+
+```sh
+blender -b --python-exit-code 1 --python scripts/maps/art/build_heron_gallery_detail.py
+npx gltfpack -i public/models/heron-reach/heron-reach-gallery.raw.glb -o public/models/heron-reach/heron-reach-gallery.glb -cc -kn -km -kv -vtf
+```
+
+The additive editable source is `assets/blender/heron-reach/gallery-detail.blend`. The runtime
+loads it separately, using fractional alpha coverage on software and alpha-to-coverage on hardware.
+No doors, gallery junctions or stairs are closed by this cosmetic layer.

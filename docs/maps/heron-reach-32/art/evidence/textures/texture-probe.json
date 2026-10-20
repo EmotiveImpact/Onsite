@@ -1,0 +1,70 @@
+{
+  "software": true,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "runs": [
+    {
+      "mode": "webp",
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 0,
+        "meanFrameMs": 0,
+        "drawCalls": 811,
+        "triangles": 1316978,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      },
+      "transferredBytes": 56544478
+    },
+    {
+      "mode": "ktx2",
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 0,
+        "meanFrameMs": 0,
+        "drawCalls": 811,
+        "triangles": 1316978,
+        "architectureTextures": {
+          "compressed": 81,
+          "webp": 1,
+          "formats": {
+            "1023": 1,
+            "36492": 81
+          },
+          "estimatedMipBytes": 83306278
+        }
+      },
+      "transferredBytes": 70709887
+    },
+    {
+      "mode": "ktx2-corrupt-fallback",
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 0,
+        "meanFrameMs": 0,
+        "drawCalls": 811,
+        "triangles": 1316978,
+        "architectureTextures": {
+          "compressed": 80,
+          "webp": 2,
+          "formats": {
+            "1023": 2,
+            "36492": 80
+          },
+          "estimatedMipBytes": 87500556
+        }
+      },
+      "transferredBytes": 69834037
+    }
+  ],
+  "errors": [],
+  "kind": "Menu/loading and texture-decoder checks; no gameplay frame-time samples"
+}

@@ -1,0 +1,72 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4183",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4183/assets/index-Cch1KYc6.js",
+      "sha256": "c9bfa2593e34e0dcf4e408cca37993d88517e7fa90f1297f5d1a74504dc5da59"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "47e9421214ab641c7a2dfeaf63335b1869890364",
+  "workingTree": "CLAUDE.md                                          |   3 +\n .../blender/heron-reach/lived-detail-manifest.json |  46 ++-----------\n assets/blender/heron-reach/lived-detail.blend      | Bin 214478 -> 201585 bytes\n docs/ASTRA-BRIEF.md                                |   5 ++\n docs/development/DONOR-MAP.md                      |   6 +-\n docs/maps/heron-reach-32/art/LIVED-DETAIL.md       |  18 +++---\n index.html                                         |  71 ++++++++++++++++-----\n package.json                                       |   2 +-\n public/models/heron-reach/heron-reach-lived.glb    | Bin 121404 -> 110100 bytes\n scripts/check-presentation.mjs                     |   4 +-\n scripts/maps/art-review-views.json                 |   9 +++\n scripts/maps/art/build_heron_lived_detail.py       |  47 +-------------\n scripts/maps/verify-heron-reach.mjs                |   5 +-\n scripts/verify-encounter.mjs                       |   5 +-\n src/onsite/DonorRifle.ts                           |  25 ++++++--\n src/onsite/View.ts                                 |  39 +++++++----\n src/onsite/heronLivedDetail.ts                     |  26 ++++++++\n src/onsite/main.ts                                 |  37 +++++++----\n src/style.css                                      |  31 ++++++++-\n src/wwb/engine/input.ts                            |   2 +\n src/wwb/game/robot.ts                              |  21 ++----\n tests/heron-reach.test.ts                          |   5 +-\n tests/wwb-navigation.test.ts                       |   7 +-\n 23 files changed, 239 insertions(+), 175 deletions(-)",
+  "captures": [
+    {
+      "name": "operator-yard",
+      "requestedPose": {
+        "x": 62,
+        "y": 0.04,
+        "z": 0,
+        "yaw": 0,
+        "pitch": -0.1
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 61.999996185302734,
+          "y": 0.019881869100208838,
+          "z": 5.133331910656125e-7
+        },
+        "yaw": 0,
+        "pitch": -0.1,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 5,
+        "meanFrameMs": 1630.280000001192,
+        "drawCalls": 324,
+        "triangles": 1142774,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

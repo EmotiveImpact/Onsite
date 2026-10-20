@@ -77,7 +77,7 @@ class Context:
                 u = (c + .5) * length / cols
                 cx, cz = x0 + ux * u + nx * .12, z0 + uz * u + nz * .12
                 is_lit = rng.random() < lit
-                mat = 'hr_window_interior' if is_lit else 'hr_window_dark'
+                mat = rng.choice(['hr_window_interior_dim', 'hr_window_interior', 'hr_window_interior_cool']) if is_lit else 'hr_window_dark'
                 hw = ww / 2
                 p = [(cx - ux * hw, vy, cz - uz * hw), (cx + ux * hw, vy, cz + uz * hw), (cx + ux * hw, vy + wh, cz + uz * hw), (cx - ux * hw, vy + wh, cz - uz * hw)]
                 if (p[1][0] - p[0][0]) * nz - (p[1][2] - p[0][2]) * nx < 0:
@@ -186,7 +186,45 @@ class Context:
             else:
                 self.block('OUT/towers', tx - D / 2, tz - L / 2, tx + D / 2, tz + L / 2, h, rng.choice(['hr_brick_stock', 'hr_brick_red']), lit=.42)
 
+    def near_towers(self):
+        """Modelled middle ring, wholly outside the fixed estate/playable bounds.
+
+        Project-original slab/balcony construction, not imported building assets. The eight
+        footprints clear the existing street and low frontage; upper silhouettes overlap the
+        older distant elevation cards to give three depth layers in the blue-hour haze.
+        """
+        footprints = [(8,-62,24,16,17), (88,-52,22,16,19), (170,-2,18,22,16),
+                      (182,76,20,18,20), (111,165,26,16,17), (30,174,20,16,15),
+                      (-56,92,18,22,18), (-51,8,18,20,16)]
+        for i,(x,z,w,d,floors) in enumerate(footprints):
+            g='OUT/near-towers'; h=floors*2.85
+            mat='hr_concrete_board' if i%2 else 'hr_brick_stock'
+            self.block(g,x,z,x+w,z+d,h,mat,lit=.38,storey=2.85,parapet=.9)
+            # Horizontal floor edges and genuinely projecting balcony bays on both long faces.
+            for floor in range(1,floors):
+                y=floor*2.85
+                self.B.box(g,'hr_concrete_cast',x-.12,x+w+.12,y-.14,y,z-.12,z+d+.12,faces='+x -x +z -z')
+                for zz,n in [(z,-1),(z+d,1)]:
+                    lo,hi=sorted((zz+n*.15,zz+n*1.25))
+                    for bx in (x+1.2,x+w-4.4):
+                        self.B.box(g,'hr_concrete_cast',bx,bx+3.2,y-.16,y,lo,hi)
+                        edge=zz+n*1.2
+                        self.B.box(g,'hr_steel_black',bx,bx+3.2,y+.08,y+.92,edge-.045,edge+.045)
+                        self.B.box(g,'hr_steel_galv',bx,bx+3.2,y+.94,y+1.0,edge-.04,edge+.04)
+                        for px in [bx,bx+3.12]:
+                            self.B.box(g,'hr_concrete_cast',px,px+.08,y,y+2.7,lo,hi)
+            # Narrow vertical frame ribs break up broad elevations.
+            for px in [x+.14,x+w*.5,x+w-.22]:
+                for zz in [z-.14,z+d+.08]:
+                    self.B.box(g,'hr_concrete_cast',px,px+.12,.15,h,zz,zz+.08)
+            self.B.box(g,'hr_concrete_rough',x+w*.35,x+w*.65,h,h+2.8,z+d*.3,z+d*.65)
+            self.B.box(g,'hr_steel_galv',x+w*.2,x+w*.2+1.7,h,h+1.4,z+2,z+4)
+            self.B.cylinder(g,'hr_steel_black',(x+w*.72,h,z+d*.6),(x+w*.72,h+4,z+d*.6),.06,6)
+            for dy in [2.8,3.5]:
+                self.B.cylinder(g,'hr_steel_black',(x+w*.72-.8,h+dy,z+d*.6),(x+w*.72+.8,h+dy,z+d*.6),.025,4)
+
     def build_all(self):
         self.streets()
         self.terraces()
         self.towers()
+        self.near_towers()

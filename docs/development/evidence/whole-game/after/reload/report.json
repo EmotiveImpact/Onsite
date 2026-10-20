@@ -1,0 +1,80 @@
+{
+  "kind": "Fixed reload-clock inspection fixture; not gameplay",
+  "renderer": "Chromium ANGLE SwiftShader (software)",
+  "origin": "http://127.0.0.1:5184",
+  "evidence": [
+    {
+      "phase": -1,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3395275682978539,
+          -0.3515234592180296,
+          0.834983581251767
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.1077511768624152,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.35,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3594377606155533,
+          0.18730109604729306,
+          0.915515241584783
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          -0.3336869218267058,
+          0.095196896880574
+        ],
+        "handToMagazine": 8.005932084973442e-16,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.55,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3594377606155533,
+          0.18730109604729306,
+          0.915515241584783
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          -0.36905196690559383,
+          0.10156260499477385
+        ],
+        "handToMagazine": 7.021666937153402e-16,
+        "finite": true
+      }
+    },
+    {
+      "phase": 0.85,
+      "probe": {
+        "name": "ONS-01 / IRONLINE M4 + DJMaesen hands",
+        "sightNdc": [
+          0.3764776512421622,
+          0.11735322535881475,
+          0.8981410130589126
+        ],
+        "magazine": [
+          -0.0010743923485279083,
+          0.10057303309440613,
+          0.017030104994773865
+        ],
+        "handToMagazine": 0.039762443242734764,
+        "finite": true
+      }
+    }
+  ],
+  "errors": []
+}
