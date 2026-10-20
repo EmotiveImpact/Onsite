@@ -1,11 +1,11 @@
 {
   "provenance": "Original ONSITE deterministic geometry; existing hr_soil, hr_grass_ground and original foliage leaf atlas. No donor source or new pixels.",
-  "planSha256": "507d2f9dbd182cddb3c96767420476ee4ec9fe5a7ecf2f3e4f9503e6f4bc80b3",
+  "planSha256": "a091da5596b2ddaf9ff1b60136a1e4b28dbbe7183825f7d9d105183999a9b585",
   "blender": "4.3.2",
   "meshes": 57,
   "triangles": 5240,
   "plantTriangles": 19268,
-  "treeTriangles": 17452,
+  "treeTriangles": 23408,
   "glbBytes": 158884,
   "tool": {
     "name": "gltfpack",

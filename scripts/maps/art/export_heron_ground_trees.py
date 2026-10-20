@@ -1,9 +1,10 @@
-"""Export the four existing winter-tree LOD1 assets as a separate original ONSITE kit.
+"""Export the two existing London-plane LOD1 assets as a separate original ONSITE kit.
 
     blender -b -t 1 --python-exit-code 1 --python scripts/maps/art/export_heron_ground_trees.py
 
 Use -- --root /path/to/Onsite --output-root /tmp/staging for an isolated export.
-Only existing LOD1 collections are appended. The additive Blend keeps its original packed
+Only the selected existing plane LOD1 collections are appended. The original birches remain
+in their winter source kit; the additive perimeter kit does not ship unused variants. The additive Blend keeps its original packed
 materials. The GLB carries texture-free material names for reuse of the loaded winter kit.
 The repository's locked gltfpack compresses geometry while retaining names and attributes;
 the intermediate *.raw.glb remains available under the repository's existing ignore rule.
@@ -25,8 +26,6 @@ from mathutils import Vector
 EXPECTED = {
     "TREE_PLANE_A_LOD1": 1533,
     "TREE_PLANE_B_LOD1": 1393,
-    "TREE_BIRCH_A_LOD1": 827,
-    "TREE_BIRCH_B_LOD1": 610,
 }
 
 
@@ -122,7 +121,7 @@ def main():
             obj.hide_set(False)
         roots.append(parent)
 
-    # Appending only these collections retains exactly their four materials and ten images.
+    # Appending only these collections retains exactly their two materials and five images.
     # Repair the original relative image paths before export, retaining existing packed bytes.
     textures = []
     for image in bpy.data.images:
@@ -211,7 +210,7 @@ def main():
     assert not document.get("images") and not document.get("textures"), "Unexpected GLB texture resources"
     assert all("uri" not in buffer for buffer in document["buffers"]), "External GLB buffer"
     assert "EXT_meshopt_compression" in document.get("extensionsRequired", []), "Meshopt compression missing"
-    expected_materials = {"hr_bark_plane", "hr_leaf_plane", "hr_bark_birch", "hr_leaf_birch"}
+    expected_materials = {"hr_bark_plane", "hr_leaf_plane"}
     assert {m["name"] for m in document["materials"]} == expected_materials, "Material names changed"
     for mesh in document["meshes"]:
         for primitive in mesh["primitives"]:
@@ -219,7 +218,7 @@ def main():
             assert source_attributes[material_name].issubset(primitive["attributes"]), "Mesh attributes lost"
     assert digest(source) == original_hash, "Source Blend changed"
     summary = {
-        "kit": "Heron Reach ground-pass winter trees (existing LOD1)",
+        "kit": "Heron Reach ground-pass London planes (existing LOD1)",
         "blender": bpy.app.version_string,
         "builder": "scripts/maps/art/export_heron_ground_trees.py",
         "builderSHA256": digest(Path(__file__).resolve()),
@@ -228,7 +227,7 @@ def main():
                    "manifest": source_manifest.relative_to(root).as_posix()},
         "blend": blend.relative_to(output).as_posix(),
         "glb": glb.relative_to(output).as_posix(),
-        "provenance": "Existing original ONSITE winter-tree LOD1 meshes and unchanged project procedural textures. No new or external assets.",
+        "provenance": "Two existing original ONSITE winter London-plane LOD1 meshes and unchanged project procedural textures. Perimeter birches were removed after initial silhouette review; original winter assets are unchanged. No new or external assets.",
         "runtimeMaterials": "The GLB has texture-free named placeholders. Resolve each exact material name from the already-loaded winter kit; this preserves bark and leaf maps without duplicate texture allocation. The additive Blend retains original packed materials.",
         "assets": assets,
         "textures": sorted(textures, key=lambda t: t["file"]),

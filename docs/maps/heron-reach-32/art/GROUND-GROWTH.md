@@ -16,12 +16,18 @@ it does not introduce another lawn, puddle layer or trunk on a playable route.
 - 53 low weed clumps, plus 10 small shrubs inside the eight existing raised concrete planters.
   All planter roots meet the existing soil top at 0.85m; transformed foliage remains inside
   the 120mm rim and below 1.25m total height. Existing planter collision remains authoritative.
-- 16 extra winter LOD1 trees on the unreachable north/south pavement at map z=-1.9/121.9,
+- 16 extra winter London-plane LOD1 trees on the unreachable north/south pavement at map z=-1.9/121.9,
   between street lamps. Trunks clear existing dressing, canopies clear context facades.
 
 Ground geometry: **5,240 triangles, 57 spatial/material batches on 24m tiles, 158,884-byte GLB**.
 Extra instanced plants: **19,268 triangles**. Combined ground/plants: **24,508 triangles**.
-Trees: **17,452 instanced triangles**, from a 4,363-triangle, 57,740-byte four-asset LOD kit.
+Trees: **23,408 instanced triangles**, from a 2,926-triangle, **36,640-byte** two-asset LOD kit.
+The initial eight perimeter birches were replaced at the same centres/yaw after their pale,
+sparse spokes failed runtime review. Existing plane choices and the original winter kit stay fixed.
+The correction adds 5,956 placed tree triangles but removes 21,100 download bytes and
+reduces the extra tree kit from eight to four material primitives. The ground GLB/Blend,
+patches, shrubs, original winter source and original winter runtime GLB remain byte-identical
+to the first pass. Source hashes are recorded in the manifest and work log.
 No GLB embeds images or textures. These are geometric budgets, not measured GPU timing.
 
 ## Source and regeneration
@@ -29,7 +35,7 @@ No GLB embeds images or textures. These are geometric budgets, not measured GPU 
 All new mesh/placement code is original ONSITE work. Textures and plant meshes reuse the
 existing project material/foliage kit. No donor code, external asset or new texture pixels.
 `ground-detail.blend` retains editable original low-relief meshes and existing packed PBR maps;
-`ground-trees.blend` appends the existing four LOD1 collections from `winter-trees.blend`.
+`ground-trees.blend` appends the existing two London-plane LOD1 collections from `winter-trees.blend`.
 Manifests record source hashes, Blender version, named roots, materials, geometry and costs.
 Exports use the existing locked gltfpack 0.22.0 with `-cc -kn -km -kv -vpf -vtf`;
 float positions preserve millimetre surface offsets. Tool package/script/WASM hashes are recorded.
@@ -59,8 +65,8 @@ the original dressing plan has already created physics. `KitPlacement.scale` com
 `(scale*(sx??1), scale, scale)` so existing mirrored signs still work.
 
 Add optional `ground-trees` to the kit loader. Its roots are `TREE_PLANE_A_LOD1`,
-`TREE_PLANE_B_LOD1`, `TREE_BIRCH_A_LOD1`, `TREE_BIRCH_B_LOD1`. Resolve the exact materials
-`hr_bark_plane`, `hr_leaf_plane`, `hr_bark_birch`, `hr_leaf_birch` from the already-loaded winter
+`TREE_PLANE_B_LOD1`. Resolve the exact materials
+`hr_bark_plane`, `hr_leaf_plane` from the already-loaded winter
 kit before creating instances. There are no suffixes or new foliage textures.
 
 After kits load, `loadHeronGroundArt(gltf,materials,kits)` returns explicit `{group,loaded}`.
@@ -110,9 +116,13 @@ missing/rejected masks, zero-instance fields, exact winter material ownership, u
 and independent public-plan/ground-asset fallbacks. Normal browser verification treats all
 ground fallback warnings as failures; optional fallback is not silently accepted as a full pass.
 
-Implementation checks in the isolated ground worktree on 20 October 2026: `npm test` passes
-all 120 tests (10 legacy and 110 TypeScript tests), `npm run typecheck` and `npm run build`
-pass. These checks do not establish browser appearance or real-GPU performance.
+Corrected implementation checks in the isolated ground worktree on 20 October 2026:
+`npm test` passes all 122 tests (10 legacy and 112 TypeScript tests), `npm run typecheck`
+and `npm run build` pass. The two added correction groups validate actual decoded plane
+attributes and rotated canopy/prop clearances. Per-mesh fingerprints prove positions,
+indices, normals, UVs and bark colours match the original exported planes exactly.
+The source-bound fixture uses the original decoded vertices, including existing gltfpack
+floating-point quantization (up to 0.170 mm at the measured crown), not raw Blender bounds. These checks do not establish browser appearance or real-GPU performance.
 
 Visual review is still required after integration; no browser was run during staging. Compare
 the same `garden-court`, `the-cage`, `the-corner` and south boundary/gallery views. Useful close

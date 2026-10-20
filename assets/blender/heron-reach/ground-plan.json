@@ -21956,7 +21956,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_A_LOD1",
+      "asset": "TREE_PLANE_A_LOD1",
       "x": 34.5,
       "y": 0.12,
       "z": -1.9,
@@ -21972,7 +21972,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_B_LOD1",
+      "asset": "TREE_PLANE_B_LOD1",
       "x": 70.5,
       "y": 0.12,
       "z": -1.9,
@@ -21988,7 +21988,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_A_LOD1",
+      "asset": "TREE_PLANE_A_LOD1",
       "x": 106.5,
       "y": 0.12,
       "z": -1.9,
@@ -22004,7 +22004,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_B_LOD1",
+      "asset": "TREE_PLANE_B_LOD1",
       "x": 142.5,
       "y": 0.12,
       "z": -1.9,
@@ -22020,7 +22020,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_A_LOD1",
+      "asset": "TREE_PLANE_A_LOD1",
       "x": 34.5,
       "y": 0.12,
       "z": 121.9,
@@ -22036,7 +22036,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_B_LOD1",
+      "asset": "TREE_PLANE_B_LOD1",
       "x": 70.5,
       "y": 0.12,
       "z": 121.9,
@@ -22052,7 +22052,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_A_LOD1",
+      "asset": "TREE_PLANE_A_LOD1",
       "x": 106.5,
       "y": 0.12,
       "z": 121.9,
@@ -22068,7 +22068,7 @@
       "source": "outside-boundary"
     },
     {
-      "asset": "TREE_BIRCH_B_LOD1",
+      "asset": "TREE_PLANE_B_LOD1",
       "x": 142.5,
       "y": 0.12,
       "z": 121.9,
@@ -22080,7 +22080,7 @@
     "patches": 285,
     "plantTriangles": 19268,
     "groundTriangleBudget": 8760,
-    "treeTriangles": 17452,
+    "treeTriangles": 23408,
     "rejected": {
       "support": 27,
       "solid": 20,

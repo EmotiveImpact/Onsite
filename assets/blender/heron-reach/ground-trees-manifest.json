@@ -1,8 +1,8 @@
 {
-  "kit": "Heron Reach ground-pass winter trees (existing LOD1)",
+  "kit": "Heron Reach ground-pass London planes (existing LOD1)",
   "blender": "4.3.2",
   "builder": "scripts/maps/art/export_heron_ground_trees.py",
-  "builderSHA256": "b9e6764f1fcdc12835930905888c5881893d2c876774bb5e475f39cfae092ed0",
+  "builderSHA256": "bb76009861cf52d2e2a32359795376499ac06bee881fce764cadd2c12598225d",
   "units": "metres; ground-centred origins; glTF Y-up",
   "source": {
     "file": "assets/blender/heron-reach/winter-trees.blend",
@@ -11,7 +11,7 @@
   },
   "blend": "assets/blender/heron-reach/ground-trees.blend",
   "glb": "public/models/heron-reach/heron-reach-ground-trees.glb",
-  "provenance": "Existing original ONSITE winter-tree LOD1 meshes and unchanged project procedural textures. No new or external assets.",
+  "provenance": "Two existing original ONSITE winter London-plane LOD1 meshes and unchanged project procedural textures. Perimeter birches were removed after initial silhouette review; original winter assets are unchanged. No new or external assets.",
   "runtimeMaterials": "The GLB has texture-free named placeholders. Resolve each exact material name from the already-loaded winter kit; this preserves bark and leaf maps without duplicate texture allocation. The additive Blend retains original packed materials.",
   "assets": [
     {
@@ -95,116 +95,9 @@
         "type": "none",
         "note": "Render-only kit; existing runtime owns trunk collision."
       }
-    },
-    {
-      "name": "TREE_BIRCH_A_LOD1",
-      "collection": "TREE_BIRCH_A_LOD1",
-      "objects": [
-        "TREE_BIRCH_A_LOD1_bark",
-        "TREE_BIRCH_A_LOD1_leaves"
-      ],
-      "triangles": 827,
-      "boundsBlender": {
-        "min": [
-          -1.4792948961257935,
-          -1.775361180305481,
-          -0.06974264979362488
-        ],
-        "max": [
-          1.9626047611236572,
-          1.5039960145950317,
-          6.983682632446289
-        ]
-      },
-      "boundsYUp": {
-        "min": [
-          -1.4792948961257935,
-          -0.06974264979362488,
-          -1.5039960145950317
-        ],
-        "max": [
-          1.9626047611236572,
-          6.983682632446289,
-          1.775361180305481
-        ]
-      },
-      "materials": [
-        "hr_bark_birch",
-        "hr_leaf_birch"
-      ],
-      "collision": {
-        "type": "none",
-        "note": "Render-only kit; existing runtime owns trunk collision."
-      }
-    },
-    {
-      "name": "TREE_BIRCH_B_LOD1",
-      "collection": "TREE_BIRCH_B_LOD1",
-      "objects": [
-        "TREE_BIRCH_B_LOD1_bark",
-        "TREE_BIRCH_B_LOD1_leaves"
-      ],
-      "triangles": 610,
-      "boundsBlender": {
-        "min": [
-          -1.698663353919983,
-          -1.8015351295471191,
-          -0.0645349845290184
-        ],
-        "max": [
-          1.2817800045013428,
-          1.6001133918762207,
-          5.779581069946289
-        ]
-      },
-      "boundsYUp": {
-        "min": [
-          -1.698663353919983,
-          -0.0645349845290184,
-          -1.6001133918762207
-        ],
-        "max": [
-          1.2817800045013428,
-          5.779581069946289,
-          1.8015351295471191
-        ]
-      },
-      "materials": [
-        "hr_bark_birch",
-        "hr_leaf_birch"
-      ],
-      "collision": {
-        "type": "none",
-        "note": "Render-only kit; existing runtime owns trunk collision."
-      }
     }
   ],
   "textures": [
-    {
-      "file": "public/materials/heron/foliage/birch-bark-color.webp",
-      "sha256": "c2b03f6c0482c6a5f0da6b6a1092af4dee8985ec1027a3a751cb661c7f553da5",
-      "packed": true
-    },
-    {
-      "file": "public/materials/heron/foliage/birch-bark-normal.webp",
-      "sha256": "b640665cd7765e7f636b5db3f78d7fcc668a83d0980e2c2a57022e636d1e17e5",
-      "packed": true
-    },
-    {
-      "file": "public/materials/heron/foliage/birch-bark-orm.webp",
-      "sha256": "53e8ffe4f998c8ac396571fc07fb26a9b6c646c728ab2f90c24b4b5cac2031b7",
-      "packed": true
-    },
-    {
-      "file": "public/materials/heron/foliage/birch-leaf-atlas-color.webp",
-      "sha256": "68fe77a8d4c1d51b5d9d097c26e870c15cb41ad07ad3d47c20ab1f21fd33f2bf",
-      "packed": true
-    },
-    {
-      "file": "public/materials/heron/foliage/birch-leaf-atlas-normal.webp",
-      "sha256": "f261cac818080bbc1560d328fda38f3dcd6770f9a4b9b9c638f9d2e88ea1ef56",
-      "packed": true
-    },
     {
       "file": "public/materials/heron/foliage/plane-bark-color.webp",
       "sha256": "6c0760da4788ca0d255a0b9929e39a17e3bd7fa6d30e33f15a6517ba6ccedacc",
@@ -268,28 +161,18 @@
       "TREE_PLANE_A_LOD1",
       "TREE_PLANE_B_LOD1_bark",
       "TREE_PLANE_B_LOD1_leaves",
-      "TREE_PLANE_B_LOD1",
-      "TREE_BIRCH_A_LOD1_bark",
-      "TREE_BIRCH_A_LOD1_leaves",
-      "TREE_BIRCH_A_LOD1",
-      "TREE_BIRCH_B_LOD1_bark",
-      "TREE_BIRCH_B_LOD1_leaves",
-      "TREE_BIRCH_B_LOD1"
+      "TREE_PLANE_B_LOD1"
     ],
     "roots": [
       "TREE_PLANE_A_LOD1",
-      "TREE_PLANE_B_LOD1",
-      "TREE_BIRCH_A_LOD1",
-      "TREE_BIRCH_B_LOD1"
+      "TREE_PLANE_B_LOD1"
     ],
-    "triangles": 4363,
-    "meshes": 8,
-    "primitives": 8,
+    "triangles": 2926,
+    "meshes": 4,
+    "primitives": 4,
     "materials": [
       "hr_bark_plane",
-      "hr_leaf_plane",
-      "hr_bark_birch",
-      "hr_leaf_birch"
+      "hr_leaf_plane"
     ],
     "meshAttributes": {
       "mesh_0": [
@@ -313,28 +196,6 @@
         "NORMAL",
         "POSITION",
         "TEXCOORD_0"
-      ],
-      "mesh_4": [
-        "COLOR_0",
-        "NORMAL",
-        "POSITION",
-        "TEXCOORD_0"
-      ],
-      "mesh_5": [
-        "NORMAL",
-        "POSITION",
-        "TEXCOORD_0"
-      ],
-      "mesh_6": [
-        "COLOR_0",
-        "NORMAL",
-        "POSITION",
-        "TEXCOORD_0"
-      ],
-      "mesh_7": [
-        "NORMAL",
-        "POSITION",
-        "TEXCOORD_0"
       ]
     },
     "images": 0,
@@ -347,10 +208,10 @@
       "KHR_mesh_quantization",
       "EXT_meshopt_compression"
     ],
-    "rawGLBBytes": 187220,
-    "rawGLBSha256": "4eb61ecddb80939a8144f6b79f7ca94c694718adda9ee77db0c5ec7e3b6507a5",
-    "glbBytes": 57740,
-    "blendBytes": 3581313,
-    "glbSha256": "b933b2f6e2767bece6a871ca2c2b5e7ab638d24c8f499abda77a81d181928209"
+    "rawGLBBytes": 122316,
+    "rawGLBSha256": "21f6bae564c242eb698b98f1a9aca2b6bb7b766f3a6a29b57c2a1b4f9a8fe50a",
+    "glbBytes": 36640,
+    "blendBytes": 1901368,
+    "glbSha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"
   }
 }

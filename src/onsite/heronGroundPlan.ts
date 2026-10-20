@@ -121,12 +121,13 @@ export function buildHeronGroundPlan(input:GroundInput):GroundPlan{
  }
  // The site wall prevents reaching these pavement trees. Trunks avoid roads; canopies avoid facades.
  // Alternate along the north/south near pavement, between existing street lamp positions.
- const species=['TREE_PLANE_A_LOD1','TREE_BIRCH_A_LOD1','TREE_PLANE_B_LOD1','TREE_BIRCH_B_LOD1'];
+ // Keep the first pass centres, yaw and plane choices; replace its sparse birch silhouettes only.
+ const species=['TREE_PLANE_A_LOD1','TREE_PLANE_A_LOD1','TREE_PLANE_B_LOD1','TREE_PLANE_B_LOD1'];
  for(const z of [-1.9,121.9])for(const x of [16.5,34.5,52.5,70.5,88.5,106.5,124.5,142.5]){
   if(existing.some(p=>Math.hypot(x-p.x,z-p.z)<1.5))continue;
   const i=perimeterTrees.length;perimeterTrees.push({asset:species[i%4],x,y:.12,z,ry:noise(hash(`outer:${x}:${z}`))*6.283,source:'outside-boundary'});
  }
- const lodTriangles:Record<string,number>={TREE_PLANE_A_LOD1:1533,TREE_PLANE_B_LOD1:1393,TREE_BIRCH_A_LOD1:827,TREE_BIRCH_B_LOD1:610};
+ const lodTriangles:Record<string,number>={TREE_PLANE_A_LOD1:1533,TREE_PLANE_B_LOD1:1393};
  const plantTriangles=plants.reduce((n,p)=>n+plantBounds(p).triangles,0);
  return {version:1,patches,plants,perimeterTrees,stats:{patches:patches.length,plantTriangles,groundTriangleBudget:patches.reduce((n,p)=>n+(p.kind==='leaves'?24:p.outline.length*2),0),treeTriangles:perimeterTrees.reduce((n,p)=>n+lodTriangles[p.asset],0),rejected:A.rejected}};
 }
