@@ -1,5 +1,8 @@
 # Continuing ONSITE
 
+The current owner goal is [the whole-game brief](docs/ONSITE-GOAL.md); read its
+[implementation log](docs/development/WHOLE-GAME-PROGRESS.md) before repeating earlier work.
+
 Start with [the Claude handoff](docs/development/CLAUDE-HANDOFF.md), then inspect the current
 working tree and [latest validation](docs/development/CURRENT-VALIDATION.md).
 

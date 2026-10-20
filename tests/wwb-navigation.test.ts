@@ -7,12 +7,13 @@ import {Bot} from '../src/wwb/game/bots'
 import {LayeredNav} from '../src/onsite/navigation'
 import {solids} from '../src/onsite/level'
 import {CONFIG} from '../src/wwb/game/config'
-await initPhysics();const nav=new LayeredNav();
+import {operatorFixture} from './operator-fixture'
+await initPhysics();const nav=new LayeredNav(),operator=await operatorFixture();
 function physics(){const p=new Physics();for(const s of solids)p.addStaticBox(new THREE.Vector3(s.x,s.y,s.z),new THREE.Vector3(s.w,s.h,s.d));p.step(1/60);return p}
 test('layered routes connect both stairs and preserve overlapping floors',()=>{for(const [x,z]of [[-10,-5],[10,5]]){const path=nav.findPath(x,z,x,z,0,3)!;assert(path?.length);assert(path.some(p=>p.y>0&&p.y<3));assert(Math.abs(path.at(-1)!.y-3)<.01);assert.notEqual(nav.nearest(x,z,0).id,nav.nearest(x,z,3).id)}});
 for(const [name,x,z]of [['A',-10,-5],['B',10,5]] as const)test(`WWB bot physically traverses stair ${name} up and down`,()=>{
  const p=physics();CONFIG.bots.speed=2.4;const target=new THREE.Vector3(x,3,z);const world:any={time:0,onslaught:true,lineOfSight:()=>false,audio:{play:()=>{}},fx:{},groundAt:()=>0};
- const bot=new Bot(1,'TEST','striker','#111','#111',p,nav,world,{scene:new THREE.Group(),clips:[]},{},'operator');bot.wave=true;bot.spawn(new THREE.Vector3(x,.03,z),0);
+ const bot=new Bot(1,'TEST','striker','#111','#111',p,nav,world,operator,{},'operator');bot.wave=true;bot.spawn(new THREE.Vector3(x,.03,z),0);
  const ctx:any={targets:[{id:0,pos:target,vel:new THREE.Vector3(),alive:true,isPlayer:true}],items:[],hotspots:[target],playerEye:target.clone().add(new THREE.Vector3(0,1.6,0)),playerId:0,frozen:false};
  for(const y of [3,0]){target.y=y;let reached=false;for(let i=0;i<4200;i++){world.time+=1/60;bot.update(1/60,ctx,[bot]);p.step(1/60);if(bot.pos.distanceTo(target)<.75){reached=true;break}}
  assert(reached,`${name} destination y=${y}, bot=${JSON.stringify(bot.pos)}, state=${bot.state} path=${JSON.stringify((bot as any).path.slice((bot as any).pathI,(bot as any).pathI+4))} vel=${JSON.stringify(bot.vel)}`)}p.world.free();
@@ -42,7 +43,7 @@ test('actual player enters Flat 01, reaches living area and bedroom, returns to 
 
 test('WWB bot brain routes through furnished Flat 01 without a second movement owner',()=>{
  const p=physics(),target=new THREE.Vector3(-14,0,-13),world:any={time:0,onslaught:true,lineOfSight:()=>false,audio:{play:()=>{}},fx:{},groundAt:()=>0};
- const bot=new Bot(1,'HOME ROUTE','striker','#111','#111',p,nav,world,{scene:new THREE.Group(),clips:[]},{},'operator');bot.wave=true;bot.spawn(new THREE.Vector3(-9,.03,-7),0);
+ const bot=new Bot(1,'HOME ROUTE','striker','#111','#111',p,nav,world,operator,{},'operator');bot.wave=true;bot.spawn(new THREE.Vector3(-9,.03,-7),0);
  const ctx:any={targets:[{id:0,pos:target,vel:new THREE.Vector3(),alive:true,isPlayer:true}],items:[],hotspots:[target],playerEye:target.clone().add(new THREE.Vector3(0,1.6,0)),playerId:0,frozen:false};
  let reached=false;for(let i=0;i<4200;i++){world.time+=1/60;bot.update(1/60,ctx,[bot]);p.step(1/60);if(bot.pos.distanceTo(target)<.8){reached=true;break}}
  assert(reached,JSON.stringify({position:bot.pos,state:bot.state}));p.world.free();
