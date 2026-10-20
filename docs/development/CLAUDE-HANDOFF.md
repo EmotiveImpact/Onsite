@@ -1,6 +1,206 @@
 # ONSITE — handoff for Claude
 
-## Heron Reach visual pass — 19 October 2026
+## Release continuation — 20 October 2026
+
+The owner has authorised pushing and merging the complete PR #5–#20 dependency
+chain. Continue from `main` once [the final integration PR #5](https://github.com/EmotiveImpact/Onsite/pull/5)
+is marked merged. The release carries the combined reviewed tree `9270abe` and
+runtime source `623bc24`; this release note changes no implementation or assets.
+The existing Vercel integration publishes main automatically.
+
+The review status and “no merge/deployment” wording below record the state when each
+item was originally verified; consult the PR records for publication status.
+Before publication, main was `b5bfd44293390436cbc024cc9743bf643260eefe`, preserved
+locally as `checkpoint/onsite-before-main-publication-2026-10-20`. Keep the original
+review branches and evidence. The 127 tests, build/typecheck and both combat reports
+below apply to the unchanged release runtime; real-GPU performance remains unverified.
+
+## Current: ground, planting and trees — 20 October 2026
+
+Review: [PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged,
+stacked on [building PR #19](https://github.com/EmotiveImpact/Onsite/pull/19).
+
+Continue from `codex/heron-reach-ground-growth`, above building PR #19 and public
+stair PR #18. The owner prioritised stairs/buildings, then realistic ground,
+growth/plants and more trees. Read the [ground work/evidence log](../maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) and
+[construction/provenance record](../maps/heron-reach-32/art/GROUND-GROWTH.md).
+Final validated implementation is `623bc24`, including the denser planters and scoped weed-face correction.
+Earlier tree-only and sparse-planter evidence remains explicitly superseded.
+
+The original Blender additions include 131 irregular soil pockets, 89 moss/edge
+deposits, 45 small leaf drifts, soil rings around 20 existing trunks, 53 ground-edge weed
+clumps and 48 varied low shrub/weed clumps rooted inside the eight existing planters. Sixteen fuller
+London plane trees fill the sealed north/south perimeter. All placements respect
+existing support/door/objective routes; no new playable trunk or solid cover is
+implied. Corrected grass winding restores lighting from above; surviving instances
+retain their exact transforms. The same scoped correction fixes 126 inverted weed
+leaf/blade triangles while preserving upright cards. Original assets and load-failure
+fallbacks remain.
+
+The three fetched runtime files total 416,938 bytes before HTTP compression;
+they share existing PBR and winter materials and add no texture images or lights.
+Initial pale/sparse birches failed visual review and were replaced; their evidence
+is labelled superseded. The final two-plane kit is 36,640 bytes. New authored
+Blender sources stay separate from the original 5.2 estate files.
+
+**127 tests, typecheck and production build pass.** Seven matched camera pairs
+pass on SwiftShader at 1280 × 720, DPR 1, including the new ground close-up. Both
+serial normal-input encounters pass capture, persistence and reset: Court ten
+checks/three bots; Reach nine checks/six bots. Final errors/failed requests are empty.
+Software frame means are 480.76 ms Court / 641.96 ms Reach, at 1100 × 700 / DPR 0.5,
+including automation overhead. Real-GPU performance is deferred and unverified.
+
+Movement/weapons/bots/rounds, collision, layered navigation and Heron Court remain.
+The building log below retains the mirrored private stair walk evidence. Next work
+should improve soil/grass transitions, foliage detail, interior lighting/furnishings
+and local shadows/reflections, then
+room visibility/culling and measured hardware budgets; authored character motion,
+spatial sound and human playtesting remain. This is not completed AAA quality.
+No merge or production deployment was invoked. Existing PR integration may
+automatically build a Vercel preview after branch publication.
+
+## Previous: building and private stair construction — 20 October 2026
+
+Continue from `codex/heron-reach-building-detail`, above public stair PR #18.
+Review: [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19), pushed and unmerged.
+Read the [building work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+and [exact Blender construction/provenance](../maps/heron-reach-32/art/BUILDING-CONSTRUCTION.md).
+The owner prioritised stairs/buildings, then realistic ground, plants and more trees.
+Building source checkpoint is `2608c6e`; later commits retain review evidence.
+
+All eight H2 homes gain properly supported private flights, visible physical
+centre dividers/guards and finish sheets cut around the existing mirrored voids.
+Corrected door surrounds and held-open leaves clear the existing physical routes.
+Public portals, gallery coping/joints, window drips, drainage, bearings and pendant
+supports add construction detail. The 484,816-byte GLB shares existing PBR images;
+no new texture or light is added. Original sources and fallback remain intact.
+
+100 tests, typecheck and production build pass. Ten final building views use
+SwiftShader at 1280 × 720, DPR 1; all nine paired requested poses match exactly.
+Both mirrored private stair fixtures traverse +3 → +6 → +3 m continuously, with
+ten assertions each and no errors in their passing reports. An initial cold-Vite
+SW request-abort failure is retained and explained in the log.
+
+Both serial normal-input encounters also pass: Court ten checks, Reach nine,
+including capture/persistence/reset, with no page/console/request errors. Software
+means are 478.01 ms Court / 687.22 ms Reach; these include automation overhead.
+
+Private interiors still need more considered lighting and varied furnishings.
+Collision/nav and WWB movement/weapons/bots/rounds are unchanged. The separate
+`codex/heron-reach-ground-growth` item adds soil/moss/leaf deposits, weeds, planter
+shrubs and sixteen perimeter trees. Keep the original Blender 5.2 files intact;
+additive files use Blender 4.3. Real-GPU verification is deferred and unverified.
+No merge or production deployment. The existing Vercel integration automatically
+built a preview of PR #19 after its branch push.
+
+
+## Previous: public stair construction — 20 October 2026
+
+Continue from `codex/heron-reach-stair-construction`, above the complete whole-game
+foundation below. The owner specifically prioritised properly modelled stairs.
+Review: [PR #18](https://github.com/EmotiveImpact/Onsite/pull/18), stacked on #17;
+the branch is pushed, open and unmerged.
+Read the [stair implementation/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+and [Blender construction/provenance record](../maps/heron-reach-32/art/STAIR-CONSTRUCTION.md).
+Final code/asset checkpoint is `8c08fad`; later commits record evidence and handoff.
+
+All eight public ST-P cores now use an additive original Blender assembly: 48 shaped
+flights, 432 exact treads, continuous soffits, supported handrails and opaque service
+spines matching existing colliders. Half-landing fittings cover the return flights.
+At runtime, only old public tread/rail indices retire after replacement loading;
+original sources, landings, walls, private ST-H stairs and Heron Court remain intact.
+A failed additive load retains the old stairs. No movement, bot, weapon, round,
+physical geometry or layered-navigation system is replaced or moved.
+
+The final model is 405,636 bytes / 29,904 triangles / 28 batches; it retires 35,072 old
+triangles. Its editable Blend packs all 15 existing material images. No new texture
+or third-party model is imported. Rebuild only the scoped additive source; keep the
+original Blender 5.2 estate files closed in the available 4.3 CLI. The source record
+explains intentionally solid well panels and supported rail endpoints.
+
+The log owns final tests, matched screenshots, physical route fixtures and serial
+combat checks. Keep real-GPU verification explicitly unverified. Remaining work
+includes local shadows/reflections, authored animation/foot planting, spatial sound,
+private stairs and varied interiors, deliberate window visibility, room culling,
+human playtesting and hardware budgets. No merge or deployment in this pass.
+
+## Previous: whole-game foundation — 19 October 2026
+
+The owner explicitly asked for the whole-game goal and its implementation. Start
+with [ONSITE-GOAL.md](../ONSITE-GOAL.md), then [the current work/evidence log](WHOLE-GAME-PROGRESS.md).
+Continue from `codex/onsite-game-foundation`, above the focused operator, reload,
+shop-depth and contact-grounding branches. The historical scene-depth section below
+is the preserved baseline. The complete review tip is [PR #17](https://github.com/EmotiveImpact/Onsite/pull/17);
+focused PRs #13–16 precede it in the [review stack](WHOLE-GAME-PROGRESS.md#review-stack).
+All are pushed and open. No merge or deployment is authorised.
+
+This tranche adds the real title/map/kit/settings/pause/results journey and local
+records, an original weighted Blender operator, continuous licensed-rifle reload
+poses, dimensional shop stock and floor-aware contact patches. The working WWB
+player, bot, damage, rounds, physics and layered navigation remain. Input now lets
+menus use native keyboard controls while pointer lock is released. ONSITE owns
+clear-and-capture victory: its adapter keeps the donor score race from ending at the
+last kill, so final-shot statistics and the deadline continue correctly. Death and
+timeout take precedence over same-tick capture. Donor rules remain intact. No networking.
+
+The operator is a stylised rigged foundation; original sources and alternatives
+remain. New stock respects the existing furniture footprints. Read the character
+and shop provenance documents before rebuilding. The original Blender 5.2 estate
+sources must not be overwritten with the available 4.3 CLI. `?inspect` enables
+camera placement but **does not freeze bots**; earlier capture labels were corrected.
+
+Run the commands in the current log; use serial frozen-build browser encounters.
+Real-GPU verification is deferred and unverified. Remaining work includes richer
+character/animation production, local-light shadows/reflections, more architectural
+variation, spatial sound, human playtesting and a measured hardware budget. The
+32-player map design is still not an implemented online match service.
+
+## Previous: Heron Reach scene depth — 19 October 2026
+
+Continue from `codex/heron-reach-scene-depth`, based on the complete seven-item art
+stack below, in [PR #12](https://github.com/EmotiveImpact/Onsite/pull/12). The owner asked for more detail and a deeper, convincing London scene;
+[the working prompt and remaining production gaps](NEXT-QUALITY-GOAL.md) record that
+goal. [This pass's work log](../maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md)
+contains the actual implementation, matched before/after views, sources and checks.
+No merge or deployment is authorised for this pass.
+
+The existing WWB gameplay stays intact. Additions are Blender shop/service detail;
+two individually licensed Poly Haven scan types from IRONLINE; corrected storey/
+visibility selection for the fixed light pool; quieter dry/wet material response;
+cleaner gallery netting; and an MIT height-fog adaptation from Operation Blackout.
+Claude of Duty is a pinned MIT research clone, not a shipped subsystem. All five
+reference clones remain clean, ignored and outside the bundle. Read
+[the donor review](../research/NEXT-QUALITY-DONORS.md) before further imports.
+
+New Blender files are `lived-detail.blend` and `scanned-detail.blend` under
+`assets/blender/heron-reach/`; generators and exact provenance are recorded beside
+them. Do not overwrite original 5.2 sources using the available 4.3 CLI. Render-only
+additions total 621,826 bytes, 5,888 triangles and 15 exported primitives; this exceeds
+the initial 12-batch target by three. Shader hooks compose surface → wetness → fog.
+The two replaced shop fixture groups are found through `userData.name`, because
+GLTFLoader sanitises authored names. The actual-GLB regression protects this path.
+
+Launch with `npm ci`, `npm run dev`, then `/?map=heron-reach`; plain `/` remains
+Heron Court. Run `npm test`, `npm run typecheck`, `npm run build`, then the two browser
+encounters sequentially against a production preview. Use the work log's saved
+viewpoints for comparisons. Real-GPU benchmarking is still deferred, not a blocker.
+
+Final validation: all 55 tests, typecheck, build and both full browser encounters
+passed. Reach cleared six bots/captured/reset at 76 health; Court cleared three at
+84 health. Mean frame times were 676.45 ms / 588.57 ms on SwiftShader, not a real GPU.
+The original failed Reach run is retained; a reviewed correction bounds automation
+fire bursts and removes stale aim snapshots, preserving normal input and the full
+victory assertion. Thirteen fixed-camera captures passed with no console/page/network
+errors. The work log links the raw reports and an unretimed closing gameplay excerpt.
+
+Most valuable next work: measured local/contact shadows, then optional masked
+scene reflections, plus replacing flat shop panels with deeper authored stock.
+Characters, hand animation, audio and encounter/stealth quality need separate
+passes. More donor clones do not by themselves solve those production gaps.
+
+## Previous seven-item visual stack
+
+### Heron Reach visual pass — 19 October 2026
 
 The owner explicitly deferred real-GPU benchmarking. Work continued on the existing Heron Reach
 runtime (`/?map=heron-reach`), preserving Heron Court and the WWB simulation. **Nothing from this

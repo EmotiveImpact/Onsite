@@ -1,0 +1,130 @@
+{
+  "baseline": "../../building-construction/after/report.json",
+  "closeBaseline": "../before/report.json",
+  "ground": "report.json",
+  "requestedPosesExactlyMatch": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "comparisons": [
+    {
+      "name": "garden-court",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 3.9342307900369633e-07,
+      "yawDelta": 0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 374,
+      "groundCalls": 386,
+      "baselineTriangles": 1240953,
+      "groundTriangles": 1279483
+    },
+    {
+      "name": "washhouse-square",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 1.7388214473681426e-05,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 423,
+      "groundCalls": 439,
+      "baselineTriangles": 1272711,
+      "groundTriangles": 1312873
+    },
+    {
+      "name": "the-corner",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 5.960464477539063e-08,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 592,
+      "groundCalls": 625,
+      "baselineTriangles": 1359960,
+      "groundTriangles": 1408096
+    },
+    {
+      "name": "gallery-edge",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 0.0005090051150954179,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 624,
+      "groundCalls": 660,
+      "baselineTriangles": 1346870,
+      "groundTriangles": 1395454
+    },
+    {
+      "name": "roof-skyline",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 4.262669972775356e-05,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 526,
+      "groundCalls": 550,
+      "baselineTriangles": 1328984,
+      "groundTriangles": 1369564
+    },
+    {
+      "name": "north-boundary-trees",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 2.5834485135153126e-05,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 192,
+      "groundCalls": 201,
+      "baselineTriangles": 993476,
+      "groundTriangles": 1039228
+    },
+    {
+      "name": "garden-ground-close",
+      "requestedPoseMatch": true,
+      "actualPositionDeltaM": 4.779635995398588e-06,
+      "yawDelta": 0.0,
+      "pitchDelta": 0.0,
+      "baselineCalls": 325,
+      "groundCalls": 341,
+      "baselineTriangles": 1146448,
+      "groundTriangles": 1191144
+    }
+  ],
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4194/assets/index-UnAVxv0V.js",
+      "sha256": "47f60eae723149b82c78933b0071e23f829bf83c9e1234b7236709395e2d8a54"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/building-detail.glb",
+      "bytes": 484816,
+      "sha256": "437d8c49fc2cb5cd00232d655d663f42718920181338b8e925b9d68dc829f8fa"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-detail.glb",
+      "bytes": 158884,
+      "sha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-trees.glb",
+      "bytes": 36640,
+      "sha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"
+    },
+    {
+      "path": "/models/heron-reach/ground-plan.json",
+      "bytes": 221414,
+      "sha256": "f3d512ad368107769fbb0a6bea78660a5b0fa0abad0092f31194e728b1a4124b"
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

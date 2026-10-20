@@ -1,0 +1,12 @@
+All materials/models loaded
+Pointer lock and mouse look
+Imported rifle and hands loaded; ADS sight aligns to centre
+WWB automatic fire, recoil and timed reload
+Pause/resume freezes simulation
+Jump and landing
+Walk through lobby doorway into court
+Tracking {"tick":330,"health":96,"target":3,"targetHealth":100,"hits":0,"shots":0}
+Combat result: 3 opponents down, health 84
+Clear and capture victory
+Round reset restores player and opponents
+{"softwareRenderer":true,"renderer":"WebKit WebGL","frames":120,"meanFrameMs":457.1475000000248,"medianFrameMs":452,"p95FrameMs":591.8999999910593,"drawCalls":71,"triangles":249913,"architectureTextures":null,"presentation":{"sensitivity":1,"sound":true,"volume":0.6,"reducedMotion":false,"quality":"auto","pixelRatio":0.5,"bloom":false,"contactInstances":0},"audioPaused":true}

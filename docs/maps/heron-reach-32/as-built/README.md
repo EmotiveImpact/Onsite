@@ -134,3 +134,12 @@ the intermediate files are present locally; original source art stays outside th
 
 Real-GPU timing, memory, postprocessing MSAA/bloom, shadows and alpha-detail quality remain
 unverified. The software encounters remain slow; this work does not establish smooth gameplay.
+
+
+## Subsequent scene-depth art pass
+
+The review branch `codex/heron-reach-scene-depth` adds lighting/material corrections
+and Blender detail without moving collision/navigation or changing this as-built
+layout. See [the current work log](../art/SCENE-DEPTH-2026-10-19.md) for matched
+evidence, asset costs and latest validation. Earlier timings in this document
+describe their dated builds, not this newer branch. Real-GPU testing remains deferred.

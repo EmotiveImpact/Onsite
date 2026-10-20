@@ -1,0 +1,48 @@
+{
+  "asset": "/models/onsite-operator.glb",
+  "source": "assets/blender/characters/onsite-operator.blend",
+  "generator": "scripts/characters/build_operator.py",
+  "author": "Original ONSITE project authoring",
+  "provenance": "All geometry, anatomical skeleton, woven cotton maps, materials and kit shapes are original; no donor images or animation clips.",
+  "units": "metres",
+  "height": 1.75,
+  "forward": "+Z in GLB, rotated PI by the bot adapter",
+  "sha256": "5a262f334a60decd6bb798eb576bf4dd18f84560f9a724337d90f25dcf40a647",
+  "bytes": 1150548,
+  "trianglesByPart": {
+    "OperatorBody": 12774,
+    "Hood_up": 352,
+    "Hood_down": 96,
+    "Trainers_court": 748,
+    "Trainers_runner": 1692,
+    "Trainers_high": 1052
+  },
+  "allVariantTriangles": 16714,
+  "materials": 7,
+  "bones": 20,
+  "animations": 0,
+  "textures": [
+    {
+      "file": "assets/textures/operators/black-cotton-colour.png",
+      "sha256": "cd551d4b0ae1703fdd6a538874feaba4139177627a2e65dde8e86cee440fd390",
+      "source": "Original deterministic weave/noise in scripts/characters/build_operator.py"
+    },
+    {
+      "file": "assets/textures/operators/black-cotton-normal.png",
+      "sha256": "d82e6a92a5c3d88af5deffec169f12046993a25b56422bcd4ec1ef99b2ee5f94",
+      "source": "Original deterministic weave/noise in scripts/characters/build_operator.py"
+    }
+  ],
+  "variants": {
+    "hood": [
+      "up",
+      "down"
+    ],
+    "trainers": [
+      "court",
+      "runner",
+      "high"
+    ]
+  },
+  "physics": "No collision/nav data. Existing WWB capsule remains unchanged."
+}
