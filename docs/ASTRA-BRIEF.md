@@ -1,5 +1,32 @@
 # Brief for Astra: push Heron Reach towards the concept art
 
+**Release continuation, 20 October 2026:** the owner authorised merging the full
+PR #5–#20 chain. After [PR #5](https://github.com/EmotiveImpact/Onsite/pull/5) is merged,
+continue from `main`. Read the [release handoff](development/CLAUDE-HANDOFF.md);
+“unmerged” statuses below describe the earlier review checkpoints. Runtime source,
+assets and the latest passing validation are unchanged by publication.
+
+**Current owner direction:** [ONSITE whole-game goal](ONSITE-GOAL.md) now extends this art brief
+to the integrated player flow, original operator kit and presentation. Read the
+[whole-game progress log](development/WHOLE-GAME-PROGRESS.md) for actual changes and evidence.
+Networking and real-GPU verification remain deferred.
+
+## Current construction and ground pass — 20 October 2026
+
+Continue from `codex/heron-reach-ground-growth` in
+[PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged, above building/private stair
+[PR #19](https://github.com/EmotiveImpact/Onsite/pull/19) and public stair #18.
+The owner prioritised stairs/buildings, then realistic ground, growth and trees.
+Read the [ground work log](maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) and
+[building work log](maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md).
+Private stairs have verified mirrored physical routes; ground adds supported
+soil/moss/leaves, weeds, planter shrubs, sixteen fuller perimeter trees and corrected
+grass shading. Original assets and collision/nav/WWB gameplay remain intact.
+127 tests, typecheck/build and both final browser encounters pass; consult
+[current validation](development/CURRENT-VALIDATION.md) for actual software timings.
+Real-GPU verification is still deferred and unverified. No merge or production
+deployment was invoked; existing Vercel PR integration may build previews.
+
 ## Current owner instruction and continuation
 
 The owner subsequently **deferred real-GPU benchmarking** and authorised visual implementation.
@@ -71,7 +98,7 @@ npm run build
 ```
 
 Useful URL switches on Heron Reach: `&art=0` shows the collision blockout, `&rain=0` turns rain
-off, `&inspect` freezes bots for camera placement.
+off, `&inspect` enables camera placement; bots remain active.
 
 Browser checks run against a frozen build, because the dev server reloads mid-run when `src/` or
 `props-manifest.json` changes:
