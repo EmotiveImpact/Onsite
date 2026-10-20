@@ -1,5 +1,40 @@
 # ONSITE — handoff for Claude
 
+## Current: scanned world dressing — 20 October 2026
+
+Continue from `codex/heron-reach-world-dressing`, implementation `2cef5c8`, based on
+released main `c583afeb`. The previous PR #5–#20 chain was merged and the release
+was verified live. This new pass is separate review work; no merge/deploy is authorised
+for it. Read [the work/evidence log](../maps/heron-reach-32/art/WORLD-DRESSING-2026-10-20.md)
+and [donor asset audit](../research/WORLD-ASSET-AUDIT-2026-10-20.md).
+
+Heron Reach now uses six already cleared IRONLINE/Poly Haven scanned prop variants:
+rubbish bags, closed rusty bins, roof AC units, boxes, crates and tyres. Newly
+downloaded CC0 Poly Haven ferns and clay pots add 53 raised-bed fern clumps and four
+home table arrangements. There are 103 supported render instances, retiring 40 exact
+original instances; bin stores and workshops now contain stock. Two additive packed
+Blender sources, original downloads and full provenance are retained. Render placement
+uses the existing supports and physical envelopes, with WWB gameplay and layered nav
+preserved. Heron Court keeps its own existing asset path.
+
+The two runtime kits total 2,136,988 bytes, 16,713 unique triangles and about 21.5 MiB
+of estimated decoded RGBA8 texture storage with mips. Models are instanced by floor
+and spatial tile. `View.ts` filters originals only after their replacement roots load;
+missing optional kits preserve original art. No new lights or physical geometry.
+
+143 tests, typecheck and build pass. Eight identical-camera before/after pairs pass
+on SwiftShader at 1280 × 720 / DPR 1. Both serial normal-input encounters pass: Court ten checks/three bots; Reach nine
+checks/six bots, including capture, saved results and reset. Final errors/failed
+requests are empty. At 1100 × 700 / DPR 0.5, software mean frame times are
+497.47 ms Court and 721.57 ms Reach; automation overhead is included. This is
+slow software rendering, not a smoothness claim. Real-GPU performance remains
+deferred and unverified. The first sparse iteration remains only in ignored
+`test-results/world-dressing-initial-sparse`; final captures contain the 31 added clumps.
+
+The next useful work is coherent home furniture and interior light, surface transitions,
+local shadows/reflections and visibility/culling. Asset count alone does not establish
+AAA quality. Do not replace the gameplay foundation or import unlicensed mirror assets.
+
 ## Release continuation — 20 October 2026
 
 The owner has authorised pushing and merging the complete PR #5–#20 dependency

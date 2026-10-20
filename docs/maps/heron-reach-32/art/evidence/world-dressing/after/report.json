@@ -1,0 +1,1313 @@
+{
+  "kind": "Fixed-camera inspection fixtures; actors remain active; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4196",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4196/assets/index-D5D8OAM2.js",
+      "sha256": "094513e43b3df22ee2dd562eed4233b16c2f3bffd0b901416c6931aaf4d341be"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/building-detail.glb",
+      "bytes": 484816,
+      "sha256": "437d8c49fc2cb5cd00232d655d663f42718920181338b8e925b9d68dc829f8fa"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-detail.glb",
+      "bytes": 158884,
+      "sha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-trees.glb",
+      "bytes": 36640,
+      "sha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"
+    },
+    {
+      "path": "/models/heron-reach/ground-plan.json",
+      "bytes": 221414,
+      "sha256": "f3d512ad368107769fbb0a6bea78660a5b0fa0abad0092f31194e728b1a4124b"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-world-props.glb",
+      "bytes": 1924688,
+      "sha256": "a3f7ccc7e5b7ff67055811e480c6f24a01275ec774b422305d6f226ceb70bf4e"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-world-plants.glb",
+      "bytes": 212300,
+      "sha256": "f4b2f6fb690070ff44641e334edb3dada1449d59f94c70e4ca1f1a2e1350ed64"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "2cef5c83bafc744ab6a5c7cb6941bed8a344a72d",
+  "workingTree": "",
+  "captures": [
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.020081403950462096,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 62.06358170276508,
+            "y": 0.024948474653065156,
+            "z": -0.4318520464003086
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.00153717010794836,
+            "y": 0,
+            "z": 2.99997221037429
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 10.460615660995245,
+            "y": 0.017868845592893146,
+            "z": 7.3930218400782906
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.908906787149412,
+            "y": 0,
+            "z": -0.695329336754706
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 3.5117148272693157,
+            "y": 3.0159526051577994,
+            "z": -22.311907246975608
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999377392454116,
+            "y": 0,
+            "z": -2.5944024824771546e-05
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.18782820881460793,
+            "y": 0.016601970288611434,
+            "z": -32.64640433713794
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.00223134820939157,
+            "y": 0,
+            "z": 2.9999499454914718
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 30.18797119085002,
+            "y": 9.019972493632231,
+            "z": 29.571877606213093
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.002195604322567592,
+            "y": 0,
+            "z": -2.9999555966157714
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 3.602301709353924,
+            "y": -2.9804016520644656,
+            "z": 3.1881016693650963
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999944310476716,
+            "y": 0,
+            "z": -0.0009073952136627147
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 7,
+        "meanFrameMs": 1441.2142857142858,
+        "medianFrameMs": 1423.2999999970198,
+        "p95FrameMs": 3409.9000000059605,
+        "drawCalls": 628,
+        "triangles": 1430700,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "garden-court",
+      "requestedPose": {
+        "x": -2,
+        "y": 0.04,
+        "z": -28,
+        "yaw": 0,
+        "pitch": -0.05
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -2.0000013789149875,
+          "y": 0.02007853666291337,
+          "z": -28
+        },
+        "yaw": 0,
+        "pitch": -0.05,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 61.16358828917146,
+            "y": 0.020408306787721764,
+            "z": 2.4518764838576317
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.419585872996214,
+            "y": 0,
+            "z": 1.679110235666168
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 13.33851514896378,
+            "y": 0.020070313730975564,
+            "z": 6.668654952198267
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.005407644054564953,
+            "y": 0,
+            "z": -2.808349504302391
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 6.802192089147866,
+            "y": 3.0194297301862387,
+            "z": -22.10420324280858
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.9086454016178442,
+            "y": 0,
+            "z": 1.6790523999535822
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 2.857131317257881,
+            "y": 0.019982071877457153,
+            "z": -32.59415226872079
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": 2.4579666268120115,
+            "y": 0,
+            "z": 0.0674166129547361
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 28.262403048574924,
+            "y": 9.018791628870822,
+            "z": 27.62160699814558
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.7954096796734351,
+            "y": 0,
+            "z": -2.5373785391673582
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 6.852987669408321,
+            "y": -2.9799376224543086,
+            "z": 3.555556199979037
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.968391302827603,
+            "y": 0,
+            "z": -0.13185608351022302
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 12,
+        "meanFrameMs": 1474.4249999995034,
+        "medianFrameMs": 1536.9000000059605,
+        "p95FrameMs": 3409.9000000059605,
+        "drawCalls": 384,
+        "triangles": 1272847,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "garden-ground-close",
+      "requestedPose": {
+        "x": -4.5,
+        "y": 0.04,
+        "z": -38,
+        "yaw": 0.6435011087932844,
+        "pitch": -0.23
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -4.500001430511475,
+          "y": 0.020081594798830316,
+          "z": -38.00000000238561
+        },
+        "yaw": 0.6435011087932844,
+        "pitch": -0.23,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 58.979935210198164,
+            "y": 0.0203238072211388,
+            "z": 4.227788267657161
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.8751978494137564,
+            "y": 0,
+            "z": 1.8665994323225377
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 13.490183662623167,
+            "y": 0.019260946523281697,
+            "z": 3.1008250704035163
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.0463368506272066,
+            "y": 0,
+            "z": -0.8249614355141193
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 9.280847683548927,
+            "y": 3.0186965712276286,
+            "z": -21.560523808948346
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999407399792345,
+            "y": 0,
+            "z": 0.0025980244060810507
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 1.5541534554213285,
+            "y": 0.020079864989675067,
+            "z": -30.827815940603614
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": -1.564152777425749,
+            "y": 0,
+            "z": 1.38669362232217
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 26.19577231258154,
+            "y": 9.020063071373734,
+            "z": 25.654819479212165
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.9853125977238353,
+            "y": 0,
+            "z": -1.6677412999325534
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 10.458202183246613,
+            "y": -2.9799130499738387,
+            "z": 3.5625008633742254
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999990732805557,
+            "y": 0,
+            "z": 0.0006988766301256853
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 17,
+        "meanFrameMs": 1398.9117647058824,
+        "medianFrameMs": 1301.2000000029802,
+        "p95FrameMs": 3409.9000000059605,
+        "drawCalls": 337,
+        "triangles": 1179407,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "cycle-workshop-stock",
+      "requestedPose": {
+        "x": -45.6,
+        "y": 0.04,
+        "z": 7.5,
+        "yaw": -3.141592653589793,
+        "pitch": -0.18
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -45.59999788160593,
+          "y": 0.020079592688125536,
+          "z": 7.499999851871209
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.18,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 57.24215140193701,
+            "y": 0.02042164786718781,
+            "z": 6.265382448211312
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.314333076221157,
+            "y": 0,
+            "z": 0.45834397912480884
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 15.145360223948956,
+            "y": 0.018286481834656976,
+            "z": 1.6135677741840482
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.7484039745702056,
+            "y": 0,
+            "z": 0.5731405646151939
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 9.563307955206255,
+            "y": 3.0200962402598814,
+            "z": -18.259049225598574
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.012060962372346636,
+            "y": 0,
+            "z": 2.999793922532151
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.46307268366217613,
+            "y": 0.015588274094916366,
+            "z": -33.10023992136121
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -1.8763271053139978,
+            "y": 0,
+            "z": -1.8546967759456432
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 23.2578091211617,
+            "y": 9.01546113738761,
+            "z": 24.571340031106956
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.994663732412385,
+            "y": 0,
+            "z": -0.05771001085068868
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 14.116426277905703,
+            "y": -2.980330474674411,
+            "z": 3.5624875937598937
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999999997061104,
+            "y": 0,
+            "z": 0.00010419993609507747
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 22,
+        "meanFrameMs": 1431.5136363635008,
+        "medianFrameMs": 1349.0999999940395,
+        "p95FrameMs": 3150.4000000059605,
+        "drawCalls": 453,
+        "triangles": 1306011,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "north-bin-store",
+      "requestedPose": {
+        "x": -24,
+        "y": 0.04,
+        "z": -54.9,
+        "yaw": 0,
+        "pitch": -0.06
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -24.000001907348633,
+          "y": 0.02009508852061115,
+          "z": -54.90000159838389
+        },
+        "yaw": 0,
+        "pitch": -0.06,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 55.56468301452696,
+            "y": 0.01748739728674986,
+            "z": 8.034358613193035
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.300446174106852,
+            "y": 0,
+            "z": 1.708809875357189
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 15.564142172719585,
+            "y": 0.018873670007742427,
+            "z": 4.695583749562502
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.007754952006685781,
+            "y": 0,
+            "z": 2.999726877409585
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 12.2678427323699,
+            "y": 3.020548416149104,
+            "z": -17.43513869377057
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9991735034731133,
+            "y": 0,
+            "z": 0.006331661810646633
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": -1.22613937407732,
+            "y": 0.019983990052714895,
+            "z": -35.161986930295825
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -2.2394190607895115,
+            "y": 0,
+            "z": -0.4432537878977948
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 20.387925382703543,
+            "y": 9.020098898421857,
+            "z": 23.787012334913015
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.4811813838485766,
+            "y": 0,
+            "z": -2.801957601045645
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 17.803689002990723,
+            "y": -2.9803134700993543,
+            "z": 3.6005891771637835
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.997643706439348,
+            "y": 0,
+            "z": -0.06650732323201264
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 27,
+        "meanFrameMs": 1429.2925925928134,
+        "medianFrameMs": 1349.0999999940395,
+        "p95FrameMs": 3150.4000000059605,
+        "drawCalls": 199,
+        "triangles": 1046481,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "corner-service-stock",
+      "requestedPose": {
+        "x": 35.5,
+        "y": 0.04,
+        "z": 0.5,
+        "yaw": 0.2736593210820904,
+        "pitch": -0.45
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 35.49999904671489,
+          "y": 0.01986487388203384,
+          "z": 0.5000004172325134
+        },
+        "yaw": 0.2736593210820904,
+        "pitch": -0.45,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 53.46741946786642,
+            "y": 0.017270876895345233,
+            "z": 9.666252790950239
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.0037921319806213,
+            "y": 0,
+            "z": 0.7096405468582456
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 15.56249049731241,
+            "y": 0.019205704200721763,
+            "z": 8.445608671754599
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 7.647341728418518e-05,
+            "y": 0,
+            "z": 2.9999999889137894
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 15.261680212803185,
+            "y": 3.02076461561257,
+            "z": -18.03254983946681
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.6397806573786716,
+            "y": 0,
+            "z": -2.708342059033949
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": -2.9636331871151924,
+            "y": 0.018433303441561244,
+            "z": -36.77209861483425
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -1.5056008178797988,
+            "y": 0,
+            "z": -0.4973598159104613
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 20.43769509706908,
+            "y": 9.0201100530033,
+            "z": 20.10915883630514
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0024917630522590375,
+            "y": 0,
+            "z": -2.9999921107544996
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 18.565140368584252,
+            "y": -2.9848030876743725,
+            "z": 0.7496317587792873
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.003968451865736808,
+            "y": 0,
+            "z": -2.9992512352815357
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 32,
+        "meanFrameMs": 1456.3093750001863,
+        "medianFrameMs": 1375.3999999910593,
+        "p95FrameMs": 3150.4000000059605,
+        "drawCalls": 609,
+        "triangles": 1451920,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "northwest-home-table",
+      "requestedPose": {
+        "x": -40.8,
+        "y": 0.04,
+        "z": -32.85,
+        "yaw": -1.3422996875030344,
+        "pitch": -0.35
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -40.79999981751672,
+          "y": 0.02008116158103801,
+          "z": -32.849998474121094
+        },
+        "yaw": -1.3422996875030344,
+        "pitch": -0.35,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 51.71299038827419,
+            "y": 0.016274383160925887,
+            "z": 11.457453396171331
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -2.134974786824279,
+            "y": 0,
+            "z": 1.5844146068832765
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 15.56173355478677,
+            "y": 0.021219116104766678,
+            "z": 11.44489000737667
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 0.0034585369972397542,
+            "y": 0,
+            "z": 2.9999973620810976
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 16.769227321259677,
+            "y": 3.0199999377731,
+            "z": -19.15271918848157
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.493785644798981,
+            "y": 0,
+            "z": -2.642331143183897
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": -4.027715226635337,
+            "y": 0.02066720631439234,
+            "z": -37.97394024580717
+          },
+          "health": 100,
+          "alive": true,
+          "state": "chase",
+          "velocity": {
+            "x": -0.386842086156911,
+            "y": 0,
+            "z": -2.2873516929302053
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 18.95426931604743,
+            "y": 9.020595742091537,
+            "z": 18.395700708031654
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.2732416550509502,
+            "y": 0,
+            "z": -2.3174248795436285
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 18.5625256987405,
+            "y": -2.9801484012420407,
+            "z": -2.2503620833158493
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0003751345327212516,
+            "y": 0,
+            "z": -2.999999813205836
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 36,
+        "meanFrameMs": 1567.9249999999172,
+        "medianFrameMs": 1499,
+        "p95FrameMs": 3409.9000000059605,
+        "drawCalls": 732,
+        "triangles": 1521253,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    },
+    {
+      "name": "garden-large-planter",
+      "requestedPose": {
+        "x": -18.6,
+        "y": 0.04,
+        "z": 12.5,
+        "yaw": 0.6273081922757625,
+        "pitch": -0.23
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -18.599993912139553,
+          "y": 0.02007922728953415,
+          "z": 12.499999963747989
+        },
+        "yaw": 0.6273081922757625,
+        "pitch": -0.23,
+        "health": 100,
+        "grounded": true
+      },
+      "actors": [
+        {
+          "id": 1,
+          "position": {
+            "x": 62.06273351130949,
+            "y": 0.020088838282681487,
+            "z": 0.11815296113491058
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0047398595463587654,
+            "y": 0,
+            "z": 2.9999890380303906
+          }
+        },
+        {
+          "id": 2,
+          "position": {
+            "x": 6.177200857549906,
+            "y": 0.01742342753306725,
+            "z": 7.424707015088643
+          },
+          "health": 100,
+          "alive": true,
+          "state": "engage",
+          "velocity": {
+            "x": -2.1894389513872112,
+            "y": 0,
+            "z": 0.013948173764947197
+          }
+        },
+        {
+          "id": 3,
+          "position": {
+            "x": 4.061709463596344,
+            "y": 3.017055440097756,
+            "z": -22.31231802323964
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.9999864047494658,
+            "y": 0,
+            "z": -0.0025657905698093313
+          }
+        },
+        {
+          "id": 4,
+          "position": {
+            "x": 0.1877187313948525,
+            "y": 0.017698771182331208,
+            "z": -32.096411906182766
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -0.0016211133510347898,
+            "y": 0,
+            "z": 2.9999893771869295
+          }
+        },
+        {
+          "id": 5,
+          "position": {
+            "x": 30.12976415641606,
+            "y": 9.020069983649883,
+            "z": 29.0650954246521
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": -1.3104824685830203,
+            "y": 0,
+            "z": -1.9565106503945293
+          }
+        },
+        {
+          "id": 6,
+          "position": {
+            "x": 4.152269449084997,
+            "y": -2.9805594045098407,
+            "z": 3.1876210097470903
+          },
+          "health": 100,
+          "alive": true,
+          "state": "roam",
+          "velocity": {
+            "x": 2.999987896342075,
+            "y": 0,
+            "z": -0.0025747954294447154
+          }
+        }
+      ],
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 6,
+        "meanFrameMs": 1883.5833333333333,
+        "medianFrameMs": 1740.9000000059605,
+        "p95FrameMs": 5666.29999999702,
+        "drawCalls": 513,
+        "triangles": 1380724,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        },
+        "presentation": {
+          "sensitivity": 1,
+          "sound": true,
+          "volume": 0.6,
+          "reducedMotion": false,
+          "quality": "auto",
+          "pixelRatio": 1,
+          "bloom": false,
+          "contactInstances": 290,
+          "worldDressing": {
+            "replacements": 18,
+            "storeContents": 16,
+            "workshopContents": 4,
+            "ferns": 53,
+            "tableArrangements": 4
+          }
+        },
+        "audioPaused": false
+      }
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "captureBatches": [
+    {
+      "views": [
+        "garden-large-planter"
+      ],
+      "context": "Additional K11 density view; physical camera validation in ../camera-validation.json; same frozen runtime/assets/DPR/viewport"
+    }
+  ]
+}

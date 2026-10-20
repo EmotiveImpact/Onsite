@@ -1,4 +1,33 @@
-# Current validation: ground, planting and trees
+# Current validation: scanned world dressing and fuller planting
+
+20 October 2026. Branch `codex/heron-reach-world-dressing`, implementation `2cef5c8`,
+based on released main `c583afeb`. Read [the work/evidence log](../maps/heron-reach-32/art/WORLD-DRESSING-2026-10-20.md)
+for source records, exact build/model hashes, placements and matched images.
+
+- **143 tests pass**, no skips; typecheck and production build pass. The 16 new
+  tests inspect actual decoded GLBs, support surfaces, gates, planter bounds,
+  table/soil/stem contact, input preservation, load failures and instancing.
+- **Eight matched before/after views pass**, with identical requested poses,
+  1280 × 720 / DPR 1 / ANGLE SwiftShader. Actors remain active. Exact loaded
+  dressing counts pass; console/page errors and failed requests are empty.
+- Both serial normal-input encounters pass: Court ten checks/three bots and
+  Reach nine checks/six bots. Both clear, capture, persist results once and reset.
+  Full reports have no console/page errors or failed requests.
+- At 1100 × 700 / DPR 0.5, Court: 115 frames, mean 497.47 ms, median 501.5 ms,
+  p95 633.4 ms; Reach: 360 frames, mean 721.57 ms, median 714.9 ms, p95 883.7 ms.
+  Measurements include automation overhead and different encounter states;
+  they are not a controlled comparison or evidence of smooth performance.
+  **Real-GPU performance remains deferred and unverified.**
+
+103 new render instances replace 40 original prop/weed instances and fill existing
+stores, shelves, planting beds and four tables. Runtime download is 2,136,988 bytes;
+estimated decoded texture storage including mips is about 21.5 MiB. No new lights,
+physics or nav geometry; WWB gameplay and Heron Court remain. The large 5.40 MB main
+JS chunk and estate texture/culling costs remain unresolved. The world still needs
+better furniture, lighting, contact shading and material transitions. No merge or
+production deployment was invoked for this pass.
+
+# Previous validation: ground, planting and trees
 
 20 October 2026. Branch `codex/heron-reach-ground-growth`, corrected implementation
 `623bc24`, including six-clump planters and the scoped weed-face correction. Read the
