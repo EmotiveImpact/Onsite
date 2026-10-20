@@ -1,4 +1,32 @@
-# Current validation: building and private stair construction
+# Current validation: ground, planting and trees
+
+20 October 2026. Branch `codex/heron-reach-ground-growth`, corrected implementation
+`623bc24`, including six-clump planters and the scoped weed-face correction. Read the
+[ground work/evidence log](../maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) for exact asset hashes, sources, matched views,
+initial rejected tree iteration and full reports.
+
+- **127 tests pass**, no skips; typecheck and production build pass. The 27 added
+  tests cover exported support/route geometry, planter and canopy clearances,
+  original decoded plane-tree preservation, grass winding, deterministic filtering
+  and independent load-failure fallbacks. Actual-GLB checks also prove the scoped weed
+  strip/blade correction preserves all upright cards and source attributes.
+- Seven final before/after requested camera poses match exactly at 1280 × 720,
+  DPR 1, on ANGLE SwiftShader. Inspection actors remain active; this is art evidence.
+- Both normal-input production encounters pass serially: Court ten checks/three
+  bots, Reach nine checks/six bots; capture, exactly-once results and reset pass.
+  Final page/console errors, failed requests and art-fallback warnings are empty.
+- Software means: **480.76 ms Court / 641.96 ms Reach**, 1100 × 700 / DPR 0.5. Raw counts,
+  median/p95 and draw submissions are in the log; automation overhead is included.
+  **Real-GPU performance remains deferred and unverified.**
+
+Ground/plant/tree additions share existing materials and add no texture images or
+lights. The ground GLB is 158,884 bytes; the corrected tree kit is 36,640 bytes;
+the separate runtime plan is 221,414 bytes. Geometry/culling, the roughly 329 MB
+architecture-texture estimate and 5.39 MB main JS chunk remain material costs.
+Physical/navigation geometry and WWB gameplay are unchanged. No merge or production
+deployment was invoked; the existing PR integration may build preview deployments.
+
+# Previous validation: building and private stair construction
 
 20 October 2026. Branch `codex/heron-reach-building-detail`, implementation checkpoint
 `2608c6e`, above public stair PR #18. Read the [work/evidence log](../maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)

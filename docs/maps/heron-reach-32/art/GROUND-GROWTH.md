@@ -143,15 +143,18 @@ ground fallback warnings as failures; optional fallback is not silently accepted
 Corrected implementation checks in the isolated ground worktree on 20 October 2026:
 `npm test` passes all 127 tests (10 legacy and 117 TypeScript tests), `npm run typecheck`
 and `npm run build` pass. The correction groups validate actual decoded plane attributes, rotated canopy/prop
-clearances the final six-clump beds and exact weed-strip/blade correction while preserving upright cards. Actual transformed foliage vertices meet
+clearances, the final six-clump beds and exact weed-strip/blade correction while preserving upright cards. Actual transformed foliage vertices meet
 soil within 1 mm, clear every rim and stay below 1.25 m; the non-planter placements,
 patches and trees retain their pre-planter fingerprints. Per-mesh fingerprints prove positions,
 indices, normals, UVs and bark colours match the original exported planes exactly.
 The source-bound fixture uses the original decoded vertices, including existing gltfpack
 floating-point quantization (up to 0.170 mm at the measured crown), not raw Blender bounds. These checks do not establish browser appearance or real-GPU performance.
 
-Visual review is still required after integration; no browser was run during staging. Compare
-the same `garden-court`, `the-cage`, `the-corner` and south boundary/gallery views. Useful close
-viewpoints in map coordinates: (72,1.65,38) looking toward (72,1.3,20); (48,1.65,44) toward
-(55,1,59); (111,1.65,44) toward the existing Corner drain at (119.72,0,47.61). Review natural
-olive/brown growth, visible bare pockets, low planter tops, clear gates and no floating edges.
+The integrated final build has seven matched runtime captures at 1280 × 720/DPR 1
+on Chromium/ANGLE SwiftShader, including the close planter/soil/tree-ring view and
+north boundary trees. The final set is visually accepted; the grass/weed correction
+restores lit green leaves without tinting materials or changing placements. The
+[work log](GROUND-PASS-2026-10-20.md) records exact poses, artifacts, costs, normal
+encounters and retained superseded iterations. Harsh practical lighting/bright bark,
+hard soil outlines, stylised/aliasing foliage and sparse interiors remain limitations.
+Real-GPU performance is deferred and unverified.
