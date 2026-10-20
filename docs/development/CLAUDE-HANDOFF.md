@@ -2,6 +2,9 @@
 
 ## Current: ground, planting and trees — 20 October 2026
 
+Review: [PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged,
+stacked on [building PR #19](https://github.com/EmotiveImpact/Onsite/pull/19).
+
 Continue from `codex/heron-reach-ground-growth`, above building PR #19 and public
 stair PR #18. The owner prioritised stairs/buildings, then realistic ground,
 growth/plants and more trees. Read the [ground work/evidence log](../maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) and

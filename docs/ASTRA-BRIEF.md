@@ -7,7 +7,8 @@ Networking and real-GPU verification remain deferred.
 
 ## Current construction and ground pass — 20 October 2026
 
-Continue from `codex/heron-reach-ground-growth`, above building/private stair
+Continue from `codex/heron-reach-ground-growth` in
+[PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged, above building/private stair
 [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19) and public stair #18.
 The owner prioritised stairs/buildings, then realistic ground, growth and trees.
 Read the [ground work log](maps/heron-reach-32/art/GROUND-PASS-2026-10-20.md) and

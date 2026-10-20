@@ -1,5 +1,8 @@
 # Heron Reach ground and growth pass
 
+Review: [PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged,
+stacked on [building PR #19](https://github.com/EmotiveImpact/Onsite/pull/19).
+
 20 October 2026. Final implementation/source checkpoint:
 `623bc24ad98aa60db86f41b50da6e9dae12daeb4` on `codex/heron-reach-ground-growth`,
 above completed building evidence `ca97cd49e96ffff97d0259e48e9308f794202c72`.
