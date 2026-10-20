@@ -1,7 +1,35 @@
 # ONSITE — handoff for Claude
 
 
-## Current: whole-game foundation — 19 October 2026
+## Current: public stair construction — 20 October 2026
+
+Continue from `codex/heron-reach-stair-construction`, above the complete whole-game
+foundation below. The owner specifically prioritised properly modelled stairs.
+Read the [stair implementation/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+and [Blender construction/provenance record](../maps/heron-reach-32/art/STAIR-CONSTRUCTION.md).
+Final code/asset checkpoint is `8c08fad`; later commits record evidence and handoff.
+
+All eight public ST-P cores now use an additive original Blender assembly: 48 shaped
+flights, 432 exact treads, continuous soffits, supported handrails and opaque service
+spines matching existing colliders. Half-landing fittings cover the return flights.
+At runtime, only old public tread/rail indices retire after replacement loading;
+original sources, landings, walls, private ST-H stairs and Heron Court remain intact.
+A failed additive load retains the old stairs. No movement, bot, weapon, round,
+physical geometry or layered-navigation system is replaced or moved.
+
+The final model is 405,636 bytes / 29,904 triangles / 28 batches; it retires 35,072 old
+triangles. Its editable Blend packs all 15 existing material images. No new texture
+or third-party model is imported. Rebuild only the scoped additive source; keep the
+original Blender 5.2 estate files closed in the available 4.3 CLI. The source record
+explains intentionally solid well panels and supported rail endpoints.
+
+The log owns final tests, matched screenshots, physical route fixtures and serial
+combat checks. Keep real-GPU verification explicitly unverified. Remaining work
+includes local shadows/reflections, authored animation/foot planting, spatial sound,
+private stairs and varied interiors, deliberate window visibility, room culling,
+human playtesting and hardware budgets. No merge or deployment in this pass.
+
+## Previous: whole-game foundation — 19 October 2026
 
 The owner explicitly asked for the whole-game goal and its implementation. Start
 with [ONSITE-GOAL.md](../ONSITE-GOAL.md), then [the current work/evidence log](WHOLE-GAME-PROGRESS.md).

@@ -5,6 +5,14 @@ to the integrated player flow, original operator kit and presentation. Read the
 [whole-game progress log](development/WHOLE-GAME-PROGRESS.md) for actual changes and evidence.
 Networking and real-GPU verification remain deferred.
 
+## Current construction pass — 20 October 2026
+
+The active continuation is `codex/heron-reach-stair-construction`. The owner then
+prioritised proper stairs. Read the [stair work log](maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+for all eight public cores, exact Blender sources, matched views and final verification.
+Its render assembly preserves the existing physical/nav routes; private-home stairs
+remain a future item. The broader quality gates below still apply. No merge/deploy.
+
 ## Current owner instruction and continuation
 
 The owner subsequently **deferred real-GPU benchmarking** and authorised visual implementation.

@@ -1,4 +1,35 @@
-# Current validation: ONSITE whole-game tranche
+# Current validation: Heron Reach public stairs
+
+20 October 2026. Branch `codex/heron-reach-stair-construction`, final code/asset
+checkpoint `8c08fad`. Read the [stair work/evidence log](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+for exact hashes, recovery, source provenance, all captures and commands. No merge/deploy.
+
+- **93 tests pass**, no skips; typecheck and production build pass. Actual compressed
+  geometry checks cover 432 treads, all eight cores, headroom, rail visibility and
+  supported joints, preserved landings/walls/private stairs and safe loader fallback.
+- **Eight matched before/after views** pass at identical requested camera poses:
+  Chromium/ANGLE SwiftShader, 1280 × 720, DPR 1. These are inspection fixtures with
+  active bots, not gameplay or hardware benchmarks.
+- **Both continuous stair walks pass**, seven grounded checkpoints each: S1 ground
+  → +3 m → ground and mirrored S7 basement → ground → basement. Actual WWB player,
+  Rapier and layered navigation; one spawn, no subsequent teleports. These scripted
+  routes disable bots. They ran concurrently and their timing is not the performance sample.
+- **Both serial normal-input encounters pass**: Court ten checks/three bots/84 health;
+  Reach nine checks/six bots/88 health. Both capture, persist a single result and reset.
+  Page/console errors and failed requests are empty in all final browser reports.
+- Software frame means: **457.15 ms Court (~2.19 FPS)** and **622.24 ms Reach (~1.61 FPS)**,
+  at 1100 × 700 / DPR 0.5. Median/p95 and raw sample counts are in the log. These include
+  automation overhead and do not establish smoothness or a performance improvement.
+  **Real-GPU performance remains deferred and unverified.**
+
+The final Blender GLB is 405,636 bytes / 29,904 triangles / 28 batches. Retiring 35,072
+old triangles gives a net reduction of 5,168, with no new runtime textures. Calls can
+increase: the matched S1 view changes from 334 to 340. Large geometry submissions,
+texture costs and the 5.38 MB JavaScript chunk remain. Local shadows/reflections,
+authored character motion, spatial sound, varied interiors/private stairs, culling
+and human playtesting are still production work; this is not a completed AAA claim.
+
+# Previous validation: ONSITE whole-game tranche
 
 19 October 2026. Continue from `codex/onsite-game-foundation` and read the
 [whole-game goal](../ONSITE-GOAL.md) and [implementation/evidence log](WHOLE-GAME-PROGRESS.md).
