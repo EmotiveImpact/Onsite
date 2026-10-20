@@ -1,4 +1,5 @@
 import type {Solid} from './level'
+import {stairCorePhotometry} from './heronStairLighting'
 
 type Position={x:number;y:number;z:number};
 export type ReceiverLightAnchor=Position&{kind:string;floorY?:number};
@@ -28,11 +29,12 @@ export function lightReceiverFloor(anchor:ReceiverLightAnchor,surfaces:readonly 
 }
 
 export function lightPhotometry(kind:string){
+ if(kind==='core')return {intensity:stairCorePhotometry.intensity,range:stairCorePhotometry.range};
  return kind==='court'?{intensity:850,range:42}:
   kind==='street'?{intensity:175,range:25}:
   kind==='shop'?{intensity:55,range:12}:
   kind==='gallery'?{intensity:6,range:7}:
-  kind==='ceiling'||kind==='core'?{intensity:11,range:9}:{intensity:14,range:9};
+  kind==='ceiling'?{intensity:11,range:9}:{intensity:14,range:9};
 }
 
 /** Cache receiver identity and the actual light position once, outside the animation loop. */

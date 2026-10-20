@@ -1,7 +1,7 @@
 {
   "provenance": "Original ONSITE procedural geometry and original Pillow/numpy printed artwork; no external asset downloads. Fonts and artwork sources recorded in public/materials/heron/lived/manifest.json.",
   "builder": "scripts/maps/art/build_heron_lived_detail.py",
-  "builderSHA256": "a3ddac5c2c4e876934699f40ddb51a85b45b6929015e939d4fb2d33ef9572e37",
+  "builderSHA256": "7a69ab221013b6020a0afc6664ca6fa46543482bbdbcf09dc734be272e87779d",
   "blender": "4.3.2",
   "units": "metres; authoring x east, y up, z south; glTF world x=mapX-72, y=mapY, z=mapZ-60",
   "layoutSHA256": "277dbbaab1765c3dad9a9ea1fd440530de02770e071c31b3854dffd3d123c707",
@@ -27,7 +27,7 @@
   },
   "textureSHA256": "b09121e6afc82be769b2fb86d763baaae0cb090d0476bcbc5237e29c14f26565",
   "materialBatches": 5,
-  "triangles": 3404,
+  "triangles": 2242,
   "features": [
     {
       "name": "Recessed window trim and raised shutter housings",
@@ -64,42 +64,6 @@
       },
       "needsCollision": false,
       "notes": "Small opaque printed cards cover under 10 percent of the two glazing bays. No portal signs."
-    },
-    {
-      "name": "Occupied shelf backs, category strips and top stock",
-      "support": "Four existing SHOP_SHELF_UNIT colliders",
-      "mapBounds": {
-        "min": [
-          106.69,
-          0.499,
-          52.247
-        ],
-        "max": [
-          113.132,
-          2.296,
-          56.61
-        ]
-      },
-      "needsCollision": false,
-      "notes": "Notice faces stay inside shelf footprints; screwheads extend 3 mm beyond the north edge. Small packages stand on the 2.07 m top rail; maximum height 2.30 m."
-    },
-    {
-      "name": "Rear display mounting rails",
-      "support": "Existing rear-wall image panels, z=56.795",
-      "mapBounds": {
-        "min": [
-          102.245,
-          0.265,
-          56.755
-        ],
-        "max": [
-          119.755,
-          2.688,
-          56.795
-        ]
-      },
-      "needsCollision": false,
-      "notes": "Thin perimeter fixings identify the existing flush wall panels; maximum projection 45 mm from the existing inner wall. The rear doorway remains clear."
     },
     {
       "name": "Open door pushbar and security conduit",
@@ -232,9 +196,9 @@
       "collide": true
     }
   ],
-  "rawGLBBytes": 389744,
-  "compressedGLBBytes": 121404,
-  "compressedGLBSHA256": "49f766e99288fe66ed0f6dcedcb3aaf34247a7f57114eb463c56a9fe6f00e297",
+  "rawGLBBytes": 285432,
+  "compressedGLBBytes": 110100,
+  "compressedGLBSHA256": "611d7b7066e3cefa597e004fa11b4ec8a863a3ac348c2ccf18ba2b94fc629e71",
   "compression": {
     "tool": "npm gltfpack",
     "version": "0.22.0",

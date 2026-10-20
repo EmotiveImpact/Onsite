@@ -153,51 +153,8 @@ with feature('Shop window notices', 'Existing closed north glazing, z=48.10',
         box(GALV,x-.026,x+.026,y-.012,y+.012,48.061,48.066,
             col=(.58,.56,.43,1),faces='-z')
 
-with feature('Occupied shelf backs, category strips and top stock', 'Four existing SHOP_SHELF_UNIT colliders',
-             'Notice faces stay inside shelf footprints; screwheads extend 3 mm beyond the north edge. Small packages stand on the 2.07 m top rail; maximum height 2.30 m.'):
-    package_names = ['package_oats','package_tea','package_rice','package_biscuits','package_flakes']
-    for idx, p in enumerate(SHELVES):
-        x,z = p['x'],p['z']
-        middle = abs(z-52.5)<.1
-        # The existing centre units face south, so their blank back boards face the entry.
-        if middle:
-            # The 12 mm back board is centred at local +Y=.238, giving an exposed
-            # map z-.244 face. Print at z-.249 clears it by 5 mm, including quantisation.
-            # Tiny screwheads reach z-.253: only 3 mm beyond the existing collider.
-            sign('daily_essentials' if idx%2==0 else 'fresh_daily', x, 1.22, z-.244,
-                 .82, 1.038 if idx%2==0 else .82/2.3)
-            if idx%2:
-                sign('value_prices',x,.69,z-.244,.82,.82/2.875)
-            sign('groceries' if idx%2==0 else 'household',x,1.92,z-.244,1.04,1.04/5.75)
-        else:
-            # Existing rear units face north. These replace no stock and attach to the four
-            # narrow shelf lips, avoiding the bottles, tins, and products already modelled.
-            for h in [.52,.88,1.24,1.58]:
-                print_face('price_strip',x-.55,x+.55,h-.021,h+.010,z-.181)
-            sign('groceries' if idx%2==0 else 'household',x,2.027,z-.239,1.05,.065)
-        # A restrained line of small overspill boxes on the existing top rail. Every pack
-        # stays at least 6 cm inside the collider edge; no new furniture footprint is added.
-        for k in range(5):
-            cx = x-.40+k*.19
-            width = [.13,.12,.14,.15,.13][k]
-            height = [.215,.18,.22,.16,.225][(idx+k)%5]
-            printed_box(package_names[(idx+k)%5],cx-width/2,cx+width/2,
-                        2.071,2.071+height,z-.08,z+.075)
-        # Folded shipping tray under the packages, on top of the same support beam.
-        box(AGED,x-.51,x+.51,2.071,2.088,z-.095,z+.09,col=(.55,.47,.34,1))
-
-with feature('Rear display mounting rails', 'Existing rear-wall image panels, z=56.795',
-             'Thin perimeter fixings identify the existing flush wall panels; maximum projection 45 mm from the existing inner wall. The rear doorway remains clear.'):
-    # The old shop cards already sit 5 mm in front of the inner masonry at z=56.80.
-    # Their hard, unsupported edges could read as floating. These narrow perimeter
-    # rails attach them visually to the wall, without adding furniture or false depth.
-    for x0,x1 in [(102.26,109.95),(112.05,119.74)]:
-        for x in [x0,x1]:
-            box(BLACK,x-.015,x+.015,.265,2.685,56.760,56.795)
-        for y in [.28,2.67]:
-            box(BLACK,x0-.015,x1+.015,y-.015,y+.015,56.760,56.795)
-        box(AGED,x0-.015,x1+.015,2.678,2.688,56.755,56.77,
-            col=(.35,.37,.32,1))
+# Interior shelf backs/top stock and photo-card rails moved to the dimensional
+# shop-depth kit. Keep this exterior kit independent of replacement shelf geometry.
 
 with feature('Open door pushbar and security conduit', 'Existing north door leaf and solid north-east jamb',
              'Pushbar hugs the pre-existing leaf at x=110.06..110.105; new geometry ends at x=110.130. The central doorway stays clear.'):

@@ -1,0 +1,13 @@
+{
+  "kind": "Production runtime keyboard/mouse flow; no synthetic results",
+  "renderer": "Chromium ANGLE SwiftShader (software)",
+  "checks": [
+    "Actual Reach title and lazy Blender kit renderer, two kit combinations",
+    "Native quality arrows and saved presentation settings reach the live renderer; SwiftShader stays at DPR 0.5",
+    "Space enters pointer-locked game; Escape pauses input/simulation/audio; Tab, resume and return to title work",
+    "Production preferences and visible kit controls survive reload",
+    "Real map link loads Court and normal keyboard movement remains active"
+  ],
+  "errors": [],
+  "failed": []
+}

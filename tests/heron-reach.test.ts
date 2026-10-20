@@ -11,7 +11,8 @@ import {heronReach as level,inCapture} from '../src/onsite/levels'
 import {fromMap as at,toMap,surfaceIds,objectives} from '../src/onsite/heronReach'
 import spec from '../docs/maps/heron-reach-32/blueprints/build-spec.json'
 import {CONFIG} from '../src/wwb/game/config'
-await initPhysics();const nav=new LayeredNav(level);
+import {operatorFixture} from './operator-fixture'
+await initPhysics();const nav=new LayeredNav(level),operator=await operatorFixture();
 function physics(){const p=new Physics();for(const s of level.solids)p.addStaticBox(new THREE.Vector3(s.x,s.y,s.z),new THREE.Vector3(s.w,s.h,s.d));p.step(1/60);return p}
 const inRect=(p:{x:number;z:number},x:number,z:number,w:number,d:number)=>{const m=toMap(p.x,0,p.z);return m.x>x&&m.x<x+w&&m.z>z&&m.z<z+d};
 type P={x:number;y:number;z:number};
@@ -67,7 +68,7 @@ for(const home of ['NW-H2-1','SE-H2-2'])test(`H2 maisonette ${home}: front door 
 
 for(const [id,down]of [['S1',false],['S7',true]] as const)test(`WWB bot physically traverses ${id} ${down?'from G down to B1 and back':'to L2 and back to G'}`,()=>{
  const p=physics();CONFIG.bots.speed=2.4;const target=new THREE.Vector3();const world:any={time:0,onslaught:true,lineOfSight:()=>false,audio:{play:()=>{}},fx:{},groundAt:()=>0};
- const bot=new Bot(1,'TEST','striker','#111','#111',p,nav,world,{scene:new THREE.Group(),clips:[]},{},'operator');bot.wave=true;const s=portal(id,0);bot.spawn(new THREE.Vector3(s.x,.03,s.z),0);
+ const bot=new Bot(1,'TEST','striker','#111','#111',p,nav,world,operator,{},'operator');bot.wave=true;const s=portal(id,0);bot.spawn(new THREE.Vector3(s.x,.03,s.z),0);
  const ctx:any={targets:[{id:0,pos:target,vel:new THREE.Vector3(),alive:true,isPlayer:true}],items:[],hotspots:[target],playerEye:target.clone(),playerId:0,frozen:false};
  for(const y of down?[-3,0]:[6,0]){const g=portal(id,y);target.set(g.x,y,g.z);ctx.playerEye=target.clone().add(new THREE.Vector3(0,1.6,0));let reached=false;
   for(let i=0;i<7000;i++){world.time+=1/60;bot.update(1/60,ctx,[bot]);p.step(1/60);if(bot.pos.distanceTo(target)<.75){reached=true;break}}
