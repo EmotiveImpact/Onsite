@@ -1,0 +1,719 @@
+{
+  "provenance": "Original ONSITE deterministic geometry; existing hr_soil, hr_grass_ground and original foliage leaf atlas. No donor source or new pixels.",
+  "planSha256": "507d2f9dbd182cddb3c96767420476ee4ec9fe5a7ecf2f3e4f9503e6f4bc80b3",
+  "blender": "4.3.2",
+  "meshes": 57,
+  "triangles": 5240,
+  "plantTriangles": 19268,
+  "treeTriangles": 17452,
+  "glbBytes": 158884,
+  "tool": {
+    "name": "gltfpack",
+    "version": "0.22.0",
+    "flags": [
+      "-cc",
+      "-kn",
+      "-km",
+      "-kv",
+      "-vpf",
+      "-vtf"
+    ],
+    "sha256": {
+      "cli.js": "cfc906ea2b1e41ba542070af1071774620b9a2be57c510e6446f0c77d3eda1b4",
+      "library.js": "627823672823ccc822aca053d820d889bd97143f104abeecdb7a0365c279ac0d",
+      "library.wasm": "1572dc84e479babb7609634bcbc007c06da47441dc0815728723b862eff845e1",
+      "package.json": "0392fdaf091eeb086cf3af73cdec530a3f314b88f086ccdbfcf3efa74eee294e"
+    }
+  },
+  "groups": [
+    {
+      "name": "ground_0_0_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 64,
+      "patches": [
+        "edge:1426463312",
+        "edge:2857329281",
+        "edge:3586593440",
+        "edge:354123599"
+      ]
+    },
+    {
+      "name": "ground_0_0_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 24,
+      "patches": [
+        "leaves:T01:2"
+      ]
+    },
+    {
+      "name": "ground_0_0_hr_soil",
+      "material": "hr_soil",
+      "triangles": 208,
+      "patches": [
+        "soil:2:14",
+        "soil:4:10",
+        "soil:4:14",
+        "soil:6:18",
+        "soil:8:10",
+        "soil:8:12",
+        "soil:10:8",
+        "soil:10:14",
+        "soil:12:20",
+        "soil:16:8",
+        "soil:20:22",
+        "pit:T01"
+      ]
+    },
+    {
+      "name": "ground_0_1_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 128,
+      "patches": [
+        "edge:3510920951",
+        "edge:2706011485",
+        "edge:1976863234",
+        "edge:1691369197",
+        "edge:2398649679",
+        "edge:2662316135",
+        "edge:3241554437",
+        "edge:653127086"
+      ]
+    },
+    {
+      "name": "ground_0_1_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 120,
+      "patches": [
+        "leaves:T02:0",
+        "leaves:T02:2",
+        "leaves:T15:0",
+        "leaves:T15:1",
+        "leaves:T15:2"
+      ]
+    },
+    {
+      "name": "ground_0_1_hr_soil",
+      "material": "hr_soil",
+      "triangles": 240,
+      "patches": [
+        "soil:2:26",
+        "soil:4:26",
+        "soil:4:30",
+        "soil:8:26",
+        "soil:8:28",
+        "soil:8:32",
+        "soil:10:28",
+        "soil:10:30",
+        "soil:12:30",
+        "soil:14:24",
+        "soil:14:30",
+        "pit:T02",
+        "pit:T15"
+      ]
+    },
+    {
+      "name": "ground_0_3_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 64,
+      "patches": [
+        "edge:2825749803",
+        "edge:1042727194",
+        "edge:1567880028",
+        "edge:1843311219"
+      ]
+    },
+    {
+      "name": "ground_0_3_hr_soil",
+      "material": "hr_soil",
+      "triangles": 160,
+      "patches": [
+        "soil:2:88",
+        "soil:4:88",
+        "soil:6:90",
+        "soil:8:92",
+        "soil:8:94",
+        "soil:10:90",
+        "soil:14:90",
+        "soil:16:94",
+        "pit:T05"
+      ]
+    },
+    {
+      "name": "ground_0_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 64,
+      "patches": [
+        "edge:3630919323",
+        "edge:515474444",
+        "edge:1589908518",
+        "edge:1373087171"
+      ]
+    },
+    {
+      "name": "ground_0_4_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T06:0",
+        "leaves:T06:1",
+        "leaves:T06:2"
+      ]
+    },
+    {
+      "name": "ground_0_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 208,
+      "patches": [
+        "soil:2:100",
+        "soil:4:102",
+        "soil:8:100",
+        "soil:10:96",
+        "soil:10:98",
+        "soil:12:100",
+        "soil:12:102",
+        "soil:14:96",
+        "soil:14:98",
+        "soil:14:110",
+        "soil:16:106",
+        "pit:T06"
+      ]
+    },
+    {
+      "name": "ground_1_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 96,
+      "patches": [
+        "edge:866935702",
+        "edge:882410729",
+        "edge:3649736599",
+        "edge:1612472392",
+        "edge:2739530475",
+        "edge:3501190778"
+      ]
+    },
+    {
+      "name": "ground_1_4_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T11:0",
+        "leaves:T11:1",
+        "leaves:T11:2"
+      ]
+    },
+    {
+      "name": "ground_1_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 128,
+      "patches": [
+        "soil:34:112",
+        "soil:34:114",
+        "soil:34:116",
+        "soil:40:114",
+        "soil:42:110",
+        "soil:46:112",
+        "pit:T11"
+      ]
+    },
+    {
+      "name": "ground_2_0_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 64,
+      "patches": [
+        "edge:3640479095",
+        "edge:261624697",
+        "edge:1331764120",
+        "edge:1682309958"
+      ]
+    },
+    {
+      "name": "ground_2_0_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T09:0",
+        "leaves:T09:1",
+        "leaves:T09:2"
+      ]
+    },
+    {
+      "name": "ground_2_0_hr_soil",
+      "material": "hr_soil",
+      "triangles": 80,
+      "patches": [
+        "soil:64:14",
+        "soil:66:16",
+        "soil:66:18",
+        "pit:T09"
+      ]
+    },
+    {
+      "name": "ground_2_1_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 64,
+      "patches": [
+        "edge:1052923928",
+        "edge:2272152654",
+        "edge:2740546114",
+        "edge:2180382980"
+      ]
+    },
+    {
+      "name": "ground_2_1_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 48,
+      "patches": [
+        "leaves:T17:0",
+        "leaves:T17:1"
+      ]
+    },
+    {
+      "name": "ground_2_1_hr_soil",
+      "material": "hr_soil",
+      "triangles": 128,
+      "patches": [
+        "soil:60:32",
+        "soil:62:28",
+        "soil:62:30",
+        "soil:64:26",
+        "soil:64:30",
+        "soil:68:30",
+        "pit:T17"
+      ]
+    },
+    {
+      "name": "ground_2_2_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 24,
+      "patches": [
+        "leaves:T17:2"
+      ]
+    },
+    {
+      "name": "ground_2_3_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T19:0",
+        "leaves:T19:1",
+        "leaves:T19:2"
+      ]
+    },
+    {
+      "name": "ground_2_3_hr_soil",
+      "material": "hr_soil",
+      "triangles": 32,
+      "patches": [
+        "pit:T19"
+      ]
+    },
+    {
+      "name": "ground_2_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 48,
+      "patches": [
+        "edge:1724113486",
+        "edge:3056523764",
+        "edge:1332767434"
+      ]
+    },
+    {
+      "name": "ground_2_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 112,
+      "patches": [
+        "soil:50:112",
+        "soil:52:112",
+        "soil:54:114",
+        "soil:56:114",
+        "soil:58:112",
+        "pit:T12"
+      ]
+    },
+    {
+      "name": "ground_3_0_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 80,
+      "patches": [
+        "edge:3050139168",
+        "edge:1289930510",
+        "edge:572541920",
+        "edge:2291244956",
+        "edge:235288379"
+      ]
+    },
+    {
+      "name": "ground_3_0_hr_soil",
+      "material": "hr_soil",
+      "triangles": 64,
+      "patches": [
+        "soil:74:12",
+        "soil:78:14",
+        "soil:78:20",
+        "soil:80:14"
+      ]
+    },
+    {
+      "name": "ground_3_1_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 32,
+      "patches": [
+        "edge:3683800169",
+        "edge:3078564095"
+      ]
+    },
+    {
+      "name": "ground_3_1_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T10:0",
+        "leaves:T10:1",
+        "leaves:T10:2"
+      ]
+    },
+    {
+      "name": "ground_3_1_hr_soil",
+      "material": "hr_soil",
+      "triangles": 112,
+      "patches": [
+        "soil:76:30",
+        "soil:76:34",
+        "soil:80:28",
+        "soil:80:32",
+        "soil:82:32",
+        "pit:T10"
+      ]
+    },
+    {
+      "name": "ground_3_2_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 16,
+      "patches": [
+        "drain:4"
+      ]
+    },
+    {
+      "name": "ground_3_2_hr_soil",
+      "material": "hr_soil",
+      "triangles": 16,
+      "patches": [
+        "silt:4"
+      ]
+    },
+    {
+      "name": "ground_3_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 80,
+      "patches": [
+        "edge:1689113262",
+        "edge:2865362975",
+        "edge:205427958",
+        "edge:668696851",
+        "edge:3379412639"
+      ]
+    },
+    {
+      "name": "ground_3_4_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T13:0",
+        "leaves:T13:1",
+        "leaves:T13:2"
+      ]
+    },
+    {
+      "name": "ground_3_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 128,
+      "patches": [
+        "soil:84:112",
+        "soil:86:114",
+        "soil:88:112",
+        "soil:88:114",
+        "soil:90:112",
+        "soil:92:114",
+        "pit:T13"
+      ]
+    },
+    {
+      "name": "ground_4_1_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 32,
+      "patches": [
+        "drain:1",
+        "drain:3"
+      ]
+    },
+    {
+      "name": "ground_4_1_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T20:0",
+        "leaves:T20:1",
+        "leaves:T20:2"
+      ]
+    },
+    {
+      "name": "ground_4_1_hr_soil",
+      "material": "hr_soil",
+      "triangles": 80,
+      "patches": [
+        "pit:T20",
+        "silt:0",
+        "silt:1",
+        "silt:3"
+      ]
+    },
+    {
+      "name": "ground_4_2_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 16,
+      "patches": [
+        "drain:2"
+      ]
+    },
+    {
+      "name": "ground_4_2_hr_soil",
+      "material": "hr_soil",
+      "triangles": 16,
+      "patches": [
+        "silt:2"
+      ]
+    },
+    {
+      "name": "ground_4_3_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T18:0",
+        "leaves:T18:1",
+        "leaves:T18:2"
+      ]
+    },
+    {
+      "name": "ground_4_3_hr_soil",
+      "material": "hr_soil",
+      "triangles": 32,
+      "patches": [
+        "pit:T18"
+      ]
+    },
+    {
+      "name": "ground_4_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 80,
+      "patches": [
+        "edge:2105499723",
+        "edge:2257912448",
+        "edge:3903549652",
+        "edge:1269668560",
+        "edge:2573675859"
+      ]
+    },
+    {
+      "name": "ground_4_4_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 48,
+      "patches": [
+        "leaves:T14:0",
+        "leaves:T14:2"
+      ]
+    },
+    {
+      "name": "ground_4_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 176,
+      "patches": [
+        "soil:96:110",
+        "soil:96:112",
+        "soil:102:116",
+        "soil:108:114",
+        "soil:110:112",
+        "soil:110:114",
+        "soil:112:112",
+        "soil:114:112",
+        "soil:116:116",
+        "pit:T14"
+      ]
+    },
+    {
+      "name": "ground_5_0_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 80,
+      "patches": [
+        "edge:1242251856",
+        "edge:2900193378",
+        "edge:346475766",
+        "edge:2112789993",
+        "edge:121212251"
+      ]
+    },
+    {
+      "name": "ground_5_0_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 24,
+      "patches": [
+        "leaves:T03:1"
+      ]
+    },
+    {
+      "name": "ground_5_0_hr_soil",
+      "material": "hr_soil",
+      "triangles": 240,
+      "patches": [
+        "soil:126:12",
+        "soil:128:10",
+        "soil:130:14",
+        "soil:130:18",
+        "soil:130:22",
+        "soil:132:10",
+        "soil:132:22",
+        "soil:134:12",
+        "soil:134:16",
+        "soil:134:20",
+        "soil:138:10",
+        "soil:138:18",
+        "soil:140:20",
+        "pit:T03"
+      ]
+    },
+    {
+      "name": "ground_5_1_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 144,
+      "patches": [
+        "edge:3628481619",
+        "edge:1387123642",
+        "edge:4152406075",
+        "edge:2789600246",
+        "edge:1914211276",
+        "edge:962787056",
+        "edge:3427348693",
+        "edge:41248567",
+        "drain:0"
+      ]
+    },
+    {
+      "name": "ground_5_1_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 72,
+      "patches": [
+        "leaves:T04:0",
+        "leaves:T04:1",
+        "leaves:T04:2"
+      ]
+    },
+    {
+      "name": "ground_5_1_hr_soil",
+      "material": "hr_soil",
+      "triangles": 160,
+      "patches": [
+        "soil:130:24",
+        "soil:130:32",
+        "soil:132:30",
+        "soil:134:24",
+        "soil:136:26",
+        "soil:136:32",
+        "soil:138:24",
+        "soil:140:30",
+        "pit:T04"
+      ]
+    },
+    {
+      "name": "ground_5_3_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 96,
+      "patches": [
+        "edge:1303314039",
+        "edge:4274438401",
+        "edge:4188143746",
+        "edge:840202332",
+        "edge:677571390",
+        "edge:2580228087"
+      ]
+    },
+    {
+      "name": "ground_5_3_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 96,
+      "patches": [
+        "leaves:T07:0",
+        "leaves:T07:1",
+        "leaves:T07:2",
+        "leaves:T16:1"
+      ]
+    },
+    {
+      "name": "ground_5_3_hr_soil",
+      "material": "hr_soil",
+      "triangles": 192,
+      "patches": [
+        "soil:120:90",
+        "soil:122:88",
+        "soil:132:86",
+        "soil:134:88",
+        "soil:136:86",
+        "soil:136:90",
+        "soil:138:92",
+        "soil:140:92",
+        "pit:T07",
+        "pit:T16"
+      ]
+    },
+    {
+      "name": "ground_5_4_hr_ground_moss",
+      "material": "hr_ground_moss",
+      "triangles": 176,
+      "patches": [
+        "edge:1200977059",
+        "edge:1077858201",
+        "edge:1413357470",
+        "edge:366032056",
+        "edge:4257308124",
+        "edge:2459154220",
+        "edge:2165571193",
+        "edge:1213452037",
+        "edge:326335915",
+        "edge:3660808806",
+        "edge:3774768186"
+      ]
+    },
+    {
+      "name": "ground_5_4_hr_leaf_litter",
+      "material": "hr_leaf_litter",
+      "triangles": 48,
+      "patches": [
+        "leaves:T08:0",
+        "leaves:T08:1"
+      ]
+    },
+    {
+      "name": "ground_5_4_hr_soil",
+      "material": "hr_soil",
+      "triangles": 224,
+      "patches": [
+        "soil:126:96",
+        "soil:126:102",
+        "soil:128:104",
+        "soil:130:110",
+        "soil:132:98",
+        "soil:132:108",
+        "soil:132:110",
+        "soil:134:98",
+        "soil:134:106",
+        "soil:134:108",
+        "soil:136:96",
+        "soil:138:98",
+        "pit:T08"
+      ]
+    }
+  ],
+  "limitations": "Low relief ground detail only; no geometric holes, physical shadow ownership, collision or nav changes.",
+  "builderSha256": "e146d3069a280d043aef59d1c616402c573f032dbdcc035f87cad5e48fb8e791",
+  "glbSha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a",
+  "rawBytes": 632036,
+  "rawSha256": "e6fc5aafd9fcf6340867c2fd41c71c5d5bbb2057985c8ff61d08498228517eb1"
+}
