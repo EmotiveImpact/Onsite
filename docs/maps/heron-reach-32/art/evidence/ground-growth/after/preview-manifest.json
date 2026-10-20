@@ -1,0 +1,56 @@
+{
+  "commit": "623bc24ad98aa60db86f41b50da6e9dae12daeb4",
+  "branch": "codex/heron-reach-ground-growth",
+  "frozenDist": "/tmp/onsite-ground-winding-dist",
+  "preview": "http://127.0.0.1:4194",
+  "previewSession": 98149,
+  "validation": {
+    "tests": 127,
+    "typecheck": "passed",
+    "build": "passed",
+    "browser": "passed: seven matched captures and both serial normal-input encounters",
+    "reports": {
+      "captures": "report.json",
+      "court": "../court/report.json",
+      "reach": "../reach/report.json"
+    }
+  },
+  "checks": [
+    {
+      "path": "/index.html",
+      "bytes": 10333,
+      "sha256": "e90d780a0e762de6a3ce01ffe306c9b46d9f8510f719e56033b14fbe33967083",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-UnAVxv0V.js",
+      "bytes": 5391562,
+      "sha256": "47f60eae723149b82c78933b0071e23f829bf83c9e1234b7236709395e2d8a54",
+      "status": 200
+    },
+    {
+      "path": "/assets/index-DdFp8Ala.css",
+      "bytes": 16073,
+      "sha256": "14fa38f62c2053838acba4367d0f325efea960356a3e928f3f5781ed6615a353",
+      "status": 200
+    },
+    {
+      "path": "/models/heron-reach/ground-plan.json",
+      "bytes": 221414,
+      "sha256": "f3d512ad368107769fbb0a6bea78660a5b0fa0abad0092f31194e728b1a4124b",
+      "status": 200
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-detail.glb",
+      "bytes": 158884,
+      "sha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a",
+      "status": 200
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-ground-trees.glb",
+      "bytes": 36640,
+      "sha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87",
+      "status": 200
+    }
+  ]
+}

@@ -1,5 +1,10 @@
 # ONSITE whole-game implementation
 
+20 October continuation: the owner prioritised properly constructed public stairs.
+The [current stair pass](../maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md) builds on
+this completed foundation and records its own assets, validation and remaining gates.
+The results below remain the historical whole-game tranche, not the newer stair pass.
+
 19 October 2026. Product goal: [ONSITE-GOAL.md](../ONSITE-GOAL.md).
 The current tranche completes the integrated bots-first player journey and improves
 character, weapon and estate presentation. It does not complete every product gate.

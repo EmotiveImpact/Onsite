@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts tests/heron-reach.test.ts tests/heron-art.test.ts tests/heron-light-selection.test.ts tests/heron-depth-fog.test.ts tests/heron-detail.test.ts tests/profile.test.ts tests/presentation-settings.test.ts tests/heron-contact-shadows.test.ts tests/operator-assets.test.ts tests/donor-rifle-pose.test.ts tests/heron-shop-depth.test.ts tests/capture-round.test.ts",
+    "test": "npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts tests/heron-reach.test.ts tests/heron-art.test.ts tests/heron-light-selection.test.ts tests/heron-depth-fog.test.ts tests/heron-detail.test.ts tests/profile.test.ts tests/presentation-settings.test.ts tests/heron-contact-shadows.test.ts tests/operator-assets.test.ts tests/donor-rifle-pose.test.ts tests/heron-shop-depth.test.ts tests/capture-round.test.ts tests/heron-stair-lighting.test.ts tests/heron-stair-construction.test.ts tests/heron-building-construction.test.ts tests/heron-ground-plan.test.ts tests/heron-grass-geometry.test.ts tests/heron-ground-runtime.test.ts",
     "test:browser": "node scripts/verify-encounter.mjs",
     "typecheck": "tsc --noEmit",
     "test:legacy": "node --test --test-isolation=none tests/simulation.test.js",

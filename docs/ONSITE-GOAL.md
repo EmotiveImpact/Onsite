@@ -81,6 +81,19 @@ merge or deploy without separate instruction.
 
 ## Work order and present state
 
+**Current owner order:** stairs and buildings, then realistic ground, growth,
+planting and more trees. The [building and ground continuation](maps/heron-reach-32/art/BUILDINGS-AND-GROUND-2026-10-20.md)
+builds on the completed public stair construction, preserves physical routes and
+uses matched runtime evidence to judge the improvement.
+
+**20 October continuation:** the initial whole-game tranche is reviewed in
+[its implementation log](development/WHOLE-GAME-PROGRESS.md). The owner then
+prioritised properly constructed stairs and asked what else prevents the quality
+target. The active [public-stair pass](maps/heron-reach-32/art/STAIR-PASS-2026-10-20.md)
+rebuilds all eight Heron Reach public cores around their existing physical routes.
+It records the remaining reflection/shadow, character, sound, architecture,
+playtesting and hardware gates. This does not declare those gates complete.
+
 The baseline is `483cc0ae14a9e498b757fe15e1084a86829c27ec`, preserved as
 `checkpoint/onsite-before-whole-game-2026-10-19`. It has a working WWB encounter,
 layered physics/navigation, licensed rifle/hands and the first Heron Reach visual
