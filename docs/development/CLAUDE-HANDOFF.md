@@ -7,8 +7,9 @@ Review: [PR #21](https://github.com/EmotiveImpact/Onsite/pull/21), pushed and un
 Continue from `codex/heron-reach-world-dressing`, implementation `2cef5c8`, based on
 released main `c583afeb`. The previous PR #5–#20 chain was merged and the release
 was verified live. This new pass is separate review work; no merge or production deployment is
-authorised for it. The existing integration automatically builds a Vercel preview
-after branch publication. Read [the work/evidence log](../maps/heron-reach-32/art/WORLD-DRESSING-2026-10-20.md)
+authorised for it. Vercel reports the branch deployment as ignored/skipped, despite
+a successful status context; no hosted preview is verified. Runtime checks used
+the frozen local production build. Read [the work/evidence log](../maps/heron-reach-32/art/WORLD-DRESSING-2026-10-20.md)
 and [donor asset audit](../research/WORLD-ASSET-AUDIT-2026-10-20.md).
 
 Heron Reach now uses six already cleared IRONLINE/Poly Haven scanned prop variants:
