@@ -1,5 +1,20 @@
 # ONSITE — handoff for Claude
 
+## Release continuation — 20 October 2026
+
+The owner has authorised pushing and merging the complete PR #5–#20 dependency
+chain. Continue from `main` once [the final integration PR #5](https://github.com/EmotiveImpact/Onsite/pull/5)
+is marked merged. The release carries the combined reviewed tree `9270abe` and
+runtime source `623bc24`; this release note changes no implementation or assets.
+The existing Vercel integration publishes main automatically.
+
+The review status and “no merge/deployment” wording below record the state when each
+item was originally verified; consult the PR records for publication status.
+Before publication, main was `b5bfd44293390436cbc024cc9743bf643260eefe`, preserved
+locally as `checkpoint/onsite-before-main-publication-2026-10-20`. Keep the original
+review branches and evidence. The 127 tests, build/typecheck and both combat reports
+below apply to the unchanged release runtime; real-GPU performance remains unverified.
+
 ## Current: ground, planting and trees — 20 October 2026
 
 Review: [PR #20](https://github.com/EmotiveImpact/Onsite/pull/20), pushed and unmerged,

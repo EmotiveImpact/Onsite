@@ -1,5 +1,11 @@
 # Brief for Astra: push Heron Reach towards the concept art
 
+**Release continuation, 20 October 2026:** the owner authorised merging the full
+PR #5–#20 chain. After [PR #5](https://github.com/EmotiveImpact/Onsite/pull/5) is merged,
+continue from `main`. Read the [release handoff](development/CLAUDE-HANDOFF.md);
+“unmerged” statuses below describe the earlier review checkpoints. Runtime source,
+assets and the latest passing validation are unchanged by publication.
+
 **Current owner direction:** [ONSITE whole-game goal](ONSITE-GOAL.md) now extends this art brief
 to the integrated player flow, original operator kit and presentation. Read the
 [whole-game progress log](development/WHOLE-GAME-PROGRESS.md) for actual changes and evidence.
