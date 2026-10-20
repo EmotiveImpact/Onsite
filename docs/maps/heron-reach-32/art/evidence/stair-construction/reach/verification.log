@@ -1,0 +1,15 @@
+All materials/models loaded
+Pointer lock and mouse look
+Imported rifle and hands loaded; ADS sight aligns to centre
+WWB automatic fire, recoil and timed reload
+Pause/resume freezes simulation
+Jump and landing
+Encounter progress {"tick":60,"kills":0,"position":{"x":-63.99999978251064,"y":0.02008730493398614,"z":0.000008395728201548991},"ammo":30,"reserve":150}
+Tracking {"tick":1455,"health":100,"target":6,"targetHealth":100,"hits":16,"shots":27}
+Tracking {"tick":1965,"health":100,"target":6,"targetHealth":9.703613901138322,"hits":25,"shots":45}
+Encounter progress {"tick":2400,"kills":3,"position":{"x":-34.03902654349804,"y":0.019986191205680348,"z":2.43747697796789},"ammo":12,"reserve":120}
+Encounter progress {"tick":4845,"kills":5,"position":{"x":1.687715077016037,"y":0.019982729479670502,"z":8.645760163664818},"ammo":24,"reserve":90}
+Combat result: 6 opponents down, health 88
+Clear and capture victory
+Round reset restores player and opponents
+{"softwareRenderer":true,"renderer":"WebKit WebGL","frames":360,"meanFrameMs":622.2422222222305,"medianFrameMs":599.2999999970198,"p95FrameMs":819.0999999940395,"drawCalls":441,"triangles":1246752,"architectureTextures":{"compressed":0,"webp":82,"formats":{"1023":82},"estimatedMipBytes":328996233},"presentation":{"sensitivity":1,"sound":true,"volume":0.6,"reducedMotion":false,"quality":"auto","pixelRatio":0.5,"bloom":false,"contactInstances":278},"audioPaused":true}

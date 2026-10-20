@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#11191e"><link rel="icon" href="data:, "><title>ONSITE — Heron Estate</title></head>
-<body>
+<body data-flow="title">
 <canvas id="game" aria-label="ONSITE first-person game"></canvas>
 <div id="vignette"></div><div id="damage"></div>
-<header class="brand"><span></span> ONSITE <small>FIELD TEST / 01</small></header>
+<header class="brand"><span></span> ONSITE <small>HERON ESTATE</small></header>
 <div id="hud" hidden>
   <div class="minimap"><canvas id="map" width="160" height="160" aria-label="Estate minimap"></canvas><span>N ↑ &nbsp; HERON ESTATE</span></div>
   <div class="score"><b id="score">00 <i>:</i> <em>01</em></b><span id="timer">00:00</span></div>
@@ -15,20 +15,59 @@
   <div class="controls">W A S D <span>MOVE</span> &nbsp; SHIFT <span>SPRINT</span> &nbsp; SPACE <span>JUMP</span> &nbsp; RMB <span>AIM</span> &nbsp; C <span>CROUCH</span> &nbsp; R <span>RELOAD</span> &nbsp; ESC <span>PAUSE</span></div>
   <div id="notice" role="status"></div>
 </div>
-<section id="menu" class="menu">
-  <div class="menu-content">
-    <p class="eyebrow">LONDON · HERON ESTATE</p>
-    <h1>ONSITE<span>.</span></h1>
-    <p class="strap">KNOW YOUR ENDS.</p>
-    <div class="mission"><span>01 / COURTYARD</span><h2>Hold your ground.</h2><p>Enter the estate. Clear the court.<br>Three opponents. Two stair routes. One site.</p></div>
-    <button id="start" disabled>LOADING THE ESTATE <span>↗</span></button>
-    <p id="load-status" role="status">Preparing the courtyard…</p>
-    <div class="instructions"><span>WASD / MOVE</span><span>MOUSE / LOOK & FIRE</span><span>R / RELOAD</span><span>SPACE / JUMP</span></div>
+<section id="menu" class="menu" aria-label="ONSITE main menu">
+  <div class="menu-shell">
+    <div class="menu-heading"><p class="eyebrow">SOUTH LONDON / BLUE HOUR</p><h1>ONSITE<span>.</span></h1><p class="strap">KNOW YOUR ENDS.</p></div>
+    <nav class="menu-tabs" aria-label="Main menu" role="tablist">
+      <button id="tab-play" role="tab" aria-selected="true" aria-controls="panel-play" data-panel="play">Play</button>
+      <button id="tab-kit" role="tab" aria-selected="false" aria-controls="panel-kit" data-panel="kit" tabindex="-1">Operator</button>
+      <button id="tab-settings" role="tab" aria-selected="false" aria-controls="panel-settings" data-panel="settings" tabindex="-1">Settings</button>
+      <button id="tab-controls" role="tab" aria-selected="false" aria-controls="panel-controls" data-panel="controls" tabindex="-1">Controls</button>
+    </nav>
+    <div class="menu-panels">
+      <section id="panel-play" role="tabpanel" aria-labelledby="tab-play">
+        <div class="panel-title"><span class="eyebrow">01 / CLEAR & CAPTURE</span><span class="mode-tag">SOLO · BOTS</span></div>
+        <h2 id="mission-title">Heron Court.</h2><p id="mission-copy" class="body-copy">Clear three opponents, then secure the court. Watch the upper gallery.</p>
+        <div class="mission-facts"><span><b id="mission-bots">03</b> OPPONENTS</span><span><b id="mission-levels">02</b> LEVELS</span><span><b id="mission-time">03:00</b> ROUND</span></div>
+        <div class="map-picker" aria-label="Choose an estate">
+          <a href="/" data-map="heron-court"><span class="map-line" aria-hidden="true">▤</span><span><strong>HERON COURT</strong><small>Courtyard · 36 × 30 m</small></span><b class="map-status">SELECTED</b></a>
+          <a href="/?map=heron-reach" data-map="heron-reach"><span class="map-line" aria-hidden="true">▦</span><span><strong>HERON REACH</strong><small>Estate · 144 × 120 m</small></span><b class="map-status">LOAD</b></a>
+        </div>
+        <p id="record-summary" class="record-summary">Your completed encounters are saved on this device.</p>
+      </section>
+      <section id="panel-kit" role="tabpanel" aria-labelledby="tab-kit" hidden>
+        <div class="panel-title"><span class="eyebrow">02 / OPERATOR KIT</span><span class="mode-tag">ALL BLACK</span></div>
+        <h2>Keep it low-key.</h2><p class="body-copy">Black hoodie, balaclava, gloves and joggers. Make the kit yours.</p>
+        <fieldset class="kit-choice"><legend>Hood</legend><div class="choice-row"><label><input type="radio" name="hood" value="up" checked><span>UP</span></label><label><input type="radio" name="hood" value="down"><span>DOWN</span></label></div></fieldset>
+        <fieldset class="kit-choice"><legend>Trainers</legend><div class="choice-row"><label><input type="radio" name="trainers" value="court" checked><span>COURT</span></label><label><input type="radio" name="trainers" value="runner"><span>RUNNER</span></label><label><input type="radio" name="trainers" value="high"><span>HIGH-TOP</span></label></div></fieldset>
+        <div class="loadout"><span>LOADOUT / 01</span><strong>ONS-01 CARBINE</strong><small>Automatic · 30-round magazine</small></div>
+        <p class="small-copy">Kit is cosmetic. Movement, protection and weapon handling stay the same.</p>
+      </section>
+      <section id="panel-settings" role="tabpanel" aria-labelledby="tab-settings" hidden>
+        <div class="panel-title"><span class="eyebrow">03 / SETTINGS</span><span class="mode-tag">THIS DEVICE</span></div><h2>Set your pace.</h2>
+        <div class="settings-grid">
+          <label class="range-setting" for="menu-sensitivity"><span>Look sensitivity <output data-value="sensitivity">1.0×</output></span><input id="menu-sensitivity" data-setting="sensitivity" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+          <label class="range-setting" for="menu-volume"><span>Volume <output data-value="volume">60%</output></span><input id="menu-volume" data-setting="volume" type="range" min="0" max="1" step="0.05" value="0.6"></label>
+          <label class="toggle-setting"><input id="menu-sound" data-setting="sound" type="checkbox" checked><span>Sound effects</span></label>
+          <label class="toggle-setting"><input id="menu-reduced-motion" data-setting="reducedMotion" type="checkbox"><span>Reduce camera motion</span></label>
+        </div>
+        <label class="select-setting" for="menu-quality">Render quality<select id="menu-quality" data-setting="quality"><option value="auto">Automatic</option><option value="balanced">Balanced</option><option value="detail">Detail</option></select></label>
+        <p class="small-copy">Balanced lowers render resolution. Detail uses the higher resolution cap. Software rendering keeps its lighter settings.</p>
+        <p id="save-status" class="save-status" role="status">Preferences stay on this device.</p>
+      </section>
+      <section id="panel-controls" role="tabpanel" aria-labelledby="tab-controls" hidden>
+        <div class="panel-title"><span class="eyebrow">04 / CONTROLS</span><span class="mode-tag">KEYBOARD & MOUSE</span></div><h2>Know your moves.</h2>
+        <dl class="controls-list"><div><dt>Move</dt><dd><kbd>W A S D</kbd></dd></div><div><dt>Look / fire</dt><dd><kbd>MOUSE / LMB</kbd></dd></div><div><dt>Aim</dt><dd><kbd>RMB</kbd></dd></div><div><dt>Reload</dt><dd><kbd>R</kbd></dd></div><div><dt>Sprint / jump</dt><dd><kbd>SHIFT / SPACE</kbd></dd></div><div><dt>Crouch</dt><dd><kbd>C</kbd></dd></div><div><dt>Pause / release mouse</dt><dd><kbd>ESC</kbd></dd></div></dl>
+        <p class="small-copy">Clear every opponent, then hold the marked capture area for 2.5 seconds. The timer is running.</p>
+      </section>
+    </div>
+    <div class="deployment"><button id="start" disabled>LOADING THE ESTATE <span>↗</span></button><p id="load-status" role="status">Preparing the courtyard…</p></div>
   </div>
-  <div class="location"><span>51° 28′ N &nbsp; 00° 04′ W</span><b>HERON<br>ESTATE</b><span>FICTIONAL LONDON LOCATION</span></div>
-  <footer><a href="/credits.html" target="_blank" rel="noopener" style="color:inherit">CREDITS</a><span>BOT ENCOUNTER · EARLY PLAYABLE</span><span>BLACK KIT / BLUE HOUR</span></footer>
+  <aside id="menu-location" class="location"><span>51° 28′ N &nbsp; 00° 04′ W</span><b id="location-name">HERON<br>COURT</b><span>FICTIONAL SOUTH LONDON ESTATE</span></aside>
+  <aside id="kit-stage" class="kit-stage" aria-label="Operator kit preview" hidden><div id="operator-preview"></div><p id="kit-preview-status" role="status">Preparing your operator…</p><span class="preview-caption">ONSITE / YOUR KIT</span></aside>
+  <footer><a href="/credits.html" target="_blank" rel="noopener">CREDITS</a><span>BOT ENCOUNTER · WORK IN PROGRESS</span><span>BLACK KIT / BLUE HOUR</span></footer>
 </section>
-<section id="pause" class="dialog" hidden><div><p class="eyebrow">ONSITE / PAUSED</p><h2>Take a breath.</h2><p>The encounter is paused.</p><button id="resume">BACK ON SITE <span>↗</span></button><button id="restart-pause" class="secondary">RESTART ENCOUNTER</button><label>Look sensitivity <input id="sensitivity" type="range" min="0.5" max="2" step="0.1" value="1"></label><label><input id="sound" type="checkbox" checked> Sound effects</label></div></section>
-<section id="result" class="dialog" hidden><div><p class="eyebrow">ONSITE / ENCOUNTER COMPLETE</p><h2 id="result-title">Site secured.</h2><p id="result-detail"></p><button id="restart">RUN IT BACK <span>↗</span></button></div></section>
+<section id="pause" class="dialog" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden><div class="dialog-content"><p class="eyebrow">ONSITE / PAUSED</p><h2 id="pause-title">Take a breath.</h2><p>The encounter is paused.</p><button id="resume">BACK ON SITE <span>↗</span></button><button id="restart-pause" class="secondary">RESTART ENCOUNTER</button><div class="settings-grid pause-settings"><label class="range-setting" for="sensitivity"><span>Look sensitivity <output data-value="sensitivity">1.0×</output></span><input id="sensitivity" data-setting="sensitivity" type="range" min="0.5" max="2" step="0.1" value="1"></label><label class="range-setting" for="volume"><span>Volume <output data-value="volume">60%</output></span><input id="volume" data-setting="volume" type="range" min="0" max="1" step="0.05" value="0.6"></label><label class="toggle-setting"><input id="sound" data-setting="sound" type="checkbox" checked><span>Sound effects</span></label><label class="toggle-setting"><input id="reduced-motion" data-setting="reducedMotion" type="checkbox"><span>Reduce camera motion</span></label></div><button id="leave-pause" class="text-button">RETURN TO TITLE <span>↖</span></button><p class="small-copy">Returning to the title ends this attempt.</p></div></section>
+<section id="result" class="dialog" role="dialog" aria-modal="true" aria-labelledby="result-title" hidden><div class="dialog-content"><p id="result-eyebrow" class="eyebrow">ONSITE / ENCOUNTER COMPLETE</p><h2 id="result-title">Site secured.</h2><p id="result-detail"></p><dl class="result-stats"><div><dt>TIME</dt><dd id="result-time">00:00</dd></div><div><dt>ACCURACY</dt><dd id="result-accuracy">0%</dd></div><div><dt>OPPONENTS</dt><dd id="result-kills">0 / 3</dd></div></dl><p id="result-record" class="record-summary"></p><button id="restart">RUN IT BACK <span>↗</span></button><button id="leave-result" class="secondary">RETURN TO TITLE</button><p id="result-storage" class="small-copy">Encounter records are stored on this device only.</p></div></section>
 <script type="module" src="/src/onsite/main.ts"></script>
 </body></html>
