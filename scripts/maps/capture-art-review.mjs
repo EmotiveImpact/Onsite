@@ -12,7 +12,7 @@ const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/usr/
 try {
  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[],failed=[],captures=[];
  page.setDefaultTimeout(120000);
- page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/Heron Reach art unavailable|Heron Reach kits: no model|Constructed stairs unavailable/.test(m.text()))errors.push(m.text())});
+ page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'||/Heron Reach art unavailable|Heron Reach kits: no model|Constructed stairs unavailable|Building construction unavailable/.test(m.text()))errors.push(m.text())});
  page.on('requestfailed',r=>failed.push(`${r.failure()?.errorText} ${r.url()}`));
  page.on('response',r=>{if(r.status()>=400)failed.push(`${r.status()} ${r.url()}`)});
  await page.addInitScript(()=>{let seed=741;Math.random=()=>((seed=Math.imul(seed,1664525)+1013904223>>>0)/4294967296)});
