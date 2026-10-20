@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-19",
+  "reviewed": "2026-10-20",
   "policy": "Full donor clones stay ignored and outside runtime. Only separately reviewed code/art is copied into src/public with notices and provenance.",
   "sources": [
     {
@@ -13,7 +13,8 @@
       "assetManifest": "public/models/donors/provenance.json",
       "materialManifest": "public/materials/detail/provenance.json",
       "scannedDetailManifest": "assets/blender/heron-reach/scanned-detail-manifest.json",
-      "scannedDetailNotice": "public/licenses/polyhaven-scanned-notice.md"
+      "scannedDetailNotice": "public/licenses/polyhaven-scanned-notice.md",
+      "worldPropsManifest": "assets/blender/heron-reach/world-props-manifest.json"
     },
     {
       "id": "open-claudefare",
@@ -54,6 +55,16 @@
       "license": "Full root MIT licence, copyright 2026 mshumer. No code or procedural assets imported; any later adaptation must retain its notice.",
       "importedIntoGame": false,
       "researchRecord": "docs/research/NEXT-QUALITY-DONORS.md"
+    },
+    {
+      "id": "polyhaven-world-plants",
+      "url": "https://polyhaven.com",
+      "role": "Original CC0 fern_02 and planter_pot_clay scans, prepared in Blender for Heron Reach planting and four home tables",
+      "license": "CC0 1.0; source metadata, saved publisher licence evidence and exact original file hashes retained. Original ONSITE soil insert added inside pot.",
+      "importedIntoGame": true,
+      "sourceManifest": "assets/reference/world-dressing/source-manifest.json",
+      "derivedManifest": "assets/blender/heron-reach/world-plants-manifest.json",
+      "audit": "docs/research/WORLD-ASSET-AUDIT-2026-10-20.md"
     }
   ]
 }

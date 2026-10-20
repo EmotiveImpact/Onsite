@@ -1,0 +1,1206 @@
+{
+  "builder": "scripts/maps/art/build_heron_world_props.py",
+  "builderSHA256": "6576d6c01f9deae91da01972af2ea660179a53160abe74e216fbf24286ff28d4",
+  "blender": "4.3.2",
+  "provenance": "Existing individually licensed CC0 Poly Haven derivatives; adapted without changing originals.",
+  "sourceProvenanceFile": "public/models/donors/provenance.json",
+  "sourceProvenanceSHA256": "b40bbfddabf4dc326b52777019583644673a59d5280141ee3521be76eb4f7fda",
+  "coordinates": "Metres; glTF Y-up, root X/Z centred and base minY=0; front +Z.",
+  "collision": "No collider or navigation changes. Explicit runtime matrices must stay within existing support/clearance envelopes.",
+  "assets": [
+    {
+      "name": "WORLD_TRASH_BAG",
+      "source": {
+        "file": "public/models/donors/trashbag.glb",
+        "sha256": "1d5e01745e7723b390364816302a7c91c13d7b3056a903b75282883a6b35b87f",
+        "node": "trashbag",
+        "licence": "CC0-1.0",
+        "creators": {
+          "Benny Weimer": "All"
+        },
+        "sources": [
+          "https://polyhaven.com/a/trashbag",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/trashbag/trashbag.glb",
+        "priorModifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only.",
+        "sourceImages": [
+          {
+            "name": "trashbag_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 91244,
+            "sha256": "e2c101d9b87cd068abda814977f431753f953f69114ce8f1018fa0f3d530cfac"
+          },
+          {
+            "name": "trashbag_diff",
+            "mimeType": "image/webp",
+            "bytes": 29014,
+            "sha256": "355991137a6e04ad7b53f56ada5b1734caf1fb619ed56434721b1ddcfcd5fd42"
+          },
+          {
+            "name": "trashbag_rough",
+            "mimeType": "image/webp",
+            "bytes": 106526,
+            "sha256": "b48326d9015250fba72d43991134ead7d7557e0609a280c9a40b8cb965d7430d"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          -0.2604704797267914,
+          -0.0014488622546195984,
+          -0.23981982469558716
+        ],
+        "max": [
+          0.26759958267211914,
+          0.571075439453125,
+          0.22307318449020386
+        ],
+        "size": [
+          0.5280700623989105,
+          0.5725243017077446,
+          0.462893009185791
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.26403504610061646,
+          0.0,
+          -0.2314465045928955
+        ],
+        "max": [
+          0.26403504610061646,
+          0.5725243091583252,
+          0.2314465045928955
+        ],
+        "size": [
+          0.5280700922012329,
+          0.5725243091583252,
+          0.462893009185791
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 1200,
+      "triangles": 1200,
+      "normalisationBlenderXYZ": [
+        -0.0035645514726638794,
+        -0.00837332010269165,
+        0.0014488622546195984
+      ],
+      "modifications": [],
+      "materials": [
+        "hr_world_trashbag"
+      ]
+    },
+    {
+      "name": "WORLD_BIN_RUST",
+      "source": {
+        "file": "public/models/donors/metal_trash_can.glb",
+        "sha256": "431e7dc599b9d9d852b9c33178b1706ec843871d04ac59af1dac17f1909c838b",
+        "node": "metal_trash_can_rust",
+        "licence": "CC0-1.0",
+        "creators": {
+          "GurJas Studios": "All"
+        },
+        "sources": [
+          "https://polyhaven.com/a/metal_trash_can",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/metal_trash_can/metal_trash_can.glb",
+        "priorModifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only.",
+        "sourceImages": [
+          {
+            "name": "metal_trash_can_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 131224,
+            "sha256": "8e2d6d1370e40254bdd7be40386fee170d4c8e944b329af3e152b8df4a7c4aca"
+          },
+          {
+            "name": "metal_trash_can_diff",
+            "mimeType": "image/webp",
+            "bytes": 63164,
+            "sha256": "5b54f51885589ac5f1611e05c3f7340862e6096640c9b0797cc22b412bdc5b61"
+          },
+          {
+            "name": "metal_trash_can_metal-metal_trash_can_rough",
+            "mimeType": "image/webp",
+            "bytes": 93730,
+            "sha256": "0dd58de68abb0c1617507a53f64c998cfab7c9f7a080897474580338ab257318"
+          },
+          {
+            "name": "metal_trash_can_rust_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 243546,
+            "sha256": "276df096b1fd17e85f9fad336392f20a0f7808b2e5c848084a2a3d9643dcd923"
+          },
+          {
+            "name": "metal_trash_can_rust_diff",
+            "mimeType": "image/webp",
+            "bytes": 139276,
+            "sha256": "75e98770af159b518a405128aa1123786b973eaae03dd17b945d1058fd1ec474"
+          },
+          {
+            "name": "metal_trash_can_rust_metal-metal_trash_can_rust_rough",
+            "mimeType": "image/webp",
+            "bytes": 80936,
+            "sha256": "c1d5a9d7265d287bcd45f9ca1ffd009185cd54351d73717d9db579fd91cc5e97"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          -0.9526877403259277,
+          6.173570000100881e-05,
+          -0.2738999128341675
+        ],
+        "max": [
+          -0.18097686767578125,
+          0.9062191247940063,
+          0.27226075530052185
+        ],
+        "size": [
+          0.7717108726501465,
+          0.9061573890940053,
+          0.5461606681346893
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.3218134045600891,
+          0.0,
+          -0.2729777693748474
+        ],
+        "max": [
+          0.3218134641647339,
+          1.0131309032440186,
+          0.2729777693748474
+        ],
+        "size": [
+          0.643626868724823,
+          1.0131309032440186,
+          0.5459555387496948
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 1293,
+      "triangles": 1293,
+      "normalisationBlenderXYZ": [
+        0.5027903318405151,
+        -0.0009221285581588745,
+        -6.173570000100881e-05
+      ],
+      "modifications": [
+        {
+          "operation": "Close disconnected original lid and its handle over the can rim",
+          "partVertexCounts": [
+            217,
+            21
+          ],
+          "rimOverlapMetres": 0.008,
+          "rotationQuaternionWXYZ": [
+            0.7910169363021851,
+            0.00036715803435072303,
+            0.6117941737174988,
+            -0.0
+          ],
+          "rotationPivotBlenderXYZ": [
+            -0.861942708492279,
+            -0.019331615418195724,
+            0.27750861644744873
+          ],
+          "translationAfterPivotRotationBlenderXYZ": [
+            -0.5039045810699463,
+            -0.016045764088630676,
+            0.9224197268486023
+          ]
+        }
+      ],
+      "materials": [
+        "hr_world_metal_trash_can_rust"
+      ]
+    },
+    {
+      "name": "WORLD_AIRCON_RUST",
+      "source": {
+        "file": "public/models/donors/exterior_aircon_unit.glb",
+        "sha256": "8e1bb1907de31a0baafb5f09349faf0191dfd003c005ebed8a226bc0eb99dca5",
+        "node": "exterior_aircon_unit_rusted",
+        "licence": "CC0-1.0",
+        "creators": {
+          "Monsta3D": "All"
+        },
+        "sources": [
+          "https://polyhaven.com/a/exterior_aircon_unit",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/exterior_aircon_unit/exterior_aircon_unit.glb",
+        "priorModifications": "Upstream simplified/re-posed/WebP derivative; copied unchanged. Runtime placement/tint only.",
+        "sourceImages": [
+          {
+            "name": "exterior_aircon_unit_01_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 60840,
+            "sha256": "c21409e728b1f631654f3e6850ff54d73aeb0158b931fa3fddf8919200736524"
+          },
+          {
+            "name": "exterior_aircon_unit_01_diff",
+            "mimeType": "image/webp",
+            "bytes": 69826,
+            "sha256": "56d3e3be6911b6fed26713ae075105cea0cc53503683df4ff14ba5f28e5fa4da"
+          },
+          {
+            "name": "exterior_aircon_unit_01_metal-exterior_aircon_unit_01_rough",
+            "mimeType": "image/webp",
+            "bytes": 81318,
+            "sha256": "95b71be6f500dfec06608b0b1bbb846de2e37b86526a053f8edbb8c1fe6be751"
+          },
+          {
+            "name": "exterior_aircon_unit_02_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 200672,
+            "sha256": "27b036243743db579072b37661a16f9130c0f75bbbabf62355eb7dca65b8dd69"
+          },
+          {
+            "name": "exterior_aircon_unit_02_diff-exterior_aircon_unit_01_opacity",
+            "mimeType": "image/webp",
+            "bytes": 87508,
+            "sha256": "b19c191809244e6173c3b0938d657fdd61e1b7ef7b3efc53c94bf413b94c652a"
+          },
+          {
+            "name": "exterior_aircon_unit_02_metal-exterior_aircon_unit_02_rough",
+            "mimeType": "image/webp",
+            "bytes": 55052,
+            "sha256": "d20a6d952e4700c50cded18d98a0932ef6e34454d58c3c5b2cf66502e26f0038"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_01_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 83618,
+            "sha256": "56968d12c32a263fc6bdb1ab4a73f81ec03102138a91fad0cdfde33dea0e5933"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_01_diff",
+            "mimeType": "image/webp",
+            "bytes": 94744,
+            "sha256": "439385abd91dd0df474d976e4edbbf03e836fbd86b5d367ab51266aae4fdad36"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_01_metal-exterior_aircon_unit_rusted_01_rough",
+            "mimeType": "image/webp",
+            "bytes": 87670,
+            "sha256": "ff138ee8f5323bd842e1ad8a20ee9e40df492bc5874afa2b71f6a21011a760a1"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_02_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 201558,
+            "sha256": "f089e0e2c59bb65eb8cd1ae62365ec7c8ba84a5147e2b5f5d060ef7599d3841e"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_02_diff-exterior_aircon_unit_rusted_02_opacity",
+            "mimeType": "image/webp",
+            "bytes": 94356,
+            "sha256": "ba7f3162bbaeecc21eb254cdfebe3521d2f27ad504d25358a90d20e1921e5b3f"
+          },
+          {
+            "name": "exterior_aircon_unit_rusted_02_metal-exterior_aircon_unit_rusted_02_rough",
+            "mimeType": "image/webp",
+            "bytes": 81108,
+            "sha256": "0ec58ba01e2051e9307924c238caff7d62fe748bee537dcecca37de9dbadd29c"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          0.12078139185905457,
+          -0.31977635622024536,
+          -0.21596616506576538
+        ],
+        "max": [
+          0.9050728678703308,
+          0.6078314781188965,
+          0.15819303691387177
+        ],
+        "size": [
+          0.7842914760112762,
+          0.9276078343391418,
+          0.37415920197963715
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.39214572310447693,
+          0.0,
+          -0.18707960844039917
+        ],
+        "max": [
+          0.3921457529067993,
+          0.6078556180000305,
+          0.18707960844039917
+        ],
+        "size": [
+          0.7842914760112762,
+          0.6078556180000305,
+          0.37415921688079834
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 1483,
+      "triangles": 1444,
+      "normalisationBlenderXYZ": [
+        -0.5129271149635315,
+        -0.028886564075946808,
+        2.4140776076819748e-05
+      ],
+      "modifications": [
+        {
+          "operation": "Omit the disconnected drain pipe hanging below the original support feet",
+          "removedVertexCount": 33,
+          "removedBounds": {
+            "min": [
+              0.4747479259967804,
+              -0.31977635622024536,
+              -0.06259661912918091
+            ],
+            "max": [
+              0.5755126476287842,
+              0.11195965111255646,
+              -0.03253937140107155
+            ],
+            "size": [
+              0.10076472163200378,
+              0.4317360073328018,
+              0.03005724772810936
+            ]
+          },
+          "reason": "The cabinet and original feet rest on roof/bench support without a pipe entering the floor."
+        }
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_01",
+        "hr_world_exterior_aircon_unit_rusted_02"
+      ]
+    },
+    {
+      "name": "WORLD_CARDBOARD_BOX",
+      "source": {
+        "file": "public/models/donors/cardboard_box_01.glb",
+        "sha256": "eb407e8504f5161f410efccc830e6b2fbea68521d171187e14148aebbabd7817",
+        "node": "cardboard_box_01",
+        "licence": "CC0-1.0",
+        "creators": {
+          "Rahul Chaudhary": "All"
+        },
+        "sources": [
+          "https://polyhaven.com/a/cardboard_box_01",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/cardboard_box_01/cardboard_box_01.glb",
+        "priorModifications": "Copied unchanged; placed in Blender and runtime.",
+        "sourceImages": [
+          {
+            "name": "cardboard_box_01_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 129032,
+            "sha256": "8c3979879d12293629092036f6790c7857d3a82867ee5f17d543b609ac896b79"
+          },
+          {
+            "name": "cardboard_box_01_diff",
+            "mimeType": "image/webp",
+            "bytes": 63268,
+            "sha256": "fb6ee3f87ccdd3d7984c09e6784ee29d010ac4a2c72acec317c063a1f7da59ea"
+          },
+          {
+            "name": "cardboard_box_01_rough",
+            "mimeType": "image/webp",
+            "bytes": 31030,
+            "sha256": "1cac1a1a345ab8db9e8b6cdc2d667f15ab4034264d0b92ba35e6a3ca957166d9"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          -0.19239918887615204,
+          -0.0056934356689453125,
+          -0.22508370876312256
+        ],
+        "max": [
+          0.1929953545331955,
+          0.33375564217567444,
+          0.2907867133617401
+        ],
+        "size": [
+          0.38539454340934753,
+          0.33944907784461975,
+          0.5158704221248627
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.19269727170467377,
+          0.0,
+          -0.25793522596359253
+        ],
+        "max": [
+          0.19269727170467377,
+          0.33944907784461975,
+          0.25793522596359253
+        ],
+        "size": [
+          0.38539454340934753,
+          0.33944907784461975,
+          0.5158704519271851
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 900,
+      "triangles": 900,
+      "normalisationBlenderXYZ": [
+        -0.0002980828285217285,
+        0.03285150229930878,
+        0.0056934356689453125
+      ],
+      "modifications": [],
+      "materials": [
+        "hr_world_cardboard_box_01"
+      ]
+    },
+    {
+      "name": "WORLD_WOODEN_CRATE",
+      "source": {
+        "file": "public/models/donors/wooden_crate_02.glb",
+        "sha256": "e18d97c32a228e0605575154b3eb97a395408dde4c3462326c050bff28dac636",
+        "node": "wooden_crate_02_crate",
+        "licence": "CC0-1.0",
+        "creators": {
+          "James Ray Cock": "modeling",
+          "Jurita Burger": "graphic design"
+        },
+        "sources": [
+          "https://polyhaven.com/a/wooden_crate_02",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/wooden_crate_02/wooden_crate_02.glb",
+        "priorModifications": "Copied unchanged; placed in Blender and runtime.",
+        "sourceImages": [
+          {
+            "name": "wooden_crate_02_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 61238,
+            "sha256": "beccf5caef5701e19bf055c925ca0dd63c326389429f2b39d0a5fba49f841bd1"
+          },
+          {
+            "name": "wooden_crate_02_diff",
+            "mimeType": "image/webp",
+            "bytes": 105678,
+            "sha256": "b5fbfcfda6eb7f92b9057dd72094c6a87673c82ce2f8b84b7c1a6eaadd4fd05a"
+          },
+          {
+            "name": "wooden_crate_02_metal-wooden_crate_02_rough",
+            "mimeType": "image/webp",
+            "bytes": 110756,
+            "sha256": "d38155d3b7c15b0813a62c71523c69cb9b120d9e167dad9ce3c7436188a41dff"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          -0.26455047726631165,
+          -0.009823636151850224,
+          -0.580326497554779
+        ],
+        "max": [
+          0.26455047726631165,
+          0.4541308879852295,
+          0.5829854607582092
+        ],
+        "size": [
+          0.5291009545326233,
+          0.4639545241370797,
+          1.1633119583129883
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.5816559791564941,
+          0.0,
+          -0.2645505666732788
+        ],
+        "max": [
+          0.5816559791564941,
+          0.46395450830459595,
+          0.2645505666732788
+        ],
+        "size": [
+          1.1633119583129883,
+          0.46395450830459595,
+          0.5291011333465576
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 1500,
+      "triangles": 1500,
+      "normalisationBlenderXYZ": [
+        -0.0013294517993927002,
+        -1.4901161193847656e-08,
+        0.009823635220527649
+      ],
+      "modifications": [
+        {
+          "operation": "Turn the original long side across X",
+          "rotationBlenderZ": 1.5707963267948966
+        }
+      ],
+      "materials": [
+        "hr_world_wooden_crate_02"
+      ]
+    },
+    {
+      "name": "WORLD_TYRE",
+      "source": {
+        "file": "public/models/donors/old_tyre.glb",
+        "sha256": "a3cb716442308c365f6661a91cdfd8f64caa1e08c9a39d65065914c795be4f78",
+        "node": "old_tyre",
+        "licence": "CC0-1.0",
+        "creators": {
+          "MP": "All"
+        },
+        "sources": [
+          "https://polyhaven.com/a/old_tyre",
+          "https://polyhaven.com/license"
+        ],
+        "donor": "https://github.com/cktang88/3d-fps",
+        "donorCommit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+        "donorPath": "public/assets/models/props/old_tyre/old_tyre.glb",
+        "priorModifications": "Copied unchanged; placed in Blender and runtime.",
+        "sourceImages": [
+          {
+            "name": "old_tyre_nor_gl",
+            "mimeType": "image/webp",
+            "bytes": 99372,
+            "sha256": "c43528b4d1b62a63c25e912d0c13cb62864e847f2f9e88ffa45cdc3fcfb1ee3a"
+          },
+          {
+            "name": "old_tyre_diff",
+            "mimeType": "image/webp",
+            "bytes": 120696,
+            "sha256": "3fd34e67c8b078d36f07ae7455375e2507bda63421fa6ae37e90cbd20334d3b2"
+          },
+          {
+            "name": "old_tyre_rough",
+            "mimeType": "image/webp",
+            "bytes": 118518,
+            "sha256": "4b05060c49c54c6aeed1b63f2575a9774435a67c9d905922372a18631b1743fe"
+          }
+        ]
+      },
+      "sourceSelectedBounds": {
+        "min": [
+          -0.30000001192092896,
+          -0.30000001192092896,
+          -0.08276330679655075
+        ],
+        "max": [
+          0.30000001192092896,
+          0.30000001192092896,
+          0.08223666250705719
+        ],
+        "size": [
+          0.6000000238418579,
+          0.6000000238418579,
+          0.16499996930360794
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.30000001192092896,
+          0.0,
+          -0.30000001192092896
+        ],
+        "max": [
+          0.30000001192092896,
+          0.16499996185302734,
+          0.30000001192092896
+        ],
+        "size": [
+          0.6000000238418579,
+          0.16499996185302734,
+          0.6000000238418579
+        ]
+      },
+      "origin": "centred X/Z; base minY=0",
+      "front": "+Z; the flat tyre has its detailed face +Y.",
+      "sourceSelectedTriangles": 1000,
+      "triangles": 1000,
+      "normalisationBlenderXYZ": [
+        -0.0,
+        -0.0,
+        0.08276330679655075
+      ],
+      "modifications": [
+        {
+          "operation": "Lay the original upright wheel flat, detailed outer face upward",
+          "rotationBlenderX": -1.5707963267948966
+        }
+      ],
+      "materials": [
+        "hr_world_old_tyre"
+      ]
+    }
+  ],
+  "triangles": 7337,
+  "materialBatches": 7,
+  "materials": [
+    "hr_world_trashbag",
+    "hr_world_metal_trash_can_rust",
+    "hr_world_exterior_aircon_unit_rusted_01",
+    "hr_world_exterior_aircon_unit_rusted_02",
+    "hr_world_cardboard_box_01",
+    "hr_world_wooden_crate_02",
+    "hr_world_old_tyre"
+  ],
+  "textures": [
+    {
+      "name": "trashbag_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 98060,
+      "sha256": "3245367231ba2f079467c91a1ca52d3bf55196e836c08af8d41904dbd8bf5196",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "trashbag_diff",
+      "mimeType": "image/webp",
+      "bytes": 16304,
+      "sha256": "ef25add7297bf9bb7280e5079d9ae61020b5ca980d007ca4e8a1a9313819d3d2",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "trashbag_rough",
+      "mimeType": "image/webp",
+      "bytes": 90142,
+      "sha256": "8bcf108886ed6d318302de670af780445f66ea75a3d1aec18a2d6ca321a2971e",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "metal_trash_can_rust_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 486580,
+      "sha256": "ae77068eaceca0a58f142b5e68c67bff8ff3bb10fbfb5d76dec24197ea4876ba",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "metal_trash_can_rust_diff",
+      "mimeType": "image/webp",
+      "bytes": 66854,
+      "sha256": "145b2e8db106d40dbf3420480da6b0d92514ab5dc0ec7446d313fe86b4eb1660",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "metal_trash_can_rust_metal-metal_trash_can_rust_rough",
+      "mimeType": "image/webp",
+      "bytes": 81590,
+      "sha256": "8a6fd368286f3db5756fef391971b32a842d18397b8e958fa138c74731132033",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 76040,
+      "sha256": "eed2475574c4152a77da177b051e17aed72898657866030d01e99ce2cd857daf",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_diff",
+      "mimeType": "image/webp",
+      "bytes": 51904,
+      "sha256": "35f6131dcdd2967ad32f5aabb9b16445a4f2d83ac80a905abc81680487f8614a",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_metal-exterior_aircon_unit_ruste",
+      "mimeType": "image/webp",
+      "bytes": 88342,
+      "sha256": "781f64fbc9999d21f94f8977eee625d30669509ff29136e4af3b948caa488d50",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 97122,
+      "sha256": "fef151226c3821eb0156f3a3299dae73a895c554a8b9ff7faa6c628f6107bda2",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_diff-exterior_aircon_unit_rusted",
+      "mimeType": "image/webp",
+      "bytes": 45350,
+      "sha256": "66d2cf239ba919cb3eead35a71dc9ceb2e4ac1e33737c06412393061b405d9f6",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_metal-exterior_aircon_unit_ruste",
+      "mimeType": "image/webp",
+      "bytes": 66934,
+      "sha256": "02f2e5a0a92a2a18f3260451b86f60a4285cf5150ca77c46143e571f265e5204",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "cardboard_box_01_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 95444,
+      "sha256": "427a6e91733b6974d1c4db98627d32bc8580637f0d850ac0e6335f3d3986f13e",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "cardboard_box_01_diff",
+      "mimeType": "image/webp",
+      "bytes": 31106,
+      "sha256": "ebbcf38fe343c296f7d285ca440599a96de66ad157f8a3f40b97b428d8244b87",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "cardboard_box_01_rough",
+      "mimeType": "image/webp",
+      "bytes": 50548,
+      "sha256": "8cb55123aa633252e131b00ae989a6d00842b3bce6271f455b6fe609f7c8af3c",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "wooden_crate_02_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 69046,
+      "sha256": "d34d039df59ed6cc21abd42368adea358656e0d73f6cfec110a38e688b76003e",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "wooden_crate_02_diff",
+      "mimeType": "image/webp",
+      "bytes": 51110,
+      "sha256": "1eb640340ab03661f71e0e0bb7634879f239b111b63dcbf337e36cc1b9862bc3",
+      "size": [
+        512,
+        512
+      ],
+      "estimatedMipBytesRGBA8": 1398100
+    },
+    {
+      "name": "wooden_crate_02_metal-wooden_crate_02_rough",
+      "mimeType": "image/webp",
+      "bytes": 93870,
+      "sha256": "972df6611168c3e82b96b229592be40798e6fed3e9e8b11bbc0d8d8624901c79",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "old_tyre_nor_gl",
+      "mimeType": "image/webp",
+      "bytes": 83740,
+      "sha256": "aceaa621da39eb517aa9c326622b23409905044d4ecd9637bb11e30c69062163",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "old_tyre_diff",
+      "mimeType": "image/webp",
+      "bytes": 14430,
+      "sha256": "834bf774192414d9d9144bfd28c264e06b632bbd6dfa38a1c240629cbc6b6f47",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    },
+    {
+      "name": "old_tyre_rough",
+      "mimeType": "image/webp",
+      "bytes": 91076,
+      "sha256": "3dab263d85449a054bcce1baecc5cbe6a77ab9b322dd8b57f6e1f49aaee75ed2",
+      "size": [
+        256,
+        256
+      ],
+      "estimatedMipBytesRGBA8": 349524
+    }
+  ],
+  "packedEditableTextures": [
+    {
+      "name": "cardboard_box_01_diff",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_cardboard_box_01"
+      ],
+      "packedSourcePNGBytes": 362024,
+      "packedSourcePNGSHA256": "649ddbf24917dcf6247e966893823e487c2fbf0352bc8982f291ea685fe39552"
+    },
+    {
+      "name": "cardboard_box_01_rough",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_cardboard_box_01"
+      ],
+      "packedSourcePNGBytes": 80722,
+      "packedSourcePNGSHA256": "0b67ba3c77b7be3954b09159d0fa988ef2eb95f1f448e36e0a37f38cf9f58319"
+    },
+    {
+      "name": "cardboard_box_01_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_cardboard_box_01"
+      ],
+      "packedSourcePNGBytes": 130295,
+      "packedSourcePNGSHA256": "3f8247d9f85fc6a2da935b036e5a8fcb625d3df3667dc4e5b6b78ae5be0fb743"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_diff",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_01"
+      ],
+      "packedSourcePNGBytes": 355755,
+      "packedSourcePNGSHA256": "de22d27c26cc4a71690aa94ef5afa5f5324490dd8d52444a2f2884e8652512ad"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_metal-exterior_aircon_unit_ruste",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_01"
+      ],
+      "packedSourcePNGBytes": 115487,
+      "packedSourcePNGSHA256": "4dadc9e67559ff29f4648f6bf827f5bae6a6898bfa353c10a5a644bc4c70bde7"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_01_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_01"
+      ],
+      "packedSourcePNGBytes": 100432,
+      "packedSourcePNGSHA256": "dfa96c0e48b3675f81750538d5aa7aad46a46a9a0903eb87ff9aab253edcebbf"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_diff-exterior_aircon_unit_rusted",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_02"
+      ],
+      "packedSourcePNGBytes": 106607,
+      "packedSourcePNGSHA256": "12dfe0c2e8eabdc2273756c6676c59a38ccf1b9ace575c718dbccf68e4b4c833"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_metal-exterior_aircon_unit_ruste",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_02"
+      ],
+      "packedSourcePNGBytes": 96782,
+      "packedSourcePNGSHA256": "c0d72980e1dfec07f018c41d8fec423f1a436a60c959d0acfe54eb2fc972bb25"
+    },
+    {
+      "name": "exterior_aircon_unit_rusted_02_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_exterior_aircon_unit_rusted_02"
+      ],
+      "packedSourcePNGBytes": 125983,
+      "packedSourcePNGSHA256": "0b7ee7c5c5714f83816b6c05f6dcbe96bc76b10c203599bb6c6765220580cd99"
+    },
+    {
+      "name": "metal_trash_can_rust_diff",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_metal_trash_can_rust"
+      ],
+      "packedSourcePNGBytes": 442156,
+      "packedSourcePNGSHA256": "5a19738d7b3b49513f63912a54ea8804e88c3e87e121373cffebe67b01527299"
+    },
+    {
+      "name": "metal_trash_can_rust_metal-metal_trash_can_rust_rough",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_metal_trash_can_rust"
+      ],
+      "packedSourcePNGBytes": 111974,
+      "packedSourcePNGSHA256": "7dd09dd51587a3b780582996ab16cdc9230470a8f8e5a6026856fd2e90ffe0e3"
+    },
+    {
+      "name": "metal_trash_can_rust_nor_gl",
+      "role": "normal",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_metal_trash_can_rust"
+      ],
+      "packedSourcePNGBytes": 567398,
+      "packedSourcePNGSHA256": "6c6f60fdea5b91778dec200365cb3f31c2f557cd3573be79a76250d12a150242"
+    },
+    {
+      "name": "old_tyre_diff",
+      "role": "colour",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_old_tyre"
+      ],
+      "packedSourcePNGBytes": 95379,
+      "packedSourcePNGSHA256": "99cb42adb30abf1ce36109ba66b7fbb90e3c6f2813d98a939025d7c8b573a6de"
+    },
+    {
+      "name": "old_tyre_rough",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_old_tyre"
+      ],
+      "packedSourcePNGBytes": 117057,
+      "packedSourcePNGSHA256": "2b519c3f769359d91304ed0a416499c3dceb62c93e1c069d3651546ba12fe5e4"
+    },
+    {
+      "name": "old_tyre_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_old_tyre"
+      ],
+      "packedSourcePNGBytes": 107239,
+      "packedSourcePNGSHA256": "65118e86c162d0316e60cfc9244338ea72cf63b03dd12b82f620d9cfc76c35e4"
+    },
+    {
+      "name": "trashbag_diff",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_trashbag"
+      ],
+      "packedSourcePNGBytes": 196333,
+      "packedSourcePNGSHA256": "fd27827594e4f4f5f097d91208773c24100c8a4db2eeae69c12dda472b974213"
+    },
+    {
+      "name": "trashbag_rough",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_trashbag"
+      ],
+      "packedSourcePNGBytes": 114834,
+      "packedSourcePNGSHA256": "2d0b6ecd488122502a077d059b9381b4bb66072675532c7ca2936358f9c8e755"
+    },
+    {
+      "name": "trashbag_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_trashbag"
+      ],
+      "packedSourcePNGBytes": 118605,
+      "packedSourcePNGSHA256": "82dc097c4f69d03f3ad92eff5e6891d1c60447d29620b16e4e8238fee2b0898c"
+    },
+    {
+      "name": "wooden_crate_02_diff",
+      "role": "colour",
+      "size": [
+        512,
+        512
+      ],
+      "materials": [
+        "hr_world_wooden_crate_02"
+      ],
+      "packedSourcePNGBytes": 415631,
+      "packedSourcePNGSHA256": "c859ce72552ff5d86de95339ef47071ca850e4a7fe3d4ce11b2725703e0642f1"
+    },
+    {
+      "name": "wooden_crate_02_metal-wooden_crate_02_rough",
+      "role": "data",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_wooden_crate_02"
+      ],
+      "packedSourcePNGBytes": 119886,
+      "packedSourcePNGSHA256": "b3d59f270d5165615aa2627539ccce30bd29c9ca21a759132007746b0df8b710"
+    },
+    {
+      "name": "wooden_crate_02_nor_gl",
+      "role": "normal",
+      "size": [
+        256,
+        256
+      ],
+      "materials": [
+        "hr_world_wooden_crate_02"
+      ],
+      "packedSourcePNGBytes": 82216,
+      "packedSourcePNGSHA256": "5170a5f7d486bd38acff36b5d1eb449272d1f772dcc91635b4b305a42a995088"
+    }
+  ],
+  "estimatedTextureMipBytesRGBA8": 14680036,
+  "texturePolicy": "512 colour for close props; 512 bin normal; 256 secondary/data maps and tyre. Colour WebP quality90; all normal/data maps lossless. Editable source packs resized PNGs.",
+  "alphaCorrection": "The AC rusted_02 source declares BLEND but its source WebP has RGB channels only. Alpha is normalised to opaque; no invented mask.",
+  "newLights": 0,
+  "compressedGLBBytes": 1924688,
+  "compressedGLBSHA256": "a3f7ccc7e5b7ff67055811e480c6f24a01275ec774b422305d6f226ceb70bf4e",
+  "blendBytes": 4361760,
+  "blendSHA256": "fd072c6b5b7cb1f30e05d9db7198f37ed7ae980864d09f47a2f7899481270128",
+  "compression": {
+    "tool": "npm gltfpack",
+    "version": "0.22.0",
+    "flags": [
+      "-cc",
+      "-kn",
+      "-km",
+      "-kv",
+      "-vpf",
+      "-vtf"
+    ],
+    "lockfileSHA256": "c5e02d76cbb5e3c741aadf877fdd452d53c8011c22a6561e3b1b6979215ad4d0"
+  }
+}
