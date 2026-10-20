@@ -60,6 +60,20 @@ async function loadGroundTrees(){
 }
 let loadedTrees:ReturnType<typeof loadGroundTrees>|undefined;
 const groundTrees=()=>loadedTrees??=loadGroundTrees();
+/** Keep the shipped foliage geometry and transforms; avoid image decoding in Node. */
+async function loadFoliageGeometry(){
+ const original=readFileSync(new URL('../public/models/heron-reach/heron-reach-foliage.glb',import.meta.url)),length=original.readUInt32LE(12);
+ const json=JSON.parse(original.subarray(20,20+length).toString());
+ json.materials=json.materials.map((m:{name:string})=>({name:m.name}));
+ delete json.images;delete json.textures;delete json.samplers;
+ for(const key of ['extensionsUsed','extensionsRequired'])if(json[key])json[key]=json[key].filter((s:string)=>s!=='EXT_texture_webp');
+ const encoded=Buffer.from(JSON.stringify(json)),body=Buffer.alloc(Math.ceil(encoded.length/4)*4,32);encoded.copy(body);
+ const tail=original.subarray(20+length),header=Buffer.alloc(20);
+ header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);header.writeUInt32LE(20+body.length+tail.length,8);
+ header.writeUInt32LE(body.length,12);header.writeUInt32LE(0x4e4f534a,16);
+ const bytes=Uint8Array.from(Buffer.concat([header,body,tail]));
+ const {scene}=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).parseAsync(bytes.buffer,'');scene.updateMatrixWorld(true);return scene;
+}
 function treeGeometry(root:THREE.Object3D,placement=new THREE.Matrix4()){
  const inv=new THREE.Matrix4().copy(root.matrixWorld).invert(),vertices:THREE.Vector3[]=[],triangles:THREE.Triangle[]=[];
  root.traverse(o=>{if(!(o instanceof THREE.Mesh))return;
@@ -88,16 +102,50 @@ test('Every irregular patch footprint has the same G finish, clear doors/objecti
  for(const d of layout.openings.filter(d=>d.y===0&&d.kind.includes('door')))assert.equal(accept.routeClear(d.x,d.z),false);
 });
 
-test('Raised shrubs fit the existing interior rims after rotation/scale and root exactly on Blender soil',()=>{
- const shrubs=plan.plants.filter(p=>p.source?.startsWith('planter:'));
- assert.equal(new Set(shrubs.map(p=>p.source)).size,8);
- assert.equal(shrubs.length,10);
- for(const p of shrubs){
-  const c=layout.cover.find(c=>`planter:${c.id}`===p.source)!,b=plantBounds(p),[x,z,w,d]=c.rect;
-  assert(p.x-b.radius>=x+.12&&p.x+b.radius<=x+w-.12);
-  assert(p.z-b.radius>=z+.12&&p.z+b.radius<=z+d-.12);
-  assert(Math.abs(b.bottom-(c.y+c.height-.15))<1e-9);
-  assert(b.top<=c.y+c.height+.25,'cosmetic foliage stays low above existing cover');
+test('Each existing planter has six varied, spread clumps whose actual rotated geometry fits the soil, rims and height cap',async()=>{
+ const clumps=plan.plants.filter(p=>p.source?.startsWith('planter:')),beds=layout.cover.filter(c=>c.kind.includes('planter')&&c.y===0),scene=await loadFoliageGeometry();
+ assert.equal(beds.length,8);assert.equal(clumps.length,48);
+ assert.deepEqual([...new Set(clumps.map(p=>p.source))].sort(),beds.map(c=>`planter:${c.id}`).sort());
+ assert.equal(clumps.filter(p=>p.asset.startsWith('SHRUB_')).length,10);
+ assert.equal(clumps.filter(p=>p.asset.startsWith('WEED_TUFT_')).length,38);
+ assert.deepEqual([...new Set(clumps.filter(p=>p.asset.startsWith('SHRUB_')).map(p=>p.asset))].sort(),['SHRUB_A','SHRUB_B','SHRUB_C']);
+ for(const bed of beds){
+  const mine=clumps.filter(p=>p.source===`planter:${bed.id}`),[x,z,w,d]=bed.rect,soil=bed.y+bed.height-.15;
+  assert.equal(mine.length,6,`${bed.id}: six clumps`);
+  assert(new Set(mine.map(p=>p.asset)).size>=3,`${bed.id}: varied asset types`);
+  assert.equal(mine.filter(p=>p.asset.startsWith('SHRUB_')).length,['K21','K22'].includes(bed.id)?2:1,`${bed.id}: retain shrub roles`);
+  assert(new Set(mine.map(p=>p.ry)).size>=4,`${bed.id}: varied rotations`);
+  assert(new Set(mine.map(p=>p.scale)).size>=4,`${bed.id}: varied sizes`);
+  for(const [axis,mid,interior]of [['x',x+w/2,w-.24],['z',z+d/2,d-.24]] as const){
+   const values=mine.map(p=>p[axis]),lo=Math.min(...values),hi=Math.max(...values);
+   assert(lo<mid&&hi>mid,`${bed.id}: clumps occupy both sides of the ${axis} midpoint`);
+   assert(hi-lo>=interior*.2,`${bed.id}: clumps spread across ${axis}, not one central pile`);
+  }
+  for(const p of mine){
+   const b=plantBounds(p),root=scene.getObjectByName(p.asset);assert(root,`${p.asset}: missing existing foliage asset`);
+   const geometry=treeGeometry(root,placementMatrix(p)),label=`${bed.id}/${p.asset}`;
+   assert.equal(geometry.triangles.length,b.triangles,`${label}: use existing geometry`);
+   assert(Math.abs(b.bottom-soil)<1e-9,`${label}: planned roots meet existing soil exactly`);
+   // The source manifest rounds to millimetres; decoded minima differ by <0.4 mm
+   // at these scales. Keep an explicit 1 mm allowance for that representation.
+   assert(Math.abs(geometry.bounds.min.y-soil)<.001,`${label}: decoded roots float above or sink below soil`);
+   assert(geometry.bounds.min.x>=x+.12&&geometry.bounds.max.x<=x+w-.12,`${label}: exported geometry crosses an X rim`);
+   assert(geometry.bounds.min.z>=z+.12&&geometry.bounds.max.z<=z+d-.12,`${label}: exported geometry crosses a Z rim`);
+   assert(b.top<=1.25&&geometry.bounds.max.y<=1.25,`${label}: exceeds low cover height`);
+   if(p.asset.startsWith('SHRUB_'))assert(geometry.bounds.max.y-geometry.bounds.min.y>=.34,`${label}: retain enlarged shrub presence`);
+  }
+ }
+});
+
+test('Planter enrichment preserves every outside plant, ground patch and perimeter tree from 16ef2cd',()=>{
+ const plants=plan.plants.filter(p=>!p.source?.startsWith('planter:'));
+ assert.equal(plants.length,53);
+ const fingerprint=createHash('sha256').update(JSON.stringify({patches:plan.patches,plants,perimeterTrees:plan.perimeterTrees})).digest('hex');
+ assert.equal(fingerprint,'a1f026b90174fb581af0e0d60760978dfa99728352f2553caa0032aecfc7d885');
+ for(const file of ['../assets/blender/heron-reach/ground-plan.json','../public/models/heron-reach/ground-plan.json']){
+  const shipped=JSON.parse(readFileSync(new URL(file,import.meta.url),'utf8'));
+  assert.deepEqual(shipped.plants,plan.plants,`${file}: publish all planter clumps`);
+  assert.deepEqual(shipped.patches,plan.patches,`${file}: retain unchanged ground patches`);
  }
 });
 
@@ -198,7 +246,7 @@ test('Bare pockets thin only the existing grass owner and the Blender/plant tota
  assert.equal(groundGrassDensity(plan,p.x,p.z),.13);
  assert.equal(groundGrassDensity(plan,-100,-100),1);
  const manifest=JSON.parse(readFileSync(new URL('../assets/blender/heron-reach/ground-detail-manifest.json',import.meta.url),'utf8'));
- assert(manifest.triangles+plan.stats.plantTriangles<=30000);
+ assert(manifest.triangles+plan.stats.plantTriangles<30000);
  assert.equal(manifest.plantTriangles,plan.stats.plantTriangles);
  assert.equal(manifest.treeTriangles,plan.stats.treeTriangles);
 });

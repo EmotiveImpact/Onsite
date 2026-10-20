@@ -108,15 +108,24 @@ export function buildHeronGroundPlan(input:GroundInput):GroundPlan{
   addPatch(`drain:${i}`,'moss','existing-drain',x+.39,z+.14,.27,.08,.35);
   addPatch(`silt:${i}`,'soil','existing-drain',x-.35,z+.13,.22,.06,-.2);
  }
- // Existing raised planter soil is 15 cm below the 1m rim, currently visually empty.
+ // Six low, varied clumps per existing bed: leafy shrubs over broad rosettes and upright weeds.
+ // Fit each measured footprint before placing it; all roots meet the same existing soil finish.
+ const shrubAssets=['SHRUB_A','SHRUB_B','SHRUB_C'];
+ const clumpScale:Record<string,number>={SHRUB_A:.62,SHRUB_B:.75,SHRUB_C:.54,WEED_TUFT_A:3.15,WEED_TUFT_B:1.35,WEED_TUFT_C:1.04};
+ const planterSlots=[[-.55,-.30],[.50,.45],[-.68,.65],[.50,-.72],[.68,-.60],[-.15,.72]];
  for(const c of input.layout.cover.filter(c=>c.kind.includes('planter')&&c.y===0)){
-  const [x,z,w,d]=c.rect,n=c.id==='K21'||c.id==='K22'?2:1;
-  for(let i=0;i<n;i++){
-   const seed=hash(`planter:${c.id}:${i}`),asset=i?'SHRUB_A':'SHRUB_C',scale=asset==='SHRUB_A'?.51:.43;
-   const px=x+w/2+(w>d?(i-(n-1)/2)*.75:0),pz=z+d/2+(w>d?0:(i-(n-1)/2)*.75);
-   const p:GroundPlacement={asset,x:px,y:c.y+c.height-.15-assets.get(asset)!.bounds_min[2]*scale,z:pz,ry:noise(seed)*6.283,scale,source:`planter:${c.id}`};
-   const b=plantBounds(p),rim=.12;
-   if(px-b.radius>=x+rim&&px+b.radius<=x+w-rim&&pz-b.radius>=z+rim&&pz+b.radius<=z+d-rim&&b.top<=c.y+c.height+.25)plants.push(p);
+  const [x,z,w,d]=c.rect,shrubCount=c.id==='K21'||c.id==='K22'?2:1,bedSeed=hash(`planter:${c.id}`),rim=.12;
+  for(let i=0;i<planterSlots.length;i++){
+   const seed=hash(`planter:${c.id}:${i}`);
+   const asset=i<shrubCount?shrubAssets[(bedSeed+i)%shrubAssets.length]:['WEED_TUFT_A','WEED_TUFT_C','WEED_TUFT_A','WEED_TUFT_B'][(i-shrubCount)%4];
+   const scale=clumpScale[asset]*(.91+.09*noise(seed+13));
+   const p:GroundPlacement={asset,x:0,y:c.y+c.height-.15-assets.get(asset)!.bounds_min[2]*scale,z:0,ry:noise(seed)*6.283,scale,source:`planter:${c.id}`};
+   const b=plantBounds(p),availableX=w/2-rim-b.radius-.035,availableZ=d/2-rim-b.radius-.035;
+   if(availableX<=0||availableZ<=0||b.top>c.y+c.height+.25)continue;
+   const [sx,sz]=planterSlots[i],mirror=bedSeed%2?-1:1;
+   p.x=x+w/2+(sx*mirror+(noise(seed+41)-.5)*.12)*availableX;
+   p.z=z+d/2+(sz+(noise(seed+73)-.5)*.12)*availableZ;
+   plants.push(p);
   }
  }
  // The site wall prevents reaching these pavement trees. Trunks avoid roads; canopies avoid facades.

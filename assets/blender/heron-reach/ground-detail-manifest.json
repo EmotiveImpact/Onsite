@@ -1,10 +1,10 @@
 {
   "provenance": "Original ONSITE deterministic geometry; existing hr_soil, hr_grass_ground and original foliage leaf atlas. No donor source or new pixels.",
-  "planSha256": "a091da5596b2ddaf9ff1b60136a1e4b28dbbe7183825f7d9d105183999a9b585",
+  "planSha256": "507d2f9dbd182cddb3c96767420476ee4ec9fe5a7ecf2f3e4f9503e6f4bc80b3",
   "blender": "4.3.2",
   "meshes": 57,
   "triangles": 5240,
-  "plantTriangles": 19268,
+  "plantTriangles": 22256,
   "treeTriangles": 23408,
   "glbBytes": 158884,
   "tool": {
@@ -715,5 +715,12 @@
   "builderSha256": "e146d3069a280d043aef59d1c616402c573f032dbdcc035f87cad5e48fb8e791",
   "glbSha256": "fb17be2f07d66c4d70074bf3d3e62bda559226bf71642578d5799e908b9e6a5a",
   "rawBytes": 632036,
-  "rawSha256": "e6fc5aafd9fcf6340867c2fd41c71c5d5bbb2057985c8ff61d08498228517eb1"
+  "rawSha256": "e6fc5aafd9fcf6340867c2fd41c71c5d5bbb2057985c8ff61d08498228517eb1",
+  "placementPlanSha256": "8ce58577bf3a746a1530be8219683b629947662cf3538d6eaf86b1d762129520",
+  "runtimePlacementPlanSha256": "f3d512ad368107769fbb0a6bea78660a5b0fa0abad0092f31194e728b1a4124b",
+  "planProvenance": {
+    "geometryPlanCommit": "71501c19b764881d71ada62be9ab5bfca63ac033",
+    "geometryPlanPath": "assets/blender/heron-reach/ground-plan.json",
+    "note": "planSha256 identifies the exact original geometry-generation plan. The ground patches array, ground GLB and ground Blend are unchanged. Placement plan hashes identify the current plants/perimeter trees and updated triangle statistics; those revisions do not regenerate ground geometry."
+  }
 }
