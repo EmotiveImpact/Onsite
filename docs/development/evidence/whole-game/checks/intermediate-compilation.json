@@ -1,0 +1,74 @@
+[
+  {
+    "branch": "codex/onsite-articulated-operator",
+    "sha": "94bdace79f905037dd96d881ae724b7d11dfe754",
+    "checks": [
+      {
+        "command": "npm run typecheck",
+        "exit": 0,
+        "seconds": 2.1,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/onsite-articulated-operator-typecheck.log"
+      },
+      {
+        "command": "npm run build",
+        "exit": 0,
+        "seconds": 0.78,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/onsite-articulated-operator-build.log"
+      }
+    ]
+  },
+  {
+    "branch": "codex/onsite-reload-motion",
+    "sha": "638176ece3e38e604187f70742c7d90ad2677e18",
+    "checks": [
+      {
+        "command": "npm run typecheck",
+        "exit": 0,
+        "seconds": 2.14,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/onsite-reload-motion-typecheck.log"
+      },
+      {
+        "command": "npm run build",
+        "exit": 0,
+        "seconds": 0.76,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/onsite-reload-motion-build.log"
+      }
+    ]
+  },
+  {
+    "branch": "codex/heron-reach-shop-depth",
+    "sha": "006692d07ba842d7ae9ca88a266b5afe8e3ea316",
+    "checks": [
+      {
+        "command": "npm run typecheck",
+        "exit": 0,
+        "seconds": 2.31,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/heron-reach-shop-depth-typecheck.log"
+      },
+      {
+        "command": "npm run build",
+        "exit": 0,
+        "seconds": 1.09,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/heron-reach-shop-depth-build.log"
+      }
+    ]
+  },
+  {
+    "branch": "codex/heron-reach-contact-grounding",
+    "sha": "2c2ac91fc6eafc4c7917ccc04acde156b93430e0",
+    "checks": [
+      {
+        "command": "npm run typecheck",
+        "exit": 0,
+        "seconds": 2.56,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/heron-reach-contact-grounding-typecheck.log"
+      },
+      {
+        "command": "npm run build",
+        "exit": 0,
+        "seconds": 0.79,
+        "log": "/tmp/onsite-item-review/test-results/item-compile/heron-reach-contact-grounding-build.log"
+      }
+    ]
+  }
+]

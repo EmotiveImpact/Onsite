@@ -1,0 +1,124 @@
+
+> onsite@0.1.0 test
+> npm run test:legacy && tsx --test tests/wwb-navigation.test.ts tests/estate-assets.test.ts tests/heron-reach.test.ts tests/heron-art.test.ts tests/heron-light-selection.test.ts tests/heron-depth-fog.test.ts tests/heron-detail.test.ts tests/profile.test.ts tests/presentation-settings.test.ts tests/heron-contact-shadows.test.ts tests/operator-assets.test.ts tests/donor-rifle-pose.test.ts tests/heron-shop-depth.test.ts tests/capture-round.test.ts tests/heron-stair-lighting.test.ts tests/heron-stair-construction.test.ts tests/heron-building-construction.test.ts
+
+
+> onsite@0.1.0 test:legacy
+> node --test --test-isolation=none tests/simulation.test.js
+
+✔ floor, wall and fence collision stop a sprinting capsule (201.029223ms)
+✔ real stairs ascend to the elevated landing and descend without falling through (33.023556ms)
+✔ jump is edge-triggered and gravity returns the player to ground (12.406505ms)
+✔ diagonal normalization and command sequence rejection prevent extra movement (13.167573ms)
+✔ cover blocks hitscan damage and bot sight; clear line of sight allows both (27.024565ms)
+✔ reload blocks fire, conserves ammunition, and respects limited reserve (10.463249ms)
+✔ eliminate, capture, finish and restart reset all gameplay state (8.837703ms)
+✔ bot can end encounter, and timeout is terminal (35.132648ms)
+✔ navigation keeps both floors and routes upward through all stair nodes (0.464728ms)
+✔ fixed-step clock is render-rate independent and reset discards paused time (0.431349ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 391.230411
+✔ 3-opponent capture round keeps its final shot and deadline after every opponent is cleared (1.653167ms)
+✔ 6-opponent capture round keeps its final shot and deadline after every opponent is cleared (0.291231ms)
+✔ the donor score-race rule remains unchanged for an actual frag-limited match (0.19641ms)
+✔ the actual encounter step gives death and deadline precedence over simultaneous capture (0.762659ms)
+✔ actual carbine bones and skinned arms enter and leave reload continuously (220.288781ms)
+✔ support hand stays on the moving magazine through extraction, insertion and seated hold (13.180251ms)
+✔ magazine and charging handle slow into their stops without changing travel or seating (6.558419ms)
+✔ authored ADS sight alignment survives arbitrary reload seeking and interruption (10.555374ms)
+✔ Blender export contains render architecture and baked occlusion, no collision/nav guides (53.047979ms)
+✔ Imported rifle external textures exist and imported payloads match provenance (31.327695ms)
+✔ Donor car collision blocks an actual WWB player capsule (244.553506ms)
+✔ Compressed Blender architecture preserves metre-scale wall, roof and paving UVs (426.317842ms)
+✔ Lamp reflections select the supporting level, including overlapping floors (0.712214ms)
+✔ Street lamps reflect at ground level and unsupported positions stay empty (0.182921ms)
+✔ Compressed PBR library covers each source, preserves hashes and contains complete KTX2 mip chains (178.814715ms)
+✔ compressed building construction has recorded provenance, shared materials and bounded geometry costs (439.592963ms)
+✔ all 144 private treads preserve physical height and the full 1.2 metre flight width (37.332605ms)
+✔ combined private stair geometry clears both mirrored routes and leaves the real floor void open (2648.179362ms)
+✔ private solid dividers and guards are visible and handrails follow both actual flight directions (17.302683ms)
+✔ new building detail and replaced narrow joinery preserve full standing doorway approaches (453.613835ms)
+✔ actual legacy retirement preserves public architecture, half landings and original narrow door head/threshold caps (11328.658827ms)
+✔ building loading waits for shared materials and never retires old art on replacement failure (8.91143ms)
+✔ Supporting contacts select B1, ground, gallery and roof independently at the same x/z (1.824901ms)
+✔ Stair contacts use the actual tread footprint and fade smoothly with clearance (0.585196ms)
+✔ Static footprints follow measured props on their own floors and leave source collision unchanged (1.269439ms)
+✔ Real Heron Reach floors support all six current spawn levels and static contacts stay local (12.482028ms)
+✔ One fixed instanced batch follows rendered bot feet and removes dead, hidden or airborne actors (31.451759ms)
+✔ Heron Court gets no contact batch or dynamic instances (1.897229ms)
+✔ Near fog preserves street and basement contrast; distant layers remain distinct (1.49987ms)
+✔ Optical depth matches independent density integration for horizontal, upward and downward rays (34.344325ms)
+✔ Horizontal limit, exponent bounds, zero length and long vertical rays stay finite and continuous (0.543595ms)
+✔ Scoped fog composes with surface response/wet ground and preserves default/custom cache identities (35.571617ms)
+✔ Meshes, instancing, points and sprites use their existing view position; linear Fog stays stock (8.195993ms)
+✔ Scanned fixture replacement finds real sanitised GLB nodes and preserves the shop backdrop (83.071844ms)
+✔ Court receivers stay at ground under an overlapping upper deck; cores keep their landing (1.22913ms)
+✔ Segment visibility rejects intervening walls and slabs, including a parallel ray (0.469505ms)
+✔ Only a shallow exit from a mounting wall is forgiven; glazing and cage mesh transmit light (5.37702ms)
+✔ Saved Cage camera spends no pool slots on B1 fixtures (25.474921ms)
+✔ Saved gallery camera selects its own storey rather than court or ground/core fixtures (32.619207ms)
+✔ Saved Corner camera gives both visible shop strips a pool slot (14.881921ms)
+✔ every core serves its levels on the layered graph, from B1 or G to its top (326.299967ms)
+✔ the shell connects: both staging yards, the +3 bridges, every +6 island, both roofs and the undercroft loop (10563.810971ms)
+✔ actual player climbs S1 through every served level and back (2831.335558ms)
+✔ actual player climbs S2 through every served level and back (2972.086171ms)
+✔ actual player climbs S3 through every served level and back (1917.082049ms)
+✔ actual player climbs S4 through every served level and back (1183.616354ms)
+✔ actual player climbs S5 through every served level and back (847.06014ms)
+✔ actual player climbs S6 through every served level and back (2321.986644ms)
+✔ actual player climbs S7 through every served level and back (1345.472384ms)
+✔ actual player climbs S8 through every served level and back (919.247348ms)
+✔ H2 maisonette NW-H2-1: front door at +3, private stair, rear door at +6, and back again (485.220953ms)
+✔ H2 maisonette SE-H2-2: front door at +3, private stair, rear door at +6, and back again (729.003279ms)
+✔ WWB bot physically traverses S1 to L2 and back to G (824.477101ms)
+✔ WWB bot physically traverses S7 from G down to B1 and back (420.801433ms)
+✔ guards hold a sprinting player at gallery, bridge, island and roof edges (718.716516ms)
+✔ stair and landing headroom is at least 2.4 m under every slab, tread and cap (13.078938ms)
+✔ objective volumes are floor-aware: ground counts, the undercroft below and galleries above do not (0.420181ms)
+✔ shop replacement selects exactly the four existing Corner shelves and retains their colliders (20.570973ms)
+✔ shipped stock triangles remain inside existing furniture footprints and clear both doors and the centre aisle (274.213432ms)
+✔ retired lived shelf panels cannot overlap the replacement stock (20.154546ms)
+✔ depth loader shares the atlas and hides only authored photographic panels (1.938389ms)
+✔ stock artifact provenance and cost manifest match the shipped source and texture (7.623345ms)
+✔ all public stair treads retain their physical height and width in the compressed Blender asset (915.743889ms)
+✔ new stair construction stays inside all eight existing core volumes, including mirrored B1 routes (205.496488ms)
+✔ authored soffits and fittings preserve headroom and keep standing routes free of added render geometry (1699.973535ms)
+✔ both flight handrails follow the real rise direction and solid separator walls remain visually closed (291.374173ms)
+✔ legacy retirement removes the actual defective public stairs while preserving landings, glazing and private home geometry (8601.482049ms)
+✔ stair loading shares existing textures, uses dry sheltered concrete and preserves old art when replacement loading fails (1.865591ms)
+✔ Stair fixture plan retains full landings and adds one properly mirrored half-landing per flight pair (23.1275ms)
+✔ All mirrored/B1 routes retain a visible own-core fixture at standing and crouched eye heights (576.124474ms)
+✔ Half-landing anchors fill the return-flight gap without relaxing opaque spine or slab visibility (1.431639ms)
+✔ Original Blender operator keeps its metre scale, provenance, skin and bounded cost (206.916244ms)
+✔ Separate bots have independent bones and kit geometry without duplicating materials (47.109165ms)
+✔ Rifle socket follows the held weapon through aim and recoil without moving its actor (1.323408ms)
+✔ quality choices cannot enable expensive effects on the software fallback (4.799133ms)
+✔ balanced rendering caps native resolution and removes bloom without changing gameplay settings (0.758483ms)
+✔ reduced camera kick preserves the actual aim and Arsenal punch state (0.266064ms)
+✔ Player preferences survive a reload without sharing map records (1.580699ms)
+✔ Corrupt, absent, future-version and inaccessible local data cannot prevent play (0.383858ms)
+✔ Invalid saved values are bounded and unsupported kit/quality values do not reach runtime (0.195659ms)
+✔ Only captured rounds become a map best; losses and slower wins retain the record (0.259234ms)
+✔ layered routes connect both stairs and preserve overlapping floors (61.325189ms)
+✔ WWB bot physically traverses stair A up and down (770.533266ms)
+✔ WWB bot physically traverses stair B up and down (308.221495ms)
+✔ WWB player capsule climbs and descends both routes (498.846768ms)
+✔ WWB player crosses the lobby doorway and reaches court without clipping (26.492696ms)
+✔ WWB player cannot pass the outer wall and damage respects spawn protection (28.523834ms)
+✔ continuous courtyard to stair A to gallery to stair B route (462.877189ms)
+✔ actual player enters Flat 01, reaches living area and bedroom, returns to court (135.862788ms)
+✔ WWB bot brain routes through furnished Flat 01 without a second movement owner (92.921767ms)
+ℹ tests 90
+ℹ suites 0
+ℹ pass 90
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 35571.807503
