@@ -31,7 +31,8 @@ Collision/nav and WWB movement/weapons/bots/rounds are unchanged. The separate
 `codex/heron-reach-ground-growth` item adds soil/moss/leaf deposits, weeds, planter
 shrubs and sixteen perimeter trees. Keep the original Blender 5.2 files intact;
 additive files use Blender 4.3. Real-GPU verification is deferred and unverified.
-No merge or deployment.
+No merge or production deployment. The existing Vercel integration automatically
+built a preview of PR #19 after its branch push.
 
 
 ## Previous: public stair construction — 20 October 2026

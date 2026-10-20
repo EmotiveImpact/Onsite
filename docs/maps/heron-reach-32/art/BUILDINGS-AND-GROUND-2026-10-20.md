@@ -23,7 +23,9 @@ The review sequence is building/stair construction first on
 The building item is [PR #19](https://github.com/EmotiveImpact/Onsite/pull/19),
 stacked on #18, pushed and unmerged. Each item records its actual exported costs,
 matched runtime views and checks.
-Real-GPU performance remains unverified and deferred. No merge or deployment.
+Real-GPU performance remains unverified and deferred. No merge or production
+deployment was invoked. The repository's existing Vercel integration automatically
+built a PR preview after the authorised branch push.
 
 ## Recovery
 
