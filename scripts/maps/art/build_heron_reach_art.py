@@ -20,7 +20,7 @@ from heron_art_context import Context  # noqa: E402
 from heron_art_materials import Library, ROOT  # noqa: E402
 
 LAYOUT = os.path.join(ROOT, 'assets', 'blender', 'heron-reach', 'layout.json')
-OUT = os.path.join(ROOT, 'assets', 'blender', 'heron-reach', 'heron-reach.blend')
+OUT = os.path.join(ROOT, os.environ.get('ONSITE_ARCH_BLEND', 'assets/blender/heron-reach/heron-reach.blend'))
 
 
 def main():

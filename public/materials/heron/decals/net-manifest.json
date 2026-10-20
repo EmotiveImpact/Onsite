@@ -1,0 +1,13 @@
+{
+  "provenance": "Original ONSITE procedural cord net. No external image or edited source artwork.",
+  "generator": "scripts/maps/art/make_heron_net.py",
+  "pixels": [
+    512,
+    512
+  ],
+  "cellsPerTile": 8,
+  "purpose": "Replaces repeated feather silhouettes in runtime netting; previous artwork and Blender source retained.",
+  "output": "public/materials/heron/decals/pigeon-net-clean.webp",
+  "bytes": 842,
+  "sha256": "52c6aae42000601799ff4ca3373cff11b08a288f5be03e8479c716f126d43da6"
+}

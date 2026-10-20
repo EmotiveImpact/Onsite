@@ -1,0 +1,198 @@
+{
+  "kind": "Fixed-camera inspection fixtures; bots frozen; not gameplay evidence",
+  "frozenBuildUrl": "http://127.0.0.1:4183",
+  "servedScripts": [
+    {
+      "url": "http://127.0.0.1:4183/assets/index-Cch1KYc6.js",
+      "sha256": "c9bfa2593e34e0dcf4e408cca37993d88517e7fa90f1297f5d1a74504dc5da59"
+    }
+  ],
+  "servedAssets": [
+    {
+      "path": "/models/heron-reach/heron-reach-arch.glb",
+      "bytes": 3008092,
+      "sha256": "11a34617f429c5d84d8c10f851156b2dd5c684e600a1924e337c8553b17b5b16"
+    },
+    {
+      "path": "/materials/heron/runtime-materials.json",
+      "bytes": 11712,
+      "sha256": "a855ff6474d660c5a180edeec7d47a7119088f8aded39d481b6e06a7d82442a9"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-lived.glb",
+      "bytes": 121404,
+      "sha256": "49f766e99288fe66ed0f6dcedcb3aaf34247a7f57114eb463c56a9fe6f00e297"
+    },
+    {
+      "path": "/models/heron-reach/heron-reach-scanned.glb",
+      "bytes": 499580,
+      "sha256": "9b59f1d1cc0132d4eceb3fe279db57647a1014dd2a441d6d42fe9d50a1f61029"
+    },
+    {
+      "path": "/materials/heron/decals/pigeon-net-clean.webp",
+      "bytes": 842,
+      "sha256": "52c6aae42000601799ff4ca3373cff11b08a288f5be03e8479c716f126d43da6"
+    }
+  ],
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "software": true,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "pixelRatio": 1,
+  "harnessCommit": "5117c5293fe25a9771efd834a180a5033e2c16e7",
+  "workingTree": "docs/maps/heron-reach-32/art/SCENE-DEPTH-2026-10-19.md | 8 +++++---\n 1 file changed, 5 insertions(+), 3 deletions(-)",
+  "captures": [
+    {
+      "name": "the-cage",
+      "requestedPose": {
+        "x": -20,
+        "y": 0.04,
+        "z": 0,
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -19.999998092651367,
+          "y": 0.02008830857957944,
+          "z": -0.000001959445398824755
+        },
+        "yaw": -1.4219063791853994,
+        "pitch": -0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 6,
+        "meanFrameMs": 1547.1333333328366,
+        "drawCalls": 629,
+        "triangles": 1324569,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "the-corner",
+      "requestedPose": {
+        "x": 38,
+        "y": 0.04,
+        "z": -17,
+        "yaw": -3.141592653589793,
+        "pitch": -0.03
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38,
+          "y": 0.02008146355510687,
+          "z": -16.999999981861492
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.03,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 11,
+        "meanFrameMs": 1636.4272727275436,
+        "drawCalls": 530,
+        "triangles": 1279300,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "gallery-edge",
+      "requestedPose": {
+        "x": -20,
+        "y": 3.04,
+        "z": -22.9,
+        "yaw": -3.141592653589793,
+        "pitch": 0.08
+      },
+      "actualPlayer": {
+        "position": {
+          "x": -20.000000038739984,
+          "y": 3.019212682340003,
+          "z": -22.899999618530273
+        },
+        "yaw": -3.141592653589793,
+        "pitch": 0.08,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 16,
+        "meanFrameMs": 1766.4437499996275,
+        "drawCalls": 565,
+        "triangles": 1253136,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    },
+    {
+      "name": "corner-interior",
+      "requestedPose": {
+        "x": 39,
+        "y": 0.04,
+        "z": -10,
+        "yaw": -3.141592653589793,
+        "pitch": -0.04
+      },
+      "actualPlayer": {
+        "position": {
+          "x": 38.9999994310632,
+          "y": 0.020033780646917854,
+          "z": -9.999999799266249
+        },
+        "yaw": -3.141592653589793,
+        "pitch": -0.04,
+        "health": 100,
+        "grounded": true
+      },
+      "metrics": {
+        "softwareRenderer": true,
+        "renderer": "WebKit WebGL",
+        "frames": 21,
+        "meanFrameMs": 1875.657142857001,
+        "drawCalls": 467,
+        "triangles": 1277825,
+        "architectureTextures": {
+          "compressed": 0,
+          "webp": 82,
+          "formats": {
+            "1023": 82
+          },
+          "estimatedMipBytes": 328996233
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

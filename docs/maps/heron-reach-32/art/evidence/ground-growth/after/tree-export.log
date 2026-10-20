@@ -1,0 +1,17 @@
+Info: Saved "ground-trees.blend"
+ERROR Draco mesh compression is not available because library could not be found at /usr/bin/4.3/python/lib/python3.13/site-packages/libextern_draco.so
+01:59:33 | INFO: Starting glTF 2.0 export
+01:59:33 | INFO: Extracting primitive: TREE_PLANE_A_LOD1_bark
+01:59:33 | INFO: Primitives created: 1
+01:59:33 | INFO: Extracting primitive: TREE_PLANE_A_LOD1_leaves
+01:59:33 | INFO: Primitives created: 1
+01:59:33 | INFO: Extracting primitive: TREE_PLANE_B_LOD1_bark
+01:59:33 | INFO: Primitives created: 1
+01:59:33 | INFO: Extracting primitive: TREE_PLANE_B_LOD1_leaves
+01:59:33 | INFO: Primitives created: 1
+01:59:33 | INFO: Finished glTF 2.0 export in 0.01916980743408203 s
+
+GROUND_TREES {"nodeNames": ["TREE_PLANE_A_LOD1_bark", "TREE_PLANE_A_LOD1_leaves", "TREE_PLANE_A_LOD1", "TREE_PLANE_B_LOD1_bark", "TREE_PLANE_B_LOD1_leaves", "TREE_PLANE_B_LOD1"], "roots": ["TREE_PLANE_A_LOD1", "TREE_PLANE_B_LOD1"], "triangles": 2926, "meshes": 4, "primitives": 4, "materials": ["hr_bark_plane", "hr_leaf_plane"], "meshAttributes": {"mesh_0": ["COLOR_0", "NORMAL", "POSITION", "TEXCOORD_0"], "mesh_1": ["NORMAL", "POSITION", "TEXCOORD_0"], "mesh_2": ["COLOR_0", "NORMAL", "POSITION", "TEXCOORD_0"], "mesh_3": ["NORMAL", "POSITION", "TEXCOORD_0"]}, "images": 0, "textures": 0, "extensionsUsed": ["KHR_mesh_quantization", "EXT_meshopt_compression"], "extensionsRequired": ["KHR_mesh_quantization", "EXT_meshopt_compression"], "rawGLBBytes": 122316, "rawGLBSha256": "21f6bae564c242eb698b98f1a9aca2b6bb7b766f3a6a29b57c2a1b4f9a8fe50a", "glbBytes": 36640, "blendBytes": 1901368, "glbSha256": "4189cc10ca98b9d9f95a1a12f8b0b1941d1e12b5a1d5d23fcc0c980bf3df8a87"}
+Blender 4.3.2
+
+Blender quit
