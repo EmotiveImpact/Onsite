@@ -139,6 +139,19 @@ test('authored soffits and fittings preserve headroom and keep standing routes f
 test('both flight handrails follow the real rise direction and solid separator walls remain visually closed',async()=>{
  const geometry=await shipped(),manifest=JSON.parse(readFileSync(manifestPath,'utf8'))
  const vertex=(v:number[]|Point)=>Array.isArray(v)?new THREE.Vector3(...v as [number,number,number]):new THREE.Vector3(v.x,v.y,v.z)
+ const occludedRails:string[]=[]
+ const exposedRail=(centre:THREE.Vector3,direction:THREE.Vector3,label:string)=>{
+  for(const dy of [-.008,0,.008]){
+   const sample=centre.clone().add(new THREE.Vector3(0,dy,0))
+   const origin=sample.clone().addScaledVector(direction,-.20),ray=new THREE.Ray(origin,direction),hit=new THREE.Vector3()
+   let first:Triangle|undefined,distance=Infinity
+   for(const t of geometry.near(sample,.25))if(ray.intersectTriangle(t.shape.a,t.shape.b,t.shape.c,false,hit)){
+    const candidate=origin.distanceTo(hit)
+    if(candidate<distance&&candidate<.25){first=t;distance=candidate}
+   }
+   if(first?.material!=='hr_steel_black')occludedRails.push(`${label} rail is hidden by ${first?.material??'missing geometry'} (${sample.toArray()})`)
+  }
+ }
  let flights=0
  for(const authored of manifest.cores){
   const core=spec.cores.find(c=>c.id===authored.id);assert(core)
@@ -156,10 +169,32 @@ test('both flight handrails follow the real rise direction and solid separator w
      assert(candidates.some(t=>t.shape.closestPointToPoint(point,nearest).distanceTo(point)<.025),`${core.id} missing exported rail surface at ${point.toArray()}`)
     }
    }
+   // Proximity alone can pass for a tube buried in a painted seam. View the
+   // middle spine seam from the actual flight side and require the exposed rail
+   // to be the first surface, including either side of its centre line.
+   const start=vertex(flight.rail.start),end=vertex(flight.rail.end)
+   const seamZ=mapPoint(core,0,0,2.96).z,fraction=(seamZ-start.z)/(end.z-start.z)
+   assert(fraction>0&&fraction<1)
+   const centre=start.clone().lerp(end,fraction),direction=new THREE.Vector3(flight.first?1:-1,0,0)
+   exposedRail(centre,direction,`${core.id} ${flight.id} middle spine seam`)
    flights++
+  }
+  // Mid-span guard seams must not conceal the horizontal rail. At either end,
+  // the tube deliberately enters a solid corner stile: verify that supported
+  // termination and exposed rail just beyond it, not visibility through a post.
+  for(const y of core.levels.slice(1)){
+   const x0=y===core.levels.at(-1) ? .2 : 1.9,railY=y+.95-.02*spec.stairs['ST-P'].rise/spec.stairs['ST-P'].going
+   for(const x of [1.99,(x0+4.1)/2,4.01]){
+    exposedRail(vertex(mapPoint(core,x,railY,4.20)),new THREE.Vector3(0,0,core.mirrorZ?1:-1),`${core.id} ${y}m landing guard seam`)
+   }
+   for(const x of [1.918,4.082]){
+    const endpoint=vertex(mapPoint(core,x,railY,4.20)),nearby=geometry.near(endpoint,.04),closest=new THREE.Vector3()
+    for(const material of ['hr_steel_black','hr_door_paint'])assert(nearby.some(t=>t.material===material&&t.shape.closestPointToPoint(endpoint,closest).distanceTo(endpoint)<.025),`${core.id} ${y}m landing rail must meet its solid painted support at ${endpoint.toArray()} (${material})`)
+   }
   }
  }
  assert.equal(flights,48)
+ assert.equal(occludedRails.length,0,`${occludedRails.length} occluded rail samples:\n${occludedRails.join('\n')}`)
  const spines=solids.filter(s=>s.id.endsWith('-balustrade')&&spec.cores.some(c=>owns(c,s.x+OX,s.z+OZ)))
  assert.equal(spines.length,16)
  const ray=new THREE.Ray(),hit=new THREE.Vector3(),right=new THREE.Vector3(1,0,0)

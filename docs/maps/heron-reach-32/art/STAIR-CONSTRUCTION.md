@@ -55,6 +55,13 @@ main sheets are continuous across the complete height and length of the old sepa
 guards likewise retain opaque panels, with their handrails on the visible landing face. A more
 open glazed stairwell requires a separately designed collision/visibility change.
 
+The central raised seam at local z=2.96 has a small recess at each of its 48 flight-rail
+crossings. The recess spans the rail's vertical envelope plus installation clearance; the opaque
+backing sheet stays continuous. Landing-guard ribs likewise recess around the horizontal rails.
+These cuts keep the handrails visibly continuous instead of letting a raised strip conceal them.
+End stiles remain as the rail termination supports. Buried back/base faces on the adjusted seam
+pieces are omitted to retain the original triangle budget.
+
 | Element | Existing local envelope retained | Construction constraint |
 | --- | --- | --- |
 | First flight | x 0.40–1.90, z 1.70–4.22 | Full 1.50 m walking width retained |
@@ -132,10 +139,10 @@ All six strengthened construction test groups passed against the final compresse
 including tread samples 20 mm from either edge and intermediate surface samples on both inner
 and outer rails. The reopened Blend passed the packed-image check independently of the export.
 
-The final export contains **29,136 triangles, 28 batches and 395,084 compressed bytes**.
-Its SHA256 is `02e9d9af147abaaebd9fdf2e43c15fb2bbe5232d54c60a83a34db76123c98d26`;
+The final export contains **29,904 triangles, 28 batches and 405,636 compressed bytes**.
+Its SHA256 is `dd8c0896c64c5e2852a3a62cc98afa690d7ebd54243b7fd5eca4831ba1514be2`;
 the generator and packed Blend hashes are in `stair-detail-manifest.json`. The builder enforces
 fewer than 30,000 new triangles and at most 28 batches. Retiring 35,072 old triangles reduces the
-rendered triangle total by **5,936**. The additive GLB adds roughly 0.4 MB to download; no new
+rendered triangle total by **5,168**. The additive GLB adds roughly 0.4 MB to download; no new
 decoded texture allocations are required. The old download still contains the retired geometry
-because the existing architecture source is preserved. The packed editable Blend is 3,573,995 bytes.
+because the existing architecture source is preserved. The packed editable Blend is 3,586,994 bytes.

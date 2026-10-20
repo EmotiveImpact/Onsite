@@ -31,6 +31,18 @@ SEAM_COL = (.38, .48, .44, 1)
 PITCH = S['rise'] / S['going']
 EPS = 1e-6
 
+
+def solid_intervals(bottom, top, openings):
+    """Raised seam segments around narrow handrail passages; the backing sheet stays whole."""
+    cursor = bottom
+    for lo, hi in sorted(openings):
+        lo, hi = max(bottom, lo), min(top, hi)
+        if lo > cursor + EPS:
+            yield cursor, lo
+        cursor = max(cursor, hi)
+    if cursor < top - EPS:
+        yield cursor, top
+
 bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.context.scene.unit_settings.system = 'METRIC'
 bpy.context.scene.unit_settings.scale_length = 1
@@ -62,6 +74,8 @@ class Core:
     def box(self, mat, x0, x1, y0, y1, z0, z1, col=(1, 1, 1, 1), faces='all'):
         q = self.bounds(x0, x1, y0, y1, z0, z1)
         a, b = q['min'], q['max']
+        if self.mirror and faces != 'all':
+            faces = ' '.join({'-z': '+z', '+z': '-z'}.get(face, face) for face in faces.split())
         B.box(self.group, mat, a[0], b[0], a[1], b[1], a[2], b[2], col=col, faces=faces)
 
     def poly(self, mat, points, normal, uv=None, col=(1, 1, 1, 1)):
@@ -197,8 +211,21 @@ class Core:
             shade = .76 if h < .08 else 1
             return tuple(v*shade for v in PAINT_COL[:3]) + (1,)
         self.box(PAINT, sx0, sx1, self.base, self.top+1.2, 1.70, 4.22, col=grime)
-        for zz in [1.715, 2.96, 4.205]:
+        for zz in [1.715, 4.205]:
             self.box(PAINT, x0, x1, self.base, self.top+1.2, zz-.015, zz+.015, col=SEAM_COL)
+        # The centre seam crosses each sloped handrail. Recess only its raised face at
+        # those crossings; otherwise the seam hides the rail and creates a false break.
+        # End stiles remain as rail termination supports, not intermediate crossings.
+        zz = 2.96
+        centres = [lower + (1.1 + (4.22-zz)*PITCH if left else 2.6 + (zz-1.7)*PITCH)
+                   for lower in self.data['levels'][:-1]]
+        half_opening = .035 + .015*PITCH  # tube radius, installation clearance and rib-width slope
+        openings = [(y-half_opening, y+half_opening) for y in centres]
+        for lo, hi in solid_intervals(self.base, self.top+1.2, openings):
+            # Back faces are buried in the continuous sheet; base caps are buried in the floor.
+            faces = ('-x' if left else '+x') + ' +z -z +y' + (' -y' if lo > self.base+EPS else '')
+            self.box(PAINT, x0 if left else sx1, sx0 if left else x1,
+                     lo, hi, zz-.015, zz+.015, col=SEAM_COL, faces=faces)
         for y in [self.base+i*1.5 for i in range(round((self.top-self.base)/1.5)+1)]+[self.top+1.18]:
             self.box(PAINT, sx0-.002, sx1+.002, y, min(y+.02, self.top+1.2), 1.725, 4.195, col=SEAM_COL)
             if abs((y-self.base) % 3) < EPS:
@@ -206,7 +233,8 @@ class Core:
                     face, sign = (sx0, -1) if left else (sx1, 1)
                     self.fastener(face, sign, y+.011, zz, radius=.006, depth=.003, col=(.44, .47, .44, 1))
         self.report['spines'].append({'mapBounds': self.bounds(x0, x1, self.base, self.top+1.2, 1.7, 4.22),
-                                      'opaqueSheetBounds': self.bounds(sx0, sx1, self.base, self.top+1.2, 1.7, 4.22)})
+                                      'opaqueSheetBounds': self.bounds(sx0, sx1, self.base, self.top+1.2, 1.7, 4.22),
+                                      'railSeamNotches': [{'localZ': 2.96, 'yMin': lo, 'yMax': hi} for lo, hi in openings]})
 
     def guard(self, y, top):
         x0, x1 = (.2 if top else 1.9), 4.1
@@ -214,10 +242,13 @@ class Core:
         # Folded cap and bottom seam remain wholly inside the guard collider.
         self.box(RAIL, x0, x1, y+1.18, y+1.20, 4.16, 4.22, col=(.66, .70, .66, 1))
         self.box(PAINT, x0, x1, y+.035, y+.065, 4.182, 4.22, col=SEAM_COL)
-        for xx in [x0+.04, (x0+x1)/2, x1-.04]:
-            self.box(PAINT, xx-.009, xx+.009, y+.065, y+1.18, 4.182, 4.22, col=SEAM_COL)
-        # Correctly connected return-flight / landing / next-first-flight handrail.
         rail_y = y+.95-.02*PITCH
+        for xx in [x0+.04, (x0+x1)/2, x1-.04]:
+            openings = [(rail_y-.028, rail_y+.028)] if xx+.009 > 1.90 and xx-.009 < 4.10 else []
+            for lo, hi in solid_intervals(y+.065, y+1.18, openings):
+                faces = '+x -x +z +y' + (' -y' if lo > y+.065+EPS else '')
+                self.box(PAINT, xx-.009, xx+.009, lo, hi, 4.182, 4.22, col=SEAM_COL, faces=faces)
+        # Correctly connected return-flight / landing / next-first-flight handrail.
         self.tube(RAIL, (1.918, rail_y, 4.20), (4.082, rail_y, 4.20), .018)
         if not top:
             self.tube(RAIL, (1.918, rail_y, 4.20), (1.918, y+1.1+.02*PITCH, 4.20), .018)
