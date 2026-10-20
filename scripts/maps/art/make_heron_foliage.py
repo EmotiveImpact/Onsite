@@ -884,7 +884,9 @@ def strip_leaf(mb, base, phi, L, Wd, rise, droop, rect, mat, segs=3):
     for s in range(segs):
         a, b = rows[s]
         d, c = rows[s + 1]
-        mb.face([a[0], b[0], c[0], d[0]], [a[1], b[1], c[1], d[1]], mat)
+        # Rosette upper surface faces +Z, consistent with its authored upward normals.
+        # Reverse corners and their UVs together; upright cross_cards stay unchanged.
+        mb.face([d[0], c[0], b[0], a[0]], [d[1], c[1], b[1], a[1]], mat)
 
 
 def cross_cards(mb, rect, pivot, w, h, n, rng, mat, yaw0=0.0):

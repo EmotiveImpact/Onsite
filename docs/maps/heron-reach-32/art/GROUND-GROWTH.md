@@ -100,11 +100,25 @@ Only 427/588 faces have a negative dot against the deliberately tilted authored 
 the reliable intended blade-facing test is geometric face Y in the asset-root frame.
 
 `correctGrassWinding(source,local)` clones only the clump geometry and reverses downward
-faces, retaining authored normals/UVs/colours. Root calls this only for the four known grass
-clumps. Corrected exports stay unchanged on later passes. The source-builder patch reverses
+faces, retaining authored normals/UVs/colours. GrassField calls this for the four known grass
+clumps; kit loading also scopes it to WEED_TUFT_B’s separate `hr_grass_blade` primitive. Corrected exports stay unchanged on later passes. The source-builder patch reverses
 the corresponding blade face/UV order without rebuilding or replacing the current kit.
 Thin 6–12mm blades may still alias at DPR1: anisotropy and coverage are separate sampling
 decisions; no new lights, unlit replacement or blanket leaf normal hack is required.
+
+The enlarged planter rosettes exposed the same source-winding defect in the weed kit.
+The shipped compressed GLB has 66 downward rosette triangles in `WEED_TUFT_A`,
+30 in `WEED_TUFT_C` and 30 downward blade triangles in `WEED_TUFT_B` (126 total).
+A/C strip leaves have transformed authored normal Y 0.9931–0.9947; the twelve B/C
+upright cards range from 0.9039 to 0.9299. `correctFoliageWinding` clones only the
+known A/C `hr_weed` primitives and flips downward faces only when all three authored
+corner normals have up > 0.98. B’s separate `hr_grass_blade` uses the blade correction.
+All twelve upright cards retain their indices, including four whose geometric face
+Y is negative. Other assets/materials retain their original geometry object. Every
+position, authored normal, UV and colour remains byte-identical; no tint or unlit
+shader is introduced. The future `strip_leaf` builder reverses corner/UV order;
+`cross_cards` and the original foliage GLB/Blend remain unchanged. The runtime
+correction also applies to existing instances of these same three weed assets.
 
 ## Acceptance and review
 
@@ -118,17 +132,18 @@ Placement seeds belong to each feature, so adding another feature does not reshu
 
 Tests cover deterministic/non-mutating planning, all 20 tree centres, flat support and holes,
 clear routes, all eight planter interiors, perimeter tree separation, exported vertex heights,
-face winding, no embedded images and the 30k non-tree geometry budget. Grass tests decode the
-actual compressed kit and verify correction/attribute preservation/idempotence.
+face winding, no embedded images and the 30k non-tree geometry budget. Grass/weed tests decode the
+actual compressed kit and verify correction, unchanged upright card indices, exact
+attribute preservation, asset/material scope and idempotence.
 Runtime tests additionally check a recorded baseline matrix hash, selective compaction,
 missing/rejected masks, zero-instance fields, exact winter material ownership, uniform scale,
 and independent public-plan/ground-asset fallbacks. Normal browser verification treats all
 ground fallback warnings as failures; optional fallback is not silently accepted as a full pass.
 
 Corrected implementation checks in the isolated ground worktree on 20 October 2026:
-`npm test` passes all 123 tests (10 legacy and 113 TypeScript tests), `npm run typecheck`
+`npm test` passes all 127 tests (10 legacy and 117 TypeScript tests), `npm run typecheck`
 and `npm run build` pass. The correction groups validate actual decoded plane attributes, rotated canopy/prop
-clearances and the final six-clump beds. Actual transformed foliage vertices meet
+clearances the final six-clump beds and exact weed-strip/blade correction while preserving upright cards. Actual transformed foliage vertices meet
 soil within 1 mm, clear every rim and stay below 1.25 m; the non-planter placements,
 patches and trees retain their pre-planter fingerprints. Per-mesh fingerprints prove positions,
 indices, normals, UVs and bark colours match the original exported planes exactly.

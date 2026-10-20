@@ -7,7 +7,7 @@ import {KTX2Loader} from 'three/addons/loaders/KTX2Loader.js'
 import {applyHeronSurfaceResponse,surfaceNormalScale} from './heronSurfaceResponse'
 import {lightReceiverBelow,lightReceiverFloor,prepareLightOccluders,prepareReceiverLights,selectReceiverLights,type PreparedLight,type LightOccluder} from './heronLightSelection'
 import {stairCorePhotometry} from './heronStairLighting'
-import {correctGrassWinding} from './heronGrassGeometry'
+import {correctFoliageWinding,correctGrassWinding} from './heronGrassGeometry'
 import {acceptGrassCandidate,type GroundDensityMask} from './heronGroundRuntime'
 
 /** Heron Reach presentation built in Blender (assets/blender/heron-reach). Render-only: collision stays in heronReach.ts. */
@@ -219,7 +219,8 @@ export async function loadHeronReachKits(gltf:GLTFLoader,mats:HeronReachMaterial
     src.alphaTest=coverage?.18:.005;src.alphaToCoverage=coverage;src.transparent=!coverage;src.depthWrite=coverage;
     if(src.map){src.map.anisotropy=software?2:8;src.map.minFilter=THREE.LinearMipmapLinearFilter;src.map.generateMipmaps=true;src.map.needsUpdate=true}
    }
-   const im=new THREE.InstancedMesh(o.geometry,material,list.length);im.name=`${asset}/${src.name}`;
+   const geometry=correctFoliageWinding(o.geometry,local,asset,src.name);
+   const im=new THREE.InstancedMesh(geometry,material,list.length);im.name=`${asset}/${src.name}`;
    const m=new THREE.Matrix4();list.forEach((p,i)=>im.setMatrixAt(i,placeMatrix(p,m).multiply(local)));
    im.instanceMatrix.needsUpdate=true;im.computeBoundingSphere();
    const foliage=/leaf|grass|weed|litter|hedge|shrub/.test(src.name);
